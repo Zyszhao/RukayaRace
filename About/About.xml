@@ -10,6 +10,7 @@
 		添加了卢卡娅，一个具有蝙蝠特征的类人种族，和与其相关的科技、武器、服装、派系等内容。
 		目前本模组处于测试阶段，可能出现以下问题：平衡性未经调整、物品描述生硬、玩法单薄、缺少对DLC内容的完善等。
 		请记得反馈！QQ：118628790
+	</description>
 	<modDependencies>
 		<li>
 			<packageId>Ludeon.RimWorld.Biotech</packageId>
