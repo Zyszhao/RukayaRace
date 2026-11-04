@@ -7,9 +7,9 @@
 	</supportedVersions>
 	<packageId>zyszhao.rukayarace</packageId>
 	<description>
-      Play as the Rukaya, a long-lived, winged people scattered after the loss of their advanced homeworld. Rebuild their civilization through staged research, specialized weapons and apparel, active matter industry, controllable flight, and mechanoid engineering. Meet the neutral Drifter Alliance through its settlements, traders, and military forces, or begin as a lone exile awaiting three old companions.
-	</description>
-	<!-- 中文翻译：扮演卢卡娅——这个寿命悠长、背生双翼的族群在先进母星失落后散落星海。通过分阶段研究、专属武器与服装、活性物质工业、可控飞行和机械体技术，重建她们的文明。你可以在定居点、商队与军事力量中接触保持中立的漂泊者同盟，也可以作为孤身流亡者开局，等待三位旧日同伴到来。 -->
+		添加了卢卡娅，一个具有蝙蝠特征的类人种族，和与其相关的科技、武器、服装、派系等内容。
+		目前本模组处于测试阶段，可能出现以下问题：平衡性未经调整、物品描述生硬、玩法单薄、缺少对DLC内容的完善等。
+		请记得反馈！QQ：118628790
 	<modDependencies>
 		<li>
 			<packageId>Ludeon.RimWorld.Biotech</packageId>
