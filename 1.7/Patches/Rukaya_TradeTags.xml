@@ -1,0 +1,1033 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Patch>
+  <Operation Class="PatchOperationSequence">
+    <operations>
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName='Rukaya_Revolver']/weaponTags</xpath>
+        <value>
+          <li>Rukaya_TradeSidearm</li>
+        </value>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_AirburstRocket']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_AirburstRocket']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeArmsI</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_AirburstRocket']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeArmsI</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_AssaultRifle']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_AssaultRifle']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeArmsI</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_AssaultRifle']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeArmsI</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_DuelSword']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_DuelSword']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeArmsI</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_DuelSword']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeArmsI</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_Pickaxe']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_Pickaxe']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeArmsI</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_Pickaxe']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeArmsI</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_Revolver']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_Revolver']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeArmsI</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_Revolver']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeArmsI</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_Rifle']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_Rifle']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeArmsI</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_Rifle']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeArmsI</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_TrenchShowel']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_TrenchShowel']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeArmsI</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_TrenchShowel']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeArmsI</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_AssaultRifleFlame']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_AssaultRifleFlame']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeArmsII</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_AssaultRifleFlame']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeArmsII</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_AssaultRifleGrenade']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_AssaultRifleGrenade']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeArmsII</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_AssaultRifleGrenade']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeArmsII</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_AssaultRifleRadar']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_AssaultRifleRadar']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeArmsII</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_AssaultRifleRadar']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeArmsII</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_DivingKnife']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_DivingKnife']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeArmsII</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_DivingKnife']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeArmsII</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_GrenadeLauncher']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_GrenadeLauncher']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeArmsII</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_GrenadeLauncher']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeArmsII</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_GrenadePistol']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_GrenadePistol']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeArmsII</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_GrenadePistol']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeArmsII</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_Machinegun']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_Machinegun']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeArmsII</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_Machinegun']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeArmsII</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_MarksmanRifle']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_MarksmanRifle']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeArmsII</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_MarksmanRifle']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeArmsII</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_Pistol']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_Pistol']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeArmsII</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_Pistol']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeArmsII</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_RecoillessGun']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_RecoillessGun']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeArmsII</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_RecoillessGun']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeArmsII</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_SledgeHammer']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_SledgeHammer']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeArmsII</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_SledgeHammer']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeArmsII</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_StunBaton']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_StunBaton']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeArmsII</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_StunBaton']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeArmsII</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_SubMachinegun']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_SubMachinegun']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeArmsII</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_SubMachinegun']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeArmsII</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_ATGMLauncher']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_ATGMLauncher']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeArmsIII</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_ATGMLauncher']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeArmsIII</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_AutoCannon']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_AutoCannon']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeArmsIII</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_AutoCannon']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeArmsIII</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_AviationMachinegun']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_AviationMachinegun']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeArmsIII</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_AviationMachinegun']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeArmsIII</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_LaserRifle']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_LaserRifle']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeArmsIII</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_LaserRifle']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeArmsIII</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_PlasmaRailgun']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_PlasmaRailgun']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeArmsIII</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_PlasmaRailgun']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeArmsIII</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_PlasmaShotgun']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_PlasmaShotgun']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeArmsIII</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_PlasmaShotgun']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeArmsIII</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_SmartRevolver']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_SmartRevolver']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeArmsIII</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_SmartRevolver']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeArmsIII</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_AfghankaHat']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_AfghankaHat']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeApparelI</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_AfghankaHat']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeApparelI</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_BandageUnderwear']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_BandageUnderwear']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeApparelI</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_BandageUnderwear']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeApparelI</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_BlackKneehighs']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_BlackKneehighs']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeApparelI</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_BlackKneehighs']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeApparelI</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_BlackPantyhose']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_BlackPantyhose']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeApparelI</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_BlackPantyhose']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeApparelI</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_FishnetStockings']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_FishnetStockings']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeApparelI</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_FishnetStockings']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeApparelI</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_FormalBeret']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_FormalBeret']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeApparelI</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_FormalBeret']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeApparelI</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_FormalUniform']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_FormalUniform']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeApparelI</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_FormalUniform']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeApparelI</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_GarrisonCap']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_GarrisonCap']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeApparelI</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_GarrisonCap']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeApparelI</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_HairBand']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_HairBand']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeApparelI</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_HairBand']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeApparelI</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_SailorUniform']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_SailorUniform']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeApparelI</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_SailorUniform']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeApparelI</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_ServiceUniform']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_ServiceUniform']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeApparelI</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_ServiceUniform']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeApparelI</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_StudentHeadband']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_StudentHeadband']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeApparelI</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_StudentHeadband']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeApparelI</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_StudentUniform']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_StudentUniform']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeApparelI</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_StudentUniform']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeApparelI</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_Swimsuit']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_Swimsuit']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeApparelI</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_Swimsuit']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeApparelI</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_TrainingUniform']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_TrainingUniform']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeApparelI</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_TrainingUniform']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeApparelI</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_TrenchCoat']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_TrenchCoat']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeApparelI</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_TrenchCoat']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeApparelI</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_WhitePantyhose']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_WhitePantyhose']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeApparelI</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_WhitePantyhose']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeApparelI</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_WideBrimHat']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_WideBrimHat']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeApparelI</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_WideBrimHat']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeApparelI</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_WinterCape']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_WinterCape']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeApparelI</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_WinterCape']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeApparelI</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_WinterCoat']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_WinterCoat']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeApparelI</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_WinterCoat']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeApparelI</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_WinterHat']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_WinterHat']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeApparelI</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_WinterHat']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeApparelI</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_CasualJacket']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_CasualJacket']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeApparelII</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_CasualJacket']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeApparelII</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_CasualShirt']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_CasualShirt']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeApparelII</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_CasualShirt']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeApparelII</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_ChestRig']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_ChestRig']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeApparelII</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_ChestRig']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeApparelII</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_CombatBodysuit']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_CombatBodysuit']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeApparelII</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_CombatBodysuit']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeApparelII</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_FlakVest']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_FlakVest']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeApparelII</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_FlakVest']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeApparelII</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_FormalDress']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_FormalDress']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeApparelII</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_FormalDress']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeApparelII</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_SportsBra']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_SportsBra']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeApparelII</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_SportsBra']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeApparelII</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_SteelHelmet']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_SteelHelmet']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeApparelII</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_SteelHelmet']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeApparelII</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_Armour']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_Armour']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeApparelIII</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_Armour']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeApparelIII</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_ArmourHelmet']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_ArmourHelmet']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeApparelIII</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_ArmourHelmet']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeApparelIII</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_HeavyBallisticHelmet']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_HeavyBallisticHelmet']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeApparelIII</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_HeavyBallisticHelmet']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeApparelIII</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName='Rukaya_HeavyPowerArmorHelmet']/tradeTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_HeavyPowerArmorHelmet']/tradeTags</xpath>
+          <value>
+            <li>Rukaya_TradeApparelIII</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName='Rukaya_HeavyPowerArmorHelmet']</xpath>
+          <value>
+            <tradeTags>
+              <li>Rukaya_TradeApparelIII</li>
+            </tradeTags>
+          </value>
+        </nomatch>
+      </li>
+    </operations>
+  </Operation>
+</Patch>

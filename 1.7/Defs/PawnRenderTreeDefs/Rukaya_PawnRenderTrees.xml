@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <PawnRenderTreeDef>
+    <defName>Rukaya_Humanlike</defName>
+    <root Class="PawnRenderNodeProperties_Parent">
+      <debugLabel>Root</debugLabel>
+      <tagDef>Root</tagDef>
+      <children>
+        <li Class="PawnRenderNodeProperties_Parent">
+          <debugLabel>Wing back mid</debugLabel>
+          <tagDef>Rukaya_WingBack</tagDef>
+          <baseLayer>-10</baseLayer>
+          <skipFlag>Rukaya_HideWings</skipFlag>
+          <children>
+            <li>
+              <debugLabel>Wing back right south</debugLabel>
+              <nodeClass>RukayaRace.Flight.PawnRenderNode_RukayaWing</nodeClass>
+              <workerClass>RukayaRace.Flight.PawnRenderNodeWorker_RukayaWing</workerClass>
+              <texPath>Rukaya/BodyAddon/RightWing/RightWingDefault</texPath>
+              <color>(1,1,1,1)</color>
+              <drawSize>1</drawSize>
+              <baseLayer>-10</baseLayer>
+              <skipFlag>Rukaya_HideWings</skipFlag>
+              <visibleFacing>
+                <li>South</li>
+              </visibleFacing>
+            </li>
+            <!--
+              南向远侧（右）翼尖不在这里，而是和近侧翼尖一起放在「Wing tips」组（baseLayer 90）。
+              原因：南向两侧翼尖都有独立贴图，若远侧翼尖留在本组（-10），它会被本体与服装（Apparel root 20）
+              盖住，看上去像"贴图跑到服装下面"，而近侧翼尖（90）却在服装之上，同一朝向两个翼尖的层序不一致。
+              翼根维持原设计（远侧翅根在躯干之后），只有翼尖上移。
+            -->
+            <li>
+              <debugLabel>Wing flap back south</debugLabel>
+              <nodeClass>RukayaRace.Flight.PawnRenderNode_RukayaWing</nodeClass>
+              <workerClass>RukayaRace.Flight.PawnRenderNodeWorker_RukayaWing</workerClass>
+              <tagDef>Rukaya_WingFlapBack</tagDef>
+              <useGraphic>false</useGraphic>
+              <drawSize>1</drawSize>
+              <baseLayer>-10</baseLayer>
+              <skipFlag>Rukaya_HideWings</skipFlag>
+              <visibleFacing>
+                <li>South</li>
+              </visibleFacing>
+            </li>
+            <li>
+              <debugLabel>Wing back left east</debugLabel>
+              <nodeClass>RukayaRace.Flight.PawnRenderNode_RukayaWing</nodeClass>
+              <workerClass>RukayaRace.Flight.PawnRenderNodeWorker_RukayaWing</workerClass>
+              <texPath>Rukaya/BodyAddon/LeftWing/LeftWingDefault</texPath>
+              <color>(1,1,1,1)</color>
+              <drawSize>1</drawSize>
+              <baseLayer>-10</baseLayer>
+              <skipFlag>Rukaya_HideWings</skipFlag>
+              <visibleFacing>
+                <li>East</li>
+              </visibleFacing>
+            </li>
+            <li>
+              <debugLabel>Wing tip east inner</debugLabel>
+              <nodeClass>RukayaRace.Flight.PawnRenderNode_RukayaWing</nodeClass>
+              <workerClass>RukayaRace.Flight.PawnRenderNodeWorker_RukayaWing</workerClass>
+              <texPath>Rukaya/BodyAddon/LeftWing/LeftWingTip</texPath>
+              <color>(1,1,1,1)</color>
+              <drawSize>1</drawSize>
+              <baseLayer>-10</baseLayer>
+              <skipFlag>Rukaya_HideWings</skipFlag>
+              <visibleFacing>
+                <li>East</li>
+              </visibleFacing>
+            </li>
+            <li>
+              <debugLabel>Wing flap back east</debugLabel>
+              <nodeClass>RukayaRace.Flight.PawnRenderNode_RukayaWing</nodeClass>
+              <workerClass>RukayaRace.Flight.PawnRenderNodeWorker_RukayaWing</workerClass>
+              <tagDef>Rukaya_WingFlapBack</tagDef>
+              <useGraphic>false</useGraphic>
+              <drawSize>1</drawSize>
+              <baseLayer>-10</baseLayer>
+              <skipFlag>Rukaya_HideWings</skipFlag>
+              <visibleFacing>
+                <li>East</li>
+              </visibleFacing>
+            </li>
+            <li>
+              <debugLabel>Wing back right west</debugLabel>
+              <nodeClass>RukayaRace.Flight.PawnRenderNode_RukayaWing</nodeClass>
+              <workerClass>RukayaRace.Flight.PawnRenderNodeWorker_RukayaWing</workerClass>
+              <texPath>Rukaya/BodyAddon/RightWing/RightWingDefault</texPath>
+              <color>(1,1,1,1)</color>
+              <drawSize>1</drawSize>
+              <drawData>
+                <dataWest>
+                  <flip>true</flip>
+                </dataWest>
+              </drawData>
+              <baseLayer>-10</baseLayer>
+              <skipFlag>Rukaya_HideWings</skipFlag>
+              <visibleFacing>
+                <li>West</li>
+              </visibleFacing>
+            </li>
+            <li>
+              <debugLabel>Wing tip west inner</debugLabel>
+              <nodeClass>RukayaRace.Flight.PawnRenderNode_RukayaWing</nodeClass>
+              <workerClass>RukayaRace.Flight.PawnRenderNodeWorker_RukayaWing</workerClass>
+              <texPath>Rukaya/BodyAddon/RightWing/RightWingTip</texPath>
+              <color>(1,1,1,1)</color>
+              <drawSize>1</drawSize>
+              <drawData>
+                <dataWest>
+                  <flip>true</flip>
+                </dataWest>
+              </drawData>
+              <baseLayer>-10</baseLayer>
+              <skipFlag>Rukaya_HideWings</skipFlag>
+              <visibleFacing>
+                <li>West</li>
+              </visibleFacing>
+            </li>
+            <li>
+              <debugLabel>Wing flap back west</debugLabel>
+              <nodeClass>RukayaRace.Flight.PawnRenderNode_RukayaWing</nodeClass>
+              <workerClass>RukayaRace.Flight.PawnRenderNodeWorker_RukayaWing</workerClass>
+              <tagDef>Rukaya_WingFlapBack</tagDef>
+              <useGraphic>false</useGraphic>
+              <drawSize>1</drawSize>
+              <drawData>
+                <dataWest>
+                  <flip>true</flip>
+                </dataWest>
+              </drawData>
+              <baseLayer>-10</baseLayer>
+              <skipFlag>Rukaya_HideWings</skipFlag>
+              <visibleFacing>
+                <li>West</li>
+              </visibleFacing>
+            </li>
+          </children>
+        </li>
+        <li>
+          <debugLabel>Body</debugLabel>
+          <nodeClass>PawnRenderNode_Body</nodeClass>
+          <workerClass>PawnRenderNodeWorker_Body</workerClass>
+          <tagDef>Body</tagDef>
+          <skipFlag>Body</skipFlag>
+          <colorType>Skin</colorType>
+          <useRottenColor>true</useRottenColor>
+          <useSkinShader>true</useSkinShader>
+          <children>
+            <li Class="PawnRenderNodeProperties_Tattoo" MayRequire="Ludeon.RimWorld.Ideology">
+              <debugLabel>Body tattoo</debugLabel>
+              <nodeClass>PawnRenderNode_Tattoo_Body</nodeClass>
+              <workerClass>PawnRenderNodeWorker_Body_Tattoo</workerClass>
+              <colorType>Skin</colorType>
+              <useRottenColor>true</useRottenColor>
+              <baseLayer>2</baseLayer>
+              <rotDrawMode>Fresh, Rotting</rotDrawMode>
+            </li>
+            <li Class="PawnRenderNodeProperties_Overlay">
+              <debugLabel>Wounds - pre apparel</debugLabel>
+              <workerClass>PawnRenderNodeWorker_OverlayWounds</workerClass>
+              <overlayLayer>Body</overlayLayer>
+              <baseLayer>8</baseLayer>
+            </li>
+            <li Class="PawnRenderNodeProperties_Swaddle" MayRequire="Ludeon.RimWorld.Biotech">
+              <debugLabel>Baby swaddle</debugLabel>
+              <nodeClass>PawnRenderNode_Swaddle</nodeClass>
+              <workerClass>PawnRenderNodeWorker_Swaddle</workerClass>
+              <texPath>Things/Pawn/Humanlike/Apparel/SwaddledBaby/Swaddled_Child</texPath>
+              <swaddleColorOffset>0.1</swaddleColorOffset>
+              <brightnessRange>0.6~0.89</brightnessRange>
+              <baseLayer>10</baseLayer>
+            </li>
+            <li Class="PawnRenderNodeProperties_Parent">
+              <debugLabel>Wing front mid</debugLabel>
+              <tagDef>Rukaya_WingFront</tagDef>
+              <baseLayer>10</baseLayer>
+              <skipFlag>Rukaya_HideWings</skipFlag>
+              <children>
+                <li>
+                  <!-- 南向静态左翼根部与正常的右翼根部同为 -10，置于躯干后方，避免翼根覆盖身体；翼尖保持原层级。 -->
+                  <debugLabel>Wing front left south</debugLabel>
+                  <nodeClass>RukayaRace.Flight.PawnRenderNode_RukayaWing</nodeClass>
+                  <workerClass>RukayaRace.Flight.PawnRenderNodeWorker_RukayaWing</workerClass>
+                  <texPath>Rukaya/BodyAddon/LeftWing/LeftWingDefault</texPath>
+                  <color>(1,1,1,1)</color>
+                  <drawSize>1</drawSize>
+                  <baseLayer>-10</baseLayer>
+                  <skipFlag>Rukaya_HideWings</skipFlag>
+                  <visibleFacing>
+                    <li>South</li>
+                  </visibleFacing>
+                </li>
+                <li>
+                  <debugLabel>Wing flap front south</debugLabel>
+                  <nodeClass>RukayaRace.Flight.PawnRenderNode_RukayaWing</nodeClass>
+                  <workerClass>RukayaRace.Flight.PawnRenderNodeWorker_RukayaWing</workerClass>
+                  <tagDef>Rukaya_WingFlapFront</tagDef>
+                  <useGraphic>false</useGraphic>
+                  <drawSize>1</drawSize>
+                  <baseLayer>10</baseLayer>
+                  <skipFlag>Rukaya_HideWings</skipFlag>
+                  <visibleFacing>
+                    <li>South</li>
+                  </visibleFacing>
+                </li>
+                <li>
+                  <!-- 侧向静态翼根置于躯干后方，避免覆盖身体；翼尖和扑翼帧保持原层级。 -->
+                  <debugLabel>Wing front right east</debugLabel>
+                  <nodeClass>RukayaRace.Flight.PawnRenderNode_RukayaWing</nodeClass>
+                  <workerClass>RukayaRace.Flight.PawnRenderNodeWorker_RukayaWing</workerClass>
+                  <texPath>Rukaya/BodyAddon/RightWing/RightWingDefault</texPath>
+                  <color>(1,1,1,1)</color>
+                  <drawSize>1</drawSize>
+                  <baseLayer>-10</baseLayer>
+                  <skipFlag>Rukaya_HideWings</skipFlag>
+                  <visibleFacing>
+                    <li>East</li>
+                  </visibleFacing>
+                </li>
+                <li>
+                  <debugLabel>Wing flap front east</debugLabel>
+                  <nodeClass>RukayaRace.Flight.PawnRenderNode_RukayaWing</nodeClass>
+                  <workerClass>RukayaRace.Flight.PawnRenderNodeWorker_RukayaWing</workerClass>
+                  <tagDef>Rukaya_WingFlapFront</tagDef>
+                  <useGraphic>false</useGraphic>
+                  <drawSize>1</drawSize>
+                  <baseLayer>10</baseLayer>
+                  <skipFlag>Rukaya_HideWings</skipFlag>
+                  <visibleFacing>
+                    <li>East</li>
+                  </visibleFacing>
+                </li>
+                <li>
+                  <!-- 侧向静态翼根置于躯干后方，避免覆盖身体；翼尖和扑翼帧保持原层级。 -->
+                  <debugLabel>Wing front left west</debugLabel>
+                  <nodeClass>RukayaRace.Flight.PawnRenderNode_RukayaWing</nodeClass>
+                  <workerClass>RukayaRace.Flight.PawnRenderNodeWorker_RukayaWing</workerClass>
+                  <texPath>Rukaya/BodyAddon/LeftWing/LeftWingDefault</texPath>
+                  <color>(1,1,1,1)</color>
+                  <drawSize>1</drawSize>
+                  <drawData>
+                    <dataWest>
+                      <flip>true</flip>
+                    </dataWest>
+                  </drawData>
+                  <baseLayer>-10</baseLayer>
+                  <skipFlag>Rukaya_HideWings</skipFlag>
+                  <visibleFacing>
+                    <li>West</li>
+                  </visibleFacing>
+                </li>
+                <li>
+                  <debugLabel>Wing flap front west</debugLabel>
+                  <nodeClass>RukayaRace.Flight.PawnRenderNode_RukayaWing</nodeClass>
+                  <workerClass>RukayaRace.Flight.PawnRenderNodeWorker_RukayaWing</workerClass>
+                  <tagDef>Rukaya_WingFlapFront</tagDef>
+                  <useGraphic>false</useGraphic>
+                  <drawSize>1</drawSize>
+                  <drawData>
+                    <dataWest>
+                      <flip>true</flip>
+                    </dataWest>
+                  </drawData>
+                  <baseLayer>10</baseLayer>
+                  <skipFlag>Rukaya_HideWings</skipFlag>
+                  <visibleFacing>
+                    <li>West</li>
+                  </visibleFacing>
+                </li>
+              </children>
+            </li>
+            <li Class="PawnRenderNodeProperties_Parent">
+              <debugLabel>Apparel root</debugLabel>
+              <tagDef>ApparelBody</tagDef>
+              <baseLayer>20</baseLayer>
+            </li>
+            <li Class="PawnRenderNodeProperties_Overlay">
+              <debugLabel>Wounds - post apparel</debugLabel>
+              <workerClass>PawnRenderNodeWorker_OverlayWounds</workerClass>
+              <overlayOverApparel>true</overlayOverApparel>
+              <overlayLayer>Body</overlayLayer>
+              <baseLayer>30</baseLayer>
+            </li>
+            <li Class="PawnRenderNodeProperties_Overlay">
+              <debugLabel>Firefoam</debugLabel>
+              <workerClass>PawnRenderNodeWorker_OverlayFirefoam</workerClass>
+              <overlayLayer>Body</overlayLayer>
+              <baseLayer>40</baseLayer>
+            </li>
+          </children>
+        </li>
+        <li>
+          <debugLabel>Head stump</debugLabel>
+          <nodeClass>PawnRenderNode_Stump</nodeClass>
+          <workerClass>PawnRenderNodeWorker_Stump</workerClass>
+          <texPath>Things/Pawn/Humanlike/Heads/None_Average_Stump</texPath>
+          <baseLayer>50</baseLayer>
+          <colorType>Skin</colorType>
+          <skipFlag>Head</skipFlag>
+          <useSkinShader>true</useSkinShader>
+          <useRottenColor>true</useRottenColor>
+          <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        </li>
+        <li>
+          <debugLabel>Head</debugLabel>
+          <nodeClass>PawnRenderNode_Head</nodeClass>
+          <workerClass>PawnRenderNodeWorker_Head</workerClass>
+          <tagDef>Head</tagDef>
+          <skipFlag>Head</skipFlag>
+          <baseLayer>50</baseLayer>
+          <colorType>Skin</colorType>
+          <useRottenColor>true</useRottenColor>
+          <useSkinShader>true</useSkinShader>
+          <children>
+            <li Class="PawnRenderNodeProperties_Tattoo" MayRequire="Ludeon.RimWorld.Ideology">
+              <debugLabel>Head tattoo</debugLabel>
+              <nodeClass>PawnRenderNode_Tattoo_Head</nodeClass>
+              <workerClass>PawnRenderNodeWorker_Tattoo_Head</workerClass>
+              <rotDrawMode>Fresh, Rotting</rotDrawMode>
+              <colorType>Skin</colorType>
+              <baseLayer>52</baseLayer>
+            </li>
+            <li>
+              <debugLabel>Beard</debugLabel>
+              <nodeClass>PawnRenderNode_Beard</nodeClass>
+              <workerClass>PawnRenderNodeWorker_Beard</workerClass>
+              <rotDrawMode>Fresh, Rotting</rotDrawMode>
+              <colorType>Hair</colorType>
+              <skipFlag>Beard</skipFlag>
+              <baseLayer>60</baseLayer>
+            </li>
+            <li>
+              <debugLabel>Hair</debugLabel>
+              <nodeClass>PawnRenderNode_Hair</nodeClass>
+              <workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
+              <rotDrawMode>Fresh, Rotting</rotDrawMode>
+              <colorType>Hair</colorType>
+              <skipFlag>Hair</skipFlag>
+              <baseLayer>62</baseLayer>
+            </li>
+            <li Class="PawnRenderNodeProperties_Overlay">
+              <debugLabel>Head wounds</debugLabel>
+              <workerClass>PawnRenderNodeWorker_OverlayWounds</workerClass>
+              <overlayLayer>Head</overlayLayer>
+              <baseLayer>65</baseLayer>
+            </li>
+            <li Class="PawnRenderNodeProperties_Parent">
+              <debugLabel>Apparel root</debugLabel>
+              <tagDef>ApparelHead</tagDef>
+              <baseLayer>70</baseLayer>
+            </li>
+            <li Class="PawnRenderNodeProperties_Overlay">
+              <debugLabel>Firefoam</debugLabel>
+              <workerClass>PawnRenderNodeWorker_OverlayFirefoam</workerClass>
+              <overlayLayer>Head</overlayLayer>
+              <baseLayer>85</baseLayer>
+            </li>
+            <li Class="PawnRenderNodeProperties_Overlay">
+              <debugLabel>Status overlay</debugLabel>
+              <workerClass>PawnRenderNodeWorker_OverlayStatus</workerClass>
+              <baseLayer>100</baseLayer>
+            </li>
+          </children>
+        </li>
+        <li Class="PawnRenderNodeProperties_Parent">
+          <debugLabel>Wing north top</debugLabel>
+          <baseLayer>100</baseLayer>
+          <skipFlag>Rukaya_HideWings</skipFlag>
+          <children>
+            <li>
+              <debugLabel>Wing back left north</debugLabel>
+              <nodeClass>RukayaRace.Flight.PawnRenderNode_RukayaWing</nodeClass>
+              <workerClass>RukayaRace.Flight.PawnRenderNodeWorker_RukayaWing</workerClass>
+              <texPath>Rukaya/BodyAddon/LeftWing/LeftWingDefaultNorth</texPath>
+              <color>(1,1,1,1)</color>
+              <drawSize>1</drawSize>
+              <baseLayer>100</baseLayer>
+              <skipFlag>Rukaya_HideWings</skipFlag>
+              <visibleFacing>
+                <li>North</li>
+              </visibleFacing>
+            </li>
+            <li>
+              <debugLabel>Wing back right north</debugLabel>
+              <nodeClass>RukayaRace.Flight.PawnRenderNode_RukayaWing</nodeClass>
+              <workerClass>RukayaRace.Flight.PawnRenderNodeWorker_RukayaWing</workerClass>
+              <texPath>Rukaya/BodyAddon/RightWing/RightWingDefaultNorth</texPath>
+              <color>(1,1,1,1)</color>
+              <drawSize>1</drawSize>
+              <baseLayer>100</baseLayer>
+              <skipFlag>Rukaya_HideWings</skipFlag>
+              <visibleFacing>
+                <li>North</li>
+              </visibleFacing>
+            </li>
+            <li>
+              <debugLabel>Wing flap back north</debugLabel>
+              <nodeClass>RukayaRace.Flight.PawnRenderNode_RukayaWing</nodeClass>
+              <workerClass>RukayaRace.Flight.PawnRenderNodeWorker_RukayaWing</workerClass>
+              <tagDef>Rukaya_WingFlapBack</tagDef>
+              <useGraphic>false</useGraphic>
+              <drawSize>1</drawSize>
+              <baseLayer>100</baseLayer>
+              <skipFlag>Rukaya_HideWings</skipFlag>
+              <visibleFacing>
+                <li>North</li>
+              </visibleFacing>
+            </li>
+            <li>
+              <debugLabel>Wing front left north</debugLabel>
+              <nodeClass>RukayaRace.Flight.PawnRenderNode_RukayaWing</nodeClass>
+              <workerClass>RukayaRace.Flight.PawnRenderNodeWorker_RukayaWing</workerClass>
+              <texPath>Rukaya/BodyAddon/LeftWing/LeftWingDefaultNorth</texPath>
+              <color>(1,1,1,1)</color>
+              <drawSize>1</drawSize>
+              <baseLayer>100</baseLayer>
+              <skipFlag>Rukaya_HideWings</skipFlag>
+              <visibleFacing>
+                <li>North</li>
+              </visibleFacing>
+            </li>
+            <li>
+              <debugLabel>Wing front right north</debugLabel>
+              <nodeClass>RukayaRace.Flight.PawnRenderNode_RukayaWing</nodeClass>
+              <workerClass>RukayaRace.Flight.PawnRenderNodeWorker_RukayaWing</workerClass>
+              <texPath>Rukaya/BodyAddon/RightWing/RightWingDefaultNorth</texPath>
+              <color>(1,1,1,1)</color>
+              <drawSize>1</drawSize>
+              <baseLayer>100</baseLayer>
+              <skipFlag>Rukaya_HideWings</skipFlag>
+              <visibleFacing>
+                <li>North</li>
+              </visibleFacing>
+            </li>
+            <li>
+              <debugLabel>Wing flap front north</debugLabel>
+              <nodeClass>RukayaRace.Flight.PawnRenderNode_RukayaWing</nodeClass>
+              <workerClass>RukayaRace.Flight.PawnRenderNodeWorker_RukayaWing</workerClass>
+              <tagDef>Rukaya_WingFlapFront</tagDef>
+              <useGraphic>false</useGraphic>
+              <drawSize>1</drawSize>
+              <baseLayer>100</baseLayer>
+              <skipFlag>Rukaya_HideWings</skipFlag>
+              <visibleFacing>
+                <li>North</li>
+              </visibleFacing>
+            </li>
+          </children>
+        </li>
+        <li Class="PawnRenderNodeProperties_Parent">
+          <debugLabel>Wing tips</debugLabel>
+          <baseLayer>90</baseLayer>
+          <skipFlag>Rukaya_HideWings</skipFlag>
+          <children>
+            <!--
+              南向远侧（右）翼尖：从「Wing back mid」(-10) 移入本组 (90)，与南向近侧翼尖同层。
+              1.6 里遮挡由 baseLayer 换算出的深度决定（AltitudeForLayer），90 高于服装（20~24）
+              与头部服装（70+），因此南向两个翼尖都会画在服装之上。
+              放在近侧翼尖之前，保持「远侧在前、近侧在后」的列表次序（同层时由列表次序决胜）。
+            -->
+            <li>
+              <debugLabel>Wing tip south back</debugLabel>
+              <nodeClass>RukayaRace.Flight.PawnRenderNode_RukayaWing</nodeClass>
+              <workerClass>RukayaRace.Flight.PawnRenderNodeWorker_RukayaWing</workerClass>
+              <texPath>Rukaya/BodyAddon/RightWing/RightWingTip</texPath>
+              <color>(1,1,1,1)</color>
+              <drawSize>1</drawSize>
+              <baseLayer>90</baseLayer>
+              <skipFlag>Rukaya_HideWings</skipFlag>
+              <visibleFacing>
+                <li>South</li>
+              </visibleFacing>
+            </li>
+            <li>
+              <debugLabel>Wing tip south front</debugLabel>
+              <nodeClass>RukayaRace.Flight.PawnRenderNode_RukayaWing</nodeClass>
+              <workerClass>RukayaRace.Flight.PawnRenderNodeWorker_RukayaWing</workerClass>
+              <texPath>Rukaya/BodyAddon/LeftWing/LeftWingTip</texPath>
+              <color>(1,1,1,1)</color>
+              <drawSize>1</drawSize>
+              <baseLayer>90</baseLayer>
+              <skipFlag>Rukaya_HideWings</skipFlag>
+              <visibleFacing>
+                <li>South</li>
+              </visibleFacing>
+            </li>
+            <li>
+              <debugLabel>Wing tip east outer</debugLabel>
+              <nodeClass>RukayaRace.Flight.PawnRenderNode_RukayaWing</nodeClass>
+              <workerClass>RukayaRace.Flight.PawnRenderNodeWorker_RukayaWing</workerClass>
+              <texPath>Rukaya/BodyAddon/RightWing/RightWingTip</texPath>
+              <color>(1,1,1,1)</color>
+              <drawSize>1</drawSize>
+              <baseLayer>90</baseLayer>
+              <skipFlag>Rukaya_HideWings</skipFlag>
+              <visibleFacing>
+                <li>East</li>
+              </visibleFacing>
+            </li>
+            <li>
+              <debugLabel>Wing tip west outer</debugLabel>
+              <nodeClass>RukayaRace.Flight.PawnRenderNode_RukayaWing</nodeClass>
+              <workerClass>RukayaRace.Flight.PawnRenderNodeWorker_RukayaWing</workerClass>
+              <texPath>Rukaya/BodyAddon/LeftWing/LeftWingTip</texPath>
+              <color>(1,1,1,1)</color>
+              <drawSize>1</drawSize>
+              <drawData>
+                <dataWest>
+                  <flip>true</flip>
+                </dataWest>
+              </drawData>
+              <baseLayer>90</baseLayer>
+              <skipFlag>Rukaya_HideWings</skipFlag>
+              <visibleFacing>
+                <li>West</li>
+              </visibleFacing>
+            </li>
+            <li>
+              <debugLabel>Wing tip north back left</debugLabel>
+              <nodeClass>RukayaRace.Flight.PawnRenderNode_RukayaWing</nodeClass>
+              <workerClass>RukayaRace.Flight.PawnRenderNodeWorker_RukayaWing</workerClass>
+              <texPath>Rukaya/BodyAddon/LeftWing/LeftWingTip</texPath>
+              <color>(1,1,1,1)</color>
+              <drawSize>1</drawSize>
+              <baseLayer>100</baseLayer>
+              <skipFlag>Rukaya_HideWings</skipFlag>
+              <visibleFacing>
+                <li>North</li>
+              </visibleFacing>
+            </li>
+            <li>
+              <debugLabel>Wing tip north back right</debugLabel>
+              <nodeClass>RukayaRace.Flight.PawnRenderNode_RukayaWing</nodeClass>
+              <workerClass>RukayaRace.Flight.PawnRenderNodeWorker_RukayaWing</workerClass>
+              <texPath>Rukaya/BodyAddon/RightWing/RightWingTip</texPath>
+              <color>(1,1,1,1)</color>
+              <drawSize>1</drawSize>
+              <baseLayer>100</baseLayer>
+              <skipFlag>Rukaya_HideWings</skipFlag>
+              <visibleFacing>
+                <li>North</li>
+              </visibleFacing>
+            </li>
+          </children>
+        </li>
+        <li Class="PawnRenderNodeProperties_Carried">
+          <debugLabel>Weapon/carried thing</debugLabel>
+          <workerClass>PawnRenderNodeWorker_Carried</workerClass>
+        </li>
+      </children>
+    </root>
+  </PawnRenderTreeDef>
+</Defs>

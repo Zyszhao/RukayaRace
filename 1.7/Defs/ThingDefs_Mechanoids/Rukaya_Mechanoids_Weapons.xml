@@ -1,0 +1,723 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- 地面炮塔由 CompRukayaMechTurretGun 统一调度；SAMLauncher 单发，Rocket 六发快速齐射。 -->
+
+  <ThingDef Name="Rukaya_BaseMechTurret" ParentName="BaseWeaponTurret" Abstract="True">
+    <label>Rukaya mechanoid turret</label>
+    <!-- 中文：卢卡娅机械炮塔 -->
+    <description>A turret ring weapon built for Rukaya mechanoid chassis. It cannot be carried by a humanoid,
+      and it cannot be removed once mounted.</description>
+    <!-- 中文翻译：一种为卢卡娅机械底盘设计的炮塔环武器。类人生物无法携带，一旦挂载便无法拆卸。 -->
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <Mass>0</Mass>
+      <AccuracyTouch>0.18</AccuracyTouch>
+      <AccuracyShort>0.26</AccuracyShort>
+      <AccuracyMedium>0.26</AccuracyMedium>
+      <AccuracyLong>0.18</AccuracyLong>
+    </statBases>
+  </ThingDef>
+
+  <ThingDef ParentName="Rukaya_BaseMechTurret">
+    <defName>Rukaya_MechWeapon_Rocket</defName>
+    <label>Rukaya rocket turret</label>
+    <!-- 中文：卢卡娅火箭炮塔 -->
+    <description>A multi-tube rocket launcher assembly mounted in a powered turret ring. It throws a rapid six-rocket ripple of direct-fire high-explosive rockets, then needs a long while to re-stack and re-key the tubes.</description>
+    <!-- 中文翻译：一组安装在动力炮塔环上的多管火箭发射巢。它会快速打出一轮六发直射高爆火箭，随后需要很长时间重新装填并给发射管上药。 -->
+    <graphicData>
+      <texPath>Rukaya/Mechanoids/Rukaya_MechTurretRocket</texPath>
+    </graphicData>
+    <verbs>
+      <li>
+        <verbClass>RukayaRace.Weapons.Verb_RukayaMechTurretShoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_Rukaya_MechRocket</defaultProjectile>
+
+        <ai_ProjectileLaunchingIgnoresMeleeThreats>true</ai_ProjectileLaunchingIgnoresMeleeThreats>
+        <minRange>6</minRange>
+        <range>19.9</range>
+        <warmupTime>2.0</warmupTime>
+        <ticksBetweenBurstShots>8</ticksBetweenBurstShots>
+        <burstShotCount>6</burstShotCount>
+        <soundCast>RocketswarmLauncher_Fire</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>16</muzzleFlashScale>
+        <defaultCooldownTime>14.0</defaultCooldownTime>
+
+        <forcedMissRadius>1.9</forcedMissRadius>
+
+        <linkedBodyPartsGroup>Rukaya_TurretMount</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+      </li>
+    </verbs>
+  </ThingDef>
+
+  <ThingDef ParentName="Rukaya_BaseMechTurret">
+    <defName>Rukaya_MechWeapon_Laser</defName>
+    <label>Rukaya laser turret</label>
+    <!-- 中文：卢卡娅激光炮塔 -->
+    <description>A focused-emitter turret that pours a continuous stream of charged light into a target area. Its pulses land
+      instantly, and each one lingers as a beam long enough to blend into the next, so a burst reads as one unbroken lance of
+      light. It can be switched to an anti-air mode against flying targets. Ground and anti-air fire share one heat sink: sustained fire locks both emitters until it cools.</description>
+    <!-- 中文翻译：一座聚焦发射炮塔，向目标区域倾泻持续的充能光束。它的脉冲当场命中，且每一发的光束会残留到下一发打出来， 因此一轮连发看上去就是一道不断的光矛。可切换至对空模式，用于拦截飞行目标。 对地与对空火力共用散热系统：持续射击导致过热后，两套发射器均须冷却后才能恢复开火。 -->
+    <graphicData>
+      <texPath>Rukaya/Mechanoids/Rukaya_MechTurretLaser</texPath>
+    </graphicData>
+    <statBases>
+      <AccuracyTouch>1</AccuracyTouch>
+      <AccuracyShort>1</AccuracyShort>
+      <AccuracyMedium>1</AccuracyMedium>
+      <AccuracyLong>1</AccuracyLong>
+    </statBases>
+    <verbs>
+      <li>
+        <verbClass>RukayaRace.Weapons.Verb_RukayaMechTurretShoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_Rukaya_MechLaser</defaultProjectile>
+
+        <ai_ProjectileLaunchingIgnoresMeleeThreats>true</ai_ProjectileLaunchingIgnoresMeleeThreats>
+        <canGoWild>false</canGoWild>
+        <range>26.9</range>
+        <warmupTime>0.0166667</warmupTime>
+        <ticksBetweenBurstShots>5</ticksBetweenBurstShots>
+        <burstShotCount>24</burstShotCount>
+        <soundCast>Shot_ChargeBlaster</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+        <defaultCooldownTime>0.0833333</defaultCooldownTime>
+        <linkedBodyPartsGroup>Rukaya_TurretMount</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+      </li>
+    </verbs>
+  </ThingDef>
+
+  <ThingDef ParentName="Rukaya_BaseMechTurret">
+    <defName>Rukaya_MechWeapon_MachineCannon</defName>
+    <label>Rukaya machine cannon turret</label>
+    <!-- 中文：卢卡娅机炮炮塔 -->
+    <description>A high-rate autocannon turret built for close support work against clustered infantry. The mount walks a long
+      burst across the target area, so anything caught in the open is shredded before it can break contact. It can be switched
+      to an anti-air mode against flying targets.</description>
+    <!-- 中文翻译：一座高射速自动机炮炮塔，用于对集结的步兵提供近距支援。炮座会把一轮长点射横扫整个目标区域，任何暴露在火线中的目标都来不及脱离就会被撕碎。可切换至对空模式，用于拦截飞行目标。 -->
+    <graphicData>
+      <texPath>Rukaya/Mechanoids/Rukaya_MechTurretMachineCannon</texPath>
+    </graphicData>
+    <verbs>
+      <li>
+        <verbClass>RukayaRace.Weapons.Verb_RukayaMechTurretShoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_Rukaya_MechAutocannon</defaultProjectile>
+
+        <ai_ProjectileLaunchingIgnoresMeleeThreats>true</ai_ProjectileLaunchingIgnoresMeleeThreats>
+        <range>26.9</range>
+        <warmupTime>1.25</warmupTime>
+        <ticksBetweenBurstShots>4</ticksBetweenBurstShots>
+        <burstShotCount>25</burstShotCount>
+        <soundCast>Shot_Minigun</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>10</muzzleFlashScale>
+        <defaultCooldownTime>6.5</defaultCooldownTime>
+        <linkedBodyPartsGroup>Rukaya_TurretMount</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+      </li>
+    </verbs>
+  </ThingDef>
+
+  <ThingDef ParentName="Rukaya_BaseMechTurret">
+    <defName>Rukaya_MechWeapon_MineSweeper</defName>
+    <label>Rukaya mine sweeper turret</label>
+    <!-- 中文：卢卡娅扫雷炮塔 -->
+    <description>A mine-clearing line-charge turret. Each shot fires a rocket that arcs over cover and drags a string of demolition charges behind it. The charges settle along the lane before the whole line detonates in sequence from the near end to the far end.</description>
+    <!-- 中文翻译：一座扫雷索炮塔。每次射击打出一枚越过掩体的火箭，火箭身后拖着一串爆破装药。所有装药沿通路落地后，整条扫雷索才从近端向远端依次引爆。 -->
+    <graphicData>
+      <texPath>Rukaya/Mechanoids/Rukaya_MechTurretMineSweeper</texPath>
+    </graphicData>
+    <verbs>
+      <li>
+        <verbClass>RukayaRace.Weapons.Verb_RukayaMechTurretShoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <requireLineOfSight>false</requireLineOfSight>
+        <defaultProjectile>Bullet_Rukaya_MICLIC_Rocket</defaultProjectile>
+
+        <ai_ProjectileLaunchingIgnoresMeleeThreats>true</ai_ProjectileLaunchingIgnoresMeleeThreats>
+        <minRange>12</minRange>
+        <range>26.9</range>
+        <warmupTime>2.5</warmupTime>
+        <burstShotCount>1</burstShotCount>
+        <soundCast>RocketswarmLauncher_Fire</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>12</muzzleFlashScale>
+        <defaultCooldownTime>10.0</defaultCooldownTime>
+
+        <forcedMissRadius>1.9</forcedMissRadius>
+
+        <linkedBodyPartsGroup>Rukaya_TurretMount</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+      </li>
+    </verbs>
+  </ThingDef>
+
+  <ThingDef ParentName="Rukaya_BaseMechTurret">
+    <defName>Rukaya_MechWeapon_SAMLauncher</defName>
+    <label>Rukaya SAM launcher turret</label>
+    <!-- 中文翻译：卢卡娅SAM导弹发射炮塔 -->
+    <description>A guided-missile launcher turret that fires one warhead at a time. Each missile arcs up over cover and is then walked onto the target on a command line. An independent anti-air mount intercepts incoming aerial threats.</description>
+    <!-- 中文翻译：一座每次发射一枚战斗部的制导导弹炮塔。每枚导弹先翻越掩体爬升，随后沿指令线被引导到目标上。独立的对空炮座负责拦截来袭空中威胁。 -->
+    <graphicData>
+      <texPath>Rukaya/Mechanoids/Rukaya_MechTurretMissile</texPath>
+    </graphicData>
+    <verbs>
+      <li>
+        <verbClass>RukayaRace.Weapons.Verb_RukayaMechTurretShoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <requireLineOfSight>false</requireLineOfSight>
+        <defaultProjectile>Rukaya_MechSAMLauncher_Projectile</defaultProjectile>
+
+        <ai_ProjectileLaunchingIgnoresMeleeThreats>true</ai_ProjectileLaunchingIgnoresMeleeThreats>
+        <minRange>6</minRange>
+        <range>26.9</range>
+        <warmupTime>1.5</warmupTime>
+        <ticksBetweenBurstShots>8</ticksBetweenBurstShots>
+        <burstShotCount>1</burstShotCount>
+
+        <soundCast>RocketswarmLauncher_Fire</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>14</muzzleFlashScale>
+        <defaultCooldownTime>8.0</defaultCooldownTime>
+        <forcedMissRadius>1.9</forcedMissRadius>
+
+        <linkedBodyPartsGroup>Rukaya_TurretMount</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+      </li>
+    </verbs>
+  </ThingDef>
+
+  <ThingDef ParentName="Rukaya_BaseMechTurret">
+    <defName>Rukaya_MechWeapon_Mortar</defName>
+    <label>Rukaya mortar turret</label>
+    <!-- 中文：卢卡娅迫击炮炮塔 -->
+    <description>A mobile artillery turret whose shells fly on a high arcing trajectory, so it can walk its fire onto fortified
+      positions from beyond return range. Each shell has to be laid individually, so the mount fires one round at a time.</description>
+    <!-- 中文翻译：一座机动火炮炮塔，炮弹以高抛越顶弹道飞行，因此能在敌方射程之外将火力逐步压制到设防阵地上。每一发炮弹都要单独瞄准装填，所以炮座一次只打一发。 -->
+    <graphicData>
+      <texPath>Rukaya/Mechanoids/Rukaya_MechTurretMortar</texPath>
+    </graphicData>
+    <verbs>
+      <li>
+        <verbClass>RukayaRace.Weapons.Verb_RukayaMechTurretShoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <requireLineOfSight>false</requireLineOfSight>
+        <defaultProjectile>Bullet_Rukaya_MechMortarShell</defaultProjectile>
+
+        <ai_ProjectileLaunchingIgnoresMeleeThreats>true</ai_ProjectileLaunchingIgnoresMeleeThreats>
+        <minRange>6</minRange>
+        <range>39.9</range>
+        <warmupTime>2.0</warmupTime>
+        <burstShotCount>1</burstShotCount>
+        <soundCast>Mortar_LaunchA</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>16</muzzleFlashScale>
+        <defaultCooldownTime>4.0</defaultCooldownTime>
+        <forcedMissRadius>1.9</forcedMissRadius>
+
+        <linkedBodyPartsGroup>Rukaya_TurretMount</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+      </li>
+    </verbs>
+  </ThingDef>
+
+  <ThingDef ParentName="Rukaya_BaseMechTurret">
+    <defName>Rukaya_MechWeapon_Plasma</defName>
+    <label>Rukaya plasma turret</label>
+    <!-- 中文：卢卡娅等离子炮塔 -->
+    <description>An active-matter plasma projector turret that focuses its discharge into an instantaneous beam. The pulse leaves a bright blue-white lance from the emitter to its impact point. Charging takes a long time, so the mount fires deliberate single shots.</description>
+    <!-- 中文翻译：一座将活性物质等离子聚焦为瞬时光束的投射炮塔。脉冲在发射器与命中点之间留下一道明亮的蓝白色光矛。充能需要较长时间，因此炮座以沉稳的节奏逐发射击。 -->
+    <graphicData>
+      <texPath>Rukaya/Mechanoids/Rukaya_MechTurretPlasma</texPath>
+    </graphicData>
+    <statBases>
+      <AccuracyTouch>1</AccuracyTouch>
+      <AccuracyShort>1</AccuracyShort>
+      <AccuracyMedium>1</AccuracyMedium>
+      <AccuracyLong>1</AccuracyLong>
+    </statBases>
+    <verbs>
+      <li>
+        <verbClass>RukayaRace.Weapons.Verb_RukayaMechTurretShoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_Rukaya_MechPlasma</defaultProjectile>
+
+        <ai_ProjectileLaunchingIgnoresMeleeThreats>true</ai_ProjectileLaunchingIgnoresMeleeThreats>
+        <canGoWild>false</canGoWild>
+        <range>45.9</range>
+        <warmupTime>1.5</warmupTime>
+        <burstShotCount>1</burstShotCount>
+        <soundCast>Shot_ChargeBlaster</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>12</muzzleFlashScale>
+        <defaultCooldownTime>3.0</defaultCooldownTime>
+        <forcedMissRadius>0</forcedMissRadius>
+
+        <linkedBodyPartsGroup>Rukaya_TurretMount</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+      </li>
+    </verbs>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_Rukaya_MechLaser</defName>
+    <label>Rukaya mech laser pulse</label>
+    <!-- 中文：卢卡娅机械激光脉冲束 -->
+    <description>An instant laser pulse fired by Rukaya laser turrets. It has no travel time: the shot lands on the firing tick
+      and leaves a beam hanging in the air long enough to meet the next pulse.</description>
+    <!-- 中文翻译：卢卡娅激光炮塔发射的瞬时光束脉冲。它没有飞行时间：开火当场命中，并在空中留下一道足够撑到下一发脉冲的光束。 -->
+    <thingClass>RukayaRace.Projectiles.Projectile_RukayaLaserPulse</thingClass>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <color>(255,96,64)</color>
+    </graphicData>
+    <modExtensions>
+      <li Class="RukayaRace.Projectiles.RukayaLaserBeamExtension">
+        <beamColor>(1,0.45,0.24,1)</beamColor>
+        <beamWidth>0.22</beamWidth>
+        <beamGlowWidth>0.8</beamGlowWidth>
+        <beamDurationTicks>14</beamDurationTicks>
+        <impactGlowSize>1.3</impactGlowSize>
+      </li>
+      <!-- 纯视觉弹幕摆动：光束起点前移到炮口并随整轮节拍左右摆，终点反向摆。
+           命中点仍是原来的 destination，真实落点/伤害不变；噪声确定性，不消费 Rand。 -->
+      <li Class="RukayaRace.Projectiles.RukayaBarrageSwayExtension">
+        <beamOriginSwayRadius>0.22</beamOriginSwayRadius>
+        <beamEndSwayRadius>1.1</beamEndSwayRadius>
+        <beamMuzzleForward>0.75</beamMuzzleForward>
+        <beamSwayPeriodTicks>110</beamSwayPeriodTicks>
+      </li>
+    </modExtensions>
+    <projectile>
+      <damageDef>Burn</damageDef>
+      <damageAmountBase>20</damageAmountBase>
+      <armorPenetrationBase>0.5</armorPenetrationBase>
+      <stoppingPower>0.9</stoppingPower>
+      <speed>86</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_Rukaya_MechAutocannon</defName>
+    <label>Rukaya mech autocannon round</label>
+    <!-- 中文：卢卡娅机械机炮弹 -->
+    <description>A high-velocity autocannon round fired in long bursts by Rukaya machine cannon turrets.</description>
+    <!-- 中文翻译：卢卡娅机炮炮塔以长点射打出的高速机炮弹。 -->
+    <thingClass>RukayaRace.Projectiles.Projectile_RukayaMechCannonRound</thingClass>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_big</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <modExtensions>
+      <!-- 纯视觉弹幕摆动：只改曳光弹画出来的横向位置（从炮口向目标周围平滑展开），
+           不改 ExactPosition / 命中判定 / 伤害。参数与噪声都是确定性的，不消费 Rand。 -->
+      <li Class="RukayaRace.Projectiles.RukayaBarrageSwayExtension">
+        <tracerSwayRadius>0.9</tracerSwayRadius>
+        <tracerWobbleRadius>0.16</tracerWobbleRadius>
+        <tracerSwayPeriodTicks>100</tracerSwayPeriodTicks>
+        <tracerWobbleCycles>1.6</tracerWobbleCycles>
+      </li>
+    </modExtensions>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>14</damageAmountBase>
+      <armorPenetrationBase>0.32</armorPenetrationBase>
+      <stoppingPower>1.2</stoppingPower>
+      <speed>110</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Rukaya_MechSAMLauncher_Projectile</defName>
+    <label>Rukaya mech SAM missile</label>
+    <!-- 中文翻译：卢卡娅机械SAM导弹 -->
+    <description>A command-line guided missile fired by Rukaya missile turrets. It climbs over the cover in its way, then walks
+      itself down onto the target; the warhead is all blast, since an over-the-top missile never strikes a target directly.</description>
+    <!-- 中文翻译：卢卡娅导弹炮塔发射的线导导弹。它先爬升翻越挡在路上的掩体，再一路修正压向目标；由于越顶飞行的导弹不会直接撞到目标，战斗部全部是爆炸伤害。 -->
+    <thingClass>RukayaRace.Projectiles.Projectile_RukayaGuidedATGM</thingClass>
+    <graphicData>
+      <texPath>Rukaya/Mechanoids/Rukaya_SAM_Neva</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(3,3)</drawSize>
+    </graphicData>
+    <modExtensions>
+      <li Class="RukayaRace.Projectiles.RukayaGuidedATGMProjectileExtension">
+        <guidingHediff>Rukaya_ATGMGuiding</guidingHediff>
+        <radarLockHediff>Rukaya_RadarLockOn</radarLockHediff>
+        <loftHeight>2.6</loftHeight>
+        <guidedHitRadius>0.55</guidedHitRadius>
+        <missedImpactRadius>2.1</missedImpactRadius>
+        <missDeviationRadius>3.2</missDeviationRadius>
+        <radarLockArmorPenetration>1.35</radarLockArmorPenetration>
+        <smokeBreaksGuidance>true</smokeBreaksGuidance>
+        <requireLineOfSight>false</requireLineOfSight>
+        <guidanceGlowSize>0.5</guidanceGlowSize>
+        <guidanceGlowColor>(1,0.55,0.2,0.34)</guidanceGlowColor>
+        <guidanceGlowIntervalTicks>3</guidanceGlowIntervalTicks>
+        <guidanceSparkIntervalTicks>6</guidanceSparkIntervalTicks>
+      </li>
+    </modExtensions>
+    <projectile>
+      <arcHeightFactor>0</arcHeightFactor>
+      <damageDef>Bomb</damageDef>
+      <damageAmountBase>50</damageAmountBase>
+      <armorPenetrationBase>0.72</armorPenetrationBase>
+      <speed>34</speed>
+      <explosionRadius>2.9</explosionRadius>
+      <flyOverhead>true</flyOverhead>
+      <soundExplode>Explosion_Rocket</soundExplode>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_Rukaya_MechRocket</defName>
+    <label>Rukaya mech rocket</label>
+    <!-- 中文：卢卡娅机械火箭弹 -->
+    <description>A direct-fire high-explosive rocket thrown in a short ripple by Rukaya rocket turrets.</description>
+    <!-- 中文翻译：卢卡娅火箭炮塔以短促齐射打出的直射高爆火箭弹。 -->
+    <thingClass>RukayaRace.Projectiles.Projectile_RukayaRocket</thingClass>
+    <graphicData>
+      <texPath>Rukaya/Mechanoids/Rukaya_MICLIC_Rocket</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <projectile>
+      <damageDef>Bomb</damageDef>
+      <damageAmountBase>45</damageAmountBase>
+      <armorPenetrationBase>0.5</armorPenetrationBase>
+      <speed>60</speed>
+      <explosionRadius>2.4</explosionRadius>
+      <soundExplode>Explosion_Rocket</soundExplode>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_Rukaya_MechMortarShell</defName>
+    <label>Rukaya mech mortar shell</label>
+    <!-- 中文：卢卡娅机械迫击炮弹 -->
+    <description>A high-explosive mortar shell lobbed over walls and units by Rukaya mortar turrets.</description>
+    <!-- 中文翻译：卢卡娅迫击炮炮塔抛过墙体与单位的高爆迫击炮弹。 -->
+    <thingClass>Projectile_Explosive</thingClass>
+    <graphicData>
+      <texPath>Things/Projectile/ShellHighExplosive</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+    </graphicData>
+    <projectile>
+      <damageDef>Bomb</damageDef>
+      <damageAmountBase>50</damageAmountBase>
+      <armorPenetrationBase>0.55</armorPenetrationBase>
+      <speed>41</speed>
+      <explosionRadius>4.9</explosionRadius>
+      <flyOverhead>true</flyOverhead>
+      <arcHeightFactor>0.6</arcHeightFactor>
+      <shadowSize>0.6</shadowSize>
+      <soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+      <soundExplode>MortarBomb_Explode</soundExplode>
+      <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+      <preExplosionSpawnSingleThingDef>Filth_BlastMark</preExplosionSpawnSingleThingDef>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_Rukaya_MechPlasma</defName>
+    <label>Rukaya mech plasma slug</label>
+    <!-- 中文：卢卡娅机械等离子弹丸 -->
+    <description>A focused plasma pulse fired by Rukaya plasma turrets. It resolves instantly at its impact point and leaves a short-lived luminous beam along its forward path.</description>
+    <!-- 中文翻译：卢卡娅等离子炮塔发射的聚焦等离子脉冲。它在命中点瞬时结算，并沿向前的射击路径留下一道短暂的明亮光束。 -->
+    <thingClass>RukayaRace.Projectiles.Projectile_RukayaMechPlasmaPulse</thingClass>
+    <graphicData>
+      <texPath>Rukaya/Weapon/Rukaya_Plasma_Projectile</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <color>(120,230,255)</color>
+      <drawSize>(0.8,0.8)</drawSize>
+    </graphicData>
+    <modExtensions>
+      <li Class="RukayaRace.Projectiles.RukayaLaserBeamExtension">
+        <beamColor>(0.35,0.85,1,1)</beamColor>
+        <beamWidth>0.65</beamWidth>
+        <beamGlowWidth>1.7</beamGlowWidth>
+        <beamDurationTicks>60</beamDurationTicks>
+        <beamFadeFraction>0.85</beamFadeFraction>
+        <impactGlowSize>2.2</impactGlowSize>
+      </li>
+    </modExtensions>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>100</damageAmountBase>
+      <armorPenetrationBase>1.1</armorPenetrationBase>
+      <stoppingPower>2.4</stoppingPower>
+      <speed>92</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_Rukaya_MICLIC_Rocket</defName>
+    <label>Rukaya mine-clearing line rocket</label>
+    <!-- 中文：卢卡娅扫雷索主火箭 -->
+    <description>The main warhead of a mine-clearing line charge. It arcs over cover to the target point, spooling demolition
+      charges out behind it as it goes.</description>
+    <!-- 中文翻译：扫雷索的主弹头。它越顶飞过掩体落向目标点，一路上把爆破装药一段段拖放出去。 -->
+    <thingClass>RukayaRace.Projectiles.Projectile_RukayaMICLIC</thingClass>
+    <graphicData>
+      <texPath>Rukaya/Mechanoids/Rukaya_MICLIC_Rocket</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1.2,1.2)</drawSize>
+    </graphicData>
+    <modExtensions>
+      <li Class="RukayaRace.Projectiles.RukayaMICLICProjectileExtension">
+        <chargeProjectile>Bullet_Rukaya_MICLIC_Charge</chargeProjectile>
+        <mainArcHeight>2.2</mainArcHeight>
+        <chargeFallTicks>9</chargeFallTicks>
+        <chargeForwardDrift>1.2</chargeForwardDrift>
+        <firstChargeDistance>6</firstChargeDistance>
+        <maxCharges>9</maxCharges>
+        <minChargeIntervalTicks>3</minChargeIntervalTicks>
+        <detonationIntervalTicks>3</detonationIntervalTicks>
+        <tailTicks>2</tailTicks>
+      </li>
+    </modExtensions>
+    <projectile>
+      <arcHeightFactor>0</arcHeightFactor>
+      <damageDef>Bomb</damageDef>
+      <damageAmountBase>34</damageAmountBase>
+      <armorPenetrationBase>0.6</armorPenetrationBase>
+      <speed>55</speed>
+      <explosionRadius>1.9</explosionRadius>
+      <flyOverhead>true</flyOverhead>
+      <soundExplode>Explosion_Rocket</soundExplode>
+      <preExplosionSpawnSingleThingDef>Filth_BlastMark</preExplosionSpawnSingleThingDef>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_Rukaya_MICLIC_Charge</defName>
+    <label>Rukaya line charge</label>
+    <!-- 中文：卢卡娅扫雷索装药 -->
+    <description>One demolition charge of a mine-clearing line charge. It trails behind the rocket on a black cord, carries some forward momentum as it falls, and waits until the whole line has landed before detonating in sequence.</description>
+    <!-- 中文翻译：扫雷索上的一枚爆破装药。它由黑色绳索连接在火箭后方，携带向前的惯性快速下坠，等待整条扫雷索落地后再依次引爆。 -->
+    <thingClass>RukayaRace.Projectiles.Projectile_RukayaMICLICCharge</thingClass>
+    <graphicData>
+      <texPath>Rukaya/Mechanoids/Rukaya_MICLIC_Charge</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(0.8,0.8)</drawSize>
+    </graphicData>
+    <projectile>
+      <arcHeightFactor>0</arcHeightFactor>
+      <damageDef>Bomb</damageDef>
+      <damageAmountBase>22</damageAmountBase>
+      <armorPenetrationBase>0.5</armorPenetrationBase>
+      <speed>55</speed>
+      <explosionRadius>1.3</explosionRadius>
+      <soundExplode>Explosion_Flame</soundExplode>
+      <preExplosionSpawnSingleThingDef>Filth_BlastMark</preExplosionSpawnSingleThingDef>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="Rukaya_BaseMechTurret">
+    <defName>Rukaya_MechWeapon_LaserAA</defName>
+    <label>Rukaya laser anti-air mount</label>
+    <!-- 中文：卢卡娅激光对空炮座 -->
+    <description>An anti-air emitter slaved to the Rukaya laser turret ring. It holds a burst of focused pulses on incoming
+      overhead artillery shells and leaves the mount's ground fire untouched. The first pulse is the one that burns through;
+      the rest keep pouring light into the same point so the mount reads as a single unbroken beam.
+      The emitter also tracks hostile incoming drop pods. Its emitter shares the ground laser's heat sink. Permitted drop pods are tracked across the map; overhead shells are intercepted within 35 cells.</description>
+    <!-- 中文翻译：一套从属于卢卡娅激光炮塔环的对空发射器。它对着来袭的越顶炮击弹打出一轮聚焦脉冲连发，且完全不影响炮座的对地射击。 真正烧穿目标的是第一发脉冲，其余几发继续把光倾泻在同一个点上，因此看上去是一道不断的光束。发射器还会追踪来袭的敌方空投仓。 发射器与地面激光共用散热系统。敌方空投仓可在全图范围内追踪；越顶炮弹的拦截范围为35格。 -->
+    <graphicData>
+      <texPath>Rukaya/Mechanoids/Rukaya_MechTurretLaser</texPath>
+    </graphicData>
+    <verbs>
+      <li>
+        <verbClass>RukayaRace.AirDefense.Verb_RukayaSkyInterceptorShoot</verbClass>
+        <defaultProjectile>Bullet_Rukaya_MechAA_Laser</defaultProjectile>
+        <range>26.9</range>
+
+        <warmupTime>0.4</warmupTime>
+
+        <burstShotCount>3</burstShotCount>
+        <ticksBetweenBurstShots>7</ticksBetweenBurstShots>
+
+        <defaultCooldownTime>1.0</defaultCooldownTime>
+        <forcedMissRadius>0</forcedMissRadius>
+
+        <soundCast>Shot_ChargeBlaster</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>6</muzzleFlashScale>
+        <linkedBodyPartsGroup>Rukaya_TurretMount</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+
+      </li>
+    </verbs>
+  </ThingDef>
+
+  <ThingDef ParentName="Rukaya_BaseMechTurret">
+    <defName>Rukaya_MechWeapon_MachineCannonAA</defName>
+    <label>Rukaya machine cannon anti-air mount</label>
+    <!-- 中文：卢卡娅机炮对空炮座 -->
+    <description>An anti-air autocannon slaved to the Rukaya machine cannon turret ring. It throws a visible tracer burst into
+      incoming overhead artillery shells and leaves the mount's ground fire untouched. The first round of the burst is the one
+      that knocks the shell down; the rest of the burst keeps walking tracers into the same point. It also directly destroys hostile drop pods anywhere on the map; overhead shells remain limited to 35 cells.</description>
+    <!-- 中文翻译：一门从属于卢卡娅机炮炮塔环的对空机炮。它向来袭的越顶炮击弹打出可见曳光弹连发，且完全不影响炮座的对地射击。 真正把炮弹打下来的是连发里的第一发，其余几发继续把曳光弹倾泻到同一个点上。 它也会在全图范围内直接击毁敌方空投仓；越顶炮弹的拦截范围限于35格。 -->
+    <graphicData>
+      <texPath>Rukaya/Mechanoids/Rukaya_MechTurretMachineCannon</texPath>
+    </graphicData>
+    <verbs>
+      <li>
+        <verbClass>RukayaRace.AirDefense.Verb_RukayaSkyInterceptorShoot</verbClass>
+        <defaultProjectile>Bullet_Rukaya_MechAA_Gun</defaultProjectile>
+        <range>26.9</range>
+        <warmupTime>0.5</warmupTime>
+        <burstShotCount>6</burstShotCount>
+        <ticksBetweenBurstShots>4</ticksBetweenBurstShots>
+
+        <defaultCooldownTime>1.2</defaultCooldownTime>
+        <forcedMissRadius>0</forcedMissRadius>
+        <soundCast>Shot_Minigun</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+        <linkedBodyPartsGroup>Rukaya_TurretMount</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+      </li>
+    </verbs>
+  </ThingDef>
+
+  <ThingDef ParentName="Rukaya_BaseMechTurret">
+    <defName>Rukaya_MechWeapon_SAMLauncherAA</defName>
+    <label>Rukaya missile anti-air mount</label>
+    <!-- 中文：卢卡娅导弹对空炮座 -->
+    <description>An anti-air launcher slaved to the Rukaya missile turret ring. It launches visible interceptors that are walked
+      onto incoming drop pods and meteorites on a command line, and leaves the mount's ground fire untouched. It carries four anti-air missiles and fires at most four per salvo, spaced 0.3 seconds apart. Each missile engages a separate target. An empty magazine reloads in six seconds; unused rounds remain loaded. Drop pods and meteorites can be engaged anywhere on the map.</description>
+    <!-- 中文翻译：一座从属于卢卡娅导弹炮塔环的对空发射巢。它发射可见拦截弹，并沿指令线把这些拦截弹引向来袭的空投仓与陨石， 且完全不影响炮座的对地射击。 防空弹仓备有四枚导弹，每轮最多发射四枚，逐发间隔0.3秒；每枚导弹拦截一个目标。弹仓打空后装填六秒，未发射的备弹留在仓内。空投仓与陨石均可在全图范围内拦截。 -->
+    <graphicData>
+      <texPath>Rukaya/Mechanoids/Rukaya_MechTurretMissile</texPath>
+    </graphicData>
+    <verbs>
+      <li>
+        <verbClass>RukayaRace.AirDefense.Verb_RukayaSkyInterceptorShoot</verbClass>
+        <defaultProjectile>Bullet_Rukaya_MechAA_SAMLauncher</defaultProjectile>
+        <range>26.9</range>
+        <warmupTime>0.5</warmupTime>
+        <burstShotCount>4</burstShotCount>
+        <ticksBetweenBurstShots>18</ticksBetweenBurstShots>
+        <defaultCooldownTime>3.0</defaultCooldownTime>
+
+        <forcedMissRadius>0</forcedMissRadius>
+        <soundCast>RocketswarmLauncher_Fire</soundCast>
+
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>14</muzzleFlashScale>
+        <linkedBodyPartsGroup>Rukaya_TurretMount</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+      </li>
+    </verbs>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_Rukaya_MechAA_Laser</defName>
+    <label>Rukaya laser air-defense pulse</label>
+    <!-- 中文：卢卡娅激光对空脉冲 -->
+    <description>A focused pulse template for Rukaya laser air defense. It only carries the beam look; the shot
+      itself resolves instantly and no projectile is ever spawned.</description>
+    <!-- 中文翻译：卢卡娅激光防空用的聚焦脉冲模板。它只承载光束外观，射击当场结算、不会生成任何弹体。 -->
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <color>(255,96,64)</color>
+    </graphicData>
+    <modExtensions>
+      <li Class="RukayaRace.Projectiles.RukayaLaserBeamExtension">
+        <beamColor>(1,0.45,0.24,1)</beamColor>
+        <beamWidth>0.18</beamWidth>
+        <beamGlowWidth>0.7</beamGlowWidth>
+        <beamDurationTicks>12</beamDurationTicks>
+        <impactGlowSize>1.3</impactGlowSize>
+      </li>
+      <!-- 纯视觉弹幕摆动：对空激光连发的光束端点摆动（只画不打的那几发与真拦截那发都走同一套绘制偏移）。 -->
+      <li Class="RukayaRace.Projectiles.RukayaBarrageSwayExtension">
+        <beamOriginSwayRadius>0.2</beamOriginSwayRadius>
+        <beamEndSwayRadius>0.9</beamEndSwayRadius>
+        <beamMuzzleForward>0.75</beamMuzzleForward>
+        <beamSwayPeriodTicks>70</beamSwayPeriodTicks>
+      </li>
+    </modExtensions>
+    <projectile>
+      <damageDef>Burn</damageDef>
+      <damageAmountBase>0</damageAmountBase>
+      <speed>200</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_Rukaya_MechAA_Gun</defName>
+    <label>Rukaya air-defense tracer round</label>
+    <!-- 中文：卢卡娅对空曳光弹 -->
+    <description>An air-defense tracer round template for Rukaya machine cannon mounts. It only carries the
+      interceptor's flight look and speed; the hit is resolved by the air-defense system, not by impact damage.</description>
+    <!-- 中文翻译：卢卡娅机炮对空炮座用的曳光弹模板。它只承载拦截弹的飞行外观与速度，命中由防空系统结算，而非弹丸碰撞伤害。 -->
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_big</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+    </graphicData>
+    <modExtensions>
+      <!-- 纯视觉弹幕摆动：只给"真拦截已经定论之后"的那几发视觉曳光弹扇开落点（CompRukayaSkyInterceptor
+           的 EmitAirBurstVisualShot 会读这份参数）。真实拦截弹与结算不经过这里。 -->
+      <li Class="RukayaRace.Projectiles.RukayaBarrageSwayExtension">
+        <airAimSwayRadius>1.0</airAimSwayRadius>
+        <airAimSwayPeriodTicks>60</airAimSwayPeriodTicks>
+      </li>
+    </modExtensions>
+    <projectile>
+      <damageDef>Blunt</damageDef>
+      <damageAmountBase>0</damageAmountBase>
+      <speed>200</speed>
+
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_Rukaya_MechAA_SAMLauncher</defName>
+    <label>Rukaya air-defense interceptor missile</label>
+    <!-- 中文：卢卡娅对空拦截导弹 -->
+    <description>An air-defense interceptor template for Rukaya missile mounts. It carries the interceptor's flight look and
+      speed plus the mod's missile guidance law, so the interceptor visibly walks itself onto the target; the hit itself is
+      resolved by the air-defense system, not by impact damage.</description>
+    <!-- 中文翻译：卢卡娅导弹对空炮座用的拦截弹模板。它承载拦截弹的飞行外观与速度，并挂上本模组已有的导引律，因此拦截弹会一路修正到目标上；命中本身由防空系统结算，而非弹丸碰撞伤害。 -->
+    <graphicData>
+      <texPath>Rukaya/Mechanoids/Rukaya_SAM_Neva</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(3,3)</drawSize>
+
+    </graphicData>
+    <modExtensions>
+
+      <li Class="RukayaRace.Projectiles.RukayaGuidedATGMProjectileExtension">
+        <guidedHitRadius>0.6</guidedHitRadius>
+        <requireLineOfSight>false</requireLineOfSight>
+        <smokeBreaksGuidance>false</smokeBreaksGuidance>
+        <guidanceGlowSize>0.55</guidanceGlowSize>
+        <guidanceGlowColor>(1,0.62,0.24,0.4)</guidanceGlowColor>
+        <guidanceGlowIntervalTicks>2</guidanceGlowIntervalTicks>
+        <guidanceSparkIntervalTicks>4</guidanceSparkIntervalTicks>
+      </li>
+    </modExtensions>
+    <projectile>
+      <damageDef>Blunt</damageDef>
+      <damageAmountBase>0</damageAmountBase>
+      <speed>200</speed>
+    </projectile>
+  </ThingDef>
+
+</Defs>

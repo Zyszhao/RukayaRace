@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- 紧急飞行的门禁与状态提示。
+       与持续飞行共用一个 Keyed 文件，保持"一个系统一组文案"的可读性。 -->
+
+  <Rukaya_EmergencyFly_NotEnoughResources>{PAWN_labelShort}太疲惫了，无法进行紧急飞行。她需要更充足的食物和休息。</Rukaya_EmergencyFly_NotEnoughResources>
+  <Rukaya_EmergencyFly_NoWings>{PAWN_labelShort}的双翼受损，无法进行紧急飞行。</Rukaya_EmergencyFly_NoWings>
+
+  <!-- 属性面板中"飞行疲惫短时移动惩罚"的说明行（StatPart_RukayaFlightExhaustion.ExplanationPart）。 -->
+  <Rukaya_FlightExhaustion_ShortPenalty>紧急飞行后的短暂脱力</Rukaya_FlightExhaustion_ShortPenalty>
+
+</LanguageData>

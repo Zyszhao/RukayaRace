@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Defs>
+  <ResearchProjectDef>
+    <defName>Rukaya_BionicWings</defName>
+    <label>Rukaya Bionic Wings</label>
+    <!-- 中文：卢卡娅仿生翼 -->
+    <description>Neural interfaces and active-matter components allow artificial Rukaya wings to support sustained and emergency flight.</description>
+    <!-- 中文：神经接口与活性物质部件使卢卡娅人工翅膀能够支持持续飞行与紧急飞行。 -->
+    <baseCost>2000</baseCost>
+    <techLevel>Spacer</techLevel>
+    <prerequisites>
+      <li>Bionics</li>
+      <li>Rukaya_ActiveMatterRefining</li>
+    </prerequisites>
+    <tab>Rukaya_ResearchTab</tab>
+    <researchViewX>3</researchViewX>
+    <researchViewY>4.4</researchViewY>
+  </ResearchProjectDef>
+</Defs>

@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Rukaya_GestateMechanoid_Rocket.label>培育卢卡娅通用机械“火箭型”</Rukaya_GestateMechanoid_Rocket.label>
+  <Rukaya_GestateMechanoid_Rocket.description>培育一台基于标准卢卡娅机械底盘的专用机械体，装备多管火箭发射巢。</Rukaya_GestateMechanoid_Rocket.description>
+  <Rukaya_GestateMechanoid_Rocket.jobString>正在培育机械体。</Rukaya_GestateMechanoid_Rocket.jobString>
+
+  <Rukaya_GestateMechanoid_Laser.label>培育卢卡娅通用机械“激光型”</Rukaya_GestateMechanoid_Laser.label>
+  <Rukaya_GestateMechanoid_Laser.description>培育一台基于标准卢卡娅机械底盘的专用机械体，装备一座激光炮塔。</Rukaya_GestateMechanoid_Laser.description>
+  <Rukaya_GestateMechanoid_Laser.jobString>正在培育机械体。</Rukaya_GestateMechanoid_Laser.jobString>
+
+  <Rukaya_GestateMechanoid_MachineCannon.label>培育卢卡娅通用机械“机炮型”</Rukaya_GestateMechanoid_MachineCannon.label>
+  <Rukaya_GestateMechanoid_MachineCannon.description>培育一台基于标准卢卡娅机械底盘的专用机械体，装备一门机炮炮塔。</Rukaya_GestateMechanoid_MachineCannon.description>
+  <Rukaya_GestateMechanoid_MachineCannon.jobString>正在培育机械体。</Rukaya_GestateMechanoid_MachineCannon.jobString>
+
+  <Rukaya_GestateMechanoid_MineSweeper.label>培育卢卡娅通用机械“扫雷索型”</Rukaya_GestateMechanoid_MineSweeper.label>
+  <Rukaya_GestateMechanoid_MineSweeper.description>培育一台基于标准卢卡娅机械底盘的专用机械体，装备一套扫雷索具。</Rukaya_GestateMechanoid_MineSweeper.description>
+  <Rukaya_GestateMechanoid_MineSweeper.jobString>正在培育机械体。</Rukaya_GestateMechanoid_MineSweeper.jobString>
+
+  <Rukaya_GestateMechanoid_SAMLauncher.label>培育卢卡娅通用机械“导弹型”</Rukaya_GestateMechanoid_SAMLauncher.label>
+  <Rukaya_GestateMechanoid_SAMLauncher.description>培育一台基于标准卢卡娅机械底盘的专用机械体，装备一座导弹发射巢。</Rukaya_GestateMechanoid_SAMLauncher.description>
+  <Rukaya_GestateMechanoid_SAMLauncher.jobString>正在培育机械体。</Rukaya_GestateMechanoid_SAMLauncher.jobString>
+
+  <Rukaya_GestateMechanoid_Mortar.label>培育卢卡娅通用机械“迫击炮型”</Rukaya_GestateMechanoid_Mortar.label>
+  <Rukaya_GestateMechanoid_Mortar.description>培育一台基于标准卢卡娅机械底盘的专用机械体，装备一门迫击炮炮塔。</Rukaya_GestateMechanoid_Mortar.description>
+  <Rukaya_GestateMechanoid_Mortar.jobString>正在培育机械体。</Rukaya_GestateMechanoid_Mortar.jobString>
+
+  <Rukaya_GestateMechanoid_Plasma.label>培育卢卡娅通用机械“等离子型”</Rukaya_GestateMechanoid_Plasma.label>
+  <Rukaya_GestateMechanoid_Plasma.description>培育一台基于标准卢卡娅机械底盘的专用机械体，装备一座等离子炮塔。</Rukaya_GestateMechanoid_Plasma.description>
+  <Rukaya_GestateMechanoid_Plasma.jobString>正在培育机械体。</Rukaya_GestateMechanoid_Plasma.jobString>
+
+  <Rukaya_GestateMechanoid_Radar.label>培育卢卡娅通用机械“雷达型”</Rukaya_GestateMechanoid_Radar.label>
+  <Rukaya_GestateMechanoid_Radar.description>培育一台基于标准卢卡娅机械底盘发展的专用机械体，搭载雷达天线作为传感平台。</Rukaya_GestateMechanoid_Radar.description>
+  <Rukaya_GestateMechanoid_Radar.jobString>正在培育机械体。</Rukaya_GestateMechanoid_Radar.jobString>
+
+</LanguageData>

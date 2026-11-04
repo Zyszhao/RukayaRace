@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Defs>
+  <ThingDef ParentName="BodyPartProstheticMakeableBase">
+    <defName>Rukaya_ProstheticWing</defName>
+    <label>prosthetic wing</label>
+    <!-- 中文：义翼 -->
+    <description>An artificial Rukaya wing with mechanical joints and a flexible membrane. It restores the shape of a missing wing but cannot support flight.</description>
+    <!-- 中文：一片带机械关节与柔性翼膜的卢卡娅义翼。它能够恢复缺失翅膀的外形，但无法支持飞行。 -->
+    <costList>
+      <Steel>40</Steel>
+      <ComponentIndustrial>2</ComponentIndustrial>
+    </costList>
+    <statBases>
+      <MarketValue>450</MarketValue>
+      <Mass>3</Mass>
+      <WorkToMake>15000</WorkToMake>
+    </statBases>
+    <recipeMaker Inherit="False">
+      <researchPrerequisite>Prosthetics</researchPrerequisite>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <unfinishedThingDef>UnfinishedHealthItemProsthetic</unfinishedThingDef>
+      <skillRequirements>
+        <Crafting>6</Crafting>
+      </skillRequirements>
+      <recipeUsers>
+        <li>TableMachining</li>
+      </recipeUsers>
+    </recipeMaker>
+    <tradeTags>
+      <li>Rukaya_TradeMedical</li>
+    </tradeTags>
+  </ThingDef>
+  <ThingDef ParentName="BodyPartBionicBase">
+    <defName>Rukaya_BionicWing</defName>
+    <label>bionic wing</label>
+    <!-- 中文：仿生翼 -->
+    <description>A flight-capable artificial Rukaya wing with a neural interface and responsive servos. A pair of functioning natural or bionic wings supports normal and emergency flight.</description>
+    <!-- 中文：一片配备神经接口与灵敏伺服机构、能够用于飞行的卢卡娅仿生翼。两侧功能正常的自然翼或仿生翼可支持普通飞行与紧急飞行。 -->
+    <costList>
+      <Plasteel>25</Plasteel>
+      <ComponentSpacer>2</ComponentSpacer>
+      <Rukaya_ActiveMatterContainer>20</Rukaya_ActiveMatterContainer>
+    </costList>
+    <statBases>
+      <MarketValue>1450</MarketValue>
+      <Mass>3</Mass>
+      <WorkToMake>26000</WorkToMake>
+    </statBases>
+    <recipeMaker Inherit="False">
+      <researchPrerequisite>Rukaya_BionicWings</researchPrerequisite>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <unfinishedThingDef>UnfinishedHealthItemBionic</unfinishedThingDef>
+      <skillRequirements>
+        <Crafting>10</Crafting>
+      </skillRequirements>
+      <recipeUsers>
+        <li>FabricationBench</li>
+      </recipeUsers>
+    </recipeMaker>
+    <tradeTags>
+      <li>Rukaya_TradeMedical</li>
+    </tradeTags>
+  </ThingDef>
+</Defs>

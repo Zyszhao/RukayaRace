@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- 说明：Rukaya_MilitaryPawnBase / Rukaya_SpecialOpsPawnBase 是 Name= 的 Abstract 抽象模板，
+       不进 DefDatabase，不能作为注入目标；各具体 PawnKindDef 各自注入 label 与 labelPlural。
+       各级职能与设计依据见 设计文档/卢卡娅_PawnKind四级体系与武器服装词条建议.md -->
+
+  <!-- ===== 民兵（Militia）· T1 ===== -->
+
+  <Rukaya_Militia.label>卢卡娅民兵</Rukaya_Militia.label>
+  <Rukaya_Militia.labelPlural>卢卡娅民兵</Rukaya_Militia.labelPlural>
+
+  <Rukaya_MilitiaMelee.label>卢卡娅民兵近战兵</Rukaya_MilitiaMelee.label>
+  <Rukaya_MilitiaMelee.labelPlural>卢卡娅民兵近战兵</Rukaya_MilitiaMelee.labelPlural>
+
+  <Rukaya_MilitiaSupport.label>卢卡娅民兵支援兵</Rukaya_MilitiaSupport.label>
+  <Rukaya_MilitiaSupport.labelPlural>卢卡娅民兵支援兵</Rukaya_MilitiaSupport.labelPlural>
+
+  <!-- ===== 正规军（Regular）· T2 为主 ===== -->
+
+  <Rukaya_RegularRifleman.label>卢卡娅正规军步枪手</Rukaya_RegularRifleman.label>
+  <Rukaya_RegularRifleman.labelPlural>卢卡娅正规军步枪手</Rukaya_RegularRifleman.labelPlural>
+
+  <Rukaya_RegularGrenadier.label>卢卡娅正规军掷弹兵</Rukaya_RegularGrenadier.label>
+  <Rukaya_RegularGrenadier.labelPlural>卢卡娅正规军掷弹兵</Rukaya_RegularGrenadier.labelPlural>
+
+  <Rukaya_RegularMachinegunner.label>卢卡娅正规军机枪手</Rukaya_RegularMachinegunner.label>
+  <Rukaya_RegularMachinegunner.labelPlural>卢卡娅正规军机枪手</Rukaya_RegularMachinegunner.labelPlural>
+
+  <Rukaya_RegularMarksman.label>卢卡娅正规军精确射手</Rukaya_RegularMarksman.label>
+  <Rukaya_RegularMarksman.labelPlural>卢卡娅正规军精确射手</Rukaya_RegularMarksman.labelPlural>
+
+  <Rukaya_RegularRecoilless.label>卢卡娅正规军无后坐力炮手</Rukaya_RegularRecoilless.label>
+  <Rukaya_RegularRecoilless.labelPlural>卢卡娅正规军无后坐力炮手</Rukaya_RegularRecoilless.labelPlural>
+
+  <Rukaya_RegularBreacher.label>卢卡娅正规军破门手</Rukaya_RegularBreacher.label>
+  <Rukaya_RegularBreacher.labelPlural>卢卡娅正规军破门手</Rukaya_RegularBreacher.labelPlural>
+
+  <Rukaya_RegularSapper.label>卢卡娅正规军工兵</Rukaya_RegularSapper.label>
+  <Rukaya_RegularSapper.labelPlural>卢卡娅正规军工兵</Rukaya_RegularSapper.labelPlural>
+
+  <Rukaya_RegularSniper.label>卢卡娅正规军狙击手</Rukaya_RegularSniper.label>
+  <Rukaya_RegularSniper.labelPlural>卢卡娅正规军狙击手</Rukaya_RegularSniper.labelPlural>
+
+  <Rukaya_Commissar.label>卢卡娅政委</Rukaya_Commissar.label>
+  <Rukaya_Commissar.labelPlural>卢卡娅政委</Rukaya_Commissar.labelPlural>
+
+  <!-- ===== 军官（Officer）· 与领袖同一套军官礼服装备 ===== -->
+
+  <Rukaya_Officer.label>卢卡娅军官</Rukaya_Officer.label>
+  <Rukaya_Officer.labelPlural>卢卡娅军官</Rukaya_Officer.labelPlural>
+
+  <!-- ===== 特战队（Special Operations）· T3 ===== -->
+
+  <Rukaya_SpetsnazAssault.label>卢卡娅特战突击手</Rukaya_SpetsnazAssault.label>
+  <Rukaya_SpetsnazAssault.labelPlural>卢卡娅特战突击手</Rukaya_SpetsnazAssault.labelPlural>
+
+  <Rukaya_SpetsnazSniper.label>卢卡娅特战狙击手</Rukaya_SpetsnazSniper.label>
+  <Rukaya_SpetsnazSniper.labelPlural>卢卡娅特战狙击手</Rukaya_SpetsnazSniper.labelPlural>
+
+  <Rukaya_SpetsnazAntiArmor.label>卢卡娅特战反装甲手</Rukaya_SpetsnazAntiArmor.label>
+  <Rukaya_SpetsnazAntiArmor.labelPlural>卢卡娅特战反装甲手</Rukaya_SpetsnazAntiArmor.labelPlural>
+
+  <Rukaya_SpetsnazSupport.label>卢卡娅特战支援手</Rukaya_SpetsnazSupport.label>
+  <Rukaya_SpetsnazSupport.labelPlural>卢卡娅特战支援手</Rukaya_SpetsnazSupport.labelPlural>
+
+  <Rukaya_SpetsnazBlade.label>卢卡娅特战近战兵</Rukaya_SpetsnazBlade.label>
+  <Rukaya_SpetsnazBlade.labelPlural>卢卡娅特战近战兵</Rukaya_SpetsnazBlade.labelPlural>
+
+</LanguageData>

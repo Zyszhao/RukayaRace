@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<ThingCategoryDef>
+		<defName>Rukaya_Apparel</defName>
+		<label>Rukaya apparel</label>
+		<!-- 中文翻译：卢卡娅服装 -->
+		<parent>Apparel</parent>
+	</ThingCategoryDef>
+
+	<ThingCategoryDef>
+		<defName>Rukaya_Apparel_OnSkin</defName>
+		<label>Rukaya onskin apparel</label>
+		<!-- 中文翻译：卢卡娅贴身服装 -->
+		<parent>Rukaya_Apparel</parent>
+	</ThingCategoryDef>
+
+	<ThingCategoryDef>
+		<defName>Rukaya_Apparel_Overhead</defName>
+		<label>Rukaya Overhead apparel</label>
+		<!-- 中文翻译：卢卡娅头饰 -->
+		<parent>Rukaya_Apparel</parent>
+	</ThingCategoryDef>
+
+	<ThingCategoryDef>
+		<defName>Rukaya_Apparel_Underwear</defName>
+		<label>Rukaya Underwear apparel</label>
+		<!-- 中文翻译：卢卡娅内衣 -->
+		<parent>Rukaya_Apparel</parent>
+	</ThingCategoryDef>
+        <ThingCategoryDef>
+                <defName>Rukaya_Apparel_Shell</defName>
+                <label>Rukaya outer apparel</label>
+                <!-- 中文翻译：卢卡娅外套 -->
+                <parent>Rukaya_Apparel</parent>
+        </ThingCategoryDef>
+
+        <ThingCategoryDef>
+                <defName>Rukaya_Apparel_Middle</defName>
+                <label>Rukaya middle apparel</label>
+                <!-- 中文翻译：卢卡娅中层服装 -->
+                <parent>Rukaya_Apparel</parent>
+        </ThingCategoryDef>
+
+</Defs>

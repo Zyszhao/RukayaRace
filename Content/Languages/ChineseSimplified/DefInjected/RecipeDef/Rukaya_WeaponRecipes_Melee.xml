@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Make_Rukaya_Pickaxe.label>锻造十字镐</Make_Rukaya_Pickaxe.label>
+  <Make_Rukaya_Pickaxe.jobString>正在锻造十字镐。</Make_Rukaya_Pickaxe.jobString>
+
+  <Make_Rukaya_TrenchShowel.label>锻造工兵铲</Make_Rukaya_TrenchShowel.label>
+  <Make_Rukaya_TrenchShowel.jobString>正在锻造工兵铲。</Make_Rukaya_TrenchShowel.jobString>
+
+  <Make_Rukaya_DuelSword.label>锻造决斗剑</Make_Rukaya_DuelSword.label>
+  <Make_Rukaya_DuelSword.jobString>正在锻造决斗剑。</Make_Rukaya_DuelSword.jobString>
+
+  <Make_Rukaya_DivingKnife.label>制造潜水刀</Make_Rukaya_DivingKnife.label>
+  <Make_Rukaya_DivingKnife.jobString>正在制造潜水刀。</Make_Rukaya_DivingKnife.jobString>
+
+  <Make_Rukaya_SledgeHammer.label>制造爆破锤</Make_Rukaya_SledgeHammer.label>
+  <Make_Rukaya_SledgeHammer.jobString>正在制造爆破锤。</Make_Rukaya_SledgeHammer.jobString>
+
+  <Make_Rukaya_StunBaton.label>制造电棍</Make_Rukaya_StunBaton.label>
+  <Make_Rukaya_StunBaton.jobString>正在制造电棍。</Make_Rukaya_StunBaton.jobString>
+
+  <Make_Rukaya_PowerSword.label>制造动力剑</Make_Rukaya_PowerSword.label>
+  <Make_Rukaya_PowerSword.jobString>正在制造动力剑。</Make_Rukaya_PowerSword.jobString>
+
+</LanguageData>

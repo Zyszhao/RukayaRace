@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- EN: underwear -->
+  <Rukaya_Underwear.label>内衣</Rukaya_Underwear.label>
+
+  <!-- EN: onskin -->
+  <Rukaya_OnSkin.label>贴身</Rukaya_OnSkin.label>
+
+  <!-- EN: pants -->
+  <Rukaya_Pants.label>裤装</Rukaya_Pants.label>
+
+  <!-- EN: bag -->
+  <Rukaya_Bag.label>背包</Rukaya_Bag.label>
+
+</LanguageData>

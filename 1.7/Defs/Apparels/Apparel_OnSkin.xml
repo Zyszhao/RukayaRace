@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef Name="Rukaya_OnSkinBase" ParentName="Rukaya_ApparelBase" Abstract="True">
+    <statBases>
+      <Mass>1.0</Mass>
+      <Insulation_Cold>4</Insulation_Cold>
+      <Insulation_Heat>2</Insulation_Heat>
+      <EquipDelay>1.5</EquipDelay>
+    </statBases>
+    <apparel>
+      <layers>
+        <li>OnSkin</li>
+      </layers>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Shoulders</li>
+      </bodyPartGroups>
+    </apparel>
+    <thingCategories>
+      <li>Rukaya_Apparel_OnSkin</li>
+    </thingCategories>
+  </ThingDef>
+
+  <ThingDef Name="Rukaya_OnSkinBaseI" ParentName="Rukaya_OnSkinBase" Abstract="True">
+    <recipeMaker>
+      <researchPrerequisite>Rukaya_Apparel_I</researchPrerequisite>
+    </recipeMaker>
+    <apparel>
+      <tags>
+        <li>Rukaya_OnSkin</li>
+      </tags>
+    </apparel>
+    <tradeTags>
+      <li>Rukaya_DailyClothing</li>
+    </tradeTags>
+  </ThingDef>
+
+  <ThingDef Name="Rukaya_OnSkinBaseII" ParentName="Rukaya_OnSkinBase" Abstract="True">
+    <recipeMaker>
+      <researchPrerequisite>Rukaya_Apparel_II</researchPrerequisite>
+    </recipeMaker>
+    <apparel>
+      <tags>
+        <li>Rukaya_OnSkin</li>
+      </tags>
+    </apparel>
+    <tradeTags>
+      <li>Rukaya_DailyClothing</li>
+    </tradeTags>
+  </ThingDef>
+
+  <ThingDef Name="Rukaya_OnSkinBaseIII" ParentName="Rukaya_OnSkinBase" Abstract="True">
+    <recipeMaker>
+      <researchPrerequisite>Rukaya_Apparel_III</researchPrerequisite>
+    </recipeMaker>
+    <apparel>
+      <tags>
+        <li>Rukaya_OnSkin</li>
+      </tags>
+    </apparel>
+    <tradeTags>
+      <li>Rukaya_DailyClothing</li>
+    </tradeTags>
+  </ThingDef>
+
+  <!-- 1级（Basic）· 学生装 -->
+  <ThingDef ParentName="Rukaya_OnSkinBaseI">
+    <defName>Rukaya_StudentUniform</defName>
+    <label>Rukaya student uniform</label>
+    <!-- 中文翻译：卢卡娅学生装 -->
+    <techLevel>Medieval</techLevel>
+    <description>A neatly tailored student uniform made for Rukaya. The cut leaves room for their
+      ears and wings, and the fabric holds its original color exceptionally well.</description>
+    <!-- 中文翻译：为卢卡娅量身裁制的学生装，剪裁为兽耳与翅膀留出了余量，布料也能长久保持原本的色泽。 -->
+    <graphicData>
+      <texPath>Rukaya/Apparel/OnSkin/StudentUniform/Rukaya_StudentUniform</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Cutout</shaderType>
+    </graphicData>
+    <statBases>
+      <WorkToMake>3200</WorkToMake>
+      <ArmorRating_Sharp>0.30</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.20</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.20</ArmorRating_Heat>
+      <Insulation_Cold>10</Insulation_Cold>
+      <Insulation_Heat>10</Insulation_Heat>
+    </statBases>
+    <costList>
+      <Cloth>75</Cloth>
+    </costList>
+    <apparel>
+      <useWornGraphicMask>false</useWornGraphicMask>
+      <developmentalStageFilter>Child, Adult</developmentalStageFilter>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Legs</li>
+        <li>Arms</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Rukaya/Apparel/OnSkin/StudentUniform/Rukaya_StudentUniform</wornGraphicPath>
+      <!-- 身份词条必须写在叶子 Def 本地：补丁在 XmlInheritance.Resolve() 之前执行，
+           看不到从 Rukaya_*BaseI/II/III 继承来的 <tags>，只能替换本地已存在的节点。 -->
+      <tags>
+        <li>Rukaya_OnSkin</li>
+        <li>Rukaya_Dress_Civilian</li>
+      </tags>
+    </apparel>
+    <equippedStatOffsets>
+      <GlobalLearningFactor>0.25</GlobalLearningFactor>
+      <ReadingSpeed>0.20</ReadingSpeed>
+    </equippedStatOffsets>
+  </ThingDef>
+
+  <!-- 1级（Basic）· 正装制服（科研已前移至 Rukaya_Apparel_I） -->
+  <ThingDef ParentName="Rukaya_OnSkinBaseI">
+    <defName>Rukaya_FormalUniform</defName>
+    <label>Rukaya formal uniform</label>
+    <!-- 中文翻译：卢卡娅正装制服 -->
+    <techLevel>Medieval</techLevel>
+    <description>A formal dress uniform preserved from the Rukaya's long-lost homeworld. The
+      destruction of their planet happened so long ago that it has faded into a distant collective
+      memory, yet this uniform's design still survives as formal attire. Cut with specialized back
+      slits for their wings, it favors dignity and durability over ornamentation.</description>
+    <!-- 中文翻译：一套从卢卡娅失落母星流传下来的正装制服。母星毁灭的年代过于久远，早已化作模糊的集体记忆，唯有这身制服的形制仍作为正式礼服延续至今。背部开有专门为翅膀留下的开口，比起装饰，它更看重体面与耐用。 -->
+    <graphicData>
+      <texPath>Rukaya/Apparel/OnSkin/FormalUniform/Rukaya_FormalUniform</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Cutout</shaderType>
+    </graphicData>
+    <statBases>
+      <WorkToMake>2800</WorkToMake>
+      <ArmorRating_Sharp>0.30</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.20</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.15</ArmorRating_Heat>
+      <Insulation_Cold>12</Insulation_Cold>
+      <Insulation_Heat>8</Insulation_Heat>
+    </statBases>
+    <costList>
+      <Cloth>75</Cloth>
+    </costList>
+    <apparel>
+      <useWornGraphicMask>false</useWornGraphicMask>
+      <developmentalStageFilter>Child, Adult</developmentalStageFilter>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Legs</li>
+        <li>Arms</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Rukaya/Apparel/OnSkin/FormalUniform/Rukaya_FormalUniform</wornGraphicPath>
+      <tags>
+        <li>Rukaya_OnSkin</li>
+        <li>Rukaya_Dress_Service</li>
+      </tags>
+    </apparel>
+    <equippedStatOffsets>
+      <CarryingCapacity>5</CarryingCapacity>
+      <PainShockThreshold>0.05</PainShockThreshold>
+    </equippedStatOffsets>
+  </ThingDef>
+  <!-- 2级（Advanced）· 礼服
+       ===== 军官礼服套装 · 躯干组件（与 Rukaya_WideBrimHat 成一套）=====
+       两件共用身份词条 Rukaya_Dress_Officer；该词条直接写在各自的本地 <tags> 里
+       （礼服只带 Rukaya_Dress_Officer、不带 Rukaya_Dress_Service，
+       因此礼服不再落进民兵/正规军的常服池）。
+       成套口径：
+         · 与宽檐帽同为纯布料精工件，温度取向对齐在避热 12（帽子亦为 12）；
+         · 加成同族：社交 + 交涉 + 从容（心情阈值）；
+         · 互补：礼服负责射击循环（RangedCooldownFactor），帽子负责瞄准准备（AimingDelayFactor）。
+       套装合计：社交 +0.25 / 交涉 +0.20 / 射击循环 -10% / 瞄准准备 -5% / 心情阈值 -0.02，
+       读起来正好是一套"军官礼服"而不是两件互不相干的衣物。 -->
+  <ThingDef ParentName="Rukaya_OnSkinBaseII">
+    <defName>Rukaya_FormalDress</defName>
+    <label>Rukaya formal dress</label>
+    <!-- 中文翻译：卢卡娅礼服 -->
+    <techLevel>Industrial</techLevel>
+    <description>An elegant formal dress tailored for Rukaya. The flowing cut leaves their ears and
+      wings free, and the fine fabric makes the wearer look her best in any company.</description>
+    <!-- 中文翻译：为卢卡娅裁制的优雅礼服，垂顺的剪裁不碍兽耳与翅膀，精工的面料让她在任何场合都足够得体。 -->
+    <graphicData>
+      <texPath>Rukaya/Apparel/OnSkin/FormalDress/Rukaya_FormalDress</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Cutout</shaderType>
+    </graphicData>
+    <statBases>
+      <WorkToMake>4200</WorkToMake>
+      <ArmorRating_Sharp>0.34</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.22</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.22</ArmorRating_Heat>
+      <Insulation_Cold>14</Insulation_Cold>
+      <Insulation_Heat>12</Insulation_Heat>
+    </statBases>
+    <costList>
+      <Cloth>90</Cloth>
+    </costList>
+    <apparel>
+      <useWornGraphicMask>false</useWornGraphicMask>
+      <developmentalStageFilter>Child, Adult</developmentalStageFilter>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Legs</li>
+        <li>Arms</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Rukaya/Apparel/OnSkin/FormalDress/Rukaya_FormalDress</wornGraphicPath>
+      <!-- 礼服只带军官礼服词条，不带 Rukaya_Dress_Service，
+           因此民兵 / 正规军不会再随机穿到礼服。 -->
+      <tags>
+        <li>Rukaya_OnSkin</li>
+        <li>Rukaya_Dress_Officer</li>
+      </tags>
+    </apparel>
+    <equippedStatOffsets>
+      <SocialImpact>0.15</SocialImpact>
+      <NegotiationAbility>0.10</NegotiationAbility>
+      <RangedCooldownFactor>-0.10</RangedCooldownFactor>
+      <MentalBreakThreshold>-0.02</MentalBreakThreshold>
+    </equippedStatOffsets>
+  </ThingDef>
+  <!-- 1级（Basic）· 精致防寒大衣 -->
+  <ThingDef ParentName="Rukaya_OnSkinBaseI">
+    <defName>Rukaya_WinterCoat</defName>
+    <label>Rukaya fine winter coat</label>
+    <!-- 中文翻译：卢卡娅精致防寒大衣 -->
+    <techLevel>Medieval</techLevel>
+    <description>A finely made winter coat. Thickly lined against the cold and cut so the Rukaya's
+      wings and ears stay free, it is warm enough for the coldest maps.</description>
+    <!-- 中文翻译：做工讲究的防寒大衣，内衬厚实，剪裁也为翅膀和兽耳留出了空间，足以应付最寒冷的地区。 -->
+    <graphicData>
+      <texPath>Rukaya/Apparel/OnSkin/WinterCoat/Rukaya_WinterCoat</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Cutout</shaderType>
+    </graphicData>
+    <statBases>
+      <Mass>2.0</Mass>
+      <EquipDelay>2.5</EquipDelay>
+      <WorkToMake>6000</WorkToMake>
+      <ArmorRating_Sharp>0.08</ArmorRating_Sharp>
+      <ArmorRating_Heat>0.04</ArmorRating_Heat>
+      <Insulation_Cold>30</Insulation_Cold>
+      <Insulation_Heat>2</Insulation_Heat>
+    </statBases>
+    <costList>
+      <Cloth>90</Cloth>
+    </costList>
+    <apparel>
+      <useWornGraphicMask>false</useWornGraphicMask>
+      <developmentalStageFilter>Child, Adult</developmentalStageFilter>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Legs</li>
+        <li>Arms</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Rukaya/Apparel/OnSkin/WinterCoat/Rukaya_WinterCoat</wornGraphicPath>
+      <tags>
+        <li>Rukaya_OnSkin</li>
+        <li>Rukaya_Dress_Civilian</li>
+      </tags>
+      <anyTechLevelCanUseForWarmth>true</anyTechLevelCanUseForWarmth>
+    </apparel>
+    <equippedStatOffsets>
+      <SocialImpact>0.10</SocialImpact>
+    </equippedStatOffsets>
+  </ThingDef>
+
+  <!-- 2级（Advanced）· 休闲衬衫（贴图 new_textures/RukayaOnskin3_*）· 本套主件，基础数据参考原版 Duster 并按 2 级档上调 -->
+  <ThingDef ParentName="Rukaya_OnSkinBaseII">
+    <defName>Rukaya_CasualShirt</defName>
+    <label>Rukaya casual shirt</label>
+    <!-- 中文：卢卡娅休闲衬衫 -->
+    <techLevel>Industrial</techLevel>
+    <description>A soft casual shirt cut for Rukaya anatomy. The loose sleeves and widened back
+      opening keep ears and wings clear, and the light fabric makes long shifts easier to bear.</description>
+    <!-- 中文翻译：一件为卢卡娅体型裁制的柔软休闲衬衫。宽松的袖子与背部加宽的开口不碍兽耳与翅膀，轻便的面料让长时间劳作也更轻松。 -->
+    <graphicData>
+      <texPath>Rukaya/Apparel/OnSkin/CasualShirt/Rukaya_CasualShirt</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Cutout</shaderType>
+    </graphicData>
+    <statBases>
+      <Mass>1.6</Mass>
+      <EquipDelay>2.4</EquipDelay>
+      <WorkToMake>8000</WorkToMake>
+      <ArmorRating_Sharp>0.16</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.06</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.08</ArmorRating_Heat>
+      <Insulation_Cold>16</Insulation_Cold>
+      <Insulation_Heat>16</Insulation_Heat>
+    </statBases>
+    <costList>
+      <Cloth>90</Cloth>
+    </costList>
+    <apparel>
+      <useWornGraphicMask>false</useWornGraphicMask>
+      <developmentalStageFilter>Child, Adult</developmentalStageFilter>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Neck</li>
+        <li>Shoulders</li>
+        <li>Arms</li>
+        <li>Legs</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Rukaya/Apparel/OnSkin/CasualShirt/Rukaya_CasualShirt</wornGraphicPath>
+      <tags>
+        <li>Rukaya_OnSkin</li>
+        <li>Rukaya_Dress_Civilian</li>
+      </tags>
+    </apparel>
+    <equippedStatOffsets>
+      <MoveSpeed>0.15</MoveSpeed>
+      <GeneralLaborSpeed>0.15</GeneralLaborSpeed>
+    </equippedStatOffsets>
+  </ThingDef>
+
+  <!-- 1级（Basic）· 军服（贴图 5/RukayaOnskin4_*）· 与卢卡娅阿富汗卡帽同一设计思路：
+       旧母星步兵版型、平摊的低护甲、偏避热的温度取向、纯布料的低价成本，
+       加成同样只给一点点（帽子给心情，这套给瞄准）。 -->
+  <ThingDef ParentName="Rukaya_OnSkinBaseI">
+    <defName>Rukaya_ServiceUniform</defName>
+    <label>Rukaya service uniform</label>
+    <!-- 中文：卢卡娅军服 -->
+    <techLevel>Medieval</techLevel>
+    <description>A plain service uniform cut to the same old-homeworld infantry pattern as the Rukaya
+      afghanka hat. Nothing about it is remarkable, but the familiar fit sits well with ears and
+      wings, holds off the worst of the heat, and lets the wearer settle into a firing stance a
+      little sooner.</description>
+    <!-- 中文翻译：一套普通军服，剪裁沿用与卢卡娅阿富汗卡帽相同的那款旧母星步兵版型。它没什么出奇之处，但熟悉的穿着感与兽耳、翅膀相合，能挡下大半暑热，也让人更快地进入射击姿态。 -->
+    <graphicData>
+      <texPath>Rukaya/Apparel/OnSkin/ServiceUniform/Rukaya_ServiceUniform</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Cutout</shaderType>
+    </graphicData>
+    <statBases>
+      <Mass>1.2</Mass>
+      <EquipDelay>1.8</EquipDelay>
+      <WorkToMake>2400</WorkToMake>
+      <ArmorRating_Sharp>0.12</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.08</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.15</ArmorRating_Heat>
+      <Insulation_Cold>6</Insulation_Cold>
+      <Insulation_Heat>12</Insulation_Heat>
+    </statBases>
+    <costList>
+      <Cloth>45</Cloth>
+    </costList>
+    <apparel>
+      <useWornGraphicMask>false</useWornGraphicMask>
+      <developmentalStageFilter>Child, Adult</developmentalStageFilter>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Neck</li>
+        <li>Shoulders</li>
+        <li>Arms</li>
+        <li>Legs</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Rukaya/Apparel/OnSkin/ServiceUniform/Rukaya_ServiceUniform</wornGraphicPath>
+      <tags>
+        <li>Rukaya_OnSkin</li>
+        <li>Rukaya_Dress_Service</li>
+      </tags>
+    </apparel>
+    <equippedStatOffsets>
+      <AimingDelayFactor>-0.05</AimingDelayFactor>
+    </equippedStatOffsets>
+  </ThingDef>
+
+  <!-- 1级（Basic）· 水手服（贴图 7/RukayaOnskin5_*）· 定位：好打扮的便装，
+       翻领与褶裙让穿着者的气度与交涉更出彩，裙摆不碍腿脚所以走得快、出拳也更利索。
+       身份词条 Rukaya_Dress_Civilian（民用/便装池），写在叶子 Def 本地。 -->
+  <ThingDef ParentName="Rukaya_OnSkinBaseI">
+    <defName>Rukaya_SailorUniform</defName>
+    <label>Rukaya sailor uniform</label>
+    <!-- 中文：卢卡娅水手服 -->
+    <techLevel>Medieval</techLevel>
+    <description>A sailor uniform cut for Rukaya. The crisp collar and pleated skirt are neat and
+      likeable, and the close fit shows off the wearer's bearing. The skirt never catches her legs, so
+      she walks and throws a punch that much more briskly.</description>
+    <!-- 中文翻译：一套为卢卡娅裁制的水手服，翻领与褶裙的样式利落而讨喜。合身的剪裁衬得出穿着者的气度，裙摆不碍腿脚，让她走动与出拳都更利索。 -->
+    <graphicData>
+      <texPath>Rukaya/Apparel/OnSkin/SailorUniform/Rukaya_SailorUniform</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Cutout</shaderType>
+    </graphicData>
+    <statBases>
+      <Mass>1.3</Mass>
+      <EquipDelay>2.0</EquipDelay>
+      <WorkToMake>4000</WorkToMake>
+      <ArmorRating_Sharp>0.14</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.08</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.12</ArmorRating_Heat>
+      <Insulation_Cold>8</Insulation_Cold>
+      <Insulation_Heat>12</Insulation_Heat>
+    </statBases>
+    <costList>
+      <Cloth>60</Cloth>
+    </costList>
+    <apparel>
+      <useWornGraphicMask>false</useWornGraphicMask>
+      <developmentalStageFilter>Child, Adult</developmentalStageFilter>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Neck</li>
+        <li>Shoulders</li>
+        <li>Arms</li>
+        <li>Legs</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Rukaya/Apparel/OnSkin/SailorUniform/Rukaya_SailorUniform</wornGraphicPath>
+      <!-- 身份词条必须写在叶子 Def 本地：补丁在 XmlInheritance.Resolve() 之前执行，
+           看不到从 Rukaya_OnSkinBaseI 继承来的 <tags>，只能替换本地已存在的节点。 -->
+      <tags>
+        <li>Rukaya_OnSkin</li>
+        <li>Rukaya_Dress_Civilian</li>
+      </tags>
+    </apparel>
+    <equippedStatOffsets>
+      <SocialImpact>0.12</SocialImpact>
+      <NegotiationAbility>0.06</NegotiationAbility>
+      <MoveSpeed>0.10</MoveSpeed>
+      <MeleeHitChance>0.06</MeleeHitChance>
+    </equippedStatOffsets>
+  </ThingDef>
+
+  <!-- 1级（Basic）· 作训服（贴图 7/RukayaOnskin6_*）· 定位：野外干活的常服，
+       轻便耐磨、不碍翅膀，加成只给移速一项（不加任何其它属性）。
+       身份词条 Rukaya_Dress_Service（民兵/正规军常服池），写在叶子 Def 本地。 -->
+  <ThingDef ParentName="Rukaya_OnSkinBaseI">
+    <defName>Rukaya_TrainingUniform</defName>
+    <label>Rukaya training uniform</label>
+    <!-- 中文：卢卡娅作训服 -->
+    <techLevel>Medieval</techLevel>
+    <description>A hard-wearing camouflage training uniform with roomy pockets sewn across the front
+      and waist, the uniform Rukaya lives in out in the field. The light, durable fabric and a cut
+      that keeps the wings clear let the wearer move faster than usual.</description>
+    <!-- 中文翻译：一套耐穿的迷彩作训服，正面与腰间都缝着实用的大口袋，是卢卡娅在野外的常服。轻便耐磨的面料与不碍翅膀的剪裁让穿着者走得比平时更快。 -->
+    <graphicData>
+      <texPath>Rukaya/Apparel/OnSkin/TrainingUniform/Rukaya_TrainingUniform</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Cutout</shaderType>
+    </graphicData>
+    <statBases>
+      <Mass>1.2</Mass>
+      <EquipDelay>1.8</EquipDelay>
+      <WorkToMake>3000</WorkToMake>
+      <ArmorRating_Sharp>0.16</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.10</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.12</ArmorRating_Heat>
+      <Insulation_Cold>8</Insulation_Cold>
+      <Insulation_Heat>10</Insulation_Heat>
+    </statBases>
+    <costList>
+      <Cloth>55</Cloth>
+    </costList>
+    <apparel>
+      <useWornGraphicMask>false</useWornGraphicMask>
+      <developmentalStageFilter>Child, Adult</developmentalStageFilter>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Neck</li>
+        <li>Shoulders</li>
+        <li>Arms</li>
+        <li>Legs</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Rukaya/Apparel/OnSkin/TrainingUniform/Rukaya_TrainingUniform</wornGraphicPath>
+      <!-- 身份词条必须写在叶子 Def 本地：补丁在 XmlInheritance.Resolve() 之前执行，
+           看不到从 Rukaya_OnSkinBaseI 继承来的 <tags>，只能替换本地已存在的节点。 -->
+      <tags>
+        <li>Rukaya_OnSkin</li>
+        <li>Rukaya_Dress_Service</li>
+      </tags>
+    </apparel>
+    <!-- 只给移速，不要在这里添加任何其它加成。 -->
+    <equippedStatOffsets>
+      <MoveSpeed>0.16</MoveSpeed>
+    </equippedStatOffsets>
+  </ThingDef>
+
+  <!-- 3级（Combat）· 动力装甲（贴图 Rukaya/Apparel/OnSkin/Armour/Rukaya_Armour）· 定位对标原版海军装甲
+       （marine armor）：全躯干覆盖 + 部分真空密封，但把原版的移动惩罚换成助力加成
+       （瞄准 / 近战 / 移动），温度上改用一整套宽幅隔热内衬，御寒与避热两端都能用。
+       占用 OnSkin 层，因此其上仍可再穿胸挂（Middle）与外衣（Shell）。 -->
+  <ThingDef ParentName="Rukaya_OnSkinBaseIII">
+    <defName>Rukaya_Armour</defName>
+    <label>Rukaya power armor</label>
+    <!-- 中文：卢卡娅动力装甲 -->
+    <techLevel>Spacer</techLevel>
+    <description>A layered power armor suit rebuilt from recovered old-homeworld patterns and
+      built to marine-grade protection. Sealed joints and an insulated underlayer let the wearer
+      fight across a wide band of temperatures, while the suit's assistors steady the hands, speed
+      the draw and carry its own weight. Its seal against hard vacuum is only partial.</description>
+    <!-- 中文翻译：一套以复原的旧母星版型重建、按海军装甲级别打造的分层动力装甲。密封关节与隔热内衬让穿着者能在很宽的温度范围内作战，而动力装甲的助力装置能稳住双手、加快出枪，并替人承下自身的分量。它对真空只提供部分密封。 -->
+    <graphicData>
+      <texPath>Rukaya/Apparel/OnSkin/Armour/Rukaya_Armour</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Cutout</shaderType>
+    </graphicData>
+    <statBases>
+      <Mass>9.0</Mass>
+      <EquipDelay>10.0</EquipDelay>
+      <MaxHitPoints>320</MaxHitPoints>
+      <WorkToMake>42000</WorkToMake>
+      <ArmorRating_Sharp>1.05</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.45</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.55</ArmorRating_Heat>
+      <Insulation_Cold>55</Insulation_Cold>
+      <Insulation_Heat>45</Insulation_Heat>
+    </statBases>
+    <costList>
+      <Cloth>70</Cloth>
+      <Steel>60</Steel>
+      <Plasteel>60</Plasteel>
+      <ComponentIndustrial>6</ComponentIndustrial>
+      <!-- 助力外骨骼与密封关节依赖活性物质回路，因此装甲本体需消耗一定量的活性物质容器 -->
+      <Rukaya_ActiveMatterContainer>12</Rukaya_ActiveMatterContainer>
+    </costList>
+    <apparel>
+      <useWornGraphicMask>false</useWornGraphicMask>
+      <developmentalStageFilter>Child, Adult</developmentalStageFilter>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Neck</li>
+        <li>Shoulders</li>
+        <li>Arms</li>
+        <li>Legs</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Rukaya/Apparel/OnSkin/Armour/Rukaya_Armour</wornGraphicPath>
+      <tags>
+        <li>Rukaya_PowerArmor</li>
+      </tags>
+    </apparel>
+    <equippedStatOffsets>
+      <AimingDelayFactor>-0.10</AimingDelayFactor>
+      <MeleeHitChance>0.10</MeleeHitChance>
+      <MeleeDodgeChance>0.05</MeleeDodgeChance>
+      <MoveSpeed>0.20</MoveSpeed>
+      <VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.3</VacuumResistance>
+    </equippedStatOffsets>
+    <tradeTags>
+      <li>Armor</li>
+      <li>HiTechArmor</li>
+    </tradeTags>
+  </ThingDef>
+
+</Defs>

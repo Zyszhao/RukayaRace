@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Rukaya_LaserHeat_Inspect>激光热量：{0} / {1}</Rukaya_LaserHeat_Inspect>
+  <Rukaya_LaserHeat_Overheated>已过热 - 正在散热。热量降至 {0} 时恢复射击。</Rukaya_LaserHeat_Overheated>
+  <Rukaya_LaserHeat_GizmoDisabled>激光过热（{0} / {1}）</Rukaya_LaserHeat_GizmoDisabled>
+</LanguageData>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!--
+    飞行疲惫。
+
+    两个层次都挂在这一个 hediff 上，玩家只需要看一个图标：
+      · 累积层 —— severity 由 Hediff_FlightExhaustion 每次紧急飞行 +1.0，随时间缓慢衰减；
+        惩罚强度由下面的 stage 按 severity 分级，类本身不碰 statOffsets。
+      · 单次层 —— "刚用完就腿软"的短时移动惩罚，由 StatPart_RukayaFlightExhaustion 读
+        Hediff_FlightExhaustion.ShortPenaltyActive 动态叠加（运行期窗口不是 Def 静态数据，
+        写不进 stage）。
+
+    ⚠ 惩罚方向容易写错，这里逐条记下已核实的口径：
+      · MoveSpeed / MeleeHitChance / MeleeDodgeChance 是 StatDef，走 statOffsets，**负数为惩罚**；
+      · AimingDelayFactor 是"瞄准耗时倍率"，**正数为惩罚**（0.25 = 瞄准时间增加 25%）；
+      · Manipulation 是 PawnCapacityDef（基准 1.0），**必须走 capMods**，写在 statOffsets 里会被静默忽略。
+
+    数值：maxSeverity 3.0 且每次 +1.0 → 「连用 3 次到达最重档」。
+    衰减每 250 tick 减 0.01，所以 1.0 点约需 25 000 tick ≈ 10.4 游戏小时恢复（1 天 = 60 000 tick）。
+  -->
+  <HediffDef>
+    <defName>Rukaya_FlightExhaustion</defName>
+    <label>flight exhaustion</label>
+    <!-- 中文：飞行疲惫 -->
+    <description>The wing muscles ache from repeated bursts of emergency flight. Recovers slowly with rest.</description>
+    <!-- 中文翻译：反复进行紧急飞行使双翼肌肉酸痛。需要休息才能缓慢恢复。 -->
+    <hediffClass>RukayaRace.Flight.Hediff_FlightExhaustion</hediffClass>
+    <isBad>true</isBad>
+    <maxSeverity>3.0</maxSeverity>
+    <initialSeverity>1.0</initialSeverity>
+    <everCurableByItem>false</everCurableByItem>
+    <defaultLabelColor>(0.85,0.6,0.35)</defaultLabelColor>
+    <comps>
+      <li Class="HediffCompProperties_DisappearsOnDeath"/>
+    </comps>
+
+    <!--
+      stage 按 severity 升序排列，引擎选"第一条 severity 未超过当前值的 stage"。
+      所以 0 / 1 / 2 / 3 四个阈值分别对应四档，档位用词沿用原版 hediff 的严重度词表
+      （对照 Data/Core 的 BloodLoss / Malnutrition / ToxicBuildup）：
+        minor = 较轻 / moderate = 中等 / severe = 严重 / extreme = 极重
+      这里把 "双翼" 语境并入档位名，读起来仍是这一族用词，而不是自造的四级。
+      注意第一条是 minSeverity 0：hediff 存在即生效（用于承载"刚用过"的轻微状态）。
+    -->
+    <stages>
+      <li>
+        <minSeverity>0</minSeverity>
+        <label>minor wing strain</label>
+        <!-- 中文：轻度翼肌劳损 -->
+        <statOffsets>
+          <MoveSpeed>-0.15</MoveSpeed>
+        </statOffsets>
+      </li>
+      <li>
+        <minSeverity>1.0</minSeverity>
+        <label>moderate wing strain</label>
+        <!-- 中文：中度翼肌劳损 -->
+        <statOffsets>
+          <MoveSpeed>-0.45</MoveSpeed>
+          <AimingDelayFactor>0.10</AimingDelayFactor>
+          <MeleeHitChance>-2</MeleeHitChance>
+        </statOffsets>
+      </li>
+      <li>
+        <minSeverity>2.0</minSeverity>
+        <label>severe wing strain</label>
+        <!-- 中文：重度翼肌劳损 -->
+        <statOffsets>
+          <MoveSpeed>-0.90</MoveSpeed>
+          <AimingDelayFactor>0.25</AimingDelayFactor>
+          <MeleeHitChance>-5</MeleeHitChance>
+          <MeleeDodgeChance>-3</MeleeDodgeChance>
+        </statOffsets>
+        <!-- 操作能力是 PawnCapacity，必须走 capMods（基准 1.0，惩罚为负）。 -->
+        <capMods>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.15</offset>
+          </li>
+        </capMods>
+      </li>
+      <li>
+        <minSeverity>3.0</minSeverity>
+        <label>extreme wing strain</label>
+        <!-- 中文：极重翼肌劳损 -->
+        <statOffsets>
+          <MoveSpeed>-1.50</MoveSpeed>
+          <AimingDelayFactor>0.45</AimingDelayFactor>
+          <MeleeHitChance>-10</MeleeHitChance>
+          <MeleeDodgeChance>-6</MeleeDodgeChance>
+        </statOffsets>
+        <capMods>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.35</offset>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+
+</Defs>

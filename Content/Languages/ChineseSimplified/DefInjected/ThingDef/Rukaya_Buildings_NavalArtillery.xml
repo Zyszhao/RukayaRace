@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Rukaya_NavalArtillery.label>卢卡娅舰炮炮塔</Rukaya_NavalArtillery.label>
+  <Rukaya_NavalArtillery.description>一座由卢卡娅舰炮改装而成、用于陆上部署的固定炮塔。它能自主索敌，并以高初速平射弹道成对发射活性物质炮弹，齐射节奏紧凑；以精度为代价，换来比常规迫击炮更远的射程、更强的穿甲能力与更大的爆炸范围。</Rukaya_NavalArtillery.description>
+
+  <!-- CompRefuelable 的玩家可见字段（TranslationHandle 使用 compClass，而非属性类名） -->
+  <Rukaya_NavalArtillery.comps.CompRefuelable.fuelLabel>活性物质（直至重新装填）</Rukaya_NavalArtillery.comps.CompRefuelable.fuelLabel>
+  <Rukaya_NavalArtillery.comps.CompRefuelable.fuelGizmoLabel>活性物质</Rukaya_NavalArtillery.comps.CompRefuelable.fuelGizmoLabel>
+  <Rukaya_NavalArtillery.comps.CompRefuelable.outOfFuelMessage>需要装填活性物质</Rukaya_NavalArtillery.comps.CompRefuelable.outOfFuelMessage>
+
+</LanguageData>

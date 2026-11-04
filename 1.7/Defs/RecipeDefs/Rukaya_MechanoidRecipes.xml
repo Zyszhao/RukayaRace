@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ============================================================
+       Rukaya 机械体（Mechanoids）· 培养配方
+       制造场所：LargeMechGestator（大型机械培育舱）
+         —— 通过公共父配方的 recipeUsers 显式挂载，重量等级不会自动分配制造设施。
+       研究前置：Rukaya_Mechanoid_I（卢卡娅机械体）；导弹型另需 Rukaya_AirDefenseMissiles。
+       ============================================================ -->
+
+  <RecipeDef Name="Rukaya_BaseMechanoidRecipe" ParentName="BaseMechanoidRecipe" Abstract="True">
+    <gestationCycles>6</gestationCycles>
+    <displayPriority>320</displayPriority>
+    <researchPrerequisite>Rukaya_Mechanoid_I</researchPrerequisite>
+    <recipeUsers>
+      <li>LargeMechGestator</li>
+    </recipeUsers>
+    <ingredients Inherit="False">
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </filter>
+        <count>255</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Plasteel</li>
+          </thingDefs>
+        </filter>
+        <count>355</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ComponentIndustrial</li>
+          </thingDefs>
+        </filter>
+        <count>8</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>SubcoreHigh</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+  </RecipeDef>
+
+  <RecipeDef ParentName="Rukaya_BaseMechanoidRecipe">
+    <defName>Rukaya_GestateMechanoid_Rocket</defName>
+    <label>培育卢卡娅通用机械“火箭型”</label>
+    <!-- 中文：培育卢卡娅通用机械“火箭型” -->
+    <description>Gestate a dedicated Rukaya mechanoid armed with a multi-tube rocket launcher turret.</description>
+    <!-- 中文翻译：培育一台基于标准卢卡娅机械底盘的专用机械体，装备多管火箭发射巢。 -->
+    <descriptionHyperlinks>
+      <ThingDef>Rukaya_MechChassis_Rocket</ThingDef>
+    </descriptionHyperlinks>
+    <products>
+      <Rukaya_MechChassis_Rocket>1</Rukaya_MechChassis_Rocket>
+    </products>
+  </RecipeDef>
+
+  <RecipeDef ParentName="Rukaya_BaseMechanoidRecipe">
+    <defName>Rukaya_GestateMechanoid_Laser</defName>
+    <label>培育卢卡娅通用机械“激光型”</label>
+    <!-- 中文：培育卢卡娅通用机械“激光型” -->
+    <description>Gestate a dedicated Rukaya mechanoid armed with a laser turret.</description>
+    <!-- 中文翻译：培育一台基于标准卢卡娅机械底盘的专用机械体，装备一座激光炮塔。 -->
+    <descriptionHyperlinks>
+      <ThingDef>Rukaya_MechChassis_Laser</ThingDef>
+    </descriptionHyperlinks>
+    <products>
+      <Rukaya_MechChassis_Laser>1</Rukaya_MechChassis_Laser>
+    </products>
+  </RecipeDef>
+
+  <RecipeDef ParentName="Rukaya_BaseMechanoidRecipe">
+    <defName>Rukaya_GestateMechanoid_MachineCannon</defName>
+    <label>培育卢卡娅通用机械“机炮型”</label>
+    <!-- 中文：培育卢卡娅通用机械“机炮型” -->
+    <description>Gestate a dedicated Rukaya mechanoid armed with a machine cannon turret.</description>
+    <!-- 中文翻译：培育一台基于标准卢卡娅机械底盘的专用机械体，装备一门机炮炮塔。 -->
+    <descriptionHyperlinks>
+      <ThingDef>Rukaya_MechChassis_MachineCannon</ThingDef>
+    </descriptionHyperlinks>
+    <products>
+      <Rukaya_MechChassis_MachineCannon>1</Rukaya_MechChassis_MachineCannon>
+    </products>
+  </RecipeDef>
+
+  <RecipeDef ParentName="Rukaya_BaseMechanoidRecipe">
+    <defName>Rukaya_GestateMechanoid_MineSweeper</defName>
+    <label>培育卢卡娅通用机械“扫雷索型”</label>
+    <!-- 中文：培育卢卡娅通用机械“扫雷索型” -->
+    <description>Gestate a dedicated Rukaya mechanoid armed with a mine sweeper turret.</description>
+    <!-- 中文翻译：培育一台基于标准卢卡娅机械底盘的专用机械体，装备一套扫雷索具。 -->
+    <descriptionHyperlinks>
+      <ThingDef>Rukaya_MechChassis_MineSweeper</ThingDef>
+    </descriptionHyperlinks>
+    <products>
+      <Rukaya_MechChassis_MineSweeper>1</Rukaya_MechChassis_MineSweeper>
+    </products>
+  </RecipeDef>
+
+  <RecipeDef ParentName="Rukaya_BaseMechanoidRecipe">
+    <defName>Rukaya_GestateMechanoid_SAMLauncher</defName>
+    <researchPrerequisites>
+      <li>Rukaya_AirDefenseMissiles</li>
+    </researchPrerequisites>
+    <label>培育卢卡娅通用机械“导弹型”</label>
+    <!-- 中文：培育卢卡娅通用机械“导弹型” -->
+    <description>Gestate a dedicated Rukaya mechanoid armed with a missile turret.</description>
+    <!-- 中文翻译：培育一台基于标准卢卡娅机械底盘的专用机械体，装备一座导弹发射巢。 -->
+    <descriptionHyperlinks>
+      <ThingDef>Rukaya_MechChassis_SAMLauncher</ThingDef>
+    </descriptionHyperlinks>
+    <products>
+      <Rukaya_MechChassis_SAMLauncher>1</Rukaya_MechChassis_SAMLauncher>
+    </products>
+  </RecipeDef>
+
+  <RecipeDef ParentName="Rukaya_BaseMechanoidRecipe">
+    <defName>Rukaya_GestateMechanoid_Mortar</defName>
+    <label>培育卢卡娅通用机械“迫击炮型”</label>
+    <!-- 中文：培育卢卡娅通用机械“迫击炮型” -->
+    <description>Gestate a dedicated Rukaya mechanoid armed with a mortar turret.</description>
+    <!-- 中文翻译：培育一台基于标准卢卡娅机械底盘的专用机械体，装备一门迫击炮炮塔。 -->
+    <descriptionHyperlinks>
+      <ThingDef>Rukaya_MechChassis_Mortar</ThingDef>
+    </descriptionHyperlinks>
+    <products>
+      <Rukaya_MechChassis_Mortar>1</Rukaya_MechChassis_Mortar>
+    </products>
+  </RecipeDef>
+
+  <RecipeDef ParentName="Rukaya_BaseMechanoidRecipe">
+    <defName>Rukaya_GestateMechanoid_Plasma</defName>
+    <label>培育卢卡娅通用机械“等离子型”</label>
+    <!-- 中文：培育卢卡娅通用机械“等离子型” -->
+    <description>Gestate a dedicated Rukaya mechanoid armed with a plasma turret.</description>
+    <!-- 中文翻译：培育一台基于标准卢卡娅机械底盘的专用机械体，装备一座等离子炮塔。 -->
+    <descriptionHyperlinks>
+      <ThingDef>Rukaya_MechChassis_Plasma</ThingDef>
+    </descriptionHyperlinks>
+    <products>
+      <Rukaya_MechChassis_Plasma>1</Rukaya_MechChassis_Plasma>
+    </products>
+  </RecipeDef>
+  <RecipeDef ParentName="Rukaya_BaseMechanoidRecipe">
+    <defName>Rukaya_GestateMechanoid_Radar</defName>
+    <label>培育卢卡娅通用机械“雷达型”</label>
+    <!-- 中文：培育卢卡娅通用机械“雷达型” -->
+    <description>Gestate a dedicated Rukaya mechanoid developed from the standard chassis, carrying a radar antenna.</description>
+    <!-- 中文翻译：培育一台基于标准卢卡娅机械底盘发展的专用机械体，搭载雷达天线作为传感平台。 -->
+    <descriptionHyperlinks>
+      <ThingDef>Rukaya_MechRadar</ThingDef>
+    </descriptionHyperlinks>
+    <ingredients Inherit="False">
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </filter>
+        <count>155</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Plasteel</li>
+          </thingDefs>
+        </filter>
+        <count>175</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ComponentIndustrial</li>
+          </thingDefs>
+        </filter>
+        <count>10</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>SubcoreHigh</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <products>
+      <Rukaya_MechRadar>1</Rukaya_MechRadar>
+    </products>
+  </RecipeDef>
+
+</Defs>

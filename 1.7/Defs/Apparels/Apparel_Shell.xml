@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ===== 外套层（使用原版 Shell 层，drawOrder 200）===== -->
+  <ThingDef Name="Rukaya_ShellBase" ParentName="Rukaya_ApparelBase" Abstract="True">
+    <statBases>
+      <Mass>1.5</Mass>
+      <EquipDelay>2.5</EquipDelay>
+    </statBases>
+    <apparel>
+      <layers>
+        <li>Shell</li>
+      </layers>
+    </apparel>
+    <thingCategories>
+      <li>Rukaya_Apparel_Shell</li>
+    </thingCategories>
+  </ThingDef>
+
+  <ThingDef Name="Rukaya_ShellBaseI" ParentName="Rukaya_ShellBase" Abstract="True">
+    <recipeMaker>
+      <researchPrerequisite>Rukaya_Apparel_I</researchPrerequisite>
+    </recipeMaker>
+    <apparel>
+      <tags>
+        <li>Rukaya_Shell</li>
+      </tags>
+    </apparel>
+    <tradeTags>
+      <li>Rukaya_DailyClothing</li>
+    </tradeTags>
+  </ThingDef>
+
+  <ThingDef Name="Rukaya_ShellBaseII" ParentName="Rukaya_ShellBase" Abstract="True">
+    <recipeMaker>
+      <researchPrerequisite>Rukaya_Apparel_II</researchPrerequisite>
+    </recipeMaker>
+    <apparel>
+      <tags>
+        <li>Rukaya_Shell</li>
+      </tags>
+    </apparel>
+    <tradeTags>
+      <li>Rukaya_DailyClothing</li>
+    </tradeTags>
+  </ThingDef>
+
+  <ThingDef Name="Rukaya_ShellBaseIII" ParentName="Rukaya_ShellBase" Abstract="True">
+    <recipeMaker>
+      <researchPrerequisite>Rukaya_Apparel_III</researchPrerequisite>
+    </recipeMaker>
+    <apparel>
+      <tags>
+        <li>Rukaya_Shell</li>
+      </tags>
+    </apparel>
+    <tradeTags>
+      <li>Rukaya_DailyClothing</li>
+    </tradeTags>
+  </ThingDef>
+
+  <!-- 1级（Basic）· 精致防寒披肩 -->
+  <ThingDef ParentName="Rukaya_ShellBaseI">
+    <defName>Rukaya_WinterCape</defName>
+    <label>Rukaya fine winter cape</label>
+    <!-- 中文翻译：卢卡娅精致防寒披肩 -->
+    <techLevel>Medieval</techLevel>
+    <description>A light cape of fine cloth, worn over everything else against the cold wind. It
+      wraps the shoulders and back, and leaves the wings free to move.</description>
+    <!-- 中文翻译：一条细布轻披肩，罩在所有衣物之外抵御寒风。它裹住肩背，同时不妨碍翅膀活动。 -->
+    <graphicData>
+      <texPath>Rukaya/Apparel/Shell/WinterCape/Rukaya_WinterCape</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Cutout</shaderType>
+    </graphicData>
+    <statBases>
+      <Mass>1.2</Mass>
+      <EquipDelay>2.0</EquipDelay>
+      <WorkToMake>2800</WorkToMake>
+      <ArmorRating_Sharp>0.06</ArmorRating_Sharp>
+      <ArmorRating_Heat>0.03</ArmorRating_Heat>
+      <Insulation_Cold>12</Insulation_Cold>
+      <Insulation_Heat>4</Insulation_Heat>
+    </statBases>
+    <costList>
+      <Cloth>55</Cloth>
+    </costList>
+    <apparel>
+      <useWornGraphicMask>false</useWornGraphicMask>
+      <developmentalStageFilter>Child, Adult</developmentalStageFilter>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Shoulders</li>
+      </bodyPartGroups>
+      <shellRenderedBehindHead>true</shellRenderedBehindHead>
+      <wornGraphicPath>Rukaya/Apparel/Shell/WinterCape/Rukaya_WinterCape</wornGraphicPath>
+      <anyTechLevelCanUseForWarmth>true</anyTechLevelCanUseForWarmth>
+      <!-- 身份词条必须写在叶子 Def 本地：补丁在 XmlInheritance.Resolve() 之前执行，
+           看不到从 Rukaya_*BaseI/II/III 继承来的 <tags>，只能替换本地已存在的节点。 -->
+      <tags>
+        <li>Rukaya_Shell</li>
+        <li>Rukaya_Dress_Civilian</li>
+      </tags>
+    </apparel>
+  </ThingDef>
+
+  <!-- 2级（Advanced）· 休闲夹克（贴图 new_textures/RukayaShell3_*）· 本套次级件，数值整体低于休闲衬衫且不覆腿 -->
+  <ThingDef ParentName="Rukaya_ShellBaseII">
+    <defName>Rukaya_CasualJacket</defName>
+    <label>Rukaya casual jacket</label>
+    <!-- 中文：卢卡娅休闲夹克 -->
+    <techLevel>Industrial</techLevel>
+    <description>A loose casual jacket worn over everything else against wind and grit. The open back
+      leaves the wings free to move, and the reinforced shoulders take the strain out of heavy work.</description>
+    <!-- 中文翻译：一件宽松的休闲夹克，罩在其他衣物之外抵御风沙。背部开口不碍翅膀活动，加固的肩部让繁重的工作也不再吃力。 -->
+    <graphicData>
+      <texPath>Rukaya/Apparel/Shell/CasualJacket/Rukaya_CasualJacket</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Cutout</shaderType>
+    </graphicData>
+    <statBases>
+      <Mass>1.0</Mass>
+      <EquipDelay>1.8</EquipDelay>
+      <WorkToMake>4500</WorkToMake>
+      <ArmorRating_Sharp>0.08</ArmorRating_Sharp>
+      <ArmorRating_Heat>0.04</ArmorRating_Heat>
+      <Insulation_Cold>9</Insulation_Cold>
+      <Insulation_Heat>10</Insulation_Heat>
+    </statBases>
+    <costList>
+      <Cloth>55</Cloth>
+    </costList>
+    <apparel>
+      <useWornGraphicMask>false</useWornGraphicMask>
+      <developmentalStageFilter>Child, Adult</developmentalStageFilter>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Neck</li>
+        <li>Shoulders</li>
+        <li>Arms</li>
+      </bodyPartGroups>
+      <shellRenderedBehindHead>true</shellRenderedBehindHead>
+      <wornGraphicPath>Rukaya/Apparel/Shell/CasualJacket/Rukaya_CasualJacket</wornGraphicPath>
+      <anyTechLevelCanUseForWarmth>true</anyTechLevelCanUseForWarmth>
+      <tags>
+        <li>Rukaya_Shell</li>
+        <li>Rukaya_Dress_Civilian</li>
+      </tags>
+    </apparel>
+    <equippedStatOffsets>
+      <MoveSpeed>0.05</MoveSpeed>
+      <GeneralLaborSpeed>0.05</GeneralLaborSpeed>
+    </equippedStatOffsets>
+  </ThingDef>
+
+  <!-- 1级（Basic）· 风衣（贴图 6/RukayaShell4_*）· 定位对标原版 Duster：
+       数值整体照抄原版 Duster（MaxHitPoints 200 / Mass 2 / EquipDelay 3 / PathCost 14 /
+       StuffEffectMultiplier* 同原版），并加上原版 Duster 没有的社交与谈判加成。 -->
+  <ThingDef ParentName="Rukaya_ShellBaseI">
+    <defName>Rukaya_TrenchCoat</defName>
+    <label>Rukaya trench coat</label>
+    <!-- 中文：卢卡娅风衣 -->
+    <techLevel>Medieval</techLevel>
+    <description>A long trench coat cut for the Rukaya's frame, in the same heavy outdoor pattern as
+      the duster. The tails hang clear of the wings, and the sweeping lines give the wearer a
+      composed, deliberate presence that carries into any negotiation.</description>
+    <!-- 中文翻译：一件按卢卡娅体型裁制的长风衣，版式与原版风衣同属厚重的户外款式。下摆为翅膀留出空间，利落的线条让穿着者看上去沉稳而从容，这份气度在任何谈判场合都用得上。 -->
+    <graphicData>
+      <texPath>Rukaya/Apparel/Shell/TrenchCoat/Rukaya_TrenchCoat</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Cutout</shaderType>
+    </graphicData>
+    <statBases>
+      <Mass>2.0</Mass>
+      <EquipDelay>3.0</EquipDelay>
+      <MaxHitPoints>200</MaxHitPoints>
+      <WorkToMake>10000</WorkToMake>
+      <StuffEffectMultiplierArmor>0.3</StuffEffectMultiplierArmor>
+      <StuffEffectMultiplierInsulation_Cold>0.6</StuffEffectMultiplierInsulation_Cold>
+      <StuffEffectMultiplierInsulation_Heat>0.85</StuffEffectMultiplierInsulation_Heat>
+    </statBases>
+    <pathCost>14</pathCost>
+    <costList>
+      <Cloth>80</Cloth>
+    </costList>
+    <apparel>
+      <useWornGraphicMask>false</useWornGraphicMask>
+      <developmentalStageFilter>Child, Adult</developmentalStageFilter>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Neck</li>
+        <li>Shoulders</li>
+        <li>Arms</li>
+        <li>Legs</li>
+      </bodyPartGroups>
+      <shellRenderedBehindHead>true</shellRenderedBehindHead>
+      <wornGraphicPath>Rukaya/Apparel/Shell/TrenchCoat/Rukaya_TrenchCoat</wornGraphicPath>
+      <tags>
+        <li>Rukaya_Shell</li>
+        <li>Rukaya_Dress_Service</li>
+      </tags>
+    </apparel>
+    <equippedStatOffsets>
+      <SocialImpact>0.10</SocialImpact>
+      <NegotiationAbility>0.15</NegotiationAbility>
+    </equippedStatOffsets>
+  </ThingDef>
+
+  <!-- 注：原 Rukaya_Armour 已按需求改为占用 OnSkin 层，定义移至 Apparel_OnSkin.xml，
+       贴图同步迁到 Content/Textures/Rukaya/Apparel/OnSkin/Armour/。 -->
+
+</Defs>

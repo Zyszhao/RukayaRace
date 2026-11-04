@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Emergency flight AbilityDef (1.7/Defs/AbilityDefs/Rukaya_Abilities.xml) -->
+  <Rukaya_EmergencyFly.label>emergency flight</Rukaya_EmergencyFly.label>
+  <Rukaya_EmergencyFly.description>A desperate burst of the wings that hurls the Rukaya across the field in an instant. Cheap to invoke, but every use leaves her wings burning with fatigue.</Rukaya_EmergencyFly.description>
+
+</LanguageData>

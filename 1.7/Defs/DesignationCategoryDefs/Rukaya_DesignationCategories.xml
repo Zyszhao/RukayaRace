@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <DesignationCategoryDef>
+    <defName>Rukaya_Buildings</defName>
+    <label>Rukaya buildings</label>
+    <!-- 中文：卢卡娅建筑 -->
+    <order>20</order>
+    <specialDesignatorClasses>
+      <li>Designator_Cancel</li>
+      <li>Designator_Deconstruct</li>
+    </specialDesignatorClasses>
+  </DesignationCategoryDef>
+</Defs>

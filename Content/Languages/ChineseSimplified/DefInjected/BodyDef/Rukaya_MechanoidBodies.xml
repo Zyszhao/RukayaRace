@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- BodyDef（注意：BodyDef 与 BodyPartDef 是两个不同的 Def 类型，
+       必须分别放在 DefInjected/BodyDef 与 DefInjected/BodyPartDef 目录下） -->
+  <Rukaya_MechanoidChassis.label>卢卡娅机械底盘</Rukaya_MechanoidChassis.label>
+  <Rukaya_MechRadarBody.label>卢卡娅雷达车底盘</Rukaya_MechRadarBody.label>
+
+
+  <Rukaya_MechanoidChassis.corePart.customLabel>底盘车体</Rukaya_MechanoidChassis.corePart.customLabel>
+  <Rukaya_MechanoidChassis.corePart.parts.0.customLabel>湿件计算核心</Rukaya_MechanoidChassis.corePart.parts.0.customLabel>
+  <Rukaya_MechanoidChassis.corePart.parts.1.customLabel>主发电机</Rukaya_MechanoidChassis.corePart.parts.1.customLabel>
+  <Rukaya_MechanoidChassis.corePart.parts.2.customLabel>辅助发电机</Rukaya_MechanoidChassis.corePart.parts.2.customLabel>
+  <Rukaya_MechanoidChassis.corePart.parts.3.customLabel>冷却液再处理器</Rukaya_MechanoidChassis.corePart.parts.3.customLabel>
+  <Rukaya_MechanoidChassis.corePart.parts.4.customLabel>光电传感器舱</Rukaya_MechanoidChassis.corePart.parts.4.customLabel>
+  <Rukaya_MechanoidChassis.corePart.parts.5.customLabel>炮塔座</Rukaya_MechanoidChassis.corePart.parts.5.customLabel>
+  <Rukaya_MechanoidChassis.corePart.parts.6.customLabel>装甲外壳</Rukaya_MechanoidChassis.corePart.parts.6.customLabel>
+  <Rukaya_MechanoidChassis.corePart.parts.7.customLabel>前倾斜装甲板</Rukaya_MechanoidChassis.corePart.parts.7.customLabel>
+  <Rukaya_MechanoidChassis.corePart.parts.8.customLabel>左侧装甲板</Rukaya_MechanoidChassis.corePart.parts.8.customLabel>
+  <Rukaya_MechanoidChassis.corePart.parts.9.customLabel>右侧装甲板</Rukaya_MechanoidChassis.corePart.parts.9.customLabel>
+  <Rukaya_MechanoidChassis.corePart.parts.10.customLabel>左螺旋推进筒</Rukaya_MechanoidChassis.corePart.parts.10.customLabel>
+  <Rukaya_MechanoidChassis.corePart.parts.10.parts.0.customLabel>左螺旋叶片</Rukaya_MechanoidChassis.corePart.parts.10.parts.0.customLabel>
+  <Rukaya_MechanoidChassis.corePart.parts.10.parts.1.customLabel>左螺旋传动轴</Rukaya_MechanoidChassis.corePart.parts.10.parts.1.customLabel>
+  <Rukaya_MechanoidChassis.corePart.parts.11.customLabel>右螺旋推进筒</Rukaya_MechanoidChassis.corePart.parts.11.customLabel>
+  <Rukaya_MechanoidChassis.corePart.parts.11.parts.0.customLabel>右螺旋叶片</Rukaya_MechanoidChassis.corePart.parts.11.parts.0.customLabel>
+  <Rukaya_MechanoidChassis.corePart.parts.11.parts.1.customLabel>右螺旋传动轴</Rukaya_MechanoidChassis.corePart.parts.11.parts.1.customLabel>
+  <Rukaya_MechRadarBody.corePart.customLabel>底盘车体</Rukaya_MechRadarBody.corePart.customLabel>
+  <Rukaya_MechRadarBody.corePart.parts.0.customLabel>湿件计算核心</Rukaya_MechRadarBody.corePart.parts.0.customLabel>
+  <Rukaya_MechRadarBody.corePart.parts.1.customLabel>主发电机</Rukaya_MechRadarBody.corePart.parts.1.customLabel>
+  <Rukaya_MechRadarBody.corePart.parts.2.customLabel>辅助发电机</Rukaya_MechRadarBody.corePart.parts.2.customLabel>
+  <Rukaya_MechRadarBody.corePart.parts.3.customLabel>冷却液再处理器</Rukaya_MechRadarBody.corePart.parts.3.customLabel>
+  <Rukaya_MechRadarBody.corePart.parts.4.customLabel>信号处理器</Rukaya_MechRadarBody.corePart.parts.4.customLabel>
+  <Rukaya_MechRadarBody.corePart.parts.5.customLabel>雷达基座</Rukaya_MechRadarBody.corePart.parts.5.customLabel>
+  <Rukaya_MechRadarBody.corePart.parts.5.parts.0.customLabel>雷达发射器</Rukaya_MechRadarBody.corePart.parts.5.parts.0.customLabel>
+  <Rukaya_MechRadarBody.corePart.parts.5.parts.1.customLabel>雷达天线</Rukaya_MechRadarBody.corePart.parts.5.parts.1.customLabel>
+  <Rukaya_MechRadarBody.corePart.parts.6.customLabel>装甲外壳</Rukaya_MechRadarBody.corePart.parts.6.customLabel>
+  <Rukaya_MechRadarBody.corePart.parts.7.customLabel>前倾斜装甲板</Rukaya_MechRadarBody.corePart.parts.7.customLabel>
+  <Rukaya_MechRadarBody.corePart.parts.8.customLabel>左侧装甲板</Rukaya_MechRadarBody.corePart.parts.8.customLabel>
+  <Rukaya_MechRadarBody.corePart.parts.9.customLabel>右侧装甲板</Rukaya_MechRadarBody.corePart.parts.9.customLabel>
+  <Rukaya_MechRadarBody.corePart.parts.10.customLabel>左螺旋推进筒</Rukaya_MechRadarBody.corePart.parts.10.customLabel>
+  <Rukaya_MechRadarBody.corePart.parts.10.parts.0.customLabel>左螺旋叶片</Rukaya_MechRadarBody.corePart.parts.10.parts.0.customLabel>
+  <Rukaya_MechRadarBody.corePart.parts.10.parts.1.customLabel>左螺旋传动轴</Rukaya_MechRadarBody.corePart.parts.10.parts.1.customLabel>
+  <Rukaya_MechRadarBody.corePart.parts.11.customLabel>右螺旋推进筒</Rukaya_MechRadarBody.corePart.parts.11.customLabel>
+  <Rukaya_MechRadarBody.corePart.parts.11.parts.0.customLabel>右螺旋叶片</Rukaya_MechRadarBody.corePart.parts.11.parts.0.customLabel>
+  <Rukaya_MechRadarBody.corePart.parts.11.parts.1.customLabel>右螺旋传动轴</Rukaya_MechRadarBody.corePart.parts.11.parts.1.customLabel>
+
+</LanguageData>

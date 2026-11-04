@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Rukaya_AirMagazine>Anti-air missiles: {0}/{1}</Rukaya_AirMagazine>
+  <!-- 中文：防空导弹备弹：{0}/{1} -->
+  <Rukaya_AirMagazineReloading>Reloading ({0})</Rukaya_AirMagazineReloading>
+  <!-- 中文：装填中（{0}） -->
+  <Rukaya_AirDefenseCoverage>Anti-air coverage: shells and flyers within {0} cells; permitted drop pods and meteorites anywhere on this map.</Rukaya_AirDefenseCoverage>
+  <!-- 中文：防空覆盖：炮弹与飞行物限于{0}格内；允许拦截的空投仓与陨石覆盖全图。 -->
+</LanguageData>

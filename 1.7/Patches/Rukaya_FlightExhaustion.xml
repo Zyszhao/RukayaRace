@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <!--
+    把 StatPart_RukayaFlightExhaustion 追加到 MoveSpeed 的 parts 列表上。
+
+    为什么需要这条 patch：飞行疲惫的"短时移动惩罚"是一个**运行期窗口**
+    （Hediff_FlightExhaustion.ShortPenaltyActive，施放时开、10 秒后关），
+    而 hediff stage 只能表达"按 severity 静态分级"的东西 —— 两者不是一回事。
+    所以短时惩罚走 StatPart，累积惩罚留在 HediffDef 的 stages 里。
+
+    ⚠ 用 PatchOperationAdd + Append 的写法追加到 parts 末尾，**不要**用
+    PatchOperationReplace：那会覆盖掉原版 MoveSpeed 自己的 StatPart，把移动速度的基础计算整个打坏。
+
+    本 patch 无条件生效（不限于卢卡娅）：StatPart 内部第一件事就是找 Rukaya_FlightExhaustion
+    hediff，只有带这个 hediff 的 pawn 才会被改动，其余 pawn 的查询代价是一次快速的
+    hediff-def 查找并直接短路返回。
+  -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/StatDef[defName="MoveSpeed"]/parts</xpath>
+    <value>
+      <li Class="RukayaRace.Flight.StatPart_RukayaFlightExhaustion"/>
+    </value>
+  </Operation>
+
+</Patch>

@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Defs>
+  <PawnKindDef ParentName="BaseMechanoidKind">
+    <defName>Rukaya_MechContainer</defName>
+    <label>Rukaya cargo mechanoid</label>
+    <!-- 中文：卢卡娅运输机械体 -->
+    <race>Rukaya_MechContainer</race>
+    <defaultFactionDef>Rukaya_DrifterAlliance</defaultFactionDef>
+    <combatPower>40</combatPower>
+    <isFighter>false</isFighter>
+    <allowInMechClusters>false</allowInMechClusters>
+    <useFactionXenotypes>false</useFactionXenotypes>
+    <weaponMoney>0~0</weaponMoney>
+    <techHediffsChance>0</techHediffsChance>
+    <weaponTags Inherit="False" />
+    <techHediffsTags Inherit="False" />
+    <lifeStages>
+      <li MayRequire="Ludeon.RimWorld.Biotech">
+        <bodyGraphicData>
+          <texPath>Rukaya/Mechanoids/Rukaya_MechContainer</texPath>
+          <graphicClass>Graphic_Multi</graphicClass>
+          <shaderType>Cutout</shaderType>
+          <drawSize>3</drawSize>
+          <shadowData>
+            <volume>(0.6, 0.8, 0.6)</volume>
+          </shadowData>
+        </bodyGraphicData>
+      </li>
+      <li>
+        <bodyGraphicData>
+          <texPath>Rukaya/Mechanoids/Rukaya_MechContainer</texPath>
+          <graphicClass>Graphic_Multi</graphicClass>
+          <shaderType>Cutout</shaderType>
+          <drawSize>3</drawSize>
+          <shadowData>
+            <volume>(0.6, 0.8, 0.6)</volume>
+          </shadowData>
+        </bodyGraphicData>
+      </li>
+    </lifeStages>
+  </PawnKindDef>
+  <PawnKindDef ParentName="Rukaya_PawnBase">
+    <defName>Rukaya_Trader</defName>
+    <label>Rukaya merchant</label>
+    <!-- 中文：卢卡娅商人 -->
+    <trader>true</trader>
+    <combatPower>35</combatPower>
+    <isFighter>false</isFighter>
+    <itemQuality>Normal</itemQuality>
+    <apparelMoney>1000~1800</apparelMoney>
+    <weaponMoney>400~650</weaponMoney>
+    <invNutrition>0</invNutrition>
+    <apparelTags>
+      <li>Rukaya_Dress_Civilian</li>
+      <li>Rukaya_Underwear</li>
+    </apparelTags>
+    <apparelDisallowTags>
+      <li>Rukaya_PowerArmor</li>
+    </apparelDisallowTags>
+    <specificApparelRequirements>
+      <li>
+        <bodyPartGroup>Torso</bodyPartGroup>
+        <apparelLayer>OnSkin</apparelLayer>
+        <requiredTag>Rukaya_Dress_Civilian</requiredTag>
+      </li>
+    </specificApparelRequirements>
+    <weaponTags>
+      <li>Rukaya_TradeSidearm</li>
+    </weaponTags>
+    <skills>
+      <li>
+        <skill>Social</skill>
+        <range>8~12</range>
+      </li>
+    </skills>
+    <backstoryFiltersOverride>
+      <li>
+        <categoriesChildhood>
+          <li>Rukaya_ChildGeneral</li>
+        </categoriesChildhood>
+        <categoriesAdulthood>
+          <li>Rukaya_AdultGeneral</li>
+        </categoriesAdulthood>
+      </li>
+    </backstoryFiltersOverride>
+  </PawnKindDef>
+</Defs>

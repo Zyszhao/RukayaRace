@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Defs>
+  <ThingDef ParentName="BaseMechanoid">
+    <defName>Rukaya_MechContainer</defName>
+    <thingClass>Pawn</thingClass>
+    <label>Rukaya cargo mechanoid</label>
+    <!-- 中文：卢卡娅运输机械体 -->
+    <description>An unarmed Rukaya cargo mechanoid. Its screw-driven hull carries supplies over rough ground, providing 300 kg of caravan carrying capacity. It relies on escorts for protection.</description>
+    <!-- 中文：一种无武装的卢卡娅运输机械体。螺旋推进底盘能够载着补给穿越崎岖地形，为商队提供300千克载重。它依靠护卫提供保护。 -->
+    <statBases>
+      <MarketValue>1800</MarketValue>
+      <Mass>220</Mass>
+      <MoveSpeed>3.2</MoveSpeed>
+      <ArmorRating_Blunt>0.15</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.45</ArmorRating_Sharp>
+      <CarryingCapacity>100</CarryingCapacity>
+      <MechEnergyUsageFactor MayRequire="Ludeon.RimWorld.Biotech">0.5</MechEnergyUsageFactor>
+      <BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">2</BandwidthCost>
+      <ControlTakingTime MayRequire="Ludeon.RimWorld.Biotech">12</ControlTakingTime>
+      <WastepacksPerRecharge MayRequire="Ludeon.RimWorld.Biotech">2</WastepacksPerRecharge>
+    </statBases>
+    <race>
+      <intelligence>ToolUser</intelligence>
+      <packAnimal>true</packAnimal>
+      <thinkTreeMain>Rukaya_MechTransport</thinkTreeMain>
+      <renderTree>Misc</renderTree>
+      <body>Rukaya_MechanoidChassis</body>
+      <baseBodySize>3</baseBodySize>
+      <baseHealthScale>3</baseHealthScale>
+      <mechWeightClass>Medium</mechWeightClass>
+      <lifeStageAges>
+        <li>
+          <def>MechanoidFullyFormed</def>
+          <minAge>0</minAge>
+        </li>
+        <li MayRequire="Ludeon.RimWorld.Biotech">
+          <def>MechanoidFullyFormed</def>
+          <minAge>100</minAge>
+        </li>
+      </lifeStageAges>
+    </race>
+    <tools Inherit="False" />
+    <modExtensions>
+      <li Class="RukayaRace.Trade.RukayaTransportExtension">
+        <caravanCapacity>300</caravanCapacity>
+      </li>
+    </modExtensions>
+    <butcherProducts>
+      <Steel>40</Steel>
+      <Plasteel>10</Plasteel>
+    </butcherProducts>
+  </ThingDef>
+</Defs>

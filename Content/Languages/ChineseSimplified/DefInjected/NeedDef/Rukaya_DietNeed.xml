@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Rukaya_VegetarianNeed.label>素食满足度</Rukaya_VegetarianNeed.label>
+  <Rukaya_VegetarianNeed.description>卢卡娅需要定期食用素食。这条需求记录距上次素食的时间，与饱食需求分别计算。刚吃素时为满，三天后降至一半，六天后归零。超过三天未吃素食时心情-3，达到六天后心情-10。吃素会补满需求条，并获得持续一天的心情+10；再次吃素刷新时长，不叠加。肉食及含肉混合餐只提供60%营养，不能补充素食满足度。奶、蛋与菌类按素食处理。药品与血原质不能满足这一需求。</Rukaya_VegetarianNeed.description>
+</LanguageData>

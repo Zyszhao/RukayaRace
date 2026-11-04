@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Patch>
+  <Operation Class="PatchOperationSequence">
+    <operations>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName='Rukaya_DrifterAlliance']/caravanTraderKinds</xpath>
+        <value>
+          <caravanTraderKinds Inherit="False">
+            <li>Rukaya_Caravan_Logistics</li>
+            <li>Rukaya_Caravan_Arms</li>
+            <li>Rukaya_Caravan_Medical</li>
+            <li>Rukaya_Caravan_AdvancedOrdnance</li>
+          </caravanTraderKinds>
+        </value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName='Rukaya_DrifterAlliance']/visitorTraderKinds</xpath>
+        <value>
+          <visitorTraderKinds Inherit="False">
+            <li>Rukaya_Visitor_Supplies</li>
+          </visitorTraderKinds>
+        </value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName='Rukaya_DrifterAlliance']/baseTraderKinds</xpath>
+        <value>
+          <baseTraderKinds Inherit="False">
+            <li>Rukaya_Settlement_Goods</li>
+          </baseTraderKinds>
+        </value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName='Rukaya_DrifterAlliance']/canRequestTraders</xpath>
+        <value>
+          <canRequestTraders>true</canRequestTraders>
+        </value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName='Rukaya_DrifterAlliance']/pawnGroupMakers/li[kindDef='Trader']</xpath>
+        <value>
+          <li>
+            <kindDef>Trader</kindDef>
+            <commonality>100</commonality>
+            <traders>
+              <Rukaya_Trader>1</Rukaya_Trader>
+            </traders>
+            <carriers>
+              <Rukaya_MechContainer>1</Rukaya_MechContainer>
+            </carriers>
+            <guards>
+              <Rukaya_Militia>8</Rukaya_Militia>
+              <Rukaya_RegularRifleman>3</Rukaya_RegularRifleman>
+              <Rukaya_Officer>1</Rukaya_Officer>
+            </guards>
+          </li>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+</Patch>

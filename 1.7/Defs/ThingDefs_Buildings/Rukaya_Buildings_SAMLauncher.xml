@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ============================================================
+       Rukaya 地对空导弹发射架（3x5 三贴图四朝向建筑）
+
+       【贴图】Content/Textures/Rukaya/Building/Rukaya_SAMLauncher/
+               Rukaya_SAMLauncher_north.png  背面视角（长轴沿地图南北）——**北、南两个朝向共用这一张**
+               Rukaya_SAMLauncher_west.png   侧面视角（长轴沿地图东西）——West 与 East 共用（East 水平镜像）
+               Rukaya_SAMLauncher_south_backup.png  原"正面视角"贴图，**已停用**，仅作备份保留
+              目录下的 Rukaya_SAM.png 不是建筑本体贴图，而是**拦截弹本体**（Rukaya_SAMLaunchMissile）的贴图：
+              1024x1024 画布上的侧视直立导弹，与上面两张底座图同一张画布、同一比例，所以它的 drawSize
+              必须与底座一致 (8.48,8.48)——架上「待发弹」由 CompRukayaSAMLauncher.PostDraw 用本建筑的
+              drawOffset 定位，画出来正好立在导轨上。
+
+       【南向改用北向贴图（需求方 2026-10-09 指定）】原来的 _south 正面贴图会被画成"导弹朝北"，
+              观感与"导弹垂直向上发射"矛盾，所以直接把 _south 停用：
+              * 贴图文件改名为 Rukaya_SAMLauncher_south_backup.png（不再被路径 Rukaya_SAMLauncher_south 命中）；
+              * Graphic_Multi.Init 在 array[2]（_south）为 null 时会执行 `array[2] = array[0]`，
+                即南向直接用 **north** 那张贴图（见 Verse/Graphic_Multi.cs:Init 的回退链）；
+              * 因此 drawOffsetSouth 必须与 drawOffsetNorth 取同一个值，否则北向贴图会被按南向落地线摆放；
+              * 组件那边的 missileOffsetSouth 也一并去掉：南向复用 missileOffsetNorth，
+                发射方向本来就是 Vector3.forward（朝北），于是南向的贴图 / 摆放位置 / 发射行为与北向完全一致。
+              要恢复独立的南向外观：把备份文件改回原名，并恢复 drawOffsetSouth 与 missileOffsetSouth 即可。
+
+       【缺 _east 的处理】不额外画一张东向贴图。Graphic_Multi.Init 在
+             ContentFinder 找不到 path + "_east" 时，会把已加载的 _west 贴图
+             直接赋给 mats[1]，并置 eastFlipped = GraphicData.allowFlip
+             （allowFlip 默认为 true）；随后 Graphic.MeshAt(Rot4.East) 走
+             MeshPool.GridPlaneFlip 分支，用翻转 UV 的网格把该贴图水平镜像。
+             因此 _west 一张即可同时满足 West 与 East 两个朝向，且镜像方向
+             正确（正面朝向落到屏幕右侧）。
+
+       【画布换算】在用的两张贴图都是 1024x1024 的正方形画布，发射架轮廓也都正好
+             居中（alpha 轮廓中心 = 画布中心 512,512，实测确认）。实测轮廓：
+               north  轮廓宽 368px × 高 878px，底边 y=951（南向现与它共用）
+               west   轮廓宽 594px × 高 534px，底边 y=779
+               （已停用的 south 备份：368px × 736px，底边 y=880）
+             南北向看到的是 3 格底座宽 → 368px / 3格 ≈ 122.7px/格；
+             东西向看到的是 5 格底座长 → 594px / 5格 ≈ 118.8px/格；
+             两者取平均 ≈ 120.7px/格 ⇒ drawSize = 1024 / 120.7 ≈ 8.48 格。
+             drawSize 必须写成等边 (8.48,8.48)：Graphic.Print / Graphic.MeshAt
+             在 rot.IsHorizontal 时会做 drawSize.Rotated()（交换 x/y），
+             若写成非等边值，东西朝向会被拉伸。
+             （换算也用于待发弹对位：1024px / 8.48 格 ≈ 120.75px/格。）
+
+       【落地线对齐】RimWorld 的建筑贴图其实是铺在地面平面上的一个四边形
+             （Printer_Plane.PrintPlane 的顶点为 (±size.x/2, y, ±size.z/2)），
+             贴图自身的"高度"全靠画面表达。所以 GraphicData.drawOffset 的语义是
+             (x, y, z) = (东西, 高度, 南北)，其中 z 才是屏幕上看起来的"上下"。
+             在用的贴图的发射架都是居中摆放的，落地线不在同一位置，需要分方向把
+             落地线压到占位格的南边缘（架体最靠南的落地处就该落在占位格南边缘）：
+               南北向占位深 5 格 → 南边缘 z = -2.5，贴图底边到画布中心的距离
+                 north: (512-951)/120.7 = -3.64 → offset.z = -2.5 + 3.64 = +1.14
+                 south: 与 north 共用贴图 ⇒ 同一个 +1.14（不再用旧 south 的 +0.55）
+               东西向占位深 3 格 → 南边缘 z = -1.5
+                 west/east: (512-779)/120.7 = -2.21 → offset.z = -1.5 + 2.21 = +0.71
+             East 与 West 只是水平镜像，z 分量不变，故两者取同一值。
+
+       【待发弹定位】架上那枚待发弹由 CompRukayaSAMLauncher.PostDraw 绘制，贴图中心 =
+              底座贴图落点（parent.DrawPos + 本建筑的 drawOffset(rot)）+ 组件里的 missileOffset* 。
+              因为弹体贴图与底座贴图同画布（1024²⇒8.48 格），**不加偏移时弹体中心正好压在底座画布中心**，
+              与数据位置最多差 1.7 格（≈205px）——这正是 2026-10-08 反馈的"待发弹未对齐"。偏移量由需求方
+              2026-10-09 给出的画板坐标换算而来，逐方向写在 missileOffset*/missileAngle* 的注释里。
+              East 不复用 West 的偏移：底座东向是西向的水平镜像，弹体也要镜像（x 取反、角度取反），
+              所以这两个方向各有一份数据；**South 复用了 North 的那一份**（南向已与北向同贴图同朝向）。
+
+       【功能】已接入地对空系统（CompProperties_RukayaSAMLauncher）：
+             敌方的空投式突袭在生成时，只要本图上有一座「就绪」的发射架
+             （已建成、玩家方、无屋顶、燃料够一发），突袭点数就会被压到 30%，
+             并发射一枚可见的拦截弹（Rukaya_SAMLaunchMissile）。
+             燃料用活性物质容器，口径（需求方 2026-10-08 确认）：**1 个容器 = 1 点活性物质**，fuelCapacity = 30 ⇒ 装满需要 **30 个容器**，也只够打一发；打完必须重新装填。（旧口径为 fuelMultiplier 30 ⇒ 1 个容器 = 一枚导弹，已按需求方要求改掉。）
+
+       【屋顶限制】placeWorkers 挂原版 PlaceWorker_NotUnderRoof（与迫击炮同款，需求方 2026-10-08 反馈）：
+             放置阶段就直接禁止把发射架盖在屋顶下，并给出原版 MustPlaceUnroofed 提示；
+             运行期 CompRukayaSAMLauncher.Ready 里的 Roofed 判定继续保留，双保险。
+
+       【为什么改 tickerType / drawerType】
+             tickerType 从 Never 改为 Normal：CompRefuelable 需要 Tick 才能装填与刷新，
+             CompProperties_RukayaSAMLauncher 的 ConfigErrors 也要求宿主正常 tick。
+             drawerType 从 MapMeshOnly 改为 MapMeshAndRealTime：发射架上的「待发导弹」
+             由 CompRukayaSAMLauncher.PostDraw 实时绘制，MapMeshOnly 不会调用 PostDraw。
+       ============================================================ -->
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>Rukaya_SAMLauncher</defName>
+    <label>Rukaya surface-to-air missile launcher</label>
+    <!-- 中文：卢卡娅地对空导弹发射架 -->
+    <description>A fixed Rukaya surface-to-air missile launcher emplacement. Its sealed launch rails hold active-matter interceptors at instant readiness, and the whole mount can be levelled on its outriggers and swung to bear on any approach.</description>
+    <!-- 中文翻译：一座固定式卢卡娅地对空导弹发射架。其密封发射导轨内始终备有可立即起竖的活性物质拦截弹；整套架体可用驻锄找平，并向任意方向回转以指向各条接近路线。 -->
+    <thingClass>Building</thingClass>
+    <uiIconPath>Rukaya/Building/Rukaya_SAMLauncher/Rukaya_SAMLauncher_icon</uiIconPath>
+    <!-- 建造菜单 / 物品筛选器 / 选中信息卡上的图标（128x128 PNG，需求方 2026-10-09 新增的美术资产）。
+         发射架在地图上的外观仍由下面的 graphicData（Graphic_Multi 四朝向）绘制，与图标无关。 -->
+    <category>Building</category>
+    <tickerType>Normal</tickerType>
+    <!-- 需要 Tick：燃料组件与发射逻辑都挂在 tick 上。 -->
+    <altitudeLayer>Building</altitudeLayer>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <!-- 架体走 MapMesh 烘焙，架上的待发导弹由 PostDraw 实时画。 -->
+    <graphicData>
+      <texPath>Rukaya/Building/Rukaya_SAMLauncher/Rukaya_SAMLauncher</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(8.48,8.48)</drawSize>
+      <!-- 画布格数：贴图 1024px ÷ 约 120.7px/格。必须等边，见上方换算说明。 -->
+      <drawOffsetNorth>(0,0,1.14)</drawOffsetNorth>
+      <drawOffsetSouth>(0,0,1.14)</drawOffsetSouth>
+      <!-- 与 drawOffsetNorth 同值：南向已改用 north 贴图（见文件头【南向改用北向贴图】）。 -->
+      <drawOffsetEast>(0,0,0.71)</drawOffsetEast>
+      <drawOffsetWest>(0,0,0.71)</drawOffsetWest>
+      <!-- 分方向偏移 (x,y,z) = (东西, 高度, 南北)：这里只动 z，把各方向贴图的落地线对到占位格南边缘。 -->
+      <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+    </graphicData>
+    <size>(3,5)</size>
+    <!-- 占位 3 宽 x 5 深；rotatable=true，旋转到东西向后游戏自动换成 5 宽 x 3 深。 -->
+    <rotatable>true</rotatable>
+    <fillPercent>1</fillPercent>
+    <canOverlapZones>false</canOverlapZones>
+    <castEdgeShadows>true</castEdgeShadows>
+    <staticSunShadowHeight>0.3</staticSunShadowHeight>
+    <!-- 静态地面阴影：贴图本身没有烘焙阴影，用这个把发射架压在地面上。 -->
+    <filthLeaving>Filth_RubbleBuilding</filthLeaving>
+    <passability>Impassable</passability>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <designationCategory>Rukaya_Buildings</designationCategory>
+    <researchPrerequisites>
+      <li>Rukaya_AirDefenseMissiles</li>
+    </researchPrerequisites>
+    <designationHotKey>Misc5</designationHotKey>
+    <constructEffect>ConstructMetal</constructEffect>
+    <repairEffect>Repair</repairEffect>
+    <leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsSecurity</li>
+    </thingCategories>
+    <selectable>true</selectable>
+    <useHitPoints>true</useHitPoints>
+    <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+    <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+    <costList>
+      <Steel>380</Steel>
+      <ComponentIndustrial>8</ComponentIndustrial>
+      <ComponentSpacer>2</ComponentSpacer>
+      <Rukaya_ActiveMatterContainer>3</Rukaya_ActiveMatterContainer>
+    </costList>
+    <building>
+      <destroySound>BuildingDestroyed_Metal_Big</destroySound>
+    </building>
+    <placeWorkers>
+      <li>PlaceWorker_NotUnderRoof</li>
+      <!-- 原版迫击炮同款限制：屋顶下不允许放置，放置时提示 MustPlaceUnroofed。
+           与运行期 Ready 的 Roofed 判定互为双保险（旧存档里已盖在屋顶下的发射架仍然打不出去）。 -->
+    </placeWorkers>
+    <comps>
+      <li Class="CompProperties_Refuelable">
+        <fuelLabel>Active matter until reload</fuelLabel>
+        <!-- 中文：活性物质（直至重新装填） -->
+        <fuelGizmoLabel>Active matter</fuelGizmoLabel>
+        <!-- 中文：活性物质 -->
+        <outOfFuelMessage>Needs active matter</outOfFuelMessage>
+        <!-- 中文：需要装填活性物质 -->
+        <fuelFilter>
+          <thingDefs>
+            <li>Rukaya_ActiveMatterContainer</li>
+          </thingDefs>
+        </fuelFilter>
+        <fuelCapacity>30</fuelCapacity>
+        <!-- 容量 = 恰好一枚导弹（30 点活性物质）。
+             口径（需求方 2026-10-08 确认）：**1 个活性物质容器 = 1 点** ⇒ 装满 30 点 =
+             **30 个容器 = 一枚导弹**；打完燃料归零，HAULER 必须再送 30 个容器进来才能打第二发。
+             只有燃料 >= 30（满管）时才渲染架上导弹、才允许发射（见 CompRukayaSAMLauncher.Ready/PostDraw）。
+             容器 stackLimit 是 75，所以 30 个容器仍然是一次搬运、一次装填作业。 -->
+        <fuelMultiplier>1</fuelMultiplier>
+        <!-- 折算率：1 个容器 = 1 点燃料。改回 30 就恢复"1 个容器 = 一枚导弹"的旧口径。 -->
+        <initialFuelPercent>1</initialFuelPercent>
+        <!-- 建成即带着一枚整装拦截弹，呼应「导轨内始终备有可立即起竖的拦截弹」。 -->
+        <autoRefuelPercent>0.5</autoRefuelPercent>
+        <!-- 打完（0/30）立即自动申请装填；低于半管（15 点）也会申请补满 30 点。
+             补满后又是一枚整装拦截弹，与「满管才渲染、满管才可发射」的口径一致。 -->
+        <showFuelGizmo>true</showFuelGizmo>
+        <minimumFueledThreshold>30</minimumFueledThreshold>
+        <!-- 低于一枚导弹的量就直接报缺料，避免"有燃料但打不出去"。 -->
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <fuelIconPath>Rukaya/UI/Rukaya_RequireActiveMatter</fuelIconPath>
+        <!-- 缺料时建筑头顶脉动的图标（OverlayDrawer.RenderOutOfFuelOverlay 用的就是 FuelIcon）：
+             原来借用原版油桶，这里换成"禁止的活性物质罐"。 -->
+      </li>
+      <li Class="RukayaRace.AirDefense.CompProperties_RukayaSAMLauncher">
+        <missileDef>Rukaya_SAMLaunchMissile</missileDef>
+        <launchSound>RocketswarmLauncher_Fire</launchSound>
+        <missileOffsetNorth>(0,0,1.263)</missileOffsetNorth>
+        <missileOffsetWest>(-0.398,0,1.693)</missileOffsetWest>
+        <missileOffsetEast>(0.398,0,1.693)</missileOffsetEast>
+        <!-- 架上待发弹**贴图中心**相对底座贴图画布中心的额外偏移（格）。语义与 drawOffset 一致：
+             (x = 东西, y = 高度, z = 南北)，其中 z 就是屏幕上下（+z 向上）。
+             数据来源：需求方 2026-10-09 提供的画板坐标（1024px 画布 ⇒ 1024/8.48 ≈ 120.75 px/格），
+             以画板中心 (512,1556) 为基准，导弹贴图中心应落在：
+               北 (512,1403.51)    = 上移 152.49px ⇒ z = +1.263
+               南 = 复用北向（需求方 2026-10-09 指定：南向贴图 / 摆放位置 / 发射朝向与北向完全一致；旧数据"下移 34.02px ⇒ z = -0.282"已废止，故没有独立的 missileOffsetSouth 字段）
+               西 (463.92,1351.57) = 左移  48.08px、上移 204.43px ⇒ (x,z) = (-0.398, +1.693)
+               东 = 西的水平镜像   ⇒ (+0.398, +1.693)
+             （实测 Rukaya_SAM.png 的 alpha 内容中心在画布中心上方 6.5px ≈ 0.054 格，未做补偿。） -->
+        <missileAngleWest>-75</missileAngleWest>
+        <missileAngleEast>75</missileAngleEast>
+        <!-- 架上待发弹的摆放角（度）：0 = 弹头朝北（画布上方），正值 = 屏幕顺时针。
+             数据来源同上：西 = 逆时针 75° ⇒ -75；东 = 西的直接镜像 ⇒ +75。
+             南北两向固定 0（弹体落在垂直轴线上），因此没有对应字段。
+             注意这只是**架上的摆放角**：发射后飞行贴图的朝向由代码从飞行方向算出（西 -65.2° / 东 +65.2°），
+             两者相差约 10°，属"导轨仰角 ≠ 发射方位"的正常表现。 -->
+        <fuelPerMissile>30</fuelPerMissile>
+        <!-- 一枚导弹 = 30 点燃料 = 30 个活性物质容器（fuelMultiplier 1）。
+             与 fuelCapacity 相等 ⇒ 一次装填只打一发；也正因为相等，Ready 与 PostDraw
+             的 ">= fuelPerMissile" 判定等价于"必须满管"。 -->
+      </li>
+    </comps>
+    <statBases>
+      <SellPriceFactor>0.7</SellPriceFactor>
+      <MarketValue>1900</MarketValue>
+      <Mass>100</Mass>
+      <MaxHitPoints>600</MaxHitPoints>
+      <WorkToBuild>6000</WorkToBuild>
+      <Flammability>0.4</Flammability>
+      <Beauty>-8</Beauty>
+    </statBases>
+    <uiOrder>2530</uiOrder>
+  </ThingDef>
+
+</Defs>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Rukaya_ActiveMatterModeEnabled>{PAWN_labelShort} enabled active matter mode.</Rukaya_ActiveMatterModeEnabled>
+  <Rukaya_ActiveMatterModeDisabled>{PAWN_labelShort} returned the weapon to normal mode.</Rukaya_ActiveMatterModeDisabled>
+  <Rukaya_ActiveMatterAutoReloadEnabled>{PAWN_labelShort} will automatically reload active matter.</Rukaya_ActiveMatterAutoReloadEnabled>
+  <Rukaya_ActiveMatterAutoReloadDisabled>{PAWN_labelShort} will no longer automatically reload active matter.</Rukaya_ActiveMatterAutoReloadDisabled>
+  <Rukaya_ActiveMatterInsufficient>{PAWN_labelShort}'s {WEAPON} ran out of usable active matter and switched back to normal mode.</Rukaya_ActiveMatterInsufficient>
+
+  <Rukaya_ActiveMatterModeCommandOn>Active Matter: On</Rukaya_ActiveMatterModeCommandOn>
+  <Rukaya_ActiveMatterModeCommandOff>Active Matter: Off</Rukaya_ActiveMatterModeCommandOff>
+  <Rukaya_ActiveMatterModeCommandDesc>Toggle the weapon between ordinary fire and active matter fire.\n\nEach enhanced attack consumes {0} active matter. Current load: {1}/{2}.</Rukaya_ActiveMatterModeCommandDesc>
+  <Rukaya_ActiveMatterAutoReloadCommandOn>Auto Reload: On</Rukaya_ActiveMatterAutoReloadCommandOn>
+  <Rukaya_ActiveMatterAutoReloadCommandOff>Auto Reload: Off</Rukaya_ActiveMatterAutoReloadCommandOff>
+  <Rukaya_ActiveMatterAutoReloadCommandDesc>Allow this weapon to be automatically reloaded from stored active matter while the pawn is safe and undrafted.</Rukaya_ActiveMatterAutoReloadCommandDesc>
+  <!-- 中文：允许这把武器在小人处于安全且未征召状态时，自动从储存中的活性物质补充装填。 -->
+
+  <Rukaya_ActiveMatterLoadTitle>Active Matter Load</Rukaya_ActiveMatterLoadTitle>
+  <Rukaya_ActiveMatterTargetBar>Target: {0}</Rukaya_ActiveMatterTargetBar>
+  <Rukaya_ActiveMatterLoadTooltip>Current load: {0}/{1}\nDefault auto-reload target: {2}\nPer enhanced attack: {3}</Rukaya_ActiveMatterLoadTooltip>
+
+  <Rukaya_ActiveMatterInspect>Active matter: {0}/{1}</Rukaya_ActiveMatterInspect>
+  <Rukaya_ActiveMatterTargetInspect>Auto-reload target: {0}</Rukaya_ActiveMatterTargetInspect>
+  <Rukaya_ActiveMatterModeOnShort>Mode: active matter</Rukaya_ActiveMatterModeOnShort>
+  <Rukaya_ActiveMatterModeOffShort>Mode: normal</Rukaya_ActiveMatterModeOffShort>
+  <Rukaya_ActiveMatterAutoReloadOnShort>Auto reload: enabled</Rukaya_ActiveMatterAutoReloadOnShort>
+  <Rukaya_ActiveMatterAutoReloadOffShort>Auto reload: disabled</Rukaya_ActiveMatterAutoReloadOffShort>
+  <Rukaya_ActiveMatterAIDecision>AI active-matter decision: {0}</Rukaya_ActiveMatterAIDecision>
+  <!-- 中文：AI 活性物质决策：{0} -->
+  <Rukaya_ActiveMatterAI_Active>target qualifies</Rukaya_ActiveMatterAI_Active>
+  <!-- 中文：目标符合强化条件 -->
+  <Rukaya_ActiveMatterAI_Insufficient>insufficient active matter</Rukaya_ActiveMatterAI_Insufficient>
+  <!-- 中文：活性物质不足 -->
+  <Rukaya_ActiveMatterAI_FriendlyRisk>friendly pawn within blast radius</Rukaya_ActiveMatterAI_FriendlyRisk>
+  <!-- 中文：爆炸范围内有友军 -->
+  <Rukaya_ActiveMatterAI_PolicyNotMet>target does not meet the weapon policy</Rukaya_ActiveMatterAI_PolicyNotMet>
+  <!-- 中文：目标不符合武器策略 -->
+  <Rukaya_ActiveMatterAI_Reloaded>reloaded from carried active matter</Rukaya_ActiveMatterAI_Reloaded>
+  <!-- 中文：已从随身活性物质补给 -->
+
+  <Rukaya_ActiveMatterReloadFloatMenu>Reload {0} with active matter</Rukaya_ActiveMatterReloadFloatMenu>
+  <Rukaya_ActiveMatterDebugAdd>Dev: +{0}</Rukaya_ActiveMatterDebugAdd>
+  <Rukaya_ActiveMatterDebugAddDesc>Add {0} active matter units directly to this weapon.</Rukaya_ActiveMatterDebugAddDesc>
+  <Rukaya_ActiveMatterDebugSubtract>Dev: -{0}</Rukaya_ActiveMatterDebugSubtract>
+  <Rukaya_ActiveMatterDebugSubtractDesc>Remove {0} active matter units directly from this weapon.</Rukaya_ActiveMatterDebugSubtractDesc>
+
+  <Rukaya_SettingsCategory>Rukaya Settings</Rukaya_SettingsCategory>
+  <!-- 中文：卢卡娅设置 -->
+  <Rukaya_FabricatorWorkSpeedLabel>Fabricator efficiency</Rukaya_FabricatorWorkSpeedLabel>
+  <!-- 中文：制造台效率 -->
+  <Rukaya_FabricatorWorkSpeedDescription>Adjusts the Rukaya fabricator's work table speed factor.</Rukaya_FabricatorWorkSpeedDescription>
+  <!-- 中文：调整卢卡娅制造台的工作台速度系数。 -->
+  <Rukaya_RefinerDailyOutputLabel>Refiner daily output</Rukaya_RefinerDailyOutputLabel>
+  <!-- 中文：精炼器每日产量 -->
+  <Rukaya_RefinerDailyOutputDescription>Adjusts how many active matter containers each Rukaya refiner produces per day. (Change will affects after next production)</Rukaya_RefinerDailyOutputDescription>
+  <!-- 中文：调整卢卡娅精炼器每日产出的活性物质容器数量。（改动在下一次产出后生效） -->
+  <Rukaya_AdvancedRefinerDailyOutputLabel>Advanced refiner daily output</Rukaya_AdvancedRefinerDailyOutputLabel>
+  <!-- 中文：高级精炼器每日产量 -->
+  <Rukaya_AdvancedRefinerDailyOutputDescription>Adjusts how many active matter containers each advanced Rukaya refiner produces per day. (Change will affects after next production)</Rukaya_AdvancedRefinerDailyOutputDescription>
+  <!-- 中文：调整卢卡娅高级精炼器每日产出的活性物质容器数量。（改动在下一次产出后生效） -->
+  <Rukaya_UseLightningForElectricWeaponsLabel>Use lightning for electric weapons</Rukaya_UseLightningForElectricWeaponsLabel>
+  <!-- 中文：电击武器使用雷击 -->
+  <Rukaya_UseLightningForElectricWeaponsDescription>When enabled, arc shock grenades and charged stun baton hits call down lightning instead of using their ordinary electric hit effects.</Rukaya_UseLightningForElectricWeaponsDescription>
+  <!-- 中文：启用后，电弧震击榴弹和充能电棍命中会召唤雷击，而不是使用普通电击命中效果。 -->
+  <Rukaya_ResetSetting>Reset</Rukaya_ResetSetting>
+  <!-- 中文：重置 -->
+
+</LanguageData>

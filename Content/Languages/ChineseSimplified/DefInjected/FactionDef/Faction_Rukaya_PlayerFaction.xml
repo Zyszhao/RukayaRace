@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Rukaya_PlayerFaction.label>卢卡娅殖民地</Rukaya_PlayerFaction.label>
+  <Rukaya_PlayerFaction.description>你自己的那一小队卢卡娅幸存者，在一颗无人记得的边缘世界上重新刨出一个家。</Rukaya_PlayerFaction.description>
+
+
+  <Rukaya_PlayerFaction.pawnSingular>卢卡娅</Rukaya_PlayerFaction.pawnSingular>
+  <Rukaya_PlayerFaction.pawnsPlural>卢卡娅</Rukaya_PlayerFaction.pawnsPlural>
+
+</LanguageData>

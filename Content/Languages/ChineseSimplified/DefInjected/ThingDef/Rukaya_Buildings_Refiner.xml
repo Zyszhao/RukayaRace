@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Rukaya_Refiner.label>活性物质精炼器</Rukaya_Refiner.label>
+  <Rukaya_Refiner.description>一台专用于卢卡娅活性物质提炼的装置，会持续稳定并浓缩微量活性物质，将其封装进密封容器中。它运转缓慢、耗电较高，定位是稳定工业产出，而非野战应急设备。</Rukaya_Refiner.description>
+  <Rukaya_AdvancedRefiner.label>高级活性物质精炼器</Rukaya_AdvancedRefiner.label>
+  <Rukaya_AdvancedRefiner.description>一座直接建在蒸汽喷口上的大型卢卡娅地热精炼厂。正确覆盖喷口后，它会把深层热能导入稳定器，以工业规模产出活性物质容器，并向电网供应剩余电力。</Rukaya_AdvancedRefiner.description>
+
+</LanguageData>

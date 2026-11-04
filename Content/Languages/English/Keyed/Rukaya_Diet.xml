@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Rukaya_DietLastVegetarianMeal>Last vegetarian meal: {0} ago</Rukaya_DietLastVegetarianMeal>
+  <!-- 中文：距上次素食：{0} -->
+  <Rukaya_DietMeatNutrition>Nutrition from meat and mixed meals: 60%</Rukaya_DietMeatNutrition>
+  <!-- 中文：肉食与含肉混合餐的营养吸收率：60% -->
+  <Rukaya_DietInfoLabel>Diet</Rukaya_DietInfoLabel>
+  <!-- 中文：饮食需求 -->
+  <Rukaya_DietInfoValue>Vegetarian preference</Rukaya_DietInfoValue>
+  <!-- 中文：偏好素食 -->
+  <Rukaya_DietInfoDescription>Rukaya need regular vegetarian food. More than three days without it causes -3 mood; six days or longer causes -10. Eating vegetarian food resets this timer and grants +10 mood for one day, refreshing rather than stacking. Meat and meals containing meat provide 60% nutrition and do not satisfy this need. Milk, eggs and fungi count as vegetarian food. Drugs and hemogen do not satisfy this need.</Rukaya_DietInfoDescription>
+  <!-- 中文翻译：卢卡娅需要定期食用素食。超过三天未吃素食时心情-3，达到六天后心情-10。吃素会重置计时，并获得持续一天的心情+10；再次吃素刷新时长，不叠加。肉食及含肉混合餐只提供60%营养，不能满足素食需求。奶、蛋与菌类按素食处理。药品与血原质不能满足这一需求。 -->
+  <Rukaya_DietAlertLabel>Rukaya lack vegetarian food</Rukaya_DietAlertLabel>
+  <!-- 中文：卢卡娅缺乏素食 -->
+  <Rukaya_DietAlertPawn>{0}: {1} without vegetarian food (mood {2})</Rukaya_DietAlertPawn>
+  <!-- 中文：{0}：已{1}未吃素食（心情{2}） -->
+  <Rukaya_DietAlertDescription>The following Rukaya have gone more than three days without vegetarian food:\n\n{0}\n\nProvide vegetarian food and check their food policies and access to meals. Eating vegetarian food removes the deprivation penalty and grants +10 mood for one day. Meat and mixed meals cannot satisfy this need.</Rukaya_DietAlertDescription>
+  <!-- 中文翻译：以下卢卡娅已经超过三天未吃素食：\n\n{0}\n\n请提供素食，并检查她们的食物政策及能否取得餐食。吃素会解除缺素惩罚，并获得持续一天的心情+10。肉食与含肉混合餐不能满足这一需求。 -->
+  <Rukaya_DietNeedGrace>Current deprivation penalty: none</Rukaya_DietNeedGrace>
+  <!-- 中文：当前缺素惩罚：无 -->
+  <Rukaya_DietNeedLack>Current deprivation penalty: mood -3</Rukaya_DietNeedLack>
+  <!-- 中文：当前缺素惩罚：心情-3 -->
+  <Rukaya_DietNeedSevere>Current deprivation penalty: mood -10</Rukaya_DietNeedSevere>
+  <!-- 中文：当前缺素惩罚：心情-10 -->
+  <Rukaya_DietNeedNextMild>Time until mood -3: {0}</Rukaya_DietNeedNextMild>
+  <!-- 中文：距心情-3还有：{0} -->
+  <Rukaya_DietNeedNextSevere>Time until mood -10: {0}</Rukaya_DietNeedNextSevere>
+  <!-- 中文：距心情-10还有：{0} -->
+  <Rukaya_DietNeedAtMinimum>Eat vegetarian food to satisfy this need.</Rukaya_DietNeedAtMinimum>
+  <!-- 中文：吃素食即可满足这一需求。 -->
+</LanguageData>

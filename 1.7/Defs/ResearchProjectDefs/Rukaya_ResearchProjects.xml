@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ResearchProjectDef>
+    <defName>Rukaya_ActiveMatterRefining</defName>
+    <label>Active Matter Refining</label>
+    <!-- 中文：活性物质提炼 -->
+    <description>Stabilization, handling, and refining methods for active matter allow the Rukaya's
+      more advanced industry to function again.</description>
+    <!-- 中文翻译：对活性物质的稳定、处理与提炼方法研究，将使卢卡娅更先进的工业体系重新运作。 -->
+    <baseCost>1200</baseCost>
+    <techLevel>Industrial</techLevel>
+    <tab>Rukaya_ResearchTab</tab>
+    <researchViewX>1</researchViewX>
+    <researchViewY>1.8</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>Rukaya_Tech_End</defName>
+    <label>Is It Over?</label>
+    <!-- 中文：结束了吗？ -->
+    <description>The Rukaya have restored the foundations of their industry, equipment, and mechanoid production, completing the first phase of reconstruction.</description>
+    <!-- 中文翻译：卢卡娅已重建工业、装备与机械体生产的基础，完成了第一阶段的重建。 -->
+    <baseCost>50</baseCost>
+    <techLevel>Industrial</techLevel>
+    <prerequisites>
+      <li>Rukaya_ActiveMatterRefining</li>
+      <li>Rukaya_Apparel_III</li>
+      <li>Rukaya_Weapon_III</li>
+      <li>Rukaya_Mechanoid_I</li>
+    </prerequisites>
+    <tab>Rukaya_ResearchTab</tab>
+    <researchViewX>4</researchViewX>
+    <researchViewY>1.8</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>Rukaya_Apparel_I</defName>
+    <label>Basic Rukaya Apparel</label>
+    <!-- 中文：卢卡娅简易衣物 -->
+    <description>Basic tailoring patterns adapted for Rukaya anatomy make it possible to reproduce
+      simple, dependable clothing.</description>
+    <!-- 中文翻译：适配卢卡娅体型的基础裁缝版型，使生产简易而可靠的衣物成为可能。 -->
+    <baseCost>300</baseCost>
+    <techLevel>Industrial</techLevel>
+    <tab>Rukaya_ResearchTab</tab>
+    <researchViewX>1</researchViewX>
+    <researchViewY>0.6</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>Rukaya_Apparel_II</defName>
+    <label>Advanced Rukaya Apparel</label>
+    <!-- 中文：卢卡娅复杂衣物 -->
+    <description>Improved construction techniques and finer finishing methods support more
+      sophisticated Rukaya garments.</description>
+    <!-- 中文翻译：更成熟的制作工艺与精细处理方法，支持生产更复杂的卢卡娅服饰。 -->
+    <baseCost>800</baseCost>
+    <techLevel>Industrial</techLevel>
+    <prerequisites>
+      <li>Rukaya_Apparel_I</li>
+    </prerequisites>
+    <tab>Rukaya_ResearchTab</tab>
+    <researchViewX>2</researchViewX>
+    <researchViewY>0.6</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>Rukaya_Apparel_III</defName>
+    <label>Rukaya Combat Apparel</label>
+    <!-- 中文：卢卡娅作战服装 -->
+    <description>Dedicated battlefield tailoring, reinforcement patterns, and modular fittings make
+      it possible to produce Rukaya combat garments suited for sustained deployment.</description>
+    <!-- 中文翻译：专用于战场的裁制工艺、加固结构与模块化装配技术，使生产适合长期部署的卢卡娅作战服装成为可能。 -->
+    <baseCost>1600</baseCost>
+    <techLevel>Industrial</techLevel>
+    <prerequisites>
+      <li>Rukaya_Apparel_II</li>
+    </prerequisites>
+    <tab>Rukaya_ResearchTab</tab>
+    <researchViewX>3</researchViewX>
+    <researchViewY>0.6</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>Rukaya_Weapon_I</defName>
+    <label>Basic Rukaya Weapons</label>
+    <!-- 中文：卢卡娅简易武器 -->
+    <description>Recovered weapon principles and simplified fabrication steps allow the production
+      of basic Rukaya arms.</description>
+    <!-- 中文翻译：通过恢复武器设计原理并简化制造流程，可以生产基础的卢卡娅武器。 -->
+    <baseCost>500</baseCost>
+    <techLevel>Industrial</techLevel>
+    <tab>Rukaya_ResearchTab</tab>
+    <researchViewX>1</researchViewX>
+    <researchViewY>2.4</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>Rukaya_Weapon_II</defName>
+    <label>Standardized Rukaya Weapons</label>
+    <!-- 中文：卢卡娅制式武器 -->
+    <description>With active matter processing understood, standardized Rukaya weapon designs can be
+      manufactured to a proper military pattern.</description>
+    <!-- 中文翻译：在掌握活性物质处理后，便可以按正规军制式制造标准化的卢卡娅武器。 -->
+    <baseCost>1200</baseCost>
+    <techLevel>Industrial</techLevel>
+    <prerequisites>
+      <li>Rukaya_Weapon_I</li>
+      <li>Rukaya_ActiveMatterRefining</li>
+    </prerequisites>
+    <tab>Rukaya_ResearchTab</tab>
+    <researchViewX>2</researchViewX>
+    <researchViewY>2.4</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>Rukaya_Weapon_III</defName>
+    <label>Advanced Rukaya Weapons</label>
+    <!-- 中文：卢卡娅先进武器 -->
+    <description>Refined fabrication standards and deeper restoration of military schematics unlock
+      more advanced Rukaya weapons for frontline use.</description>
+    <!-- 中文翻译：更完善的制造标准与更深入的军用图纸复原工作，解锁了可供前线使用的更先进卢卡娅武器。 -->
+    <baseCost>2000</baseCost>
+    <techLevel>Industrial</techLevel>
+    <prerequisites>
+      <li>Rukaya_Weapon_II</li>
+    </prerequisites>
+    <tab>Rukaya_ResearchTab</tab>
+    <researchViewX>3</researchViewX>
+    <researchViewY>2.4</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>Rukaya_ActiveMatterRefining_II</defName>
+    <label>Large-Scale Active Matter Refining</label>
+    <!-- 中文：大规模活性物质提炼 -->
+    <description>Scaling active matter processing beyond laboratory and workshop methods supports
+      bulk refinement without making it a required pillar of reconstruction.</description>
+    <!-- 中文翻译：将活性物质处理从实验室与工坊级扩展到大规模生产后，可以进行批量提炼，但它并非重建体系所必需的核心环节。 -->
+    <baseCost>1800</baseCost>
+    <techLevel>Industrial</techLevel>
+    <prerequisites>
+      <li>Rukaya_ActiveMatterRefining</li>
+    </prerequisites>
+    <tab>Rukaya_ResearchTab</tab>
+    <researchViewX>2</researchViewX>
+    <researchViewY>1.2</researchViewY>
+  </ResearchProjectDef>
+
+  <!-- 通用机械科技；导弹型另需完成防空导弹研究。 -->
+  <ResearchProjectDef>
+    <defName>Rukaya_Mechanoid_I</defName>
+    <label>Rukaya Mechanized Units</label>
+    <!-- 中文：卢卡娅机械体 -->
+    <description>Recovered doctrines for autonomous chassis, weapon integration and control routines provide the
+      basis for rebuilding practical Rukaya mechanized units.</description>
+    <!-- 中文翻译：通过恢复自主机体、武器整合与控制程式相关的技术教范，可以重建具有实用价值的卢卡娅机械体。 -->
+    <baseCost>2400</baseCost>
+    <techLevel>Industrial</techLevel>
+    <prerequisites>
+      <li>Rukaya_Weapon_II</li>
+    </prerequisites>
+    <tab>Rukaya_ResearchTab</tab>
+    <researchViewX>2</researchViewX>
+    <researchViewY>3.0</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>Rukaya_AirDefenseMissiles</defName>
+    <label>Air-defense missiles</label>
+    <!-- 中文：防空导弹 -->
+    <description>Active-matter interceptors and coordinated fire-control systems enable fixed surface-to-air missile launchers and missile-armed Rukaya mechanoids.</description>
+    <!-- 中文翻译：活性物质拦截弹与协同火控系统使建造固定式地对空导弹发射架及培育搭载导弹的卢卡娅机械体成为可能。 -->
+    <baseCost>1600</baseCost>
+    <techLevel>Industrial</techLevel>
+    <prerequisites>
+      <li>Rukaya_Weapon_II</li>
+    </prerequisites>
+    <tab>Rukaya_ResearchTab</tab>
+    <researchViewX>3</researchViewX>
+    <researchViewY>3.6</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>Rukaya_EquipmentTemplateScanning</defName>
+    <label>Equipment Template Scanning</label>
+    <!-- 中文：装备模板扫描 -->
+    <description>Triplex-ray analysis can recover reproducible active-matter templates from existing weapons and apparel, even when their original research path has been lost.</description>
+    <!-- 中文翻译：三束射线分析技术能够从现有武器与服装中恢复可复制的活性物质模板，即使其原始研究路径已经遗失。 -->
+    <baseCost>1800</baseCost>
+    <techLevel>Industrial</techLevel>
+    <prerequisites>
+      <li>Rukaya_ActiveMatterRefining_II</li>
+      <li>Rukaya_Weapon_II</li>
+      <li>Rukaya_Apparel_II</li>
+    </prerequisites>
+    <tab>Rukaya_ResearchTab</tab>
+    <researchViewX>3</researchViewX>
+    <researchViewY>1.2</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>Rukaya_ActiveMatterPrinting</defName>
+    <label>Active Matter Equipment Printing</label>
+    <!-- 中文：活性物质装备打印 -->
+    <description>Stabilized template reconstruction allows autonomous terminals to print selected weapon and apparel patterns at controlled materials and quality levels.</description>
+    <!-- 中文翻译：稳定的模板重构技术使自动终端能够按照选定的材质与品质，打印武器和服装模板。 -->
+    <baseCost>2800</baseCost>
+    <techLevel>Industrial</techLevel>
+    <prerequisites>
+      <li>Rukaya_EquipmentTemplateScanning</li>
+      <li>Rukaya_Weapon_III</li>
+      <li>Rukaya_Apparel_III</li>
+    </prerequisites>
+    <tab>Rukaya_ResearchTab</tab>
+    <researchViewX>4</researchViewX>
+    <researchViewY>1.2</researchViewY>
+  </ResearchProjectDef>
+</Defs>

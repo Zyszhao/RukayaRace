@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="Bed">
+    <defName>Rukaya_HangingBed</defName>
+    <label>Rukaya hanging sleep frame</label>
+    <!-- 中文：卢卡娅倒挂睡眠架 -->
+    <description>A compact curtained frame where Rukaya sleep hanging upside down.</description>
+    <!-- 中文翻译：一座带有帘子的紧凑支架，供卢卡娅倒挂休息。 -->
+    <graphicData>
+      <texPath>Rukaya/Buildings/HangingSleep/Rukaya_HangingBed</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(1.8,1.8)</drawSize>
+      <drawOffset>(0,0,0.48)</drawOffset>
+    </graphicData>
+    <size>(1,1)</size>
+    <rotatable>false</rotatable>
+    <defaultPlacingRot>North</defaultPlacingRot>
+    <costStuffCount>45</costStuffCount>
+    <designationCategory>Rukaya_Buildings</designationCategory>
+    <building>
+      <bed_showSleeperBody>false</bed_showSleeperBody>
+      <bed_pawnDrawOffset>0.08</bed_pawnDrawOffset>
+    </building>
+    <researchPrerequisites><li>ComplexFurniture</li></researchPrerequisites>
+    <comps>
+      <li Class="CompProperties_AssignableToPawn"><compClass>CompAssignableToPawn_Bed</compClass></li>
+      <li><compClass>CompQuality</compClass></li>
+      <li Class="RukayaRace.Buildings.CompProperties_RukayaHangingSleep" />
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="SleepingSpotBase">
+    <defName>Rukaya_HangingSleepingSpot</defName>
+    <label>Rukaya hanging sleeping spot</label>
+    <!-- 中文：卢卡娅倒挂睡眠点 -->
+    <description>A simple roofed perch where Rukaya sleep hanging upside down.</description>
+    <!-- 中文翻译：一处设在屋顶下的简易支点，供卢卡娅倒挂休息。 -->
+    <graphicData>
+      <texPath>Rukaya/Buildings/HangingSleep/Rukaya_HangingSleepSpot</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Cutout</shaderType>
+      <drawSize>(1.5,1.5)</drawSize>
+    </graphicData>
+    <size>(1,1)</size>
+    <rotatable>false</rotatable>
+    <defaultPlacingRot>North</defaultPlacingRot>
+    <placeWorkers><li>RukayaRace.Buildings.PlaceWorker_RukayaHangingRoof</li></placeWorkers>
+    <building>
+      <bed_showSleeperBody>true</bed_showSleeperBody>
+      <bed_pawnDrawOffset>0.20</bed_pawnDrawOffset>
+    </building>
+    <designationHotKey>Misc1</designationHotKey>
+    <designationCategory>Rukaya_Buildings</designationCategory>
+    <comps>
+      <li Class="CompProperties_AssignableToPawn"><compClass>CompAssignableToPawn_Bed</compClass></li>
+      <li Class="RukayaRace.Buildings.CompProperties_RukayaHangingSleep" />
+    </comps>
+  </ThingDef>
+</Defs>

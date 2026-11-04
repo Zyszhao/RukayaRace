@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Rukaya_SkyInterceptorMode>Enable anti-air mode</Rukaya_SkyInterceptorMode>
+  <Rukaya_SkyInterceptorUnsupported>This weapon cannot use anti-air mode. Check the error log for its verb type.</Rukaya_SkyInterceptorUnsupported>
+  <Rukaya_SkyInterceptorTargets>Intercept target categories</Rukaya_SkyInterceptorTargets>
+  <Rukaya_SkyInterceptorDropPods>Hostile drop pods</Rukaya_SkyInterceptorDropPods>
+  <Rukaya_SkyInterceptorNaturalSkyfallers>Meteorites and falling rocks</Rukaya_SkyInterceptorNaturalSkyfallers>
+  <Rukaya_SkyInterceptorOtherSkyfallers>Other hostile skyfallers</Rukaya_SkyInterceptorOtherSkyfallers>
+  <Rukaya_SkyInterceptorOverheadProjectiles>Overhead shells</Rukaya_SkyInterceptorOverheadProjectiles>
+  <Rukaya_SkyInterceptorArcingProjectiles>Arcing projectiles</Rukaya_SkyInterceptorArcingProjectiles>
+  <Rukaya_SkyInterceptorFlyers>Flying objects</Rukaya_SkyInterceptorFlyers>
+</LanguageData>

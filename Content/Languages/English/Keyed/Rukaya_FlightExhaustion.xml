@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Emergency-flight gating and status messages.
+       Shares the flight keyed set so one system's text stays in one place. -->
+
+  <Rukaya_EmergencyFly_NotEnoughResources>{PAWN_labelShort} is too exhausted for emergency flight. She needs more food and more rest.</Rukaya_EmergencyFly_NotEnoughResources>
+  <Rukaya_EmergencyFly_NoWings>{PAWN_labelShort}'s wings are too damaged for emergency flight.</Rukaya_EmergencyFly_NoWings>
+
+  <!-- Stat-window explanation line for the short post-flight move penalty
+       (StatPart_RukayaFlightExhaustion.ExplanationPart). -->
+  <Rukaya_FlightExhaustion_ShortPenalty>Brief weakness after emergency flight</Rukaya_FlightExhaustion_ShortPenalty>
+
+</LanguageData>

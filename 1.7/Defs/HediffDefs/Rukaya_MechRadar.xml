@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ============================================================
+       Rukaya 机械雷达 · 专用 Hediff
+       Rukaya_MechRadarAura —— 雷达投射的广域弱化射击指挥光环（友方）
+       由 RukayaRace.Radar.CompRukayaMechRadar 每 60 tick 刷新一次，
+       失去雷达覆盖后由 HediffComp_Disappears 在 120 tick 内自然结束，不会无限留存。
+       敌方同时附加基础锁定与强化暴露，复用已有导弹锁定及射击报告接口。
+       ============================================================ -->
+
+  <!-- 父模板只在有 Ideology 时存在；这里不继承 ParentName，直接声明所有字段，
+       避免无 Ideology 时出现 unresolved parent。DLC 门禁在 ThingDef 的 comp 上（MayRequire Biotech）。 -->
+
+  <HediffDef>
+    <defName>Rukaya_MechRadarAura</defName>
+    <label>radar marksman aura</label>
+    <!-- 中文：雷达射手光环 -->
+    <description>This person is being fed targeting data by a nearby Rukaya radar platform. A shared picture of the battlefield steadies their aim and shortens how long they take to line up a shot.</description>
+    <!-- 中文翻译：该单位的瞄准正由附近的卢卡娅雷达平台提供目标数据。共享的战场态势使射击更稳定，也缩短了锁定目标所需的时间。 -->
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <tendable>false</tendable>
+    <defaultLabelColor>(0.52, 1, 0.95)</defaultLabelColor>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>120</disappearsAfterTicks>
+        <showRemainingTime>false</showRemainingTime>
+        <!-- This is a whole-body hediff with no Part; keep the vanilla removal cleanup from dereferencing parent.Part. -->
+        <leaveFreshWounds>true</leaveFreshWounds>
+      </li>
+      <li Class="HediffCompProperties_DisappearsOnDeath" />
+    </comps>
+    <stages>
+      <li>
+        <statOffsets>
+          <!-- 弱化版原版 MarksmanCommandBuff：原版为 ShootingAccuracyPawn 4 / AimingDelayFactor -0.4 -->
+          <ShootingAccuracyPawn>2</ShootingAccuracyPawn>
+          <AimingDelayFactor>-0.2</AimingDelayFactor>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>Rukaya_MechRadarExposed</defName>
+    <label>enhanced radar exposure</label>
+    <!-- 中文：强化雷达暴露 -->
+    <description>A Rukaya radar platform is continuously tracking this unit. Shared targeting data improves incoming fire accuracy through smoke and repeatedly disrupts active invisibility.</description>
+    <!-- 中文翻译：卢卡娅雷达平台正在持续追踪该单位。共享的目标数据提高了烟幕中来袭火力的瞄准精度，并反复干扰主动隐身。 -->
+    <hediffClass>HediffWithComps</hediffClass>
+    <initialSeverity>1</initialSeverity>
+    <tendable>false</tendable>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>600</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+      <li Class="RukayaRace.Weapons.HediffCompProperties_RukayaRadarExpose">
+        <disruptIntervalTicks>15</disruptIntervalTicks>
+      </li>
+    </comps>
+    <modExtensions>
+      <li Class="RukayaRace.Weapons.RukayaRadarTargetingExtension">
+        <aimOnTargetChanceFactor>1.3</aimOnTargetChanceFactor>
+        <ignoreBlindSmoke>true</ignoreBlindSmoke>
+      </li>
+    </modExtensions>
+    <stages>
+      <li>
+        <capMods>
+          <li><capacity>Sight</capacity><offset>-0.2</offset></li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+
+</Defs>

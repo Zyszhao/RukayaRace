@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <IncidentDef>
+    <defName>Rukaya_AnnualTrioArrival</defName>
+    <label>mysterious drop pods</label>
+    <!-- 中文：神秘的空投仓 -->
+    <category>Misc</category>
+    <targetTags><li>Map_PlayerHome</li></targetTags>
+    <workerClass>RukayaRace.Storytelling.IncidentWorker_AnnualTrioArrival</workerClass>
+    <!-- Triggered only by the annual incident hook, never drawn from random event pools. -->
+    <baseChance>0</baseChance>
+    <requireColonistsPresent>false</requireColonistsPresent>
+    <letterDef>NeutralEvent</letterDef>
+    <letterLabel>Mysterious drop pods</letterLabel>
+    <!-- 中文：神秘的空投仓 -->
+    <letterText>It is worth noting that, during this {EVENT}, several drop pods carrying Rukaya were affected and crashed. The people aboard include: {PAWNS}</letterText>
+    <!-- 中文翻译：值得注意的是，在这次{EVENT}中，有几个载有卢卡娅的空投仓受其影响坠落。其中搭载的人包括：{PAWNS} -->
+  </IncidentDef>
+</Defs>

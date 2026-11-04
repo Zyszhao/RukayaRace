@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- 卢卡娅模组的"玩家开局阵营"Def，供剧本 Rukaya_LoneDrifter 使用。
+       defName 语义已按需求方 2026-10-08 的更正改正：玩家阵营 = Rukaya_PlayerFaction，
+       世界上的 NPC 卢卡娅阵营 = Rukaya_DrifterAlliance（见 Faction_Rukaya_DrifterAlliance.xml）。
+       原版判定玩家阵营只认 FactionDef.isPlayer
+       （Faction.IsPlayer 直接返回 def.isPlayer；FactionManager.Recache 也只按这一项挑出 Faction.OfPlayer），
+       所以本 Def 必须带 isPlayer=true。
+       配色用原版玩家派系的蓝色（PlayerFactionBase 的 colorSpectrum），
+       与 NPC 阵营的橙色区分开，避免世界地图上玩家自己的据点与卢卡娅 NPC 据点混淆。 -->
+  <FactionDef ParentName="PlayerFactionBase">
+    <defName>Rukaya_PlayerFaction</defName>
+    <label>Rukaya Colony</label>
+    <!-- 中文：卢卡娅殖民地 -->
+    <description>Your own band of Rukaya survivors, scraping a new home out of a rimworld nobody else remembers.</description>
+    <!-- 中文翻译：你自己的那一小队卢卡娅幸存者，在一颗无人记得的边缘世界上重新刨出一个家。 -->
+    <isPlayer>true</isPlayer>
+    <basicMemberKind>Rukaya_Colonist</basicMemberKind>
+    <pawnSingular>Rukaya</pawnSingular>
+    <!-- 中文翻译：卢卡娅 -->
+    <pawnsPlural>Rukayas</pawnsPlural>
+    <!-- 中文翻译：卢卡娅 -->
+    <techLevel>Industrial</techLevel>
+    <factionNameMaker>NamerFaction_RukayaFaction</factionNameMaker>
+    <settlementNameMaker>NamerSettlement_Rukaya</settlementNameMaker>
+    <allowedCultures>
+      <li>Astropolitan</li>
+    </allowedCultures>
+    <requiredMemes MayRequire="Ludeon.RimWorld.Ideology">
+      <li>Rukaya_VegetarianTradition</li>
+    </requiredMemes>
+    <disallowedMemes MayRequire="Ludeon.RimWorld.Ideology">
+      <li>Cannibal</li>
+    </disallowedMemes>
+    <backstoryFilters>
+      <li>
+        <categoriesChildhood>
+          <li>Rukaya_ChildGeneral</li>
+        </categoriesChildhood>
+        <categoriesAdulthood>
+          <li>Rukaya_AdultGeneral</li>
+        </categoriesAdulthood>
+      </li>
+    </backstoryFilters>
+    <!-- 原版玩家派系的蓝色（与 PlayerFactionBase 一致）。 -->
+    <colorSpectrum>
+      <li>(0, 0.737, 0.847)</li>
+    </colorSpectrum>
+    <factionIconPath>Rukaya/Faction/RukayaFaction_Icon</factionIconPath>
+    <startingResearchTags>
+      <li>ClassicStart</li>
+    </startingResearchTags>
+    <startingTechprintsResearchTags>
+      <li>ClassicStart</li>
+      <li>ClassicStartTechprints</li>
+    </startingTechprintsResearchTags>
+  </FactionDef>
+
+</Defs>

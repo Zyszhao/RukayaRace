@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <WorkGiverDef>
+    <defName>DoBillsRukayaFabricator</defName>
+    <label>fabricate things at Rukaya fabricator</label>
+    <!-- 中文翻译：在卢卡娅制造台制造物品 -->
+    <giverClass>WorkGiver_DoBill</giverClass>
+    <workType>Smithing</workType>
+    <priorityInType>55</priorityInType>
+    <fixedBillGiverDefs>
+      <li>Rukaya_Fabricator</li>
+    </fixedBillGiverDefs>
+    <verb>fabricate things at</verb>
+    <!-- 中文翻译：在此制造物品 -->
+    <gerund>fabricating things at</gerund>
+    <!-- 中文翻译：正在此制造物品 -->
+    <requiredCapacities>
+      <li>Manipulation</li>
+    </requiredCapacities>
+    <prioritizeSustains>true</prioritizeSustains>
+  </WorkGiverDef>
+
+  <WorkGiverDef>
+    <defName>Rukaya_LoadReplicationReservoir</defName>
+    <label>load Rukaya replication reservoirs</label>
+    <!-- 中文翻译：装填卢卡娅复制设备储罐 -->
+    <giverClass>RukayaRace.Replication.WorkGiver_RukayaLoadReservoir</giverClass>
+    <workType>Hauling</workType>
+    <priorityInType>145</priorityInType>
+    <verb>load active matter into</verb>
+    <!-- 中文翻译：向此处装填活性物质 -->
+    <gerund>loading active matter into</gerund>
+    <!-- 中文翻译：正在向此处装填活性物质 -->
+    <requiredCapacities>
+      <li>Manipulation</li>
+    </requiredCapacities>
+  </WorkGiverDef>
+
+</Defs>

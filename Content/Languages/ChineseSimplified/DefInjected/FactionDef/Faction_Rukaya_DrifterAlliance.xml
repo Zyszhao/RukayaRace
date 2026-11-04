@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Rukaya_DrifterAlliance.label>漂泊者同盟</Rukaya_DrifterAlliance.label>
+  <Rukaya_DrifterAlliance.description>卢卡娅是一个寿命悠长、带有类翼手目特征的亚人种族。她们并非这颗边缘星球的原住民。在遥远的过去，她们曾拥有高度发达的技术，但母星最终失落了，幸存者们散落星海。\n\n如今，散落星海的幸存者们聚拢在一起，成立了“漂泊者同盟”。她们不再以征服者自居，而是化作了失落文明的守墓人。相较于奇巧的科技，她们更偏爱粗犷可靠的工业时代实弹武器，以及带着旧日秩序感的挺括军装。\n\n同盟的诉求仅是在黑暗中生存、维系秩序并保存记忆。她们通常是中立的贸易者，愿意在寒夜的篝火旁与你分享旧日的故事。但切勿将她们的自我克制误认为软弱——一旦同族受到威胁，这些失去故乡的漂泊者将毫不犹豫地展现出旧日文明那令人胆寒的军事素养。</Rukaya_DrifterAlliance.description>
+
+
+  <Rukaya_DrifterAlliance.pawnSingular>卢卡娅</Rukaya_DrifterAlliance.pawnSingular>
+  <Rukaya_DrifterAlliance.pawnsPlural>卢卡娅</Rukaya_DrifterAlliance.pawnsPlural>
+  <Rukaya_DrifterAlliance.leaderTitle>政委</Rukaya_DrifterAlliance.leaderTitle>
+
+</LanguageData>

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Bullet_Rukaya_Revolver.label>警用左轮手枪弹</Bullet_Rukaya_Revolver.label>
+  <Bullet_Rukaya_Rifle.label>长步枪弹</Bullet_Rukaya_Rifle.label>
+  <Bullet_Rukaya_AssaultRifle.label>突击步枪弹</Bullet_Rukaya_AssaultRifle.label>
+  <Bullet_Rukaya_MarksmanRifle.label>精准射手步枪弹</Bullet_Rukaya_MarksmanRifle.label>
+  <Bullet_Rukaya_Pistol.label>制式手枪弹</Bullet_Rukaya_Pistol.label>
+  <Bullet_Rukaya_Pistol_Charged.label>过载制式手枪弹</Bullet_Rukaya_Pistol_Charged.label>
+  <Bullet_Rukaya_SubMachinegun.label>冲锋枪弹</Bullet_Rukaya_SubMachinegun.label>
+  <Bullet_Rukaya_SubMachinegun_Charged.label>过载冲锋枪弹</Bullet_Rukaya_SubMachinegun_Charged.label>
+  <Bullet_Rukaya_Machinegun.label>轻机枪弹</Bullet_Rukaya_Machinegun.label>
+  <Bullet_Rukaya_Machinegun_SuppressionIncendiary.label>压制燃烧轻机枪弹</Bullet_Rukaya_Machinegun_SuppressionIncendiary.label>
+  <Bullet_Rukaya_AviationMachinegun.label>高速轻机枪弹</Bullet_Rukaya_AviationMachinegun.label>
+  <Bullet_Rukaya_AviationMachinegun_SuppressionIncendiary.label>高速压制燃烧轻机枪弹</Bullet_Rukaya_AviationMachinegun_SuppressionIncendiary.label>
+  <Bullet_Rukaya_SmartRevolver.label>自瞄卡宾手枪弹</Bullet_Rukaya_SmartRevolver.label>
+  <Bullet_Rukaya_LaserRifle.label>激光步枪脉冲束</Bullet_Rukaya_LaserRifle.label>
+  <Bullet_Rukaya_LaserRifle_Active.label>活性物质激光步枪脉冲束</Bullet_Rukaya_LaserRifle_Active.label>
+  <Bullet_Rukaya_PlasmaShotgun.label>等离子霰弹束</Bullet_Rukaya_PlasmaShotgun.label>
+  <Bullet_Rukaya_PlasmaShotgun_Charged.label>充能等离子霰弹束</Bullet_Rukaya_PlasmaShotgun_Charged.label>
+  <Bullet_Rukaya_PlasmaRailgun.label>等离子轨道弹丸</Bullet_Rukaya_PlasmaRailgun.label>
+  <Bullet_Rukaya_PlasmaRailgun_Charged.label>充能等离子轨道弹丸</Bullet_Rukaya_PlasmaRailgun_Charged.label>
+  <Rukaya_ATGM_Projectile.label>反装甲导弹</Rukaya_ATGM_Projectile.label>
+  <Rukaya_ATGM_Projectile_Charged.label>充能反装甲导弹</Rukaya_ATGM_Projectile_Charged.label>
+  <Rukaya_Rocket_Projectile.label>空爆火箭弹</Rukaya_Rocket_Projectile.label>
+  <Rukaya_Rocket_AirburstFragment.label>空爆火箭破片</Rukaya_Rocket_AirburstFragment.label>
+  <Rukaya_AutoCannon_FlechetteShell.label>机炮破片弹</Rukaya_AutoCannon_FlechetteShell.label>
+  <Rukaya_AutoCannon_FlechetteFragment.label>机炮破片</Rukaya_AutoCannon_FlechetteFragment.label>
+  <Rukaya_GrenadeLauncher_Grenade.label>榴弹发射器榴弹</Rukaya_GrenadeLauncher_Grenade.label>
+  <Rukaya_GrenadeLauncher_ArcShockGrenade.label>电弧震击榴弹</Rukaya_GrenadeLauncher_ArcShockGrenade.label>
+  <Bullet_Rukaya_AutoCannon.label>机炮炮弹</Bullet_Rukaya_AutoCannon.label>
+  <Bullet_Rukaya_RecoillessGun.label>无后坐力炮弹</Bullet_Rukaya_RecoillessGun.label>
+  <Bullet_Rukaya_RecoillessGun_Active.label>活性物质无后坐力炮弹</Bullet_Rukaya_RecoillessGun_Active.label>
+
+  <Rukaya_SignalFlareProjectile.label>信号弹筒</Rukaya_SignalFlareProjectile.label>
+  <Rukaya_SignalFlare.label>卢卡娅信号弹</Rukaya_SignalFlare.label>
+  <Rukaya_GrenadePistol_IncendiaryGrenadeProjectile.label>榴弹手枪燃烧弹筒</Rukaya_GrenadePistol_IncendiaryGrenadeProjectile.label>
+  <Rukaya_GrenadePistol_IncendiaryGrenade.label>榴弹手枪燃烧弹筒</Rukaya_GrenadePistol_IncendiaryGrenade.label>
+
+  <Rukaya_Revolver.label>卢卡娅警用左轮手枪</Rukaya_Revolver.label>
+  <Rukaya_Revolver.description>一把作为最后防身手段保留下来的短枪管警用左轮。它在贴身距离内紧凑而可靠，但短枪管和简陋照门使它在自卫距离外几乎谈不上精准。</Rukaya_Revolver.description>
+
+  <Rukaya_Rifle.label>卢卡娅栓动步枪</Rukaya_Rifle.label>
+  <Rukaya_Rifle.description>一种为审慎瞄准射击而调校的长型栓动步枪。它的枪机动作缓慢，整枪也更笨重，但射程更远，杀伤力也高于普通工业武器。</Rukaya_Rifle.description>
+
+  <Rukaya_AssaultRifle.label>卢卡娅突击步枪</Rukaya_AssaultRifle.label>
+  <Rukaya_AssaultRifle.description>一把按卢卡娅标准打造的全尺寸突击步枪。它比人类步枪更重，点射后的复位也更慢，但拥有更紧密的弹着分布，以及更远距离上的稳定终端杀伤。</Rukaya_AssaultRifle.description>
+
+  <Rukaya_MarksmanRifle.label>卢卡娅精准射手步枪</Rukaya_MarksmanRifle.label>
+  <Rukaya_MarksmanRifle.description>一把为中远距离审慎瞄准射击打造的半自动精准射手步枪。和专职狙击步枪相比，它牺牲了一部分极限射程，但换来了更快的射击循环，以及配合全威力步枪弹时依然出色的精度。
+活性物质模式下，发射燃烧精准射手步枪弹药。</Rukaya_MarksmanRifle.description>
+
+  <Rukaya_Pistol.label>卢卡娅制式手枪</Rukaya_Pistol.label>
+  <Rukaya_Pistol.description>一把配发给卢卡娅正规部队的标准化半自动手枪。它在操控性和持续火力上明显强于应急副武器，但本质上仍是一种用于纪律化近距离交战的手枪，而不是拿来进行远距离精确射击的武器。
+灌注活性物质后，武器会过载每一发弹药：每一发命中更重、瞄准更稳，且在充能存续期间整体射击循环更快、射程更远。过载弹还携带神经震荡载荷，因此每一次命中都会拖慢中弹者的移动、钝化其意识。零散的命中只能拖慢目标；只有持续把火力压在同一个敌人身上，才能把它放倒，而且压制得越彻底，它趴在地上的时间就越长。这把武器被设计成尽可能活捉敌人，而不是单纯将其击杀。</Rukaya_Pistol.description>
+
+  <Rukaya_GrenadePistol.label>卢卡娅榴弹手枪</Rukaya_GrenadePistol.label>
+  <Rukaya_GrenadePistol.description>一把围绕手枪式握把与短榴弹管构建的紧凑发射器。它让普通步兵也能携带可控的爆炸性副武器，以较小的杀伤半径和射程换取便携性与更快的操控。
+活性物质模式会装填燃烧弹筒，在落点周围泼洒燃料并点燃，但不带信号弹的反隐身脉冲。</Rukaya_GrenadePistol.description>
+
+  <Rukaya_SubMachinegun.label>卢卡娅冲锋枪</Rukaya_SubMachinegun.label>
+  <Rukaya_SubMachinegun.description>一把为登舰作战、走廊战斗与机动突击设计的紧凑自动武器。它能够很快指向目标并高速倾泻火力，但受限于较小弹药和短枪管，一旦超出近距离交战范围，表现就会迅速下滑。
+灌注活性物质后，这把枪会同时过载弹药与枪机：在充能存续期间获得更高的伤害、更稳的瞄准、更快的射击循环与更远的射程。过载弹还携带神经震荡载荷。由于这把枪以点射方式射击，震荡累积得很快，但消退得同样很快：一次命中点射会让目标几乎无法移动，紧接着压上第二个点射才能真正把它放倒。敌人被这种火力压制的越久，倒地后趴着的时间就越长。这把枪被设计成尽可能活捉敌人，而不是单纯将其击杀。</Rukaya_SubMachinegun.description>
+
+  <Rukaya_Machinegun.label>卢卡娅轻机枪</Rukaya_Machinegun.label>
+  <Rukaya_Machinegun.description>一挺偏重持续长点射而非灵巧性的班组支援轻机枪。它沉重、喧闹、操控笨拙，但当卢卡娅线列单位需要把敌人压制在原地时，这种持续压制火力就会非常有价值。
+活性物质模式会装填压制燃烧弹。每次命中都有概率点燃目标，而落点周围的敌对单位会承受压制冲击，移动、射击精度与视觉能力都会被不断拖低，直到火力压力最终消退。</Rukaya_Machinegun.description>
+
+  <Rukaya_AviationMachinegun.label>卢卡娅航空机枪</Rukaya_AviationMachinegun.label>
+  <Rukaya_AviationMachinegun.description>一挺围绕与卢卡娅轻机枪相同全威力弹药打造的航空型多管机枪。它通过电驱动的枪管组以更高弹速发射同样的弹药，并以凶猛而稳定的长点射持续循环，但常规供弹机构可能在持续射击时卡壳，使点射提前中断并迫使射手进行漫长的排障。整枪也十分沉重且难以操控。加大的活性物质储量能够支撑持续火力。活性物质模式会装填压制燃烧弹并稳定供弹机构，从而避免卡壳。</Rukaya_AviationMachinegun.description>
+
+  <Rukaya_GrenadeLauncher.label>卢卡娅榴弹发射器</Rukaya_GrenadeLauncher.label>
+  <Rukaya_GrenadeLauncher.description>一具供步兵班组支援使用的肩射式榴弹发射器。它过于迟缓也过于专门，无法取代步枪，但能让正规部队稳定地把爆炸火力投送到掩体后方、轻型工事和密集敌群之中。
+活性物质模式会装填电弧震击榴弹。它的搜索范围比爆炸本身更远，会在落点周围锁定至多十个敌对单位，并以火焰灼伤与强力 EMP 放电同时抽击每个目标。</Rukaya_GrenadeLauncher.description>
+
+  <Rukaya_RecoillessGun.label>卢卡娅无后坐力炮</Rukaya_RecoillessGun.label>
+  <Rukaya_RecoillessGun.description>一种由工程师突发奇想硬生生变成野战武器的产物：有人看着一门固定式无后坐力炮，认定把它拆下来扛着跑会更快，然后居然真的把这件事做成了。它的命中威力极其凶猛，但可怕的重量会拖慢携带者的行动，也让快速瞄准变得十分痛苦。
+
+标准炮弹是一发把全部威力集中于单一目标的穿甲弹。活性物质模式则会装填过载弹头，命中更重、穿透更深，并在撞击时引爆，把附近敌人一并卷入爆炸。</Rukaya_RecoillessGun.description>
+
+  <Rukaya_AssaultRifleGrenade.label>卢卡娅突击步枪（榴弹）</Rukaya_AssaultRifleGrenade.label>
+  <Rukaya_AssaultRifleGrenade.description>一把装有下挂信号弹投射器的标准突击步枪。它保留了普通步枪的实用作战定位，同时为使用者提供一种有限但灵活的支援手段，用来暴露隐藏威胁、照亮目标区域，并以一次性爆发把点燃的燃料泼洒到一片区域。</Rukaya_AssaultRifleGrenade.description>
+  <Rukaya_AssaultRifleGrenade.comps.CompEquippableAbilityReloadable.chargeNoun>信号弹</Rukaya_AssaultRifleGrenade.comps.CompEquippableAbilityReloadable.chargeNoun>
+  <Rukaya_AssaultRifleGrenade.comps.CompEquippableAbilityReloadable.cooldownGerund>冷却中</Rukaya_AssaultRifleGrenade.comps.CompEquippableAbilityReloadable.cooldownGerund>
+
+  <Rukaya_AssaultRifleFlame.label>卢卡娅突击步枪（喷火）</Rukaya_AssaultRifleFlame.label>
+  <Rukaya_AssaultRifleFlame.description>一把在护木下方整合了紧凑喷火模块的改装突击步枪。它牺牲了一部分平衡性和步枪本身的简洁性，换来一次短射程的燃烧燃料喷发，能够强行点燃地面，非常适合围攻战、室内清剿，以及把防守者从掩体后面逼出来。</Rukaya_AssaultRifleFlame.description>
+  <Rukaya_AssaultRifleFlame.comps.CompEquippableAbilityReloadable.chargeNoun>喷火剂</Rukaya_AssaultRifleFlame.comps.CompEquippableAbilityReloadable.chargeNoun>
+  <Rukaya_AssaultRifleFlame.comps.CompEquippableAbilityReloadable.cooldownGerund>冷却中</Rukaya_AssaultRifleFlame.comps.CompEquippableAbilityReloadable.cooldownGerund>
+
+  <Rukaya_AssaultRifleRadar.label>卢卡娅突击步枪（雷达）</Rukaya_AssaultRifleRadar.label>
+  <Rukaya_AssaultRifleRadar.description>一把围绕加大型传感器组件与同步火控套件构建的指挥型号突击步枪。它比标准步枪需要更久的举枪稳定时间，但一旦完成瞄准，便能打出明显更紧密的弹着，并可为整支小队指定集火目标。</Rukaya_AssaultRifleRadar.description>
+  <Rukaya_AssaultRifleRadar.comps.CompEquippableAbilityReloadable.chargeNoun>扫描脉冲</Rukaya_AssaultRifleRadar.comps.CompEquippableAbilityReloadable.chargeNoun>
+  <Rukaya_AssaultRifleRadar.comps.CompEquippableAbilityReloadable.cooldownGerund>充能中</Rukaya_AssaultRifleRadar.comps.CompEquippableAbilityReloadable.cooldownGerund>
+
+  <Rukaya_AirburstRocket.label>卢卡娅三联空爆发射器</Rukaya_AirburstRocket.label>
+  <Rukaya_AirburstRocket.description>一具为民兵火力组打造的粗犷三联发射器。它能越过掩体投射缓慢且不够精确的小型火箭齐射，以精度和装填速度换取足以驱散集群进攻者的爆压。</Rukaya_AirburstRocket.description>
+
+  <Rukaya_PlasmaShotgun.label>卢卡娅等离子霰弹枪</Rukaya_PlasmaShotgun.label>
+  <Rukaya_PlasmaShotgun.description>一把围绕宽幅扩散腔构建的近距离突击等离子投射器。它能在短距离内抛出一股高密度超高温粒子流，撕开轻甲目标并压制掩体后方，但随着交战距离拉长，散布衰减也会迅速变得明显。
+未充能时，它会一次喷出三发等离子散射束；充能模式则改为单发高压射击，单发命中后会附带更强的压制冲击、更大的爆炸范围与更高的伤害。</Rukaya_PlasmaShotgun.description>
+
+  <Rukaya_PlasmaRailgun.label>卢卡娅等离子狙击枪</Rukaya_PlasmaRailgun.label>
+  <Rukaya_PlasmaRailgun.description>一把以磁轨加速等离子包覆穿透体的精密长枪。它的射击循环缓慢且能耗很高，但每一发都能深深钻入护甲，并在普通步枪开始失效的超远距离上维持危险的终端威力。
+每一发都以蓝白色等离子脉冲瞬时命中，沿射击路径留下逐渐消退的明亮光束，并在命中点迸发闪光。活性物质模式会提高直击伤害与穿甲能力。</Rukaya_PlasmaRailgun.description>
+
+  <Rukaya_LaserRifle.label>卢卡娅激光步枪</Rukaya_LaserRifle.label>
+  <Rukaya_LaserRifle.description>一把以高度准直热脉冲取代传统弹丸质量的制式长枪。在普通步兵交战距离内，它的光束几乎不会明显发散，因此对于暴露人员与轻防护目标来说，是一种非常稳定的中距离主战武器。</Rukaya_LaserRifle.description>
+
+  <Rukaya_SmartRevolver.label>卢卡娅自瞄卡宾手枪</Rukaya_SmartRevolver.label>
+  <Rukaya_SmartRevolver.description>一把安装了紧凑预测瞄准组件的高端副武器。它依旧沿用左轮结构来保证可靠性，但火控辅助让它能够以反常的速度咬住目标，并在这种体量下打出异常优秀的命中精度。命中的弹丸大多会被导引向头部；灌注活性物质后，每一发都会被过载驱动，造成更高的伤害、更稳的瞄准、更快的射击循环与更远的射程。</Rukaya_SmartRevolver.description>
+
+  <Rukaya_ATGMLauncher.label>卢卡娅肩扛导弹发射器</Rukaya_ATGMLauncher.label>
+  <Rukaya_ATGMLauncher.description>一具配发给重步兵与伏击小组的肩射反装甲导弹发射器。发射后，操作者必须持续保持瞄准线，通过指令线制导将导弹引向目标。在视线清晰且没有烟雾干扰时，导弹会修正到目标上；被雷达锁定的目标会遭受穿甲能力更强的打击。
+活性物质模式会装填充能导弹，以高得多的速度直扑目标。命中时弹头会向冲击区泼洒燃烧燃料，并释放一道电涌，连锁扫过周围仍站立的所有敌对单位。</Rukaya_ATGMLauncher.description>
+
+  <Rukaya_AutoCannon.label>卢卡娅单兵机炮</Rukaya_AutoCannon.label>
+  <Rukaya_AutoCannon.description>一门为粗暴直射支援而非优雅射击打造的人携式机炮。它的每次点射都代价高昂、声势惊人，携行时也极其折磨人，但作为交换，它能用沉重炮弹撕碎坚固掩体，并压垮一切暴露在火线中的目标。</Rukaya_AutoCannon.description>
+
+
+  <Bullet_Rukaya_Phantom.label>魅影毒箭</Bullet_Rukaya_Phantom.label>
+  <Bullet_Rukaya_Peacekeeper.label>维和者步枪弹</Bullet_Rukaya_Peacekeeper.label>
+
+  <Rukaya_Phantom.label>魅影弓</Rukaya_Phantom.label>
+  <Rukaya_Phantom.description>一把纤细的复合弓，箭矢携带缓慢发作的毒素。魅影的箭不是最沉重的一击，但只要干净命中，毒素就会在目标血液里留下远比箭矢本身更持久的印记。</Rukaya_Phantom.description>
+  <Bullet_Rukaya_SmartRevolver_Charged.label>过载自瞄卡宾手枪弹</Bullet_Rukaya_SmartRevolver_Charged.label>
+
+  <Rukaya_Peacekeeper.label>维和者</Rukaya_Peacekeeper.label>
+  <Rukaya_Peacekeeper.description>一把围绕全威力步枪弹打造的大型六发左轮手枪。它的弹巢会在一串凶猛连射中打空全部六发，而每一发都具备步枪级的杀伤力。代价是重量、后坐力，以及需要片刻才能重新稳定的射击循环。</Rukaya_Peacekeeper.description>
+
+  <Rukaya_Prototype.label>原型</Rukaya_Prototype.label>
+  <Rukaya_Prototype.description>一把实验型突击步枪，将常规卢卡娅步枪结构与下挂式五发烟雾弹弹仓结合。主射击稳定而熟悉，辅助弹仓则让士兵无需离开火线即可布设标准烟幕掩蔽。</Rukaya_Prototype.description>
+  <Rukaya_Prototype.comps.CompEquippableAbilityReloadable.chargeNoun>烟雾弹</Rukaya_Prototype.comps.CompEquippableAbilityReloadable.chargeNoun>
+  <Rukaya_Prototype.comps.CompEquippableAbilityReloadable.cooldownGerund>装填中</Rukaya_Prototype.comps.CompEquippableAbilityReloadable.cooldownGerund>
+
+
+  <Bullet_Rukaya_MarksmanRifle_Incendiary.label>燃烧精准射手步枪弹</Bullet_Rukaya_MarksmanRifle_Incendiary.label>
+  <Rukaya_GrenadePistol.verbs.0.label>发射榴弹手枪榴弹</Rukaya_GrenadePistol.verbs.0.label>
+  <Rukaya_AviationMachinegun.tools.0.label>枪托</Rukaya_AviationMachinegun.tools.0.label>
+  <Rukaya_GrenadeLauncher.verbs.0.label>发射榴弹</Rukaya_GrenadeLauncher.verbs.0.label>
+  <Rukaya_RecoillessGun.verbs.0.label>发射无后坐力炮弹</Rukaya_RecoillessGun.verbs.0.label>
+  <Rukaya_AirburstRocket.verbs.0.label>发射火箭齐射</Rukaya_AirburstRocket.verbs.0.label>
+  <Rukaya_PlasmaShotgun.verbs.0.label>发射等离子散射束</Rukaya_PlasmaShotgun.verbs.0.label>
+  <Rukaya_ATGMLauncher.verbs.0.label>发射反装甲导弹</Rukaya_ATGMLauncher.verbs.0.label>
+  <Rukaya_AutoCannon.verbs.0.label>发射机炮点射</Rukaya_AutoCannon.verbs.0.label>
+  <Rukaya_Phantom.verbs.0.label>射出魅影毒箭</Rukaya_Phantom.verbs.0.label>
+  <Rukaya_Phantom.tools.0.label>弓臂</Rukaya_Phantom.tools.0.label>
+  <Rukaya_Peacekeeper.verbs.0.label>六连发射击</Rukaya_Peacekeeper.verbs.0.label>
+  <Rukaya_Prototype.verbs.0.label>原型步枪点射</Rukaya_Prototype.verbs.0.label>
+
+  <!-- 具体 Def 继承的攻击部位；列表下标按 XML 继承后的顺序。 -->
+  <Rukaya_Revolver.tools.0.label>握把</Rukaya_Revolver.tools.0.label>
+  <Rukaya_Revolver.tools.1.label>枪身</Rukaya_Revolver.tools.1.label>
+  <Rukaya_Rifle.tools.0.label>枪托</Rukaya_Rifle.tools.0.label>
+  <Rukaya_Rifle.tools.1.label>枪管</Rukaya_Rifle.tools.1.label>
+  <Rukaya_AssaultRifle.tools.0.label>枪托</Rukaya_AssaultRifle.tools.0.label>
+  <Rukaya_AssaultRifle.tools.1.label>枪管</Rukaya_AssaultRifle.tools.1.label>
+  <Rukaya_MarksmanRifle.tools.0.label>枪托</Rukaya_MarksmanRifle.tools.0.label>
+  <Rukaya_MarksmanRifle.tools.1.label>枪管</Rukaya_MarksmanRifle.tools.1.label>
+  <Rukaya_Pistol.tools.0.label>握把</Rukaya_Pistol.tools.0.label>
+  <Rukaya_Pistol.tools.1.label>枪身</Rukaya_Pistol.tools.1.label>
+  <Rukaya_GrenadePistol.tools.0.label>握把</Rukaya_GrenadePistol.tools.0.label>
+  <Rukaya_GrenadePistol.tools.1.label>枪身</Rukaya_GrenadePistol.tools.1.label>
+  <Rukaya_SubMachinegun.tools.0.label>枪托</Rukaya_SubMachinegun.tools.0.label>
+  <Rukaya_SubMachinegun.tools.1.label>枪管</Rukaya_SubMachinegun.tools.1.label>
+  <Rukaya_Machinegun.tools.0.label>枪托</Rukaya_Machinegun.tools.0.label>
+  <Rukaya_Machinegun.tools.1.label>枪管</Rukaya_Machinegun.tools.1.label>
+  <Rukaya_AviationMachinegun.tools.1.label>枪管</Rukaya_AviationMachinegun.tools.1.label>
+  <Rukaya_AviationMachinegun.tools.2.label>枪管组</Rukaya_AviationMachinegun.tools.2.label>
+  <Rukaya_GrenadeLauncher.tools.0.label>枪托</Rukaya_GrenadeLauncher.tools.0.label>
+  <Rukaya_GrenadeLauncher.tools.1.label>枪管</Rukaya_GrenadeLauncher.tools.1.label>
+  <Rukaya_RecoillessGun.tools.0.label>枪托</Rukaya_RecoillessGun.tools.0.label>
+  <Rukaya_RecoillessGun.tools.1.label>枪管</Rukaya_RecoillessGun.tools.1.label>
+  <Rukaya_AssaultRifleGrenade.tools.0.label>枪托</Rukaya_AssaultRifleGrenade.tools.0.label>
+  <Rukaya_AssaultRifleGrenade.tools.1.label>枪管</Rukaya_AssaultRifleGrenade.tools.1.label>
+  <Rukaya_AssaultRifleFlame.tools.0.label>枪托</Rukaya_AssaultRifleFlame.tools.0.label>
+  <Rukaya_AssaultRifleFlame.tools.1.label>枪管</Rukaya_AssaultRifleFlame.tools.1.label>
+  <Rukaya_AssaultRifleRadar.tools.0.label>枪托</Rukaya_AssaultRifleRadar.tools.0.label>
+  <Rukaya_AssaultRifleRadar.tools.1.label>枪管</Rukaya_AssaultRifleRadar.tools.1.label>
+  <Rukaya_AirburstRocket.tools.0.label>枪托</Rukaya_AirburstRocket.tools.0.label>
+  <Rukaya_AirburstRocket.tools.1.label>枪管</Rukaya_AirburstRocket.tools.1.label>
+  <Rukaya_PlasmaShotgun.tools.0.label>枪托</Rukaya_PlasmaShotgun.tools.0.label>
+  <Rukaya_PlasmaShotgun.tools.1.label>枪管</Rukaya_PlasmaShotgun.tools.1.label>
+  <Rukaya_PlasmaRailgun.tools.0.label>枪托</Rukaya_PlasmaRailgun.tools.0.label>
+  <Rukaya_PlasmaRailgun.tools.1.label>枪管</Rukaya_PlasmaRailgun.tools.1.label>
+  <Rukaya_LaserRifle.tools.0.label>枪托</Rukaya_LaserRifle.tools.0.label>
+  <Rukaya_LaserRifle.tools.1.label>枪管</Rukaya_LaserRifle.tools.1.label>
+  <Rukaya_SmartRevolver.tools.0.label>握把</Rukaya_SmartRevolver.tools.0.label>
+  <Rukaya_SmartRevolver.tools.1.label>枪身</Rukaya_SmartRevolver.tools.1.label>
+  <Rukaya_ATGMLauncher.tools.0.label>枪托</Rukaya_ATGMLauncher.tools.0.label>
+  <Rukaya_ATGMLauncher.tools.1.label>枪管</Rukaya_ATGMLauncher.tools.1.label>
+  <Rukaya_AutoCannon.tools.0.label>枪托</Rukaya_AutoCannon.tools.0.label>
+  <Rukaya_AutoCannon.tools.1.label>枪管</Rukaya_AutoCannon.tools.1.label>
+  <Rukaya_Peacekeeper.tools.0.label>握把</Rukaya_Peacekeeper.tools.0.label>
+  <Rukaya_Peacekeeper.tools.1.label>枪身</Rukaya_Peacekeeper.tools.1.label>
+  <Rukaya_Prototype.tools.0.label>枪托</Rukaya_Prototype.tools.0.label>
+  <Rukaya_Prototype.tools.1.label>枪管</Rukaya_Prototype.tools.1.label>
+
+</LanguageData>

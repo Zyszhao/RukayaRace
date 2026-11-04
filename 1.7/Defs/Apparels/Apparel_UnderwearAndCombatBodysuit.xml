@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- 四件内衣沿用黑色过膝袜内衣的基础属性，不增加竞技紧身衣或运动内衣的专属加成。 -->
+  <ThingDef ParentName="Rukaya_UnderwearBaseI">
+    <defName>Rukaya_FishnetStockings</defName>
+    <label>Rukaya fishnet underwear</label>
+    <!-- 中文：卢卡娅渔网袜内衣 -->
+    <description>A set of underwear with fishnet stockings, tailored for Rukaya anatomy.</description>
+    <!-- 中文翻译：一套为卢卡娅体型裁制、配有渔网袜的内衣。 -->
+    <techLevel>Medieval</techLevel>
+    <graphicData>
+      <texPath>Rukaya/Apparel/Underwear/FishnetStockings/Rukaya_FishnetStockings</texPath>
+    </graphicData>
+    <apparel>
+      <useWornGraphicMask>false</useWornGraphicMask>
+      <bodyPartGroups><li>Torso</li><li>Legs</li></bodyPartGroups>
+      <wornGraphicPath>Rukaya/Apparel/Underwear/FishnetStockings/Rukaya_FishnetStockings</wornGraphicPath>
+      <tags><li>Rukaya_Underwear</li><li>Rukaya_Dress_Civilian</li></tags>
+    </apparel>
+  </ThingDef>
+
+  <ThingDef ParentName="Rukaya_UnderwearBaseI">
+    <defName>Rukaya_WhitePantyhose</defName>
+    <label>Rukaya white pantyhose underwear</label>
+    <!-- 中文：卢卡娅白色连裤袜内衣 -->
+    <description>A set of underwear with white pantyhose, tailored for Rukaya anatomy.</description>
+    <!-- 中文翻译：一套为卢卡娅体型裁制、配有白色连裤袜的内衣。 -->
+    <techLevel>Medieval</techLevel>
+    <graphicData>
+      <texPath>Rukaya/Apparel/Underwear/WhitePantyhose/Rukaya_WhitePantyhose</texPath>
+    </graphicData>
+    <apparel>
+      <useWornGraphicMask>false</useWornGraphicMask>
+      <bodyPartGroups><li>Torso</li><li>Legs</li></bodyPartGroups>
+      <wornGraphicPath>Rukaya/Apparel/Underwear/WhitePantyhose/Rukaya_WhitePantyhose</wornGraphicPath>
+      <tags><li>Rukaya_Underwear</li><li>Rukaya_Dress_Civilian</li></tags>
+    </apparel>
+  </ThingDef>
+
+  <ThingDef ParentName="Rukaya_UnderwearBaseI">
+    <defName>Rukaya_BlackPantyhose</defName>
+    <label>Rukaya black pantyhose underwear</label>
+    <!-- 中文：卢卡娅黑色连裤袜内衣 -->
+    <description>A set of underwear with black pantyhose, tailored for Rukaya anatomy.</description>
+    <!-- 中文翻译：一套为卢卡娅体型裁制、配有黑色连裤袜的内衣。 -->
+    <techLevel>Medieval</techLevel>
+    <graphicData>
+      <texPath>Rukaya/Apparel/Underwear/BlackPantyhose/Rukaya_BlackPantyhose</texPath>
+    </graphicData>
+    <apparel>
+      <useWornGraphicMask>false</useWornGraphicMask>
+      <bodyPartGroups><li>Torso</li><li>Legs</li></bodyPartGroups>
+      <wornGraphicPath>Rukaya/Apparel/Underwear/BlackPantyhose/Rukaya_BlackPantyhose</wornGraphicPath>
+      <tags><li>Rukaya_Underwear</li><li>Rukaya_Dress_Civilian</li></tags>
+    </apparel>
+  </ThingDef>
+
+  <ThingDef ParentName="Rukaya_UnderwearBaseI">
+    <defName>Rukaya_BandageUnderwear</defName>
+    <label>Rukaya bandage underwear</label>
+    <!-- 中文：卢卡娅绷带内衣 -->
+    <description>Underwear made from soft cloth wraps, fitted securely around the Rukaya body.</description>
+    <!-- 中文翻译：以柔软布带缠绕而成的内衣，稳妥贴合卢卡娅的身体。 -->
+    <techLevel>Medieval</techLevel>
+    <graphicData>
+      <texPath>Rukaya/Apparel/Underwear/BandageUnderwear/Rukaya_BandageUnderwear</texPath>
+    </graphicData>
+    <apparel>
+      <useWornGraphicMask>false</useWornGraphicMask>
+      <bodyPartGroups><li>Torso</li><li>Legs</li></bodyPartGroups>
+      <wornGraphicPath>Rukaya/Apparel/Underwear/BandageUnderwear/Rukaya_BandageUnderwear</wornGraphicPath>
+      <tags><li>Rukaya_Underwear</li><li>Rukaya_Dress_Civilian</li></tags>
+    </apparel>
+  </ThingDef>
+
+  <!-- 2级工业贴身战斗服；精度为原版后处理曲线之前的点数。 -->
+  <ThingDef ParentName="Rukaya_OnSkinBaseII">
+    <defName>Rukaya_CombatBodysuit</defName>
+    <label>Rukaya combat bodysuit</label>
+    <!-- 中文：卢卡娅紧身衣战斗服 -->
+    <description>A close-fitting combat bodysuit tailored for Rukaya anatomy. Reinforced fabric resists cuts, while an insulating lining protects against heat and cold. Flexible supports aid movement and steady the wearer during melee strikes and aimed fire.</description>
+    <!-- 中文翻译：一套为卢卡娅体型裁制的贴身战斗服。加固面料抵御切割，隔热内衬兼顾御寒与避热。柔性支撑结构辅助移动，并让穿着者在近战出击与瞄准射击时更加稳定。 -->
+    <techLevel>Industrial</techLevel>
+    <graphicData>
+      <texPath>Rukaya/Apparel/OnSkin/CombatBodysuit/Rukaya_CombatBodysuit</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Cutout</shaderType>
+    </graphicData>
+    <statBases>
+      <Mass>1.8</Mass>
+      <EquipDelay>3</EquipDelay>
+      <MaxHitPoints>240</MaxHitPoints>
+      <WorkToMake>16000</WorkToMake>
+      <ArmorRating_Sharp>0.40</ArmorRating_Sharp>
+      <Insulation_Cold>28</Insulation_Cold>
+      <Insulation_Heat>24</Insulation_Heat>
+    </statBases>
+    <costList>
+      <Cloth>80</Cloth>
+      <DevilstrandCloth>30</DevilstrandCloth>
+      <ComponentIndustrial>2</ComponentIndustrial>
+    </costList>
+    <apparel>
+      <useWornGraphicMask>false</useWornGraphicMask>
+      <developmentalStageFilter>Child, Adult</developmentalStageFilter>
+      <bodyPartGroups>
+        <li>Torso</li><li>Neck</li><li>Shoulders</li><li>Arms</li><li>Legs</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Rukaya/Apparel/OnSkin/CombatBodysuit/Rukaya_CombatBodysuit</wornGraphicPath>
+      <tags><li>Rukaya_OnSkin</li><li>Rukaya_Dress_Service</li></tags>
+    </apparel>
+    <equippedStatOffsets>
+      <MoveSpeed>0.25</MoveSpeed>
+      <MeleeHitChance>2</MeleeHitChance>
+      <ShootingAccuracyPawn>2</ShootingAccuracyPawn>
+    </equippedStatOffsets>
+  </ThingDef>
+</Defs>

@@ -1,0 +1,627 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <ThingDef Name="Rukaya_BaseMeleeWeapon" ParentName="BaseWeapon" Abstract="True">
+    <graphicData>
+      <drawSize>(1.25,1.25)</drawSize>
+    </graphicData>
+    <tradeTags>
+      <li>WeaponMelee</li>
+    </tradeTags>
+    <comps>
+      <li Class="CompProperties_Biocodable" />
+    </comps>
+  </ThingDef>
+
+  <ThingDef Name="Rukaya_BaseActiveMatterMeleeWeapon" ParentName="Rukaya_BaseMeleeWeapon" Abstract="True">
+    <techLevel>Industrial</techLevel>
+    <smeltable>true</smeltable>
+    <burnableByRecipe>true</burnableByRecipe>
+    <thingCategories>
+      <li>WeaponsMelee</li>
+    </thingCategories>
+    <weaponClasses>
+      <li>Melee</li>
+      <li>MeleePiercer</li>
+    </weaponClasses>
+    <relicChance>2</relicChance>
+    <inspectorTabs>
+      <li>ITab_Art</li>
+    </inspectorTabs>
+    <equippedAngleOffset>-65</equippedAngleOffset>
+    <comps Inherit="False">
+      <li Class="CompProperties_Forbiddable" />
+      <li>
+        <compClass>RukayaRace.Weapons.CompRukayaActiveMatterEquippable</compClass>
+      </li>
+      <li Class="CompProperties_Styleable" />
+      <li>
+        <compClass>CompQuality</compClass>
+      </li>
+      <li Class="CompProperties_Art">
+        <nameMaker>NamerArtWeaponMelee</nameMaker>
+        <descriptionMaker>ArtDescription_WeaponMelee</descriptionMaker>
+        <minQualityForArtistic>Excellent</minQualityForArtistic>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef Name="Rukaya_BaseT1MeleeWeapon" ParentName="Rukaya_BaseMeleeWeapon" Abstract="True">
+    <techLevel>Industrial</techLevel>
+    <smeltable>true</smeltable>
+    <burnableByRecipe>true</burnableByRecipe>
+    <thingCategories>
+      <li>WeaponsMelee</li>
+    </thingCategories>
+    <weaponClasses>
+      <li>Melee</li>
+      <li>MeleePiercer</li>
+    </weaponClasses>
+    <relicChance>1</relicChance>
+    <inspectorTabs>
+      <li>ITab_Art</li>
+    </inspectorTabs>
+    <comps>
+      <li>
+        <compClass>CompQuality</compClass>
+      </li>
+      <li Class="CompProperties_Art">
+        <nameMaker>NamerArtWeaponMelee</nameMaker>
+        <descriptionMaker>ArtDescription_WeaponMelee</descriptionMaker>
+        <minQualityForArtistic>Excellent</minQualityForArtistic>
+      </li>
+    </comps>
+    <equippedAngleOffset>-65</equippedAngleOffset>
+  </ThingDef>
+
+  <ThingDef ParentName="Rukaya_BaseT1MeleeWeapon">
+    <defName>Rukaya_Pickaxe</defName>
+    <label>Rukaya field pickaxe</label>
+    <!-- 中文翻译：卢卡娅十字镐 -->
+    <description>A reinforced field pick issued as both breaching tool and emergency weapon. It is tiring to swing and not especially lethal in a duel, but its weighted head bites through armor better than improvised tools.</description>
+    <!-- 中文翻译：一种兼作破拆工具与应急武器的强化工兵十字镐。它挥动起来很吃力，在决斗里也不算致命，但加重的镐头比临时工具更容易啃穿护甲。 -->
+    <graphicData>
+      <texPath>Rukaya/Weapon/Rukaya_Pickaxe</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <WorkToMake>9000</WorkToMake>
+      <Mass>2.8</Mass>
+    </statBases>
+    <costList>
+      <Steel>65</Steel>
+      <ComponentIndustrial>1</ComponentIndustrial>
+    </costList>
+    <weaponTags>
+      <li>Rukaya_T1_Melee</li>
+    </weaponTags>
+    <tools>
+      <li>
+        <label>haft</label> <!-- 中文：柄 -->
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>8</power>
+        <cooldownTime>2.4</cooldownTime>
+      </li>
+      <li>
+        <label>spike</label> <!-- 中文：镐尖 -->
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>15</power>
+        <cooldownTime>2.7</cooldownTime>
+      </li>
+      <li>
+        <label>spike</label> <!-- 中文：镐尖 -->
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>15</power>
+        <cooldownTime>2.7</cooldownTime>
+      </li>
+      <li>
+        <label>breaching spike</label> <!-- 中文：破拆镐尖 -->
+        <capacities>
+          <li>Demolish</li>
+        </capacities>
+        <power>7.5</power>
+        <cooldownTime>1</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+
+  <ThingDef ParentName="Rukaya_BaseT1MeleeWeapon">
+    <defName>Rukaya_TrenchShowel</defName>
+    <label>Rukaya trench shovel</label>
+    <!-- 中文翻译：卢卡娅工兵铲 -->
+    <description>A trenching shovel with a thickened steel edge and long shaft. It is awkward in close combat and hits softer than dedicated melee arms, but remains dependable for field engineering.</description>
+    <!-- 中文翻译：一把带加厚钢刃和长柄的工兵铲。它在近身搏斗中相当别扭，杀伤也弱于专业近战武器，但在野战工事作业中仍然很可靠。 -->
+    <graphicData>
+      <texPath>Rukaya/Weapon/Rukaya_TrenchShowel</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <WorkToMake>8000</WorkToMake>
+      <Mass>2.5</Mass>
+    </statBases>
+    <costList>
+      <Steel>55</Steel>
+      <ComponentIndustrial>1</ComponentIndustrial>
+    </costList>
+    <weaponTags>
+      <li>Rukaya_T1_Melee</li>
+    </weaponTags>
+    <tools>
+      <li>
+        <label>shaft</label> <!-- 中文：铲柄 -->
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>8</power>
+        <cooldownTime>2.2</cooldownTime>
+      </li>
+      <li>
+        <label>edge</label> <!-- 中文：铲刃 -->
+        <capacities>
+          <li>Cut</li>
+        </capacities>
+        <power>12</power>
+        <cooldownTime>2.4</cooldownTime>
+      </li>
+      <li>
+        <label>tip</label> <!-- 中文：铲尖 -->
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>11</power>
+        <cooldownTime>2.3</cooldownTime>
+      </li>
+      <li>
+        <label>breaching edge</label> <!-- 中文：破拆铲刃 -->
+        <capacities>
+          <li>Demolish</li>
+        </capacities>
+        <power>5.625</power>
+        <cooldownTime>1</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+
+  <ThingDef ParentName="Rukaya_BaseT1MeleeWeapon">
+    <defName>Rukaya_DuelSword</defName>
+    <label>Rukaya dueling sword</label>
+    <!-- 中文翻译：卢卡娅决斗剑 -->
+    <description>A disciplined sidearm blade made for measured thrusts rather than wild cuts. It is heavier and less murderous than a dedicated war sword, but its balance favors precise strikes through gaps in armor.</description>
+    <!-- 中文翻译：一把为克制刺击而非狂猛劈砍设计的佩用决斗剑。它比专职战剑更重、杀伤也更保守，但配重更利于把攻击准确送进护甲缝隙。 -->
+    <graphicData>
+      <texPath>Rukaya/Weapon/Rukaya_DuelSword</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1.5,1.5)</drawSize>
+    </graphicData>
+    <statBases>
+      <WorkToMake>16000</WorkToMake>
+      <Mass>1.9</Mass>
+    </statBases>
+    <costList>
+      <Steel>75</Steel>
+      <ComponentIndustrial>2</ComponentIndustrial>
+    </costList>
+    <weaponTags>
+      <li>Rukaya_T1_Melee</li>
+    </weaponTags>
+    <tools>
+      <li>
+        <label>guard</label> <!-- 中文：护手 -->
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>7</power>
+        <cooldownTime>2.1</cooldownTime>
+      </li>
+      <li>
+        <label>point</label> <!-- 中文：剑尖 -->
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>15</power>
+        <cooldownTime>2.3</cooldownTime>
+      </li>
+      <li>
+        <label>edge</label> <!-- 中文：剑刃 -->
+        <capacities>
+          <li>Cut</li>
+        </capacities>
+        <power>15</power>
+        <cooldownTime>2.3</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+
+  <ThingDef ParentName="Rukaya_BaseActiveMatterMeleeWeapon">
+    <defName>Rukaya_DivingKnife</defName>
+    <label>Rukaya diving knife</label>
+    <!-- 中文翻译：卢卡娅潜水刀 -->
+    <description>A compact service knife carried by boarding teams, divers, and other close-quarters specialists. In ordinary mode it is quicker but less lethal than a standard combat knife. Active matter mode stores 30 units and dumps them into brutally powerful close stabs meant to end the fight in a handful of committed strikes.</description>
+    <!-- 中文翻译：一把供登舰队员、潜水员和其他近距离作战专长人员携带的紧凑制式短刀。普通模式下，它比标准战斗刀更快，但杀伤更弱。活性物质模式可储存 30 点能量，并将其灌注进极其凶狠的近距离突刺中，意在用寥寥几次果断攻击结束战斗。 -->
+    <graphicData>
+      <texPath>Rukaya/Weapon/Rukaya_DivingKnife</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(0.75,0.75)</drawSize>
+    </graphicData>
+    <statBases>
+      <WorkToMake>10000</WorkToMake>
+      <Mass>0.8</Mass>
+    </statBases>
+    <costList>
+      <Rukaya_ActiveMatterContainer>12</Rukaya_ActiveMatterContainer>
+    </costList>
+    <weaponClasses>
+      <li>Melee</li>
+      <li>MeleePiercer</li>
+    </weaponClasses>
+    <weaponTags>
+      <li>Rukaya_T2_Melee</li>
+    </weaponTags>
+    <tools>
+      <li>
+        <label>hilt</label> <!-- 中文：刀柄 -->
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>7</power>
+        <cooldownTime>1.7</cooldownTime>
+      </li>
+      <li>
+        <label>edge</label> <!-- 中文：刀刃 -->
+        <capacities>
+          <li>Cut</li>
+        </capacities>
+        <power>10</power>
+        <cooldownTime>1.55</cooldownTime>
+      </li>
+      <li>
+        <label>point</label> <!-- 中文：刀尖 -->
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>11</power>
+        <cooldownTime>1.8</cooldownTime>
+      </li>
+    </tools>
+    <comps>
+      <li Class="RukayaRace.Weapons.CompProperties_RukayaActiveMatterWeapon">
+        <activeMatterThingDef>Rukaya_ActiveMatterContainer</activeMatterThingDef>
+        <unitsPerContainer>30</unitsPerContainer>
+        <maxCapacity>30</maxCapacity>
+        <defaultLoad>30</defaultLoad>
+        <activeCostPerUse>10</activeCostPerUse>
+        <activeTools>
+          <li>
+            <label>energized hilt</label> <!-- 中文：充能刀柄 -->
+            <capacities>
+              <li>Blunt</li>
+            </capacities>
+            <power>8</power>
+            <cooldownTime>1.6</cooldownTime>
+          </li>
+          <li>
+            <label>energized edge</label> <!-- 中文：充能刀刃 -->
+            <capacities>
+              <li>Cut</li>
+            </capacities>
+            <power>24</power>
+            <cooldownTime>1.45</cooldownTime>
+          </li>
+          <li>
+            <label>energized point</label> <!-- 中文：充能刀尖 -->
+            <capacities>
+              <li>Stab</li>
+            </capacities>
+            <power>34</power>
+            <cooldownTime>1.55</cooldownTime>
+          </li>
+        </activeTools>
+        <explosionBaseDamage>10</explosionBaseDamage>
+        <explosionDamagePerUnit>0.6</explosionDamagePerUnit>
+        <explosionMaxDamage>32</explosionMaxDamage>
+        <explosionBaseRadius>0.8</explosionBaseRadius>
+        <explosionRadiusPerUnit>0.018</explosionRadiusPerUnit>
+        <explosionMaxRadius>1.4</explosionMaxRadius>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="Rukaya_BaseActiveMatterMeleeWeapon">
+    <defName>Rukaya_SledgeHammer</defName>
+    <label>Rukaya breaching sledgehammer</label>
+    <!-- 中文翻译：卢卡娅爆破锤 -->
+    <description>A reinforced assault sledge built for smashing locks, panels, and armored bodies at arm's length. In ordinary mode it hits like a disciplined breaching hammer rather than an exotic relic. Active matter mode stores 60 units and converts the head into a concussion tool that hits harder than a zeushammer and leaves targets reeling under heavy stun force.</description>
+    <!-- 中文翻译：一柄经过强化的突击大锤，专门用于在贴身距离砸开门锁、板材和披甲目标。普通模式下，它更像一柄纪律严整的爆破锤，而不是某种异域圣遗物。活性物质模式可储存 60 点能量，并把锤头变成一件震荡兵器，其打击比宙斯之锤更重，还会以强烈的击晕效应让目标陷入踉跄。 -->
+    <graphicData>
+      <texPath>Rukaya/Weapon/Rukaya_SledgeHammer</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <WorkToMake>22000</WorkToMake>
+      <Mass>4.8</Mass>
+    </statBases>
+    <costList>
+      <Rukaya_ActiveMatterContainer>18</Rukaya_ActiveMatterContainer>
+    </costList>
+    <weaponClasses Inherit="False">
+      <li>MeleeBlunt</li>
+      <li>Melee</li>
+    </weaponClasses>
+    <weaponTags>
+      <li>Rukaya_T2_Melee</li>
+    </weaponTags>
+    <tools>
+      <li>
+        <label>haft</label> <!-- 中文：锤柄 -->
+        <capacities>
+          <li>Poke</li>
+        </capacities>
+        <power>9</power>
+        <cooldownTime>2.2</cooldownTime>
+      </li>
+      <li>
+        <label>head</label> <!-- 中文：锤头 -->
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>20</power>
+        <cooldownTime>2.95</cooldownTime>
+      </li>
+      <li>
+        <label>breaching head</label> <!-- 中文：破拆锤头 -->
+        <capacities>
+          <li>Demolish</li>
+        </capacities>
+        <power>5.625</power>
+        <cooldownTime>1</cooldownTime>
+      </li>
+    </tools>
+    <comps>
+      <li Class="RukayaRace.Weapons.CompProperties_RukayaActiveMatterWeapon">
+        <activeMatterThingDef>Rukaya_ActiveMatterContainer</activeMatterThingDef>
+        <unitsPerContainer>30</unitsPerContainer>
+        <maxCapacity>60</maxCapacity>
+        <defaultLoad>60</defaultLoad>
+        <activeCostPerUse>10</activeCostPerUse>
+        <activeTools>
+          <li>
+            <label>energized haft</label> <!-- 中文：充能锤柄 -->
+            <capacities>
+              <li>Poke</li>
+            </capacities>
+            <power>11</power>
+            <cooldownTime>2.05</cooldownTime>
+          </li>
+          <li>
+            <label>energized head</label> <!-- 中文：充能锤头 -->
+            <capacities>
+              <li>Blunt</li>
+            </capacities>
+            <power>35</power>
+            <cooldownTime>2.75</cooldownTime>
+            <extraMeleeDamages>
+              <li>
+                <def>Stun</def>
+                <amount>10</amount>
+              </li>
+            </extraMeleeDamages>
+          </li>
+        </activeTools>
+        <explosionBaseDamage>12</explosionBaseDamage>
+        <explosionDamagePerUnit>0.75</explosionDamagePerUnit>
+        <explosionMaxDamage>46</explosionMaxDamage>
+        <explosionBaseRadius>0.95</explosionBaseRadius>
+        <explosionRadiusPerUnit>0.022</explosionRadiusPerUnit>
+        <explosionMaxRadius>2.0</explosionMaxRadius>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="Rukaya_BaseActiveMatterMeleeWeapon">
+    <defName>Rukaya_StunBaton</defName>
+    <label>Rukaya stun baton</label>
+    <!-- 中文翻译：卢卡娅电棍 -->
+    <description>A disciplined riot-control baton fitted with a compact discharge head. In ordinary mode it is a weak compliance weapon with no exotic discharge. Active matter mode turns the baton into a dedicated control tool: damage stays low, but repeated energized strikes deliver brutal stun and EMP disruption for arrests and anti-mech boarding work.</description>
+    <!-- 中文翻译：一根用于严整镇暴与近距离拘捕的制式电棍，前端装有紧凑的放电头。普通模式下，它只是一件伤害偏低、没有特殊放电效果的压制武器。活性物质模式会把它变成一件专职控制工具：伤害依旧不高，但持续的充能打击会施加强力击晕与 EMP 干扰，适合拘捕与反机械登舰作战。 -->
+    <graphicData>
+      <texPath>Rukaya/Weapon/Rukaya_StunBaton</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1.5,1.5)</drawSize>
+    </graphicData>
+    <statBases>
+      <WorkToMake>18000</WorkToMake>
+      <Mass>1.7</Mass>
+    </statBases>
+    <costList>
+      <Rukaya_ActiveMatterContainer>16</Rukaya_ActiveMatterContainer>
+    </costList>
+    <weaponClasses Inherit="False">
+      <li>MeleeBlunt</li>
+      <li>Melee</li>
+    </weaponClasses>
+    <weaponTags>
+      <li>Rukaya_T2_Melee</li>
+    </weaponTags>
+    <tools>
+      <li>
+        <label>grip</label> <!-- 中文：握柄 -->
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>5</power>
+        <cooldownTime>1.9</cooldownTime>
+      </li>
+      <li>
+        <label>shock head</label> <!-- 中文：放电头 -->
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>9</power>
+        <cooldownTime>1.95</cooldownTime>
+      </li>
+    </tools>
+    <comps>
+      <li Class="RukayaRace.Weapons.CompProperties_RukayaActiveMatterWeapon">
+        <activeMatterThingDef>Rukaya_ActiveMatterContainer</activeMatterThingDef>
+        <unitsPerContainer>30</unitsPerContainer>
+        <maxCapacity>60</maxCapacity>
+        <defaultLoad>60</defaultLoad>
+        <activeCostPerUse>5</activeCostPerUse>
+        <activeTools>
+          <li>
+            <label>energized grip</label> <!-- 中文：充能握柄 -->
+            <capacities>
+              <li>Blunt</li>
+            </capacities>
+            <power>6</power>
+            <cooldownTime>1.8</cooldownTime>
+          </li>
+          <li>
+            <label>energized shock head</label> <!-- 中文：充能放电头 -->
+            <capacities>
+              <li>Blunt</li>
+            </capacities>
+            <power>11</power>
+            <cooldownTime>1.7</cooldownTime>
+            <extraMeleeDamages>
+              <li>
+                <def>Stun</def>
+                <amount>12</amount>
+              </li>
+              <li>
+                <def>EMP</def>
+                <amount>6</amount>
+              </li>
+            </extraMeleeDamages>
+          </li>
+        </activeTools>
+        <explosionBaseDamage>8</explosionBaseDamage>
+        <explosionDamagePerUnit>0.5</explosionDamagePerUnit>
+        <explosionMaxDamage>28</explosionMaxDamage>
+        <explosionBaseRadius>0.7</explosionBaseRadius>
+        <explosionRadiusPerUnit>0.018</explosionRadiusPerUnit>
+        <explosionMaxRadius>1.6</explosionMaxRadius>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="Rukaya_BaseActiveMatterMeleeWeapon">
+    <defName>Rukaya_PowerSword</defName>
+    <label>Rukaya power sword</label>
+    <!-- 中文翻译：卢卡娅动力剑 -->
+    <description>A high-grade Rukaya military sword built around an active matter edge assembly. In ordinary mode it is intentionally less overwhelming than a monosword, favoring disciplined precision over impossible edge quality. Active matter mode pushes the weapon past monosword performance with heavier cutting force, stronger penetration, and a scorching secondary wound effect. Each active matter container only supplies 15 charge units to this T3 weapon.</description>
+    <!-- 中文翻译：一把围绕活性物质刃缘组件打造的高等级卢卡娅军用长剑。普通模式下，它被刻意控制在不如单分子剑那般压倒性的水平，更强调纪律化的精准而非不可思议的刃缘质量。活性物质模式会把它推进到高于单分子剑的性能，带来更沉重的斩击、更强的穿透，以及灼烧性的次级创伤效果。对于这把 T3 武器而言，每个活性物质容器只提供 15 点充能。 -->
+    <graphicData>
+      <texPath>Rukaya/Weapon/Rukaya_PowerSword</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <WorkToMake>60000</WorkToMake>
+      <Mass>2.6</Mass>
+    </statBases>
+    <costList>
+      <Rukaya_ActiveMatterContainer>40</Rukaya_ActiveMatterContainer>
+    </costList>
+    <weaponTags>
+      <li>Rukaya_T3_Melee</li>
+    </weaponTags>
+    <tools>
+      <li>
+        <label>guard</label>
+        <!-- 中文：护手 -->
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>8</power>
+        <cooldownTime>2.0</cooldownTime>
+      </li>
+      <li>
+        <label>edge</label>
+        <!-- 中文：剑刃 -->
+        <capacities>
+          <li>Cut</li>
+        </capacities>
+        <power>22</power>
+        <cooldownTime>2.25</cooldownTime>
+        <armorPenetration>0.65</armorPenetration>
+      </li>
+      <li>
+        <label>point</label>
+        <!-- 中文：剑尖 -->
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>22</power>
+        <cooldownTime>2.2</cooldownTime>
+        <armorPenetration>0.65</armorPenetration>
+      </li>
+    </tools>
+    <comps>
+      <li Class="RukayaRace.Weapons.CompProperties_RukayaActiveMatterWeapon">
+        <activeMatterThingDef>Rukaya_ActiveMatterContainer</activeMatterThingDef>
+        <unitsPerContainer>15</unitsPerContainer>
+        <maxCapacity>60</maxCapacity>
+        <defaultLoad>30</defaultLoad>
+        <activeCostPerUse>5</activeCostPerUse>
+        <activeTools>
+          <li>
+            <label>energized guard</label>
+            <!-- 中文：充能护手 -->
+            <capacities>
+              <li>Blunt</li>
+            </capacities>
+            <power>10</power>
+            <cooldownTime>1.95</cooldownTime>
+          </li>
+          <li>
+            <label>energized edge</label>
+            <!-- 中文：充能剑刃 -->
+            <capacities>
+              <li>Cut</li>
+            </capacities>
+            <power>28</power>
+            <cooldownTime>1.95</cooldownTime>
+            <armorPenetration>1.05</armorPenetration>
+            <extraMeleeDamages>
+              <li>
+                <def>Burn</def>
+                <amount>6</amount>
+                <chance>1</chance>
+              </li>
+            </extraMeleeDamages>
+          </li>
+          <li>
+            <label>energized point</label>
+            <!-- 中文：充能剑尖 -->
+            <capacities>
+              <li>Stab</li>
+            </capacities>
+            <power>28</power>
+            <cooldownTime>1.95</cooldownTime>
+            <armorPenetration>1.05</armorPenetration>
+            <extraMeleeDamages>
+              <li>
+                <def>Burn</def>
+                <amount>6</amount>
+                <chance>1</chance>
+              </li>
+            </extraMeleeDamages>
+          </li>
+        </activeTools>
+        <explosionBaseDamage>12</explosionBaseDamage>
+        <explosionDamagePerUnit>0.7</explosionDamagePerUnit>
+        <explosionMaxDamage>48</explosionMaxDamage>
+        <explosionBaseRadius>1.0</explosionBaseRadius>
+        <explosionRadiusPerUnit>0.025</explosionRadiusPerUnit>
+        <explosionMaxRadius>2.4</explosionMaxRadius>
+      </li>
+    </comps>
+  </ThingDef>
+
+</Defs>

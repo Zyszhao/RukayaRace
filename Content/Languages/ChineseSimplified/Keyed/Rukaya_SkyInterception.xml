@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Rukaya_SkyInterceptorMode>启用对空模式</Rukaya_SkyInterceptorMode>
+  <Rukaya_SkyInterceptorUnsupported>此武器无法启用对空模式。请查看错误日志中的 Verb 类型。</Rukaya_SkyInterceptorUnsupported>
+  <Rukaya_SkyInterceptorTargets>拦截目标类别</Rukaya_SkyInterceptorTargets>
+  <Rukaya_SkyInterceptorDropPods>敌方空投仓</Rukaya_SkyInterceptorDropPods>
+  <Rukaya_SkyInterceptorNaturalSkyfallers>陨石与落石</Rukaya_SkyInterceptorNaturalSkyfallers>
+  <Rukaya_SkyInterceptorOtherSkyfallers>其他敌方 Skyfaller</Rukaya_SkyInterceptorOtherSkyfallers>
+  <Rukaya_SkyInterceptorOverheadProjectiles>越顶炮弹</Rukaya_SkyInterceptorOverheadProjectiles>
+  <Rukaya_SkyInterceptorArcingProjectiles>弧线投射物</Rukaya_SkyInterceptorArcingProjectiles>
+  <Rukaya_SkyInterceptorFlyers>飞行物</Rukaya_SkyInterceptorFlyers>
+</LanguageData>

@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ============================================================
+       Rukaya 机械体（Mechanoids）· PawnKind 层
+       七个战斗变体共用同一底盘的贴图与数值，只有挂载炮塔不同。
+       weaponTags 留空：炮塔由原版 CompProperties_TurretGun 的 turretDef 固定挂载。
+       ============================================================ -->
+
+  <PawnKindDef Name="Rukaya_BaseMechanoidKind" ParentName="BaseMechanoidKind" Abstract="True">
+    <!-- 同盟自己的军械：由本派系 options 或玩家培育生成，不进入原版机械集群/休眠机械池。 -->
+    <defaultFactionDef>Rukaya_DrifterAlliance</defaultFactionDef>
+    <!-- 机械体加入人类派系的 Combat options 时，不继承该派系的人类异种型候选。 -->
+    <useFactionXenotypes>false</useFactionXenotypes>
+    <allowInMechClusters>false</allowInMechClusters>
+    <combatPower>400</combatPower>
+    <weaponMoney>9999~9999</weaponMoney>
+    <techHediffsChance MayRequire="Ludeon.RimWorld.Biotech">1</techHediffsChance>
+    <techHediffsMoney>9999~9999</techHediffsMoney>
+    <controlGroupPortraitZoom>0.8</controlGroupPortraitZoom>
+    <isFighter>true</isFighter>
+    <canStrip>false</canStrip>
+    <forceNormalGearQuality>true</forceNormalGearQuality>
+    <weaponTags />
+    <lifeStages>
+      <li MayRequire="Ludeon.RimWorld.Biotech">
+        <bodyGraphicData>
+          <texPath>Rukaya/Mechanoids/Rukaya_MechBase</texPath>
+          <shaderType>CutoutComplex</shaderType>
+          <graphicClass>Graphic_Multi</graphicClass>
+          <drawSize>3</drawSize>
+          <shadowData>
+            <volume>(0.6, 0.8, 0.6)</volume>
+          </shadowData>
+        </bodyGraphicData>
+      </li>
+      <li>
+        <bodyGraphicData>
+          <texPath>Rukaya/Mechanoids/Rukaya_MechBase</texPath>
+          <shaderType>CutoutComplex</shaderType>
+          <graphicClass>Graphic_Multi</graphicClass>
+          <drawSize>3</drawSize>
+          <shadowData>
+            <volume>(0.6, 0.8, 0.6)</volume>
+          </shadowData>
+        </bodyGraphicData>
+      </li>
+    </lifeStages>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="Rukaya_BaseMechanoidKind">
+    <defName>Rukaya_MechChassis_Laser</defName>
+    <label>卢卡娅通用机械“激光型”</label>
+    <!-- 中文：卢卡娅通用机械“激光型” -->
+    <race>Rukaya_MechChassis_Laser</race>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="Rukaya_BaseMechanoidKind">
+    <defName>Rukaya_MechChassis_MachineCannon</defName>
+    <label>卢卡娅通用机械“机炮型”</label>
+    <!-- 中文：卢卡娅通用机械“机炮型” -->
+    <race>Rukaya_MechChassis_MachineCannon</race>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="Rukaya_BaseMechanoidKind">
+    <defName>Rukaya_MechChassis_MineSweeper</defName>
+    <label>卢卡娅通用机械“扫雷索型”</label>
+    <!-- 中文：卢卡娅通用机械“扫雷索型” -->
+    <race>Rukaya_MechChassis_MineSweeper</race>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="Rukaya_BaseMechanoidKind">
+    <defName>Rukaya_MechChassis_SAMLauncher</defName>
+    <label>卢卡娅通用机械“导弹型”</label>
+    <!-- 中文：卢卡娅通用机械“导弹型” -->
+    <race>Rukaya_MechChassis_SAMLauncher</race>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="Rukaya_BaseMechanoidKind">
+    <defName>Rukaya_MechChassis_Mortar</defName>
+    <label>卢卡娅通用机械“迫击炮型”</label>
+    <!-- 中文：卢卡娅通用机械“迫击炮型” -->
+    <race>Rukaya_MechChassis_Mortar</race>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="Rukaya_BaseMechanoidKind">
+    <defName>Rukaya_MechChassis_Plasma</defName>
+    <label>卢卡娅通用机械“等离子型”</label>
+    <!-- 中文：卢卡娅通用机械“等离子型” -->
+    <race>Rukaya_MechChassis_Plasma</race>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="Rukaya_BaseMechanoidKind">
+    <defName>Rukaya_MechChassis_Rocket</defName>
+    <label>卢卡娅通用机械“火箭型”</label>
+    <!-- 中文：卢卡娅通用机械“火箭型” -->
+    <race>Rukaya_MechChassis_Rocket</race>
+  </PawnKindDef>
+
+</Defs>

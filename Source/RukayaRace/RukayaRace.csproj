@@ -1,0 +1,69 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <!-- RimWorld 1.7 runs on .NET 10 (CoreCLR) in place of the old Mono/.NET Framework 4.8 runtime. -->
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AssemblyName>RukayaRace</AssemblyName>
+    <RootNamespace>RukayaRace</RootNamespace>
+    <OutputPath>..\..\1.7\Assemblies\</OutputPath>
+    <!--
+      A mod assembly is loaded by the host process, not launched as an app, so the SDK's
+      .deps.json sidecar carries no information the game uses. Keep it out of the mod folder.
+    -->
+    <GenerateDependencyFile>false</GenerateDependencyFile>
+  </PropertyGroup>
+
+  <!--
+    Reference roots. Override on the command line or in the .code-workspace if the install moves:
+      dotnet build -c Release -p:RimWorldDir="D:\Steam\steamapps\common\RimWorld" -p:WorkshopDir="D:\Steam\steamapps\workshop\content\294100"
+  -->
+  <PropertyGroup>
+    <RimWorldDir Condition="'$(RimWorldDir)' == ''">E:\SteamLibrary\steamapps\common\RimWorld</RimWorldDir>
+    <WorkshopDir Condition="'$(WorkshopDir)' == ''">E:\SteamLibrary\steamapps\workshop\content\294100</WorkshopDir>
+    <!-- Official Harmony mod (workshop 2009463077). A declared dependency, NOT bundled with this mod. -->
+    <HarmonyDir>$(WorkshopDir)\2009463077</HarmonyDir>
+    <!-- Humanoid Alien Races (workshop 2640710953). Required by RukayaRace.Flight. -->
+    <AlienRaceDir>$(WorkshopDir)\2640710953</AlienRaceDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!--
+      In 1.7 the game ships as a flat set of assemblies in the install root: the old
+      RimWorldWin64_Data\Managed folder is gone, and the four UnityEngine*.dll modules
+      have been merged into UnityStubs.dll. Waylith.dll hosts the render types that
+      Unity used to provide (Material, DrawPropertyBlock) and must be referenced explicitly.
+    -->
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(RimWorldDir)\Assembly-CSharp.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Waylith">
+      <HintPath>$(RimWorldDir)\Waylith.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityStubs">
+      <HintPath>$(RimWorldDir)\UnityStubs.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <!--
+      Both of these come from other mods and are declared in About.xml, so they are never copied
+      into 1.7\Assemblies: shipping our own 0Harmony.dll would load a second Harmony into the
+      process and risk diverging from the version the rest of the load order patches against.
+    -->
+    <Reference Include="0Harmony">
+      <HintPath>$(HarmonyDir)\1.7\Assemblies\0Harmony.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="AlienRace">
+      <HintPath>$(AlienRaceDir)\1.7\Assemblies\AlienRace.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+</Project>

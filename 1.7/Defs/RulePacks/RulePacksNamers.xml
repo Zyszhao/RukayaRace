@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <RulePackDef>
+        <defName>NamerPerson_Rukaya</defName>
+        <rulePack>
+            <!-- 两段式名字：先取人名，再取舰船名作为姓氏。 -->
+            <rulesStrings>
+                <li>r_name->[Rukaya_FirstName] [Rukaya_LastName]</li>
+                <!-- 中文翻译：r_name-&gt;[Rukaya_FirstName] [Rukaya_LastName] -->
+            </rulesStrings>
+            <rulesRaw>
+                <li Class="Rule_File">
+                    <keyword>Rukaya_FirstName</keyword>
+                    <path>Names/Rukaya_First</path>
+                </li>
+                <li Class="Rule_File">
+                    <keyword>Rukaya_LastName</keyword>
+                    <path>Names/Rukaya_Last</path>
+                </li>
+            </rulesRaw>
+        </rulePack>
+    </RulePackDef>
+</Defs>

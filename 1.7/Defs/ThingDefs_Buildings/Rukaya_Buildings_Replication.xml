@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>Rukaya_TriplexScanner</defName>
+    <label>triplex-ray equipment scanner</label>
+    <!-- 中文：三束射线装备扫描仪 -->
+    <description>A Rukaya analysis terminal that records the structure of weapons and apparel as active-matter templates. Better prototypes reveal higher quality limits, while additional active matter can refine a recovered template beyond the surviving example.</description>
+    <!-- 中文翻译：一座卢卡娅分析终端，能够将武器与服装的结构记录为活性物质模板。更好的原型可以揭示更高的品质上限，也可以投入额外活性物质，将已恢复的模板提升到超过现存样品的水平。 -->
+    <thingClass>RukayaRace.Replication.Building_RukayaTriplexScanner</thingClass>
+    <category>Building</category>
+    <tickerType>Normal</tickerType>
+    <altitudeLayer>Building</altitudeLayer>
+    <graphicData>
+      <texPath>Rukaya/Building/Rukaya_Scanner/Rukaya_Scanner</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(4.6,4.6)</drawSize>
+      <drawOffset>(0,0,0.3)</drawOffset>
+    </graphicData>
+    <size>(3,3)</size>
+    <rotatable>false</rotatable>
+    <drawerType>MapMeshOnly</drawerType>
+    <fillPercent>1</fillPercent>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <designationCategory>Rukaya_Buildings</designationCategory>
+    <researchPrerequisites>
+      <li>Rukaya_EquipmentTemplateScanning</li>
+    </researchPrerequisites>
+    <constructEffect>ConstructMetal</constructEffect>
+    <repairEffect>Repair</repairEffect>
+    <leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsProduction</li>
+    </thingCategories>
+    <selectable>true</selectable>
+    <useHitPoints>true</useHitPoints>
+    <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+    <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+    <costList>
+      <Steel>300</Steel>
+      <ComponentIndustrial>8</ComponentIndustrial>
+      <ComponentSpacer>2</ComponentSpacer>
+    </costList>
+    <building>
+      <buildingTags>
+        <li>Production</li>
+      </buildingTags>
+      <destroySound>BuildingDestroyed_Metal_Big</destroySound>
+    </building>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>600</basePowerConsumption>
+        <shortCircuitInRain>true</shortCircuitInRain>
+      </li>
+      <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Breakdownable" />
+      <li Class="RukayaRace.Replication.CompProperties_RukayaActiveMatterReservoir">
+        <capacity>1000</capacity>
+      </li>
+    </comps>
+    <statBases>
+      <SellPriceFactor>0.7</SellPriceFactor>
+      <MarketValue>2100</MarketValue>
+      <Mass>48</Mass>
+      <MaxHitPoints>320</MaxHitPoints>
+      <WorkToBuild>9000</WorkToBuild>
+      <Flammability>0.5</Flammability>
+      <Beauty>-10</Beauty>
+    </statBases>
+    <uiOrder>2527</uiOrder>
+  </ThingDef>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>Rukaya_ActiveMatterPrinter</defName>
+    <label>active matter equipment printer</label>
+    <!-- 中文：活性物质装备打印机 -->
+    <description>An autonomous Rukaya production terminal that reconstructs scanned weapons and apparel from stored active matter. Its ordered production lists continue without an operator as long as power, templates, and internal matter reserves remain available.</description>
+    <!-- 中文翻译：一座卢卡娅自动化生产终端，能够使用内部储存的活性物质重构已扫描的武器与服装。只要电力、模板和内部活性物质储备仍然可用，它就会在无人操作的情况下继续执行有序生产清单。 -->
+    <thingClass>RukayaRace.Replication.Building_RukayaActiveMatterPrinter</thingClass>
+    <category>Building</category>
+    <tickerType>Normal</tickerType>
+    <altitudeLayer>Building</altitudeLayer>
+    <graphicData>
+      <texPath>Rukaya/Building/Rukaya_AdvanceFabricator/Rukaya_AdvanceFabricator</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(5.6,5.6)</drawSize>
+      <drawOffset>(0,0,0.3)</drawOffset>
+    </graphicData>
+    <size>(4,4)</size>
+    <rotatable>false</rotatable>
+    <drawerType>MapMeshOnly</drawerType>
+    <fillPercent>1</fillPercent>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <designationCategory>Rukaya_Buildings</designationCategory>
+    <researchPrerequisites>
+      <li>Rukaya_ActiveMatterPrinting</li>
+    </researchPrerequisites>
+    <constructEffect>ConstructMetal</constructEffect>
+    <repairEffect>Repair</repairEffect>
+    <leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsProduction</li>
+    </thingCategories>
+    <selectable>true</selectable>
+    <useHitPoints>true</useHitPoints>
+    <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+    <constructionSkillPrerequisite>10</constructionSkillPrerequisite>
+    <costList>
+      <Steel>500</Steel>
+      <ComponentIndustrial>12</ComponentIndustrial>
+      <ComponentSpacer>4</ComponentSpacer>
+    </costList>
+    <building>
+      <buildingTags>
+        <li>Production</li>
+      </buildingTags>
+      <destroySound>BuildingDestroyed_Metal_Big</destroySound>
+    </building>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>1200</basePowerConsumption>
+        <shortCircuitInRain>true</shortCircuitInRain>
+      </li>
+      <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Breakdownable" />
+      <li Class="RukayaRace.Replication.CompProperties_RukayaActiveMatterReservoir">
+        <capacity>1000</capacity>
+      </li>
+    </comps>
+    <statBases>
+      <SellPriceFactor>0.7</SellPriceFactor>
+      <MarketValue>3600</MarketValue>
+      <Mass>75</Mass>
+      <MaxHitPoints>480</MaxHitPoints>
+      <WorkToBuild>14000</WorkToBuild>
+      <Flammability>0.4</Flammability>
+      <Beauty>-18</Beauty>
+    </statBases>
+    <uiOrder>2528</uiOrder>
+  </ThingDef>
+
+</Defs>

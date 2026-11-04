@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- 剧本事件：三名指定 firstname 的卢卡娅同伴同批抵达并加入玩家。
+       名字来自 IncidentDef_RukayaTrioArrival.firstNames（中文侧由
+       Content/Languages/ChineseSimplified/DefInjected/IncidentDef/Rukaya_TrioArrival.xml 覆盖），
+       其余全部随机：姓氏走本模组 NamerPerson_Rukaya 的姓库，特质 / 背景故事 / 服装 / 意识形态都走
+       原版 IncidentWorker_WandererJoin 的"流浪者加入"生成管线。
+       weapons / scarHeadAndEye 与 firstNames **按下标一一对应**（三张表必须等长，否则 Def 会报 ConfigError）：
+         · weapons       —— 生成时自带的固定武器，与剧本给开局角色发的那把枪无关
+         · scarHeadAndEye—— true 表示该角色必定带一道头部伤疤 + 两只眼睛各一道伤疤（枪伤，几乎不影响数值）
+       三人生成时会先清掉生成管线给的伤疤与仿生体，再按上面的规则补武器与伤疤。
+       baseChance = 0：本事件只由剧本里的 ScenPart_CreateIncident 触发，故事叙述者不会随机抽到它。 -->
+  <RukayaRace.Scenario.IncidentDef_RukayaTrioArrival>
+    <defName>Rukaya_TrioArrival</defName>
+    <label>the exiled Rukaya</label>
+    <!-- 中文：被放逐的卢卡娅们 -->
+    <category>Misc</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>RukayaRace.Scenario.IncidentWorker_RukayaTrioArrival</workerClass>
+    <pawnKind>Rukaya_Colonist</pawnKind>
+    <pawnFixedGender>Female</pawnFixedGender>
+    <baseChance>0</baseChance>
+    <letterDef>PositiveEvent</letterDef>
+    <letterLabel>The exiled Rukaya arrive</letterLabel>
+    <!-- 中文：被放逐的卢卡娅们抵达 -->
+    <letterText>The exiled Rukaya - {PAWNS} - have landed at the designated site. Once they have regrouped, they will join the colony on the spot.</letterText>
+    <!-- 中文翻译：被放逐的卢卡娅们——{PAWNS}——已经降落到预定的地址。她们完成汇合后将就地加入殖民地。 -->
+    <firstNames>
+      <li>Nikita</li>
+      <!-- 中文翻译：尼姬塔 -->
+      <li>Bulannikova</li>
+      <!-- 中文翻译：巴兰尼科娃 -->
+      <li>Antonina</li>
+      <!-- 中文翻译：安东妮娜 -->
+    </firstNames>
+    <weapons>
+      <li>Rukaya_Phantom</li>
+      <li>Rukaya_Prototype</li>
+      <li>Rukaya_Peacekeeper</li>
+    </weapons>
+    <scarHeadAndEye>
+      <li>true</li>
+      <li>false</li>
+      <li>false</li>
+    </scarHeadAndEye>
+  </RukayaRace.Scenario.IncidentDef_RukayaTrioArrival>
+
+</Defs>

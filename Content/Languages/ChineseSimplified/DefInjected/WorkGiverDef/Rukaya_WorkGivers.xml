@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <DoBillsRukayaFabricator.label>在卢卡娅制造台制造物品</DoBillsRukayaFabricator.label>
+  <DoBillsRukayaFabricator.verb>在此制造物品</DoBillsRukayaFabricator.verb>
+  <DoBillsRukayaFabricator.gerund>正在此制造物品</DoBillsRukayaFabricator.gerund>
+
+  <Rukaya_LoadReplicationReservoir.label>装填卢卡娅复制设备储罐</Rukaya_LoadReplicationReservoir.label>
+  <Rukaya_LoadReplicationReservoir.verb>向此处装填活性物质</Rukaya_LoadReplicationReservoir.verb>
+  <Rukaya_LoadReplicationReservoir.gerund>正在向此处装填活性物质</Rukaya_LoadReplicationReservoir.gerund>
+
+</LanguageData>

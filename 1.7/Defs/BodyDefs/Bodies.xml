@@ -1,0 +1,678 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <BodyPartGroupDef>
+    <defName>Rukaya_WingsGroup</defName>
+    <label>wings</label>
+    <!-- 中文翻译：双翼 -->
+  </BodyPartGroupDef>
+
+  <BodyPartDef>
+    <defName>Rukaya_Wing</defName>
+    <label>wing</label>
+    <!-- 中文翻译：翼 -->
+    <hitPoints>25</hitPoints>
+    <skinCovered>true</skinCovered>
+    <!-- 翼部功能由 RukayaWingUtility 判定，不纳入手臂或腿的通用效率计算。 -->
+  </BodyPartDef>
+
+  <BodyDef>
+    <defName>Rukaya_Body</defName>
+    <label>Rukaya</label>
+    <!-- 中文翻译：卢卡娅 -->
+
+    <corePart>
+      <def>Torso</def>
+      <height>Middle</height>
+      <depth>Outside</depth>
+      <groups>
+        <li>Torso</li>
+      </groups>
+      <parts>
+        <li>
+          <def>Ribcage</def>
+          <coverage>0.036</coverage>
+          <depth>Inside</depth>
+          <groups>
+            <li>Torso</li>
+          </groups>
+        </li>
+        <li>
+          <def>Sternum</def>
+          <coverage>0.015</coverage>
+          <depth>Inside</depth>
+          <groups>
+            <li>Torso</li>
+          </groups>
+        </li>
+        <li>
+          <def>Pelvis</def>
+          <coverage>0.025</coverage>
+          <height>Bottom</height>
+          <depth>Inside</depth>
+          <groups>
+            <li>Torso</li>
+          </groups>
+        </li>
+        <li>
+          <def>Spine</def>
+          <coverage>0.025</coverage>
+          <depth>Inside</depth>
+          <groups>
+            <li>Torso</li>
+          </groups>
+        </li>
+        <li>
+          <def>Stomach</def>
+          <coverage>0.025</coverage>
+          <depth>Inside</depth>
+          <groups>
+            <li>Torso</li>
+          </groups>
+        </li>
+        <li>
+          <def>Heart</def>
+          <coverage>0.020</coverage>
+          <depth>Inside</depth>
+          <groups>
+            <li>Torso</li>
+          </groups>
+        </li>
+        <li>
+          <def>Lung</def>
+          <customLabel>left lung</customLabel>
+          <!-- 中文翻译：左肺 -->
+          <coverage>0.025</coverage>
+          <depth>Inside</depth>
+          <groups>
+            <li>Torso</li>
+          </groups>
+        </li>
+        <li>
+          <def>Lung</def>
+          <customLabel>right lung</customLabel>
+          <!-- 中文翻译：右肺 -->
+          <coverage>0.025</coverage>
+          <depth>Inside</depth>
+          <groups>
+            <li>Torso</li>
+          </groups>
+        </li>
+        <li>
+          <def>Kidney</def>
+          <customLabel>left kidney</customLabel>
+          <!-- 中文翻译：左肾 -->
+          <coverage>0.017</coverage>
+          <depth>Inside</depth>
+          <groups>
+            <li>Torso</li>
+          </groups>
+        </li>
+        <li>
+          <def>Kidney</def>
+          <customLabel>right kidney</customLabel>
+          <!-- 中文翻译：右肾 -->
+          <coverage>0.017</coverage>
+          <depth>Inside</depth>
+          <groups>
+            <li>Torso</li>
+          </groups>
+        </li>
+        <li>
+          <def>Liver</def>
+          <coverage>0.025</coverage>
+          <depth>Inside</depth>
+          <groups>
+            <li>Torso</li>
+          </groups>
+        </li>
+
+        <li>
+          <def>Rukaya_Wing</def>
+          <customLabel>left wing</customLabel>
+          <!-- 中文翻译：左翼 -->
+          <coverage>0.08</coverage>
+          <groups>
+            <li>Torso</li>
+            <li>Rukaya_WingsGroup</li>
+          </groups>
+        </li>
+
+        <li>
+          <def>Rukaya_Wing</def>
+          <customLabel>right wing</customLabel>
+          <!-- 中文翻译：右翼 -->
+          <coverage>0.08</coverage>
+          <groups>
+            <li>Torso</li>
+            <li>Rukaya_WingsGroup</li>
+          </groups>
+        </li>
+
+        <li>
+          <def>Neck</def>
+          <coverage>0.075</coverage>
+          <height>Top</height>
+          <groups>
+            <li>Neck</li>
+          </groups>
+          <parts>
+            <li>
+              <def>Head</def>
+              <coverage>0.80</coverage>
+              <groups>
+                <li>UpperHead</li>
+                <li>FullHead</li>
+                <li>HeadAttackTool</li>
+              </groups>
+              <parts>
+                <li>
+                  <def>Skull</def>
+                  <coverage>0.18</coverage>
+                  <depth>Inside</depth>
+                  <groups>
+                    <li>UpperHead</li>
+                    <li>FullHead</li>
+                  </groups>
+                  <parts>
+                    <li>
+                      <def>Brain</def>
+                      <coverage>0.8</coverage>
+                      <groups>
+                        <li>UpperHead</li>
+                        <li>FullHead</li>
+                      </groups>
+                    </li>
+                  </parts>
+                </li>
+                <li>
+                  <def>Eye</def>
+                  <customLabel>left eye</customLabel>
+                  <!-- 中文翻译：左眼 -->
+                  <coverage>0.07</coverage>
+                  <groups>
+                    <li>FullHead</li>
+                    <li>Eyes</li>
+                  </groups>
+                </li>
+                <li>
+                  <def>Eye</def>
+                  <customLabel>right eye</customLabel>
+                  <!-- 中文翻译：右眼 -->
+                  <coverage>0.07</coverage>
+                  <groups>
+                    <li>FullHead</li>
+                    <li>Eyes</li>
+                  </groups>
+                </li>
+                <li>
+                  <def>Ear</def>
+                  <customLabel>left ear</customLabel>
+                  <!-- 中文翻译：左耳 -->
+                  <coverage>0.07</coverage>
+                  <groups>
+                    <li>UpperHead</li>
+                    <li>FullHead</li>
+                  </groups>
+                </li>
+                <li>
+                  <def>Ear</def>
+                  <customLabel>right ear</customLabel>
+                  <!-- 中文翻译：右耳 -->
+                  <coverage>0.07</coverage>
+                  <groups>
+                    <li>UpperHead</li>
+                    <li>FullHead</li>
+                  </groups>
+                </li>
+                <li>
+                  <def>Nose</def>
+                  <coverage>0.10</coverage>
+                  <groups>
+                    <li>FullHead</li>
+                  </groups>
+                </li>
+                <li>
+                  <def>Jaw</def>
+                  <coverage>0.15</coverage>
+                  <groups>
+                    <li>Teeth</li>
+                    <li>FullHead</li>
+                    <li>Mouth</li>
+                  </groups>
+                  <parts>
+                    <li>
+                      <def>Tongue</def>
+                      <coverage>0.001</coverage>
+                      <depth>Inside</depth>
+                      <groups>
+                        <li>FullHead</li>
+                      </groups>
+                    </li>
+                  </parts>
+                </li>
+              </parts>
+            </li>
+          </parts>
+        </li>
+        <li>
+          <def>Shoulder</def>
+          <customLabel>left shoulder</customLabel>
+          <!-- 中文翻译：左肩 -->
+          <coverage>0.114</coverage>
+          <groups>
+            <li>Shoulders</li>
+          </groups>
+          <parts>
+            <li>
+              <def>Clavicle</def>
+              <customLabel>left clavicle</customLabel>
+              <!-- 中文翻译：左锁骨 -->
+              <coverage>0.09</coverage>
+              <height>Top</height>
+              <depth>Inside</depth>
+              <groups>
+                <li>Torso</li>
+              </groups>
+            </li>
+            <li>
+              <def>Arm</def>
+              <customLabel>left arm</customLabel>
+              <!-- 中文翻译：左臂 -->
+              <coverage>0.77</coverage>
+              <groups>
+                <li>Arms</li>
+              </groups>
+              <parts>
+                <li>
+                  <def>Humerus</def>
+                  <customLabel>left humerus</customLabel>
+                  <!-- 中文翻译：左肱骨 -->
+                  <coverage>0.1</coverage>
+                  <depth>Inside</depth>
+                  <groups>
+                    <li>Arms</li>
+                  </groups>
+                </li>
+                <li>
+                  <def>Radius</def>
+                  <customLabel>left radius</customLabel>
+                  <!-- 中文翻译：左桡骨 -->
+                  <coverage>0.1</coverage>
+                  <depth>Inside</depth>
+                  <groups>
+                    <li>Arms</li>
+                  </groups>
+                </li>
+                <li>
+                  <def>Hand</def>
+                  <customLabel>left hand</customLabel>
+                  <!-- 中文翻译：左手 -->
+                  <coverage>0.14</coverage>
+                  <height>Bottom</height>
+                  <groups>
+                    <li>Hands</li>
+                  </groups>
+                  <parts>
+                    <li>
+                      <def>Finger</def>
+                      <customLabel>left pinky</customLabel>
+                      <!-- 中文翻译：左小指 -->
+                      <coverage>0.06</coverage>
+                      <groups>
+                        <li>Hands</li>
+                        <li>LeftHand</li>
+                      </groups>
+                    </li>
+                    <li>
+                      <def>Finger</def>
+                      <customLabel>left ring finger</customLabel>
+                      <!-- 中文翻译：左无名指 -->
+                      <coverage>0.07</coverage>
+                      <groups>
+                        <li>Hands</li>
+                        <li>LeftHand</li>
+                      </groups>
+                    </li>
+                    <li>
+                      <def>Finger</def>
+                      <customLabel>left middle finger</customLabel>
+                      <!-- 中文翻译：左中指 -->
+                      <coverage>0.08</coverage>
+                      <groups>
+                        <li>Hands</li>
+                        <li>LeftHand</li>
+                        <li>MiddleFingers</li>
+                      </groups>
+                    </li>
+                    <li>
+                      <def>Finger</def>
+                      <customLabel>left index finger</customLabel>
+                      <!-- 中文翻译：左食指 -->
+                      <coverage>0.07</coverage>
+                      <groups>
+                        <li>Hands</li>
+                        <li>LeftHand</li>
+                      </groups>
+                    </li>
+                    <li>
+                      <def>Finger</def>
+                      <customLabel>left thumb</customLabel>
+                      <!-- 中文翻译：左拇指 -->
+                      <coverage>0.08</coverage>
+                      <groups>
+                        <li>Hands</li>
+                        <li>LeftHand</li>
+                      </groups>
+                    </li>
+                  </parts>
+                </li>
+              </parts>
+            </li>
+          </parts>
+        </li>
+        <li>
+          <def>Shoulder</def>
+          <customLabel>right shoulder</customLabel>
+          <!-- 中文翻译：右肩 -->
+          <coverage>0.114</coverage>
+          <groups>
+            <li>Shoulders</li>
+          </groups>
+          <parts>
+            <li>
+              <def>Clavicle</def>
+              <customLabel>right clavicle</customLabel>
+              <!-- 中文翻译：右锁骨 -->
+              <coverage>0.09</coverage>
+              <height>Top</height>
+              <depth>Inside</depth>
+              <groups>
+                <li>Torso</li>
+              </groups>
+            </li>
+            <li>
+              <def>Arm</def>
+              <customLabel>right arm</customLabel>
+              <!-- 中文翻译：右臂 -->
+              <coverage>0.77</coverage>
+              <groups>
+                <li>Arms</li>
+              </groups>
+              <parts>
+                <li>
+                  <def>Humerus</def>
+                  <customLabel>right humerus</customLabel>
+                  <!-- 中文翻译：右肱骨 -->
+                  <coverage>0.1</coverage>
+                  <depth>Inside</depth>
+                  <groups>
+                    <li>Arms</li>
+                  </groups>
+                </li>
+                <li>
+                  <def>Radius</def>
+                  <customLabel>right radius</customLabel>
+                  <!-- 中文翻译：右桡骨 -->
+                  <coverage>0.1</coverage>
+                  <depth>Inside</depth>
+                  <groups>
+                    <li>Arms</li>
+                  </groups>
+                </li>
+                <li>
+                  <def>Hand</def>
+                  <customLabel>right hand</customLabel>
+                  <!-- 中文翻译：右手 -->
+                  <coverage>0.14</coverage>
+                  <height>Bottom</height>
+                  <groups>
+                    <li>Hands</li>
+                  </groups>
+                  <parts>
+                    <li>
+                      <def>Finger</def>
+                      <customLabel>right pinky</customLabel>
+                      <!-- 中文翻译：右小指 -->
+                      <coverage>0.06</coverage>
+                      <groups>
+                        <li>Hands</li>
+                        <li>RightHand</li>
+                      </groups>
+                    </li>
+                    <li>
+                      <def>Finger</def>
+                      <customLabel>right ring finger</customLabel>
+                      <!-- 中文翻译：右无名指 -->
+                      <coverage>0.07</coverage>
+                      <groups>
+                        <li>Hands</li>
+                        <li>RightHand</li>
+                      </groups>
+                    </li>
+                    <li>
+                      <def>Finger</def>
+                      <customLabel>right middle finger</customLabel>
+                      <!-- 中文翻译：右中指 -->
+                      <coverage>0.08</coverage>
+                      <groups>
+                        <li>Hands</li>
+                        <li>RightHand</li>
+                        <li>MiddleFingers</li>
+                      </groups>
+                    </li>
+                    <li>
+                      <def>Finger</def>
+                      <customLabel>right index finger</customLabel>
+                      <!-- 中文翻译：右食指 -->
+                      <coverage>0.07</coverage>
+                      <groups>
+                        <li>Hands</li>
+                        <li>RightHand</li>
+                      </groups>
+                    </li>
+                    <li>
+                      <def>Finger</def>
+                      <customLabel>right thumb</customLabel>
+                      <!-- 中文翻译：右拇指 -->
+                      <coverage>0.08</coverage>
+                      <groups>
+                        <li>Hands</li>
+                        <li>RightHand</li>
+                      </groups>
+                    </li>
+                  </parts>
+                </li>
+              </parts>
+            </li>
+          </parts>
+        </li>
+        <li>
+          <def>Waist</def>
+          <coverage>0</coverage>
+          <height>Bottom</height>
+          <groups>
+            <li>Waist</li>
+          </groups>
+        </li>
+
+        <li>
+          <def>Leg</def>
+          <customLabel>left leg</customLabel>
+          <!-- 中文翻译：左腿 -->
+          <coverage>0.14</coverage>
+          <height>Bottom</height>
+          <groups>
+            <li>Legs</li>
+          </groups>
+          <parts>
+            <li>
+              <def>Femur</def>
+              <customLabel>left femur</customLabel>
+              <!-- 中文翻译：左股骨 -->
+              <coverage>0.1</coverage>
+              <depth>Inside</depth>
+              <groups>
+                <li>Legs</li>
+              </groups>
+            </li>
+            <li>
+              <def>Tibia</def>
+              <customLabel>left tibia</customLabel>
+              <!-- 中文翻译：左胫骨 -->
+              <coverage>0.1</coverage>
+              <depth>Inside</depth>
+              <groups>
+                <li>Legs</li>
+              </groups>
+            </li>
+            <li>
+              <def>Foot</def>
+              <customLabel>left foot</customLabel>
+              <!-- 中文翻译：左脚 -->
+              <coverage>0.1</coverage>
+              <groups>
+                <li>Feet</li>
+              </groups>
+              <parts>
+                <li>
+                  <def>Toe</def>
+                  <customLabel>left little toe</customLabel>
+                  <!-- 中文翻译：左小趾 -->
+                  <coverage>0.06</coverage>
+                  <groups>
+                    <li>Feet</li>
+                  </groups>
+                </li>
+                <li>
+                  <def>Toe</def>
+                  <customLabel>left fourth toe</customLabel>
+                  <!-- 中文翻译：左第四趾 -->
+                  <coverage>0.07</coverage>
+                  <groups>
+                    <li>Feet</li>
+                  </groups>
+                </li>
+                <li>
+                  <def>Toe</def>
+                  <customLabel>left middle toe</customLabel>
+                  <!-- 中文翻译：左中趾 -->
+                  <coverage>0.08</coverage>
+                  <groups>
+                    <li>Feet</li>
+                  </groups>
+                </li>
+                <li>
+                  <def>Toe</def>
+                  <customLabel>left second toe</customLabel>
+                  <!-- 中文翻译：左第二趾 -->
+                  <coverage>0.09</coverage>
+                  <groups>
+                    <li>Feet</li>
+                  </groups>
+                </li>
+                <li>
+                  <def>Toe</def>
+                  <customLabel>left big toe</customLabel>
+                  <!-- 中文翻译：左大趾 -->
+                  <coverage>0.09</coverage>
+                  <groups>
+                    <li>Feet</li>
+                  </groups>
+                </li>
+              </parts>
+            </li>
+          </parts>
+        </li>
+        <li>
+          <def>Leg</def>
+          <customLabel>right leg</customLabel>
+          <!-- 中文翻译：右腿 -->
+          <coverage>0.14</coverage>
+          <height>Bottom</height>
+          <groups>
+            <li>Legs</li>
+          </groups>
+          <parts>
+            <li>
+              <def>Femur</def>
+              <customLabel>right femur</customLabel>
+              <!-- 中文翻译：右股骨 -->
+              <coverage>0.1</coverage>
+              <depth>Inside</depth>
+              <groups>
+                <li>Legs</li>
+              </groups>
+            </li>
+            <li>
+              <def>Tibia</def>
+              <customLabel>right tibia</customLabel>
+              <!-- 中文翻译：右胫骨 -->
+              <coverage>0.1</coverage>
+              <depth>Inside</depth>
+              <groups>
+                <li>Legs</li>
+              </groups>
+            </li>
+            <li>
+              <def>Foot</def>
+              <customLabel>right foot</customLabel>
+              <!-- 中文翻译：右脚 -->
+              <coverage>0.1</coverage>
+              <groups>
+                <li>Feet</li>
+              </groups>
+              <parts>
+                <li>
+                  <def>Toe</def>
+                  <customLabel>right little toe</customLabel>
+                  <!-- 中文翻译：右小趾 -->
+                  <coverage>0.06</coverage>
+                  <groups>
+                    <li>Feet</li>
+                  </groups>
+                </li>
+                <li>
+                  <def>Toe</def>
+                  <customLabel>right fourth toe</customLabel>
+                  <!-- 中文翻译：右第四趾 -->
+                  <coverage>0.07</coverage>
+                  <groups>
+                    <li>Feet</li>
+                  </groups>
+                </li>
+                <li>
+                  <def>Toe</def>
+                  <customLabel>right middle toe</customLabel>
+                  <!-- 中文翻译：右中趾 -->
+                  <coverage>0.08</coverage>
+                  <groups>
+                    <li>Feet</li>
+                  </groups>
+                </li>
+                <li>
+                  <def>Toe</def>
+                  <customLabel>right second toe</customLabel>
+                  <!-- 中文翻译：右第二趾 -->
+                  <coverage>0.09</coverage>
+                  <groups>
+                    <li>Feet</li>
+                  </groups>
+                </li>
+                <li>
+                  <def>Toe</def>
+                  <customLabel>right big toe</customLabel>
+                  <!-- 中文翻译：右大趾 -->
+                  <coverage>0.09</coverage>
+                  <groups>
+                    <li>Feet</li>
+                  </groups>
+                </li>
+              </parts>
+            </li>
+          </parts>
+        </li>
+      </parts>
+    </corePart>
+  </BodyDef>
+
+</Defs>

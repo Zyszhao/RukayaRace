@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Rukaya_SkyInterceptorAirProjectile.label>卢卡娅拦截弹</Rukaya_SkyInterceptorAirProjectile.label>
+  <Rukaya_InterceptedSkyCrash.label>卢卡娅击落的空投仓</Rukaya_InterceptedSkyCrash.label>
+  <Rukaya_InterceptedMeteoriteFragment.label>卢卡娅陨石碎块</Rukaya_InterceptedMeteoriteFragment.label>
+  <Rukaya_InterceptedAirborneDebris.label>卢卡娅拦截残骸</Rukaya_InterceptedAirborneDebris.label>
+  <Rukaya_InterceptedFallingFlyer.label>卢卡娅击落的飞行物</Rukaya_InterceptedFallingFlyer.label>
+  <Rukaya_SAMLaunchMissile.label>卢卡娅防空拦截弹</Rukaya_SAMLaunchMissile.label>
+</LanguageData>

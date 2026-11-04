@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "Rukaya Race",
+			"path": "."
+		},
+		{
+			"name": "Core",
+			"path": "../../Data/Core"
+		}
+	],
+	"settings": {}
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Alien_Rukaya.label>卢卡娅</Alien_Rukaya.label>
+  <Alien_Rukaya.description>卢卡娅是一个以女性为主的长寿亚人种族。她们拥有明显的翼手目特征——敏锐的兽耳与背部的双翼。在生理上，卢卡娅高度适应夜行生活，偏好安静、低光照的环境；而在心理上，漫长的寿命让她们的族群始终背负着难以磨灭的沉重记忆。
+
+她们并非这片边缘星域的原住民，而是来自一颗遥远的古老母星。在过去，她们的文明围绕一种名为“活性物质”的特殊资源建立起了先进的技术，这种资源至今仍是其工业与军备的核心。她们的母星最终失落了，散落星海的幸存者如今在群星之间延续着生活。</Alien_Rukaya.description>
+  <Alien_Rukaya.tools.0.label>左拳</Alien_Rukaya.tools.0.label>
+  <Alien_Rukaya.tools.1.label>右拳</Alien_Rukaya.tools.1.label>
+  <Alien_Rukaya.tools.2.label>牙齿</Alien_Rukaya.tools.2.label>
+  <Alien_Rukaya.tools.3.label>头部</Alien_Rukaya.tools.3.label>
+  <Alien_Rukaya.tools.4.label>左翼</Alien_Rukaya.tools.4.label>
+  <Alien_Rukaya.tools.5.label>右翼</Alien_Rukaya.tools.5.label>
+
+</LanguageData>

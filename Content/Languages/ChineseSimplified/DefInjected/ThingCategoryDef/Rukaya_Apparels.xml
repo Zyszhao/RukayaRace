@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- EN: Rukaya apparel -->
+  <Rukaya_Apparel.label>卢卡娅服装</Rukaya_Apparel.label>
+
+  <!-- EN: Rukaya onskin apparel -->
+  <Rukaya_Apparel_OnSkin.label>卢卡娅贴身服装</Rukaya_Apparel_OnSkin.label>
+
+  <!-- EN: Rukaya Overhead apparel -->
+  <Rukaya_Apparel_Overhead.label>卢卡娅头饰</Rukaya_Apparel_Overhead.label>
+
+  <!-- EN: Rukaya Underwear apparel -->
+  <Rukaya_Apparel_Underwear.label>卢卡娅内衣</Rukaya_Apparel_Underwear.label>
+
+  <!-- EN: Rukaya outer apparel -->
+  <Rukaya_Apparel_Shell.label>卢卡娅外套</Rukaya_Apparel_Shell.label>
+
+
+  <Rukaya_Apparel_Middle.label>卢卡娅中层服装</Rukaya_Apparel_Middle.label>
+
+</LanguageData>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThoughtDef>
+    <defName>Rukaya_SleptHanging</defName>
+    <durationDays>1</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>slept hanging</label>
+        <!-- 中文：倒挂安眠 -->
+        <description>Sleeping upside down leaves me rested and content.</description>
+        <!-- 中文翻译：倒挂入睡让我休息充分，心情愉悦。 -->
+        <baseMoodEffect>3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+</Defs>

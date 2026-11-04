@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Rukaya_RadarLockOn.label>雷达锁定</Rukaya_RadarLockOn.label>
+  <Rukaya_RadarLockOn.description>该单位已被主动火控解算锁定。它的轮廓与动作在烟幕和混乱中更容易被追踪，使协同火力更精确也更具杀伤。</Rukaya_RadarLockOn.description>
+
+  <Rukaya_RadarExposed.label>雷达暴露</Rukaya_RadarExposed.label>
+  <Rukaya_RadarExposed.description>该单位已被雷达扫掠标记。它无法长时间依赖隐蔽效果，且在暴露持续期间，任何主动隐身都会被反复扰乱。</Rukaya_RadarExposed.description>
+
+  <Rukaya_ATGMGuiding.label>线导导弹</Rukaya_ATGMGuiding.label>
+  <Rukaya_ATGMGuiding.description>该单位正在通过指令线维持一枚反装甲导弹的制导。在导弹命中目标或于目标附近射失前，任何移动都会破坏制导解算。</Rukaya_ATGMGuiding.description>
+
+  <Rukaya_Suppressed.label>压制</Rukaya_Suppressed.label>
+  <Rukaya_Suppressed.description>该单位正承受密集压制火力。持续命中会迫使其进一步贴低身体，扰乱视线，并显著削弱其机动与射击稳定性。</Rukaya_Suppressed.description>
+
+  <Rukaya_NeuroShock.label>神经震荡</Rukaya_NeuroShock.label>
+  <Rukaya_NeuroShock.description>活性物质沿神经系统传导所形成的神经震荡。运动控制最先失效，因此中弹者动作拖沓、步履踉跄；随后意识逐渐迟钝，直至身体彻底失去支撑而倒地。一旦不再被命中，它会逐步消退；而被压制得越彻底的目标，重新站起来所需的时间就越长。</Rukaya_NeuroShock.description>
+
+
+  <Rukaya_PhantomToxin.label>魅影毒素</Rukaya_PhantomToxin.label>
+  <Rukaya_PhantomToxin.description>由魅影箭注入的侵蚀性毒素。它会削弱感官与协调能力，直到身体将其代谢排除。</Rukaya_PhantomToxin.description>
+
+</LanguageData>

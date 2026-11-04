@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ============================================================
+       Rukaya 舰炮（naval artillery turret，3x3 自动索敌建筑炮塔）
+
+       【三层贴图】Content/Textures/Rukaya/Building/Rukaya_NavalArtillery/
+               Rukaya_NavalArtillery_base.png          底座（建筑本体 graphicData）
+               Rukaya_NavalArtillery_turret_top.png    炮塔顶（炮管朝画布 +x 伸出，绕画布中心旋转）
+               Rukaya_NavalArtillery_turret_barrel.png 炮管（与炮塔顶同一张画布、同一比例）
+               三张同画布（512²），按 **top → barrel → 底座** 自上而下堆叠：
+               炮塔顶由原版 TurretTop 画（贴图路径 = building.turretGunDef.graphicData.texPath），
+               炮管层由 RukayaRace.Buildings.Building_RukayaNavalArtillery 画在
+               底座与炮塔顶之间（高度各差半个 Altitudes.AltInc），后坐也由它算。
+               旧的 Rukaya_NavalArtillery_turret.png（炮塔顶 + 炮管合在一起的整张图）**已停用**，
+               仅作为备份留在目录里，任何 def 都不再引用它。
+
+       【炮管后坐】需求方 2026-10-09 指定：炮管在射击时做**直线的、不摇摆的**后坐，
+              炮塔顶没有后坐动画。因此炮管只沿自己的轴线（画布 -x）平移，没有横向分量、
+              也没有旋转；距离与时长由下面 modExtensions 的 barrelRecoilDistance / barrelRecoilTicks 决定。
+
+       射击：一次射击在同一帧内双联出膛（Verb_RukayaNavalArtilleryShoot），
+             一次瞄准（warmup）覆盖两次齐射。
+       节奏：warmup 1.5s + 连发间隔 3.0s + cooldown 1.5s = 6s/周期 = 4 发
+             ⇒ 40 发/分，且相邻齐射间隔恒为 3s（不忽快忽慢）。
+
+       装填：Rukaya_ActiveMatterContainer（1 容器 = 30 单位，1 发 = 2 单位，装填上限 300）。
+       对空：本炮塔挂 CompProperties_RukayaSkyInterceptor（载体模式，默认开启）。按设计口径
+             它**不占用本炮的 verb**：对空用的是独立的 Rukaya_Gun_NavalArtilleryAA 炮身与独立
+             burst 状态机，所以下面的 2 连发 / 3 秒间隔地面节奏不受任何影响；对空同样扣 4 单位
+             活性物质。交战期间由 TurretTop 补丁把炮塔顶扳向空中目标。
+             对空射击**会真的飞出一枚可见拦截弹**（空投仓也不例外），飞行过程有烟迹；
+             拦截弹与地面炮弹用同一张贴图；一发 = 一次带半径的判定（见 interceptBlastRadius）；拦截范围独立于对地射程（见下面的 airDefenseRange，默认 35 格；空投仓与自然天降物全图拦截，选中时画绿色范围圈）。
+       ============================================================ -->
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>Rukaya_NavalArtillery</defName>
+    <label>Rukaya naval artillery turret</label>
+    <!-- 中文：卢卡娅舰炮炮塔 -->
+    <description>A fixed Rukaya naval-pattern artillery turret rebuilt for ground emplacement. It acquires
+      targets on its own and throws its twin active-matter shells in tight salvos on a flat, high-velocity
+      trajectory, trading accuracy for reach, armor penetration and a wider blast than a conventional mortar.</description>
+    <!-- 中文翻译：一座由卢卡娅舰炮改装而成、用于陆上部署的固定炮塔。它能自主索敌，并以高初速平射弹道成对发射活性物质炮弹，齐射节奏紧凑；以精度为代价，换来比常规迫击炮更远的射程、更强的穿甲能力与更大的爆炸范围。 -->
+    <thingClass>RukayaRace.Buildings.Building_RukayaNavalArtillery</thingClass>
+    <!-- 自定义 thingClass：在 Building_TurretGun 的"炮塔顶 + 底座"之间再插一层**炮管**，
+         并让炮管在开火时沿炮管轴线做直线后坐（见来源文件 Buildings/Building_RukayaNavalArtillery.cs）。
+         它是 Building_TurretGun 的子类，炮塔自己的索敌 / verb / burst / 存档逻辑一行都没改。 -->
+    <uiIconPath>Rukaya/Building/Rukaya_NavalArtillery/Rukaya_NavalArtillery_icon</uiIconPath>
+    <!-- 建造菜单 / 物品筛选器 / 选中信息卡上的图标（128x128 PNG）。
+         建筑在地图上的外观仍由下面的 graphicData（底座）+ 炮塔顶 + 炮管三层绘制，与图标无关。 -->
+    <category>Building</category>
+    <tickerType>Normal</tickerType>
+    <altitudeLayer>Building</altitudeLayer>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <drawHighlight>true</drawHighlight>
+    <drawHighlightOnlyForHostile>true</drawHighlightOnlyForHostile>
+    <hasTooltip>true</hasTooltip>
+    <graphicData>
+      <texPath>Rukaya/Building/Rukaya_NavalArtillery/Rukaya_NavalArtillery_base</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(7.6,7.6)</drawSize>
+      <shadowData>
+        <volume>(3,0.5,3.2)</volume>
+        <offset>(0,0,-0.1)</offset>
+      </shadowData>
+    </graphicData>
+    <size>(3,3)</size>
+    <rotatable>false</rotatable>
+    <fillPercent>0.5</fillPercent>
+    <castEdgeShadows>true</castEdgeShadows>
+    <filthLeaving>Filth_RubbleBuilding</filthLeaving>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <designationCategory>Rukaya_Buildings</designationCategory>
+    <designationHotKey>Misc3</designationHotKey>
+    <researchPrerequisites>
+      <li>Rukaya_Weapon_III</li>
+    </researchPrerequisites>
+    <constructEffect>ConstructMetal</constructEffect>
+    <repairEffect>Repair</repairEffect>
+    <leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsSecurity</li>
+    </thingCategories>
+    <placeWorkers>
+      <li>PlaceWorker_TurretTop</li>
+      <!-- 不用原版 PlaceWorker_ShowTurretRadius：它对 verbClass 做精确类型匹配（== typeof(Verb_Shoot)），
+           自定义 verb 会让它的 List.Find 返回 null，随后访问 .range 在放置预览时每帧抛 NullReferenceException。
+           这里换成按 Verb_LaunchProjectile 家族匹配的自定义 PlaceWorker。
+           注意 placeWorkers 是 List<Type>，元素必须是类型名文本，不能写 Class=（Class= 只适用于 comps 那类列表）。 -->
+      <li>RukayaRace.Buildings.PlaceWorker_RukayaTurretRadius</li>
+    </placeWorkers>
+    <selectable>true</selectable>
+    <useHitPoints>true</useHitPoints>
+    <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+    <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+    <costList>
+      <Steel>350</Steel>
+      <ComponentIndustrial>10</ComponentIndustrial>
+      <ComponentSpacer>4</ComponentSpacer>
+      <Rukaya_ActiveMatterContainer>10</Rukaya_ActiveMatterContainer>
+    </costList>
+    <modExtensions>
+      <li Class="RukayaRace.Weapons.RukayaNavalArtilleryExtension">
+        <shellsPerShot>2</shellsPerShot>
+        <!-- 炮管层贴图（相对 Content/Textures，不带扩展名）。留空 = 不画炮管层。 -->
+        <barrelTexPath>Rukaya/Building/Rukaya_NavalArtillery/Rukaya_NavalArtillery_turret_barrel</barrelTexPath>
+        <barrelRecoilDistance>0.28</barrelRecoilDistance>
+        <!-- 后坐的最大后退距离（格，沿炮管轴线向后）。炮管贴图总长 131px，按 turretTopDrawSize 7.6 格
+             /512px 换算约 1.94 格，0.28 格 ≈ 19px —— 看得出"退了一下"，又不会把炮管缩进炮塔里。 -->
+        <barrelRecoilTicks>22</barrelRecoilTicks>
+        <!-- 一个后坐周期的 tick 数（22 tick ≈ 0.37 秒）：开火那一帧退到最后，之后按线性回到原位。 -->
+      </li>
+    </modExtensions>
+    <building>
+      <ai_combatDangerous>true</ai_combatDangerous>
+      <turretGunDef>Rukaya_Gun_NavalArtillery</turretGunDef>
+      <turretTopDrawSize>7.6</turretTopDrawSize>
+      <turretTopOffset>(0,0)</turretTopOffset>
+      <turretBurstWarmupTime>1.5</turretBurstWarmupTime>
+      <turretBurstCooldownTime>1.5</turretBurstCooldownTime>
+    </building>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>800</basePowerConsumption>
+        <shortCircuitInRain>true</shortCircuitInRain>
+      </li>
+      <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Breakdownable" />
+      <li Class="CompProperties_Forbiddable" />
+      <li Class="CompProperties_Stunnable">
+        <affectedDamageDefs>
+          <li>Stun</li>
+          <li>EMP</li>
+        </affectedDamageDefs>
+      </li>
+      <li Class="CompProperties_Explosive">
+        <wickTicks>240</wickTicks>
+        <explosiveRadius>7.9</explosiveRadius>
+        <explosiveDamageType>Bomb</explosiveDamageType>
+        <chanceNeverExplodeFromDamage>0.5</chanceNeverExplodeFromDamage>
+      </li>
+      <li Class="CompProperties_Refuelable">
+        <fuelLabel>Active matter until reload</fuelLabel>
+        <!-- 中文：活性物质（直至重新装填） -->
+        <fuelGizmoLabel>Active matter</fuelGizmoLabel>
+        <!-- 中文：活性物质 -->
+        <outOfFuelMessage>Needs active matter</outOfFuelMessage>
+        <!-- 中文：需要装填活性物质 -->
+        <fuelFilter>
+          <thingDefs>
+            <li>Rukaya_ActiveMatterContainer</li>
+          </thingDefs>
+        </fuelFilter>
+        <fuelCapacity>300</fuelCapacity>
+        <fuelMultiplier>30</fuelMultiplier>
+        <initialFuelPercent>1</initialFuelPercent>
+        <autoRefuelPercent>0.5</autoRefuelPercent>
+        <showFuelGizmo>true</showFuelGizmo>
+        <minimumFueledThreshold>1</minimumFueledThreshold>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <fuelIconPath>Rukaya/UI/Rukaya_RequireActiveMatter</fuelIconPath>
+        <!-- 缺料时建筑头顶脉动的图标（OverlayDrawer.RenderOutOfFuelOverlay 用的就是 FuelIcon）：
+             原来借用原版油桶，这里换成"禁止的活性物质罐"，一眼看出是缺活性物质而不是缺油。 -->
+      </li>
+      <!-- 对空拦截（载体模式）。
+           本建筑的 thingClass 是 Building_TurretGun，也就是"自带炮身"的宿主。按设计口径
+           （设计文档/分层防空系统_实现交接.md §7.2）本组件**不占用宿主的 verb、不与它的 burst
+           互不干扰**：它按 turretDef 造自己的对空炮身，只额外做两件事——
+           ① 载体模式下不再跑地面索敌（宿主自己在做，否则同一座炮塔会开两次火）；
+           ② 对空交战时由 TurretTop 补丁把宿主的炮塔顶扳向空中目标。
+           因此 turretDef 必须是一门**独立的对空炮身**，绝不能写成 building.turretGunDef
+           （写成同一门会被 ConfigErrors 拦下：共用主炮会把 2 连发 / 3 秒间隔的地面节奏搅进对空里）。
+           对空射击同样消耗 4 单位活性物质（与主炮同价）。 -->
+      <li Class="RukayaRace.AirDefense.CompProperties_RukayaSkyInterceptor">
+        <turretDef>Rukaya_Gun_NavalArtilleryAA</turretDef>
+        <airModeOnDefault>true</airModeOnDefault>
+        <!-- 默认开启对空模式；玩家可在 Gizmo 里随时关掉（关掉后完全回到原版炮塔行为）。 -->
+        <allowedCategories>DropPods, NaturalSkyfallers</allowedCategories>
+        <!-- 默认拦两类：敌方空投仓、以及已识别的陨石/落石。其余类别（越顶炮弹、弧线弹、飞行物）
+             需要各自 Def 显式开启，避免舰炮在混战中抢打自家弹丸。 -->
+        <airDefenseRange>35</airDefenseRange>
+        <!-- 此半径只限制炮弹/PawnFlyer等局部类别；当前允许的空投仓与自然天降物全图拦截。
+             与对地55.9格射程独立，选中时绿色范围圈只表示局部类别的覆盖。 -->
+        <targetDefWhitelist />
+        <targetDefBlacklist />
+        <scanIntervalTicks>3</scanIntervalTicks>
+        <!-- 目标扫描节拍（tick）。它只产出"快照"，不每 tick 全图扫描。 -->
+        <interceptBlastRadius>4</interceptBlastRadius>
+        <!-- 一发拦截弹的"半径判定"半径（格）。需求方 2026-10-08 反馈"拦截效率过低"：
+             同一次射击里，主目标周围这个半径内的其它合法空中目标会被一并拦下，
+             但**每发仍然只扣一次装填**（4 单位活性物质）。0 = 关闭，退回"一发只打一个目标"。 -->
+        <maxSecondaryTargets>2</maxSecondaryTargets>
+        <!-- 一次射击最多额外带走几个次级目标（防止一发清空整波空投，便于按需调平衡）。 -->
+      </li>
+    </comps>
+    <statBases>
+      <SellPriceFactor>0.7</SellPriceFactor>
+      <MarketValue>2600</MarketValue>
+      <Mass>140</Mass>
+      <MaxHitPoints>500</MaxHitPoints>
+      <WorkToBuild>12000</WorkToBuild>
+      <Flammability>0.5</Flammability>
+      <Beauty>-25</Beauty>
+      <ShootingAccuracyTurret>0.96</ShootingAccuracyTurret>
+    </statBases>
+    <uiOrder>2529</uiOrder>
+  </ThingDef>
+
+</Defs>

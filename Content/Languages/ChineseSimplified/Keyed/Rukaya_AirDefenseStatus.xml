@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Rukaya_AirMagazine>防空导弹备弹：{0}/{1}</Rukaya_AirMagazine>
+  <Rukaya_AirMagazineReloading>装填中（{0}）</Rukaya_AirMagazineReloading>
+  <Rukaya_AirDefenseCoverage>防空覆盖：炮弹与飞行物限于{0}格内；允许拦截的空投仓与陨石覆盖全图。</Rukaya_AirDefenseCoverage>
+</LanguageData>

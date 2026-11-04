@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- 紧急飞行专用 PawnFlyer（1.7/Defs/ThingDefs_Misc/Rukaya_PawnFlyer.xml）。
+       这个 ThingDef 只作为飞行载体存在，玩家正常不会看到它的 label，仍按规范补齐词条。 -->
+  <Rukaya_EmergencyFlyer.label>紧急飞行</Rukaya_EmergencyFlyer.label>
+  <Rukaya_EmergencyFlyer.description>一次短促而凶猛的振翅爆发，把卢卡娅抛过战场。</Rukaya_EmergencyFlyer.description>
+
+</LanguageData>

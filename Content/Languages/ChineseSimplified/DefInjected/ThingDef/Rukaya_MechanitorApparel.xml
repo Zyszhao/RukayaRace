@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Rukaya_DroneControlGoggles.label>无人机操控眼镜</Rukaya_DroneControlGoggles.label>
+  <Rukaya_DroneControlGoggles.description>为卢卡娅操作者设计的FPV眼镜，集成了天线阵列。无人机的实时画面与机载诊断系统可支持额外的控制组、扩展带宽，并加快机械体维修。紧凑的头带可与头盔一同佩戴。</Rukaya_DroneControlGoggles.description>
+  <Rukaya_DroneSignalPack.label>无人机信号背包</Rukaya_DroneSignalPack.label>
+  <Rukaya_DroneSignalPack.description>一套配备天线、信号处理器、散热装置和辅助电源的无人机通信背包。它可支持额外的控制组、扩展带宽，并加快机械体培育。温控系统还能拓宽穿着者在炎热与寒冷环境下的舒适温度范围。</Rukaya_DroneSignalPack.description>
+</LanguageData>

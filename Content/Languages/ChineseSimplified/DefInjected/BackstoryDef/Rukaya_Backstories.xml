@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Rukaya_Commando.title>突击队员</Rukaya_Commando.title>
+  <Rukaya_Commando.titleShort>士兵</Rukaya_Commando.titleShort>
+  <Rukaya_Commando.description>[PAWN_nameDef]是一名优秀的士兵，凭借着高超的战斗技术取得战果，获得了同僚们的肯定。但只有她知道，作战的压力已经影响了自己，长期的作战让她变得难以和人沟通。</Rukaya_Commando.description>
+
+  <Rukaya_Blacksmith.title>铁匠</Rukaya_Blacksmith.title>
+  <Rukaya_Blacksmith.titleShort>铁匠</Rukaya_Blacksmith.titleShort>
+  <Rukaya_Blacksmith.description>[PAWN_nameDef]在曾经担任过同盟中的铁匠，为没有制造机的聚居地制造武器。她不仅擅长制造装备，还设计过一些改进方案。</Rukaya_Blacksmith.description>
+
+  <Rukaya_HomesickChild.title>思乡的孩子</Rukaya_HomesickChild.title>
+  <Rukaya_HomesickChild.titleShort>思乡</Rukaya_HomesickChild.titleShort>
+  <Rukaya_HomesickChild.description>[PAWN_nameDef]时常对着天空眺望自己的故乡，她对长辈们口口相传的那颗星球充满了好奇，并且经常和人讨论。</Rukaya_HomesickChild.description>
+
+  <Rukaya_FarmChildLaborer.title>农场童工</Rukaya_FarmChildLaborer.title>
+  <Rukaya_FarmChildLaborer.titleShort>农场童工</Rukaya_FarmChildLaborer.titleShort>
+  <Rukaya_FarmChildLaborer.description>[PAWN_nameDef]家里属于联盟集体农场的一部分，她在小时候就和大人们一起干农活。有时候，她会用驻军基地周围捡到的废料做一些小手工。</Rukaya_FarmChildLaborer.description>
+
+  <Rukaya_Archivist.title>档案管理员</Rukaya_Archivist.title>
+  <Rukaya_Archivist.titleShort>档案管理员</Rukaya_Archivist.titleShort>
+  <Rukaya_Archivist.description>[PAWN_nameDef]对她看到的书籍学习的很快，这为她赢得了在档案馆工作的机会，也允许她能学习更多档案馆里的知识。但是，在档案馆的职务使她对重体力工作产生了鄙夷。</Rukaya_Archivist.description>
+
+  <Rukaya_Milker.title>挤奶工</Rukaya_Milker.title>
+  <Rukaya_Milker.titleShort>挤奶工</Rukaya_Milker.titleShort>
+  <Rukaya_Milker.description>[PAWN_nameDef]在农庄长大，在养殖场附近的学校上学。她发现自己很喜欢养殖场里的动物，甚至学会了治疗这些动物的方法，但这也使得她荒废了自己的学业。</Rukaya_Milker.description>
+
+  <Rukaya_MedStudent.title>医学生</Rukaya_MedStudent.title>
+  <Rukaya_MedStudent.titleShort>医学生</Rukaya_MedStudent.titleShort>
+  <Rukaya_MedStudent.description>[PAWN_nameDef]就读于一所医学院校，她在那里学习到了毁灭后为数不多的医学知识遗存，在那里她决定成为善良的人，并且立下了誓言，拒绝在战场上伤害其他人。</Rukaya_MedStudent.description>
+
+
+  <Rukaya_Commando.titleFemale>突击队员</Rukaya_Commando.titleFemale>
+  <Rukaya_Commando.titleShortFemale>士兵</Rukaya_Commando.titleShortFemale>
+  <Rukaya_Blacksmith.titleFemale>铁匠</Rukaya_Blacksmith.titleFemale>
+  <Rukaya_Blacksmith.titleShortFemale>铁匠</Rukaya_Blacksmith.titleShortFemale>
+  <Rukaya_HomesickChild.titleFemale>思乡的孩子</Rukaya_HomesickChild.titleFemale>
+  <Rukaya_HomesickChild.titleShortFemale>思乡</Rukaya_HomesickChild.titleShortFemale>
+  <Rukaya_FarmChildLaborer.titleFemale>农场童工</Rukaya_FarmChildLaborer.titleFemale>
+  <Rukaya_FarmChildLaborer.titleShortFemale>农场童工</Rukaya_FarmChildLaborer.titleShortFemale>
+  <Rukaya_Archivist.titleFemale>档案管理员</Rukaya_Archivist.titleFemale>
+  <Rukaya_Archivist.titleShortFemale>档案管理员</Rukaya_Archivist.titleShortFemale>
+  <Rukaya_Milker.titleFemale>挤奶工</Rukaya_Milker.titleFemale>
+  <Rukaya_Milker.titleShortFemale>挤奶工</Rukaya_Milker.titleShortFemale>
+  <Rukaya_MedStudent.titleFemale>医学生</Rukaya_MedStudent.titleFemale>
+  <Rukaya_MedStudent.titleShortFemale>医学生</Rukaya_MedStudent.titleShortFemale>
+
+</LanguageData>

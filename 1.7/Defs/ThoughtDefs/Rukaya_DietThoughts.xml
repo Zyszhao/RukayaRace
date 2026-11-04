@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThoughtDef>
+    <defName>Rukaya_VegetarianLack</defName>
+    <workerClass>RukayaRace.Diet.ThoughtWorker_RukayaVegetarianLack</workerClass>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages>
+      <li>
+        <label>missing vegetarian food</label>
+        <!-- 中文：想吃素食 -->
+        <description>It has been more than three days since I last ate vegetarian food. I miss a meal that agrees with my body.</description>
+        <!-- 中文翻译：我已经超过三天没吃素食了。我想吃一顿让身体舒服的饭。 -->
+        <baseMoodEffect>-3</baseMoodEffect>
+      </li>
+      <li>
+        <label>desperate for vegetarian food</label>
+        <!-- 中文：迫切需要素食 -->
+        <description>I have gone six days without vegetarian food. Meat can keep me alive, but it cannot satisfy this craving.</description>
+        <!-- 中文翻译：我已经六天没吃素食了。肉食能让我活下去，却无法满足这份渴望。 -->
+        <baseMoodEffect>-10</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>Rukaya_AteVegetarian</defName>
+    <durationDays>1</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>ate vegetarian food</label>
+        <!-- 中文：吃了素食 -->
+        <description>A vegetarian meal leaves me comfortable and content. This is the food my body longs for.</description>
+        <!-- 中文翻译：一顿素食让我舒适又满足。这才是我的身体渴望的食物。 -->
+        <baseMoodEffect>10</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+</Defs>

@@ -1,0 +1,560 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!--
+    ==========================================================================================
+    ⚠ 现状：**工作正常。不要修改下面两个扑翼分部的 tick、durationTicks 或关键帧条数。**
+    ==========================================================================================
+    2026-10-16 已修好「第 8 帧停两拍」：8 张图各占 4 tick、一轮 32 tick（≈15 fps），
+    四个方向 × 前后两层（共 8 个 keyframeParts）全部严格等长，启动期校验逐 tick 推演通过
+    （日志关键字「扑翼校验」，正常会打印 每张图 tick 数=[4/4/4/4/4/4/4/4]）。
+    这里没有任何需要"顺手优化"的数字：**看到别的帧率数值也不要把本文件改回去**。
+
+    本文件的两个 flap 分部（`Rukaya_WingFlapBack` / `Rukaya_WingFlapFront`）是配套的一对，
+    改动它们必须同时满足下面四条不变量，改完跑一遍校验器：
+      1. 首关键帧 tick = 0，末关键帧 tick = durationTicks，且末帧的 graphicState 回到
+         该方向第 1 张图（`_0`）——少了这条收尾帧，末帧会连吃两段，重新变成约两倍时长；
+      2. 各段 tick 间隔完全相等，且 durationTicks = 8 × 帧间隔；
+      3. 两个 flap 分部的 tick 逐条相同，否则同一个 tick 会画出翼根与翼尖不同步的"拼帧"；
+      4. durationTicks / tick 都是整数 tick，改速率就整体重铺，不要只动其中一个数。
+
+    允许的扩展：**新增别的分部**（例如给飞行加躯体起伏的 `Root` offset 关键帧，
+    见 设计文档/飞行系统_浮动与紧急飞行实装.md）。新增分部可以有自己的节奏，只需满足：
+    末关键帧 tick = durationTicks、tick 严格递增、不要动上面两个 flap 分部。
+    校验器对"非 flap 分部"只查这三条，所以正常的新增不会被误报成错误。
+    （单关键帧的**恒定分部**免检"末关键帧 = durationTicks"，因为它整轮取同一条、没有钳位尾巴。）
+
+    当前新增的 `Root` 分部：四个方向**完全同构**的纯垂直浮动（±0.0125 格），
+    一律**不带** `<angle>`。曾经给 East/West 加过 ±8° 的躯干前倾并配 `Head` 反向补偿，
+    观感是"人歪着飘"而非悬浮，已整体移除 —— 要重新引入倾斜角时，
+    记得 East 与 West 必须取**相反**的角度（西向被翻转绘制），否则会一边前倾一边后仰。
+
+    ==========================================================================================
+    下面是它为什么必须这么写（引擎取帧口径，原版写法）：
+
+    引擎取帧见 Verse/AnimationWorker_Keyframes.GetKeyframeForTick，
+    配 PawnRenderTree.AnimationTick（对 durationTicks 取模，所以 tick ∈ [0, durationTicks-1]）：
+      · tick <= 首关键帧.tick  → 首关键帧
+      · tick >= 末关键帧.tick  → 末关键帧（钳位到循环末尾）
+      · 其余                   → 第一条 tick >= 当前 tick 的关键帧
+
+    注意最后一条是「取下一帧」而不是「取上一帧」，所以一条关键帧负责的是**它之前的那一段**：
+    第 i 张图从上一帧的 tick 之后一直画到本帧自己的 tick（首帧只占 tick 0 那一拍）。
+    因此循环动画必须在 durationTicks 这个位置补一条收尾关键帧回到第 1 张图；少这一条，
+    末帧就会连吃「自己那一拍」和「末关键帧 → durationTicks 的钳位尾巴」两段
+    （120 tick 布局下实测第 8 张图占 29 tick ≈ 两倍，观感就是「第 8 帧停两拍」）。
+
+    现值：**每帧 4 tick、一轮 32 tick（≈15 帧/秒）**。
+    keyframe 落在 0 / 4 / 8 / 12 / 16 / 20 / 24 / 28，外加 32 处的收尾帧回到第 1 张图。
+    收尾后：8 张图 × 4 tick = 32 tick = durationTicks，每张严格等长。
+    这与原版 XML 的约定一致：最后一条 keyframe 的 tick 等于 durationTicks。
+    校验在 Source/RukayaRace/Flight/Patch_AnimationDef_ValidateWingKeyframes.cs，
+    它按上面的规则逐 tick 推演一遍，任何一张图时长不等就报错。
+  -->
+  <AnimationDef>
+    <defName>Rukaya_WingFlap_South</defName>
+    <durationTicks>32</durationTicks>
+    <loopMode>Loop</loopMode>
+    <startOnRandomTick>true</startOnRandomTick>
+    <keyframeParts>
+      <li>
+        <key>Rukaya_WingFlapBack</key>
+        <value>
+          <workerType>AnimationWorker_Keyframes</workerType>
+          <keyframes>
+            <li>
+              <tick>0</tick>
+              <graphicState>Rukaya_WingFlapSouth_0</graphicState>
+            </li>
+            <li>
+              <tick>4</tick>
+              <graphicState>Rukaya_WingFlapSouth_1</graphicState>
+            </li>
+            <li>
+              <tick>8</tick>
+              <graphicState>Rukaya_WingFlapSouth_2</graphicState>
+            </li>
+            <li>
+              <tick>12</tick>
+              <graphicState>Rukaya_WingFlapSouth_3</graphicState>
+            </li>
+            <li>
+              <tick>16</tick>
+              <graphicState>Rukaya_WingFlapSouth_4</graphicState>
+            </li>
+            <li>
+              <tick>20</tick>
+              <graphicState>Rukaya_WingFlapSouth_5</graphicState>
+            </li>
+            <li>
+              <tick>24</tick>
+              <graphicState>Rukaya_WingFlapSouth_6</graphicState>
+            </li>
+            <li>
+              <tick>28</tick>
+              <graphicState>Rukaya_WingFlapSouth_7</graphicState>
+            </li>
+            <!-- 循环收尾：这一拍交还给第 1 张图（末关键帧 tick 必须等于 durationTicks，见文件头说明）。 -->
+            <li>
+              <tick>32</tick>
+              <graphicState>Rukaya_WingFlapSouth_0</graphicState>
+            </li>
+          </keyframes>
+        </value>
+      </li>
+      <li>
+        <key>Rukaya_WingFlapFront</key>
+        <value>
+          <workerType>AnimationWorker_Keyframes</workerType>
+          <keyframes>
+            <li>
+              <tick>0</tick>
+              <graphicState>Rukaya_WingFlapSouth_0</graphicState>
+            </li>
+            <li>
+              <tick>4</tick>
+              <graphicState>Rukaya_WingFlapSouth_1</graphicState>
+            </li>
+            <li>
+              <tick>8</tick>
+              <graphicState>Rukaya_WingFlapSouth_2</graphicState>
+            </li>
+            <li>
+              <tick>12</tick>
+              <graphicState>Rukaya_WingFlapSouth_3</graphicState>
+            </li>
+            <li>
+              <tick>16</tick>
+              <graphicState>Rukaya_WingFlapSouth_4</graphicState>
+            </li>
+            <li>
+              <tick>20</tick>
+              <graphicState>Rukaya_WingFlapSouth_5</graphicState>
+            </li>
+            <li>
+              <tick>24</tick>
+              <graphicState>Rukaya_WingFlapSouth_6</graphicState>
+            </li>
+            <li>
+              <tick>28</tick>
+              <graphicState>Rukaya_WingFlapSouth_7</graphicState>
+            </li>
+            <!-- 循环收尾：这一拍交还给第 1 张图（末关键帧 tick 必须等于 durationTicks，见文件头说明）。 -->
+            <li>
+              <tick>32</tick>
+              <graphicState>Rukaya_WingFlapSouth_0</graphicState>
+            </li>
+          </keyframes>
+        </value>
+      </li>
+      <!--
+        浮动：Root 分部的 offset 关键帧。
+        offset 第三分量 = 世界 Z（高度）；引擎在各关键帧之间做 Vector3.Lerp，
+        所以这里是平滑起伏而非跳变。
+        末帧 tick 必须等于 durationTicks（=32），否则 tick 32 之后会被钳位成"停住不动"。
+        四个方向（South/North/East/West）的 Root 分部完全同构：纯垂直浮动，不带躯干角。
+        相位与翅膀帧对齐：翅膀在 tick 16 下压到底（第 5 张图），身体在 tick 15 抬到最高，
+        形成"扇翅推升 → 自然回落"的物理感。
+      -->
+      <li>
+        <key>Root</key>
+        <value>
+          <workerType>AnimationWorker_Keyframes</workerType>
+          <keyframes>
+            <li>
+              <tick>0</tick>
+              <offset>(0,0,-0.0125)</offset>
+            </li>
+            <li>
+              <tick>10</tick>
+              <offset>(0,0,0.01)</offset>
+            </li>
+            <li>
+              <tick>15</tick>
+              <offset>(0,0,0.0125)</offset>
+            </li>
+            <li>
+              <tick>32</tick>
+              <offset>(0,0,-0.0125)</offset>
+            </li>
+          </keyframes>
+        </value>
+      </li>
+    </keyframeParts>
+  </AnimationDef>
+  <AnimationDef>
+    <defName>Rukaya_WingFlap_North</defName>
+    <durationTicks>32</durationTicks>
+    <loopMode>Loop</loopMode>
+    <startOnRandomTick>true</startOnRandomTick>
+    <keyframeParts>
+      <li>
+        <key>Rukaya_WingFlapBack</key>
+        <value>
+          <workerType>AnimationWorker_Keyframes</workerType>
+          <keyframes>
+            <li>
+              <tick>0</tick>
+              <graphicState>Rukaya_WingFlapNorth_0</graphicState>
+            </li>
+            <li>
+              <tick>4</tick>
+              <graphicState>Rukaya_WingFlapNorth_1</graphicState>
+            </li>
+            <li>
+              <tick>8</tick>
+              <graphicState>Rukaya_WingFlapNorth_2</graphicState>
+            </li>
+            <li>
+              <tick>12</tick>
+              <graphicState>Rukaya_WingFlapNorth_3</graphicState>
+            </li>
+            <li>
+              <tick>16</tick>
+              <graphicState>Rukaya_WingFlapNorth_4</graphicState>
+            </li>
+            <li>
+              <tick>20</tick>
+              <graphicState>Rukaya_WingFlapNorth_5</graphicState>
+            </li>
+            <li>
+              <tick>24</tick>
+              <graphicState>Rukaya_WingFlapNorth_6</graphicState>
+            </li>
+            <li>
+              <tick>28</tick>
+              <graphicState>Rukaya_WingFlapNorth_7</graphicState>
+            </li>
+            <!-- 循环收尾：这一拍交还给第 1 张图（末关键帧 tick 必须等于 durationTicks，见文件头说明）。 -->
+            <li>
+              <tick>32</tick>
+              <graphicState>Rukaya_WingFlapNorth_0</graphicState>
+            </li>
+          </keyframes>
+        </value>
+      </li>
+      <li>
+        <key>Rukaya_WingFlapFront</key>
+        <value>
+          <workerType>AnimationWorker_Keyframes</workerType>
+          <keyframes>
+            <li>
+              <tick>0</tick>
+              <graphicState>Rukaya_WingFlapNorth_0</graphicState>
+            </li>
+            <li>
+              <tick>4</tick>
+              <graphicState>Rukaya_WingFlapNorth_1</graphicState>
+            </li>
+            <li>
+              <tick>8</tick>
+              <graphicState>Rukaya_WingFlapNorth_2</graphicState>
+            </li>
+            <li>
+              <tick>12</tick>
+              <graphicState>Rukaya_WingFlapNorth_3</graphicState>
+            </li>
+            <li>
+              <tick>16</tick>
+              <graphicState>Rukaya_WingFlapNorth_4</graphicState>
+            </li>
+            <li>
+              <tick>20</tick>
+              <graphicState>Rukaya_WingFlapNorth_5</graphicState>
+            </li>
+            <li>
+              <tick>24</tick>
+              <graphicState>Rukaya_WingFlapNorth_6</graphicState>
+            </li>
+            <li>
+              <tick>28</tick>
+              <graphicState>Rukaya_WingFlapNorth_7</graphicState>
+            </li>
+            <!-- 循环收尾：这一拍交还给第 1 张图（末关键帧 tick 必须等于 durationTicks，见文件头说明）。 -->
+            <li>
+              <tick>32</tick>
+              <graphicState>Rukaya_WingFlapNorth_0</graphicState>
+            </li>
+          </keyframes>
+        </value>
+      </li>
+      <!-- 浮动：Root 分部，纯垂直起伏、不带躯干角（前后向不应有侧倾）。取值与 South 一致。 -->
+      <li>
+        <key>Root</key>
+        <value>
+          <workerType>AnimationWorker_Keyframes</workerType>
+          <keyframes>
+            <li>
+              <tick>0</tick>
+              <offset>(0,0,-0.0125)</offset>
+            </li>
+            <li>
+              <tick>10</tick>
+              <offset>(0,0,0.01)</offset>
+            </li>
+            <li>
+              <tick>15</tick>
+              <offset>(0,0,0.0125)</offset>
+            </li>
+            <li>
+              <tick>32</tick>
+              <offset>(0,0,-0.0125)</offset>
+            </li>
+          </keyframes>
+        </value>
+      </li>
+    </keyframeParts>
+  </AnimationDef>
+  <AnimationDef>
+    <defName>Rukaya_WingFlap_East</defName>
+    <durationTicks>32</durationTicks>
+    <loopMode>Loop</loopMode>
+    <startOnRandomTick>true</startOnRandomTick>
+    <keyframeParts>
+      <li>
+        <key>Rukaya_WingFlapBack</key>
+        <value>
+          <workerType>AnimationWorker_Keyframes</workerType>
+          <keyframes>
+            <li>
+              <tick>0</tick>
+              <graphicState>Rukaya_WingFlapEast_0</graphicState>
+            </li>
+            <li>
+              <tick>4</tick>
+              <graphicState>Rukaya_WingFlapEast_1</graphicState>
+            </li>
+            <li>
+              <tick>8</tick>
+              <graphicState>Rukaya_WingFlapEast_2</graphicState>
+            </li>
+            <li>
+              <tick>12</tick>
+              <graphicState>Rukaya_WingFlapEast_3</graphicState>
+            </li>
+            <li>
+              <tick>16</tick>
+              <graphicState>Rukaya_WingFlapEast_4</graphicState>
+            </li>
+            <li>
+              <tick>20</tick>
+              <graphicState>Rukaya_WingFlapEast_5</graphicState>
+            </li>
+            <li>
+              <tick>24</tick>
+              <graphicState>Rukaya_WingFlapEast_6</graphicState>
+            </li>
+            <li>
+              <tick>28</tick>
+              <graphicState>Rukaya_WingFlapEast_7</graphicState>
+            </li>
+            <!-- 循环收尾：这一拍交还给第 1 张图（末关键帧 tick 必须等于 durationTicks，见文件头说明）。 -->
+            <li>
+              <tick>32</tick>
+              <graphicState>Rukaya_WingFlapEast_0</graphicState>
+            </li>
+          </keyframes>
+        </value>
+      </li>
+      <li>
+        <key>Rukaya_WingFlapFront</key>
+        <value>
+          <workerType>AnimationWorker_Keyframes</workerType>
+          <keyframes>
+            <li>
+              <tick>0</tick>
+              <graphicState>Rukaya_WingFlapEast_0</graphicState>
+            </li>
+            <li>
+              <tick>4</tick>
+              <graphicState>Rukaya_WingFlapEast_1</graphicState>
+            </li>
+            <li>
+              <tick>8</tick>
+              <graphicState>Rukaya_WingFlapEast_2</graphicState>
+            </li>
+            <li>
+              <tick>12</tick>
+              <graphicState>Rukaya_WingFlapEast_3</graphicState>
+            </li>
+            <li>
+              <tick>16</tick>
+              <graphicState>Rukaya_WingFlapEast_4</graphicState>
+            </li>
+            <li>
+              <tick>20</tick>
+              <graphicState>Rukaya_WingFlapEast_5</graphicState>
+            </li>
+            <li>
+              <tick>24</tick>
+              <graphicState>Rukaya_WingFlapEast_6</graphicState>
+            </li>
+            <li>
+              <tick>28</tick>
+              <graphicState>Rukaya_WingFlapEast_7</graphicState>
+            </li>
+            <!-- 循环收尾：这一拍交还给第 1 张图（末关键帧 tick 必须等于 durationTicks，见文件头说明）。 -->
+            <li>
+              <tick>32</tick>
+              <graphicState>Rukaya_WingFlapEast_0</graphicState>
+            </li>
+          </keyframes>
+        </value>
+      </li>
+      <!--
+        浮动：Root 分部，纯垂直起伏，不带躯干前倾角。
+        侧向与前后向一律只做垂直浮动（取值与 South/North 完全一致）——
+        曾经给 East/West 加过 ±8° 的前倾，观感上不像悬浮而像"整个人歪着飘"，
+        已按要求去掉；Head 的反向补偿分部也一并移除，四个方向的浮动现在完全同构。
+      -->
+      <li>
+        <key>Root</key>
+        <value>
+          <workerType>AnimationWorker_Keyframes</workerType>
+          <keyframes>
+            <li>
+              <tick>0</tick>
+              <offset>(0,0,-0.0125)</offset>
+            </li>
+            <li>
+              <tick>10</tick>
+              <offset>(0,0,0.01)</offset>
+            </li>
+            <li>
+              <tick>15</tick>
+              <offset>(0,0,0.0125)</offset>
+            </li>
+            <li>
+              <tick>32</tick>
+              <offset>(0,0,-0.0125)</offset>
+            </li>
+          </keyframes>
+        </value>
+      </li>
+    </keyframeParts>
+  </AnimationDef>
+  <AnimationDef>
+    <defName>Rukaya_WingFlap_West</defName>
+    <durationTicks>32</durationTicks>
+    <loopMode>Loop</loopMode>
+    <startOnRandomTick>true</startOnRandomTick>
+    <keyframeParts>
+      <li>
+        <key>Rukaya_WingFlapBack</key>
+        <value>
+          <workerType>AnimationWorker_Keyframes</workerType>
+          <keyframes>
+            <li>
+              <tick>0</tick>
+              <graphicState>Rukaya_WingFlapWest_0</graphicState>
+            </li>
+            <li>
+              <tick>4</tick>
+              <graphicState>Rukaya_WingFlapWest_1</graphicState>
+            </li>
+            <li>
+              <tick>8</tick>
+              <graphicState>Rukaya_WingFlapWest_2</graphicState>
+            </li>
+            <li>
+              <tick>12</tick>
+              <graphicState>Rukaya_WingFlapWest_3</graphicState>
+            </li>
+            <li>
+              <tick>16</tick>
+              <graphicState>Rukaya_WingFlapWest_4</graphicState>
+            </li>
+            <li>
+              <tick>20</tick>
+              <graphicState>Rukaya_WingFlapWest_5</graphicState>
+            </li>
+            <li>
+              <tick>24</tick>
+              <graphicState>Rukaya_WingFlapWest_6</graphicState>
+            </li>
+            <li>
+              <tick>28</tick>
+              <graphicState>Rukaya_WingFlapWest_7</graphicState>
+            </li>
+            <!-- 循环收尾：这一拍交还给第 1 张图（末关键帧 tick 必须等于 durationTicks，见文件头说明）。 -->
+            <li>
+              <tick>32</tick>
+              <graphicState>Rukaya_WingFlapWest_0</graphicState>
+            </li>
+          </keyframes>
+        </value>
+      </li>
+      <li>
+        <key>Rukaya_WingFlapFront</key>
+        <value>
+          <workerType>AnimationWorker_Keyframes</workerType>
+          <keyframes>
+            <li>
+              <tick>0</tick>
+              <graphicState>Rukaya_WingFlapWest_0</graphicState>
+            </li>
+            <li>
+              <tick>4</tick>
+              <graphicState>Rukaya_WingFlapWest_1</graphicState>
+            </li>
+            <li>
+              <tick>8</tick>
+              <graphicState>Rukaya_WingFlapWest_2</graphicState>
+            </li>
+            <li>
+              <tick>12</tick>
+              <graphicState>Rukaya_WingFlapWest_3</graphicState>
+            </li>
+            <li>
+              <tick>16</tick>
+              <graphicState>Rukaya_WingFlapWest_4</graphicState>
+            </li>
+            <li>
+              <tick>20</tick>
+              <graphicState>Rukaya_WingFlapWest_5</graphicState>
+            </li>
+            <li>
+              <tick>24</tick>
+              <graphicState>Rukaya_WingFlapWest_6</graphicState>
+            </li>
+            <li>
+              <tick>28</tick>
+              <graphicState>Rukaya_WingFlapWest_7</graphicState>
+            </li>
+            <!-- 循环收尾：这一拍交还给第 1 张图（末关键帧 tick 必须等于 durationTicks，见文件头说明）。 -->
+            <li>
+              <tick>32</tick>
+              <graphicState>Rukaya_WingFlapWest_0</graphicState>
+            </li>
+          </keyframes>
+        </value>
+      </li>
+      <!--
+        浮动：Root 分部，纯垂直起伏，不带躯干前倾角（与 East 完全同构，见 Rukaya_WingFlap_East）。
+      -->
+      <li>
+        <key>Root</key>
+        <value>
+          <workerType>AnimationWorker_Keyframes</workerType>
+          <keyframes>
+            <li>
+              <tick>0</tick>
+              <offset>(0,0,-0.0125)</offset>
+            </li>
+            <li>
+              <tick>10</tick>
+              <offset>(0,0,0.01)</offset>
+            </li>
+            <li>
+              <tick>15</tick>
+              <offset>(0,0,0.0125)</offset>
+            </li>
+            <li>
+              <tick>32</tick>
+              <offset>(0,0,-0.0125)</offset>
+            </li>
+          </keyframes>
+        </value>
+      </li>
+    </keyframeParts>
+  </AnimationDef>
+</Defs>

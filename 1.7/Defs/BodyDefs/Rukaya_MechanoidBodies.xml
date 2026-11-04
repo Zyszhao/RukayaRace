@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ============================================================
+       Rukaya 机械体（Mechanoids）· 身体部件与 BodyDef
+       跳数参照：Milira「caterpillar」(DMS_Caterpillar) 的部件组成与数值
+
+       原结构 → 本结构 对照：
+         DMS_HeavyChassis      (hp150) → Rukaya_ChassisCore    (hp150) 核心
+         DMS_ChestBrain        (hp30 ) → ArtificialBrain       (hp10 ) ← 改用原版核心部件「artificial brain」
+         DMS_Battery           (hp15 ) → Reactor               (hp20 ) 原版 reactor         · BloodPumpingSource
+         （新增）                       → Rukaya_PowerCore     (hp40 ) 自绘动力核心        · MetabolismSource
+         （新增）                       → FluidReprocessor     (hp15 ) 原版 fluid reprocessor · BloodFiltrationSource
+         DMS_ArmourPlate       (hp30 ) → Rukaya_ArmourPlate   (hp45 ) 复用同一部件，用 customLabel 区分三面
+         DMS_HeadRadar         (hp50 ) → Rukaya_SensorMast    (hp50 ) 光电探头              · SightSource + HearingSource
+         （新增）                       → Rukaya_TurretMount   (hp90 ) 炮塔环              · Rukaya_TurretMount 分组，炮塔与撞角挂载点
+         DMS_MechanicalLeg/Foot(履带)  → Rukaya_ScrewUnit/Blade/Drive（螺旋推进筒，见下）
+
+       DMS_ArmourPlate_Additional 已按要求删除：三面附加装甲改为复用 Rukaya_ArmourPlate，
+       仅通过 customLabel 区分（front glacis / port side / starboard side）。
+       ============================================================ -->
+
+  <!-- 炮塔环分组。必须写成 BodyPartGroupDef（而不是 BodyPartDef 的同名 Def）：
+       炮塔武器与撞角的 linkedBodyPartsGroup、以及 BodyDef 内 body part 的 groups
+       引用的都是 BodyPartGroupDef。炮塔环被击毁后，挂在其上的炮塔与撞角一并失效。 -->
+  <BodyPartGroupDef>
+    <defName>Rukaya_TurretMount</defName>
+    <label>turret ring</label>
+    <!-- 中文：炮塔环 -->
+  </BodyPartGroupDef>
+
+  <BodyPartDef>
+    <defName>Rukaya_ChassisCore</defName>
+    <label>chassis hull</label>
+    <!-- 中文：底盘车体 -->
+    <hitPoints>150</hitPoints>
+    <frostbiteVulnerability>0</frostbiteVulnerability>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <skinCovered>false</skinCovered>
+    <solid>true</solid>
+    <alive>false</alive>
+    <bleedRate>0</bleedRate>
+  </BodyPartDef>
+
+  <BodyPartDef>
+    <defName>Rukaya_PowerCore</defName>
+    <label>integrated power core</label>
+    <!-- 中文：集成动力核心 -->
+    <hitPoints>40</hitPoints>
+    <frostbiteVulnerability>0</frostbiteVulnerability>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <skinCovered>false</skinCovered>
+    <solid>true</solid>
+    <alive>false</alive>
+    <bleedRate>0</bleedRate>
+    <tags>
+      <li>MetabolismSource</li>
+    </tags>
+  </BodyPartDef>
+
+  <BodyPartDef>
+    <defName>Rukaya_TurretMount</defName>
+    <label>turret ring</label>
+    <!-- 中文：炮塔环 -->
+    <hitPoints>90</hitPoints>
+    <!-- 外露部件：保留冻伤易感性。原版要求 BodyDef 至少有一个 frostbiteVulnerability>0
+         的部件（BodyDef.ConfigErrors 的 no parts vulnerable to frostbite）。 -->
+    <frostbiteVulnerability>2</frostbiteVulnerability>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <skinCovered>false</skinCovered>
+    <solid>true</solid>
+    <alive>false</alive>
+    <bleedRate>0</bleedRate>
+  </BodyPartDef>
+
+  <BodyPartDef>
+    <defName>Rukaya_SensorMast</defName>
+    <label>electro-optical sensor pod</label>
+    <!-- 中文：光电探头 -->
+    <hitPoints>50</hitPoints>
+    <!-- 外露部件：保留冻伤易感性，数值对齐原版机械体传感器（SightSensor = 2）。 -->
+    <frostbiteVulnerability>2</frostbiteVulnerability>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <skinCovered>false</skinCovered>
+    <solid>true</solid>
+    <alive>false</alive>
+    <bleedRate>0</bleedRate>
+    <tags>
+      <li>SightSource</li>
+      <li>HearingSource</li>
+    </tags>
+  </BodyPartDef>
+
+  <BodyPartDef>
+    <defName>Rukaya_ArmourPlate</defName>
+    <label>armour plate</label>
+    <!-- 中文：装甲板 -->
+    <hitPoints>45</hitPoints>
+    <frostbiteVulnerability>0</frostbiteVulnerability>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <skinCovered>false</skinCovered>
+    <solid>true</solid>
+    <alive>false</alive>
+    <bleedRate>0</bleedRate>
+  </BodyPartDef>
+
+  <!-- 螺旋推进筒 = 本族机械体的"腿"。
+       必须打上 MovingLimbCore 标签，否则 PawnCapacityWorker_Moving.CanHaveCapacity 判定
+       该体型没有移动肢体、Moving 能力恒为 0，Pawn_HealthTracker.ShouldBeDowned() 返回 true，
+       生成的机械体全部是"倒地"状态 → PawnGenerator 连试 120 次都丢弃，
+       最终 "Pawn generation error: Generated downed pawn. ... returning null"。
+       对应原版 MechanicalLeg(MovingLimbCore) / MechanicalFoot(MovingLimbSegment)。 -->
+  <BodyPartDef>
+    <defName>Rukaya_ScrewUnit</defName>
+    <label>screw propulsion unit</label>
+    <!-- 中文：螺旋推进单元 -->
+    <hitPoints>85</hitPoints>
+    <frostbiteVulnerability>0</frostbiteVulnerability>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <skinCovered>false</skinCovered>
+    <solid>true</solid>
+    <alive>false</alive>
+    <bleedRate>0</bleedRate>
+    <tags>
+      <li>MovingLimbCore</li>
+    </tags>
+  </BodyPartDef>
+
+  <BodyPartDef>
+    <defName>Rukaya_ScrewBlade</defName>
+    <label>screw blade</label>
+    <!-- 中文：螺旋推进叶 -->
+    <hitPoints>40</hitPoints>
+    <frostbiteVulnerability>0</frostbiteVulnerability>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <skinCovered>false</skinCovered>
+    <solid>true</solid>
+    <alive>false</alive>
+    <bleedRate>0</bleedRate>
+    <tags>
+      <li>MovingLimbSegment</li>
+    </tags>
+  </BodyPartDef>
+
+  <!-- 传动轴是推进筒内部构件：刻意不打移动标签，
+       这样"推进筒 × 螺旋叶"正好两段，与原版"腿 × 脚"的结构一致。 -->
+  <BodyPartDef>
+    <defName>Rukaya_ScrewDrive</defName>
+    <label>screw drive shaft</label>
+    <!-- 中文：螺旋推进传动轴 -->
+    <hitPoints>50</hitPoints>
+    <frostbiteVulnerability>0</frostbiteVulnerability>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <skinCovered>false</skinCovered>
+    <solid>true</solid>
+    <alive>false</alive>
+    <bleedRate>0</bleedRate>
+  </BodyPartDef>
+
+  <!-- ============================================================
+       雷达车专用模块
+       ============================================================ -->
+
+  <BodyPartDef>
+    <defName>Rukaya_RadarBase</defName>
+    <label>radar pedestal</label>
+    <!-- 中文：雷达基座 -->
+    <hitPoints>60</hitPoints>
+    <frostbiteVulnerability>2</frostbiteVulnerability>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <skinCovered>false</skinCovered>
+    <solid>true</solid>
+    <alive>false</alive>
+    <bleedRate>0</bleedRate>
+  </BodyPartDef>
+
+  <BodyPartDef>
+    <defName>Rukaya_RadarTransmitter</defName>
+    <label>radar transmitter</label>
+    <!-- 中文：雷达发射机 -->
+    <hitPoints>45</hitPoints>
+    <frostbiteVulnerability>5</frostbiteVulnerability>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <skinCovered>false</skinCovered>
+    <solid>true</solid>
+    <alive>false</alive>
+    <bleedRate>0</bleedRate>
+    <tags>
+      <li>HearingSource</li>
+    </tags>
+  </BodyPartDef>
+
+  <BodyPartDef>
+    <defName>Rukaya_RadarAntenna</defName>
+    <label>radar antenna</label>
+    <!-- 中文：雷达天线 -->
+    <hitPoints>55</hitPoints>
+    <frostbiteVulnerability>5</frostbiteVulnerability>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <skinCovered>false</skinCovered>
+    <solid>true</solid>
+    <alive>false</alive>
+    <bleedRate>0</bleedRate>
+    <tags>
+      <li>SightSource</li>
+    </tags>
+  </BodyPartDef>
+
+  <BodyPartDef>
+    <defName>Rukaya_RadarProcessor</defName>
+    <label>signal processor</label>
+    <!-- 中文：信号处理机 -->
+    <hitPoints>35</hitPoints>
+    <frostbiteVulnerability>0</frostbiteVulnerability>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <skinCovered>false</skinCovered>
+    <solid>true</solid>
+    <alive>false</alive>
+    <bleedRate>0</bleedRate>
+  </BodyPartDef>
+
+  <BodyDef>
+    <defName>Rukaya_MechanoidChassis</defName>
+    <label>Rukaya mechanoid chassis</label>
+    <!-- 中文：卢卡娅机械底盘 -->
+    <corePart>
+      <def>Rukaya_ChassisCore</def>
+      <customLabel>chassis hull</customLabel>
+      <!-- 中文翻译：底盘车体 -->
+      <height>Middle</height>
+      <depth>Outside</depth>
+      <parts>
+        <!-- 思维核心（原版 artificial brain，替代 DMS_ChestBrain） -->
+        <li>
+          <def>ArtificialBrain</def>
+          <customLabel>wetware computer core</customLabel>
+          <!-- 中文翻译：湿件计算核心 -->
+          <coverage>0.02</coverage>
+          <depth>Inside</depth>
+        </li>
+
+        <!-- 主动力核心 -->
+        <li>
+          <def>Rukaya_PowerCore</def>
+          <customLabel>main generator</customLabel>
+          <!-- 中文翻译：主发电机 -->
+          <coverage>0.05</coverage>
+          <depth>Inside</depth>
+        </li>
+
+        <!-- 副动力核心（原版 reactor，替代 DMS_Battery） -->
+        <li>
+          <def>Reactor</def>
+          <customLabel>secondary generator</customLabel>
+          <!-- 中文翻译：辅助发电机 -->
+          <coverage>0.05</coverage>
+          <depth>Inside</depth>
+        </li>
+
+        <!-- 冷却系统（原版 fluid reprocessor） -->
+        <li>
+          <def>FluidReprocessor</def>
+          <customLabel>coolant reprocessor</customLabel>
+          <!-- 中文翻译：冷却液再处理器 -->
+          <coverage>0.05</coverage>
+          <depth>Inside</depth>
+        </li>
+
+        <!-- 光电探头（替代 DMS_HeadRadar） -->
+        <li>
+          <def>Rukaya_SensorMast</def>
+          <customLabel>electro-optical sensor pod</customLabel>
+          <!-- 中文翻译：光电传感器舱 -->
+          <coverage>0.06</coverage>
+          <height>Top</height>
+        </li>
+
+        <!-- 炮塔环：炮塔挂载点，同时是冲撞工具锚点 -->
+        <li>
+          <def>Rukaya_TurretMount</def>
+          <customLabel>turret mount</customLabel>
+          <!-- 中文翻译：炮塔座 -->
+          <coverage>0.06</coverage>
+          <height>Top</height>
+          <groups>
+            <li>Rukaya_TurretMount</li>
+          </groups>
+        </li>
+
+        <!-- 装甲：三面附加装甲复用同一部件，仅 customLabel 区分 -->
+        <li>
+          <def>Rukaya_ArmourPlate</def>
+          <customLabel>armoured casing</customLabel>
+          <!-- 中文翻译：装甲外壳 -->
+          <coverage>0.10</coverage>
+          <height>Top</height>
+        </li>
+        <li>
+          <def>Rukaya_ArmourPlate</def>
+          <customLabel>front glacis plate</customLabel>
+          <!-- 中文翻译：前倾斜装甲板 -->
+          <coverage>0.10</coverage>
+          <depth>Outside</depth>
+        </li>
+        <li>
+          <def>Rukaya_ArmourPlate</def>
+          <customLabel>port side plate</customLabel>
+          <!-- 中文翻译：左侧装甲板 -->
+          <coverage>0.10</coverage>
+          <depth>Outside</depth>
+        </li>
+        <li>
+          <def>Rukaya_ArmourPlate</def>
+          <customLabel>starboard side plate</customLabel>
+          <!-- 中文翻译：右侧装甲板 -->
+          <coverage>0.10</coverage>
+          <depth>Outside</depth>
+        </li>
+
+        <!-- 螺旋推进筒（左右各一），各含螺旋叶与传动轴 -->
+        <li>
+          <def>Rukaya_ScrewUnit</def>
+          <customLabel>port screw unit</customLabel>
+          <!-- 中文翻译：左螺旋推进筒 -->
+          <coverage>0.13</coverage>
+          <height>Bottom</height>
+          <parts>
+            <li>
+              <def>Rukaya_ScrewBlade</def>
+              <customLabel>port screw blade</customLabel>
+              <!-- 中文翻译：左螺旋叶片 -->
+              <coverage>0.25</coverage>
+            </li>
+            <li>
+              <def>Rukaya_ScrewDrive</def>
+              <customLabel>port screw drive shaft</customLabel>
+              <!-- 中文翻译：左螺旋传动轴 -->
+              <coverage>0.10</coverage>
+              <depth>Inside</depth>
+            </li>
+          </parts>
+        </li>
+        <li>
+          <def>Rukaya_ScrewUnit</def>
+          <customLabel>starboard screw unit</customLabel>
+          <!-- 中文翻译：右螺旋推进筒 -->
+          <coverage>0.13</coverage>
+          <height>Bottom</height>
+          <parts>
+            <li>
+              <def>Rukaya_ScrewBlade</def>
+              <customLabel>starboard screw blade</customLabel>
+              <!-- 中文翻译：右螺旋叶片 -->
+              <coverage>0.25</coverage>
+            </li>
+            <li>
+              <def>Rukaya_ScrewDrive</def>
+              <customLabel>starboard screw drive shaft</customLabel>
+              <!-- 中文翻译：右螺旋传动轴 -->
+              <coverage>0.10</coverage>
+              <depth>Inside</depth>
+            </li>
+          </parts>
+        </li>
+      </parts>
+    </corePart>
+  </BodyDef>
+
+  <!-- ============================================================
+       雷达车专属 BodyDef：无炮塔环，改用雷达模块组
+         显示名（customLabel）可在不改结构的情况下自由改名
+         SightSource   → Rukaya_RadarAntenna  （唯一决定「视野」的模块）
+         HearingSource → Rukaya_RadarTransmitter
+       ============================================================ -->
+  <BodyDef>
+    <defName>Rukaya_MechRadarBody</defName>
+    <label>Rukaya sensor vehicle chassis</label>
+    <!-- 中文：卢卡娅雷达车底盘 -->
+    <corePart>
+      <def>Rukaya_ChassisCore</def>
+      <customLabel>chassis hull</customLabel>
+      <!-- 中文翻译：底盘车体 -->
+      <height>Middle</height>
+      <depth>Outside</depth>
+      <parts>
+        <!-- 思维核心 -->
+        <li>
+          <def>ArtificialBrain</def>
+          <customLabel>wetware computer core</customLabel>
+          <!-- 中文翻译：湿件计算核心 -->
+          <coverage>0.02</coverage>
+          <depth>Inside</depth>
+        </li>
+
+        <!-- 主动力核心 -->
+        <li>
+          <def>Rukaya_PowerCore</def>
+          <customLabel>main generator</customLabel>
+          <!-- 中文翻译：主发电机 -->
+          <coverage>0.05</coverage>
+          <depth>Inside</depth>
+        </li>
+
+        <!-- 副动力核心（原版 reactor） -->
+        <li>
+          <def>Reactor</def>
+          <customLabel>secondary generator</customLabel>
+          <!-- 中文翻译：辅助发电机 -->
+          <coverage>0.05</coverage>
+          <depth>Inside</depth>
+        </li>
+
+        <!-- 冷却系统（原版 fluid reprocessor） -->
+        <li>
+          <def>FluidReprocessor</def>
+          <customLabel>coolant reprocessor</customLabel>
+          <!-- 中文翻译：冷却液再处理器 -->
+          <coverage>0.05</coverage>
+          <depth>Inside</depth>
+        </li>
+
+        <!-- 信号处理机 -->
+        <li>
+          <def>Rukaya_RadarProcessor</def>
+          <customLabel>signal processor</customLabel>
+          <!-- 中文翻译：信号处理器 -->
+          <coverage>0.05</coverage>
+          <depth>Inside</depth>
+        </li>
+
+        <!-- 雷达模块组：基座 → 发射机 + 天线 -->
+        <li>
+          <def>Rukaya_RadarBase</def>
+          <customLabel>radar pedestal</customLabel>
+          <!-- 中文翻译：雷达基座 -->
+          <coverage>0.07</coverage>
+          <height>Top</height>
+          <parts>
+            <li>
+              <def>Rukaya_RadarTransmitter</def>
+              <customLabel>radar transmitter</customLabel>
+              <!-- 中文翻译：雷达发射器 -->
+              <coverage>0.10</coverage>
+            </li>
+            <li>
+              <def>Rukaya_RadarAntenna</def>
+              <customLabel>radar antenna</customLabel>
+              <!-- 中文翻译：雷达天线 -->
+              <coverage>0.12</coverage>
+              <depth>Outside</depth>
+            </li>
+          </parts>
+        </li>
+
+        <!-- 装甲：三面附加装甲复用同一部件，仅 customLabel 区分 -->
+        <li>
+          <def>Rukaya_ArmourPlate</def>
+          <customLabel>armoured casing</customLabel>
+          <!-- 中文翻译：装甲外壳 -->
+          <coverage>0.10</coverage>
+          <height>Top</height>
+        </li>
+        <li>
+          <def>Rukaya_ArmourPlate</def>
+          <customLabel>front glacis plate</customLabel>
+          <!-- 中文翻译：前倾斜装甲板 -->
+          <coverage>0.10</coverage>
+          <depth>Outside</depth>
+        </li>
+        <li>
+          <def>Rukaya_ArmourPlate</def>
+          <customLabel>port side plate</customLabel>
+          <!-- 中文翻译：左侧装甲板 -->
+          <coverage>0.10</coverage>
+          <depth>Outside</depth>
+        </li>
+        <li>
+          <def>Rukaya_ArmourPlate</def>
+          <customLabel>starboard side plate</customLabel>
+          <!-- 中文翻译：右侧装甲板 -->
+          <coverage>0.10</coverage>
+          <depth>Outside</depth>
+        </li>
+
+        <!-- 螺旋推进筒（左右各一） -->
+        <li>
+          <def>Rukaya_ScrewUnit</def>
+          <customLabel>port screw unit</customLabel>
+          <!-- 中文翻译：左螺旋推进筒 -->
+          <coverage>0.13</coverage>
+          <height>Bottom</height>
+          <parts>
+            <li>
+              <def>Rukaya_ScrewBlade</def>
+              <customLabel>port screw blade</customLabel>
+              <!-- 中文翻译：左螺旋叶片 -->
+              <coverage>0.25</coverage>
+            </li>
+            <li>
+              <def>Rukaya_ScrewDrive</def>
+              <customLabel>port screw drive shaft</customLabel>
+              <!-- 中文翻译：左螺旋传动轴 -->
+              <coverage>0.10</coverage>
+              <depth>Inside</depth>
+            </li>
+          </parts>
+        </li>
+        <li>
+          <def>Rukaya_ScrewUnit</def>
+          <customLabel>starboard screw unit</customLabel>
+          <!-- 中文翻译：右螺旋推进筒 -->
+          <coverage>0.13</coverage>
+          <height>Bottom</height>
+          <parts>
+            <li>
+              <def>Rukaya_ScrewBlade</def>
+              <customLabel>starboard screw blade</customLabel>
+              <!-- 中文翻译：右螺旋叶片 -->
+              <coverage>0.25</coverage>
+            </li>
+            <li>
+              <def>Rukaya_ScrewDrive</def>
+              <customLabel>starboard screw drive shaft</customLabel>
+              <!-- 中文翻译：右螺旋传动轴 -->
+              <coverage>0.10</coverage>
+              <depth>Inside</depth>
+            </li>
+          </parts>
+        </li>
+      </parts>
+    </corePart>
+  </BodyDef>
+
+</Defs>

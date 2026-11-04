@@ -1,0 +1,3094 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <ThingDef Name="Rukaya_BaseRangedWeapon" ParentName="BaseGunWithQuality" Abstract="True">
+    <graphicData>
+      <drawSize>(1.25,1.25)</drawSize>
+    </graphicData>
+    <tradeTags>
+      <li>WeaponRanged</li>
+    </tradeTags>
+    <comps>
+      <li Class="CompProperties_Biocodable" />
+    </comps>
+  </ThingDef>
+
+  <ThingDef Name="Rukaya_BaseSidearm" ParentName="Rukaya_BaseRangedWeapon" Abstract="True">
+    <soundInteract>Interact_Revolver</soundInteract>
+    <weaponClasses>
+      <li>Ranged</li>
+      <li>RangedLight</li>
+    </weaponClasses>
+    <tools>
+      <li>
+        <label>grip</label>
+        <!-- 中文：握把 -->
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>6</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+      <li>
+        <label>frame</label>
+        <!-- 中文：枪身 -->
+        <capacities>
+          <li>Blunt</li>
+          <li>Poke</li>
+        </capacities>
+        <power>6</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+
+  <ThingDef Name="Rukaya_BaseLongGun" ParentName="Rukaya_BaseRangedWeapon" Abstract="True">
+    <soundInteract>Interact_Rifle</soundInteract>
+    <tools>
+      <li>
+        <label>stock</label>
+        <!-- 中文：枪托 -->
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>7</power>
+        <cooldownTime>2.3</cooldownTime>
+      </li>
+      <li>
+        <label>barrel</label>
+        <!-- 中文：枪管 -->
+        <capacities>
+          <li>Blunt</li>
+          <li>Poke</li>
+        </capacities>
+        <power>7</power>
+        <cooldownTime>2.3</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+
+  <ThingDef Name="Rukaya_BaseActiveMatterSidearm" ParentName="Rukaya_BaseSidearm" Abstract="True">
+    <comps Inherit="False">
+      <li Class="CompProperties_Forbiddable" />
+      <li>
+        <compClass>RukayaRace.Weapons.CompRukayaActiveMatterEquippable</compClass>
+      </li>
+      <li Class="CompProperties_Styleable" />
+      <li Class="CompProperties_Art">
+        <nameMaker>NamerArtWeaponGun</nameMaker>
+        <descriptionMaker>ArtDescription_WeaponGun</descriptionMaker>
+        <minQualityForArtistic>Excellent</minQualityForArtistic>
+      </li>
+      <li>
+        <compClass>CompQuality</compClass>
+      </li>
+      <li Class="CompProperties_Biocodable" />
+    </comps>
+  </ThingDef>
+
+  <ThingDef Name="Rukaya_BaseActiveMatterLongGun" ParentName="Rukaya_BaseLongGun" Abstract="True">
+    <comps Inherit="False">
+      <li Class="CompProperties_Forbiddable" />
+      <li>
+        <compClass>RukayaRace.Weapons.CompRukayaActiveMatterEquippable</compClass>
+      </li>
+      <li Class="CompProperties_Styleable" />
+      <li Class="CompProperties_Art">
+        <nameMaker>NamerArtWeaponGun</nameMaker>
+        <descriptionMaker>ArtDescription_WeaponGun</descriptionMaker>
+        <minQualityForArtistic>Excellent</minQualityForArtistic>
+      </li>
+      <li>
+        <compClass>CompQuality</compClass>
+      </li>
+      <li Class="CompProperties_Biocodable" />
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_Rukaya_Revolver</defName>
+    <label>police revolver bullet</label>
+    <!-- 中文：警用左轮手枪弹 -->
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>11</damageAmountBase>
+      <armorPenetrationBase>0.16</armorPenetrationBase>
+      <stoppingPower>0.9</stoppingPower>
+      <speed>55</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_Rukaya_Rifle</defName>
+    <label>long rifle bullet</label>
+    <!-- 中文：长步枪弹 -->
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_big</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>22</damageAmountBase>
+      <armorPenetrationBase>0.38</armorPenetrationBase>
+      <stoppingPower>1.7</stoppingPower>
+      <speed>78</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_Rukaya_AssaultRifle</defName>
+    <label>assault rifle round</label>
+    <!-- 中文：突击步枪弹 -->
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>14</damageAmountBase>
+      <armorPenetrationBase>0.27</armorPenetrationBase>
+      <speed>74</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_Rukaya_MarksmanRifle</defName>
+    <label>marksman rifle round</label>
+    <!-- 中文：精准射手步枪弹 -->
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_big</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>19</damageAmountBase>
+      <armorPenetrationBase>0.34</armorPenetrationBase>
+      <stoppingPower>1.45</stoppingPower>
+      <speed>76</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_Rukaya_MarksmanRifle_Incendiary</defName>
+    <label>incendiary marksman rifle round</label>
+    <!-- 中文：燃烧精准射手步枪弹 -->
+    <thingClass>RukayaRace.Projectiles.Projectile_RukayaIgnitingBullet</thingClass>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_big</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <color>(255,180,96)</color>
+    </graphicData>
+    <modExtensions>
+      <li Class="RukayaRace.Projectiles.RukayaIgnitingProjectileExtension">
+        <fireSize>0.85</fireSize>
+      </li>
+    </modExtensions>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>19</damageAmountBase>
+      <armorPenetrationBase>0.34</armorPenetrationBase>
+      <stoppingPower>1.45</stoppingPower>
+      <speed>76</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_Rukaya_Pistol</defName>
+    <label>service pistol round</label>
+    <!-- 中文：制式手枪弹 -->
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>11</damageAmountBase>
+      <armorPenetrationBase>0.17</armorPenetrationBase>
+      <stoppingPower>0.9</stoppingPower>
+      <speed>58</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_Rukaya_Pistol_Charged</defName>
+    <label>overcharged service pistol round</label>
+    <!-- 中文：过载制式手枪弹 -->
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <color>(186,148,255)</color>
+    </graphicData>
+    <projectile>
+      <damageDef>Rukaya_OverchargeShot</damageDef>
+      <damageAmountBase>17</damageAmountBase>
+      <armorPenetrationBase>0.17</armorPenetrationBase>
+      <stoppingPower>0.9</stoppingPower>
+      <speed>58</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_Rukaya_SubMachinegun</defName>
+    <label>submachine gun round</label>
+    <!-- 中文：冲锋枪弹 -->
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>9</damageAmountBase>
+      <armorPenetrationBase>0.15</armorPenetrationBase>
+      <stoppingPower>0.85</stoppingPower>
+      <speed>56</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_Rukaya_SubMachinegun_Charged</defName>
+    <label>overcharged submachine gun round</label>
+    <!-- 中文：过载冲锋枪弹 -->
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <color>(186,148,255)</color>
+    </graphicData>
+    <projectile>
+      <damageDef>Rukaya_OverchargeBurst</damageDef>
+      <damageAmountBase>14</damageAmountBase>
+      <armorPenetrationBase>0.15</armorPenetrationBase>
+      <stoppingPower>0.85</stoppingPower>
+      <speed>56</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_Rukaya_Machinegun</defName>
+    <label>light machine gun round</label>
+    <!-- 中文：轻机枪弹 -->
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>13</damageAmountBase>
+      <armorPenetrationBase>0.24</armorPenetrationBase>
+      <stoppingPower>1.05</stoppingPower>
+      <speed>60</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_Rukaya_AviationMachinegun</defName>
+    <label>high-velocity light machine gun round</label>
+    <!-- 中文：高速轻机枪弹 -->
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>13</damageAmountBase>
+      <armorPenetrationBase>0.24</armorPenetrationBase>
+      <stoppingPower>1.05</stoppingPower>
+      <speed>78</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_Rukaya_Machinegun_SuppressionIncendiary</defName>
+    <label>suppressive incendiary machine gun round</label>
+    <!-- 中文：压制燃烧轻机枪弹 -->
+    <thingClass>RukayaRace.Projectiles.Projectile_RukayaSuppressionIncendiaryBullet</thingClass>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <color>(255,182,104)</color>
+    </graphicData>
+    <modExtensions>
+      <li Class="RukayaRace.Projectiles.RukayaSuppressionProjectileExtension">
+        <fireSize>0.8</fireSize>
+        <igniteChance>0.3</igniteChance>
+        <suppressionRadius>2.5</suppressionRadius>
+        <suppressionHediff>Rukaya_Suppressed</suppressionHediff>
+        <suppressionSeverityPerHit>0.06666667</suppressionSeverityPerHit>
+      </li>
+    </modExtensions>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>13</damageAmountBase>
+      <armorPenetrationBase>0.24</armorPenetrationBase>
+      <stoppingPower>1.05</stoppingPower>
+      <speed>60</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_Rukaya_AviationMachinegun_SuppressionIncendiary</defName>
+    <label>suppressive incendiary high-velocity light machine gun round</label>
+    <!-- 中文：高速压制燃烧轻机枪弹 -->
+    <thingClass>RukayaRace.Projectiles.Projectile_RukayaSuppressionIncendiaryBullet</thingClass>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <color>(255,182,104)</color>
+    </graphicData>
+    <modExtensions>
+      <li Class="RukayaRace.Projectiles.RukayaSuppressionProjectileExtension">
+        <fireSize>0.8</fireSize>
+        <igniteChance>0.3</igniteChance>
+        <suppressionRadius>2.5</suppressionRadius>
+        <suppressionHediff>Rukaya_Suppressed</suppressionHediff>
+        <suppressionSeverityPerHit>0.06666667</suppressionSeverityPerHit>
+      </li>
+    </modExtensions>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>13</damageAmountBase>
+      <armorPenetrationBase>0.24</armorPenetrationBase>
+      <stoppingPower>1.05</stoppingPower>
+      <speed>78</speed>
+    </projectile>
+  </ThingDef>
+
+  <DamageDef>
+    <defName>Rukaya_SmartShot</defName>
+    <label>smart shot</label>
+    <!-- 中文：智能锁定射击 -->
+    <workerClass>RukayaRace.Weapons.DamageWorker_RukayaSmartShot</workerClass>
+    <externalViolence>true</externalViolence>
+    <deathMessage>{0} has been shot to death.</deathMessage>
+    <!-- 中文翻译：{0} 被射杀。 -->
+    <hediff>Gunshot</hediff>
+    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+    <impactSoundType>Bullet</impactSoundType>
+    <armorCategory>Sharp</armorCategory>
+    <overkillPctToDestroyPart>0~0.7</overkillPctToDestroyPart>
+    <isRanged>true</isRanged>
+    <makesAnimalsFlee>true</makesAnimalsFlee>
+  </DamageDef>
+
+  <DamageDef ParentName="Bullet">
+    <defName>Rukaya_OverchargeShot</defName>
+    <label>overcharge shot</label>
+    <!-- 中文：过载弹命中 -->
+    <additionalHediffs>
+      <li>
+        <hediff>Rukaya_NeuroShock</hediff>
+        <severityPerDamageDealt>0.055</severityPerDamageDealt>
+        <victimSeverityScalingByInvBodySize>true</victimSeverityScalingByInvBodySize>
+      </li>
+    </additionalHediffs>
+    <applyAdditionalHediffsIfHuntingForFood>false</applyAdditionalHediffsIfHuntingForFood>
+  </DamageDef>
+
+  <DamageDef ParentName="Bullet">
+    <defName>Rukaya_OverchargeBurst</defName>
+    <label>overcharge burst hit</label>
+    <!-- 中文：过载连发弹命中 -->
+    <additionalHediffs>
+      <li>
+        <hediff>Rukaya_NeuroShock</hediff>
+        <severityPerDamageDealt>0.05</severityPerDamageDealt>
+        <victimSeverityScalingByInvBodySize>true</victimSeverityScalingByInvBodySize>
+      </li>
+    </additionalHediffs>
+    <applyAdditionalHediffsIfHuntingForFood>false</applyAdditionalHediffsIfHuntingForFood>
+  </DamageDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_Rukaya_SmartRevolver</defName>
+    <label>smart revolver round</label>
+    <!-- 中文：自瞄卡宾手枪弹 -->
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Rukaya_SmartShot</damageDef>
+      <damageAmountBase>22</damageAmountBase>
+      <armorPenetrationBase>0.38</armorPenetrationBase>
+      <stoppingPower>1.7</stoppingPower>
+      <speed>78</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_Rukaya_SmartRevolver_Charged</defName>
+    <label>overcharged smart revolver round</label>
+    <!-- 中文：过载自瞄卡宾手枪弹 -->
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Rukaya_SmartShot</damageDef>
+      <damageAmountBase>30</damageAmountBase>
+      <armorPenetrationBase>0.38</armorPenetrationBase>
+      <stoppingPower>1.7</stoppingPower>
+      <speed>78</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_Rukaya_LaserRifle</defName>
+    <label>laser rifle pulse</label>
+    <!-- 中文：激光步枪脉冲束 -->
+    <thingClass>RukayaRace.Projectiles.Projectile_RukayaLaserPulse</thingClass>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <color>(255,96,64)</color>
+    </graphicData>
+    <modExtensions>
+      <li Class="RukayaRace.Projectiles.RukayaLaserBeamExtension">
+        <beamColor>(1,0.45,0.24,1)</beamColor>
+        <beamWidth>0.14</beamWidth>
+        <beamGlowWidth>0.5</beamGlowWidth>
+        <beamDurationTicks>10</beamDurationTicks>
+        <impactGlowSize>0.9</impactGlowSize>
+      </li>
+    </modExtensions>
+    <projectile>
+      <damageDef>Burn</damageDef>
+      <damageAmountBase>17</damageAmountBase>
+      <armorPenetrationBase>0.46</armorPenetrationBase>
+      <stoppingPower>0.8</stoppingPower>
+      <speed>86</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_Rukaya_LaserRifle_Active</defName>
+    <label>active-matter laser rifle pulse</label>
+    <!-- 中文：活性物质激光步枪脉冲束 -->
+    <thingClass>RukayaRace.Projectiles.Projectile_RukayaLaserPulse</thingClass>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <color>(255,48,48)</color>
+    </graphicData>
+    <modExtensions>
+      <li Class="RukayaRace.Projectiles.RukayaLaserBeamExtension">
+        <fireSize>0.8</fireSize>
+        <igniteChance>0.3</igniteChance>
+        <beamColor>(1,0.32,0.18,1)</beamColor>
+        <beamWidth>0.22</beamWidth>
+        <beamGlowWidth>0.85</beamGlowWidth>
+        <beamDurationTicks>16</beamDurationTicks>
+        <impactGlowSize>1.5</impactGlowSize>
+      </li>
+    </modExtensions>
+    <projectile>
+      <damageDef>Burn</damageDef>
+      <damageAmountBase>23</damageAmountBase>
+      <armorPenetrationBase>0.65</armorPenetrationBase>
+      <stoppingPower>0.85</stoppingPower>
+      <speed>86</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_Rukaya_PlasmaShotgun</defName>
+    <label>plasma shotgun blast</label>
+    <!-- 中文：等离子霰弹束 -->
+    <thingClass>RukayaRace.Projectiles.Projectile_RukayaPlasma</thingClass>
+    <graphicData>
+      <texPath>Rukaya/Weapon/Rukaya_Plasma_Projectile</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <color>(120,230,255)</color>
+      <drawSize>(0.42,0.42)</drawSize>
+    </graphicData>
+    <modExtensions>
+      <li Class="RukayaRace.Projectiles.RukayaPlasmaProjectileExtension">
+        <glowSize>1.05</glowSize>
+        <impactGlowSize>0.5</impactGlowSize>
+        <glowColor>(0.55,1,1,1)</glowColor>
+        <glowIntervalTicks>0</glowIntervalTicks>
+      </li>
+    </modExtensions>
+    <projectile>
+      <damageDef>Burn</damageDef>
+      <damageAmountBase>10</damageAmountBase>
+      <armorPenetrationBase>0.18</armorPenetrationBase>
+      <stoppingPower>0.7</stoppingPower>
+      <speed>66</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_Rukaya_PlasmaShotgun_Charged</defName>
+    <label>charged plasma shotgun blast</label>
+    <!-- 中文：充能等离子霰弹束 -->
+    <thingClass>RukayaRace.Projectiles.Projectile_RukayaSuppressivePlasma</thingClass>
+    <graphicData>
+      <texPath>Rukaya/Weapon/Rukaya_Plasma_Projectile</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <color>(120,230,255)</color>
+      <drawSize>(0.5,0.5)</drawSize>
+    </graphicData>
+    <modExtensions>
+      <li Class="RukayaRace.Projectiles.RukayaSuppressionProjectileExtension">
+        <glowSize>1.25</glowSize>
+        <impactGlowSize>1.9</impactGlowSize>
+        <glowColor>(0.55,1,1,1)</glowColor>
+        <glowIntervalTicks>0</glowIntervalTicks>
+        <directDamage>3</directDamage>
+        <directArmorPenetration>0.12</directArmorPenetration>
+        <directDamageDef>Burn</directDamageDef>
+        <fireSize>0.85</fireSize>
+        <igniteChance>0.3</igniteChance>
+        <suppressionRadius>2.5</suppressionRadius>
+        <suppressionHediff>Rukaya_Suppressed</suppressionHediff>
+        <suppressionSeverityPerHit>0.2</suppressionSeverityPerHit>
+      </li>
+    </modExtensions>
+    <projectile>
+      <damageDef>Burn</damageDef>
+      <damageAmountBase>18</damageAmountBase>
+      <armorPenetrationBase>0.28</armorPenetrationBase>
+      <stoppingPower>0.9</stoppingPower>
+      <speed>66</speed>
+      <explosionRadius>1.9</explosionRadius>
+      <soundExplode>Explosion_Flame</soundExplode>
+      <doExplosionVFX>false</doExplosionVFX>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_Rukaya_PlasmaRailgun</defName>
+    <label>plasma rail slug</label>
+    <!-- 中文：等离子轨道弹丸 -->
+    <thingClass>RukayaRace.Projectiles.Projectile_RukayaMechPlasmaPulse</thingClass>
+    <graphicData>
+      <texPath>Rukaya/Weapon/Rukaya_Plasma_Projectile</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <color>(120,230,255)</color>
+      <drawSize>(0.56,0.56)</drawSize>
+    </graphicData>
+    <modExtensions>
+      <li Class="RukayaRace.Projectiles.RukayaLaserBeamExtension">
+        <beamColor>(0.35,0.85,1,1)</beamColor>
+        <beamWidth>0.65</beamWidth>
+        <beamGlowWidth>1.7</beamGlowWidth>
+        <beamDurationTicks>60</beamDurationTicks>
+        <beamFadeFraction>0.85</beamFadeFraction>
+        <impactGlowSize>2.2</impactGlowSize>
+      </li>
+    </modExtensions>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>46</damageAmountBase>
+      <armorPenetrationBase>0.95</armorPenetrationBase>
+      <stoppingPower>2.2</stoppingPower>
+      <speed>92</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_Rukaya_PlasmaRailgun_Charged</defName>
+    <label>charged plasma rail slug</label>
+    <!-- 中文：充能等离子轨道弹丸 -->
+    <thingClass>RukayaRace.Projectiles.Projectile_RukayaMechPlasmaPulse</thingClass>
+    <graphicData>
+      <texPath>Rukaya/Weapon/Rukaya_Plasma_Projectile</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <color>(120,230,255)</color>
+      <drawSize>(0.64,0.64)</drawSize>
+    </graphicData>
+    <modExtensions>
+      <li Class="RukayaRace.Projectiles.RukayaLaserBeamExtension">
+        <beamColor>(0.35,0.85,1,1)</beamColor>
+        <beamWidth>0.65</beamWidth>
+        <beamGlowWidth>1.7</beamGlowWidth>
+        <beamDurationTicks>60</beamDurationTicks>
+        <beamFadeFraction>0.85</beamFadeFraction>
+        <impactGlowSize>2.2</impactGlowSize>
+      </li>
+    </modExtensions>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>56</damageAmountBase>
+      <armorPenetrationBase>1.05</armorPenetrationBase>
+      <stoppingPower>2.4</stoppingPower>
+      <speed>92</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Rukaya_ATGM_Projectile</defName>
+    <label>anti-armor missile</label>
+    <!-- 中文：反装甲导弹 -->
+    <thingClass>RukayaRace.Projectiles.Projectile_RukayaGuidedATGM</thingClass>
+    <graphicData>
+      <texPath>Rukaya/Weapon/Rukaya_ATGM_Projectile</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(0.85,0.85)</drawSize>
+    </graphicData>
+    <modExtensions>
+      <li Class="RukayaRace.Projectiles.RukayaGuidedATGMProjectileExtension">
+        <guidingHediff>Rukaya_ATGMGuiding</guidingHediff>
+        <radarLockHediff>Rukaya_RadarLockOn</radarLockHediff>
+        <guidedHitRadius>0.42</guidedHitRadius>
+        <missedImpactRadius>2.1</missedImpactRadius>
+        <missDeviationRadius>3.2</missDeviationRadius>
+        <radarLockArmorPenetration>1.35</radarLockArmorPenetration>
+        <smokeBreaksGuidance>true</smokeBreaksGuidance>
+        <requireLineOfSight>true</requireLineOfSight>
+        <guidanceGlowSize>0.45</guidanceGlowSize>
+        <guidanceGlowColor>(1,0.42,0.08,0.3)</guidanceGlowColor>
+        <guidanceGlowIntervalTicks>3</guidanceGlowIntervalTicks>
+        <guidanceSparkIntervalTicks>8</guidanceSparkIntervalTicks>
+      </li>
+    </modExtensions>
+    <projectile>
+      <damageDef>Bomb</damageDef>
+      <damageAmountBase>50</damageAmountBase>
+      <armorPenetrationBase>0.72</armorPenetrationBase>
+      <speed>34</speed>
+      <explosionRadius>2.9</explosionRadius>
+      <soundExplode>Explosion_Rocket</soundExplode>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Rukaya_ATGM_Projectile_Charged</defName>
+    <label>charged anti-armor missile</label>
+    <!-- 中文：充能反装甲导弹 -->
+    <thingClass>RukayaRace.Projectiles.Projectile_RukayaChargedATGM</thingClass>
+    <graphicData>
+      <texPath>Rukaya/Weapon/Rukaya_ATGM_Projectile</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <color>(255,206,96)</color>
+      <drawSize>(0.85,0.85)</drawSize>
+    </graphicData>
+    <modExtensions>
+      <li Class="RukayaRace.Projectiles.RukayaGuidedATGMProjectileExtension">
+        <guidingHediff>Rukaya_ATGMGuiding</guidingHediff>
+        <radarLockHediff>Rukaya_RadarLockOn</radarLockHediff>
+        <guidedHitRadius>0.42</guidedHitRadius>
+        <missedImpactRadius>2.1</missedImpactRadius>
+        <missDeviationRadius>3.2</missDeviationRadius>
+        <radarLockArmorPenetration>1.35</radarLockArmorPenetration>
+        <smokeBreaksGuidance>true</smokeBreaksGuidance>
+        <requireLineOfSight>true</requireLineOfSight>
+        <guidanceGlowSize>0.6</guidanceGlowSize>
+        <guidanceGlowColor>(1,0.75,0.2,0.45)</guidanceGlowColor>
+        <guidanceGlowIntervalTicks>3</guidanceGlowIntervalTicks>
+        <guidanceSparkIntervalTicks>8</guidanceSparkIntervalTicks>
+      </li>
+      <li Class="RukayaRace.Projectiles.RukayaChargedATGMProjectileExtension">
+        <directFireSize>0.9</directFireSize>
+        <igniteRadius>2.6</igniteRadius>
+        <fireSizeRange>0.5~0.9</fireSizeRange>
+        <fuelDef>Filth_Fuel</fuelDef>
+        <searchRadius>6.9</searchRadius>
+        <maxTargets>8</maxTargets>
+        <directDamage>22</directDamage>
+        <directArmorPenetration>0.24</directArmorPenetration>
+        <empDamage>18</empDamage>
+        <lightningGlowSize>1.35</lightningGlowSize>
+        <arcSegmentsPerTarget>6</arcSegmentsPerTarget>
+        <arcJitterRadius>0.6</arcJitterRadius>
+      </li>
+    </modExtensions>
+    <projectile>
+      <damageDef>Bomb</damageDef>
+      <damageAmountBase>50</damageAmountBase>
+      <armorPenetrationBase>0.72</armorPenetrationBase>
+      <speed>60</speed>
+      <explosionRadius>2.9</explosionRadius>
+      <soundExplode>Explosion_Rocket</soundExplode>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseFragGrenadeProjectile">
+    <defName>Rukaya_GrenadeLauncher_Grenade</defName>
+    <label>grenade launcher grenade</label>
+    <!-- 中文：榴弹发射器榴弹 -->
+    <graphicData>
+      <texPath>Things/Projectile/LauncherShot</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <explosionDelay>0</explosionDelay>
+      <damageDef>Bomb</damageDef>
+      <damageAmountBase>18</damageAmountBase>
+      <armorPenetrationBase>0.1</armorPenetrationBase>
+      <speed>34</speed>
+      <explosionRadius>1.9</explosionRadius>
+      <arcHeightFactor>0.22</arcHeightFactor>
+      <shadowSize>0.45</shadowSize>
+      <soundExplode>Explosion_Rocket</soundExplode>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Rukaya_Rocket_Projectile</defName>
+    <label>airburst rocket</label>
+    <!-- 中文：空爆火箭弹 -->
+    <thingClass>RukayaRace.Projectiles.Projectile_RukayaAirburstRocket</thingClass>
+    <graphicData>
+      <texPath>Rukaya/Weapon/Rukaya_Rocket_Projectile</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1.2,1.2)</drawSize>
+    </graphicData>
+    <modExtensions>
+      <li Class="RukayaRace.Projectiles.RukayaAirburstProjectileExtension">
+        <directDamage>0</directDamage>
+        <directArmorPenetration>0</directArmorPenetration>
+        <directDamageDef>Bomb</directDamageDef>
+        <fragmentProjectile>Rukaya_Rocket_AirburstFragment</fragmentProjectile>
+        <fragmentCount>5</fragmentCount>
+        <fragmentSearchRadius>5</fragmentSearchRadius>
+        <preferPawnCells>true</preferPawnCells>
+        <fragmentVisualSegments>3</fragmentVisualSegments>
+        <fragmentVisualArcHeight>0.22</fragmentVisualArcHeight>
+        <fragmentLaunchDelayMaxSeconds>0.3</fragmentLaunchDelayMaxSeconds>
+      </li>
+    </modExtensions>
+    <projectile>
+      <damageDef>Bomb</damageDef>
+      <damageAmountBase>0</damageAmountBase>
+      <armorPenetrationBase>0</armorPenetrationBase>
+      <speed>38</speed>
+      <explosionRadius>0.1</explosionRadius>
+      <soundExplode>Explosion_Rocket</soundExplode>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Rukaya_Rocket_AirburstFragment</defName>
+    <label>airburst rocket fragment</label>
+    <!-- 中文：空爆火箭破片 -->
+    <thingClass>Projectile_Explosive</thingClass>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <color>(255,196,92)</color>
+      <drawSize>(0.32,0.32)</drawSize>
+    </graphicData>
+    <projectile>
+      <damageDef>Bomb</damageDef>
+      <damageAmountBase>12</damageAmountBase>
+      <armorPenetrationBase>0.08</armorPenetrationBase>
+      <stoppingPower>0.6</stoppingPower>
+      <speed>58</speed>
+      <arcHeightFactor>0.22</arcHeightFactor>
+      <explosionRadius>1.5</explosionRadius>
+      <soundExplode>Explosion_Rocket</soundExplode>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseFragGrenadeProjectile">
+    <defName>Rukaya_GrenadeLauncher_ArcShockGrenade</defName>
+    <label>arc shock grenade</label>
+    <!-- 中文：电弧震击榴弹 -->
+    <thingClass>RukayaRace.Projectiles.Projectile_RukayaArcShockGrenade</thingClass>
+    <graphicData>
+      <texPath>Things/Projectile/LauncherShot</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <color>(128,220,255)</color>
+    </graphicData>
+    <modExtensions>
+      <li Class="RukayaRace.Projectiles.RukayaArcShockProjectileExtension">
+        <searchRadius>10</searchRadius>
+        <maxTargets>10</maxTargets>
+        <directDamage>46</directDamage>
+        <directArmorPenetration>0.38</directArmorPenetration>
+        <empDamage>42</empDamage>
+        <lightningGlowSize>1.35</lightningGlowSize>
+        <arcSegmentsPerTarget>6</arcSegmentsPerTarget>
+        <arcJitterRadius>0.62</arcJitterRadius>
+        <arcGlowPointsPerSegment>4</arcGlowPointsPerSegment>
+      </li>
+    </modExtensions>
+    <projectile>
+      <explosionDelay>0</explosionDelay>
+      <damageDef>Flame</damageDef>
+      <damageAmountBase>8</damageAmountBase>
+      <armorPenetrationBase>0.06</armorPenetrationBase>
+      <speed>36</speed>
+      <explosionRadius>1.4</explosionRadius>
+      <arcHeightFactor>0.22</arcHeightFactor>
+      <shadowSize>0.45</shadowSize>
+      <soundExplode>Explosion_Rocket</soundExplode>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_Rukaya_AutoCannon</defName>
+    <label>autocannon shell</label>
+    <!-- 中文：机炮炮弹 -->
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_big</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>24</damageAmountBase>
+      <armorPenetrationBase>0.7</armorPenetrationBase>
+      <stoppingPower>1.9</stoppingPower>
+      <speed>72</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Rukaya_AutoCannon_FlechetteShell</defName>
+    <label>autocannon flechette shell</label>
+    <!-- 中文：机炮破片弹 -->
+    <thingClass>RukayaRace.Projectiles.Projectile_RukayaAirburstRocket</thingClass>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_big</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <color>(255,220,142)</color>
+    </graphicData>
+    <modExtensions>
+      <li Class="RukayaRace.Projectiles.RukayaAirburstProjectileExtension">
+        <directDamage>0</directDamage>
+        <directArmorPenetration>0</directArmorPenetration>
+        <directDamageDef>Bomb</directDamageDef>
+        <fragmentProjectile>Rukaya_AutoCannon_FlechetteFragment</fragmentProjectile>
+        <fragmentCount>10</fragmentCount>
+        <fragmentSearchRadius>2.5</fragmentSearchRadius>
+        <preferPawnCells>true</preferPawnCells>
+        <fragmentVisualSegments>2</fragmentVisualSegments>
+      </li>
+    </modExtensions>
+    <projectile>
+      <damageDef>Bomb</damageDef>
+      <damageAmountBase>14</damageAmountBase>
+      <armorPenetrationBase>0.18</armorPenetrationBase>
+      <stoppingPower>1.2</stoppingPower>
+      <speed>64</speed>
+      <explosionRadius>1.5</explosionRadius>
+      <soundExplode>Explosion_Rocket</soundExplode>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Rukaya_AutoCannon_FlechetteFragment</defName>
+    <label>autocannon flechette fragment</label>
+    <!-- 中文：机炮破片 -->
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <color>(255,232,170)</color>
+      <drawSize>(0.26,0.26)</drawSize>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>9</damageAmountBase>
+      <armorPenetrationBase>0.32</armorPenetrationBase>
+      <stoppingPower>0.45</stoppingPower>
+      <speed>86</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_Rukaya_RecoillessGun</defName>
+    <label>recoilless shell</label>
+    <!-- 中文：无后坐力炮弹 -->
+    <graphicData>
+      <texPath>Things/Projectile/ShellHighExplosive</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>50</damageAmountBase>
+      <armorPenetrationBase>0.65</armorPenetrationBase>
+      <stoppingPower>2.5</stoppingPower>
+      <speed>58</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_Rukaya_RecoillessGun_Active</defName>
+    <label>active recoilless shell</label>
+    <!-- 中文：活性物质无后坐力炮弹 -->
+    <thingClass>RukayaRace.Projectiles.Projectile_RukayaAirburstRocket</thingClass>
+    <graphicData>
+      <texPath>Things/Projectile/ShellHighExplosive</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <color>(255,180,80)</color>
+    </graphicData>
+    <modExtensions>
+      <li Class="RukayaRace.Projectiles.RukayaAirburstProjectileExtension">
+        <directDamage>65</directDamage>
+        <directArmorPenetration>0.90</directArmorPenetration>
+        <directDamageDef>Bullet</directDamageDef>
+        <fragmentCount>0</fragmentCount>
+      </li>
+    </modExtensions>
+    <projectile>
+      <damageDef>Bomb</damageDef>
+      <damageAmountBase>20</damageAmountBase>
+      <armorPenetrationBase>0.45</armorPenetrationBase>
+      <stoppingPower>2.5</stoppingPower>
+      <speed>58</speed>
+      <explosionRadius>2.2</explosionRadius>
+      <soundExplode>Explosion_Rocket</soundExplode>
+    </projectile>
+  </ThingDef>
+
+  <AbilityDef>
+    <defName>Rukaya_AssaultRifleRadar_ScanPulse</defName>
+    <label>radar scan pulse</label>
+    <!-- 中文：雷达扫描脉冲 -->
+    <description>Mark a target with a focused radar pulse. The primary target is locked for follow-up fire, suffers sensor disruption and EMP interference, and hostile pawns around it are exposed so they lose invisibility and can no longer rely on blind smoke for protection.</description>
+    <!-- 中文翻译：以聚焦雷达脉冲标记一个目标。主目标会被锁定以供后续集火，承受传感器干扰和 EMP 影响，而其周围的敌对单位会被暴露，失去隐身并无法再依赖致盲烟幕获得保护。 -->
+    <iconPath>Rukaya/Weapon/Rukaya_AssaultRifleRadar</iconPath>
+    <aiCanUse>true</aiCanUse>
+    <showOnCharacterCard>false</showOnCharacterCard>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <requireLineOfSight>true</requireLineOfSight>
+      <range>31.9</range>
+      <warmupTime>0.7</warmupTime>
+      <soundCast>Psycast_Skip_Entry</soundCast>
+      <targetParams>
+        <canTargetPawns>true</canTargetPawns>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="RukayaRace.Weapons.CompProperties_AbilityRukayaRadarPulse">
+        <lockOnHediff>Rukaya_RadarLockOn</lockOnHediff>
+        <exposedHediff>Rukaya_RadarExposed</exposedHediff>
+        <lockOnDurationTicks>900</lockOnDurationTicks>
+        <exposedDurationTicks>600</exposedDurationTicks>
+        <exposeRadius>5.9</exposeRadius>
+        <empDamageAmount>8</empDamageAmount>
+      </li>
+    </comps>
+  </AbilityDef>
+
+  <HediffDef>
+    <defName>Rukaya_RadarLockOn</defName>
+    <label>radar lock</label>
+    <!-- 中文：雷达锁定 -->
+    <description>This pawn has been pinned by an active targeting solution. Its outline and motion are easier to track through smoke and confusion, making coordinated fire more accurate and more punishing.</description>
+    <!-- 中文翻译：该单位已被主动火控解算锁定。它的轮廓与动作在烟幕和混乱中更容易被追踪，使协同火力更精确也更具杀伤。 -->
+    <hediffClass>HediffWithComps</hediffClass>
+    <initialSeverity>1.0</initialSeverity>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+    <modExtensions>
+      <li Class="RukayaRace.Weapons.RukayaRadarTargetingExtension">
+        <aimOnTargetChanceFactor>1.22</aimOnTargetChanceFactor>
+        <ignoreBlindSmoke>true</ignoreBlindSmoke>
+      </li>
+    </modExtensions>
+    <stages>
+      <li>
+        <capMods>
+          <li>
+            <capacity>Sight</capacity>
+            <offset>-0.65</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.12</offset>
+          </li>
+        </capMods>
+        <statFactors>
+          <IncomingDamageFactor>1.18</IncomingDamageFactor>
+          <MeleeDodgeChance>0.75</MeleeDodgeChance>
+        </statFactors>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>Rukaya_RadarExposed</defName>
+    <label>radar exposed</label>
+    <!-- 中文：雷达暴露 -->
+    <description>This pawn has been painted by a radar sweep. It cannot depend on concealment effects for long, and any active invisibility is repeatedly disrupted while the exposure lasts.</description>
+    <!-- 中文翻译：该单位已被雷达扫掠标记。它无法长时间依赖隐蔽效果，且在暴露持续期间，任何主动隐身都会被反复扰乱。 -->
+    <hediffClass>HediffWithComps</hediffClass>
+    <initialSeverity>1.0</initialSeverity>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+      <li Class="RukayaRace.Weapons.HediffCompProperties_RukayaRadarExpose">
+        <disruptIntervalTicks>30</disruptIntervalTicks>
+      </li>
+    </comps>
+    <modExtensions>
+      <li Class="RukayaRace.Weapons.RukayaRadarTargetingExtension">
+        <ignoreBlindSmoke>true</ignoreBlindSmoke>
+      </li>
+    </modExtensions>
+    <stages>
+      <li>
+        <capMods>
+          <li>
+            <capacity>Sight</capacity>
+            <offset>-0.2</offset>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>Rukaya_ATGMGuiding</defName>
+    <label>wire-guiding missile</label>
+    <!-- 中文：线导导弹 -->
+    <description>This pawn is holding an anti-armor missile on a command line. Any movement would break the guidance solution before the missile reaches its mark or misses near it.</description>
+    <!-- 中文翻译：该单位正在通过指令线维持一枚反装甲导弹的制导。在导弹命中目标或于目标附近射失前，任何移动都会破坏制导解算。 -->
+    <hediffClass>HediffWithComps</hediffClass>
+    <initialSeverity>1.0</initialSeverity>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>900</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+      <li Class="RukayaRace.Weapons.HediffCompProperties_RukayaATGMGuiding" />
+    </comps>
+    <stages>
+      <li>
+        <statFactors>
+          <MoveSpeed>0.01</MoveSpeed>
+        </statFactors>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>Rukaya_Suppressed</defName>
+    <label>suppressed</label>
+    <!-- 中文：压制 -->
+    <description>This pawn is under concentrated suppressive fire. Repeated impacts force it lower, blur its sight picture, and ruin any attempt to move or shoot with confidence.</description>
+    <!-- 中文翻译：该单位正承受密集压制火力。持续命中会迫使其进一步贴低身体，扰乱视线，并显著削弱其机动与射击稳定性。 -->
+    <hediffClass>HediffWithComps</hediffClass>
+    <initialSeverity>0.06666667</initialSeverity>
+    <comps>
+      <li Class="RukayaRace.Weapons.HediffCompProperties_RukayaSuppression">
+        <decayDelayTicks>300</decayDelayTicks>
+        <severityDecayPerTick>0.00083333335</severityDecayPerTick>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <minSeverity>0.0</minSeverity>
+        <capMods>
+          <li>
+            <capacity>Sight</capacity>
+            <offset>-0.1</offset>
+          </li>
+        </capMods>
+        <statFactors>
+          <MoveSpeed>0.92</MoveSpeed>
+          <ShootingAccuracyPawn>0.94</ShootingAccuracyPawn>
+        </statFactors>
+      </li>
+      <li>
+        <minSeverity>0.2</minSeverity>
+        <capMods>
+          <li>
+            <capacity>Sight</capacity>
+            <offset>-0.2</offset>
+          </li>
+        </capMods>
+        <statFactors>
+          <MoveSpeed>0.82</MoveSpeed>
+          <ShootingAccuracyPawn>0.82</ShootingAccuracyPawn>
+        </statFactors>
+      </li>
+      <li>
+        <minSeverity>0.4</minSeverity>
+        <capMods>
+          <li>
+            <capacity>Sight</capacity>
+            <offset>-0.32</offset>
+          </li>
+        </capMods>
+        <statFactors>
+          <MoveSpeed>0.68</MoveSpeed>
+          <ShootingAccuracyPawn>0.68</ShootingAccuracyPawn>
+        </statFactors>
+      </li>
+      <li>
+        <minSeverity>0.6</minSeverity>
+        <capMods>
+          <li>
+            <capacity>Sight</capacity>
+            <offset>-0.48</offset>
+          </li>
+        </capMods>
+        <statFactors>
+          <MoveSpeed>0.52</MoveSpeed>
+          <ShootingAccuracyPawn>0.52</ShootingAccuracyPawn>
+        </statFactors>
+      </li>
+      <li>
+        <minSeverity>0.8</minSeverity>
+        <capMods>
+          <li>
+            <capacity>Sight</capacity>
+            <offset>-0.65</offset>
+          </li>
+        </capMods>
+        <statFactors>
+          <MoveSpeed>0.35</MoveSpeed>
+          <ShootingAccuracyPawn>0.35</ShootingAccuracyPawn>
+        </statFactors>
+      </li>
+      <li>
+        <minSeverity>1.0</minSeverity>
+        <capMods>
+          <li>
+            <capacity>Sight</capacity>
+            <offset>-0.8</offset>
+          </li>
+        </capMods>
+        <statFactors>
+          <MoveSpeed>0.2</MoveSpeed>
+          <ShootingAccuracyPawn>0.2</ShootingAccuracyPawn>
+        </statFactors>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>Rukaya_NeuroShock</defName>
+    <label>neuroshock</label>
+    <!-- 中文：神经震荡 -->
+    <description>An active-matter neuroshock burning along the nervous system. Motor control fails first, so the victim drags and staggers, then awareness dulls until the body simply gives out and drops. It bleeds off gradually once the hits stop landing, and a target that was pressed all the way down takes far longer to get back on its feet.</description>
+    <!-- 中文翻译：活性物质沿神经系统传导所形成的神经震荡。运动控制最先失效，因此中弹者动作拖沓、步履踉跄；随后意识逐渐迟钝，直至身体彻底失去支撑而倒地。一旦不再被命中，它会逐步消退；而被压制得越彻底的目标，重新站起来所需的时间就越长。 -->
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.66,0.72,1)</defaultLabelColor>
+    <initialSeverity>0</initialSeverity>
+    <maxSeverity>5.6</maxSeverity>
+    <comps>
+      <li Class="RukayaRace.Weapons.HediffCompProperties_RukayaSuppression">
+        <decayDelayTicks>300</decayDelayTicks>
+        <severityDecayPerTick>0.0003</severityDecayPerTick>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <minSeverity>0.0</minSeverity>
+        <becomeVisible>false</becomeVisible>
+      </li>
+      <li>
+        <minSeverity>1.4</minSeverity>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <setMax>0.95</setMax>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.1</offset>
+          </li>
+        </capMods>
+        <statFactors>
+          <MoveSpeed>0.94</MoveSpeed>
+          <ShootingAccuracyPawn>0.97</ShootingAccuracyPawn>
+          <MeleeDodgeChance>0.99</MeleeDodgeChance>
+        </statFactors>
+      </li>
+      <li>
+        <minSeverity>2.4</minSeverity>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <setMax>0.86</setMax>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.24</offset>
+          </li>
+        </capMods>
+        <statFactors>
+          <MoveSpeed>0.85</MoveSpeed>
+          <ShootingAccuracyPawn>0.9</ShootingAccuracyPawn>
+          <MeleeDodgeChance>0.95</MeleeDodgeChance>
+        </statFactors>
+      </li>
+      <li>
+        <minSeverity>3.3</minSeverity>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <setMax>0.74</setMax>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.4</offset>
+          </li>
+        </capMods>
+        <statFactors>
+          <MoveSpeed>0.72</MoveSpeed>
+          <ShootingAccuracyPawn>0.8</ShootingAccuracyPawn>
+          <MeleeDodgeChance>0.88</MeleeDodgeChance>
+        </statFactors>
+      </li>
+      <li>
+        <minSeverity>4.3</minSeverity>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <setMax>0.56</setMax>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.62</offset>
+          </li>
+        </capMods>
+        <statFactors>
+          <MoveSpeed>0.55</MoveSpeed>
+          <ShootingAccuracyPawn>0.62</ShootingAccuracyPawn>
+          <MeleeDodgeChance>0.75</MeleeDodgeChance>
+        </statFactors>
+      </li>
+      <li>
+        <minSeverity>5.3</minSeverity>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <setMax>0.28</setMax>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.85</offset>
+          </li>
+        </capMods>
+        <statFactors>
+          <MoveSpeed>0.4</MoveSpeed>
+          <ShootingAccuracyPawn>0.42</ShootingAccuracyPawn>
+          <MeleeDodgeChance>0.6</MeleeDodgeChance>
+        </statFactors>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <AbilityDef>
+    <defName>Rukaya_AssaultRifleFlame_Burner</defName>
+    <label>underbarrel burner</label>
+    <!-- 中文：下挂喷火器 -->
+    <description>Discharge the rifle's compact burner unit to wash a short cone in burning fuel. The burst splashes flammable liquid across the target area and immediately ignites it, making it excellent for forcing fires onto the ground and flushing enemies out of cover.</description>
+    <!-- 中文翻译：启动这把步枪的紧凑喷火模块，向前方短锥形区域喷出燃烧燃料。喷射会把易燃液体泼洒到目标区域并立即点燃，非常适合强行点燃地面并把敌人从掩体后面逼出来。 -->
+    <iconPath>Rukaya/Weapon/Rukaya_AssaultRifleFlame</iconPath>
+    <aiCanUse>true</aiCanUse>
+    <ai_IsIncendiary>true</ai_IsIncendiary>
+    <warmupStartSound>FireSpew_Warmup</warmupStartSound>
+    <showOnCharacterCard>false</showOnCharacterCard>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <requireLineOfSight>true</requireLineOfSight>
+      <range>9.9</range>
+      <warmupTime>0.45</warmupTime>
+      <soundCast>FireSpew_Resolve</soundCast>
+      <targetParams>
+        <canTargetLocations>true</canTargetLocations>
+      </targetParams>
+      <flammabilityAttachFireChanceCurve>
+        <points>
+          <li>(0.2, 0)</li>
+          <li>(1, 1)</li>
+        </points>
+      </flammabilityAttachFireChanceCurve>
+    </verbProperties>
+    <comps>
+      <li Class="RukayaRace.Weapons.CompProperties_AbilityRukayaFuelFireSpew">
+        <range>9.9</range>
+        <lineWidthEnd>2.6</lineWidthEnd>
+        <fuelDef>Filth_Fuel</fuelDef>
+        <damAmount>11</damAmount>
+        <canHitFilledCells>true</canHitFilledCells>
+        <fireSizeRange>0.55~0.85</fireSizeRange>
+      </li>
+    </comps>
+  </AbilityDef>
+
+  <AbilityDef>
+    <defName>Rukaya_AssaultRifleGrenade_SignalFlare</defName>
+    <label>launch signal flare</label>
+    <!-- 中文：发射信号弹 -->
+    <description>Launch an active-matter signal flare. On landing it floods the area with harsh light, disrupts hidden targets, and splashes the nearby ground with ignited fuel in a single incendiary burst.</description>
+    <!-- 中文翻译：发射一枚活性物质信号弹。它落地后会以刺眼强光覆盖周围区域，扰乱隐藏目标，并以一次性燃烧爆发把点燃的燃料泼洒到附近地面。 -->
+    <iconPath>Rukaya/Weapon/Rukaya_AssaultRifleGrenade</iconPath>
+    <aiCanUse>true</aiCanUse>
+    <showOnCharacterCard>false</showOnCharacterCard>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>26.9</range>
+      <warmupTime>0.55</warmupTime>
+      <soundCast>ThrowGrenade</soundCast>
+      <targetParams>
+        <canTargetLocations>true</canTargetLocations>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="CompProperties_AbilityLaunchProjectile">
+        <projectileDef>Rukaya_SignalFlareProjectile</projectileDef>
+      </li>
+    </comps>
+  </AbilityDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Rukaya_SignalFlareProjectile</defName>
+    <label>signal flare canister</label>
+    <!-- 中文：信号弹筒 -->
+    <graphicData>
+      <texPath>Things/Projectile/LauncherShot</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <color>(255,170,96)</color>
+    </graphicData>
+    <thingClass>Projectile_SpawnsThing</thingClass>
+    <projectile>
+      <speed>38</speed>
+      <arcHeightFactor>1.05</arcHeightFactor>
+      <spinRate>3</spinRate>
+      <spawnsThingDef>Rukaya_SignalFlare</spawnsThingDef>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef>
+    <defName>Rukaya_SignalFlare</defName>
+    <label>Rukaya signal flare</label>
+    <!-- 中文：卢卡娅信号弹 -->
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+      <texPath>Things/Projectile/LauncherShot</texPath>
+      <shaderType>TransparentPostLight</shaderType>
+      <color>(255,170,96)</color>
+      <onGroundRandomRotateAngle>360</onGroundRandomRotateAngle>
+    </graphicData>
+    <selectable>false</selectable>
+    <tickerType>Normal</tickerType>
+    <thingClass>ThingWithComps</thingClass>
+    <useHitPoints>false</useHitPoints>
+    <rotatable>false</rotatable>
+    <comps>
+      <li Class="RukayaRace.Weapons.CompProperties_RukayaSignalFlare">
+        <disruptRadius>8.9</disruptRadius>
+        <disruptCheckInterval>30</disruptCheckInterval>
+        <burnRadius>3.9</burnRadius>
+        <initialStunTicks>120</initialStunTicks>
+        <fireSizeRange>0.45~0.8</fireSizeRange>
+        <fuelDef>Filth_Fuel</fuelDef>
+      </li>
+      <li Class="RukayaRace.Weapons.CompProperties_RukayaSignalFlareAnomaly"
+        MayRequire="Ludeon.RimWorld.Anomaly">
+        <radius>8.9</radius>
+      </li>
+      <li Class="CompProperties_DestroyAfterDelay">
+        <delayTicks>1800</delayTicks>
+      </li>
+      <li Class="CompProperties_Glower">
+        <glowRadius>6</glowRadius>
+        <glowColor>(255,117,108,0)</glowColor>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Rukaya_GrenadePistol_IncendiaryGrenadeProjectile</defName>
+    <label>grenade pistol incendiary canister</label>
+    <!-- 中文：榴弹手枪燃烧弹筒 -->
+    <graphicData>
+      <texPath>Things/Projectile/LauncherShot</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <color>(255,126,58)</color>
+    </graphicData>
+    <thingClass>Projectile_SpawnsThing</thingClass>
+    <projectile>
+      <speed>34</speed>
+      <arcHeightFactor>1.05</arcHeightFactor>
+      <spawnsThingDef>Rukaya_GrenadePistol_IncendiaryGrenade</spawnsThingDef>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef>
+    <defName>Rukaya_GrenadePistol_IncendiaryGrenade</defName>
+    <label>grenade pistol incendiary canister</label>
+    <!-- 中文：榴弹手枪燃烧弹筒 -->
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+      <texPath>Things/Projectile/LauncherShot</texPath>
+      <shaderType>TransparentPostLight</shaderType>
+      <color>(255,126,58)</color>
+      <onGroundRandomRotateAngle>360</onGroundRandomRotateAngle>
+    </graphicData>
+    <selectable>false</selectable>
+    <tickerType>Normal</tickerType>
+    <thingClass>ThingWithComps</thingClass>
+    <useHitPoints>false</useHitPoints>
+    <rotatable>false</rotatable>
+    <comps>
+      <li Class="RukayaRace.Weapons.CompProperties_RukayaSignalFlare">
+        <allowDisruption>false</allowDisruption>
+        <burnRadius>2.2</burnRadius>
+        <fireSizeRange>0.45~0.8</fireSizeRange>
+        <fuelDef>Filth_Fuel</fuelDef>
+      </li>
+      <li Class="CompProperties_DestroyAfterDelay">
+        <delayTicks>900</delayTicks>
+      </li>
+      <li Class="CompProperties_Glower">
+        <glowRadius>4</glowRadius>
+        <glowColor>(255,92,42,0)</glowColor>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="Rukaya_BaseSidearm">
+    <defName>Rukaya_Revolver</defName>
+    <label>Rukaya police revolver</label>
+    <!-- 中文：卢卡娅警用左轮手枪 -->
+    <description>A short-barreled police revolver kept as a last-ditch defensive sidearm. It is compact and dependable at arm's length, but the stubby barrel and crude sights make it inaccurate outside close self-defense range.</description>
+    <!-- 中文翻译：一把作为最后防身手段保留下来的短枪管警用左轮。它在贴身距离内紧凑而可靠，但短枪管和简陋照门使它在自卫距离外几乎谈不上精准。 -->
+    <graphicData>
+      <texPath>Rukaya/Weapon/Rukaya_Revolver</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <WorkToMake>3500</WorkToMake>
+      <Mass>1.35</Mass>
+      <AccuracyTouch>0.8</AccuracyTouch>
+      <AccuracyShort>0.62</AccuracyShort>
+      <AccuracyMedium>0.38</AccuracyMedium>
+      <AccuracyLong>0.18</AccuracyLong>
+      <RangedWeapon_Cooldown>1.7</RangedWeapon_Cooldown>
+    </statBases>
+    <costList>
+      <Steel>35</Steel>
+      <ComponentIndustrial>2</ComponentIndustrial>
+    </costList>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_Rukaya_Revolver</defaultProjectile>
+        <warmupTime>0.25</warmupTime>
+        <range>20.9</range>
+        <soundCast>Shot_Revolver</soundCast>
+        <soundCastTail>GunTail_Light</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+    </verbs>
+    <weaponTags>
+      <li>Rukaya_T1_Ranged</li>
+    </weaponTags>
+  </ThingDef>
+
+  <ThingDef ParentName="Rukaya_BaseLongGun">
+    <defName>Rukaya_Rifle</defName>
+    <label>Rukaya bolt-action rifle</label>
+    <!-- 中文：卢卡娅栓动步枪 -->
+    <description>A long-pattern bolt-action rifle tuned for deliberate aimed fire. Its action is slow and the weapon is cumbersome, but it reaches far and punches above the industrial norm.</description>
+    <!-- 中文翻译：一种为审慎瞄准射击而调校的长型栓动步枪。它的枪机动作缓慢，整枪也更笨重，但射程更远，杀伤力也高于普通工业武器。 -->
+    <graphicData>
+      <texPath>Rukaya/Weapon/Rukaya_Rifle</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <WorkToMake>18000</WorkToMake>
+      <Mass>4.4</Mass>
+      <AccuracyTouch>0.7</AccuracyTouch>
+      <AccuracyShort>0.88</AccuracyShort>
+      <AccuracyMedium>0.95</AccuracyMedium>
+      <AccuracyLong>0.88</AccuracyLong>
+      <RangedWeapon_Cooldown>2.0</RangedWeapon_Cooldown>
+    </statBases>
+    <costList>
+      <Steel>80</Steel>
+      <ComponentIndustrial>5</ComponentIndustrial>
+    </costList>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_Rukaya_Rifle</defaultProjectile>
+        <warmupTime>2.1</warmupTime>
+        <range>41.9</range>
+        <soundCast>Shot_BoltActionRifle</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+    </verbs>
+    <weaponClasses>
+      <li>Ranged</li>
+      <li>LongShots</li>
+    </weaponClasses>
+    <weaponTags>
+      <li>Rukaya_T1_Ranged</li>
+    </weaponTags>
+  </ThingDef>
+
+  <ThingDef ParentName="Rukaya_BaseLongGun">
+    <defName>Rukaya_AssaultRifle</defName>
+    <label>Rukaya assault rifle</label>
+    <!-- 中文：卢卡娅突击步枪 -->
+    <description>A full-length assault rifle built to Rukaya standards. It is heavier and slower to recover between bursts than human rifles, but it keeps tight groupings and strong terminal performance at longer range.</description>
+    <!-- 中文翻译：一把按卢卡娅标准打造的全尺寸突击步枪。它比人类步枪更重，点射后的复位也更慢，但拥有更紧密的弹着分布，以及更远距离上的稳定终端杀伤。 -->
+    <graphicData>
+      <texPath>Rukaya/Weapon/Rukaya_AssaultRifle</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <WorkToMake>52000</WorkToMake>
+      <Mass>4.5</Mass>
+      <AccuracyTouch>0.58</AccuracyTouch>
+      <AccuracyShort>0.78</AccuracyShort>
+      <AccuracyMedium>0.74</AccuracyMedium>
+      <AccuracyLong>0.66</AccuracyLong>
+      <RangedWeapon_Cooldown>2.1</RangedWeapon_Cooldown>
+    </statBases>
+    <costList>
+      <Steel>90</Steel>
+      <ComponentIndustrial>8</ComponentIndustrial>
+    </costList>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_Rukaya_AssaultRifle</defaultProjectile>
+        <warmupTime>1.35</warmupTime>
+        <range>34.9</range>
+        <burstShotCount>3</burstShotCount>
+        <ticksBetweenBurstShots>11</ticksBetweenBurstShots>
+        <soundCast>Shot_AssaultRifle</soundCast>
+        <soundCastTail>GunTail_Medium</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+    </verbs>
+    <weaponTags>
+      <li>Rukaya_T1_Ranged</li>
+    </weaponTags>
+  </ThingDef>
+
+  <ThingDef ParentName="Rukaya_BaseActiveMatterLongGun">
+    <defName>Rukaya_MarksmanRifle</defName>
+    <label>Rukaya marksman rifle</label>
+    <!-- 中文：卢卡娅精准射手步枪 -->
+    <description>A self-loading marksman rifle built for disciplined aimed fire at mid-to-long range. It gives up some extreme reach compared to a dedicated sniper rifle, but cycles faster and keeps strong precision with a full-power cartridge.
+
+Active matter mode fires incendiary marksman rifle rounds.</description>
+    <!-- 中文翻译：一把为中远距离审慎瞄准射击打造的半自动精准射手步枪。和专职狙击步枪相比，它牺牲了一部分极限射程，但换来了更快的射击循环，以及配合全威力步枪弹时依然出色的精度。
+活性物质模式下，发射燃烧精准射手步枪弹药。 -->
+    <graphicData>
+      <texPath>Rukaya/Weapon/Rukaya_MarksmanRifle</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <WorkToMake>48000</WorkToMake>
+      <Mass>4.7</Mass>
+      <AccuracyTouch>0.56</AccuracyTouch>
+      <AccuracyShort>0.82</AccuracyShort>
+      <AccuracyMedium>0.9</AccuracyMedium>
+      <AccuracyLong>0.8</AccuracyLong>
+      <RangedWeapon_Cooldown>2.2</RangedWeapon_Cooldown>
+    </statBases>
+    <costList>
+      <Rukaya_ActiveMatterContainer>24</Rukaya_ActiveMatterContainer>
+    </costList>
+    <verbs>
+      <li>
+        <verbClass>RukayaRace.Weapons.Verb_RukayaActiveMatterShoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_Rukaya_MarksmanRifle</defaultProjectile>
+        <warmupTime>1.75</warmupTime>
+        <range>38.9</range>
+        <soundCast>Shot_BoltActionRifle</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+    </verbs>
+    <weaponClasses>
+      <li>Ranged</li>
+      <li>LongShots</li>
+    </weaponClasses>
+    <weaponTags>
+      <li>Rukaya_T2_Ranged</li>
+    </weaponTags>
+    <comps>
+      <li Class="RukayaRace.Weapons.CompProperties_RukayaActiveMatterWeapon">
+        <activeMatterThingDef>Rukaya_ActiveMatterContainer</activeMatterThingDef>
+        <normalProjectile>Bullet_Rukaya_MarksmanRifle</normalProjectile>
+        <activeProjectile>Bullet_Rukaya_MarksmanRifle_Incendiary</activeProjectile>
+        <unitsPerContainer>30</unitsPerContainer>
+        <maxCapacity>90</maxCapacity>
+        <defaultLoad>30</defaultLoad>
+        <activeCostPerUse>3</activeCostPerUse>
+        <aiModePolicy>AnyHostileTarget</aiModePolicy>
+        <aiInitialLoadContainers>1</aiInitialLoadContainers>
+        <aiCarryContainers>1</aiCarryContainers>
+        <explosionBaseDamage>10</explosionBaseDamage>
+        <explosionDamagePerUnit>0.6</explosionDamagePerUnit>
+        <explosionMaxDamage>42</explosionMaxDamage>
+        <explosionBaseRadius>0.9</explosionBaseRadius>
+        <explosionRadiusPerUnit>0.02</explosionRadiusPerUnit>
+        <explosionMaxRadius>2.2</explosionMaxRadius>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="Rukaya_BaseActiveMatterSidearm">
+    <defName>Rukaya_Pistol</defName>
+    <label>Rukaya service pistol</label>
+    <!-- 中文：卢卡娅制式手枪 -->
+    <description>A standardized self-loading pistol issued to regular Rukaya troops. It is a clear step above emergency sidearms in handling and sustained fire, but it still remains a sidearm meant for disciplined close combat rather than long-range marksmanship.
+
+Fed active matter, the weapon overdrives every round: each shot strikes harder with tighter aim, and the whole firing cycle runs faster and reaches further while the charge lasts. Overcharged rounds also carry a neuroshock payload, so every landed hit drags the victim's movement down and dulls its awareness. Scattered hits only slow a target; it takes sustained fire on one enemy to put it on the ground, and the harder it was pressed, the longer it stays there. The pistol is built to take enemies alive rather than to simply kill them.</description>
+    <!-- 中文翻译：一把配发给卢卡娅正规部队的标准化半自动手枪。它在操控性和持续火力上明显强于应急副武器，但本质上仍是一种用于纪律化近距离交战的手枪，而不是拿来进行远距离精确射击的武器。
+灌注活性物质后，武器会过载每一发弹药：每一发命中更重、瞄准更稳，且在充能存续期间整体射击循环更快、射程更远。过载弹还携带神经震荡载荷，因此每一次命中都会拖慢中弹者的移动、钝化其意识。零散的命中只能拖慢目标；只有持续把火力压在同一个敌人身上，才能把它放倒，而且压制得越彻底，它趴在地上的时间就越长。这把武器被设计成尽可能活捉敌人，而不是单纯将其击杀。 -->
+    <graphicData>
+      <texPath>Rukaya/Weapon/Rukaya_Pistol</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <WorkToMake>22000</WorkToMake>
+      <Mass>1.5</Mass>
+      <AccuracyTouch>0.83</AccuracyTouch>
+      <AccuracyShort>0.69</AccuracyShort>
+      <AccuracyMedium>0.45</AccuracyMedium>
+      <AccuracyLong>0.2</AccuracyLong>
+      <RangedWeapon_Cooldown>1.35</RangedWeapon_Cooldown>
+    </statBases>
+    <costList>
+      <Rukaya_ActiveMatterContainer>10</Rukaya_ActiveMatterContainer>
+    </costList>
+    <verbs>
+      <li>
+        <verbClass>RukayaRace.Weapons.Verb_RukayaOverchargeShoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_Rukaya_Pistol</defaultProjectile>
+        <warmupTime>0.35</warmupTime>
+        <range>22.9</range>
+        <soundCast>Shot_Autopistol</soundCast>
+        <soundCastTail>GunTail_Light</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+    </verbs>
+    <weaponTags>
+      <li>Rukaya_T2_Ranged</li>
+    </weaponTags>
+    <comps>
+      <li Class="RukayaRace.Weapons.CompProperties_RukayaActiveMatterWeapon">
+        <activeMatterThingDef>Rukaya_ActiveMatterContainer</activeMatterThingDef>
+        <normalProjectile>Bullet_Rukaya_Pistol</normalProjectile>
+        <activeProjectile>Bullet_Rukaya_Pistol_Charged</activeProjectile>
+        <activeAccuracyFactor>1.5</activeAccuracyFactor>
+        <activeWarmupMultiplier>0.55</activeWarmupMultiplier>
+        <activeCooldownMultiplier>0.55</activeCooldownMultiplier>
+        <activeRangeMultiplier>1.4</activeRangeMultiplier>
+        <unitsPerContainer>30</unitsPerContainer>
+        <maxCapacity>60</maxCapacity>
+        <defaultLoad>30</defaultLoad>
+        <activeCostPerUse>1</activeCostPerUse>
+        <aiModePolicy>CloseOrArmored</aiModePolicy>
+        <aiInitialLoadContainers>1</aiInitialLoadContainers>
+        <aiCarryContainers>1</aiCarryContainers>
+        <explosionBaseDamage>8</explosionBaseDamage>
+        <explosionDamagePerUnit>0.45</explosionDamagePerUnit>
+        <explosionMaxDamage>24</explosionMaxDamage>
+        <explosionBaseRadius>0.7</explosionBaseRadius>
+        <explosionRadiusPerUnit>0.015</explosionRadiusPerUnit>
+        <explosionMaxRadius>1.4</explosionMaxRadius>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="Rukaya_BaseActiveMatterSidearm">
+    <defName>Rukaya_GrenadePistol</defName>
+    <label>Rukaya grenade pistol</label>
+    <!-- 中文：卢卡娅榴弹手枪 -->
+    <description>A compact launcher built around a pistol-sized grip and a short grenade tube. It gives ordinary infantry a controllable explosive sidearm, trading blast radius and reach for portability and quick handling.
+
+Active matter mode loads incendiary canisters that splash fuel across the impact area and ignite it without the signal flare's anti-invisibility pulse.</description>
+    <!-- 中文翻译：一把围绕手枪式握把与短榴弹管构建的紧凑发射器。它让普通步兵也能携带可控的爆炸性副武器，以较小的杀伤半径和射程换取便携性与更快的操控。
+活性物质模式会装填燃烧弹筒，在落点周围泼洒燃料并点燃，但不带信号弹的反隐身脉冲。 -->
+    <graphicData>
+      <texPath>Rukaya/Weapon/Rukaya_GrenadePistol</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <WorkToMake>26000</WorkToMake>
+      <Mass>2.2</Mass>
+      <AccuracyTouch>0.72</AccuracyTouch>
+      <AccuracyShort>0.6</AccuracyShort>
+      <AccuracyMedium>0.34</AccuracyMedium>
+      <AccuracyLong>0.1</AccuracyLong>
+      <RangedWeapon_Cooldown>2.7</RangedWeapon_Cooldown>
+    </statBases>
+    <costList>
+      <Rukaya_ActiveMatterContainer>12</Rukaya_ActiveMatterContainer>
+    </costList>
+    <verbs>
+      <li>
+        <label>launch grenade pistol round</label>
+        <!-- 中文：发射榴弹手枪榴弹 -->
+        <verbClass>RukayaRace.Weapons.Verb_RukayaActiveMatterShoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Proj_GrenadeFrag</defaultProjectile>
+        <warmupTime>1.2</warmupTime>
+        <range>18.9</range>
+        <forcedMissRadius>1.5</forcedMissRadius>
+        <soundCast>ThrowGrenade</soundCast>
+        <soundCastTail>GunTail_Light</soundCastTail>
+        <muzzleFlashScale>11</muzzleFlashScale>
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+      </li>
+    </verbs>
+    <weaponTags>
+      <li>Rukaya_T2_Ranged</li>
+    </weaponTags>
+    <comps>
+      <li Class="RukayaRace.Weapons.CompProperties_RukayaActiveMatterWeapon">
+        <activeMatterThingDef>Rukaya_ActiveMatterContainer</activeMatterThingDef>
+        <normalProjectile>Proj_GrenadeFrag</normalProjectile>
+        <activeProjectile>Rukaya_GrenadePistol_IncendiaryGrenadeProjectile</activeProjectile>
+        <unitsPerContainer>30</unitsPerContainer>
+        <maxCapacity>60</maxCapacity>
+        <defaultLoad>30</defaultLoad>
+        <activeCostPerUse>4</activeCostPerUse>
+        <aiModePolicy>GroupedTargets</aiModePolicy>
+        <aiInitialLoadContainers>1</aiInitialLoadContainers>
+        <aiCarryContainers>1</aiCarryContainers>
+        <aiFriendlyFireRadius>4.5</aiFriendlyFireRadius>
+        <explosionBaseDamage>10</explosionBaseDamage>
+        <explosionDamagePerUnit>0.55</explosionDamagePerUnit>
+        <explosionMaxDamage>30</explosionMaxDamage>
+        <explosionBaseRadius>0.8</explosionBaseRadius>
+        <explosionRadiusPerUnit>0.02</explosionRadiusPerUnit>
+        <explosionMaxRadius>1.8</explosionMaxRadius>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="Rukaya_BaseActiveMatterLongGun">
+    <defName>Rukaya_SubMachinegun</defName>
+    <label>Rukaya submachine gun</label>
+    <!-- 中文：卢卡娅冲锋枪 -->
+    <description>A compact automatic firearm for boarding actions, corridor fighting, and mobile assaults. It is easy to bring onto target and pours rounds out quickly, but its small cartridge and short barrel make it fade fast outside close-range combat.
+
+Fed active matter, the gun overdrives both cartridge and action: heavier hits, tighter aim, a faster firing cycle, and longer reach while the charge lasts. Overcharged rounds also carry a neuroshock payload. Because the gun fires in bursts the shock piles up quickly, but it also bleeds off quickly: one landed burst leaves a target barely able to move, and a second one pressed straight after it is what actually puts the target on the ground. The longer an enemy is kept under this fire, the longer it stays down. The submachine gun is built to take enemies alive rather than to simply kill them.</description>
+    <!-- 中文翻译：一把为登舰作战、走廊战斗与机动突击设计的紧凑自动武器。它能够很快指向目标并高速倾泻火力，但受限于较小弹药和短枪管，一旦超出近距离交战范围，表现就会迅速下滑。
+灌注活性物质后，这把枪会同时过载弹药与枪机：在充能存续期间获得更高的伤害、更稳的瞄准、更快的射击循环与更远的射程。过载弹还携带神经震荡载荷。由于这把枪以点射方式射击，震荡累积得很快，但消退得同样很快：一次命中点射会让目标几乎无法移动，紧接着压上第二个点射才能真正把它放倒。敌人被这种火力压制的越久，倒地后趴着的时间就越长。这把枪被设计成尽可能活捉敌人，而不是单纯将其击杀。 -->
+    <graphicData>
+      <texPath>Rukaya/Weapon/Rukaya_SubMachinegun</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <WorkToMake>30000</WorkToMake>
+      <Mass>3.0</Mass>
+      <AccuracyTouch>0.88</AccuracyTouch>
+      <AccuracyShort>0.67</AccuracyShort>
+      <AccuracyMedium>0.39</AccuracyMedium>
+      <AccuracyLong>0.16</AccuracyLong>
+      <RangedWeapon_Cooldown>1.1</RangedWeapon_Cooldown>
+    </statBases>
+    <costList>
+      <Rukaya_ActiveMatterContainer>14</Rukaya_ActiveMatterContainer>
+    </costList>
+    <verbs>
+      <li>
+        <verbClass>RukayaRace.Weapons.Verb_RukayaOverchargeShoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_Rukaya_SubMachinegun</defaultProjectile>
+        <warmupTime>0.55</warmupTime>
+        <range>21.9</range>
+        <burstShotCount>4</burstShotCount>
+        <ticksBetweenBurstShots>6</ticksBetweenBurstShots>
+        <soundCast>Shot_MachinePistol</soundCast>
+        <soundCastTail>GunTail_Light</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+    </verbs>
+    <weaponClasses>
+      <li>RangedLight</li>
+      <li>ShortShots</li>
+    </weaponClasses>
+    <weaponTags>
+      <li>Rukaya_T2_Ranged</li>
+    </weaponTags>
+    <comps>
+      <li Class="RukayaRace.Weapons.CompProperties_RukayaActiveMatterWeapon">
+        <activeMatterThingDef>Rukaya_ActiveMatterContainer</activeMatterThingDef>
+        <normalProjectile>Bullet_Rukaya_SubMachinegun</normalProjectile>
+        <activeProjectile>Bullet_Rukaya_SubMachinegun_Charged</activeProjectile>
+        <activeAccuracyFactor>1.5</activeAccuracyFactor>
+        <activeWarmupMultiplier>0.55</activeWarmupMultiplier>
+        <activeCooldownMultiplier>0.55</activeCooldownMultiplier>
+        <activeRangeMultiplier>1.4</activeRangeMultiplier>
+        <unitsPerContainer>30</unitsPerContainer>
+        <maxCapacity>90</maxCapacity>
+        <defaultLoad>30</defaultLoad>
+        <activeCostPerUse>1</activeCostPerUse>
+        <aiModePolicy>CloseOrArmored</aiModePolicy>
+        <aiInitialLoadContainers>1</aiInitialLoadContainers>
+        <aiCarryContainers>1</aiCarryContainers>
+        <explosionBaseDamage>8</explosionBaseDamage>
+        <explosionDamagePerUnit>0.45</explosionDamagePerUnit>
+        <explosionMaxDamage>30</explosionMaxDamage>
+        <explosionBaseRadius>0.8</explosionBaseRadius>
+        <explosionRadiusPerUnit>0.018</explosionRadiusPerUnit>
+        <explosionMaxRadius>1.8</explosionMaxRadius>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="Rukaya_BaseActiveMatterLongGun">
+    <defName>Rukaya_Machinegun</defName>
+    <label>Rukaya light machine gun</label>
+    <!-- 中文：卢卡娅轻机枪 -->
+    <description>A squad support light machine gun tuned for long bursts rather than elegance. It is heavy, loud, and clumsy in the hands, but its sustained suppressive fire is valuable whenever a Rukaya line unit needs to pin enemies in place.
+
+Active matter mode loads suppressive incendiary rounds. Each hit has a chance to ignite the target, and the impact zone showers nearby hostiles in suppressive shock that drags down movement, shooting accuracy, and sight until the pressure finally lifts.</description>
+    <!-- 中文翻译：一挺偏重持续长点射而非灵巧性的班组支援轻机枪。它沉重、喧闹、操控笨拙，但当卢卡娅线列单位需要把敌人压制在原地时，这种持续压制火力就会非常有价值。
+活性物质模式会装填压制燃烧弹。每次命中都有概率点燃目标，而落点周围的敌对单位会承受压制冲击，移动、射击精度与视觉能力都会被不断拖低，直到火力压力最终消退。 -->
+    <graphicData>
+      <texPath>Rukaya/Weapon/Rukaya_Machinegun</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <WorkToMake>42000</WorkToMake>
+      <Mass>7.6</Mass>
+      <AccuracyTouch>0.45</AccuracyTouch>
+      <AccuracyShort>0.52</AccuracyShort>
+      <AccuracyMedium>0.4</AccuracyMedium>
+      <AccuracyLong>0.28</AccuracyLong>
+      <RangedWeapon_Cooldown>1.55</RangedWeapon_Cooldown>
+    </statBases>
+    <costList>
+      <Rukaya_ActiveMatterContainer>18</Rukaya_ActiveMatterContainer>
+    </costList>
+    <verbs>
+      <li>
+        <verbClass>RukayaRace.Weapons.Verb_RukayaActiveMatterShoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_Rukaya_Machinegun</defaultProjectile>
+        <warmupTime>1.7</warmupTime>
+        <range>28.9</range>
+        <burstShotCount>6</burstShotCount>
+        <ticksBetweenBurstShots>6</ticksBetweenBurstShots>
+        <soundCast>Shot_Minigun</soundCast>
+        <soundCastTail>GunTail_Medium</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+    </verbs>
+    <weaponClasses>
+      <li>RangedHeavy</li>
+    </weaponClasses>
+    <weaponTags>
+      <li>Rukaya_T2_Ranged</li>
+    </weaponTags>
+    <comps>
+      <li Class="RukayaRace.Weapons.CompProperties_RukayaActiveMatterWeapon">
+        <activeMatterThingDef>Rukaya_ActiveMatterContainer</activeMatterThingDef>
+        <normalProjectile>Bullet_Rukaya_Machinegun</normalProjectile>
+        <activeProjectile>Bullet_Rukaya_Machinegun_SuppressionIncendiary</activeProjectile>
+        <unitsPerContainer>30</unitsPerContainer>
+        <maxCapacity>150</maxCapacity>
+        <defaultLoad>30</defaultLoad>
+        <activeCostPerUse>4</activeCostPerUse>
+        <aiModePolicy>GroupedTargets</aiModePolicy>
+        <aiInitialLoadContainers>1</aiInitialLoadContainers>
+        <aiCarryContainers>1</aiCarryContainers>
+        <explosionBaseDamage>10</explosionBaseDamage>
+        <explosionDamagePerUnit>0.6</explosionDamagePerUnit>
+        <explosionMaxDamage>42</explosionMaxDamage>
+        <explosionBaseRadius>0.9</explosionBaseRadius>
+        <explosionRadiusPerUnit>0.02</explosionRadiusPerUnit>
+        <explosionMaxRadius>2.2</explosionMaxRadius>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="Rukaya_BaseActiveMatterLongGun">
+    <defName>Rukaya_AviationMachinegun</defName>
+    <label>Rukaya aviation machine gun</label>
+    <!-- 中文：卢卡娅航空机枪 -->
+    <description>An aviation-pattern rotary machine gun built around the same full-power ammunition as the Rukaya light machine gun. Its electrically driven barrel cluster launches those rounds at higher velocity and cycles through a long burst with brutal consistency, but its conventional feed can jam under sustained fire, cutting the burst short and forcing a lengthy clearing cycle. The weapon is also heavy and difficult to handle. An oversized active matter reservoir keeps its powered firing system supplied through sustained fire. Active matter mode loads suppressive incendiary rounds and stabilizes the feed, preventing jams.</description>
+    <!-- 中文翻译：一挺围绕与卢卡娅轻机枪相同全威力弹药打造的航空型多管机枪。它通过电驱动的枪管组以更高弹速发射同样的弹药，并以凶猛而稳定的长点射持续循环，但常规供弹机构可能在持续射击时卡壳，使点射提前中断并迫使射手进行漫长的排障。整枪也十分沉重且难以操控。加大的活性物质储量能够支撑持续火力。活性物质模式会装填压制燃烧弹并稳定供弹机构，从而避免卡壳。 -->
+    <graphicData>
+      <texPath>Rukaya/Weapon/Rukaya_AviationMachinegun</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1.35,1.35)</drawSize>
+    </graphicData>
+    <statBases>
+      <WorkToMake>90000</WorkToMake>
+      <Mass>9.5</Mass>
+      <AccuracyTouch>0.2</AccuracyTouch>
+      <AccuracyShort>0.25</AccuracyShort>
+      <AccuracyMedium>0.25</AccuracyMedium>
+      <AccuracyLong>0.18</AccuracyLong>
+      <RangedWeapon_Cooldown>1.4</RangedWeapon_Cooldown>
+    </statBases>
+    <equippedStatOffsets>
+      <MoveSpeed>-0.25</MoveSpeed>
+    </equippedStatOffsets>
+    <costList>
+      <Rukaya_ActiveMatterContainer>42</Rukaya_ActiveMatterContainer>
+      <ComponentSpacer>5</ComponentSpacer>
+    </costList>
+    <verbs>
+      <li>
+        <verbClass>RukayaRace.Weapons.Verb_RukayaAviationMachinegunShoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_Rukaya_AviationMachinegun</defaultProjectile>
+        <warmupTime>2.4</warmupTime>
+        <range>30.9</range>
+        <burstShotCount>25</burstShotCount>
+        <ticksBetweenBurstShots>4</ticksBetweenBurstShots>
+        <soundCast>Shot_Minigun</soundCast>
+        <soundCastTail>GunTail_Medium</soundCastTail>
+        <muzzleFlashScale>10</muzzleFlashScale>
+      </li>
+    </verbs>
+    <weaponClasses>
+      <li>RangedHeavy</li>
+    </weaponClasses>
+    <weaponTags>
+      <li>Rukaya_T3_Ranged</li>
+    </weaponTags>
+    <tools>
+      <li>
+        <label>barrels</label>
+        <!-- 中文：枪管组 -->
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>11.7</power>
+        <cooldownTime>2.6</cooldownTime>
+      </li>
+    </tools>
+    <modExtensions>
+      <li Class="RukayaRace.Weapons.RukayaAviationMachinegunJamExtension">
+        <jamChancePerShot>0.03</jamChancePerShot>
+        <jamCooldownMultiplier>2.5</jamCooldownMultiplier>
+      </li>
+    </modExtensions>
+    <comps>
+      <li Class="RukayaRace.Weapons.CompProperties_RukayaActiveMatterWeapon">
+        <activeMatterThingDef>Rukaya_ActiveMatterContainer</activeMatterThingDef>
+        <normalProjectile>Bullet_Rukaya_AviationMachinegun</normalProjectile>
+        <activeProjectile>Bullet_Rukaya_AviationMachinegun_SuppressionIncendiary</activeProjectile>
+        <unitsPerContainer>60</unitsPerContainer>
+        <maxCapacity>360</maxCapacity>
+        <defaultLoad>360</defaultLoad>
+        <activeCostPerUse>1</activeCostPerUse>
+        <aiModePolicy>GroupedTargets</aiModePolicy>
+        <aiInitialLoadContainers>1</aiInitialLoadContainers>
+        <aiCarryContainers>1</aiCarryContainers>
+        <explosionBaseDamage>10</explosionBaseDamage>
+        <explosionDamagePerUnit>0.12</explosionDamagePerUnit>
+        <explosionMaxDamage>54</explosionMaxDamage>
+        <explosionBaseRadius>0.9</explosionBaseRadius>
+        <explosionRadiusPerUnit>0.004</explosionRadiusPerUnit>
+        <explosionMaxRadius>2.4</explosionMaxRadius>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="Rukaya_BaseActiveMatterLongGun">
+    <defName>Rukaya_GrenadeLauncher</defName>
+    <label>Rukaya grenade launcher</label>
+    <!-- 中文：卢卡娅榴弹发射器 -->
+    <description>A grenade launcher built for line infantry support. It is too slow and specialized to replace a rifle, but it gives regular troops reliable explosive reach against cover, light emplacements, and clustered hostiles.
+
+Active matter mode loads arc shock grenades that search farther than the blast itself, strike up to ten hostile pawns around the impact point, and lash each victim with flame burn damage and a strong EMP discharge.</description>
+    <!-- 中文翻译：一具供步兵班组支援使用的肩射式榴弹发射器。它过于迟缓也过于专门，无法取代步枪，但能让正规部队稳定地把爆炸火力投送到掩体后方、轻型工事和密集敌群之中。
+活性物质模式会装填电弧震击榴弹。它的搜索范围比爆炸本身更远，会在落点周围锁定至多十个敌对单位，并以火焰灼伤与强力 EMP 放电同时抽击每个目标。 -->
+    <graphicData>
+      <texPath>Rukaya/Weapon/Rukaya_GrenadeLauncher</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <WorkToMake>36000</WorkToMake>
+      <Mass>4.5</Mass>
+      <AccuracyTouch>0.66</AccuracyTouch>
+      <AccuracyShort>0.58</AccuracyShort>
+      <AccuracyMedium>0.38</AccuracyMedium>
+      <AccuracyLong>0.14</AccuracyLong>
+      <RangedWeapon_Cooldown>3.1</RangedWeapon_Cooldown>
+    </statBases>
+    <costList>
+      <Rukaya_ActiveMatterContainer>16</Rukaya_ActiveMatterContainer>
+    </costList>
+    <verbs>
+      <li>
+        <label>launch grenade</label>
+        <!-- 中文：发射榴弹 -->
+        <verbClass>RukayaRace.Weapons.Verb_RukayaActiveMatterShoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Rukaya_GrenadeLauncher_Grenade</defaultProjectile>
+        <warmupTime>1.7</warmupTime>
+        <range>35</range>
+        <forcedMissRadius>1.9</forcedMissRadius>
+        <soundCast>ThrowGrenade</soundCast>
+        <soundCastTail>GunTail_Medium</soundCastTail>
+        <muzzleFlashScale>12</muzzleFlashScale>
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+      </li>
+    </verbs>
+    <weaponClasses>
+      <li>RangedHeavy</li>
+    </weaponClasses>
+    <weaponTags>
+      <li>Rukaya_T2_Ranged</li>
+    </weaponTags>
+    <comps>
+      <li Class="RukayaRace.Weapons.CompProperties_RukayaActiveMatterWeapon">
+        <activeMatterThingDef>Rukaya_ActiveMatterContainer</activeMatterThingDef>
+        <normalProjectile>Rukaya_GrenadeLauncher_Grenade</normalProjectile>
+        <activeProjectile>Rukaya_GrenadeLauncher_ArcShockGrenade</activeProjectile>
+        <unitsPerContainer>30</unitsPerContainer>
+        <maxCapacity>60</maxCapacity>
+        <defaultLoad>30</defaultLoad>
+        <activeCostPerUse>6</activeCostPerUse>
+        <aiModePolicy>GroupedTargets</aiModePolicy>
+        <aiInitialLoadContainers>1</aiInitialLoadContainers>
+        <aiCarryContainers>1</aiCarryContainers>
+        <aiFriendlyFireRadius>3.0</aiFriendlyFireRadius>
+        <explosionBaseDamage>10</explosionBaseDamage>
+        <explosionDamagePerUnit>0.7</explosionDamagePerUnit>
+        <explosionMaxDamage>40</explosionMaxDamage>
+        <explosionBaseRadius>0.9</explosionBaseRadius>
+        <explosionRadiusPerUnit>0.025</explosionRadiusPerUnit>
+        <explosionMaxRadius>2.4</explosionMaxRadius>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="Rukaya_BaseActiveMatterLongGun">
+    <defName>Rukaya_RecoillessGun</defName>
+    <label>Rukaya recoilless gun</label>
+    <!-- 中文：卢卡娅无后坐力炮 -->
+    <description>An engineer's improvisation elevated into a field weapon: someone looked at a fixed recoilless cannon, decided it would be faster to unbolt it and carry it by hand, and then actually made it work. The result hits brutally hard, but the sheer mass drags its operator down and makes quick target acquisition miserable.
+
+Its standard shell is a single armor-piercing round that concentrates all force into one target. Active matter mode loads an overcharged shell that strikes even harder, penetrates deeper, and detonates on impact to catch nearby enemies in the blast.</description>
+    <!-- 中文翻译：一种由工程师突发奇想硬生生变成野战武器的产物：有人看着一门固定式无后坐力炮，认定把它拆下来扛着跑会更快，然后居然真的把这件事做成了。它的命中威力极其凶猛，但可怕的重量会拖慢携带者的行动，也让快速瞄准变得十分痛苦。
+
+标准炮弹是一发把全部威力集中于单一目标的穿甲弹。活性物质模式则会装填过载弹头，命中更重、穿透更深，并在撞击时引爆，把附近敌人一并卷入爆炸。 -->
+    <graphicData>
+      <texPath>Rukaya/Weapon/Rukaya_RecoillessGun</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(2,2)</drawSize>
+    </graphicData>
+    <statBases>
+      <WorkToMake>64000</WorkToMake>
+      <Mass>12.8</Mass>
+      <AccuracyTouch>0.46</AccuracyTouch>
+      <AccuracyShort>0.44</AccuracyShort>
+      <AccuracyMedium>0.32</AccuracyMedium>
+      <AccuracyLong>0.16</AccuracyLong>
+      <RangedWeapon_Cooldown>4.8</RangedWeapon_Cooldown>
+    </statBases>
+    <equippedStatOffsets>
+      <MoveSpeed>-0.32</MoveSpeed>
+      <AimingDelayFactor>0.35</AimingDelayFactor>
+    </equippedStatOffsets>
+    <costList>
+      <Rukaya_ActiveMatterContainer>26</Rukaya_ActiveMatterContainer>
+    </costList>
+    <verbs>
+      <li>
+        <label>launch recoilless shell</label>
+        <!-- 中文：发射无后坐力炮弹 -->
+        <verbClass>RukayaRace.Weapons.Verb_RukayaActiveMatterShoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_Rukaya_RecoillessGun</defaultProjectile>
+        <warmupTime>3.2</warmupTime>
+        <range>31.9</range>
+        <soundCast>ThumpCannon_Fire</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>16</muzzleFlashScale>
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+      </li>
+    </verbs>
+    <weaponClasses>
+      <li>RangedHeavy</li>
+    </weaponClasses>
+    <weaponTags>
+      <li>Rukaya_T2_Ranged</li>
+    </weaponTags>
+    <comps>
+      <li Class="RukayaRace.Weapons.CompProperties_RukayaActiveMatterWeapon">
+        <activeMatterThingDef>Rukaya_ActiveMatterContainer</activeMatterThingDef>
+        <normalProjectile>Bullet_Rukaya_RecoillessGun</normalProjectile>
+        <activeProjectile>Bullet_Rukaya_RecoillessGun_Active</activeProjectile>
+        <unitsPerContainer>15</unitsPerContainer>
+        <maxCapacity>30</maxCapacity>
+        <defaultLoad>15</defaultLoad>
+        <activeCostPerUse>4</activeCostPerUse>
+        <aiModePolicy>ArmoredOrGrouped</aiModePolicy>
+        <aiInitialLoadContainers>1</aiInitialLoadContainers>
+        <aiCarryContainers>1</aiCarryContainers>
+        <aiFriendlyFireRadius>4.0</aiFriendlyFireRadius>
+        <explosionBaseDamage>12</explosionBaseDamage>
+        <explosionDamagePerUnit>0.8</explosionDamagePerUnit>
+        <explosionMaxDamage>48</explosionMaxDamage>
+        <explosionBaseRadius>1.0</explosionBaseRadius>
+        <explosionRadiusPerUnit>0.025</explosionRadiusPerUnit>
+        <explosionMaxRadius>2.5</explosionMaxRadius>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="Rukaya_BaseLongGun">
+    <defName>Rukaya_AssaultRifleGrenade</defName>
+    <label>Rukaya assault rifle (grenade)</label>
+    <!-- 中文：卢卡娅突击步枪（榴弹） -->
+    <description>A standard assault rifle fitted with an underslung signal-flare projector. It keeps the ordinary rifle's practical role while giving its user a limited support tool for exposing hidden threats, lighting a target area, and splashing an area with ignited fuel in a single burst.</description>
+    <!-- 中文翻译：一把装有下挂信号弹投射器的标准突击步枪。它保留了普通步枪的实用作战定位，同时为使用者提供一种有限但灵活的支援手段，用来暴露隐藏威胁、照亮目标区域，并以一次性爆发把点燃的燃料泼洒到一片区域。 -->
+    <graphicData>
+      <texPath>Rukaya/Weapon/Rukaya_AssaultRifleGrenade</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <WorkToMake>47000</WorkToMake>
+      <Mass>5.1</Mass>
+      <AccuracyTouch>0.57</AccuracyTouch>
+      <AccuracyShort>0.74</AccuracyShort>
+      <AccuracyMedium>0.68</AccuracyMedium>
+      <AccuracyLong>0.58</AccuracyLong>
+      <RangedWeapon_Cooldown>2.15</RangedWeapon_Cooldown>
+    </statBases>
+    <costList>
+      <Rukaya_ActiveMatterContainer>20</Rukaya_ActiveMatterContainer>
+    </costList>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_Rukaya_AssaultRifle</defaultProjectile>
+        <warmupTime>1.2</warmupTime>
+        <range>31.9</range>
+        <burstShotCount>3</burstShotCount>
+        <ticksBetweenBurstShots>10</ticksBetweenBurstShots>
+        <soundCast>Shot_AssaultRifle</soundCast>
+        <soundCastTail>GunTail_Medium</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+    </verbs>
+    <weaponTags>
+      <li>Rukaya_T2_Ranged</li>
+    </weaponTags>
+    <comps>
+      <li Class="CompProperties_EquippableAbilityReloadable">
+        <abilityDef>Rukaya_AssaultRifleGrenade_SignalFlare</abilityDef>
+        <maxCharges>2</maxCharges>
+        <soundReload>Standard_Reload</soundReload>
+        <chargeNoun>signal flare</chargeNoun>
+        <!-- 中文：信号弹 -->
+        <cooldownGerund>cooling down</cooldownGerund>
+        <!-- 中文：冷却中 -->
+        <ammoDef>Rukaya_ActiveMatterContainer</ammoDef>
+        <ammoCountToRefill>1</ammoCountToRefill>
+        <baseReloadTicks>90</baseReloadTicks>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="Rukaya_BaseLongGun">
+    <defName>Rukaya_AssaultRifleFlame</defName>
+    <label>Rukaya assault rifle (flamethrower)</label>
+    <!-- 中文：卢卡娅突击步枪（喷火） -->
+    <description>A modified assault rifle with a compact burner unit integrated under the handguard. It sacrifices some balance and rifle elegance in exchange for a short-ranged burst of burning fuel that can forcibly ignite the ground, making it excellent for siege fighting, room clearing, and flushing defenders out of cover.</description>
+    <!-- 中文翻译：一把在护木下方整合了紧凑喷火模块的改装突击步枪。它牺牲了一部分平衡性和步枪本身的简洁性，换来一次短射程的燃烧燃料喷发，能够强行点燃地面，非常适合围攻战、室内清剿，以及把防守者从掩体后面逼出来。 -->
+    <graphicData>
+      <texPath>Rukaya/Weapon/Rukaya_AssaultRifleFlame</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <WorkToMake>47000</WorkToMake>
+      <Mass>5.0</Mass>
+      <AccuracyTouch>0.56</AccuracyTouch>
+      <AccuracyShort>0.72</AccuracyShort>
+      <AccuracyMedium>0.66</AccuracyMedium>
+      <AccuracyLong>0.54</AccuracyLong>
+      <RangedWeapon_Cooldown>2.2</RangedWeapon_Cooldown>
+    </statBases>
+    <costList>
+      <Rukaya_ActiveMatterContainer>20</Rukaya_ActiveMatterContainer>
+    </costList>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_Rukaya_AssaultRifle</defaultProjectile>
+        <warmupTime>1.2</warmupTime>
+        <range>30.9</range>
+        <burstShotCount>3</burstShotCount>
+        <ticksBetweenBurstShots>10</ticksBetweenBurstShots>
+        <soundCast>Shot_AssaultRifle</soundCast>
+        <soundCastTail>GunTail_Medium</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+    </verbs>
+    <weaponTags>
+      <li>Rukaya_T2_Ranged</li>
+    </weaponTags>
+    <comps>
+      <li Class="CompProperties_EquippableAbilityReloadable">
+        <abilityDef>Rukaya_AssaultRifleFlame_Burner</abilityDef>
+        <maxCharges>2</maxCharges>
+        <soundReload>Standard_Reload</soundReload>
+        <chargeNoun>burner fuel</chargeNoun>
+        <!-- 中文：喷火剂 -->
+        <cooldownGerund>cooling down</cooldownGerund>
+        <!-- 中文：冷却中 -->
+        <ammoDef>Rukaya_ActiveMatterContainer</ammoDef>
+        <ammoCountToRefill>1</ammoCountToRefill>
+        <baseReloadTicks>90</baseReloadTicks>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="Rukaya_BaseLongGun">
+    <defName>Rukaya_AssaultRifleRadar</defName>
+    <label>Rukaya assault rifle (radar)</label>
+    <!-- 中文：卢卡娅突击步枪（雷达） -->
+    <description>A command-pattern assault rifle built around an enlarged sensor package and synchronized targeting suite. It takes longer to settle into a shot than a standard rifle, but once it does, it delivers notably tighter fire and can designate a target for the whole squad.</description>
+    <!-- 中文翻译：一把围绕加大型传感器组件与同步火控套件构建的指挥型号突击步枪。它比标准步枪需要更久的举枪稳定时间，但一旦完成瞄准，便能打出明显更紧密的弹着，并可为整支小队指定集火目标。 -->
+    <graphicData>
+      <texPath>Rukaya/Weapon/Rukaya_AssaultRifleRadar</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <WorkToMake>50000</WorkToMake>
+      <Mass>5.35</Mass>
+      <AccuracyTouch>0.62</AccuracyTouch>
+      <AccuracyShort>0.84</AccuracyShort>
+      <AccuracyMedium>0.82</AccuracyMedium>
+      <AccuracyLong>0.72</AccuracyLong>
+      <RangedWeapon_Cooldown>2.35</RangedWeapon_Cooldown>
+    </statBases>
+    <costList>
+      <Rukaya_ActiveMatterContainer>22</Rukaya_ActiveMatterContainer>
+    </costList>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_Rukaya_AssaultRifle</defaultProjectile>
+        <warmupTime>1.7</warmupTime>
+        <range>34.9</range>
+        <burstShotCount>3</burstShotCount>
+        <ticksBetweenBurstShots>10</ticksBetweenBurstShots>
+        <soundCast>Shot_AssaultRifle</soundCast>
+        <soundCastTail>GunTail_Medium</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+    </verbs>
+    <weaponTags>
+      <li>Rukaya_T2_Ranged</li>
+    </weaponTags>
+    <comps>
+      <li Class="CompProperties_EquippableAbilityReloadable">
+        <abilityDef>Rukaya_AssaultRifleRadar_ScanPulse</abilityDef>
+        <maxCharges>2</maxCharges>
+        <soundReload>Standard_Reload</soundReload>
+        <chargeNoun>scan pulse</chargeNoun>
+        <!-- 中文：扫描脉冲 -->
+        <cooldownGerund>recharging</cooldownGerund>
+        <!-- 中文：充能中 -->
+        <ammoDef>Rukaya_ActiveMatterContainer</ammoDef>
+        <ammoCountToRefill>1</ammoCountToRefill>
+        <baseReloadTicks>90</baseReloadTicks>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="Rukaya_BaseLongGun">
+    <defName>Rukaya_AirburstRocket</defName>
+    <label>Rukaya airburst rocket launcher</label>
+    <!-- 中文：卢卡娅三联空爆发射器 -->
+    <description>A rugged triple-tube launcher built for militia fire teams. It throws a slow, inaccurate salvo of compact rockets over cover, trading precision and reload speed for enough blast pressure to break up grouped attackers.</description>
+    <!-- 中文翻译：一具为民兵火力组打造的粗犷三联发射器。它能越过掩体投射缓慢且不够精确的小型火箭齐射，以精度和装填速度换取足以驱散集群进攻者的爆压。 -->
+    <graphicData>
+      <texPath>Rukaya/Weapon/Rukaya_AirburstRocket</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <WorkToMake>42000</WorkToMake>
+      <Mass>6.8</Mass>
+      <AccuracyTouch>0.42</AccuracyTouch>
+      <AccuracyShort>0.48</AccuracyShort>
+      <AccuracyMedium>0.38</AccuracyMedium>
+      <AccuracyLong>0.24</AccuracyLong>
+      <RangedWeapon_Cooldown>4.6</RangedWeapon_Cooldown>
+    </statBases>
+    <costList>
+      <Steel>110</Steel>
+      <ComponentIndustrial>6</ComponentIndustrial>
+    </costList>
+    <verbs>
+      <li>
+        <label>launch rocket salvo</label>
+        <!-- 中文：发射火箭齐射 -->
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Rukaya_Rocket_Projectile</defaultProjectile>
+        <warmupTime>3.4</warmupTime>
+        <range>31.9</range>
+        <forcedMissRadius>2.2</forcedMissRadius>
+        <burstShotCount>3</burstShotCount>
+        <ticksBetweenBurstShots>22</ticksBetweenBurstShots>
+        <soundCast>InfernoCannon_Fire</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>14</muzzleFlashScale>
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+      </li>
+    </verbs>
+    <weaponClasses>
+      <li>RangedHeavy</li>
+    </weaponClasses>
+    <weaponTags>
+      <li>Rukaya_T1_Ranged</li>
+    </weaponTags>
+  </ThingDef>
+
+  <ThingDef ParentName="Rukaya_BaseActiveMatterLongGun">
+    <defName>Rukaya_PlasmaShotgun</defName>
+    <label>Rukaya plasma shotgun</label>
+    <!-- 中文：卢卡娅等离子霰弹枪 -->
+    <description>A close-assault plasma projector built around a broad dispersal chamber. It hurls a dense wave of superheated particles that tears through soft targets and cover at short range, but the spread falls off quickly once the fight opens up.</description>
+    <!-- 中文翻译：一把围绕宽幅扩散腔构建的近距离突击等离子投射器。它能在短距离内抛出一股高密度超高温粒子流，撕开轻甲目标并压制掩体后方，但随着交战距离拉长，散布衰减也会迅速变得明显。
+未充能时，它会一次喷出三发等离子散射束；充能模式则改为单发高压射击，单发命中后会附带更强的压制冲击、更大的爆炸范围与更高的伤害。 -->
+    <graphicData>
+      <texPath>Rukaya/Weapon/Rukaya_PlasmaShotgun</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <WorkToMake>70000</WorkToMake>
+      <Mass>5.6</Mass>
+      <AccuracyTouch>0.72</AccuracyTouch>
+      <AccuracyShort>0.52</AccuracyShort>
+      <AccuracyMedium>0.22</AccuracyMedium>
+      <AccuracyLong>0.04</AccuracyLong>
+      <RangedWeapon_Cooldown>2.8</RangedWeapon_Cooldown>
+    </statBases>
+    <costList>
+      <Rukaya_ActiveMatterContainer>28</Rukaya_ActiveMatterContainer>
+      <ComponentSpacer>3</ComponentSpacer>
+    </costList>
+    <verbs>
+      <li>
+        <label>fire plasma scatter</label>
+        <!-- 中文：发射等离子散射束 -->
+        <verbClass>RukayaRace.Weapons.Verb_RukayaModeSwitchShoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_Rukaya_PlasmaShotgun</defaultProjectile>
+        <warmupTime>1.4</warmupTime>
+        <range>17.9</range>
+        <burstShotCount>3</burstShotCount>
+        <ticksBetweenBurstShots>2</ticksBetweenBurstShots>
+        <soundCast>Shot_Shotgun</soundCast>
+        <soundCastTail>GunTail_Medium</soundCastTail>
+        <muzzleFlashScale>11</muzzleFlashScale>
+      </li>
+    </verbs>
+    <weaponClasses>
+      <li>RangedHeavy</li>
+      <li>ShortShots</li>
+    </weaponClasses>
+    <weaponTags>
+      <li>Rukaya_T3_Ranged</li>
+    </weaponTags>
+    <comps>
+      <li Class="RukayaRace.Weapons.CompProperties_RukayaActiveMatterWeapon">
+        <activeMatterThingDef>Rukaya_ActiveMatterContainer</activeMatterThingDef>
+        <normalProjectile>Bullet_Rukaya_PlasmaShotgun</normalProjectile>
+        <activeProjectile>Bullet_Rukaya_PlasmaShotgun_Charged</activeProjectile>
+        <unitsPerContainer>15</unitsPerContainer>
+        <maxCapacity>45</maxCapacity>
+        <defaultLoad>15</defaultLoad>
+        <activeCostPerUse>2</activeCostPerUse>
+        <aiModePolicy>CloseOrArmored</aiModePolicy>
+        <aiInitialLoadContainers>1</aiInitialLoadContainers>
+        <aiCarryContainers>1</aiCarryContainers>
+        <aiFriendlyFireRadius>3.0</aiFriendlyFireRadius>
+        <explosionBaseDamage>18</explosionBaseDamage>
+        <explosionDamagePerUnit>1.0</explosionDamagePerUnit>
+        <explosionMaxDamage>70</explosionMaxDamage>
+        <explosionBaseRadius>1.3</explosionBaseRadius>
+        <explosionRadiusPerUnit>0.03</explosionRadiusPerUnit>
+        <explosionMaxRadius>3.0</explosionMaxRadius>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="Rukaya_BaseActiveMatterLongGun">
+    <defName>Rukaya_PlasmaRailgun</defName>
+    <label>Rukaya plasma railgun</label>
+    <!-- 中文：卢卡娅等离子狙击枪 -->
+    <description>A precision long gun that magnetically accelerates a plasma-sheathed penetrator. Its firing cycle is deliberate and power-hungry, but each shot reaches deep into armor and stays dangerous far beyond the distances where ordinary rifles begin to fail.
+
+Each shot resolves instantly in a blue-white plasma pulse, leaving a luminous beam that fades along its path and a bright impact flash. Active matter mode increases direct-hit damage and armor penetration.</description>
+    <!-- 中文翻译：一把以磁轨加速等离子包覆穿透体的精密长枪。它的射击循环缓慢且能耗很高，但每一发都能深深钻入护甲，并在普通步枪开始失效的超远距离上维持危险的终端威力。
+每一发都以蓝白色等离子脉冲瞬时命中，沿射击路径留下逐渐消退的明亮光束，并在命中点迸发闪光。活性物质模式会提高直击伤害与穿甲能力。 -->
+    <graphicData>
+      <texPath>Rukaya/Weapon/Rukaya_PlasmaRailgun</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <WorkToMake>88000</WorkToMake>
+      <Mass>6.4</Mass>
+      <AccuracyTouch>0.68</AccuracyTouch>
+      <AccuracyShort>0.9</AccuracyShort>
+      <AccuracyMedium>0.96</AccuracyMedium>
+      <AccuracyLong>0.92</AccuracyLong>
+      <RangedWeapon_Cooldown>3.3</RangedWeapon_Cooldown>
+    </statBases>
+    <costList>
+      <Rukaya_ActiveMatterContainer>34</Rukaya_ActiveMatterContainer>
+      <ComponentSpacer>5</ComponentSpacer>
+    </costList>
+    <verbs>
+      <li>
+        <verbClass>RukayaRace.Weapons.Verb_RukayaActiveMatterShoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_Rukaya_PlasmaRailgun</defaultProjectile>
+        <warmupTime>3.4</warmupTime>
+        <range>44.9</range>
+        <soundCast>Shot_BoltActionRifle</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>10</muzzleFlashScale>
+      </li>
+    </verbs>
+    <weaponClasses>
+      <li>Ranged</li>
+      <li>LongShots</li>
+    </weaponClasses>
+    <weaponTags>
+      <li>Rukaya_T3_Ranged</li>
+    </weaponTags>
+    <comps>
+      <li Class="RukayaRace.Weapons.CompProperties_RukayaActiveMatterWeapon">
+        <activeMatterThingDef>Rukaya_ActiveMatterContainer</activeMatterThingDef>
+        <normalProjectile>Bullet_Rukaya_PlasmaRailgun</normalProjectile>
+        <activeProjectile>Bullet_Rukaya_PlasmaRailgun_Charged</activeProjectile>
+        <unitsPerContainer>15</unitsPerContainer>
+        <maxCapacity>45</maxCapacity>
+        <defaultLoad>15</defaultLoad>
+        <activeCostPerUse>3</activeCostPerUse>
+        <aiModePolicy>ArmoredOrGrouped</aiModePolicy>
+        <aiInitialLoadContainers>1</aiInitialLoadContainers>
+        <aiCarryContainers>1</aiCarryContainers>
+        <explosionBaseDamage>12</explosionBaseDamage>
+        <explosionDamagePerUnit>0.8</explosionDamagePerUnit>
+        <explosionMaxDamage>54</explosionMaxDamage>
+        <explosionBaseRadius>1.0</explosionBaseRadius>
+        <explosionRadiusPerUnit>0.025</explosionRadiusPerUnit>
+        <explosionMaxRadius>2.6</explosionMaxRadius>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="Rukaya_BaseActiveMatterLongGun">
+    <defName>Rukaya_LaserRifle</defName>
+    <label>Rukaya laser rifle</label>
+    <!-- 中文：卢卡娅激光步枪 -->
+    <description>A line rifle that trades raw projectile mass for tightly collimated thermal pulses. Its beams lose little coherence in ordinary infantry engagement envelopes, making it a dependable mid-range weapon against exposed troops and lightly protected targets.</description>
+    <!-- 中文翻译：一把以高度准直热脉冲取代传统弹丸质量的制式长枪。在普通步兵交战距离内，它的光束几乎不会明显发散，因此对于暴露人员与轻防护目标来说，是一种非常稳定的中距离主战武器。 -->
+    <graphicData>
+      <texPath>Rukaya/Weapon/Rukaya_LaserRifle</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <WorkToMake>76000</WorkToMake>
+      <Mass>4.9</Mass>
+      <AccuracyTouch>0.62</AccuracyTouch>
+      <AccuracyShort>0.84</AccuracyShort>
+      <AccuracyMedium>0.88</AccuracyMedium>
+      <AccuracyLong>0.76</AccuracyLong>
+      <RangedWeapon_Cooldown>2.0</RangedWeapon_Cooldown>
+    </statBases>
+    <costList>
+      <Rukaya_ActiveMatterContainer>30</Rukaya_ActiveMatterContainer>
+      <ComponentSpacer>4</ComponentSpacer>
+    </costList>
+    <verbs>
+      <li>
+        <verbClass>RukayaRace.Weapons.Verb_RukayaActiveMatterShoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_Rukaya_LaserRifle</defaultProjectile>
+        <warmupTime>1.6</warmupTime>
+        <range>35.9</range>
+        <burstShotCount>3</burstShotCount>
+        <ticksBetweenBurstShots>7</ticksBetweenBurstShots>
+        <soundCast>Shot_AssaultRifle</soundCast>
+        <soundCastTail>GunTail_Medium</soundCastTail>
+        <muzzleFlashScale>10</muzzleFlashScale>
+      </li>
+    </verbs>
+    <weaponTags>
+      <li>Rukaya_T3_Ranged</li>
+    </weaponTags>
+    <comps>
+      <li Class="RukayaRace.Weapons.CompProperties_RukayaActiveMatterWeapon">
+        <activeMatterThingDef>Rukaya_ActiveMatterContainer</activeMatterThingDef>
+        <normalProjectile>Bullet_Rukaya_LaserRifle</normalProjectile>
+        <activeProjectile>Bullet_Rukaya_LaserRifle_Active</activeProjectile>
+        <unitsPerContainer>15</unitsPerContainer>
+        <maxCapacity>45</maxCapacity>
+        <defaultLoad>15</defaultLoad>
+        <activeCostPerUse>2</activeCostPerUse>
+        <aiModePolicy>ArmoredOrGrouped</aiModePolicy>
+        <aiInitialLoadContainers>1</aiInitialLoadContainers>
+        <aiCarryContainers>1</aiCarryContainers>
+        <explosionBaseDamage>12</explosionBaseDamage>
+        <explosionDamagePerUnit>0.7</explosionDamagePerUnit>
+        <explosionMaxDamage>48</explosionMaxDamage>
+        <explosionBaseRadius>1.0</explosionBaseRadius>
+        <explosionRadiusPerUnit>0.02</explosionRadiusPerUnit>
+        <explosionMaxRadius>2.3</explosionMaxRadius>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="Rukaya_BaseActiveMatterSidearm">
+    <defName>Rukaya_SmartRevolver</defName>
+    <label>Rukaya smart revolver</label>
+    <!-- 中文：卢卡娅自瞄卡宾手枪 -->
+    <description>A high-end sidearm fitted with a compact predictive sighting package. The weapon still fires from a revolver pattern for reliability, but its fire-control assistance makes it unnervingly quick to settle on a target and unusually accurate for something this small. Rounds that connect tend to be guided onto the head, and when fed active matter each shot is overdriven to strike harder with tighter aim, a faster cycle, and longer reach.</description>
+    <!-- 中文翻译：一把安装了紧凑预测瞄准组件的高端副武器。它依旧沿用左轮结构来保证可靠性，但火控辅助让它能够以反常的速度咬住目标，并在这种体量下打出异常优秀的命中精度。命中的弹丸大多会被导引向头部；灌注活性物质后，每一发都会被过载驱动，造成更高的伤害、更稳的瞄准、更快的射击循环与更远的射程。 -->
+    <graphicData>
+      <texPath>Rukaya/Weapon/Rukaya_SmartRevolver</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <WorkToMake>58000</WorkToMake>
+      <Mass>1.9</Mass>
+      <AccuracyTouch>0.92</AccuracyTouch>
+      <AccuracyShort>0.95</AccuracyShort>
+      <AccuracyMedium>0.9</AccuracyMedium>
+      <AccuracyLong>0.75</AccuracyLong>
+      <RangedWeapon_Cooldown>1.1</RangedWeapon_Cooldown>
+    </statBases>
+    <costList>
+      <Rukaya_ActiveMatterContainer>18</Rukaya_ActiveMatterContainer>
+      <ComponentSpacer>3</ComponentSpacer>
+    </costList>
+    <verbs>
+      <li>
+        <verbClass>RukayaRace.Weapons.Verb_RukayaOverchargeShoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_Rukaya_SmartRevolver</defaultProjectile>
+        <warmupTime>0.22</warmupTime>
+        <range>34.9</range>
+        <burstShotCount>3</burstShotCount>
+        <ticksBetweenBurstShots>5</ticksBetweenBurstShots>
+        <soundCast>Shot_Revolver</soundCast>
+        <soundCastTail>GunTail_Light</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+    </verbs>
+    <weaponTags>
+      <li>Rukaya_T3_Ranged</li>
+    </weaponTags>
+    <comps>
+      <li Class="RukayaRace.Weapons.CompProperties_RukayaActiveMatterWeapon">
+        <activeMatterThingDef>Rukaya_ActiveMatterContainer</activeMatterThingDef>
+        <normalProjectile>Bullet_Rukaya_SmartRevolver</normalProjectile>
+        <activeProjectile>Bullet_Rukaya_SmartRevolver_Charged</activeProjectile>
+        <headshotChance>0.7</headshotChance>
+        <activeAccuracyFactor>1.5</activeAccuracyFactor>
+        <activeWarmupMultiplier>0.55</activeWarmupMultiplier>
+        <activeCooldownMultiplier>0.55</activeCooldownMultiplier>
+        <activeRangeMultiplier>1.4</activeRangeMultiplier>
+        <unitsPerContainer>15</unitsPerContainer>
+        <maxCapacity>30</maxCapacity>
+        <defaultLoad>15</defaultLoad>
+        <activeCostPerUse>1</activeCostPerUse>
+        <aiModePolicy>CloseOrArmored</aiModePolicy>
+        <aiInitialLoadContainers>1</aiInitialLoadContainers>
+        <aiCarryContainers>1</aiCarryContainers>
+        <explosionBaseDamage>10</explosionBaseDamage>
+        <explosionDamagePerUnit>0.6</explosionDamagePerUnit>
+        <explosionMaxDamage>32</explosionMaxDamage>
+        <explosionBaseRadius>0.8</explosionBaseRadius>
+        <explosionRadiusPerUnit>0.018</explosionRadiusPerUnit>
+        <explosionMaxRadius>1.5</explosionMaxRadius>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="Rukaya_BaseActiveMatterLongGun">
+    <defName>Rukaya_ATGMLauncher</defName>
+    <label>Rukaya ATGM launcher</label>
+    <!-- 中文：卢卡娅肩扛导弹发射器 -->
+    <description>A shoulder-launched anti-armor guided missile frame issued to heavy infantry and ambush teams. Its operator must hold the sightline after launch, walking the missile onto the target by command-line guidance. With a clear view and no smoke interference, the missile corrects onto its mark; radar-locked targets are struck with a sharper armor-piercing attack.
+
+Active matter mode loads a charged missile that streaks to its mark at far higher speed. On impact the warhead douses the blast zone in burning fuel and releases an electric surge that chains through every hostile still standing nearby.</description>
+    <!-- 中文翻译：一具配发给重步兵与伏击小组的肩射反装甲导弹发射器。发射后，操作者必须持续保持瞄准线，通过指令线制导将导弹引向目标。在视线清晰且没有烟雾干扰时，导弹会修正到目标上；被雷达锁定的目标会遭受穿甲能力更强的打击。
+活性物质模式会装填充能导弹，以高得多的速度直扑目标。命中时弹头会向冲击区泼洒燃烧燃料，并释放一道电涌，连锁扫过周围仍站立的所有敌对单位。 -->
+    <graphicData>
+      <texPath>Rukaya/Weapon/Rukaya_ATGMLauncher</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1.4,1.4)</drawSize>
+    </graphicData>
+    <statBases>
+      <WorkToMake>92000</WorkToMake>
+      <Mass>10.5</Mass>
+      <AccuracyTouch>0.54</AccuracyTouch>
+      <AccuracyShort>0.6</AccuracyShort>
+      <AccuracyMedium>0.54</AccuracyMedium>
+      <AccuracyLong>0.4</AccuracyLong>
+      <RangedWeapon_Cooldown>5.1</RangedWeapon_Cooldown>
+    </statBases>
+    <equippedStatOffsets>
+      <MoveSpeed>-0.2</MoveSpeed>
+      <AimingDelayFactor>0.25</AimingDelayFactor>
+    </equippedStatOffsets>
+    <costList>
+      <Rukaya_ActiveMatterContainer>36</Rukaya_ActiveMatterContainer>
+      <ComponentSpacer>5</ComponentSpacer>
+    </costList>
+    <verbs>
+      <li>
+        <label>launch anti-armor missile</label>
+        <!-- 中文：发射反装甲导弹 -->
+        <verbClass>RukayaRace.Weapons.Verb_RukayaActiveMatterShoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Rukaya_ATGM_Projectile</defaultProjectile>
+        <warmupTime>3.5</warmupTime>
+        <range>33.9</range>
+        <forcedMissRadius>1.1</forcedMissRadius>
+        <soundCast>InfernoCannon_Fire</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>16</muzzleFlashScale>
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+      </li>
+    </verbs>
+    <weaponClasses>
+      <li>RangedHeavy</li>
+    </weaponClasses>
+    <weaponTags>
+      <li>Rukaya_T3_Ranged</li>
+    </weaponTags>
+    <comps>
+      <li Class="RukayaRace.Weapons.CompProperties_RukayaActiveMatterWeapon">
+        <activeMatterThingDef>Rukaya_ActiveMatterContainer</activeMatterThingDef>
+        <normalProjectile>Rukaya_ATGM_Projectile</normalProjectile>
+        <activeProjectile>Rukaya_ATGM_Projectile_Charged</activeProjectile>
+        <unitsPerContainer>15</unitsPerContainer>
+        <maxCapacity>30</maxCapacity>
+        <defaultLoad>15</defaultLoad>
+        <activeCostPerUse>3</activeCostPerUse>
+        <aiModePolicy>ArmoredOrGrouped</aiModePolicy>
+        <aiInitialLoadContainers>1</aiInitialLoadContainers>
+        <aiCarryContainers>1</aiCarryContainers>
+        <aiFriendlyFireRadius>6.5</aiFriendlyFireRadius>
+        <explosionBaseDamage>14</explosionBaseDamage>
+        <explosionDamagePerUnit>0.85</explosionDamagePerUnit>
+        <explosionMaxDamage>60</explosionMaxDamage>
+        <explosionBaseRadius>1.1</explosionBaseRadius>
+        <explosionRadiusPerUnit>0.028</explosionRadiusPerUnit>
+        <explosionMaxRadius>2.8</explosionMaxRadius>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="Rukaya_BaseActiveMatterLongGun">
+    <defName>Rukaya_AutoCannon</defName>
+    <label>Rukaya autocannon</label>
+    <!-- 中文：卢卡娅单兵机炮 -->
+    <description>A man-portable autocannon built for brutal direct support rather than graceful marksmanship. Every burst is expensive, loud, and physically punishing to carry into position, but the weapon answers with heavy shells that shred hard cover and overwhelm anything caught in the open.</description>
+    <!-- 中文翻译：一门为粗暴直射支援而非优雅射击打造的人携式机炮。它的每次点射都代价高昂、声势惊人，携行时也极其折磨人，但作为交换，它能用沉重炮弹撕碎坚固掩体，并压垮一切暴露在火线中的目标。 -->
+    <graphicData>
+      <texPath>Rukaya/Weapon/Rukaya_AutoCannon</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1.6,1.6)</drawSize>
+    </graphicData>
+    <equippedAngleOffset>45</equippedAngleOffset>
+    <statBases>
+      <WorkToMake>98000</WorkToMake>
+      <Mass>11.4</Mass>
+      <AccuracyTouch>0.5</AccuracyTouch>
+      <AccuracyShort>0.6</AccuracyShort>
+      <AccuracyMedium>0.5</AccuracyMedium>
+      <AccuracyLong>0.34</AccuracyLong>
+      <RangedWeapon_Cooldown>3.7</RangedWeapon_Cooldown>
+    </statBases>
+    <equippedStatOffsets>
+      <MoveSpeed>-0.28</MoveSpeed>
+      <AimingDelayFactor>0.3</AimingDelayFactor>
+    </equippedStatOffsets>
+    <costList>
+      <Rukaya_ActiveMatterContainer>38</Rukaya_ActiveMatterContainer>
+      <ComponentSpacer>6</ComponentSpacer>
+    </costList>
+    <verbs>
+      <li>
+        <label>fire autocannon burst</label>
+        <!-- 中文：发射机炮点射 -->
+        <verbClass>RukayaRace.Weapons.Verb_RukayaActiveMatterShoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_Rukaya_AutoCannon</defaultProjectile>
+        <warmupTime>2.7</warmupTime>
+        <range>31.9</range>
+        <burstShotCount>2</burstShotCount>
+        <ticksBetweenBurstShots>12</ticksBetweenBurstShots>
+        <soundCast>Shot_Minigun</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>13</muzzleFlashScale>
+      </li>
+    </verbs>
+    <weaponClasses>
+      <li>RangedHeavy</li>
+    </weaponClasses>
+    <weaponTags>
+      <li>Rukaya_T3_Ranged</li>
+    </weaponTags>
+    <comps>
+      <li Class="RukayaRace.Weapons.CompProperties_RukayaActiveMatterWeapon">
+        <activeMatterThingDef>Rukaya_ActiveMatterContainer</activeMatterThingDef>
+        <normalProjectile>Bullet_Rukaya_AutoCannon</normalProjectile>
+        <activeProjectile>Rukaya_AutoCannon_FlechetteShell</activeProjectile>
+        <unitsPerContainer>15</unitsPerContainer>
+        <maxCapacity>45</maxCapacity>
+        <defaultLoad>15</defaultLoad>
+        <activeCostPerUse>3</activeCostPerUse>
+        <aiModePolicy>ArmoredOrGrouped</aiModePolicy>
+        <aiInitialLoadContainers>1</aiInitialLoadContainers>
+        <aiCarryContainers>1</aiCarryContainers>
+        <aiFriendlyFireRadius>6.0</aiFriendlyFireRadius>
+        <explosionBaseDamage>14</explosionBaseDamage>
+        <explosionDamagePerUnit>0.8</explosionDamagePerUnit>
+        <explosionMaxDamage>56</explosionMaxDamage>
+        <explosionBaseRadius>1.0</explosionBaseRadius>
+        <explosionRadiusPerUnit>0.025</explosionRadiusPerUnit>
+        <explosionMaxRadius>2.6</explosionMaxRadius>
+      </li>
+    </comps>
+  </ThingDef>
+
+
+  <!-- ==================== 彩蛋武器 ==================== -->
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_Rukaya_Phantom</defName>
+    <label>phantom venom arrow</label>
+    <!-- 中文：魅影毒箭 -->
+    <thingClass>RukayaRace.Projectiles.Projectile_RukayaPhantomBolt</thingClass>
+    <graphicData>
+      <texPath>Things/Projectile/Arrow_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <color>(170,255,170)</color>
+    </graphicData>
+    <modExtensions>
+      <li Class="RukayaRace.Projectiles.RukayaPhantomProjectileExtension">
+        <hediffDef>Rukaya_PhantomToxin</hediffDef>
+        <severity>0.35</severity>
+      </li>
+    </modExtensions>
+    <projectile>
+      <damageDef>Arrow</damageDef>
+      <damageAmountBase>18</damageAmountBase>
+      <armorPenetrationBase>0.25</armorPenetrationBase>
+      <stoppingPower>1.2</stoppingPower>
+      <speed>50</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_Rukaya_Peacekeeper</defName>
+    <label>peacekeeper rifle round</label>
+    <!-- 中文：维和者步枪弹 -->
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_big</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>22</damageAmountBase>
+      <armorPenetrationBase>0.38</armorPenetrationBase>
+      <stoppingPower>1.7</stoppingPower>
+      <speed>78</speed>
+    </projectile>
+  </ThingDef>
+
+  <HediffDef>
+    <defName>Rukaya_PhantomToxin</defName>
+    <label>phantom toxin</label>
+    <!-- 中文：魅影毒素 -->
+    <description>A creeping toxin delivered by a phantom arrow. It dulls the senses and saps coordination until the body purges it.</description>
+    <!-- 中文翻译：由魅影箭注入的侵蚀性毒素。它会削弱感官与协调能力，直到身体将其代谢排除。 -->
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.5,1,0.5)</defaultLabelColor>
+    <initialSeverity>0.2</initialSeverity>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>1800</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <minSeverity>0.0</minSeverity>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.03</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.03</offset>
+          </li>
+        </capMods>
+      </li>
+      <li>
+        <minSeverity>0.25</minSeverity>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.08</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.08</offset>
+          </li>
+        </capMods>
+        <statFactors>
+          <ShootingAccuracyPawn>0.92</ShootingAccuracyPawn>
+          <MeleeDodgeChance>0.9</MeleeDodgeChance>
+        </statFactors>
+      </li>
+      <li>
+        <minSeverity>0.5</minSeverity>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.15</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.15</offset>
+          </li>
+        </capMods>
+        <statFactors>
+          <ShootingAccuracyPawn>0.8</ShootingAccuracyPawn>
+          <MeleeDodgeChance>0.75</MeleeDodgeChance>
+        </statFactors>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <AbilityDef>
+    <defName>Rukaya_Prototype_SmokeGrenade</defName>
+    <label>launch smoke shell</label>
+    <!-- 中文：发射烟雾弹 -->
+    <description>Launch a smoke shell from the prototype's underbarrel magazine. It releases a standard cloud of blind smoke on impact, blocking turret targeting and reducing incoming fire accuracy.</description>
+    <!-- 中文翻译：从原型步枪的下挂弹仓发射一枚烟雾弹。命中后会释放标准的致盲烟幕，阻断炮塔锁定并降低来袭火力精度。 -->
+    <iconPath>Rukaya/Weapon/Rukaya_Prototype</iconPath>
+    <aiCanUse>true</aiCanUse>
+    <showOnCharacterCard>false</showOnCharacterCard>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <requireLineOfSight>true</requireLineOfSight>
+      <range>26.9</range>
+      <warmupTime>0.6</warmupTime>
+      <soundCast>ThrowGrenade</soundCast>
+      <targetParams>
+        <canTargetLocations>true</canTargetLocations>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="CompProperties_AbilityLaunchProjectile">
+        <projectileDef>Bullet_SmokeLauncher</projectileDef>
+      </li>
+    </comps>
+  </AbilityDef>
+
+  <ThingDef ParentName="Rukaya_BaseRangedWeapon">
+    <defName>Rukaya_Phantom</defName>
+    <label>Phantom</label>
+    <!-- 中文：魅影弓 -->
+    <description>A slender composite bow whose arrows carry a slow-acting toxin. The Phantom does not throw the heaviest shot, but a single clean hit leaves its mark in the target's blood long after the arrow itself is forgotten.</description>
+    <!-- 中文翻译：一把纤细的复合弓，箭矢携带缓慢发作的毒素。魅影的箭不是最沉重的一击，但只要干净命中，毒素就会在目标血液里留下远比箭矢本身更持久的印记。 -->
+    <graphicData>
+      <texPath>Rukaya/Weapon/Rukaya_Phantom</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <soundInteract>Bow_Recurve</soundInteract>
+    <statBases>
+      <WorkToMake>72000</WorkToMake>
+      <Mass>2.2</Mass>
+      <AccuracyTouch>0.82</AccuracyTouch>
+      <AccuracyShort>0.92</AccuracyShort>
+      <AccuracyMedium>0.88</AccuracyMedium>
+      <AccuracyLong>0.7</AccuracyLong>
+      <RangedWeapon_Cooldown>2.3</RangedWeapon_Cooldown>
+    </statBases>
+    <costList>
+      <Steel>40</Steel>
+      <ComponentSpacer>2</ComponentSpacer>
+      <Rukaya_ActiveMatterContainer>12</Rukaya_ActiveMatterContainer>
+    </costList>
+    <verbs>
+      <li>
+        <label>loose phantom arrow</label>
+        <!-- 中文：射出魅影毒箭 -->
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_Rukaya_Phantom</defaultProjectile>
+        <warmupTime>1.5</warmupTime>
+        <range>30.9</range>
+        <soundCast>Bow_Recurve</soundCast>
+      </li>
+    </verbs>
+    <weaponClasses>
+      <li>Ranged</li>
+      <li>RangedLight</li>
+    </weaponClasses>
+    <tools>
+      <li>
+        <label>limb</label>
+        <!-- 中文：弓臂 -->
+        <capacities>
+          <li>Blunt</li>
+          <li>Poke</li>
+        </capacities>
+        <power>8</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+
+  <ThingDef ParentName="Rukaya_BaseSidearm">
+    <defName>Rukaya_Peacekeeper</defName>
+    <label>Peacekeeper</label>
+    <!-- 中文：维和者 -->
+    <description>A massive six-shot revolver built around a full-power rifle cartridge. Its cylinder cycles six rounds in a single hammering string, and every round hits with rifle-grade force. The price is weight, recoil, and a firing cycle that takes a moment to settle.</description>
+    <!-- 中文翻译：一把围绕全威力步枪弹打造的大型六发左轮手枪。它的弹巢会在一串凶猛连射中打空全部六发，而每一发都具备步枪级的杀伤力。代价是重量、后坐力，以及需要片刻才能重新稳定的射击循环。 -->
+    <graphicData>
+      <texPath>Rukaya/Weapon/Rukaya_Peacekeeper</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <WorkToMake>88000</WorkToMake>
+      <Mass>3.6</Mass>
+      <AccuracyTouch>0.72</AccuracyTouch>
+      <AccuracyShort>0.84</AccuracyShort>
+      <AccuracyMedium>0.78</AccuracyMedium>
+      <AccuracyLong>0.58</AccuracyLong>
+      <RangedWeapon_Cooldown>3.1</RangedWeapon_Cooldown>
+    </statBases>
+    <costList>
+      <Rukaya_ActiveMatterContainer>28</Rukaya_ActiveMatterContainer>
+      <ComponentSpacer>4</ComponentSpacer>
+    </costList>
+    <verbs>
+      <li>
+        <label>fire six-round burst</label>
+        <!-- 中文：六连发射击 -->
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_Rukaya_Peacekeeper</defaultProjectile>
+        <warmupTime>0.45</warmupTime>
+        <range>30.9</range>
+        <burstShotCount>6</burstShotCount>
+        <ticksBetweenBurstShots>8</ticksBetweenBurstShots>
+        <soundCast>Shot_Revolver</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>11</muzzleFlashScale>
+      </li>
+    </verbs>
+  </ThingDef>
+
+  <ThingDef ParentName="Rukaya_BaseLongGun">
+    <defName>Rukaya_Prototype</defName>
+    <label>Prototype assault rifle</label>
+    <!-- 中文：原型 -->
+    <description>An experimental assault rifle that pairs a conventional Rukaya rifle action with an underbarrel five-round smoke shell magazine. Its primary fire is dependable and familiar, while the auxiliary magazine lets a soldier lay down standard smoke cover without leaving the firing line.</description>
+    <!-- 中文翻译：一把实验型突击步枪，将常规卢卡娅步枪结构与下挂式五发烟雾弹弹仓结合。主射击稳定而熟悉，辅助弹仓则让士兵无需离开火线即可布设标准烟幕掩蔽。 -->
+    <graphicData>
+      <texPath>Rukaya/Weapon/Rukaya_Prototype</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <WorkToMake>86000</WorkToMake>
+      <Mass>5.4</Mass>
+      <AccuracyTouch>0.6</AccuracyTouch>
+      <AccuracyShort>0.8</AccuracyShort>
+      <AccuracyMedium>0.76</AccuracyMedium>
+      <AccuracyLong>0.68</AccuracyLong>
+      <RangedWeapon_Cooldown>2.15</RangedWeapon_Cooldown>
+    </statBases>
+    <costList>
+      <Rukaya_ActiveMatterContainer>32</Rukaya_ActiveMatterContainer>
+      <ComponentSpacer>5</ComponentSpacer>
+    </costList>
+    <verbs>
+      <li>
+        <label>fire prototype burst</label>
+        <!-- 中文：原型步枪点射 -->
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_Rukaya_AssaultRifle</defaultProjectile>
+        <warmupTime>1.3</warmupTime>
+        <range>34.9</range>
+        <burstShotCount>3</burstShotCount>
+        <ticksBetweenBurstShots>10</ticksBetweenBurstShots>
+        <soundCast>Shot_AssaultRifle</soundCast>
+        <soundCastTail>GunTail_Medium</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+    </verbs>
+    <weaponClasses>
+      <li>Ranged</li>
+      <li>RangedLight</li>
+    </weaponClasses>
+    <comps>
+      <li Class="CompProperties_EquippableAbilityReloadable">
+        <abilityDef>Rukaya_Prototype_SmokeGrenade</abilityDef>
+        <maxCharges>5</maxCharges>
+        <soundReload>Standard_Reload</soundReload>
+        <chargeNoun>smoke shell</chargeNoun>
+        <!-- 中文：烟雾弹 -->
+        <cooldownGerund>reloading</cooldownGerund>
+        <!-- 中文：装填中 -->
+        <ammoDef>Shell_Smoke</ammoDef>
+        <ammoCountToRefill>1</ammoCountToRefill>
+        <baseReloadTicks>150</baseReloadTicks>
+      </li>
+    </comps>
+  </ThingDef>
+
+</Defs>

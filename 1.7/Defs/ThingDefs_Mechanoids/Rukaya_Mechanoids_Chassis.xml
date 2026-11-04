@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ============================================================
+       Rukaya 机械体（Mechanoids）· 底盘层
+       贴图：Content/Textures/Rukaya/Mechanoids/Rukaya_MechBase_{east,north,south}.png
+             炮塔贴图：Rukaya_MechTurret{Base,Rocket,Laser,MachineCannon,MineSweeper,Missile,Mortar,Plasma}.png
+       推进方式：螺旋推进车（screw-propelled），左右两具螺旋推进筒
+       结构参考：Milira「caterpillar」的部件组成与数值
+       炮塔：原版 Biotech CompProperties_TurretGun（无外部框架依赖）
+       武器数值：暂套用原版 Centipede blaster 主武器 Gun_ChargeBlasterHeavy
+       制造：LargeMechGestator（大型机械培育舱）— 由公共父配方的 recipeUsers 显式挂载
+       ============================================================ -->
+
+  <!-- 底盘本体。七个炮塔变体（Rukaya_MechChassis_*）全部继承自此抽象层。 -->
+  <ThingDef Name="Rukaya_BaseMechChassis" ParentName="BaseMechanoid" Abstract="True">
+    <thingClass>Pawn</thingClass>
+    <label>Rukaya mechanoid chassis</label>
+    <!-- 中文：卢卡娅机械底盘 -->
+    <description>A screw-propelled Rukaya ordnance platform. Twin screw drums let it crawl over mud, snow and
+      broken ground that would stall a wheeled hull, while the low-power drive train carries a heavy turret ring
+      and an electro-optical sensor pod. The whole upper structure is a modular mount, so a single chassis pattern
+      can be fitted with laser, cannon, missile or mortar turrets. Dedicated mechanoids built on it each carry a
+      single specialised turret assembly.</description>
+    <!-- 中文翻译：一种螺旋推进式卢卡娅军械平台。双螺旋推进筒使它能够爬过会让轮式车体瘫痪的泥沼、积雪与破碎地形，
+         而低功耗传动系统则同时承载着重型炮塔环与光电探头。整个上部结构均为模块化挂载点，因此同一底盘模板
+         可以换装激光、机炮、导弹或迫击炮炮塔。以此为基础发展的专用机械体各自只搭载一组专属炮塔组件。 -->
+    <statBases>
+      <MoveSpeed>1.9</MoveSpeed>
+      <ArmorRating_Blunt>0.22</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.72</ArmorRating_Sharp>
+      <ArmorRating_Heat>2</ArmorRating_Heat>
+      <PsychicSensitivity>0.75</PsychicSensitivity>
+      <BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">4</BandwidthCost>
+      <ControlTakingTime MayRequire="Ludeon.RimWorld.Biotech">12</ControlTakingTime>
+      <MechEnergyLossPerHP MayRequire="Ludeon.RimWorld.Biotech">0.2</MechEnergyLossPerHP>
+      <WastepacksPerRecharge MayRequire="Ludeon.RimWorld.Biotech">4</WastepacksPerRecharge>
+      <WorkSpeedGlobal MayRequire="Ludeon.RimWorld.Biotech">0.5</WorkSpeedGlobal>
+      <CarryingCapacity>200</CarryingCapacity>
+      <!-- 螺旋推进平台的特色就是用電低，並且被攻擊不減速 -->
+      <StaggerDurationFactor>0</StaggerDurationFactor>
+      <MechEnergyUsageFactor>0.5</MechEnergyUsageFactor>
+    </statBases>
+    <race>
+      <intelligence>ToolUser</intelligence>
+      <thinkTreeMain>Mechanoid</thinkTreeMain>
+      <renderTree>Misc</renderTree>
+      <body>Rukaya_MechanoidChassis</body>
+      <baseBodySize>3.0</baseBodySize>
+      <baseHealthScale>4.32</baseHealthScale>
+      <mechWeightClass>Heavy</mechWeightClass>
+      <!-- 生命阶段必须与 Rukaya_BaseMechanoidKind 的 lifeStages 数量一致
+           （装 Biotech 时两边各 2 条，未装时两边各 1 条），
+           结构与原版 Centipede 的 race 相同。 -->
+      <lifeStageAges>
+        <li>
+          <def>MechanoidFullyFormed</def>
+          <minAge>0</minAge>
+        </li>
+        <li MayRequire="Ludeon.RimWorld.Biotech">
+          <def>MechanoidFullyFormed</def>
+          <minAge>100</minAge>
+        </li>
+      </lifeStageAges>
+    </race>
+    <tools>
+      <li>
+        <label>ram plate</label>
+        <!-- 中文：撞角挡板 -->
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>17</power>
+        <cooldownTime>2.6</cooldownTime>
+        <linkedBodyPartsGroup>Rukaya_TurretMount</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+      </li>
+    </tools>
+    <butcherProducts>
+      <Steel>30</Steel>
+      <Plasteel>10</Plasteel>
+    </butcherProducts>
+    <!-- 休眠、监管者、维修组件由 BaseMechanoid 继承，不能再次追加。 -->
+  </ThingDef>
+
+  <!-- ============================================================
+       七个炮塔变体：底盘数值完全一致，仅挂载炮塔与炮塔贴图不同。
+
+       —— 炮塔渲染参数说明（调整炮塔显示只需动下面这几个值）——
+
+       angleOffset
+           炮塔贴图的"正前方"与 AngleFlat 基准之间的夹角。
+           AngleFlat 的约定是 0° = 正北(+Z)、90° = 正东(+X)，渲染时按顺时针旋转，
+           所以"未旋转"状态下贴图的画面正上方 = 正北。
+           贴图若画成朝右（正东），必须写 -90 才能与瞄准方向一致。
+           原版 Mech_Centurion / Mech_Warqueen / Mech_Diabolus 全部写 -90，
+           本 mod 7 张炮塔贴图同样都是"炮管朝右"，故统一 -90。
+           该项只影响显示，不影响命中判定与弹道。
+
+       overrideMeshSize
+           炮塔 mesh 的尺寸（单位：格）。512×512 的炮塔贴图会铺满这个尺寸。
+           底盘由 PawnKindDef 的 lifeStages.bodyGraphicData.drawSize = 3 决定为 3 格，
+           这里同样取 (3, 3)，使炮塔与底盘共用同一画布尺度（渲染尺寸一致）。
+           要单独放大/缩小某个炮塔，只改这一行：
+               mesh 边长 = 期望的显示宽度(格) × 512 ÷ 贴图内不透明内容的像素宽
+
+       drawData.pivot
+           (0.5,0.5) 即贴图几何中心，也是旋转轴心与挂载锚点。
+           贴图请把"炮塔环圆心"画在 512×512 画布的正中心。
+
+       drawData.data* → offset
+           **一律不写（= 0）。** 底盘贴图中心就是小人的 DrawPos，也正是炮塔渲染的原点；
+           底盘贴图与炮塔贴图都把炮塔环圆心画在各自 512² 画布的正中心，
+           所以只有偏移为 0，炮塔环才会与底盘上的环心重合。
+           （历史上那套 0.1 / -0.2 / 0.35 是照着旧美术手工调的，2026-10-10 清掉：
+            它会让炮塔整体偏离贴图中心 —— 北向最明显，0.35 格 ≈ 60px。改动记录见
+            设计文档/防空系统_合并记录与资产台账.md §4.5。）
+           唯一保留的是 dataWest 的 rotationOffset 180：西向贴图由东向贴图水平翻转而来，
+           少这一行炮口就会指向东。
+
+       —— 实时微调方法：开发者模式 → 调试菜单 Pawns → View render tree（对机械体使用），
+          面板里可直接拖 Offset X/Z、Layer、Angle、Scale，调好后把数值抄回这里。 ——
+       ============================================================ -->
+
+  <!-- 激光型：聚焦发射器 -->
+  <ThingDef ParentName="Rukaya_BaseMechChassis">
+    <defName>Rukaya_MechChassis_Laser</defName>
+    <label>卢卡娅通用机械“激光型”</label>
+    <!-- 中文：卢卡娅通用机械“激光型” -->
+    <description>A dedicated mechanoid developed from the standard Rukaya mechanoid chassis. Its turret ring carries a focused
+      emitter that pours a continuous stream of charged light into a target area. The emitter can be switched to an
+      anti-air mode, turning its beam skyward against flying targets.</description>
+    <!-- 中文翻译：基于标准的卢卡娅机械底盘发展的专用机械体。其炮塔环上搭载一座聚焦发射器，向目标区域倾泻持续的充能光束。该发射器可切换至对空模式，将光束转向天空拦截飞行目标。 -->
+    <comps>
+      <li Class="RukayaRace.Weapons.CompProperties_RukayaLaserHeat">
+        <heatPerGroundShot>10</heatPerGroundShot>
+        <heatPerAirShot>20</heatPerAirShot>
+        <maxHeat>100</maxHeat>
+        <coolingPerTick>0.2</coolingPerTick>
+        <resumeHeat>25</resumeHeat>
+      </li>
+      <li Class="RukayaRace.Weapons.CompProperties_RukayaMechTurretGun">
+        <turretDef>Rukaya_MechWeapon_Laser</turretDef>
+        <retainTargetBetweenBursts>true</retainTargetBetweenBursts>
+        <angleOffset>-90</angleOffset>
+        <autoAttack>true</autoAttack>
+        <renderNodeProperties>
+          <li>
+            <debugLabel>turret</debugLabel>
+            <nodeClass>PawnRenderNode_TurretGun</nodeClass>
+            <workerClass>PawnRenderNodeWorker_TurretGun</workerClass>
+            <parentTagDef>Body</parentTagDef>
+            <overrideMeshSize>(3, 3)</overrideMeshSize>
+            <baseLayer>20</baseLayer>
+            <pawnType>Any</pawnType>
+            <drawData>
+              <defaultData>
+                <pivot>(0.5,0.5)</pivot>
+              </defaultData>
+              <dataWest>
+                <rotationOffset>180</rotationOffset>
+              </dataWest>
+            </drawData>
+          </li>
+        </renderNodeProperties>
+      </li>
+      <!-- 对空炮座（"对空吊舱"）。**必须排在上面那门地面炮之后**：
+           Pawn.TryGetAttackVerb 取 comps 里第一个 CompTurretGun 的 verb，
+           顺序排反会让机械体的"攻击"指到这把只打空中目标的炮上（ConfigErrors 会拦下来）。
+
+           接线口径：宿主已经有地面炮（上面的 CompProperties_TurretGun），所以本组件自动进入
+           载体模式——它按 turretDef 造**自己那把**对空炮，不碰地面那门炮的 verb 与 burst；
+           炮塔贴图仍由地面炮的渲染节点绘制（本组件不提供 renderNodeProperties，否则同一底盘会
+           画出两层炮塔），对空交战时由 Patch_PawnTurretGun_RotationFor_RukayaAirAim 把贴图
+           扳向空中目标——所以这里的 angleOffset 必须与地面炮一致（-90）。 -->
+      <li Class="RukayaRace.AirDefense.CompProperties_RukayaSkyInterceptor">
+        <turretDef>Rukaya_MechWeapon_LaserAA</turretDef>
+        <angleOffset>-90</angleOffset>
+        <autoAttack>true</autoAttack>
+        <airModeOnDefault>true</airModeOnDefault>
+        <!-- 新造出来的机械体默认开着对空模式；玩家可在它自己的「启用对空模式」开关里随时关掉。 -->
+        <allowedCategories>DropPods, OverheadProjectiles</allowedCategories>
+        <!-- 默认拦两类：敌方**空投仓**（DropPods）与**越顶炮击弹**（迫击炮弹一类，
+             Projectile.flyOverhead = true）。陨石/落石（NaturalSkyfallers）与飞行物不在其中：
+             需求方指定激光型只反空降与反炮兵、不反陨石。要改拦截面只改这一行（英文逗号分隔）。 -->
+        <airDefenseRange>35</airDefenseRange>
+        <!-- 35格绿圈仅限制炮弹/飞行物；类别允许的空投仓与陨石全图拦截。 -->
+        <targetDefWhitelist />
+        <targetDefBlacklist />
+        <scanIntervalTicks>3</scanIntervalTicks>
+        <interceptBlastRadius>4</interceptBlastRadius>
+        <!-- 普通目标半径4格、最多2个次级目标；空投仓半径8格、最多5个次级目标。
+             一轮激光连发只结算首发，其余光束为视觉延续，共享热量只计一次。 -->
+        <maxSecondaryTargets>2</maxSecondaryTargets>
+        <instantBeam>true</instantBeam>
+        <!-- 激光型：不生成飞行弹体，直接画一道瞬时拦截光束（光束外观取自
+             Bullet_Rukaya_MechAA_Laser 上的 RukayaLaserBeamExtension）。 -->
+      </li>
+    </comps>
+  </ThingDef>
+
+  <!-- 机炮型：高射速自动机炮 -->
+  <ThingDef ParentName="Rukaya_BaseMechChassis">
+    <defName>Rukaya_MechChassis_MachineCannon</defName>
+    <label>卢卡娅通用机械“机炮型”</label>
+    <!-- 中文：卢卡娅通用机械“机炮型” -->
+    <description>A dedicated mechanoid developed from the standard Rukaya mechanoid chassis. Its turret ring carries a high-rate
+      autocannon for close support work against clustered infantry. The mount can be switched to an anti-air mode
+      against flying targets.</description>
+    <!-- 中文翻译：基于标准的卢卡娅机械底盘发展的专用机械体。其炮塔环上搭载一门高射速自动机炮，用于对集结的步兵提供近距支援。该炮座可切换至对空模式，用于拦截飞行目标。 -->
+    <comps>
+      <li Class="RukayaRace.Weapons.CompProperties_RukayaMechTurretGun">
+        <turretDef>Rukaya_MechWeapon_MachineCannon</turretDef>
+        <angleOffset>-90</angleOffset>
+        <autoAttack>true</autoAttack>
+        <renderNodeProperties>
+          <li>
+            <debugLabel>turret</debugLabel>
+            <nodeClass>PawnRenderNode_TurretGun</nodeClass>
+            <workerClass>PawnRenderNodeWorker_TurretGun</workerClass>
+            <parentTagDef>Body</parentTagDef>
+            <overrideMeshSize>(3, 3)</overrideMeshSize>
+            <baseLayer>20</baseLayer>
+            <pawnType>Any</pawnType>
+            <drawData>
+              <defaultData>
+                <pivot>(0.5,0.5)</pivot>
+              </defaultData>
+              <dataWest>
+                <rotationOffset>180</rotationOffset>
+              </dataWest>
+            </drawData>
+          </li>
+        </renderNodeProperties>
+      </li>
+      <!-- 对空炮座（"对空吊舱"）：接线与激光型完全一致（见激光型那段注释）。 -->
+      <li Class="RukayaRace.AirDefense.CompProperties_RukayaSkyInterceptor">
+        <turretDef>Rukaya_MechWeapon_MachineCannonAA</turretDef>
+        <angleOffset>-90</angleOffset>
+        <autoAttack>true</autoAttack>
+        <airModeOnDefault>true</airModeOnDefault>
+        <allowedCategories>DropPods, OverheadProjectiles</allowedCategories>
+        <!-- 机炮型拦截敌方空投仓与越顶炮击弹，不反陨石。 -->
+        <airDefenseRange>35</airDefenseRange>
+        <targetDefWhitelist />
+        <targetDefBlacklist />
+        <scanIntervalTicks>3</scanIntervalTicks>
+        <interceptBlastRadius>4</interceptBlastRadius>
+        <maxSecondaryTargets>2</maxSecondaryTargets>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <!-- 扫雷索型：近距清障抛撒索 -->
+  <ThingDef ParentName="Rukaya_BaseMechChassis">
+    <defName>Rukaya_MechChassis_MineSweeper</defName>
+    <label>卢卡娅通用机械“扫雷索型”</label>
+    <!-- 中文：卢卡娅通用机械“扫雷索型” -->
+    <description>A dedicated mechanoid developed from the standard Rukaya mechanoid chassis. Its turret ring carries a sweeping
+      rig that fires a mine-clearing line charge: a rocket arcs over cover to the target point and spools a string of
+      demolition charges out behind it, blowing a hole at the far end and then rolling a series of detonations back down the
+      whole lane.</description>
+    <!-- 中文翻译：基于标准的卢卡娅机械底盘发展的专用机械体。其炮塔环上搭载一套扫雷索具：一枚火箭越过掩体飞向目标点，一路上在身后拖放出一串爆破装药，先在通路尽头炸开一个口子，再顺着整条通路依次引爆下去。 -->
+    <comps>
+      <li Class="RukayaRace.Weapons.CompProperties_RukayaMechTurretGun">
+        <turretDef>Rukaya_MechWeapon_MineSweeper</turretDef>
+        <angleOffset>-90</angleOffset>
+        <autoAttack>true</autoAttack>
+        <renderNodeProperties>
+          <li>
+            <debugLabel>turret</debugLabel>
+            <nodeClass>PawnRenderNode_TurretGun</nodeClass>
+            <workerClass>PawnRenderNodeWorker_TurretGun</workerClass>
+            <parentTagDef>Body</parentTagDef>
+            <overrideMeshSize>(3, 3)</overrideMeshSize>
+            <baseLayer>20</baseLayer>
+            <pawnType>Any</pawnType>
+            <drawData>
+              <defaultData>
+                <pivot>(0.5,0.5)</pivot>
+              </defaultData>
+              <dataWest>
+                <rotationOffset>180</rotationOffset>
+              </dataWest>
+            </drawData>
+          </li>
+        </renderNodeProperties>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <!-- 导弹型：箱式制导发射巢 -->
+  <ThingDef ParentName="Rukaya_BaseMechChassis">
+    <defName>Rukaya_MechChassis_SAMLauncher</defName>
+    <label>卢卡娅通用机械“导弹型”</label>
+    <!-- 中文：卢卡娅通用机械“导弹型” -->
+    <description>A dedicated mechanoid developed from the standard Rukaya mechanoid chassis. Its turret ring carries a guided-missile launcher that fires one warhead at a time. Each missile climbs over cover and is then guided onto the target. An independent anti-air mount intercepts incoming aerial threats.</description>
+    <!-- 中文翻译：基于标准的卢卡娅机械底盘发展的专用机械体。其炮塔环上搭载一座每次发射一枚战斗部的制导导弹发射器。每枚导弹先爬升翻越掩体，随后被引导到目标上。独立的对空炮座负责拦截来袭空中威胁。 -->
+    <comps>
+      <li Class="RukayaRace.Weapons.CompProperties_RukayaMechTurretGun">
+        <turretDef>Rukaya_MechWeapon_SAMLauncher</turretDef>
+        <angleOffset>-90</angleOffset>
+        <autoAttack>true</autoAttack>
+        <renderNodeProperties>
+          <li>
+            <debugLabel>turret</debugLabel>
+            <nodeClass>PawnRenderNode_TurretGun</nodeClass>
+            <workerClass>PawnRenderNodeWorker_TurretGun</workerClass>
+            <parentTagDef>Body</parentTagDef>
+            <overrideMeshSize>(3, 3)</overrideMeshSize>
+            <baseLayer>20</baseLayer>
+            <pawnType>Any</pawnType>
+            <drawData>
+              <defaultData>
+                <pivot>(0.5,0.5)</pivot>
+              </defaultData>
+              <dataWest>
+                <rotationOffset>180</rotationOffset>
+              </dataWest>
+            </drawData>
+          </li>
+        </renderNodeProperties>
+      </li>
+      <!-- 对空炮座（"对空吊舱"）：接线与激光型完全一致（见激光型那段注释）。 -->
+      <li Class="RukayaRace.AirDefense.CompProperties_RukayaSkyInterceptor">
+        <turretDef>Rukaya_MechWeapon_SAMLauncherAA</turretDef>
+        <angleOffset>-90</angleOffset>
+        <autoAttack>true</autoAttack>
+        <airModeOnDefault>true</airModeOnDefault>
+        <allowedCategories>DropPods, NaturalSkyfallers</allowedCategories>
+        <!-- 只拦**空投仓与陨石/落石**，**不拦越顶炮击弹（迫击炮弹）**：
+             需求方指定导弹型专职反空降与反陨石。 -->
+        <airDefenseRange>35</airDefenseRange>
+        <targetDefWhitelist />
+        <targetDefBlacklist />
+        <scanIntervalTicks>3</scanIntervalTicks>
+        <interceptBlastRadius>4</interceptBlastRadius>
+        <maxSecondaryTargets>0</maxSecondaryTargets>
+        <airMagazineCapacity>4</airMagazineCapacity>
+        <magazineReloadTicks>360</magazineReloadTicks>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <!-- 迫击炮型：机动火炮 -->
+  <ThingDef ParentName="Rukaya_BaseMechChassis">
+    <defName>Rukaya_MechChassis_Mortar</defName>
+    <label>卢卡娅通用机械“迫击炮型”</label>
+    <!-- 中文：卢卡娅通用机械“迫击炮型” -->
+    <description>A dedicated mechanoid developed from the standard Rukaya mechanoid chassis. Its turret ring carries a mobile
+      artillery piece whose shells fly on a high arcing trajectory, so it can walk its fire onto fortified
+      positions from beyond return range.</description>
+    <!-- 中文翻译：基于标准的卢卡娅机械底盘发展的专用机械体。其炮塔环上搭载一门机动火炮，炮弹以高抛越顶弹道飞行，因此能在敌方射程之外将火力逐步压制到设防阵地上。 -->
+    <comps>
+      <li Class="RukayaRace.Weapons.CompProperties_RukayaMechTurretGun">
+        <turretDef>Rukaya_MechWeapon_Mortar</turretDef>
+        <angleOffset>-90</angleOffset>
+        <autoAttack>true</autoAttack>
+        <renderNodeProperties>
+          <li>
+            <debugLabel>turret</debugLabel>
+            <nodeClass>PawnRenderNode_TurretGun</nodeClass>
+            <workerClass>PawnRenderNodeWorker_TurretGun</workerClass>
+            <parentTagDef>Body</parentTagDef>
+            <overrideMeshSize>(3, 3)</overrideMeshSize>
+            <baseLayer>20</baseLayer>
+            <pawnType>Any</pawnType>
+            <drawData>
+              <defaultData>
+                <pivot>(0.5,0.5)</pivot>
+              </defaultData>
+              <dataWest>
+                <rotationOffset>180</rotationOffset>
+              </dataWest>
+            </drawData>
+          </li>
+        </renderNodeProperties>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <!-- 等离子型：活性物质投射器 -->
+  <ThingDef ParentName="Rukaya_BaseMechChassis">
+    <defName>Rukaya_MechChassis_Plasma</defName>
+    <label>卢卡娅通用机械“等离子型”</label>
+    <!-- 中文：卢卡娅通用机械“等离子型” -->
+    <description>A dedicated mechanoid developed from the standard Rukaya mechanoid chassis. Its turret ring carries an
+      active-matter plasma projector that burns through armour and ignites whatever survives.</description>
+    <!-- 中文翻译：基于标准的卢卡娅机械底盘发展的专用机械体。其炮塔环上搭载一座活性物质等离子投射器，能够烧穿装甲并点燃一切残存目标。 -->
+    <comps>
+      <li Class="RukayaRace.Weapons.CompProperties_RukayaMechTurretGun">
+        <turretDef>Rukaya_MechWeapon_Plasma</turretDef>
+        <angleOffset>-90</angleOffset>
+        <autoAttack>true</autoAttack>
+        <renderNodeProperties>
+          <li>
+            <debugLabel>turret</debugLabel>
+            <nodeClass>PawnRenderNode_TurretGun</nodeClass>
+            <workerClass>PawnRenderNodeWorker_TurretGun</workerClass>
+            <parentTagDef>Body</parentTagDef>
+            <overrideMeshSize>(3, 3)</overrideMeshSize>
+            <baseLayer>20</baseLayer>
+            <pawnType>Any</pawnType>
+            <drawData>
+              <defaultData>
+                <pivot>(0.5,0.5)</pivot>
+              </defaultData>
+              <dataWest>
+                <rotationOffset>180</rotationOffset>
+              </dataWest>
+            </drawData>
+          </li>
+        </renderNodeProperties>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <!-- 火箭型：多管火箭发射巢（主型号，炮塔武器数值完全等同 Centipede blaster 主武器） -->
+  <ThingDef ParentName="Rukaya_BaseMechChassis">
+    <defName>Rukaya_MechChassis_Rocket</defName>
+    <label>卢卡娅通用机械“火箭型”</label>
+    <!-- 中文：卢卡娅通用机械“火箭型” -->
+    <description>A dedicated mechanoid developed from the standard Rukaya mechanoid chassis. Its turret ring carries a multi-tube
+      rocket launcher that throws a short ripple of direct-fire high-explosive rockets; the tubes then need a long while to be
+      re-stacked and re-keyed.</description>
+    <!-- 中文翻译：基于标准的卢卡娅机械底盘发展的专用机械体。其炮塔环上搭载一组多管火箭发射巢，会打出一轮短促的直射高爆火箭齐射；之后发射管需要很长时间才能重新装填并上药。 -->
+    <comps>
+      <li Class="RukayaRace.Weapons.CompProperties_RukayaMechTurretGun">
+        <turretDef>Rukaya_MechWeapon_Rocket</turretDef>
+        <angleOffset>-90</angleOffset>
+        <autoAttack>true</autoAttack>
+        <renderNodeProperties>
+          <li>
+            <debugLabel>turret</debugLabel>
+            <nodeClass>PawnRenderNode_TurretGun</nodeClass>
+            <workerClass>PawnRenderNodeWorker_TurretGun</workerClass>
+            <parentTagDef>Body</parentTagDef>
+            <overrideMeshSize>(3, 3)</overrideMeshSize>
+            <baseLayer>20</baseLayer>
+            <pawnType>Any</pawnType>
+            <drawData>
+              <defaultData>
+                <pivot>(0.5,0.5)</pivot>
+              </defaultData>
+              <dataWest>
+                <rotationOffset>180</rotationOffset>
+              </dataWest>
+            </drawData>
+          </li>
+        </renderNodeProperties>
+      </li>
+    </comps>
+  </ThingDef>
+
+</Defs>

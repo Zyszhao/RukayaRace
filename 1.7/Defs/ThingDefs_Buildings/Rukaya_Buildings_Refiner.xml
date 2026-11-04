@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>Rukaya_Refiner</defName>
+    <label>active matter refiner</label>
+    <!-- 中文：活性物质精炼器 -->
+    <description>A dedicated Rukaya refining unit that continuously stabilizes and condenses trace active matter into sealed containers. It is slow, power-hungry, and intended for steady industrial output rather than field expedience.</description>
+    <!-- 中文翻译：一台专用于卢卡娅活性物质提炼的装置，会持续稳定并浓缩微量活性物质，将其封装进密封容器中。它运转缓慢、耗电较高，定位是稳定工业产出，而非野战应急设备。 -->
+    <thingClass>Building</thingClass>
+    <category>Building</category>
+    <altitudeLayer>Building</altitudeLayer>
+    <graphicData>
+      <texPath>Rukaya/Building/Rukaya_Refiner/Rukaya_Refiner</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(7.6,7.6)</drawSize>
+      <drawOffset>(0,0,0.55)</drawOffset>
+      <shadowData>
+        <volume>(2.1, 1.5, 0.2)</volume>
+        <offset>(0.0, 0.0, -0.35)</offset>
+      </shadowData>
+    </graphicData>
+    <size>(3,3)</size>
+    <drawerType>MapMeshOnly</drawerType>
+    <fillPercent>1</fillPercent>
+    <canOverlapZones>false</canOverlapZones>
+    <castEdgeShadows>true</castEdgeShadows>
+    <filthLeaving>Filth_RubbleBuilding</filthLeaving>
+    <passability>Impassable</passability>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <designationCategory>Rukaya_Buildings</designationCategory>
+    <designationHotKey>Misc12</designationHotKey>
+    <researchPrerequisites>
+      <li>Rukaya_ActiveMatterRefining</li>
+    </researchPrerequisites>
+    <constructEffect>ConstructMetal</constructEffect>
+    <repairEffect>Repair</repairEffect>
+    <leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsProduction</li>
+    </thingCategories>
+    <selectable>true</selectable>
+    <useHitPoints>true</useHitPoints>
+    <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+    <staticSunShadowHeight>0</staticSunShadowHeight>
+    <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+    <costList>
+      <Steel>380</Steel>
+      <ComponentIndustrial>8</ComponentIndustrial>
+    </costList>
+    <building>
+      <buildingTags>
+        <li>Production</li>
+      </buildingTags>
+      <destroySound>BuildingDestroyed_Metal_Big</destroySound>
+    </building>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>300</basePowerConsumption>
+        <shortCircuitInRain>true</shortCircuitInRain>
+      </li>
+      <li Class="CompProperties_Breakdownable"></li>
+      <li Class="CompProperties_Flickable"></li>
+      <li Class="CompProperties_Spawner">
+        <requiresPower>true</requiresPower>
+        <thingToSpawn>Rukaya_ActiveMatterContainer</thingToSpawn>
+        <spawnCount>2</spawnCount>
+        <spawnIntervalRange>
+          <min>60000</min>
+          <max>60000</max>
+        </spawnIntervalRange>
+        <writeTimeLeftToSpawn>true</writeTimeLeftToSpawn>
+        <showMessageIfOwned>true</showMessageIfOwned>
+      </li>
+      <li Class="CompProperties_Explosive">
+        <explosiveRadius>4.9</explosiveRadius>
+        <explosiveDamageType>Flame</explosiveDamageType>
+      </li>
+    </comps>
+    <statBases>
+      <SellPriceFactor>0.7</SellPriceFactor>
+      <MarketValue>1400</MarketValue>
+      <Mass>35</Mass>
+      <MaxHitPoints>260</MaxHitPoints>
+      <WorkToBuild>7200</WorkToBuild>
+      <Flammability>1</Flammability>
+      <Beauty>-8</Beauty>
+    </statBases>
+    <tickerType>Normal</tickerType>
+    <uiOrder>2526</uiOrder>
+  </ThingDef>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>Rukaya_AdvancedRefiner</defName>
+    <label>advanced active matter refiner</label>
+    <!-- 中文：高级活性物质精炼器 -->
+    <description>A large Rukaya geothermal refining plant built directly over a steam geyser. When properly seated on the vent, it draws deep thermal energy into its stabilizers, producing active matter containers at industrial scale while supplying surplus power to the grid.</description>
+    <!-- 中文翻译：一座直接建在蒸汽喷口上的大型卢卡娅地热精炼厂。正确覆盖喷口后，它会把深层热能导入稳定器，以工业规模产出活性物质容器，并向电网供应剩余电力。 -->
+    <thingClass>Building</thingClass>
+    <category>Building</category>
+    <altitudeLayer>Building</altitudeLayer>
+    <blockLight>true</blockLight>
+    <blockWind>true</blockWind>
+    <graphicData>
+      <texPath>Rukaya/Building/Rukaya_AdvancedRefiner/Rukaya_AdvancedRefiner</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(6,6)</drawSize>
+      <drawOffset>(0,0,0.30)</drawOffset>
+      <shadowData>
+        <volume>(6.03, 1.0, 5.25)</volume>
+        <offset>(0, 0, -0.25)</offset>
+      </shadowData>
+      <damageData>
+        <rect>(0.3,0,5.4,6)</rect>
+      </damageData>
+    </graphicData>
+    <size>(6,6)</size>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <fillPercent>1</fillPercent>
+    <canOverlapZones>false</canOverlapZones>
+    <castEdgeShadows>true</castEdgeShadows>
+    <filthLeaving>Filth_RubbleBuilding</filthLeaving>
+    <passability>Impassable</passability>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <designationCategory>Rukaya_Buildings</designationCategory>
+    <designationHotKey>Misc6</designationHotKey>
+    <researchPrerequisites>
+      <li>Rukaya_ActiveMatterRefining_II</li>
+      <li>GeothermalPower</li>
+    </researchPrerequisites>
+    <placeWorkers>
+      <li>PlaceWorker_OnSteamGeyser</li>
+      <li>PlaceWorker_InvalidOverSubstructure</li>
+    </placeWorkers>
+    <rotatable>false</rotatable>
+    <scatterableOnMapGen>false</scatterableOnMapGen>
+    <constructEffect>ConstructMetal</constructEffect>
+    <repairEffect>Repair</repairEffect>
+    <leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsProduction</li>
+    </thingCategories>
+    <selectable>true</selectable>
+    <useHitPoints>true</useHitPoints>
+    <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+    <staticSunShadowHeight>0</staticSunShadowHeight>
+    <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+    <costList>
+      <Steel>680</Steel>
+      <ComponentIndustrial>14</ComponentIndustrial>
+      <ComponentSpacer>2</ComponentSpacer>
+    </costList>
+    <building>
+      <buildingTags>
+        <li>Production</li>
+      </buildingTags>
+      <destroySound>BuildingDestroyed_Metal_Big</destroySound>
+    </building>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerPlantSteam</compClass>
+        <basePowerConsumption>-1500</basePowerConsumption>
+        <transmitsPower>true</transmitsPower>
+      </li>
+      <li Class="CompProperties_Breakdownable"></li>
+      <li Class="CompProperties_Stunnable">
+        <useLargeEMPEffecter>true</useLargeEMPEffecter>
+        <empChancePerTick>0.7</empChancePerTick>
+        <affectedDamageDefs>
+          <li>EMP</li>
+        </affectedDamageDefs>
+      </li>
+      <li Class="CompProperties_AmbientSound">
+        <sound>GeothermalPlant_Ambience</sound>
+        <disabledOnUnpowered>true</disabledOnUnpowered>
+      </li>
+      <li Class="CompProperties_Spawner">
+        <requiresPower>true</requiresPower>
+        <thingToSpawn>Rukaya_ActiveMatterContainer</thingToSpawn>
+        <spawnCount>10</spawnCount>
+        <spawnIntervalRange>
+          <min>60000</min>
+          <max>60000</max>
+        </spawnIntervalRange>
+        <writeTimeLeftToSpawn>true</writeTimeLeftToSpawn>
+        <showMessageIfOwned>true</showMessageIfOwned>
+      </li>
+      <li Class="CompProperties_Explosive">
+        <explosiveRadius>6.9</explosiveRadius>
+        <explosiveDamageType>Flame</explosiveDamageType>
+      </li>
+    </comps>
+    <statBases>
+      <SellPriceFactor>0.7</SellPriceFactor>
+      <MarketValue>3200</MarketValue>
+      <Mass>80</Mass>
+      <MaxHitPoints>500</MaxHitPoints>
+      <WorkToBuild>12000</WorkToBuild>
+      <Flammability>0.5</Flammability>
+      <Beauty>-30</Beauty>
+    </statBases>
+    <tickerType>Normal</tickerType>
+    <uiOrder>2111</uiOrder>
+  </ThingDef>
+
+</Defs>

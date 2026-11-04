@@ -1,0 +1,13 @@
+<Defs>
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>Rukaya_PlasmaImpactFlash</defName>
+    <graphicData>
+      <texPath>Things/Mote/LightningGlow</texPath>
+      <shaderType>MoteGlow</shaderType>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.04</fadeInTime>
+    <solidTime>0.16</solidTime>
+    <fadeOutTime>0.48</fadeOutTime>
+  </FleckDef>
+</Defs>

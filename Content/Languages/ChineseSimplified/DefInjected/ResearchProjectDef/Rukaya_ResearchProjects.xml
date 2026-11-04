@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Rukaya_ActiveMatterRefining.label>活性物质提炼</Rukaya_ActiveMatterRefining.label>
+  <Rukaya_ActiveMatterRefining.description>对活性物质的稳定、处理与提炼方法研究，将使卢卡娅更先进的工业体系重新运作。</Rukaya_ActiveMatterRefining.description>
+  <Rukaya_Tech_End.label>结束了吗？</Rukaya_Tech_End.label>
+  <Rukaya_Tech_End.description>卢卡娅已重建工业、装备与机械体生产的基础，完成了第一阶段的重建。</Rukaya_Tech_End.description>
+  <Rukaya_Apparel_I.label>卢卡娅简易衣物</Rukaya_Apparel_I.label>
+  <Rukaya_Apparel_I.description>适配卢卡娅体型的基础裁缝版型，使生产简易而可靠的衣物成为可能。</Rukaya_Apparel_I.description>
+  <Rukaya_Apparel_II.label>卢卡娅复杂衣物</Rukaya_Apparel_II.label>
+  <Rukaya_Apparel_II.description>更成熟的制作工艺与精细处理方法，支持生产更复杂的卢卡娅服饰。</Rukaya_Apparel_II.description>
+  <Rukaya_Apparel_III.label>卢卡娅作战服装</Rukaya_Apparel_III.label>
+  <Rukaya_Apparel_III.description>专用于战场的裁制工艺、加固结构与模块化装配技术，使生产适合长期部署的卢卡娅作战服装成为可能。</Rukaya_Apparel_III.description>
+  <Rukaya_Weapon_I.label>卢卡娅简易武器</Rukaya_Weapon_I.label>
+  <Rukaya_Weapon_I.description>通过恢复武器设计原理并简化制造流程，可以生产基础的卢卡娅武器。</Rukaya_Weapon_I.description>
+  <Rukaya_Weapon_II.label>卢卡娅制式武器</Rukaya_Weapon_II.label>
+  <Rukaya_Weapon_II.description>在掌握活性物质处理后，便可以按正规军制式制造标准化的卢卡娅武器。</Rukaya_Weapon_II.description>
+  <Rukaya_Weapon_III.label>卢卡娅先进武器</Rukaya_Weapon_III.label>
+  <Rukaya_Weapon_III.description>更完善的制造标准与更深入的军用图纸复原工作，解锁了可供前线使用的更先进卢卡娅武器。</Rukaya_Weapon_III.description>
+  <Rukaya_ActiveMatterRefining_II.label>大规模活性物质提炼</Rukaya_ActiveMatterRefining_II.label>
+  <Rukaya_ActiveMatterRefining_II.description>将活性物质处理从实验室与工坊级扩展到大规模生产后，可以进行批量提炼，但它并非重建体系所必需的核心环节。</Rukaya_ActiveMatterRefining_II.description>
+  <Rukaya_Mechanoid_I.label>卢卡娅机械体</Rukaya_Mechanoid_I.label>
+  <Rukaya_Mechanoid_I.description>通过恢复自主机体、武器整合与控制程式相关的技术教范，可以重建具有实用价值的卢卡娅机械体。</Rukaya_Mechanoid_I.description>
+  <Rukaya_AirDefenseMissiles.label>防空导弹</Rukaya_AirDefenseMissiles.label>
+  <Rukaya_AirDefenseMissiles.description>活性物质拦截弹与协同火控系统使建造固定式地对空导弹发射架及培育搭载导弹的卢卡娅机械体成为可能。</Rukaya_AirDefenseMissiles.description>
+
+</LanguageData>

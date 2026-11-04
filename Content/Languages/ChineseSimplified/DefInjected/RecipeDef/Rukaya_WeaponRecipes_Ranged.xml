@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Make_Rukaya_Revolver.label>制作警用左轮手枪</Make_Rukaya_Revolver.label>
+  <Make_Rukaya_Revolver.jobString>正在制作警用左轮手枪。</Make_Rukaya_Revolver.jobString>
+
+  <Make_Rukaya_Rifle.label>制作栓动步枪</Make_Rukaya_Rifle.label>
+  <Make_Rukaya_Rifle.jobString>正在制作栓动步枪。</Make_Rukaya_Rifle.jobString>
+
+  <Make_Rukaya_AssaultRifle.label>制作突击步枪</Make_Rukaya_AssaultRifle.label>
+  <Make_Rukaya_AssaultRifle.jobString>正在制作突击步枪。</Make_Rukaya_AssaultRifle.jobString>
+
+  <Make_Rukaya_MarksmanRifle.label>制作精准射手步枪</Make_Rukaya_MarksmanRifle.label>
+  <Make_Rukaya_MarksmanRifle.jobString>正在制作精准射手步枪。</Make_Rukaya_MarksmanRifle.jobString>
+
+  <Make_Rukaya_Pistol.label>制作制式手枪</Make_Rukaya_Pistol.label>
+  <Make_Rukaya_Pistol.jobString>正在制作制式手枪。</Make_Rukaya_Pistol.jobString>
+
+  <Make_Rukaya_GrenadePistol.label>制作榴弹手枪</Make_Rukaya_GrenadePistol.label>
+  <Make_Rukaya_GrenadePistol.jobString>正在制作榴弹手枪。</Make_Rukaya_GrenadePistol.jobString>
+
+  <Make_Rukaya_SubMachinegun.label>制作冲锋枪</Make_Rukaya_SubMachinegun.label>
+  <Make_Rukaya_SubMachinegun.jobString>正在制作冲锋枪。</Make_Rukaya_SubMachinegun.jobString>
+
+  <Make_Rukaya_Machinegun.label>制作轻机枪</Make_Rukaya_Machinegun.label>
+  <Make_Rukaya_Machinegun.jobString>正在制作轻机枪。</Make_Rukaya_Machinegun.jobString>
+
+  <Make_Rukaya_GrenadeLauncher.label>制作榴弹发射器</Make_Rukaya_GrenadeLauncher.label>
+  <Make_Rukaya_GrenadeLauncher.jobString>正在制作榴弹发射器。</Make_Rukaya_GrenadeLauncher.jobString>
+
+  <Make_Rukaya_RecoillessGun.label>制作无后坐力炮</Make_Rukaya_RecoillessGun.label>
+  <Make_Rukaya_RecoillessGun.jobString>正在制作无后坐力炮。</Make_Rukaya_RecoillessGun.jobString>
+
+  <Make_Rukaya_AssaultRifleGrenade.label>制作榴弹突击步枪</Make_Rukaya_AssaultRifleGrenade.label>
+  <Make_Rukaya_AssaultRifleGrenade.jobString>正在制作榴弹突击步枪。</Make_Rukaya_AssaultRifleGrenade.jobString>
+
+  <Make_Rukaya_AssaultRifleFlame.label>制作喷火突击步枪</Make_Rukaya_AssaultRifleFlame.label>
+  <Make_Rukaya_AssaultRifleFlame.jobString>正在制作喷火突击步枪。</Make_Rukaya_AssaultRifleFlame.jobString>
+
+  <Make_Rukaya_AssaultRifleRadar.label>制作雷达突击步枪</Make_Rukaya_AssaultRifleRadar.label>
+  <Make_Rukaya_AssaultRifleRadar.jobString>正在制作雷达突击步枪。</Make_Rukaya_AssaultRifleRadar.jobString>
+
+  <Make_Rukaya_AirburstRocket.label>制作三联空爆发射器</Make_Rukaya_AirburstRocket.label>
+  <Make_Rukaya_AirburstRocket.jobString>正在制作三联空爆发射器。</Make_Rukaya_AirburstRocket.jobString>
+
+  <Make_Rukaya_PlasmaShotgun.label>制作等离子霰弹枪</Make_Rukaya_PlasmaShotgun.label>
+  <Make_Rukaya_PlasmaShotgun.jobString>正在制作等离子霰弹枪。</Make_Rukaya_PlasmaShotgun.jobString>
+
+  <Make_Rukaya_PlasmaRailgun.label>制作等离子狙击枪</Make_Rukaya_PlasmaRailgun.label>
+  <Make_Rukaya_PlasmaRailgun.jobString>正在制作等离子狙击枪。</Make_Rukaya_PlasmaRailgun.jobString>
+
+  <Make_Rukaya_LaserRifle.label>制作激光步枪</Make_Rukaya_LaserRifle.label>
+  <Make_Rukaya_LaserRifle.jobString>正在制作激光步枪。</Make_Rukaya_LaserRifle.jobString>
+
+  <Make_Rukaya_SmartRevolver.label>制作自瞄卡宾手枪</Make_Rukaya_SmartRevolver.label>
+  <Make_Rukaya_SmartRevolver.jobString>正在制作自瞄卡宾手枪。</Make_Rukaya_SmartRevolver.jobString>
+
+  <Make_Rukaya_ATGMLauncher.label>制作肩扛导弹发射器</Make_Rukaya_ATGMLauncher.label>
+  <Make_Rukaya_ATGMLauncher.jobString>正在制作肩扛导弹发射器。</Make_Rukaya_ATGMLauncher.jobString>
+
+  <Make_Rukaya_AutoCannon.label>制作单兵机炮</Make_Rukaya_AutoCannon.label>
+  <Make_Rukaya_AutoCannon.jobString>正在制作单兵机炮。</Make_Rukaya_AutoCannon.jobString>
+
+  <Make_Rukaya_AviationMachinegun.label>制作航空机枪</Make_Rukaya_AviationMachinegun.label>
+  <Make_Rukaya_AviationMachinegun.jobString>正在制造航空机枪。</Make_Rukaya_AviationMachinegun.jobString>
+
+
+
+  <Make_Rukaya_Phantom.label>制作魅影弓</Make_Rukaya_Phantom.label>
+  <Make_Rukaya_Phantom.jobString>正在制作魅影弓。</Make_Rukaya_Phantom.jobString>
+
+  <Make_Rukaya_Peacekeeper.label>制作维和者</Make_Rukaya_Peacekeeper.label>
+  <Make_Rukaya_Peacekeeper.jobString>正在组装维和者。</Make_Rukaya_Peacekeeper.jobString>
+
+  <Make_Rukaya_Prototype.label>制作原型</Make_Rukaya_Prototype.label>
+  <Make_Rukaya_Prototype.jobString>正在组装原型。</Make_Rukaya_Prototype.jobString>
+
+</LanguageData>

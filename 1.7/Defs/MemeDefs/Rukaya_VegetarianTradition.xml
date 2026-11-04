@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <MemeDef MayRequire="Ludeon.RimWorld.Ideology">
+    <defName>Rukaya_VegetarianTradition</defName>
+    <label>vegetarian tradition</label>
+    <!-- 中文：素食传统 -->
+    <description>Vegetarian meals are a cherished part of Rukaya life. The Drifter Alliance preserves this custom in its communal kitchens, favoring grain, vegetables and fruit over meat.</description>
+    <!-- 中文翻译：素食是卢卡娅生活中备受珍视的传统。漂泊者同盟在公共厨房中延续这一习俗，相较于肉食，更青睐谷物、蔬菜与水果。 -->
+    <iconPath>UI/Issues/MeatEating</iconPath>
+    <groupDef>Misc</groupDef>
+    <impact>1</impact>
+    <renderOrder>850</renderOrder>
+    <randomizationSelectionWeightFactor>0</randomizationSelectionWeightFactor>
+    <factionWhitelist>
+      <li>Rukaya_DrifterAlliance</li>
+      <li>Rukaya_PlayerFaction</li>
+    </factionWhitelist>
+    <requireOne>
+      <li>
+        <li>MeatEating_Disapproved</li>
+      </li>
+    </requireOne>
+  </MemeDef>
+</Defs>

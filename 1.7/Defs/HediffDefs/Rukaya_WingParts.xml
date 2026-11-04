@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Defs>
+  <HediffDef ParentName="AddedBodyPartBase">
+    <defName>Rukaya_ProstheticWing</defName>
+    <label>prosthetic wing</label>
+    <!-- 中文：义翼 -->
+    <description>An artificial Rukaya wing with mechanical joints and a flexible membrane. It restores the shape of a missing wing but cannot support flight.</description>
+    <!-- 中文：一片带机械关节与柔性翼膜的卢卡娅义翼。它能够恢复缺失翅膀的外形，但无法支持飞行。 -->
+    <spawnThingOnRemoved>Rukaya_ProstheticWing</spawnThingOnRemoved>
+    <addedPartProps>
+      <solid>true</solid>
+      <partEfficiency>0.6</partEfficiency>
+    </addedPartProps>
+    <modExtensions>
+      <li Class="RukayaRace.Flight.RukayaWingExtension">
+        <canFly>false</canFly>
+      </li>
+    </modExtensions>
+  </HediffDef>
+  <HediffDef ParentName="AddedBodyPartBase">
+    <defName>Rukaya_BionicWing</defName>
+    <label>bionic wing</label>
+    <!-- 中文：仿生翼 -->
+    <description>A flight-capable artificial Rukaya wing with a neural interface and responsive servos. A pair of functioning natural or bionic wings supports normal and emergency flight.</description>
+    <!-- 中文：一片配备神经接口与灵敏伺服机构、能够用于飞行的卢卡娅仿生翼。两侧功能正常的自然翼或仿生翼可支持普通飞行与紧急飞行。 -->
+    <spawnThingOnRemoved>Rukaya_BionicWing</spawnThingOnRemoved>
+    <addedPartProps>
+      <solid>true</solid>
+      <partEfficiency>1</partEfficiency>
+      <betterThanNatural>true</betterThanNatural>
+    </addedPartProps>
+    <modExtensions>
+      <li Class="RukayaRace.Flight.RukayaWingExtension">
+        <canFly>true</canFly>
+      </li>
+    </modExtensions>
+  </HediffDef>
+</Defs>

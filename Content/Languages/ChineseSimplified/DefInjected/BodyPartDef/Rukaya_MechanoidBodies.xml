@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- 底盘共用部件 -->
+  <Rukaya_ChassisCore.label>底盘车体</Rukaya_ChassisCore.label>
+  <Rukaya_PowerCore.label>集成动力核心</Rukaya_PowerCore.label>
+  <Rukaya_TurretMount.label>炮塔环</Rukaya_TurretMount.label>
+  <Rukaya_SensorMast.label>光电探头</Rukaya_SensorMast.label>
+  <Rukaya_ArmourPlate.label>装甲板</Rukaya_ArmourPlate.label>
+  <Rukaya_ScrewUnit.label>螺旋推进单元</Rukaya_ScrewUnit.label>
+  <Rukaya_ScrewBlade.label>螺旋推进叶</Rukaya_ScrewBlade.label>
+  <Rukaya_ScrewDrive.label>螺旋推进传动轴</Rukaya_ScrewDrive.label>
+
+  <!-- 雷达车专用模块 -->
+  <Rukaya_RadarBase.label>雷达基座</Rukaya_RadarBase.label>
+  <Rukaya_RadarTransmitter.label>雷达发射机</Rukaya_RadarTransmitter.label>
+  <Rukaya_RadarAntenna.label>雷达天线</Rukaya_RadarAntenna.label>
+  <Rukaya_RadarProcessor.label>信号处理机</Rukaya_RadarProcessor.label>
+
+</LanguageData>

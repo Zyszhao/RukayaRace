@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Rukaya_FlightDisabledFunctionalWings>Flight requires two functioning natural or bionic wings. Each wing must retain at least 50% function. Prosthetic wings cannot support flight.</Rukaya_FlightDisabledFunctionalWings>
+  <!-- 中文：飞行需要两侧可用的自然翼或仿生翼，且每侧功能不低于50%。义翼无法支持飞行。 -->
+  <Rukaya_EmergencyFly_FunctionalWings>{PAWN_labelShort} needs two functioning natural or bionic wings for emergency flight. Each wing must retain at least 50% function.</Rukaya_EmergencyFly_FunctionalWings>
+  <!-- 中文：{PAWN_labelShort}需要两侧可用的自然翼或仿生翼才能紧急飞行，且每侧功能不低于50%。 -->
+  <Rukaya_FlightModeCommandFunctionalWingsDesc>This Rukaya takes off while drafted until flight is switched off or she is undrafted. An enemy target triggers flight regardless of this switch.\n\nRequires two functioning natural or bionic wings, with at least 50% function on each side, and at least 10% satiety. Prosthetic wings cannot support flight.</Rukaya_FlightModeCommandFunctionalWingsDesc>
+  <!-- 中文：这名卢卡娅在征召时升空，直到关闭飞行或取消征召。存在敌人目标时会无视开关升空。\n\n需要两侧可用的自然翼或仿生翼、每侧功能不低于50%，且饱食不低于10%。义翼无法支持飞行。 -->
+</LanguageData>

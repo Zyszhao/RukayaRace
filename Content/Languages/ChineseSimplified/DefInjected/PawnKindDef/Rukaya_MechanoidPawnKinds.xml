@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- 说明：Rukaya_BaseMechanoidKind 是 Name= 的 Abstract 抽象模板，不进 DefDatabase，
+       不能作为注入目标（写了会报 "Found no Verse.PawnKindDef named Rukaya_BaseMechanoidKind"）。 -->
+
+  <Rukaya_MechChassis_Laser.label>卢卡娅通用机械“激光型”</Rukaya_MechChassis_Laser.label>
+  <Rukaya_MechChassis_Laser.labelPlural>卢卡娅通用机械“激光型”</Rukaya_MechChassis_Laser.labelPlural>
+
+  <Rukaya_MechChassis_MachineCannon.label>卢卡娅通用机械“机炮型”</Rukaya_MechChassis_MachineCannon.label>
+  <Rukaya_MechChassis_MachineCannon.labelPlural>卢卡娅通用机械“机炮型”</Rukaya_MechChassis_MachineCannon.labelPlural>
+
+  <Rukaya_MechChassis_MineSweeper.label>卢卡娅通用机械“扫雷索型”</Rukaya_MechChassis_MineSweeper.label>
+  <Rukaya_MechChassis_MineSweeper.labelPlural>卢卡娅通用机械“扫雷索型”</Rukaya_MechChassis_MineSweeper.labelPlural>
+
+  <Rukaya_MechChassis_SAMLauncher.label>卢卡娅通用机械“导弹型”</Rukaya_MechChassis_SAMLauncher.label>
+  <Rukaya_MechChassis_SAMLauncher.labelPlural>卢卡娅通用机械“导弹型”</Rukaya_MechChassis_SAMLauncher.labelPlural>
+
+  <Rukaya_MechChassis_Mortar.label>卢卡娅通用机械“迫击炮型”</Rukaya_MechChassis_Mortar.label>
+  <Rukaya_MechChassis_Mortar.labelPlural>卢卡娅通用机械“迫击炮型”</Rukaya_MechChassis_Mortar.labelPlural>
+
+  <Rukaya_MechChassis_Plasma.label>卢卡娅通用机械“等离子型”</Rukaya_MechChassis_Plasma.label>
+  <Rukaya_MechChassis_Plasma.labelPlural>卢卡娅通用机械“等离子型”</Rukaya_MechChassis_Plasma.labelPlural>
+
+  <Rukaya_MechChassis_Rocket.label>卢卡娅通用机械“火箭型”</Rukaya_MechChassis_Rocket.label>
+  <Rukaya_MechChassis_Rocket.labelPlural>卢卡娅通用机械“火箭型”</Rukaya_MechChassis_Rocket.labelPlural>
+
+  <Rukaya_MechRadar.label>卢卡娅通用机械“雷达型”</Rukaya_MechRadar.label>
+  <Rukaya_MechRadar.labelPlural>卢卡娅通用机械“雷达型”</Rukaya_MechRadar.labelPlural>
+
+</LanguageData>

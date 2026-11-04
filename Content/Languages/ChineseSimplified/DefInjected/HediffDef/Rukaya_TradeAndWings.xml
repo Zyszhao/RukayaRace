@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<LanguageData>
+  <Rukaya_ProstheticWing.label>义翼</Rukaya_ProstheticWing.label>
+  <Rukaya_ProstheticWing.description>一片带机械关节与柔性翼膜的卢卡娅义翼。它能够恢复缺失翅膀的外形，但无法支持飞行。</Rukaya_ProstheticWing.description>
+  <Rukaya_BionicWing.label>仿生翼</Rukaya_BionicWing.label>
+  <Rukaya_BionicWing.description>一片配备神经接口与灵敏伺服机构、能够用于飞行的卢卡娅仿生翼。两侧功能正常的自然翼或仿生翼可支持普通飞行与紧急飞行。</Rukaya_BionicWing.description>
+</LanguageData>

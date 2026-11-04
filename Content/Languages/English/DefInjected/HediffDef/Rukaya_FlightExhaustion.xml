@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Flight exhaustion (1.7/Defs/HediffDefs/Rukaya_FlightExhaustion.xml) -->
+  <Rukaya_FlightExhaustion.label>flight exhaustion</Rukaya_FlightExhaustion.label>
+  <Rukaya_FlightExhaustion.description>The wing muscles ache from repeated bursts of emergency flight. Recovers slowly with rest.</Rukaya_FlightExhaustion.description>
+
+  <!-- Stage labels, in ascending severity, matching the four stages in the HediffDef.
+       Wording follows vanilla's severity scale: minor / moderate / severe / extreme
+       (cf. BloodLoss, Malnutrition, ToxicBuildup). -->
+  <Rukaya_FlightExhaustion.stages.0.label>minor wing strain</Rukaya_FlightExhaustion.stages.0.label>
+  <Rukaya_FlightExhaustion.stages.1.label>moderate wing strain</Rukaya_FlightExhaustion.stages.1.label>
+  <Rukaya_FlightExhaustion.stages.2.label>severe wing strain</Rukaya_FlightExhaustion.stages.2.label>
+  <Rukaya_FlightExhaustion.stages.3.label>extreme wing strain</Rukaya_FlightExhaustion.stages.3.label>
+
+</LanguageData>

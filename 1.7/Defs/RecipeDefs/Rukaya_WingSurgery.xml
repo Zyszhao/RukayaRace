@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Defs>
+  <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+    <defName>Install_Rukaya_ProstheticWing</defName>
+    <label>install prosthetic wing</label>
+    <!-- 中文：安装义翼 -->
+    <description>Install a prosthetic wing on one side of a Rukaya.</description>
+    <!-- 中文：为卢卡娅安装一侧义翼。 -->
+    <jobString>Installing prosthetic wing.</jobString>
+    <!-- 中文：正在安装义翼。 -->
+    <recipeUsers Inherit="False">
+      <li>Alien_Rukaya</li>
+    </recipeUsers>
+    <appliedOnFixedBodyParts>
+      <li>Rukaya_Wing</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>Rukaya_ProstheticWing</addsHediff>
+    <ingredients Inherit="False">
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Rukaya_ProstheticWing</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>MedicineIndustrial</li>
+          </thingDefs>
+        </filter>
+        <count>2</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter Inherit="False">
+      <thingDefs>
+        <li>Rukaya_ProstheticWing</li>
+        <li>MedicineIndustrial</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <skillRequirements Inherit="False">
+      <Medicine>6</Medicine>
+    </skillRequirements>
+  </RecipeDef>
+  <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+    <defName>Install_Rukaya_BionicWing</defName>
+    <label>install bionic wing</label>
+    <!-- 中文：安装仿生翼 -->
+    <description>Install a bionic wing on one side of a Rukaya.</description>
+    <!-- 中文：为卢卡娅安装一侧仿生翼。 -->
+    <jobString>Installing bionic wing.</jobString>
+    <!-- 中文：正在安装仿生翼。 -->
+    <recipeUsers Inherit="False">
+      <li>Alien_Rukaya</li>
+    </recipeUsers>
+    <appliedOnFixedBodyParts>
+      <li>Rukaya_Wing</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>Rukaya_BionicWing</addsHediff>
+    <ingredients Inherit="False">
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Rukaya_BionicWing</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>MedicineIndustrial</li>
+          </thingDefs>
+        </filter>
+        <count>3</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter Inherit="False">
+      <thingDefs>
+        <li>Rukaya_BionicWing</li>
+        <li>MedicineIndustrial</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <skillRequirements Inherit="False">
+      <Medicine>10</Medicine>
+    </skillRequirements>
+  </RecipeDef>
+  <RecipeDef ParentName="SurgeryFlesh">
+    <defName>Rukaya_RemoveWing</defName>
+    <label>remove wing</label>
+    <!-- 中文：移除翅膀 -->
+    <description>Remove an installed artificial wing or amputate a damaged wing.</description>
+    <!-- 中文：拆除已安装的人工翅膀，或截除受损的翅膀。 -->
+    <jobString>Removing wing.</jobString>
+    <!-- 中文：正在移除翅膀。 -->
+    <workerClass>RukayaRace.Flight.Recipe_RemoveRukayaWing</workerClass>
+    <workAmount>2000</workAmount>
+    <surgerySuccessChanceFactor>1.2</surgerySuccessChanceFactor>
+    <developmentalStageFilter>Child, Adult</developmentalStageFilter>
+    <recipeUsers>
+      <li>Alien_Rukaya</li>
+    </recipeUsers>
+    <ingredients Inherit="False">
+      <li>
+        <filter>
+          <thingDefs>
+            <li>MedicineIndustrial</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>MedicineIndustrial</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <skillRequirements>
+      <Medicine>5</Medicine>
+    </skillRequirements>
+  </RecipeDef>
+</Defs>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- 3级（Combat）· 无人机操控装备；EyeCover 与 Overhead 分层，允许眼镜和头盔共戴。 -->
+  <ThingDef ParentName="Rukaya_ApparelBase" MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>Rukaya_DroneControlGoggles</defName>
+    <label>drone control goggles</label>
+    <!-- 中文：无人机操控眼镜 -->
+    <description>FPV goggles with an integrated antenna array, built for a Rukaya operator. A direct drone video feed and onboard diagnostics support an additional control group, expand bandwidth, and speed up mechanoid repairs. The compact head strap fits alongside a helmet.</description>
+    <!-- 中文翻译：为卢卡娅操作者设计的FPV眼镜，集成了天线阵列。无人机的实时画面与机载诊断系统可支持额外的控制组、扩展带宽，并加快机械体维修。紧凑的头带可与头盔一同佩戴。 -->
+    <techLevel>Spacer</techLevel>
+    <graphicData>
+      <texPath>Rukaya/Apparel/OverHead/DroneControlGoggles/Rukaya_DroneControlGoggles</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Cutout</shaderType>
+    </graphicData>
+    <statBases>
+      <Mass>0.6</Mass>
+      <EquipDelay>1.5</EquipDelay>
+      <WorkToMake>4000</WorkToMake>
+    </statBases>
+    <costList>
+      <Steel>25</Steel>
+      <Cloth>15</Cloth>
+      <ComponentIndustrial>4</ComponentIndustrial>
+    </costList>
+    <thingCategories>
+      <li>Rukaya_Apparel_Overhead</li>
+    </thingCategories>
+    <apparel>
+      <useWornGraphicMask>false</useWornGraphicMask>
+      <countsAsClothingForNudity>false</countsAsClothingForNudity>
+      <mechanitorApparel>true</mechanitorApparel>
+      <canBeGeneratedToSatisfyWarmth>false</canBeGeneratedToSatisfyWarmth>
+      <bodyPartGroups>
+        <li>Eyes</li>
+      </bodyPartGroups>
+      <layers>
+        <li>EyeCover</li>
+      </layers>
+      <wornGraphicPath>Rukaya/Apparel/OverHead/DroneControlGoggles/Rukaya_DroneControlGoggles</wornGraphicPath>
+      <parentTagDef>ApparelHead</parentTagDef>
+      <!-- 正面和侧面眼镜绘制在头盔上方；背面设备绘制在头盔后方。 -->
+      <drawData>
+        <defaultData>
+          <layer>101</layer>
+        </defaultData>
+        <dataNorth>
+          <layer>69</layer>
+        </dataNorth>
+      </drawData>
+      <tags>
+        <li>Rukaya_Mechanitor</li>
+      </tags>
+    </apparel>
+    <equippedStatOffsets>
+      <MechControlGroups>1</MechControlGroups>
+      <MechBandwidth>4</MechBandwidth>
+      <MechRepairSpeed>0.15</MechRepairSpeed>
+    </equippedStatOffsets>
+    <recipeMaker Inherit="false">
+      <researchPrerequisite>Rukaya_Apparel_III</researchPrerequisite>
+      <recipeUsers>
+        <li>TableMachining</li>
+      </recipeUsers>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Machining</soundWorking>
+      <unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>
+      <skillRequirements>
+        <Crafting>4</Crafting>
+      </skillRequirements>
+    </recipeMaker>
+  </ThingDef>
+
+  <ThingDef ParentName="Rukaya_ApparelBase" MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>Rukaya_DroneSignalPack</defName>
+    <label>drone signal pack</label>
+    <!-- 中文：无人机信号背包 -->
+    <description>A drone communications backpack fitted with antennas, a signal processor, cooling hardware, and an auxiliary power supply. It supports an additional control group, expands bandwidth, and accelerates mechanoid gestation. Its thermal management system extends the wearer's comfortable temperature range in both hot and cold conditions.</description>
+    <!-- 中文翻译：一套配备天线、信号处理器、散热装置和辅助电源的无人机通信背包。它可支持额外的控制组、扩展带宽，并加快机械体培育。温控系统还能拓宽穿着者在炎热与寒冷环境下的舒适温度范围。 -->
+    <techLevel>Spacer</techLevel>
+    <graphicData>
+      <texPath>Rukaya/Apparel/Bag/DroneSignalPack/Rukaya_DroneSignalPack</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Cutout</shaderType>
+    </graphicData>
+    <statBases>
+      <Mass>3</Mass>
+      <EquipDelay>3</EquipDelay>
+      <WorkToMake>6400</WorkToMake>
+    </statBases>
+    <costList>
+      <Steel>50</Steel>
+      <ComponentIndustrial>8</ComponentIndustrial>
+      <SignalChip>2</SignalChip>
+    </costList>
+    <thingCategories>
+      <li>ApparelUtility</li>
+      <li>Rukaya_Apparel</li>
+    </thingCategories>
+    <apparel>
+      <useWornGraphicMask>false</useWornGraphicMask>
+      <countsAsClothingForNudity>false</countsAsClothingForNudity>
+      <mechanitorApparel>true</mechanitorApparel>
+      <canBeGeneratedToSatisfyWarmth>false</canBeGeneratedToSatisfyWarmth>
+      <bodyPartGroups>
+        <li>Torso</li>
+      </bodyPartGroups>
+      <layers>
+        <li>Rukaya_Bag</li>
+      </layers>
+      <!-- 原图按完整身体画布定位，使用体型贴图，不使用原版腰带背包的缩放和偏移。 -->
+      <wornGraphicPath>Rukaya/Apparel/Bag/DroneSignalPack/Rukaya_DroneSignalPack</wornGraphicPath>
+      <drawData>
+        <defaultData>
+          <layer>80</layer>
+        </defaultData>
+        <dataNorth>
+          <layer>93</layer>
+        </dataNorth>
+        <dataSouth>
+          <layer>-3</layer>
+        </dataSouth>
+      </drawData>
+      <tags>
+        <li>Rukaya_Bag</li>
+        <li>Rukaya_Mechanitor</li>
+      </tags>
+    </apparel>
+    <equippedStatOffsets>
+      <MechControlGroups>1</MechControlGroups>
+      <MechBandwidth>9</MechBandwidth>
+      <MechFormingSpeed>0.40</MechFormingSpeed>
+      <ComfyTemperatureMin>-5</ComfyTemperatureMin>
+      <ComfyTemperatureMax>5</ComfyTemperatureMax>
+    </equippedStatOffsets>
+    <recipeMaker Inherit="false">
+      <researchPrerequisite>Rukaya_Apparel_III</researchPrerequisite>
+      <recipeUsers>
+        <li>TableMachining</li>
+      </recipeUsers>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Machining</soundWorking>
+      <unfinishedThingDef>UnfinishedPack</unfinishedThingDef>
+      <skillRequirements>
+        <Crafting>6</Crafting>
+      </skillRequirements>
+    </recipeMaker>
+  </ThingDef>
+</Defs>

@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Defs>
+  <RecipeDef MayRequire="Ludeon.RimWorld.Biotech" ParentName="BaseMechanoidRecipe">
+    <defName>Rukaya_GestateMechContainer</defName>
+    <label>gestate Rukaya cargo mechanoid</label>
+    <!-- 中文：培育卢卡娅运输机械体 -->
+    <description>Gestate an unarmed Rukaya cargo mechanoid for caravan transport.</description>
+    <!-- 中文：培育一台用于商队运输的无武装卢卡娅机械体。 -->
+    <jobString>Gestating Rukaya cargo mechanoid.</jobString>
+    <!-- 中文：正在培育卢卡娅运输机械体。 -->
+    <researchPrerequisite>Rukaya_Mechanoid_I</researchPrerequisite>
+    <gestationCycles>3</gestationCycles>
+    <displayPriority>310</displayPriority>
+    <recipeUsers>
+      <li>LargeMechGestator</li>
+    </recipeUsers>
+    <ingredients Inherit="False">
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </filter>
+        <count>150</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Plasteel</li>
+          </thingDefs>
+        </filter>
+        <count>60</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ComponentIndustrial</li>
+          </thingDefs>
+        </filter>
+        <count>6</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>SubcoreBasic</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <products>
+      <Rukaya_MechContainer>1</Rukaya_MechContainer>
+    </products>
+  </RecipeDef>
+</Defs>

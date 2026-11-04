@@ -1,0 +1,948 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <BackstoryDef>
+    <defName>Rukaya_BridgeMaintainer</defName>
+    <identifier>Rukaya_BridgeMaintainer</identifier>
+    <slot>Adulthood</slot>
+    <title>bridge maintainer</title>
+    <!-- 中文翻译：桥梁维护员 -->
+    <titleFemale>bridge maintainer</titleFemale>
+    <!-- 中文翻译：桥梁维护员 -->
+    <titleShort>bridge hand</titleShort>
+    <!-- 中文翻译：桥梁维护员 -->
+    <titleShortFemale>bridge hand</titleShortFemale>
+    <!-- 中文翻译：桥梁维护员 -->
+    <description>[PAWN_nameDef] maintained the bridges linking alliance settlements, replacing rotten planks and fitting salvaged metal into damaged supports. [PAWN_pronoun] learned to make repairs with whatever arrived on the supply cart, testing each joint before letting a loaded caravan cross.</description>
+    <!-- 中文翻译：[PAWN_nameDef]维护同盟聚居地之间的桥梁，更换腐朽的木板，把回收的金属配进受损的支架。补给车送来什么，她就想办法用上，每次都先把接头试牢，再让满载的商队通过。 -->
+    <skillGains>
+      <Construction>3</Construction>
+      <Crafting>2</Crafting>
+    </skillGains>
+    <spawnCategories>
+      <li>Rukaya_AdultGeneral</li>
+    </spawnCategories>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>Rukaya_SeedCurator</defName>
+    <identifier>Rukaya_SeedCurator</identifier>
+    <slot>Adulthood</slot>
+    <title>seed curator</title>
+    <!-- 中文翻译：种源保管员 -->
+    <titleFemale>seed curator</titleFemale>
+    <!-- 中文翻译：种源保管员 -->
+    <titleShort>seed keeper</titleShort>
+    <!-- 中文翻译：种源保管员 -->
+    <titleShortFemale>seed keeper</titleShortFemale>
+    <!-- 中文翻译：种源保管员 -->
+    <description>[PAWN_nameDef] kept the alliance&apos;s seed collections, testing small batches and comparing their growth with old planting records. When a familiar crop failed in unfamiliar soil, [PAWN_pronoun] recorded the differences carefully so the next settlement would not repeat the same mistake.</description>
+    <!-- 中文翻译：[PAWN_nameDef]保管同盟留下的种子，分批试种，对照旧种植记录检查长势。熟悉的作物在陌生土壤里长不好时，她就仔细记下差别，让下一个聚居地少走一次弯路。 -->
+    <skillGains>
+      <Plants>3</Plants>
+      <Intellectual>2</Intellectual>
+    </skillGains>
+    <spawnCategories>
+      <li>Rukaya_AdultGeneral</li>
+    </spawnCategories>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>Rukaya_StoveMason</defName>
+    <identifier>Rukaya_StoveMason</identifier>
+    <slot>Adulthood</slot>
+    <title>stove mason</title>
+    <!-- 中文翻译：炉灶砌筑员 -->
+    <titleFemale>stove mason</titleFemale>
+    <!-- 中文翻译：炉灶砌筑员 -->
+    <titleShort>stove mason</titleShort>
+    <!-- 中文翻译：砌灶员 -->
+    <titleShortFemale>stove mason</titleShortFemale>
+    <!-- 中文翻译：砌灶员 -->
+    <description>[PAWN_nameDef] built cooking stoves for alliance camps, altering fireboxes and flues to suit the fuel available. [PAWN_pronoun] always cooked a meal on a finished stove before handing it over, gradually learning as much about keeping a pot simmering as about laying its hearth.</description>
+    <!-- 中文翻译：[PAWN_nameDef]为同盟营地砌筑炉灶，照着能找到的燃料调整炉膛和烟道。每砌好一座，她都要先在上面做顿饭才肯交工，后来不光会修炉子，也摸熟了让锅里的东西慢慢煮好的火候。 -->
+    <skillGains>
+      <Construction>3</Construction>
+      <Cooking>2</Cooking>
+    </skillGains>
+    <spawnCategories>
+      <li>Rukaya_AdultGeneral</li>
+    </spawnCategories>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>Rukaya_TrailScout</defName>
+    <identifier>Rukaya_TrailScout</identifier>
+    <slot>Adulthood</slot>
+    <title>trail scout</title>
+    <!-- 中文翻译：路标侦察员 -->
+    <titleFemale>trail scout</titleFemale>
+    <!-- 中文翻译：路标侦察员 -->
+    <titleShort>trail scout</titleShort>
+    <!-- 中文翻译：路标员 -->
+    <titleShortFemale>trail scout</titleShortFemale>
+    <!-- 中文翻译：路标员 -->
+    <description>[PAWN_nameDef] scouted routes for alliance supply teams, clearing growth from old trail markers and often firing a rifle to drive dangerous animals off the path. [PAWN_pronoun] learned which plants concealed a usable trail and marked detours around thickets better left undisturbed.</description>
+    <!-- 中文翻译：[PAWN_nameDef]为同盟补给队探路，清理旧路标旁的杂草，也常要开枪驱走挡路的野兽。她逐渐认清哪些植物下面还有小径，哪些灌丛最好别碰，再给后面的队伍标好绕行的路。 -->
+    <skillGains>
+      <Shooting>3</Shooting>
+      <Plants>1</Plants>
+    </skillGains>
+    <spawnCategories>
+      <li>Rukaya_AdultGeneral</li>
+    </spawnCategories>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>Rukaya_ArchiveRestorer</defName>
+    <identifier>Rukaya_ArchiveRestorer</identifier>
+    <slot>Adulthood</slot>
+    <title>archive restorer</title>
+    <!-- 中文翻译：旧籍修复员 -->
+    <titleFemale>archive restorer</titleFemale>
+    <!-- 中文翻译：旧籍修复员 -->
+    <titleShort>restorer</titleShort>
+    <!-- 中文翻译：旧籍修复员 -->
+    <titleShortFemale>restorer</titleShortFemale>
+    <!-- 中文翻译：旧籍修复员 -->
+    <description>[PAWN_nameDef] repaired damp books for the alliance, deciphering missing words and mixing adhesives from old instructions. Preserving the original mattered so much to [PAWN_objective] that [PAWN_pronoun] eventually refused all decorative and artistic work, accepting only repairs guided by surviving objects and records.</description>
+    <!-- 中文翻译：[PAWN_nameDef]为同盟修补受潮的书册，辨认缺字，照着旧法配制粘合剂。她把原样保存看得太重，后来连装饰和艺术创作也一概不肯做，只愿按留下的实物和记录进行修复。 -->
+    <skillGains>
+      <Intellectual>3</Intellectual>
+      <Crafting>2</Crafting>
+    </skillGains>
+    <workDisables>Artistic</workDisables>
+    <spawnCategories>
+      <li>Rukaya_AdultGeneral</li>
+    </spawnCategories>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>Rukaya_QuarantineInspector</defName>
+    <identifier>Rukaya_QuarantineInspector</identifier>
+    <slot>Adulthood</slot>
+    <title>quarantine inspector</title>
+    <!-- 中文翻译：检疫员 -->
+    <titleFemale>quarantine inspector</titleFemale>
+    <!-- 中文翻译：检疫员 -->
+    <titleShort>inspector</titleShort>
+    <!-- 中文翻译：检疫员 -->
+    <titleShortFemale>inspector</titleShortFemale>
+    <!-- 中文翻译：检疫员 -->
+    <description>[PAWN_nameDef] checked symptoms and compared case records at an alliance quarantine station. A food contamination incident left [PAWN_objective] unwilling to cook for anyone again. Even a small omission during routine checks could make [PAWN_objective] anxious long after the shift ended.</description>
+    <!-- 中文翻译：[PAWN_nameDef]在同盟检疫站检查病征，对照记录判断病情。隔离区发生过的一次食物污染，让她再也不肯为人做饭；后来即使只是例行检查漏看了一处，她也会在交班后紧张很久。 -->
+    <skillGains>
+      <Medicine>3</Medicine>
+      <Intellectual>1</Intellectual>
+    </skillGains>
+    <workDisables>Cooking</workDisables>
+    <forcedTraits>
+      <Nerves>-1</Nerves>
+    </forcedTraits>
+    <spawnCategories>
+      <li>Rukaya_AdultGeneral</li>
+    </spawnCategories>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>Rukaya_SealedStorekeeper</defName>
+    <identifier>Rukaya_SealedStorekeeper</identifier>
+    <slot>Adulthood</slot>
+    <title>sealed storekeeper</title>
+    <!-- 中文翻译：封存库管员 -->
+    <titleFemale>sealed storekeeper</titleFemale>
+    <!-- 中文翻译：封存库管员 -->
+    <titleShort>storekeeper</titleShort>
+    <!-- 中文翻译：封存库管员 -->
+    <titleShortFemale>storekeeper</titleShortFemale>
+    <!-- 中文翻译：封存库管员 -->
+    <description>[PAWN_nameDef] catalogued the contents of an alliance sealed store and maintained the packing fixtures. [PAWN_pronoun] could recall the markings on crates untouched for years. Long accustomed to written handovers, [PAWN_pronoun] eventually refused all negotiation and prisoner supervision, leaving dealings with people to the liaison staff.</description>
+    <!-- 中文翻译：[PAWN_nameDef]在同盟封存库核对器材目录，修整装箱的固定架。多年没开过的箱子，她也记得上面的标记；习惯了只凭清单交接之后，她不肯再负责商谈、劝说或管教囚犯，把所有交涉都留给联络员。 -->
+    <skillGains>
+      <Intellectual>3</Intellectual>
+      <Crafting>1</Crafting>
+    </skillGains>
+    <workDisables>Social</workDisables>
+    <forcedTraits>
+      <GreatMemory>0</GreatMemory>
+    </forcedTraits>
+    <spawnCategories>
+      <li>Rukaya_AdultGeneral</li>
+    </spawnCategories>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>Rukaya_VeterinarySurgeon</defName>
+    <identifier>Rukaya_VeterinarySurgeon</identifier>
+    <slot>Adulthood</slot>
+    <title>veterinary surgeon</title>
+    <!-- 中文翻译：畜群医师 -->
+    <titleFemale>veterinary surgeon</titleFemale>
+    <!-- 中文翻译：畜群医师 -->
+    <titleShort>animal medic</titleShort>
+    <!-- 中文翻译：畜群医师 -->
+    <titleShortFemale>animal medic</titleShortFemale>
+    <!-- 中文翻译：畜群医师 -->
+    <description>[PAWN_nameDef] treated the alliance&apos;s livestock, learning to restrain frightened animals without worsening their wounds. After tending an animal injured by a poorly placed hunting shot, [PAWN_pronoun] refused to hunt again, though [PAWN_pronoun] remained willing to defend a threatened camp.</description>
+    <!-- 中文翻译：[PAWN_nameDef]为同盟的畜群治病，学会了安抚受惊的动物，不让挣扎加重伤势。救治过一只被猎手打伤许久才找到的动物后，她不肯再参加狩猎，但仍愿意在营地受威胁时拿起武器自卫。 -->
+    <skillGains>
+      <Medicine>3</Medicine>
+      <Animals>2</Animals>
+    </skillGains>
+    <workDisables>Hunting</workDisables>
+    <spawnCategories>
+      <li>Rukaya_AdultGeneral</li>
+    </spawnCategories>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>Rukaya_SparringPartner</defName>
+    <identifier>Rukaya_SparringPartner</identifier>
+    <slot>Adulthood</slot>
+    <title>sparring partner</title>
+    <!-- 中文翻译：陪练员 -->
+    <titleFemale>sparring partner</titleFemale>
+    <!-- 中文翻译：陪练员 -->
+    <titleShort>sparrer</titleShort>
+    <!-- 中文翻译：陪练员 -->
+    <titleShortFemale>sparrer</titleShortFemale>
+    <!-- 中文翻译：陪练员 -->
+    <description>[PAWN_nameDef] sparred with recruits at an alliance training hall, repeating close combat drills until both partners could move safely. [PAWN_pronoun] learned to read a shifting shoulder and step clear before a practice weapon reached [PAWN_objective], often making an awkward exchange look effortless.</description>
+    <!-- 中文翻译：[PAWN_nameDef]在同盟训练馆陪新兵练习近身格斗，一遍遍重做动作，直到双方都能稳住分寸。她逐渐学会从肩膀的晃动里看出对方的意图，训练兵器还没碰到自己，人就已经侧身让开了。 -->
+    <skillGains>
+      <Melee>3</Melee>
+    </skillGains>
+    <forcedTraits>
+      <Nimble>0</Nimble>
+    </forcedTraits>
+    <spawnCategories>
+      <li>Rukaya_AdultGeneral</li>
+    </spawnCategories>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>Rukaya_ItinerantRepairer</defName>
+    <identifier>Rukaya_ItinerantRepairer</identifier>
+    <slot>Adulthood</slot>
+    <title>itinerant repairer</title>
+    <!-- 中文翻译：巡回修缮工 -->
+    <titleFemale>itinerant repairer</titleFemale>
+    <!-- 中文翻译：巡回修缮工 -->
+    <titleShort>repairer</titleShort>
+    <!-- 中文翻译：修缮工 -->
+    <titleShortFemale>repairer</titleShortFemale>
+    <!-- 中文翻译：修缮工 -->
+    <description>[PAWN_nameDef] traveled between small settlements repairing roofs and household tools. Years with a light pack taught [PAWN_objective] to prefer plain food and a bare sleeping corner. [PAWN_pronoun] came to find rich meals and ornate bedrooms uncomfortable even when hosts offered them freely.</description>
+    <!-- 中文翻译：[PAWN_nameDef]在小聚居地之间巡回修屋顶、补工具，行李一直带得很少。久而久之，她只愿吃简单的饭食、住没有装饰的角落，哪怕主人诚心招待，丰盛的餐桌和华丽的卧房也会让她不自在。 -->
+    <skillGains>
+      <Construction>2</Construction>
+      <Crafting>1</Crafting>
+    </skillGains>
+    <forcedTraits>
+      <Ascetic>0</Ascetic>
+    </forcedTraits>
+    <spawnCategories>
+      <li>Rukaya_AdultGeneral</li>
+    </spawnCategories>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>Rukaya_SupplyAppraiser</defName>
+    <identifier>Rukaya_SupplyAppraiser</identifier>
+    <slot>Adulthood</slot>
+    <title>supply appraiser</title>
+    <!-- 中文翻译：物资估价员 -->
+    <titleFemale>supply appraiser</titleFemale>
+    <!-- 中文翻译：物资估价员 -->
+    <titleShort>appraiser</titleShort>
+    <!-- 中文翻译：估价员 -->
+    <titleShortFemale>appraiser</titleShortFemale>
+    <!-- 中文翻译：估价员 -->
+    <description>[PAWN_nameDef] assessed traded supplies, comparing ledgers and explaining disputed prices to caravan crews. [PAWN_pronoun] became good at judging quality, but also began insisting on an impressive bedroom of [PAWN_possessive] own. A modest room could sour [PAWN_possessive] mood even after a profitable deal.</description>
+    <!-- 中文翻译：[PAWN_nameDef]为交易的物资估价，核对账目，也向商队说明有争议的价钱。她渐渐擅长分辨东西的好坏，却也越来越在意自己的住处是否体面；即使生意顺利，分到简陋的卧房仍会让她闷闷不乐。 -->
+    <skillGains>
+      <Social>3</Social>
+      <Intellectual>1</Intellectual>
+    </skillGains>
+    <forcedTraits>
+      <Greedy>0</Greedy>
+    </forcedTraits>
+    <spawnCategories>
+      <li>Rukaya_AdultGeneral</li>
+    </spawnCategories>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>Rukaya_StationCaretaker</defName>
+    <identifier>Rukaya_StationCaretaker</identifier>
+    <slot>Adulthood</slot>
+    <title>station caretaker</title>
+    <!-- 中文翻译：驿站看护员 -->
+    <titleFemale>station caretaker</titleFemale>
+    <!-- 中文翻译：驿站看护员 -->
+    <titleShort>caretaker</titleShort>
+    <!-- 中文翻译：驿站看护员 -->
+    <titleShortFemale>caretaker</titleShortFemale>
+    <!-- 中文翻译：驿站看护员 -->
+    <description>[PAWN_nameDef] maintained the doors, bunks and worn tools at an alliance waystation. [PAWN_pronoun] knew how to put most things right, but had grown fond of the long quiet intervals between arrivals. Work proceeded slowly, with frequent pauses whenever nothing seemed immediately urgent.</description>
+    <!-- 中文翻译：[PAWN_nameDef]照看同盟驿站的门窗、床铺和旧工具，多数小毛病都知道该怎么修。只是她逐渐贪恋起两支队伍到来之间的清闲，做事越来越慢，只要看着不急，就总要停下来歇一会儿。 -->
+    <skillGains>
+      <Construction>3</Construction>
+      <Crafting>1</Crafting>
+    </skillGains>
+    <forcedTraits>
+      <Industriousness>-1</Industriousness>
+    </forcedTraits>
+    <spawnCategories>
+      <li>Rukaya_AdultGeneral</li>
+    </spawnCategories>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>Rukaya_MechanicalFitter</defName>
+    <identifier>Rukaya_MechanicalFitter</identifier>
+    <slot>Adulthood</slot>
+    <title>mechanical fitter</title>
+    <!-- 中文翻译：旧式机修师 -->
+    <titleFemale>mechanical fitter</titleFemale>
+    <!-- 中文翻译：旧式机修师 -->
+    <titleShort>fitter</titleShort>
+    <!-- 中文翻译：机修师 -->
+    <titleShortFemale>fitter</titleShortFemale>
+    <!-- 中文翻译：机修师 -->
+    <description>[PAWN_nameDef] fitted machinery in an alliance workshop, consulting old drawings whenever replacement parts did not match. [PAWN_pronoun] trusted carefully repaired equipment, but recoiled from artificial limbs and deliberate alterations to living bodies, refusing to treat [PAWN_possessive] own body as another machine to rebuild.</description>
+    <!-- 中文翻译：[PAWN_nameDef]在同盟工坊装配机器，零件不配套时就去查旧图纸。她信得过修好的设备，却始终反感人工肢体和人为改造身体的做法，不肯把自己的身体也当作一台可以拆换的机器。 -->
+    <skillGains>
+      <Crafting>3</Crafting>
+      <Intellectual>1</Intellectual>
+    </skillGains>
+    <forcedTraits>
+      <BodyPurist>0</BodyPurist>
+    </forcedTraits>
+    <spawnCategories>
+      <li>Rukaya_AdultGeneral</li>
+    </spawnCategories>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>Rukaya_RationSupervisor</defName>
+    <identifier>Rukaya_RationSupervisor</identifier>
+    <slot>Adulthood</slot>
+    <title>ration supervisor</title>
+    <!-- 中文翻译：配给监督员 -->
+    <titleFemale>ration supervisor</titleFemale>
+    <!-- 中文翻译：配给监督员 -->
+    <titleShort>supervisor</titleShort>
+    <!-- 中文翻译：配给监督员 -->
+    <titleShortFemale>supervisor</titleShortFemale>
+    <!-- 中文翻译：配给监督员 -->
+    <description>[PAWN_nameDef] checked ration accounts and settled disputes at an alliance distribution desk. [PAWN_pronoun] could explain a shortage clearly, but rarely softened an opinion for anyone&apos;s feelings. Complaints about [PAWN_possessive] cutting remarks often followed even a correctly resolved claim.</description>
+    <!-- 中文翻译：[PAWN_nameDef]在同盟配给处核对账目，处理分发时的争执。短缺的缘由她讲得清楚，只是心里怎么想，嘴上就怎么说，很少替人留情面；事情即使处理妥当，也常有人抱怨被她数落得难堪。 -->
+    <skillGains>
+      <Social>3</Social>
+      <Intellectual>1</Intellectual>
+    </skillGains>
+    <forcedTraits>
+      <Abrasive>0</Abrasive>
+    </forcedTraits>
+    <spawnCategories>
+      <li>Rukaya_AdultGeneral</li>
+    </spawnCategories>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>Rukaya_StonewarePotter</defName>
+    <identifier>Rukaya_StonewarePotter</identifier>
+    <slot>Adulthood</slot>
+    <title>stoneware potter</title>
+    <!-- 中文翻译：粗陶匠 -->
+    <titleFemale>stoneware potter</titleFemale>
+    <!-- 中文翻译：粗陶匠 -->
+    <titleShort>potter</titleShort>
+    <!-- 中文翻译：陶匠 -->
+    <titleShortFemale>potter</titleShortFemale>
+    <!-- 中文翻译：陶匠 -->
+    <description>[PAWN_nameDef] made storage jars and tableware for alliance settlements, adjusting handles and rims to survive repeated use. [PAWN_pronoun] also pressed old decorative patterns into the wet clay, so even a plain kitchen shelf carried something recognizable from the homeworld.</description>
+    <!-- 中文翻译：[PAWN_nameDef]为同盟聚居地烧制储物罐和餐具，反复调整把手和罐沿，让它们经得起长久使用。她也会把旧式纹样压进湿泥里，让一排普通的厨房架子上，还留着一点故乡的样子。 -->
+    <skillGains>
+      <Artistic>3</Artistic>
+      <Crafting>2</Crafting>
+    </skillGains>
+    <spawnCategories>
+      <li>Rukaya_AdultGeneral</li>
+    </spawnCategories>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>Rukaya_MushroomFarmer</defName>
+    <identifier>Rukaya_MushroomFarmer</identifier>
+    <slot>Adulthood</slot>
+    <title>mushroom farmer</title>
+    <!-- 中文翻译：菌床种植员 -->
+    <titleFemale>mushroom farmer</titleFemale>
+    <!-- 中文翻译：菌床种植员 -->
+    <titleShort>fungus grower</titleShort>
+    <!-- 中文翻译：菌床种植员 -->
+    <titleShortFemale>fungus grower</titleShortFemale>
+    <!-- 中文翻译：菌床种植员 -->
+    <description>[PAWN_nameDef] tended mushroom beds in the cool cellars of alliance settlements, adjusting moisture and removing spoiled growth. Small harvests often went straight to the kitchen, where [PAWN_pronoun] learned how to turn varieties with very different textures into a dependable meal.</description>
+    <!-- 中文翻译：[PAWN_nameDef]在同盟聚居地阴凉的地窖里照料菌床，调整湿度，清走坏掉的部分。少量收下来的菌菇常被她直接送进厨房，后来连口感差别很大的几种，也能做成一顿吃得惯的饭。 -->
+    <skillGains>
+      <Plants>3</Plants>
+      <Cooking>2</Cooking>
+    </skillGains>
+    <spawnCategories>
+      <li>Rukaya_AdultGeneral</li>
+    </spawnCategories>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>Rukaya_PatternWeaver</defName>
+    <identifier>Rukaya_PatternWeaver</identifier>
+    <slot>Adulthood</slot>
+    <title>pattern weaver</title>
+    <!-- 中文翻译：纹样织工 -->
+    <titleFemale>pattern weaver</titleFemale>
+    <!-- 中文翻译：纹样织工 -->
+    <titleShort>weaver</titleShort>
+    <!-- 中文翻译：织工 -->
+    <titleShortFemale>weaver</titleShortFemale>
+    <!-- 中文翻译：织工 -->
+    <description>[PAWN_nameDef] wove cloth for an alliance workshop, working from a small collection of inherited sample strips. When yarn was scarce, [PAWN_pronoun] rearranged the surviving colors into simpler patterns, keeping the old designs recognizable without wasting the available thread.</description>
+    <!-- 中文翻译：[PAWN_nameDef]在同盟工坊织布，手边留着一小叠传下来的布样。纱线不够时，她便把还能找到的颜色重新排成简化的花纹，尽量少费线，也尽量让人认得出原来的纹样。 -->
+    <skillGains>
+      <Crafting>3</Crafting>
+      <Artistic>2</Artistic>
+    </skillGains>
+    <spawnCategories>
+      <li>Rukaya_AdultGeneral</li>
+    </spawnCategories>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>Rukaya_PackTrainGuard</defName>
+    <identifier>Rukaya_PackTrainGuard</identifier>
+    <slot>Adulthood</slot>
+    <title>pack train guard</title>
+    <!-- 中文翻译：驮队护卫 -->
+    <titleFemale>pack train guard</titleFemale>
+    <!-- 中文翻译：驮队护卫 -->
+    <titleShort>train guard</titleShort>
+    <!-- 中文翻译：驮队护卫 -->
+    <titleShortFemale>train guard</titleShortFemale>
+    <!-- 中文翻译：驮队护卫 -->
+    <description>[PAWN_nameDef] guarded alliance pack trains, leading nervous animals past narrow crossings and keeping a short weapon ready when trouble approached. [PAWN_pronoun] learned to fight without letting the lead rope tangle, since a scattered herd could strand the whole convoy.</description>
+    <!-- 中文翻译：[PAWN_nameDef]为同盟的驮队护行，牵着紧张的动物过窄路，遇到麻烦时就用随身的短兵器挡开。她学会了还击时也不让缰绳缠住，因为畜群一旦跑散，整支队伍都得停下来找。 -->
+    <skillGains>
+      <Melee>3</Melee>
+      <Animals>2</Animals>
+    </skillGains>
+    <spawnCategories>
+      <li>Rukaya_AdultGeneral</li>
+    </spawnCategories>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>Rukaya_ReclamationWorker</defName>
+    <identifier>Rukaya_ReclamationWorker</identifier>
+    <slot>Adulthood</slot>
+    <title>reclamation worker</title>
+    <!-- 中文翻译：旧址清理工 -->
+    <titleFemale>reclamation worker</titleFemale>
+    <!-- 中文翻译：旧址清理工 -->
+    <titleShort>reclaimer</titleShort>
+    <!-- 中文翻译：清理工 -->
+    <titleShortFemale>reclaimer</titleShortFemale>
+    <!-- 中文翻译：清理工 -->
+    <description>[PAWN_nameDef] prepared abandoned sites for alliance resettlement, removing unsafe masonry and digging usable metal from buried foundations. [PAWN_pronoun] learned which walls could support another roof and which had to come down before anyone moved in.</description>
+    <!-- 中文翻译：[PAWN_nameDef]为同盟重新使用的旧址清理地基，拆掉不稳的砌墙，从掩埋的结构里挖出可用的金属。她逐渐认清了哪些墙还能撑起新屋顶，哪些必须在住人之前先拆干净。 -->
+    <skillGains>
+      <Mining>3</Mining>
+      <Construction>2</Construction>
+    </skillGains>
+    <spawnCategories>
+      <li>Rukaya_AdultGeneral</li>
+    </spawnCategories>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>Rukaya_BallisticsRecorder</defName>
+    <identifier>Rukaya_BallisticsRecorder</identifier>
+    <slot>Adulthood</slot>
+    <title>ballistics recorder</title>
+    <!-- 中文翻译：试射记录员 -->
+    <titleFemale>ballistics recorder</titleFemale>
+    <!-- 中文翻译：试射记录员 -->
+    <titleShort>recorder</titleShort>
+    <!-- 中文翻译：试射记录员 -->
+    <titleShortFemale>recorder</titleShortFemale>
+    <!-- 中文翻译：试射记录员 -->
+    <description>[PAWN_nameDef] kept records at an alliance proving range, firing test groups and comparing their patterns with workshop specifications. [PAWN_pronoun] learned to distinguish a careless shot from a faulty sight, then wrote the findings clearly enough for the next repair crew to use.</description>
+    <!-- 中文翻译：[PAWN_nameDef]在同盟试射场记录测试结果，亲自打出靶痕，再对照工坊送来的规格。她学会了分清究竟是持枪的人失手，还是瞄具出了毛病，并把结果写得让接手的维修员能看懂。 -->
+    <skillGains>
+      <Shooting>2</Shooting>
+      <Intellectual>3</Intellectual>
+    </skillGains>
+    <spawnCategories>
+      <li>Rukaya_AdultGeneral</li>
+    </spawnCategories>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>Rukaya_CampNegotiator</defName>
+    <identifier>Rukaya_CampNegotiator</identifier>
+    <slot>Adulthood</slot>
+    <title>camp negotiator</title>
+    <!-- 中文翻译：营地协调员 -->
+    <titleFemale>camp negotiator</titleFemale>
+    <!-- 中文翻译：营地协调员 -->
+    <titleShort>negotiator</titleShort>
+    <!-- 中文翻译：协调员 -->
+    <titleShortFemale>negotiator</titleShortFemale>
+    <!-- 中文翻译：协调员 -->
+    <description>[PAWN_nameDef] helped newly arrived families find space in alliance camps, comparing household lists and settling arguments over crowded rooms. [PAWN_pronoun] learned to ask what each person actually needed before making promises, and to explain decisions to those who had to wait.</description>
+    <!-- 中文翻译：[PAWN_nameDef]替新到的家庭在同盟营地里安排住处，核对户籍，也调解挤在一起的人为房间起的争执。她逐渐学会先问清每家真正缺什么，再许诺，并把安排的理由讲给仍需等候的人听。 -->
+    <skillGains>
+      <Social>4</Social>
+      <Intellectual>1</Intellectual>
+    </skillGains>
+    <spawnCategories>
+      <li>Rukaya_AdultGeneral</li>
+    </spawnCategories>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>Rukaya_PoultryKeeper</defName>
+    <identifier>Rukaya_PoultryKeeper</identifier>
+    <slot>Adulthood</slot>
+    <title>poultry keeper</title>
+    <!-- 中文翻译：禽舍饲养员 -->
+    <titleFemale>poultry keeper</titleFemale>
+    <!-- 中文翻译：禽舍饲养员 -->
+    <titleShort>poultry hand</titleShort>
+    <!-- 中文翻译：禽舍饲养员 -->
+    <titleShortFemale>poultry hand</titleShortFemale>
+    <!-- 中文翻译：禽舍饲养员 -->
+    <description>[PAWN_nameDef] looked after the birds in an alliance settlement&apos;s poultry sheds, separating sick animals and treating minor injuries before they spread through a crowded pen. [PAWN_pronoun] learned to catch a frightened bird firmly without damaging its wings.</description>
+    <!-- 中文翻译：[PAWN_nameDef]照看同盟聚居地禽舍里的鸟，隔开病禽，及时处理拥挤棚圈里常见的小伤。她逐渐学会了怎样稳稳抓住一只受惊的鸟，又不弄伤它挣扎的翅膀。 -->
+    <skillGains>
+      <Animals>3</Animals>
+      <Medicine>2</Medicine>
+    </skillGains>
+    <spawnCategories>
+      <li>Rukaya_AdultGeneral</li>
+    </spawnCategories>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>Rukaya_KilnBurner</defName>
+    <identifier>Rukaya_KilnBurner</identifier>
+    <slot>Adulthood</slot>
+    <title>kiln burner</title>
+    <!-- 中文翻译：窑炉烧制工 -->
+    <titleFemale>kiln burner</titleFemale>
+    <!-- 中文翻译：窑炉烧制工 -->
+    <titleShort>kiln burner</titleShort>
+    <!-- 中文翻译：烧窑工 -->
+    <titleShortFemale>kiln burner</titleShortFemale>
+    <!-- 中文翻译：烧窑工 -->
+    <description>[PAWN_nameDef] operated an alliance works kiln, quarrying raw material nearby and adjusting the heat by the color of the firing chamber. [PAWN_pronoun] learned to spot unsuitable material before it ruined a batch of bricks the settlement was counting on.</description>
+    <!-- 中文翻译：[PAWN_nameDef]在同盟工场照看窑炉，平日也去附近采料，挑出能用的部分，再看炉膛的颜色调整火候。她慢慢学会了在开窑之前辨认杂料，免得烧坏聚居地正等着用的一批砖。 -->
+    <skillGains>
+      <Crafting>3</Crafting>
+      <Mining>2</Mining>
+    </skillGains>
+    <spawnCategories>
+      <li>Rukaya_AdultGeneral</li>
+    </spawnCategories>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>Rukaya_FuneralGuide</defName>
+    <identifier>Rukaya_FuneralGuide</identifier>
+    <slot>Adulthood</slot>
+    <title>funeral guide</title>
+    <!-- 中文翻译：送行司仪 -->
+    <titleFemale>funeral guide</titleFemale>
+    <!-- 中文翻译：送行司仪 -->
+    <titleShort>guide</titleShort>
+    <!-- 中文翻译：送行司仪 -->
+    <titleShortFemale>guide</titleShortFemale>
+    <!-- 中文翻译：送行司仪 -->
+    <description>[PAWN_nameDef] helped alliance families prepare farewells for their dead, arranging keepsakes and speaking when relatives could not find the words. [PAWN_pronoun] learned to choose a simple setting and a few familiar songs without letting the ceremony overwhelm the people it was meant to comfort.</description>
+    <!-- 中文翻译：[PAWN_nameDef]替同盟的家庭安排送行，摆好遗物，在亲属说不出话时替她们把话说完。她学会了挑选简单的布置和几首熟悉的歌，不让仪式太过铺张，也不让来送别的人无处安放自己的心情。 -->
+    <skillGains>
+      <Social>3</Social>
+      <Artistic>2</Artistic>
+    </skillGains>
+    <spawnCategories>
+      <li>Rukaya_AdultGeneral</li>
+    </spawnCategories>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>Rukaya_PatternCutterKid</defName>
+    <identifier>Rukaya_PatternCutterKid</identifier>
+    <slot>Childhood</slot>
+    <title>pattern cutter kid</title>
+    <!-- 中文翻译：裁衣孩子 -->
+    <titleFemale>pattern cutter kid</titleFemale>
+    <!-- 中文翻译：裁衣孩子 -->
+    <titleShort>cutter kid</titleShort>
+    <!-- 中文翻译：裁衣孩子 -->
+    <titleShortFemale>cutter kid</titleShortFemale>
+    <!-- 中文翻译：裁衣孩子 -->
+    <description>[PAWN_nameDef] helped cut garments during childhood, checking the settlement&apos;s measure books and pinning cloth around neighbors&apos; shoulders and wing roots. The elders did the sewing, while [PAWN_pronoun] learned to read dimensions and recognize where a sleeve needed more slack.</description>
+    <!-- 中文翻译：[PAWN_nameDef]小时候在聚居地帮人裁衣，照着量体册给邻居的肩和翼根别布料。真正下针的是长辈，她只负责把尺寸看准，也知道袖子哪里容易绷紧、哪里该多留余地。 -->
+    <skillGains>
+      <Crafting>1</Crafting>
+      <Intellectual>1</Intellectual>
+    </skillGains>
+    <spawnCategories>
+      <li>Rukaya_ChildGeneral</li>
+    </spawnCategories>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>Rukaya_RouteFinderKid</defName>
+    <identifier>Rukaya_RouteFinderKid</identifier>
+    <slot>Childhood</slot>
+    <title>map-reading child</title>
+    <!-- 中文翻译：认路孩子 -->
+    <titleFemale>map-reading child</titleFemale>
+    <!-- 中文翻译：认路孩子 -->
+    <titleShort>route kid</titleShort>
+    <!-- 中文翻译：认路孩子 -->
+    <titleShortFemale>route kid</titleShortFemale>
+    <!-- 中文翻译：认路孩子 -->
+    <description>[PAWN_nameDef] liked spreading the settlement&apos;s worn street maps on the floor and tracing roads by lamplight. Eventually adults began asking [PAWN_objective] the way. When a direction proved wrong, [PAWN_pronoun] checked the map again and openly corrected the mistake.</description>
+    <!-- 中文翻译：[PAWN_nameDef]小时候喜欢把聚居地那张磨旧的街图铺在地上，借着灯把每条路描一遍。后来大人出门前常来问她怎么走，她给的方向大多是准的，错了也当着人承认再重新指。 -->
+    <skillGains>
+      <Intellectual>2</Intellectual>
+    </skillGains>
+    <spawnCategories>
+      <li>Rukaya_ChildGeneral</li>
+    </spawnCategories>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>Rukaya_KilnChild</defName>
+    <identifier>Rukaya_KilnChild</identifier>
+    <slot>Childhood</slot>
+    <title>kiln child</title>
+    <!-- 中文翻译：陶窑边的孩子 -->
+    <titleFemale>kiln child</titleFemale>
+    <!-- 中文翻译：陶窑边的孩子 -->
+    <titleShort>kiln kid</titleShort>
+    <!-- 中文翻译：陶窑孩子 -->
+    <titleShortFemale>kiln kid</titleShortFemale>
+    <!-- 中文翻译：陶窑孩子 -->
+    <description>[PAWN_nameDef] grew up beside the settlement&apos;s pottery kiln, helping adults stack unfired pots and dig clay nearby. [PAWN_pronoun] learned to remove stones from the clay and began recognizing which deposits shaped easily and which tended to crack in the kiln.</description>
+    <!-- 中文翻译：[PAWN_nameDef]在聚居地的陶窑旁长大，跟着大人码放陶坯，也去附近挖些黏土回来。她学会了挑出泥里的砂石，试着辨认哪些土容易捏成形，哪些一烧就会裂开。 -->
+    <skillGains>
+      <Crafting>2</Crafting>
+      <Mining>1</Mining>
+    </skillGains>
+    <spawnCategories>
+      <li>Rukaya_ChildGeneral</li>
+    </spawnCategories>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>Rukaya_OrchardKid</defName>
+    <identifier>Rukaya_OrchardKid</identifier>
+    <slot>Childhood</slot>
+    <title>orchard child</title>
+    <!-- 中文翻译：果园孩子 -->
+    <titleFemale>orchard child</titleFemale>
+    <!-- 中文翻译：果园孩子 -->
+    <titleShort>orchard kid</titleShort>
+    <!-- 中文翻译：果园孩子 -->
+    <titleShortFemale>orchard kid</titleShortFemale>
+    <!-- 中文翻译：果园孩子 -->
+    <description>[PAWN_nameDef] spent childhood summers helping in the alliance&apos;s orchard, picking fruit, carrying water to the roots and checking older trees for split bark. [PAWN_pronoun] learned which branches would bear weight and which had weakened enough to need attention.</description>
+    <!-- 中文翻译：[PAWN_nameDef]小时候的夏天都待在同盟的果园里，爬上梯子够不到的枝头摘果子，提着小桶喂树根，也替老树查看裂开的树皮。她分得清哪根枝条承得住人，哪些已经撑不住了。 -->
+    <skillGains>
+      <Plants>2</Plants>
+    </skillGains>
+    <spawnCategories>
+      <li>Rukaya_ChildGeneral</li>
+    </spawnCategories>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>Rukaya_DryingYardKid</defName>
+    <identifier>Rukaya_DryingYardKid</identifier>
+    <slot>Childhood</slot>
+    <title>drying yard child</title>
+    <!-- 中文翻译：晒粮孩子 -->
+    <titleFemale>drying yard child</titleFemale>
+    <!-- 中文翻译：晒粮孩子 -->
+    <titleShort>drying kid</titleShort>
+    <!-- 中文翻译：晒粮孩子 -->
+    <titleShortFemale>drying kid</titleShortFemale>
+    <!-- 中文翻译：晒粮孩子 -->
+    <description>[PAWN_nameDef] helped turn grain and sliced fruit in the settlement&apos;s drying yard, covering the racks when rain arrived. During long damp spells, [PAWN_pronoun] also helped dry the grain beside a stove, learning to keep it from scorching before it could be stored.</description>
+    <!-- 中文翻译：[PAWN_nameDef]小时候看管聚居地的晒粮场，把谷子和果干摊开翻动，免得在太阳下捂坏。赶上连阴，她还会去灶边帮着把返潮的粮焙一遍。天上的雨点一落下来，总是她抢先跑到架子边把布盖上。 -->
+    <skillGains>
+      <Plants>1</Plants>
+      <Cooking>1</Cooking>
+    </skillGains>
+    <spawnCategories>
+      <li>Rukaya_ChildGeneral</li>
+    </spawnCategories>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>Rukaya_GroveWardenKid</defName>
+    <identifier>Rukaya_GroveWardenKid</identifier>
+    <slot>Childhood</slot>
+    <title>grove warden child</title>
+    <!-- 中文翻译：护林孩子 -->
+    <titleFemale>grove warden child</titleFemale>
+    <!-- 中文翻译：护林孩子 -->
+    <titleShort>grove kid</titleShort>
+    <!-- 中文翻译：护林孩子 -->
+    <titleShortFemale>grove kid</titleShortFemale>
+    <!-- 中文翻译：护林孩子 -->
+    <description>[PAWN_nameDef] followed the settlement&apos;s grove wardens, tagging young trees and clearing fallen branches from paths. Before the rains, [PAWN_pronoun] helped brace the timber posts holding back loose soil, learning to protect both the saplings and the trail below.</description>
+    <!-- 中文翻译：[PAWN_nameDef]小时候常跟着护林人往聚居地上方去，帮忙给小树挂牌、清理小路上的倒枝，也在雨季前加固挡土的木桩。她记住了有些木头要等它自己落下来才去捡，路边的幼树再碍事也不能随手砍。 -->
+    <skillGains>
+      <Plants>1</Plants>
+      <Construction>1</Construction>
+    </skillGains>
+    <spawnCategories>
+      <li>Rukaya_ChildGeneral</li>
+    </spawnCategories>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>Rukaya_RepairChild</defName>
+    <identifier>Rukaya_RepairChild</identifier>
+    <slot>Childhood</slot>
+    <title>old goods mender</title>
+    <!-- 中文翻译：旧物修补孩子 -->
+    <titleFemale>old goods mender</titleFemale>
+    <!-- 中文翻译：旧物修补孩子 -->
+    <titleShort>mender kid</titleShort>
+    <!-- 中文翻译：修补孩子 -->
+    <titleShortFemale>mender kid</titleShortFemale>
+    <!-- 中文翻译：修补孩子 -->
+    <description>[PAWN_nameDef] helped the elders in a small mending room, learning to straighten bent hinges and fit replacement handles. [PAWN_pronoun] returned the repaired items to neighboring households, listening to any remaining problems and reporting them back to the adults.</description>
+    <!-- 中文翻译：[PAWN_nameDef]小时候常跟长辈在修补间里帮忙，学着把弯掉的铰链掰直、换上新的把手。修好的东西要挨家送回去，她也得听清邻居说哪里还不好使，再把话带给长辈。 -->
+    <skillGains>
+      <Crafting>2</Crafting>
+      <Social>1</Social>
+    </skillGains>
+    <spawnCategories>
+      <li>Rukaya_ChildGeneral</li>
+    </spawnCategories>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>Rukaya_JournalLoanKid</defName>
+    <identifier>Rukaya_JournalLoanKid</identifier>
+    <slot>Childhood</slot>
+    <title>journal lending child</title>
+    <!-- 中文翻译：书刊借阅孩子 -->
+    <titleFemale>journal lending child</titleFemale>
+    <!-- 中文翻译：书刊借阅孩子 -->
+    <titleShort>book kid</titleShort>
+    <!-- 中文翻译：借阅孩子 -->
+    <titleShortFemale>book kid</titleShortFemale>
+    <!-- 中文翻译：借阅孩子 -->
+    <description>[PAWN_nameDef] recorded loans from the settlement&apos;s small lending shelf, where old technical journals and novels passed between households. While waiting for borrowers, [PAWN_pronoun] read a few pages, and later used the ledger to remind people when a book needed returning.</description>
+    <!-- 中文翻译：[PAWN_nameDef]小时候替聚居地的一排借阅架登记书刊，旧技术期刊和小说都在各家之间传递。等人来取书的时候，她会先翻几页；谁忘记归还，也由她照着本子去提醒。 -->
+    <skillGains>
+      <Intellectual>1</Intellectual>
+      <Social>1</Social>
+    </skillGains>
+    <spawnCategories>
+      <li>Rukaya_ChildGeneral</li>
+    </spawnCategories>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>Rukaya_RangeScoreKid</defName>
+    <identifier>Rukaya_RangeScoreKid</identifier>
+    <slot>Childhood</slot>
+    <title>range score keeper</title>
+    <!-- 中文翻译：靶场记分孩子 -->
+    <titleFemale>range score keeper</titleFemale>
+    <!-- 中文翻译：靶场记分孩子 -->
+    <titleShort>score kid</titleShort>
+    <!-- 中文翻译：记分孩子 -->
+    <titleShortFemale>score kid</titleShortFemale>
+    <!-- 中文翻译：记分孩子 -->
+    <description>[PAWN_nameDef] helped keep score at the militia range, checking target sheets from behind the firing line and adding up the results. During breaks, veterans occasionally supervised a few practice shots, then showed [PAWN_objective] what the marks revealed about [PAWN_possessive] aim and grip.</description>
+    <!-- 中文翻译：[PAWN_nameDef]小时候在民兵靶场帮忙记分，站在射击线后核对靶纸，把每轮成绩加总。休息时，老兵偶尔让她在看护下试打几发，再一起看靶痕，讲清瞄准和握枪哪里还不对。 -->
+    <skillGains>
+      <Shooting>1</Shooting>
+      <Intellectual>1</Intellectual>
+    </skillGains>
+    <spawnCategories>
+      <li>Rukaya_ChildGeneral</li>
+    </spawnCategories>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>Rukaya_FerryChild</defName>
+    <identifier>Rukaya_FerryChild</identifier>
+    <slot>Childhood</slot>
+    <title>ferry child</title>
+    <!-- 中文翻译：渡口孩子 -->
+    <titleFemale>ferry child</titleFemale>
+    <!-- 中文翻译：渡口孩子 -->
+    <titleShort>ferry kid</titleShort>
+    <!-- 中文翻译：渡口孩子 -->
+    <titleShortFemale>ferry kid</titleShortFemale>
+    <!-- 中文翻译：渡口孩子 -->
+    <description>[PAWN_nameDef] grew up by the settlement ferry, helping adults patch the boarding ramp and secure loose rails. When livestock needed crossing, [PAWN_pronoun] calmed frightened animals on the bank and led them slowly aboard before handing over their ropes.</description>
+    <!-- 中文翻译：[PAWN_nameDef]在聚居地的渡口边长大，跟着大人补跳板、固定松动的栏杆。运送牲畜时，她先在岸上安抚受惊的动物，再慢慢牵到船边，等它们站稳才把缰绳交出去。 -->
+    <skillGains>
+      <Animals>1</Animals>
+      <Construction>1</Construction>
+    </skillGains>
+    <spawnCategories>
+      <li>Rukaya_ChildGeneral</li>
+    </spawnCategories>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>Rukaya_MarketChild</defName>
+    <identifier>Rukaya_MarketChild</identifier>
+    <slot>Childhood</slot>
+    <title>market child</title>
+    <!-- 中文翻译：集市孩子 -->
+    <titleFemale>market child</titleFemale>
+    <!-- 中文翻译：集市孩子 -->
+    <titleShort>market kid</titleShort>
+    <!-- 中文翻译：集市孩子 -->
+    <titleShortFemale>market kid</titleShortFemale>
+    <!-- 中文翻译：集市孩子 -->
+    <description>[PAWN_nameDef] ran errands between market stalls during childhood, counting change and passing along messages. [PAWN_pronoun] listened to bargaining, gradually learning what each vendor would accept and when an interruption would be welcome rather than irritating.</description>
+    <!-- 中文翻译：[PAWN_nameDef]小时候每逢集市都在摊位之间跑腿，替人点清找零，传递口信。遇上讨价还价，她就在边上听着，慢慢记住哪个摊主肯换什么，也知道什么时候插话才不至于惹人烦。 -->
+    <skillGains>
+      <Social>2</Social>
+    </skillGains>
+    <spawnCategories>
+      <li>Rukaya_ChildGeneral</li>
+    </spawnCategories>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>Rukaya_SpinningChild</defName>
+    <identifier>Rukaya_SpinningChild</identifier>
+    <slot>Childhood</slot>
+    <title>spinning child</title>
+    <!-- 中文翻译：纺线孩子 -->
+    <titleFemale>spinning child</titleFemale>
+    <!-- 中文翻译：纺线孩子 -->
+    <titleShort>spinning kid</titleShort>
+    <!-- 中文翻译：纺线孩子 -->
+    <titleShortFemale>spinning kid</titleShortFemale>
+    <!-- 中文翻译：纺线孩子 -->
+    <description>[PAWN_nameDef] learned to spin in a settlement loft while listening to the older spinners talk. Once [PAWN_pronoun] could keep the thread reasonably even, [PAWN_pronoun] began matching colors and leaving small sample lengths for the weavers to try.</description>
+    <!-- 中文翻译：[PAWN_nameDef]小时候常在聚居地的阁楼上学纺线，听年长的人闲聊，手里慢慢绕着纱。线不再忽粗忽细之后，她开始试着搭配不同颜色，给织布的人留下一小段配好的样线。 -->
+    <skillGains>
+      <Crafting>1</Crafting>
+      <Artistic>1</Artistic>
+    </skillGains>
+    <spawnCategories>
+      <li>Rukaya_ChildGeneral</li>
+    </spawnCategories>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>Rukaya_MemorialChild</defName>
+    <identifier>Rukaya_MemorialChild</identifier>
+    <slot>Childhood</slot>
+    <title>memorial garden child</title>
+    <!-- 中文翻译：纪念园孩子 -->
+    <titleFemale>memorial garden child</titleFemale>
+    <!-- 中文翻译：纪念园孩子 -->
+    <titleShort>memorial kid</titleShort>
+    <!-- 中文翻译：纪念园孩子 -->
+    <titleShortFemale>memorial kid</titleShortFemale>
+    <!-- 中文翻译：纪念园孩子 -->
+    <description>[PAWN_nameDef] helped weed the memorial garden and water newly planted flowers. When the elders outlined a pattern around a marker, [PAWN_pronoun] carefully filled it with color, gradually remembering which flowers different visitors preferred to leave beside the stones.</description>
+    <!-- 中文翻译：[PAWN_nameDef]小时候帮忙清理纪念园的杂草，给新栽的花浇水。长辈描好碑边的纹样后，她会沿着细线补颜色，也慢慢记住了哪些来探望的人，喜欢在碑前留什么样的花。 -->
+    <skillGains>
+      <Artistic>1</Artistic>
+      <Plants>1</Plants>
+    </skillGains>
+    <spawnCategories>
+      <li>Rukaya_ChildGeneral</li>
+    </spawnCategories>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>Rukaya_PaperMillChild</defName>
+    <identifier>Rukaya_PaperMillChild</identifier>
+    <slot>Childhood</slot>
+    <title>paper mill child</title>
+    <!-- 中文翻译：纸坊孩子 -->
+    <titleFemale>paper mill child</titleFemale>
+    <!-- 中文翻译：纸坊孩子 -->
+    <titleShort>paper kid</titleShort>
+    <!-- 中文翻译：纸坊孩子 -->
+    <titleShortFemale>paper kid</titleShortFemale>
+    <!-- 中文翻译：纸坊孩子 -->
+    <description>[PAWN_nameDef] grew up beside the settlement&apos;s paper mill, carrying bundles of soaked scrap fiber to the drying frames and turning the sheets once a day. [PAWN_pronoun] came to know every step between a torn uniform and a blank page.</description>
+    <!-- 中文翻译：[PAWN_nameDef]在聚居地的纸坊旁长大，把泡软的碎布纤维搬上晾架，每天替纸页翻一次面。一件磨破的制服，要经过哪些人的手才能变成一叠空白的纸，她全都看在眼里。 -->
+    <skillGains>
+      <Crafting>2</Crafting>
+    </skillGains>
+    <spawnCategories>
+      <li>Rukaya_ChildGeneral</li>
+    </spawnCategories>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>Rukaya_HealerApprenticeKid</defName>
+    <identifier>Rukaya_HealerApprenticeKid</identifier>
+    <slot>Childhood</slot>
+    <title>herbalist&apos;s helper</title>
+    <!-- 中文翻译：认药学童 -->
+    <titleFemale>herbalist&apos;s helper</titleFemale>
+    <!-- 中文翻译：认药学童 -->
+    <titleShort>herbal kid</titleShort>
+    <!-- 中文翻译：认药学童 -->
+    <titleShortFemale>herbal kid</titleShortFemale>
+    <!-- 中文翻译：认药学童 -->
+    <description>[PAWN_nameDef] followed the settlement&apos;s herbalists as a child, learning the smell and shape of useful leaves and reading their names from a small guide. Whenever identification was uncertain, [PAWN_pronoun] brought back a sample for an adult instead of adding it to the medicine basket.</description>
+    <!-- 中文翻译：[PAWN_nameDef]小时候跟着配药的人辨认草药，记下叶子的气味和形状，也照着小册子学认药名。遇到拿不准的植物，她会带回枝叶请大人分辨，不肯自己往药筐里乱放。 -->
+    <skillGains>
+      <Medicine>1</Medicine>
+      <Plants>1</Plants>
+      <Intellectual>1</Intellectual>
+    </skillGains>
+    <spawnCategories>
+      <li>Rukaya_ChildGeneral</li>
+    </spawnCategories>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>Rukaya_BellTowerChild</defName>
+    <identifier>Rukaya_BellTowerChild</identifier>
+    <slot>Childhood</slot>
+    <title>watch bell child</title>
+    <!-- 中文翻译：钟楼孩子 -->
+    <titleFemale>watch bell child</titleFemale>
+    <!-- 中文翻译：钟楼孩子 -->
+    <titleShort>bell kid</titleShort>
+    <!-- 中文翻译：钟楼孩子 -->
+    <titleShortFemale>bell kid</titleShortFemale>
+    <!-- 中文翻译：钟楼孩子 -->
+    <description>[PAWN_nameDef] helped care for the settlement&apos;s watch bell, oiling the mount, tightening supports and replacing worn rope under an elder&apos;s supervision. Curious about how the sound carried, [PAWN_pronoun] stayed after each repair to watch the next shift test the bell.</description>
+    <!-- 中文翻译：[PAWN_nameDef]小时候帮忙看护聚居地的瞭望钟，跟着长辈给吊架抹油、拧紧支架，换掉磨毛的绳子。她总想弄明白钟声是怎样传出去的，修完以后还会守在旁边，等换班的人来试敲。 -->
+    <skillGains>
+      <Construction>1</Construction>
+      <Crafting>1</Crafting>
+    </skillGains>
+    <spawnCategories>
+      <li>Rukaya_ChildGeneral</li>
+    </spawnCategories>
+  </BackstoryDef>
+
+</Defs>

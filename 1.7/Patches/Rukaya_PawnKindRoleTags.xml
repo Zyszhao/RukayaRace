@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <!-- ============================================================================
+       卢卡娅 PawnKind 武器职能词条补丁（纯追加，不修改任何现有物品的定位与数值）
+       ============================================================================
+       设计依据（见 设计文档/卢卡娅_PawnKind四级体系与武器服装词条建议.md）：
+       · weaponTags / apparelTags 都是「白名单并集（OR）」语义，
+         所以 PawnKind 只能挂「职能词条」，不能把「档位词条 + 职能词条」放在一起，
+         否则并集会退化回整档武器。
+       · 档位词条 Rukaya_T1/T2/T3_Melee/Ranged 保持原样，仅作为档位声明与文档口径。
+       · 移除本文件即可完全回滚（服装身份词条不在此列，见下）。
+
+       武器词条：全部用 PatchOperationAdd 追加到已存在的 <weaponTags> 上（追加 <li>，安全）。
+
+       【为什么本文件不再处理服装词条】
+       LoadedModManager 的执行顺序是 ApplyPatches() → ParseAndProcessXML()，
+       后者内部才调用 XmlInheritance.Resolve()（见 Source/Verse/LoadedModManager.cs）。
+       也就是说补丁的 XPath 只看得到 XML 原始节点，看不到 ParentName 继承来的节点：
+         · Rukaya_Armour / Rukaya_ArmourHelmet 这些叶子 Def 本地写了
+           <apparel><tags>，所以针对它们的 apparel/tags 补丁才会命中；
+         · 而平民 / 民兵 / 军官那批服装的 <tags> 全部写在 Rukaya_*BaseI/II/III 抽象父类里，
+           叶子本地没有该节点，xpath .../apparel/tags 一律匹配失败并刷红字
+           "Patch operation Verse.PatchOperationReplace(...) failed"。
+       因此服装身份词条已全部改为直接写在各自叶子 Def 的本地 <tags> 里，
+       写法与本模组其它服装 Def 一致：
+         Apparel_OnSkin.xml    : StudentUniform / FormalUniform / FormalDress / WinterCoat /
+                                 CasualShirt / ServiceUniform
+         Apparel_Shell.xml     : WinterCape / CasualJacket / TrenchCoat
+         Apparel_OverHead.xml  : StudentHeadband / FormalBeret / AfghankaHat / WinterHat /
+                                 HairBand / WideBrimHat
+         Apparel_Underwear.xml : BlackKneehighs / Swimsuit / SportsBra
+       注意：这些叶子 Def 里要把「部位词条（Rukaya_OnSkin / Shell / OverHead /
+       Underwear）+ 身份词条」都写全。XmlInheritance 对 <li> 是**追加**语义
+       （父级与叶子本地的 <li> 会并集成同一个列表，两边都写不会丢词条）；
+       只要有一边漏写部位词条，apparelTags 白名单与 specificApparelRequirements
+       就会落空，角色直接裸体生成。
+
+       新增词条一览
+         武器职能：Rukaya_T1_Rifle / T1_Pistol / T1_MeleeSword / T1_MeleeTool /
+                   T1_SupportLauncher / T2_Rifle / T2_Pistol / T2_LMG / T2_Marksman /
+                   T2_GrenadeLauncher / T2_Incendiary / T2_Recon / T2_Recoilless /
+                   T2_MeleeBreach / T2_BreachingHammer / T2_MeleeControl / T3_Laser / T3_Shotgun /
+                   T3_Sniper / T3_SmartPistol / T3_ATGM / T3_AutoCannon / T3_HMG /
+                   T3_MeleeBlade
+         服装身份（写在各自叶子 Def 的本地 <tags> 里，不在本文件）：
+                   Rukaya_Dress_Civilian / Rukaya_Dress_Service / Rukaya_Dress_Officer
+                   （Rukaya_Dress_Officer 是"军官礼服套装"专用词条，
+                     只挂在 Rukaya_FormalDress 与 Rukaya_WideBrimHat 两件上，
+                     供派系领袖与军官用 apparelRequired 强制整套穿着）
+                   （第 2 轮已按需求删除原先三件美术占位的正规军制式装备 ——
+                     野战服 / 野战护甲 / 野战钢盔；正规军改用现成美术的
+                     阿富汗卡套与正装套，只挂 Rukaya_Dress_Service）
+       ============================================================================ -->
+
+  <!-- ================= T1 职能词条 ================= -->
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[defName="Rukaya_Rifle"]/weaponTags</xpath>
+    <value>
+      <li>Rukaya_T1_Rifle</li>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[defName="Rukaya_AssaultRifle"]/weaponTags</xpath>
+    <value>
+      <li>Rukaya_T1_Rifle</li>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[defName="Rukaya_Revolver"]/weaponTags</xpath>
+    <value>
+      <li>Rukaya_T1_Pistol</li>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[defName="Rukaya_DuelSword"]/weaponTags</xpath>
+    <value>
+      <li>Rukaya_T1_MeleeSword</li>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[defName="Rukaya_Pickaxe"]/weaponTags</xpath>
+    <value>
+      <li>Rukaya_T1_MeleeTool</li>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[defName="Rukaya_TrenchShowel"]/weaponTags</xpath>
+    <value>
+      <li>Rukaya_T1_MeleeTool</li>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[defName="Rukaya_AirburstRocket"]/weaponTags</xpath>
+    <value>
+      <li>Rukaya_T1_SupportLauncher</li>
+    </value>
+  </Operation>
+
+  <!-- ================= T2 职能词条 ================= -->
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[defName="Rukaya_SubMachinegun"]/weaponTags</xpath>
+    <value>
+      <li>Rukaya_T2_Rifle</li>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[defName="Rukaya_AssaultRifleFlame"]/weaponTags</xpath>
+    <value>
+      <li>Rukaya_T2_Rifle</li>
+      <li>Rukaya_T2_Incendiary</li>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[defName="Rukaya_AssaultRifleGrenade"]/weaponTags</xpath>
+    <value>
+      <li>Rukaya_T2_Rifle</li>
+      <li>Rukaya_T2_GrenadeLauncher</li>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[defName="Rukaya_AssaultRifleRadar"]/weaponTags</xpath>
+    <value>
+      <li>Rukaya_T2_Rifle</li>
+      <li>Rukaya_T2_Recon</li>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[defName="Rukaya_Pistol"]/weaponTags</xpath>
+    <value>
+      <li>Rukaya_T2_Pistol</li>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[defName="Rukaya_Machinegun"]/weaponTags</xpath>
+    <value>
+      <li>Rukaya_T2_LMG</li>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[defName="Rukaya_MarksmanRifle"]/weaponTags</xpath>
+    <value>
+      <li>Rukaya_T2_Marksman</li>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[defName="Rukaya_GrenadeLauncher"]/weaponTags</xpath>
+    <value>
+      <li>Rukaya_T2_GrenadeLauncher</li>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[defName="Rukaya_GrenadePistol"]/weaponTags</xpath>
+    <value>
+      <li>Rukaya_T2_GrenadeLauncher</li>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[defName="Rukaya_RecoillessGun"]/weaponTags</xpath>
+    <value>
+      <li>Rukaya_T2_Recoilless</li>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[defName="Rukaya_SledgeHammer"]/weaponTags</xpath>
+    <value>
+      <li>Rukaya_T2_MeleeBreach</li>
+      <li>Rukaya_T2_BreachingHammer</li>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[defName="Rukaya_DivingKnife"]/weaponTags</xpath>
+    <value>
+      <li>Rukaya_T2_MeleeBreach</li>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[defName="Rukaya_StunBaton"]/weaponTags</xpath>
+    <value>
+      <li>Rukaya_T2_MeleeControl</li>
+    </value>
+  </Operation>
+
+  <!-- ================= T3 职能词条 ================= -->
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[defName="Rukaya_LaserRifle"]/weaponTags</xpath>
+    <value>
+      <li>Rukaya_T3_Laser</li>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[defName="Rukaya_PlasmaShotgun"]/weaponTags</xpath>
+    <value>
+      <li>Rukaya_T3_Shotgun</li>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[defName="Rukaya_PlasmaRailgun"]/weaponTags</xpath>
+    <value>
+      <li>Rukaya_T3_Sniper</li>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[defName="Rukaya_SmartRevolver"]/weaponTags</xpath>
+    <value>
+      <li>Rukaya_T3_SmartPistol</li>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[defName="Rukaya_ATGMLauncher"]/weaponTags</xpath>
+    <value>
+      <li>Rukaya_T3_ATGM</li>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[defName="Rukaya_AutoCannon"]/weaponTags</xpath>
+    <value>
+      <li>Rukaya_T3_AutoCannon</li>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[defName="Rukaya_AviationMachinegun"]/weaponTags</xpath>
+    <value>
+      <li>Rukaya_T3_HMG</li>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[defName="Rukaya_PowerSword"]/weaponTags</xpath>
+    <value>
+      <li>Rukaya_T3_MeleeBlade</li>
+    </value>
+  </Operation>
+
+
+  <!-- ================= 服装身份词条 =================
+       自 2026-02 起，服装身份词条（Rukaya_Dress_Civilian / _Service / _Officer）不再由本补丁写入，
+       原因是补丁执行在 XmlInheritance.Resolve() 之前，看不到 ParentName 继承来的 <apparel>/<tags>，
+       针对这些叶子 Def 的 PatchOperationReplace 会全部匹配失败并刷红字。
+       现已改为直接写在各自叶子 Def 的本地 <tags> 里：
+         Apparel_OnSkin.xml    : StudentUniform / FormalUniform / FormalDress / WinterCoat /
+                                 CasualShirt / ServiceUniform
+         Apparel_Shell.xml     : WinterCape / CasualJacket / TrenchCoat
+         Apparel_OverHead.xml  : StudentHeadband / FormalBeret / AfghankaHat / WinterHat /
+                                 HairBand / WideBrimHat
+         Apparel_Underwear.xml : BlackKneehighs / Swimsuit / SportsBra
+       修改这些词条时请直接编辑上述文件。 -->
+
+</Patch>

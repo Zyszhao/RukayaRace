@@ -1,0 +1,211 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Patch>
+  <Operation Class="PatchOperationSequence">
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/BiomeDef[defName='BorealForest']/allowedPackAnimals</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/BiomeDef[defName='BorealForest']/allowedPackAnimals</xpath>
+          <value>
+            <li>Rukaya_MechContainer</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/BiomeDef[defName='BorealForest']</xpath>
+          <value>
+            <allowedPackAnimals>
+              <li>Rukaya_MechContainer</li>
+            </allowedPackAnimals>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/BiomeDef[defName='Tundra']/allowedPackAnimals</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/BiomeDef[defName='Tundra']/allowedPackAnimals</xpath>
+          <value>
+            <li>Rukaya_MechContainer</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/BiomeDef[defName='Tundra']</xpath>
+          <value>
+            <allowedPackAnimals>
+              <li>Rukaya_MechContainer</li>
+            </allowedPackAnimals>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/BiomeDef[defName='ColdBog']/allowedPackAnimals</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/BiomeDef[defName='ColdBog']/allowedPackAnimals</xpath>
+          <value>
+            <li>Rukaya_MechContainer</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/BiomeDef[defName='ColdBog']</xpath>
+          <value>
+            <allowedPackAnimals>
+              <li>Rukaya_MechContainer</li>
+            </allowedPackAnimals>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/BiomeDef[defName='IceSheet']/allowedPackAnimals</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/BiomeDef[defName='IceSheet']/allowedPackAnimals</xpath>
+          <value>
+            <li>Rukaya_MechContainer</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/BiomeDef[defName='IceSheet']</xpath>
+          <value>
+            <allowedPackAnimals>
+              <li>Rukaya_MechContainer</li>
+            </allowedPackAnimals>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/BiomeDef[defName='SeaIce']/allowedPackAnimals</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/BiomeDef[defName='SeaIce']/allowedPackAnimals</xpath>
+          <value>
+            <li>Rukaya_MechContainer</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/BiomeDef[defName='SeaIce']</xpath>
+          <value>
+            <allowedPackAnimals>
+              <li>Rukaya_MechContainer</li>
+            </allowedPackAnimals>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/BiomeDef[defName='TemperateForest']/allowedPackAnimals</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/BiomeDef[defName='TemperateForest']/allowedPackAnimals</xpath>
+          <value>
+            <li>Rukaya_MechContainer</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/BiomeDef[defName='TemperateForest']</xpath>
+          <value>
+            <allowedPackAnimals>
+              <li>Rukaya_MechContainer</li>
+            </allowedPackAnimals>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/BiomeDef[defName='TemperateSwamp']/allowedPackAnimals</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/BiomeDef[defName='TemperateSwamp']/allowedPackAnimals</xpath>
+          <value>
+            <li>Rukaya_MechContainer</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/BiomeDef[defName='TemperateSwamp']</xpath>
+          <value>
+            <allowedPackAnimals>
+              <li>Rukaya_MechContainer</li>
+            </allowedPackAnimals>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/BiomeDef[defName='TropicalRainforest']/allowedPackAnimals</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/BiomeDef[defName='TropicalRainforest']/allowedPackAnimals</xpath>
+          <value>
+            <li>Rukaya_MechContainer</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/BiomeDef[defName='TropicalRainforest']</xpath>
+          <value>
+            <allowedPackAnimals>
+              <li>Rukaya_MechContainer</li>
+            </allowedPackAnimals>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/BiomeDef[defName='TropicalSwamp']/allowedPackAnimals</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/BiomeDef[defName='TropicalSwamp']/allowedPackAnimals</xpath>
+          <value>
+            <li>Rukaya_MechContainer</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/BiomeDef[defName='TropicalSwamp']</xpath>
+          <value>
+            <allowedPackAnimals>
+              <li>Rukaya_MechContainer</li>
+            </allowedPackAnimals>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/BiomeDef[defName='AridShrubland']/allowedPackAnimals</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/BiomeDef[defName='AridShrubland']/allowedPackAnimals</xpath>
+          <value>
+            <li>Rukaya_MechContainer</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/BiomeDef[defName='AridShrubland']</xpath>
+          <value>
+            <allowedPackAnimals>
+              <li>Rukaya_MechContainer</li>
+            </allowedPackAnimals>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/BiomeDef[defName='Desert']/allowedPackAnimals</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/BiomeDef[defName='Desert']/allowedPackAnimals</xpath>
+          <value>
+            <li>Rukaya_MechContainer</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/BiomeDef[defName='Desert']</xpath>
+          <value>
+            <allowedPackAnimals>
+              <li>Rukaya_MechContainer</li>
+            </allowedPackAnimals>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/BiomeDef[defName='ExtremeDesert']/allowedPackAnimals</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/BiomeDef[defName='ExtremeDesert']/allowedPackAnimals</xpath>
+          <value>
+            <li>Rukaya_MechContainer</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/BiomeDef[defName='ExtremeDesert']</xpath>
+          <value>
+            <allowedPackAnimals>
+              <li>Rukaya_MechContainer</li>
+            </allowedPackAnimals>
+          </value>
+        </nomatch>
+      </li>
+    </operations>
+  </Operation>
+</Patch>

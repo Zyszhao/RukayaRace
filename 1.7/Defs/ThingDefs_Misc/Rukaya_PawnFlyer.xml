@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!--
+    紧急飞行专用的 PawnFlyer。
+
+    继承原版 ThingDefOf.PawnFlyer（defName 就是 PawnFlyer，label 为 flying）即可拿到
+    影子材质、绘制层、thingClass（原版 PawnFlyer）、tickerType 等全部默认，
+    这里只覆盖"飞行手感"相关的字段 —— 这正是原版留出的扩展点
+    （Verb_CastAbilityJump.JumpFlyerDef 可 override，见
+     Source/RukayaRace/Flight/Verb_CastRukayaEmergencyFly.cs）。
+
+    与"持续飞行"（CompRukayaFlightControl 驱动的悬停）无关：那条路径不经过 PawnFlyer，
+    本 def 只服务于紧急飞行技能的一次性位移。
+
+    三个手感旋钮（对照原版跳跃：flightDurationMin 0.5 / flightSpeed 12 / heightFactor 2）：
+      · flightSpeed 28  —— 原版约 12，这里接近爆速
+      · flightDurationMin 0.2 —— 下限，保证近距离也有最短滞空（否则贴脸跳快得看不见）
+      · progressCurve 前段陡 —— 起步爆发（"紧急"感），后段平缓 —— 减速落地
+  -->
+  <!--
+    ⚠ ParentName 必须写 **PawnFlyerBase**，不是 PawnFlyer。
+
+    RimWorld 的 `ParentName` 引用的是父节点 XML 上的 **`Name` 属性**，而**不是 `defName`**。
+    原版定义长这样（Data/Core/Defs/ThingDefs_Misc/Ethereal_Various.xml）：
+
+      <ThingDef Name="PawnFlyerBase" ParentName="EtherealThingBase">
+        <defName>PawnFlyer</defName>
+        ...
+
+    所以 `Name` 是 `PawnFlyerBase`，`defName` 才是 `PawnFlyer`。
+    写 `ParentName="PawnFlyer"` 会加载期报
+    「Could not find parent node named "PawnFlyer" for node "ThingDef"」，
+    结果本 def 完全没有继承到 thingClass / tickerType / drawerType 等字段，
+    接着连带报「has null thingClass」，并且**开新档时无法创建地图**
+    （PawnFlyer 是飞行载体，def 坏掉会让整张地图的生成流程抛异常）。
+    设计文档原文误标此写法为"已核实正确"，实为错误，已就地修正。
+  -->
+  <ThingDef ParentName="PawnFlyerBase">
+    <defName>Rukaya_EmergencyFlyer</defName>
+    <label>emergency flight</label>
+    <!-- 中文：紧急飞行 -->
+    <description>A short, hard burst of wing power that throws the Rukaya across the battlefield.</description>
+    <!-- 中文翻译：一次短促而凶猛的振翅爆发，把卢卡娅抛过战场。 -->
+    <pawnFlyer>
+      <flightDurationMin>0.2</flightDurationMin>
+      <flightSpeed>28</flightSpeed>
+      <!-- heightFactor 0 = 贴地冲刺；原版跳跃是 2（明显的抛物线） -->
+      <heightFactor>0</heightFactor>
+      <!--
+        progressCurve：横轴 = 飞行进度 0~1，纵轴 = 实际位移比例。
+        前段陡 = 起步爆发，后段平缓 = 减速落地。这是一条"先冲后收"的曲线。
+      -->
+      <progressCurve>
+        <points>
+          <li>(0, 0)</li>
+          <li>(0.1, 0.3)</li>
+          <li>(0.2, 0.47)</li>
+          <li>(0.3, 0.6)</li>
+          <li>(0.4, 0.69)</li>
+          <li>(0.5, 0.77)</li>
+          <li>(0.6, 0.84)</li>
+          <li>(0.7, 0.9)</li>
+          <li>(0.8, 0.95)</li>
+          <li>(0.9, 0.98)</li>
+          <li>(1, 1)</li>
+        </points>
+      </progressCurve>
+    </pawnFlyer>
+  </ThingDef>
+
+</Defs>

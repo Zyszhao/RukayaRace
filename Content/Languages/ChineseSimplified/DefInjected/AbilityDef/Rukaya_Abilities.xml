@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- 紧急飞行 AbilityDef（1.7/Defs/AbilityDefs/Rukaya_Abilities.xml） -->
+  <Rukaya_EmergencyFly.label>紧急飞行</Rukaya_EmergencyFly.label>
+  <Rukaya_EmergencyFly.description>一次不顾一切的振翅爆发，转瞬间将卢卡娅抛过战场。施放代价低廉，但每一次使用都会让她的双翼因疲惫而灼痛。</Rukaya_EmergencyFly.description>
+
+
+  <Rukaya_EmergencyFly.verbProperties.label>紧急飞行</Rukaya_EmergencyFly.verbProperties.label>
+
+</LanguageData>

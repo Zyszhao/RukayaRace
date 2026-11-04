@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- 剧本：被放逐的卢卡娅（The Exiled Rukaya）。
+       开局只有玩家自己选/随机的那一名角色（pawnCount 1，坠落舱着陆）；
+       着陆后 0.5~1.5 天由 ScenPart_CreateIncident 触发一次 Rukaya_TrioArrival，
+       三名 firstname 指定的被放逐卢卡娅同批乘运输舱抵达并加入玩家。
+       剧情背景：这三名同族曾是著名而争议不断的游戏制作人，联盟内部流传她们是秘密间谍 /
+       军情专家的传言，于是联盟把她们连同武器一起装进空投仓、送往玩家被派往的新聚居地；
+       玩家是负责监护她们的"监护者"。文案见 Content/Languages/ChineseSimplified/DefInjected/
+       ScenarioDef/Rukaya_LoneDrifter 同名文件（键名仍是 Rukaya_LoneDrifter.*，defName 未改）。
+
+       <playerFaction> 覆盖了 ScenarioBase 的默认值（PlayerColony）：本剧本固定用本模组的
+       玩家阵营 Rukaya_PlayerFaction，所以"选择的一个角色"就是卢卡娅——
+       起始 pawn 的兵种取自 Faction.OfPlayer.def.basicMemberKind = Rukaya_Colonist。
+       原版 LostTribe 用同样的写法把玩家阵营换成 PlayerTribe。
+       （2026-10-08 更正：玩家阵营 defName = Rukaya_PlayerFaction，NPC 卢卡娅阵营 = Rukaya_DrifterAlliance，
+       两者此前名字与角色写反了。） -->
+  <ScenarioDef ParentName="ScenarioBase">
+    <defName>Rukaya_LoneDrifter</defName>
+    <label>The Exiled Rukaya</label>
+    <!-- 中文：被放逐的卢卡娅 -->
+    <description>You have been handed a settlement assignment you did not ask for: build a new home while keeping three exiled kin in line. The three seem to have once been famous - and endlessly argued-over - game producers, but word kept spreading through the Alliance that they were really secret agents or military intelligence specialists, until the Alliance, worn down by the noise, tried to put some distance between itself and them. You were sent on ahead to the chosen site; the three, once they had been issued the weapons they would need, were sealed into drop pods and launched - all under the eyes of a great many very angry players. According to those players, this is merely a taste of the misery of the very prison those three designed themselves.\n\nNote: You start alone. Your three exiles arrive by drop pod shortly after you land.</description>
+    <!-- 中文翻译：你接到了一个不情不愿的开拓任务：在监护三个被放逐的同僚的时候建立新的聚居地。这三位同族似乎曾经是著名又争议不断的游戏制作人，但联盟内不断流传出关于她们是什么秘密间谍或军情专家的传言，导致联盟内部不堪其扰，只好试图拉开距离。你被派往了选定的聚居地地址，而三位同族将会在得到必要的武器后，在愤怒的玩家们的见证下被装进空投仓，稍后与你会合。按照这些玩家们的说法，这只不过是让她们体验一下自己设计出来的大牢的痛苦而已。\n\n注意：你孤身开局，三名被放逐者会在你着陆后不久乘空投仓抵达。 -->
+    <scenario>
+      <summary>Three exiled Rukaya and a minder. Those names seem vaguely familiar...</summary>
+      <!-- 中文：三名被放逐的卢卡娅和一位监护者。似乎名字有点耳熟…… -->
+      <playerFaction>
+        <factionDef>Rukaya_PlayerFaction</factionDef>
+      </playerFaction>
+      <parts>
+
+        <li Class="ScenPart_ConfigPage_ConfigureStartingPawns">
+          <def>ConfigPage_ConfigureStartingPawns</def>
+          <pawnCount>1</pawnCount>
+          <pawnChoiceCount>8</pawnChoiceCount>
+        </li>
+
+        <li Class="ScenPart_PlayerPawnsArriveMethod">
+          <def>PlayerPawnsArriveMethod</def>
+          <visible>false</visible>
+          <method>DropPods</method>
+        </li>
+
+        <!-- 着陆后 0.5~1.5 天触发一次"三名同伴到来"。repeat 缺省为 false，即只触发一次。 -->
+        <li Class="ScenPart_CreateIncident">
+          <def>CreateIncident</def>
+          <incident>Rukaya_TrioArrival</incident>
+          <minDays>0.5</minDays>
+          <maxDays>1.5</maxDays>
+        </li>
+
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Silver</thingDef>
+          <count>700</count>
+        </li>
+
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MealSurvivalPack</thingDef>
+          <count>40</count>
+        </li>
+
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>MedicineIndustrial</thingDef>
+          <count>20</count>
+        </li>
+
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>ComponentIndustrial</thingDef>
+          <count>25</count>
+        </li>
+
+        <!-- 开局武器只有一把本模组的制式突击步枪（无改装件版 Rukaya_AssaultRifle；
+             改装件版是 Rukaya_AssaultRifleGrenade / _Flame / _Radar）。
+              2026-10-08 需求方反馈：开局实测发了一把原版匕首，要求去掉 ——
+              原先的 MeleeWeapon_Knife（铂金）条目已删除，开局只留一把枪。
+              三名同伴的武器不由剧本发放，而是事件生成时各自自带的固定武器，见 Rukaya_TrioArrival。 -->
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Rukaya_AssaultRifle</thingDef>
+        </li>
+
+        <li Class="ScenPart_ScatterThingsNearPlayerStart">
+          <def>ScatterThingsNearPlayerStart</def>
+          <thingDef>Steel</thingDef>
+          <count>400</count>
+        </li>
+
+        <li Class="ScenPart_ScatterThingsNearPlayerStart">
+          <def>ScatterThingsNearPlayerStart</def>
+          <thingDef>WoodLog</thingDef>
+          <count>300</count>
+        </li>
+
+        <!-- 玩家阵营与 NPC 卢卡娅阵营（Rukaya_DrifterAlliance）同族：
+             开局好感度直接给 100，自然好感度 75（由 GoodwillSituationDef Rukaya_KinRelations 提供）。 -->
+        <li Class="RukayaRace.Scenario.ScenPart_RukayaKinRelations">
+          <def>RukayaKinRelations</def>
+        </li>
+
+        <!-- 开局即掌握活性物质提炼（需求方 2026-10-08 指定）：
+             剧情上她们是"拿到必要武器后才被装进空投仓"，因此这门基础工业技术开局就绪。
+             ScenPart_StartingResearch.PostGameStart 会直接 FinishProject。 -->
+        <li Class="ScenPart_StartingResearch">
+          <def>StartingResearch</def>
+          <project>Rukaya_ActiveMatterRefining</project>
+        </li>
+
+        <!-- 开局给 25 个活性物质容器（Rukaya_ActiveMatterContainer）：用于武器/舰炮，
+             按 fuelMultiplier 30 即 1 个 = 30 单位。 -->
+        <li Class="ScenPart_StartingThing_Defined">
+          <def>StartingThing_Defined</def>
+          <thingDef>Rukaya_ActiveMatterContainer</thingDef>
+          <count>25</count>
+        </li>
+
+        <li Class="ScenPart_GameStartDialog">
+          <def>GameStartDialog</def>
+          <text>The pod's hull ticks as it cools, and the site is empty except for you. Three of your own are inbound, under your custody - the Alliance wants them settled here, far enough away to be somebody else's problem.\n\nThey will land once they have their weapons. Build something that lasts before they do.</text>
+          <!-- 中文翻译：舱体在外壳冷却的咔哒声中静了下来，这片选址地除了你空无一物。三名同族正在途中，由你监护——联盟想把她们安置在这里，远到足以变成别人的麻烦。\n\n等她们拿到武器，就会降落。在她们抵达之前，先建起点能长久的东西吧。 -->
+          <closeSound>GameStartSting</closeSound>
+        </li>
+
+      </parts>
+    </scenario>
+  </ScenarioDef>
+
+</Defs>

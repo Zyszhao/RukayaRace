@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- ============================================================
+       Rukaya 对空/防空系统的实体 Def 组
+
+       本文件里的 Def 都不出现在建造/制造菜单里，它们是 RukayaRace.AirDefense
+       那套代码在运行时按 defName 硬引用生成的实体：
+         对空弹本体        Rukaya_SkyInterceptorAirProjectile
+         空投仓击落残骸    Rukaya_InterceptedSkyCrash
+         陨石碎块          Rukaya_InterceptedMeteoriteFragment
+         弧线弹拦截残骸    Rukaya_InterceptedAirborneDebris
+         飞行物击落        Rukaya_InterceptedFallingFlyer
+         地对空拦截弹      Rukaya_SAMLaunchMissile
+       改 defName 必须同步改 Source/RukayaRace/AirDefense/*.cs 里的字符串，
+       校验脚本 Tests/RukayaDefsIntegrity.ps1 会拦住不一致。
+       ============================================================ -->
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Rukaya_SkyInterceptorAirProjectile</defName>
+    <label>Rukaya interceptor missile</label>
+    <!-- 中文：卢卡娅拦截弹 -->
+    <thingClass>RukayaRace.AirDefense.Projectile_RukayaSkyInterceptor</thingClass>
+    <altitudeLayer>Skyfaller</altitudeLayer>
+    <drawerType>RealtimeOnly</drawerType>
+    <drawOffscreen>true</drawOffscreen>
+    <!-- 必须在图外继续绘制：目标常在边界外进入，拦截点在可视范围之外。
+         贴图口径（需求方 2026-10-08）：对空拦截弹与舰炮地面炮弹用**同一张** Things/Projectile/ShellHighExplosive，
+         不再借用 Rukaya/Weapon/Rukaya_ATGM_Projectile（那是反装甲导弹的专用贴图）。
+         本模组这类弹体贴图统一朝北，在 RimWorld 里配合 Quaternion.LookRotation 就是正确朝向，无需角度补偿。 -->
+    <graphicData>
+      <texPath>Things/Projectile/ShellHighExplosive</texPath>
+      <shaderType>TransparentPostLight</shaderType>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Blunt</damageDef>
+      <damageAmountBase>0</damageAmountBase>
+      <!-- 伤害为 0：命中结算完全由 RukayaAirImpact 自己处理，不走原版弹丸伤害。 -->
+      <speed>200</speed>
+      <!-- 这里的 speed 只是占位：Projectile_RukayaSkyInterceptor.Initialize 会用
+           Bullet_Rukaya_InterceptorMissile 的速度覆盖它。两边保持一致只是为了读起来不矛盾。 -->
+    </projectile>
+  </ThingDef>
+
+  <ThingDef>
+    <defName>Rukaya_InterceptedSkyCrash</defName>
+    <label>Rukaya shot-down drop pod</label>
+    <!-- 中文：卢卡娅击落的空投仓 -->
+    <thingClass>RukayaRace.AirDefense.Thing_RukayaSkyCrash</thingClass>
+    <category>Ethereal</category>
+    <altitudeLayer>Skyfaller</altitudeLayer>
+    <drawerType>RealtimeOnly</drawerType>
+    <tickerType>Normal</tickerType>
+    <useHitPoints>false</useHitPoints>
+    <selectable>false</selectable>
+    <graphicData>
+      <texPath>Things/Special/DropPod</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+  </ThingDef>
+
+  <ThingDef ParentName="MeteoriteIncoming">
+    <defName>Rukaya_InterceptedMeteoriteFragment</defName>
+    <label>Rukaya meteorite fragment</label>
+    <!-- 中文：卢卡娅陨石碎块 -->
+    <thingClass>RukayaRace.AirDefense.Thing_RukayaMeteoriteFragment</thingClass>
+    <size>(1,1)</size>
+    <graphicData>
+      <drawSize>(2.2,2.2)</drawSize>
+    </graphicData>
+    <skyfaller>
+      <explosionRadius>0</explosionRadius>
+      <!-- 不重建原陨石的爆炸：碎裂只是把大陨石拆成小落点。 -->
+      <shadowSize>(1,1)</shadowSize>
+      <speed>0.7</speed>
+      <ticksToImpactRange>45~70</ticksToImpactRange>
+      <impactSound>StoneImpact</impactSound>
+      <motesPerCell>2</motesPerCell>
+    </skyfaller>
+  </ThingDef>
+
+  <ThingDef>
+    <defName>Rukaya_InterceptedAirborneDebris</defName>
+    <label>Rukaya intercepted debris</label>
+    <!-- 中文：卢卡娅拦截残骸 -->
+    <thingClass>RukayaRace.AirDefense.Thing_RukayaAirborneDebris</thingClass>
+    <category>Ethereal</category>
+    <altitudeLayer>Skyfaller</altitudeLayer>
+    <drawerType>RealtimeOnly</drawerType>
+    <tickerType>Normal</tickerType>
+    <useHitPoints>false</useHitPoints>
+    <selectable>false</selectable>
+    <graphicData>
+      <texPath>Things/Projectile/ShellHighExplosive</texPath>
+      <shaderType>TransparentPostLight</shaderType>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+  </ThingDef>
+
+  <ThingDef>
+    <defName>Rukaya_InterceptedFallingFlyer</defName>
+    <label>Rukaya downed flyer</label>
+    <!-- 中文：卢卡娅击落的飞行物 -->
+    <thingClass>RukayaRace.AirDefense.Thing_RukayaFallingFlyer</thingClass>
+    <category>Ethereal</category>
+    <altitudeLayer>Skyfaller</altitudeLayer>
+    <drawerType>RealtimeOnly</drawerType>
+    <tickerType>Normal</tickerType>
+    <useHitPoints>false</useHitPoints>
+    <selectable>false</selectable>
+    <graphicData>
+      <texPath>Things/Special/DropPod</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+  </ThingDef>
+
+  <!-- 地对空拦截弹本体。同一个 Def 承担两个用途：
+       ① CompRukayaSAMLauncher.PostDraw 把它画在发射架上，表示"导轨里有一枚待发弹"；
+       ② 发射时 GenSpawn 出来的 Thing_RukayaSAMMissile 用它作为飞行贴图。
+       贴图 Content/Textures/Rukaya/Building/Rukaya_SAMLauncher/Rukaya_SAM.png 是 1024x1024 画布上的
+       **侧视直立**导弹（弹体连尾翼约 925px 高 × 570px 宽），与发射架本体贴图**同一张画布、同一比例**：
+       美术画这张图时就是按"与底座画布对齐"来画的，所以 drawSize 必须写成与底座一致的值 (8.48,8.48)
+       （= Rukaya_SAMLauncher.graphicData.drawSize）。另算一套比例会让架上的待发弹和底座对不上。
+       架上待发弹由 PostDraw 用 parent.def.graphicData.DrawOffsetForRot 定位，因此与底座共用同一坐标系。
+       注意：**飞行体也用这个 Def**，所以飞出去时是同一尺寸（约 7.7 格长）。若日后觉得飞行体过大，
+       正确做法是拆一个只用于飞行的 Def，而不是在这里改 drawSize（那会让架上的弹也一起变小/变大）。 -->
+  <ThingDef>
+    <defName>Rukaya_SAMLaunchMissile</defName>
+    <label>Rukaya SAM interceptor</label>
+    <!-- 中文：卢卡娅防空拦截弹 -->
+    <thingClass>RukayaRace.AirDefense.Thing_RukayaSAMMissile</thingClass>
+    <category>Ethereal</category>
+    <tickerType>Normal</tickerType>
+    <altitudeLayer>Skyfaller</altitudeLayer>
+    <drawerType>RealtimeOnly</drawerType>
+    <drawOffscreen>true</drawOffscreen>
+    <seeThroughFog>true</seeThroughFog>
+    <useHitPoints>false</useHitPoints>
+    <selectable>false</selectable>
+    <graphicData>
+      <texPath>Rukaya/Building/Rukaya_SAMLauncher/Rukaya_SAM</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(8.48,8.48)</drawSize>
+    </graphicData>
+  </ThingDef>
+</Defs>

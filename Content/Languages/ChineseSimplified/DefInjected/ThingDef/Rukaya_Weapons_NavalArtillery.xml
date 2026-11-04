@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Rukaya_Gun_NavalArtillery.label>舰炮炮身</Rukaya_Gun_NavalArtillery.label>
+  <Rukaya_Gun_NavalArtillery.description>一门为炮塔底座设计的卢卡娅自装填舰炮。它以密封的活性物质容器而非传统炮弹为供弹，并由双联炮管以高初速平射弹道成对发射炮弹。</Rukaya_Gun_NavalArtillery.description>
+
+  <Bullet_Rukaya_NavalArtilleryShell.label>舰炮炮弹</Bullet_Rukaya_NavalArtilleryShell.label>
+
+  <Rukaya_Gun_NavalArtilleryAA.label>舰炮对空射击组件</Rukaya_Gun_NavalArtilleryAA.label>
+  <Rukaya_Gun_NavalArtilleryAA.description>一套从属于卢卡娅舰炮炮塔的对空射击组件。它用自己的炮架自行搜索并拦截来袭的空投仓与陨石，不影响主炮的对地射击。</Rukaya_Gun_NavalArtilleryAA.description>
+
+  <Bullet_Rukaya_InterceptorMissile.label>拦截弹</Bullet_Rukaya_InterceptorMissile.label>
+
+</LanguageData>

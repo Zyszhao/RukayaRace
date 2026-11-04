@@ -1,0 +1,22 @@
+Source/**/obj/
+Source/**/bin/
+Verify/**/obj/
+Verify/**/bin/
+
+# 临时/实验目录（本地调试用，不入库）
+_tmp_*/
+
+# 游戏内测试清单的输出（每台机器的标记结果，属个人数据；源清单 TestList/*.md 照常入库）
+TestList/**/*.feedback.md
+
+# AgentTeams 协作状态（由 agent-teams 插件自动生成）
+.agent-teams/
+
+# 本地反编译工作区（用于核对原版 / 前置模组行为，不入库）
+rukaya-wing-render-redo/
+
+# 临时调试工具 RukayaRace.DebugTools 的运行时输出（每台机器一份，不入库）
+RukayaWingDebug.log
+
+# 图片生成响应可能包含临时签名链接，不入库
+tmp/imagegen/*response*.json

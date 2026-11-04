@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Rukaya_TrioArrival.label>被放逐的卢卡娅们</Rukaya_TrioArrival.label>
+  <Rukaya_TrioArrival.letterLabel>被放逐的卢卡娅们抵达</Rukaya_TrioArrival.letterLabel>
+  <Rukaya_TrioArrival.letterText>被放逐的卢卡娅们——{PAWNS}——已经降落到预定的地址。她们完成汇合后将就地加入殖民地。</Rukaya_TrioArrival.letterText>
+
+  <!-- 强制 firstname 表，按抵达顺序。
+       与 Content/Languages/ChineseSimplified/Strings/Names/Rukaya_First.txt 的前三项一一对应
+       （Nikita / Bulannikova / Antonina → 尼姬塔 / 巴兰尼科娃 / 安东妮娜）。 -->
+  <Rukaya_TrioArrival.firstNames>
+    <li>尼姬塔</li>
+    <li>巴兰尼科娃</li>
+    <li>安东妮娜</li>
+  </Rukaya_TrioArrival.firstNames>
+
+</LanguageData>

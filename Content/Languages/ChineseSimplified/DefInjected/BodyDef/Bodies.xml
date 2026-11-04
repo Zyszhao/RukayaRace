@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Rukaya_Body.label>卢卡娅</Rukaya_Body.label>
+  <Rukaya_Body.corePart.parts.6.customLabel>左肺</Rukaya_Body.corePart.parts.6.customLabel>
+  <Rukaya_Body.corePart.parts.7.customLabel>右肺</Rukaya_Body.corePart.parts.7.customLabel>
+  <Rukaya_Body.corePart.parts.8.customLabel>左肾</Rukaya_Body.corePart.parts.8.customLabel>
+  <Rukaya_Body.corePart.parts.9.customLabel>右肾</Rukaya_Body.corePart.parts.9.customLabel>
+  <Rukaya_Body.corePart.parts.11.customLabel>左翼</Rukaya_Body.corePart.parts.11.customLabel>
+  <Rukaya_Body.corePart.parts.12.customLabel>右翼</Rukaya_Body.corePart.parts.12.customLabel>
+  <Rukaya_Body.corePart.parts.13.parts.0.parts.1.customLabel>左眼</Rukaya_Body.corePart.parts.13.parts.0.parts.1.customLabel>
+  <Rukaya_Body.corePart.parts.13.parts.0.parts.2.customLabel>右眼</Rukaya_Body.corePart.parts.13.parts.0.parts.2.customLabel>
+  <Rukaya_Body.corePart.parts.13.parts.0.parts.3.customLabel>左耳</Rukaya_Body.corePart.parts.13.parts.0.parts.3.customLabel>
+  <Rukaya_Body.corePart.parts.13.parts.0.parts.4.customLabel>右耳</Rukaya_Body.corePart.parts.13.parts.0.parts.4.customLabel>
+  <Rukaya_Body.corePart.parts.14.customLabel>左肩</Rukaya_Body.corePart.parts.14.customLabel>
+  <Rukaya_Body.corePart.parts.14.parts.0.customLabel>左锁骨</Rukaya_Body.corePart.parts.14.parts.0.customLabel>
+  <Rukaya_Body.corePart.parts.14.parts.1.customLabel>左臂</Rukaya_Body.corePart.parts.14.parts.1.customLabel>
+  <Rukaya_Body.corePart.parts.14.parts.1.parts.0.customLabel>左肱骨</Rukaya_Body.corePart.parts.14.parts.1.parts.0.customLabel>
+  <Rukaya_Body.corePart.parts.14.parts.1.parts.1.customLabel>左桡骨</Rukaya_Body.corePart.parts.14.parts.1.parts.1.customLabel>
+  <Rukaya_Body.corePart.parts.14.parts.1.parts.2.customLabel>左手</Rukaya_Body.corePart.parts.14.parts.1.parts.2.customLabel>
+  <Rukaya_Body.corePart.parts.14.parts.1.parts.2.parts.0.customLabel>左小指</Rukaya_Body.corePart.parts.14.parts.1.parts.2.parts.0.customLabel>
+  <Rukaya_Body.corePart.parts.14.parts.1.parts.2.parts.1.customLabel>左无名指</Rukaya_Body.corePart.parts.14.parts.1.parts.2.parts.1.customLabel>
+  <Rukaya_Body.corePart.parts.14.parts.1.parts.2.parts.2.customLabel>左中指</Rukaya_Body.corePart.parts.14.parts.1.parts.2.parts.2.customLabel>
+  <Rukaya_Body.corePart.parts.14.parts.1.parts.2.parts.3.customLabel>左食指</Rukaya_Body.corePart.parts.14.parts.1.parts.2.parts.3.customLabel>
+  <Rukaya_Body.corePart.parts.14.parts.1.parts.2.parts.4.customLabel>左拇指</Rukaya_Body.corePart.parts.14.parts.1.parts.2.parts.4.customLabel>
+  <Rukaya_Body.corePart.parts.15.customLabel>右肩</Rukaya_Body.corePart.parts.15.customLabel>
+  <Rukaya_Body.corePart.parts.15.parts.0.customLabel>右锁骨</Rukaya_Body.corePart.parts.15.parts.0.customLabel>
+  <Rukaya_Body.corePart.parts.15.parts.1.customLabel>右臂</Rukaya_Body.corePart.parts.15.parts.1.customLabel>
+  <Rukaya_Body.corePart.parts.15.parts.1.parts.0.customLabel>右肱骨</Rukaya_Body.corePart.parts.15.parts.1.parts.0.customLabel>
+  <Rukaya_Body.corePart.parts.15.parts.1.parts.1.customLabel>右桡骨</Rukaya_Body.corePart.parts.15.parts.1.parts.1.customLabel>
+  <Rukaya_Body.corePart.parts.15.parts.1.parts.2.customLabel>右手</Rukaya_Body.corePart.parts.15.parts.1.parts.2.customLabel>
+  <Rukaya_Body.corePart.parts.15.parts.1.parts.2.parts.0.customLabel>右小指</Rukaya_Body.corePart.parts.15.parts.1.parts.2.parts.0.customLabel>
+  <Rukaya_Body.corePart.parts.15.parts.1.parts.2.parts.1.customLabel>右无名指</Rukaya_Body.corePart.parts.15.parts.1.parts.2.parts.1.customLabel>
+  <Rukaya_Body.corePart.parts.15.parts.1.parts.2.parts.2.customLabel>右中指</Rukaya_Body.corePart.parts.15.parts.1.parts.2.parts.2.customLabel>
+  <Rukaya_Body.corePart.parts.15.parts.1.parts.2.parts.3.customLabel>右食指</Rukaya_Body.corePart.parts.15.parts.1.parts.2.parts.3.customLabel>
+  <Rukaya_Body.corePart.parts.15.parts.1.parts.2.parts.4.customLabel>右拇指</Rukaya_Body.corePart.parts.15.parts.1.parts.2.parts.4.customLabel>
+  <Rukaya_Body.corePart.parts.17.customLabel>左腿</Rukaya_Body.corePart.parts.17.customLabel>
+  <Rukaya_Body.corePart.parts.17.parts.0.customLabel>左股骨</Rukaya_Body.corePart.parts.17.parts.0.customLabel>
+  <Rukaya_Body.corePart.parts.17.parts.1.customLabel>左胫骨</Rukaya_Body.corePart.parts.17.parts.1.customLabel>
+  <Rukaya_Body.corePart.parts.17.parts.2.customLabel>左脚</Rukaya_Body.corePart.parts.17.parts.2.customLabel>
+  <Rukaya_Body.corePart.parts.17.parts.2.parts.0.customLabel>左小趾</Rukaya_Body.corePart.parts.17.parts.2.parts.0.customLabel>
+  <Rukaya_Body.corePart.parts.17.parts.2.parts.1.customLabel>左第四趾</Rukaya_Body.corePart.parts.17.parts.2.parts.1.customLabel>
+  <Rukaya_Body.corePart.parts.17.parts.2.parts.2.customLabel>左中趾</Rukaya_Body.corePart.parts.17.parts.2.parts.2.customLabel>
+  <Rukaya_Body.corePart.parts.17.parts.2.parts.3.customLabel>左第二趾</Rukaya_Body.corePart.parts.17.parts.2.parts.3.customLabel>
+  <Rukaya_Body.corePart.parts.17.parts.2.parts.4.customLabel>左大趾</Rukaya_Body.corePart.parts.17.parts.2.parts.4.customLabel>
+  <Rukaya_Body.corePart.parts.18.customLabel>右腿</Rukaya_Body.corePart.parts.18.customLabel>
+  <Rukaya_Body.corePart.parts.18.parts.0.customLabel>右股骨</Rukaya_Body.corePart.parts.18.parts.0.customLabel>
+  <Rukaya_Body.corePart.parts.18.parts.1.customLabel>右胫骨</Rukaya_Body.corePart.parts.18.parts.1.customLabel>
+  <Rukaya_Body.corePart.parts.18.parts.2.customLabel>右脚</Rukaya_Body.corePart.parts.18.parts.2.customLabel>
+  <Rukaya_Body.corePart.parts.18.parts.2.parts.0.customLabel>右小趾</Rukaya_Body.corePart.parts.18.parts.2.parts.0.customLabel>
+  <Rukaya_Body.corePart.parts.18.parts.2.parts.1.customLabel>右第四趾</Rukaya_Body.corePart.parts.18.parts.2.parts.1.customLabel>
+  <Rukaya_Body.corePart.parts.18.parts.2.parts.2.customLabel>右中趾</Rukaya_Body.corePart.parts.18.parts.2.parts.2.customLabel>
+  <Rukaya_Body.corePart.parts.18.parts.2.parts.3.customLabel>右第二趾</Rukaya_Body.corePart.parts.18.parts.2.parts.3.customLabel>
+  <Rukaya_Body.corePart.parts.18.parts.2.parts.4.customLabel>右大趾</Rukaya_Body.corePart.parts.18.parts.2.parts.4.customLabel>
+
+</LanguageData>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Rukaya_MechRadarAura.label>雷达射手光环</Rukaya_MechRadarAura.label>
+  <Rukaya_MechRadarAura.description>该单位的瞄准正由附近的卢卡娅雷达平台提供目标数据。共享的战场态势使射击更稳定，也缩短了锁定目标所需的时间。</Rukaya_MechRadarAura.description>
+
+  <Rukaya_MechRadarExposed.label>强化雷达暴露</Rukaya_MechRadarExposed.label>
+  <Rukaya_MechRadarExposed.description>卢卡娅雷达平台正在持续追踪该单位。共享的目标数据提高了烟幕中来袭火力的瞄准精度，并反复干扰主动隐身。</Rukaya_MechRadarExposed.description>
+</LanguageData>

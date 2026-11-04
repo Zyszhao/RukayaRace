@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <ThingDef ParentName="BenchBase">
+    <defName>Rukaya_Fabricator</defName>
+    <label>Rukaya fabricator</label>
+    <!-- 中文：卢卡娅制造台 -->
+    <description>A dedicated Rukaya fabrication bench for assembling weapons, apparel, and other standardized equipment once their industrial processes are restored.</description>
+    <!-- 中文翻译：一座专用于卢卡娅制式制造的工作台。在恢复相应工业流程后，它可用于组装武器、服装与其他标准化装备。 -->
+    <thingClass>RukayaRace.Buildings.Building_RukayaFabricator</thingClass>
+    <category>Building</category>
+    <tickerType>Normal</tickerType>
+    <altitudeLayer>Building</altitudeLayer>
+    <graphicData>
+      <texPath>Rukaya/Building/Rukaya_Fabricator/Rukaya_Fabricator</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(6.8,6.8)</drawSize>
+      <!-- 调整贴图整体显示大小：第一个值控制横向宽度，第二个值控制纵向高度。 -->
+      <drawOffsetNorth>(0,0,0.6)</drawOffsetNorth>
+      <drawOffsetEast>(0,0,0.5)</drawOffsetEast>
+      <drawOffsetSouth>(0,0,0.6)</drawOffsetSouth>
+      <drawOffsetWest>(0,0,0.5)</drawOffsetWest>
+      <!-- 调整四方向贴图偏移：格式为 (x,y,z)。常用只改 x 和 z；x 负责左右，z 负责上下，正负方向以游戏内实际效果为准微调。 -->
+      <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+    </graphicData>
+    <size>(5,2)</size>
+    <rotatable>true</rotatable>
+    <drawerType>MapMeshOnly</drawerType>
+    <fillPercent>0.5</fillPercent>
+    <canOverlapZones>false</canOverlapZones>
+    <castEdgeShadows>true</castEdgeShadows>
+    <filthLeaving>Filth_RubbleBuilding</filthLeaving>
+    <building>
+      <buildingTags>
+        <li>Production</li>
+      </buildingTags>
+      <workTableRoomRole>Workshop</workTableRoomRole>
+      <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+      <workTableNotInRoomRoleFactor>0.6</workTableNotInRoomRoleFactor>
+    </building>
+    <hasInteractionCell>true</hasInteractionCell>
+    <interactionCellIcon>DiningChair</interactionCellIcon>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <surfaceType>Item</surfaceType>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <designationCategory>Rukaya_Buildings</designationCategory>
+    <designationHotKey>Misc12</designationHotKey>
+    <placeWorkers>
+      <li>PlaceWorker_ReportWorkSpeedPenalties</li>
+      <li>PlaceWorker_ShowFacilitiesConnections</li>
+      <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+    </placeWorkers>
+    <inspectorTabs>
+      <li>ITab_Bills</li>
+    </inspectorTabs>
+    <researchPrerequisites>
+      <li>Rukaya_ActiveMatterRefining</li>
+    </researchPrerequisites>
+    <constructEffect>ConstructMetal</constructEffect>
+    <repairEffect>Repair</repairEffect>
+    <leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <selectable>true</selectable>
+    <useHitPoints>true</useHitPoints>
+    <noRightClickDraftAttack>true</noRightClickDraftAttack>
+    <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+    <staticSunShadowHeight>0.2</staticSunShadowHeight>
+    <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+    <costList>
+      <Steel>150</Steel>
+      <Rukaya_ActiveMatterContainer>180</Rukaya_ActiveMatterContainer>
+      <ComponentIndustrial>10</ComponentIndustrial>
+    </costList>
+    <comps>
+      <li Class="CompProperties_ReportWorkSpeed">
+        <workSpeedStat>WorkTableWorkSpeedFactor</workSpeedStat>
+      </li>
+      <li Class="CompProperties_AffectedByFacilities">
+        <linkableFacilities>
+          <li>ToolCabinet</li>
+        </linkableFacilities>
+      </li>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>300</basePowerConsumption>
+        <shortCircuitInRain>true</shortCircuitInRain>
+      </li>
+      <li Class="CompProperties_Flickable"></li>
+      <li Class="CompProperties_Breakdownable"></li>
+    </comps>
+    <statBases>
+      <SellPriceFactor>0.7</SellPriceFactor>
+      <Mass>20</Mass>
+      <MaxHitPoints>2400</MaxHitPoints>
+      <WorkToBuild>4200</WorkToBuild>
+      <Flammability>1</Flammability>
+      <Cleanliness>-1</Cleanliness>
+    </statBases>
+    <uiOrder>2525</uiOrder>
+  </ThingDef>
+
+</Defs>

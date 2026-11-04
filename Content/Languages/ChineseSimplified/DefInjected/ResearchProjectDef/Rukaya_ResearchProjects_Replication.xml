@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Rukaya_EquipmentTemplateScanning.label>装备模板扫描</Rukaya_EquipmentTemplateScanning.label>
+  <Rukaya_EquipmentTemplateScanning.description>三束射线分析技术能够从现有武器与服装中恢复可复制的活性物质模板，即使其原始研究路径已经遗失。</Rukaya_EquipmentTemplateScanning.description>
+  <Rukaya_ActiveMatterPrinting.label>活性物质装备打印</Rukaya_ActiveMatterPrinting.label>
+  <Rukaya_ActiveMatterPrinting.description>稳定的模板重构技术使自动终端能够按照选定的材质与品质，打印武器和服装模板。</Rukaya_ActiveMatterPrinting.description>
+</LanguageData>

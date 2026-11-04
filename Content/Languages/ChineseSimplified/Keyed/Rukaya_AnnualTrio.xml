@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Rukaya_TrioSettings>年度神秘空投仓：每次成功事件进行判定，每60天最多抵达一次。仅瓦莱里娅与加林娜启用，被放逐的卢卡娅剧本禁用。</Rukaya_TrioSettings>
+  <Rukaya_TrioInitial>每年首次判定概率</Rukaya_TrioInitial>
+  <Rukaya_TrioDecay>每次未触发后保留的概率比例</Rukaya_TrioDecay>
+  <Rukaya_TrioFloor>最低判定概率（不超过首次概率）</Rukaya_TrioFloor>
+  <Rukaya_TrioDeath>每名乘员的死亡概率</Rukaya_TrioDeath>
+  <Rukaya_TrioReset>恢复空投概率默认值</Rukaya_TrioReset>
+  <Rukaya_TrioNameSeparator>、</Rukaya_TrioNameSeparator>
+</LanguageData>

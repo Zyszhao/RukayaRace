@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <BackstoryDef>
+    <defName>Rukaya_Commando</defName>
+    <identifier>Rukaya_Commando</identifier>
+    <slot>Adulthood</slot>
+    <title>Rukaya commando</title>
+    <!-- 中文翻译：突击队员 -->
+    <titleFemale>commando</titleFemale>
+    <!-- 中文翻译：突击队员 -->
+    <titleShort>soldier</titleShort>
+    <!-- 中文：士兵 -->
+    <titleShortFemale>soldier</titleShortFemale>
+    <!-- 中文翻译：士兵 -->
+    <description>[PAWN_nameDef] was an excellent soldier, achieving victories through superb combat skill and earning the respect of [PAWN_possessive] comrades. But only [PAWN_pronoun] knew the pressure of combat had taken a toll, and years of warfare had made [PAWN_objective] difficult to talk to.</description>
+    <!-- 中文翻译：[PAWN_nameDef]是一名优秀的士兵，凭借着高超的战斗技术取得战果，获得了同僚们的肯定。但只有她知道，作战的压力已经影响了自己，长期的作战让她变得难以和人沟通。 -->
+    <skillGains>
+      <Shooting>4</Shooting>
+      <Melee>1</Melee>
+      <Social>-3</Social>
+    </skillGains>
+    <spawnCategories>
+      <li>Rukaya_AdultGeneral</li>
+    </spawnCategories>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>Rukaya_Blacksmith</defName>
+    <identifier>Rukaya_Blacksmith</identifier>
+    <slot>Adulthood</slot>
+    <title>Rukaya blacksmith</title>
+    <!-- 中文翻译：铁匠 -->
+    <titleFemale>blacksmith</titleFemale>
+    <!-- 中文翻译：铁匠 -->
+    <titleShort>smith</titleShort>
+    <!-- 中文：铁匠 -->
+    <titleShortFemale>smith</titleShortFemale>
+    <!-- 中文翻译：铁匠 -->
+    <description>[PAWN_nameDef] had once served as a blacksmith for the alliance, forging weapons for settlements without fabrication machines. [PAWN_pronoun] was not only skilled at making equipment, but also designed several improvements.</description>
+    <!-- 中文翻译：[PAWN_nameDef]在曾经担任过同盟中的铁匠，为没有制造机的聚居地制造武器。她不仅擅长制造装备，还设计过一些改进方案。 -->
+    <skillGains>
+      <Crafting>4</Crafting>
+      <Intellectual>2</Intellectual>
+    </skillGains>
+    <spawnCategories>
+      <li>Rukaya_AdultGeneral</li>
+    </spawnCategories>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>Rukaya_HomesickChild</defName>
+    <identifier>Rukaya_HomesickChild</identifier>
+    <slot>Childhood</slot>
+    <title>Rukaya homesick child</title>
+    <!-- 中文翻译：思乡的孩子 -->
+    <titleFemale>homesick child</titleFemale>
+    <!-- 中文翻译：思乡的孩子 -->
+    <titleShort>homesick</titleShort>
+    <!-- 中文：思乡 -->
+    <titleShortFemale>homesick</titleShortFemale>
+    <!-- 中文翻译：思乡 -->
+    <description>[PAWN_nameDef] often gazed toward the sky, wondering about the homeworld spoken of by [PAWN_possessive] elders. [PAWN_pronoun] was full of curiosity and often talked about it with others.</description>
+    <!-- 中文翻译：[PAWN_nameDef]时常对着天空眺望自己的故乡，她对长辈们口口相传的那颗星球充满了好奇，并且经常和人讨论。 -->
+    <skillGains>
+      <Social>2</Social>
+    </skillGains>
+    <spawnCategories>
+      <li>Rukaya_ChildGeneral</li>
+    </spawnCategories>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>Rukaya_FarmChildLaborer</defName>
+    <identifier>Rukaya_FarmChildLaborer</identifier>
+    <slot>Childhood</slot>
+    <title>Rukaya farm child laborer</title>
+    <!-- 中文翻译：农场童工 -->
+    <titleFemale>farm child laborer</titleFemale>
+    <!-- 中文翻译：农场童工 -->
+    <titleShort>farmhand</titleShort>
+    <!-- 中文翻译：农场童工 -->
+    <titleShortFemale>farmhand</titleShortFemale>
+    <!-- 中文翻译：农场童工 -->
+    <description>[PAWN_nameDef] came from a family that was part of the alliance's collective farms, and [PAWN_pronoun] worked the fields with the adults from an early age. Sometimes, [PAWN_pronoun] would use scraps found around the garrison base to make small crafts.</description>
+    <!-- 中文翻译：[PAWN_nameDef]家里属于联盟集体农场的一部分，她在小时候就和大人们一起干农活。有时候，她会用驻军基地周围捡到的废料做一些小手工。 -->
+    <skillGains>
+      <Plants>2</Plants>
+      <Crafting>1</Crafting>
+    </skillGains>
+    <spawnCategories>
+      <li>Rukaya_ChildGeneral</li>
+    </spawnCategories>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>Rukaya_Archivist</defName>
+    <identifier>Rukaya_Archivist</identifier>
+    <slot>Adulthood</slot>
+    <title>Rukaya archivist</title>
+    <!-- 中文翻译：档案管理员 -->
+    <titleFemale>archivist</titleFemale>
+    <!-- 中文翻译：档案管理员 -->
+    <titleShort>reader</titleShort>
+    <!-- 中文：档案管理员 -->
+    <titleShortFemale>reader</titleShortFemale>
+    <!-- 中文翻译：档案管理员 -->
+    <description>[PAWN_nameDef] learned quickly from the books [PAWN_pronoun] read, which earned [PAWN_objective] a job in the archive and allowed [PAWN_objective] to learn even more of the archive's knowledge. Yet [PAWN_possessive] duties there also made [PAWN_objective] contemptuous of heavy labor.</description>
+    <!-- 中文翻译：[PAWN_nameDef]对她看到的书籍学习的很快，这为她赢得了在档案馆工作的机会，也允许她能学习更多档案馆里的知识。但是，在档案馆的职务使她对重体力工作产生了鄙夷。 -->
+    <skillGains>
+      <Intellectual>5</Intellectual>
+    </skillGains>
+    <workDisables>Constructing, Mining</workDisables>
+    <forcedTraits>
+      <FastLearner>0</FastLearner>
+    </forcedTraits>
+    <spawnCategories>
+      <li>Rukaya_AdultGeneral</li>
+    </spawnCategories>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>Rukaya_Milker</defName>
+    <identifier>Rukaya_Milker</identifier>
+    <slot>Childhood</slot>
+    <title>Rukaya milker</title>
+    <!-- 中文翻译：挤奶工 -->
+    <titleFemale>milker</titleFemale>
+    <!-- 中文翻译：挤奶工 -->
+    <titleShort>herdschild</titleShort>
+    <!-- 中文翻译：挤奶工 -->
+    <titleShortFemale>herdschild</titleShortFemale>
+    <!-- 中文翻译：挤奶工 -->
+    <description>[PAWN_nameDef] grew up on a farm and went to school near the livestock pens. [PAWN_pronoun] found that [PAWN_pronoun] really liked the animals there and even learned how to treat them, but that also caused [PAWN_objective] to neglect [PAWN_possessive] studies.</description>
+    <!-- 中文翻译：[PAWN_nameDef]在农庄长大，在养殖场附近的学校上学。她发现自己很喜欢养殖场里的动物，甚至学会了治疗这些动物的方法，但这也使得她荒废了自己的学业。 -->
+    <skillGains>
+      <Animals>2</Animals>
+      <Medicine>1</Medicine>
+      <Intellectual>-1</Intellectual>
+    </skillGains>
+    <spawnCategories>
+      <li>Rukaya_ChildGeneral</li>
+    </spawnCategories>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>Rukaya_MedStudent</defName>
+    <identifier>Rukaya_MedStudent</identifier>
+    <slot>Adulthood</slot>
+    <title>Rukaya medical student</title>
+    <!-- 中文翻译：医学生 -->
+    <titleFemale>medical student</titleFemale>
+    <!-- 中文翻译：医学生 -->
+    <titleShort>med student</titleShort>
+    <!-- 中文：医学生 -->
+    <titleShortFemale>med student</titleShortFemale>
+    <!-- 中文翻译：医学生 -->
+    <description>[PAWN_nameDef] attended a medical school, where [PAWN_pronoun] learned the surviving medical knowledge left after the devastation. There [PAWN_pronoun] decided to be kind and swore never to harm others in battle.</description>
+    <!-- 中文翻译：[PAWN_nameDef]就读于一所医学院校，她在那里学习到了毁灭后为数不多的医学知识遗存，在那里她决定成为善良的人，并且立下了誓言，拒绝在战场上伤害其他人。 -->
+    <skillGains>
+      <Medicine>4</Medicine>
+      <Intellectual>2</Intellectual>
+    </skillGains>
+    <forcedTraits>
+      <Kind>0</Kind>
+    </forcedTraits>
+    <workDisables>Violent</workDisables>
+    <spawnCategories>
+      <li>Rukaya_AdultGeneral</li>
+    </spawnCategories>
+  </BackstoryDef>
+
+</Defs>

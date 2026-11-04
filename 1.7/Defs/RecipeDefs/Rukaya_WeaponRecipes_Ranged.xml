@@ -1,0 +1,927 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <RecipeDef Name="Rukaya_MakeRangedWeaponBase" Abstract="True">
+    <jobString>Crafting a Rukaya firearm.</jobString>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <effectWorking>Smith</effectWorking>
+    <soundWorking>Recipe_Smith</soundWorking>
+    <workSkill>Crafting</workSkill>
+    <recipeUsers>
+      <li>TableMachining</li>
+    </recipeUsers>
+  </RecipeDef>
+
+  <RecipeDef Name="Rukaya_MakeAdvancedRangedWeaponBase" Abstract="True">
+    <jobString>Fabricating an advanced Rukaya firearm.</jobString>
+    <!-- 中文翻译：正在制造一把高级卢卡娅枪械。 -->
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <effectWorking>Smith</effectWorking>
+    <soundWorking>Recipe_Smith</soundWorking>
+    <workSkill>Crafting</workSkill>
+    <recipeUsers>
+      <li>Rukaya_Fabricator</li>
+    </recipeUsers>
+  </RecipeDef>
+
+  <RecipeDef ParentName="Rukaya_MakeRangedWeaponBase">
+    <defName>Make_Rukaya_Revolver</defName>
+    <label>craft police revolver</label>
+    <!-- 中文翻译：制作警用左轮手枪 -->
+    <workAmount>3500</workAmount>
+    <unfinishedThingDef>UnfinishedGun</unfinishedThingDef>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </filter>
+        <count>35</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ComponentIndustrial</li>
+          </thingDefs>
+        </filter>
+        <count>2</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Steel</li>
+        <li>ComponentIndustrial</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Rukaya_Revolver>1</Rukaya_Revolver>
+    </products>
+    <researchPrerequisite>Rukaya_Weapon_I</researchPrerequisite>
+    <skillRequirements>
+      <Crafting>4</Crafting>
+    </skillRequirements>
+    <displayPriority>400</displayPriority>
+  </RecipeDef>
+
+  <RecipeDef ParentName="Rukaya_MakeRangedWeaponBase">
+    <defName>Make_Rukaya_Rifle</defName>
+    <label>craft bolt-action rifle</label>
+    <!-- 中文翻译：制作栓动步枪 -->
+    <workAmount>18000</workAmount>
+    <unfinishedThingDef>UnfinishedGun</unfinishedThingDef>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </filter>
+        <count>80</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ComponentIndustrial</li>
+          </thingDefs>
+        </filter>
+        <count>5</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Steel</li>
+        <li>ComponentIndustrial</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Rukaya_Rifle>1</Rukaya_Rifle>
+    </products>
+    <researchPrerequisite>Rukaya_Weapon_I</researchPrerequisite>
+    <skillRequirements>
+      <Crafting>5</Crafting>
+    </skillRequirements>
+    <displayPriority>415</displayPriority>
+  </RecipeDef>
+
+  <RecipeDef ParentName="Rukaya_MakeRangedWeaponBase">
+    <defName>Make_Rukaya_AssaultRifle</defName>
+    <label>craft assault rifle</label>
+    <!-- 中文翻译：制作突击步枪 -->
+    <workAmount>52000</workAmount>
+    <unfinishedThingDef>UnfinishedGun</unfinishedThingDef>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </filter>
+        <count>90</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ComponentIndustrial</li>
+          </thingDefs>
+        </filter>
+        <count>8</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Steel</li>
+        <li>ComponentIndustrial</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Rukaya_AssaultRifle>1</Rukaya_AssaultRifle>
+    </products>
+    <researchPrerequisite>Rukaya_Weapon_I</researchPrerequisite>
+    <skillRequirements>
+      <Crafting>6</Crafting>
+    </skillRequirements>
+    <displayPriority>420</displayPriority>
+  </RecipeDef>
+
+  <RecipeDef ParentName="Rukaya_MakeAdvancedRangedWeaponBase">
+    <defName>Make_Rukaya_MarksmanRifle</defName>
+    <label>craft marksman rifle</label>
+    <!-- 中文翻译：制作精准射手步枪 -->
+    <workAmount>1000</workAmount>
+    <formingTicks>45000</formingTicks>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Rukaya_ActiveMatterContainer</li>
+          </thingDefs>
+        </filter>
+        <count>24</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Rukaya_ActiveMatterContainer</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Rukaya_MarksmanRifle>1</Rukaya_MarksmanRifle>
+    </products>
+    <researchPrerequisite>Rukaya_Weapon_II</researchPrerequisite>
+    <skillRequirements>
+      <Crafting>7</Crafting>
+    </skillRequirements>
+    <displayPriority>430</displayPriority>
+  </RecipeDef>
+
+  <RecipeDef ParentName="Rukaya_MakeAdvancedRangedWeaponBase">
+    <defName>Make_Rukaya_Pistol</defName>
+    <label>craft service pistol</label>
+    <!-- 中文翻译：制作制式手枪 -->
+    <workAmount>1000</workAmount>
+    <formingTicks>19800</formingTicks>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Rukaya_ActiveMatterContainer</li>
+          </thingDefs>
+        </filter>
+        <count>10</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Rukaya_ActiveMatterContainer</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Rukaya_Pistol>1</Rukaya_Pistol>
+    </products>
+    <researchPrerequisite>Rukaya_Weapon_II</researchPrerequisite>
+    <skillRequirements>
+      <Crafting>5</Crafting>
+    </skillRequirements>
+    <displayPriority>432</displayPriority>
+  </RecipeDef>
+
+  <RecipeDef ParentName="Rukaya_MakeAdvancedRangedWeaponBase">
+    <defName>Make_Rukaya_GrenadePistol</defName>
+    <label>craft grenade pistol</label>
+    <!-- 中文翻译：制作榴弹手枪 -->
+    <workAmount>1000</workAmount>
+    <formingTicks>23400</formingTicks>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Rukaya_ActiveMatterContainer</li>
+          </thingDefs>
+        </filter>
+        <count>12</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Rukaya_ActiveMatterContainer</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Rukaya_GrenadePistol>1</Rukaya_GrenadePistol>
+    </products>
+    <researchPrerequisite>Rukaya_Weapon_II</researchPrerequisite>
+    <skillRequirements>
+      <Crafting>5</Crafting>
+    </skillRequirements>
+    <displayPriority>433</displayPriority>
+  </RecipeDef>
+
+  <RecipeDef ParentName="Rukaya_MakeAdvancedRangedWeaponBase">
+    <defName>Make_Rukaya_SubMachinegun</defName>
+    <label>craft submachine gun</label>
+    <!-- 中文翻译：制作冲锋枪 -->
+    <workAmount>1000</workAmount>
+    <formingTicks>27000</formingTicks>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Rukaya_ActiveMatterContainer</li>
+          </thingDefs>
+        </filter>
+        <count>14</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Rukaya_ActiveMatterContainer</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Rukaya_SubMachinegun>1</Rukaya_SubMachinegun>
+    </products>
+    <researchPrerequisite>Rukaya_Weapon_II</researchPrerequisite>
+    <skillRequirements>
+      <Crafting>6</Crafting>
+    </skillRequirements>
+    <displayPriority>434</displayPriority>
+  </RecipeDef>
+
+  <RecipeDef ParentName="Rukaya_MakeAdvancedRangedWeaponBase">
+    <defName>Make_Rukaya_Machinegun</defName>
+    <label>craft light machine gun</label>
+    <!-- 中文翻译：制作轻机枪 -->
+    <workAmount>1000</workAmount>
+    <formingTicks>39000</formingTicks>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Rukaya_ActiveMatterContainer</li>
+          </thingDefs>
+        </filter>
+        <count>18</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Rukaya_ActiveMatterContainer</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Rukaya_Machinegun>1</Rukaya_Machinegun>
+    </products>
+    <researchPrerequisite>Rukaya_Weapon_II</researchPrerequisite>
+    <skillRequirements>
+      <Crafting>6</Crafting>
+    </skillRequirements>
+    <displayPriority>435</displayPriority>
+  </RecipeDef>
+
+  <RecipeDef ParentName="Rukaya_MakeAdvancedRangedWeaponBase">
+    <defName>Make_Rukaya_GrenadeLauncher</defName>
+    <label>craft grenade launcher</label>
+    <!-- 中文翻译：制作榴弹发射器 -->
+    <workAmount>1000</workAmount>
+    <formingTicks>33000</formingTicks>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Rukaya_ActiveMatterContainer</li>
+          </thingDefs>
+        </filter>
+        <count>16</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Rukaya_ActiveMatterContainer</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Rukaya_GrenadeLauncher>1</Rukaya_GrenadeLauncher>
+    </products>
+    <researchPrerequisite>Rukaya_Weapon_II</researchPrerequisite>
+    <skillRequirements>
+      <Crafting>6</Crafting>
+    </skillRequirements>
+    <displayPriority>436</displayPriority>
+  </RecipeDef>
+
+  <RecipeDef ParentName="Rukaya_MakeAdvancedRangedWeaponBase">
+    <defName>Make_Rukaya_RecoillessGun</defName>
+    <label>craft recoilless gun</label>
+    <!-- 中文翻译：制作无后坐力炮 -->
+    <workAmount>1000</workAmount>
+    <formingTicks>62000</formingTicks>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Rukaya_ActiveMatterContainer</li>
+          </thingDefs>
+        </filter>
+        <count>26</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Rukaya_ActiveMatterContainer</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Rukaya_RecoillessGun>1</Rukaya_RecoillessGun>
+    </products>
+    <researchPrerequisite>Rukaya_Weapon_II</researchPrerequisite>
+    <skillRequirements>
+      <Crafting>8</Crafting>
+    </skillRequirements>
+    <displayPriority>437</displayPriority>
+  </RecipeDef>
+
+  <RecipeDef ParentName="Rukaya_MakeAdvancedRangedWeaponBase">
+    <defName>Make_Rukaya_AssaultRifleGrenade</defName>
+    <label>craft grenadier assault rifle</label>
+    <!-- 中文翻译：制作榴弹突击步枪 -->
+    <workAmount>1000</workAmount>
+    <formingTicks>44000</formingTicks>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Rukaya_ActiveMatterContainer</li>
+          </thingDefs>
+        </filter>
+        <count>20</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Rukaya_ActiveMatterContainer</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Rukaya_AssaultRifleGrenade>1</Rukaya_AssaultRifleGrenade>
+    </products>
+    <researchPrerequisite>Rukaya_Weapon_II</researchPrerequisite>
+    <skillRequirements>
+      <Crafting>7</Crafting>
+    </skillRequirements>
+    <displayPriority>438</displayPriority>
+  </RecipeDef>
+
+  <RecipeDef ParentName="Rukaya_MakeAdvancedRangedWeaponBase">
+    <defName>Make_Rukaya_AssaultRifleFlame</defName>
+    <label>craft incendiary assault rifle</label>
+    <!-- 中文翻译：制作喷火突击步枪 -->
+    <workAmount>1000</workAmount>
+    <formingTicks>44000</formingTicks>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Rukaya_ActiveMatterContainer</li>
+          </thingDefs>
+        </filter>
+        <count>20</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Rukaya_ActiveMatterContainer</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Rukaya_AssaultRifleFlame>1</Rukaya_AssaultRifleFlame>
+    </products>
+    <researchPrerequisite>Rukaya_Weapon_II</researchPrerequisite>
+    <skillRequirements>
+      <Crafting>7</Crafting>
+    </skillRequirements>
+    <displayPriority>439</displayPriority>
+  </RecipeDef>
+
+  <RecipeDef ParentName="Rukaya_MakeAdvancedRangedWeaponBase">
+    <defName>Make_Rukaya_AssaultRifleRadar</defName>
+    <label>craft radar assault rifle</label>
+    <!-- 中文翻译：制作雷达突击步枪 -->
+    <workAmount>1000</workAmount>
+    <formingTicks>47000</formingTicks>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Rukaya_ActiveMatterContainer</li>
+          </thingDefs>
+        </filter>
+        <count>22</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Rukaya_ActiveMatterContainer</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Rukaya_AssaultRifleRadar>1</Rukaya_AssaultRifleRadar>
+    </products>
+    <researchPrerequisite>Rukaya_Weapon_II</researchPrerequisite>
+    <skillRequirements>
+      <Crafting>7</Crafting>
+    </skillRequirements>
+    <displayPriority>440</displayPriority>
+  </RecipeDef>
+
+  <RecipeDef ParentName="Rukaya_MakeRangedWeaponBase">
+    <defName>Make_Rukaya_AirburstRocket</defName>
+    <label>craft airburst rocket launcher</label>
+    <!-- 中文翻译：制作三联空爆发射器 -->
+    <workAmount>42000</workAmount>
+    <unfinishedThingDef>UnfinishedGun</unfinishedThingDef>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </filter>
+        <count>110</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ComponentIndustrial</li>
+          </thingDefs>
+        </filter>
+        <count>6</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Steel</li>
+        <li>ComponentIndustrial</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Rukaya_AirburstRocket>1</Rukaya_AirburstRocket>
+    </products>
+    <researchPrerequisite>Rukaya_Weapon_I</researchPrerequisite>
+    <skillRequirements>
+      <Crafting>6</Crafting>
+    </skillRequirements>
+    <displayPriority>425</displayPriority>
+  </RecipeDef>
+
+  <RecipeDef ParentName="Rukaya_MakeAdvancedRangedWeaponBase">
+    <defName>Make_Rukaya_PlasmaShotgun</defName>
+    <label>craft plasma shotgun</label>
+    <!-- 中文翻译：制作等离子霰弹枪 -->
+    <workAmount>1000</workAmount>
+    <formingTicks>61000</formingTicks>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Rukaya_ActiveMatterContainer</li>
+          </thingDefs>
+        </filter>
+        <count>28</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ComponentSpacer</li>
+          </thingDefs>
+        </filter>
+        <count>3</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Rukaya_ActiveMatterContainer</li>
+        <li>ComponentSpacer</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Rukaya_PlasmaShotgun>1</Rukaya_PlasmaShotgun>
+    </products>
+    <researchPrerequisite>Rukaya_Weapon_III</researchPrerequisite>
+    <skillRequirements>
+      <Crafting>8</Crafting>
+    </skillRequirements>
+    <displayPriority>450</displayPriority>
+  </RecipeDef>
+
+  <RecipeDef ParentName="Rukaya_MakeAdvancedRangedWeaponBase">
+    <defName>Make_Rukaya_PlasmaRailgun</defName>
+    <label>craft plasma railgun</label>
+    <!-- 中文翻译：制作等离子狙击枪 -->
+    <workAmount>1000</workAmount>
+    <formingTicks>76000</formingTicks>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Rukaya_ActiveMatterContainer</li>
+          </thingDefs>
+        </filter>
+        <count>34</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ComponentSpacer</li>
+          </thingDefs>
+        </filter>
+        <count>5</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Rukaya_ActiveMatterContainer</li>
+        <li>ComponentSpacer</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Rukaya_PlasmaRailgun>1</Rukaya_PlasmaRailgun>
+    </products>
+    <researchPrerequisite>Rukaya_Weapon_III</researchPrerequisite>
+    <skillRequirements>
+      <Crafting>9</Crafting>
+    </skillRequirements>
+    <displayPriority>451</displayPriority>
+  </RecipeDef>
+
+  <RecipeDef ParentName="Rukaya_MakeAdvancedRangedWeaponBase">
+    <defName>Make_Rukaya_LaserRifle</defName>
+    <label>craft laser rifle</label>
+    <!-- 中文翻译：制作激光步枪 -->
+    <workAmount>1000</workAmount>
+    <formingTicks>66000</formingTicks>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Rukaya_ActiveMatterContainer</li>
+          </thingDefs>
+        </filter>
+        <count>30</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ComponentSpacer</li>
+          </thingDefs>
+        </filter>
+        <count>4</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Rukaya_ActiveMatterContainer</li>
+        <li>ComponentSpacer</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Rukaya_LaserRifle>1</Rukaya_LaserRifle>
+    </products>
+    <researchPrerequisite>Rukaya_Weapon_III</researchPrerequisite>
+    <skillRequirements>
+      <Crafting>8</Crafting>
+    </skillRequirements>
+    <displayPriority>452</displayPriority>
+  </RecipeDef>
+
+  <RecipeDef ParentName="Rukaya_MakeAdvancedRangedWeaponBase">
+    <defName>Make_Rukaya_SmartRevolver</defName>
+    <label>craft smart revolver</label>
+    <!-- 中文翻译：制作自瞄卡宾手枪 -->
+    <workAmount>1000</workAmount>
+    <formingTicks>52000</formingTicks>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Rukaya_ActiveMatterContainer</li>
+          </thingDefs>
+        </filter>
+        <count>18</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ComponentSpacer</li>
+          </thingDefs>
+        </filter>
+        <count>3</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Rukaya_ActiveMatterContainer</li>
+        <li>ComponentSpacer</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Rukaya_SmartRevolver>1</Rukaya_SmartRevolver>
+    </products>
+    <researchPrerequisite>Rukaya_Weapon_III</researchPrerequisite>
+    <skillRequirements>
+      <Crafting>8</Crafting>
+    </skillRequirements>
+    <displayPriority>453</displayPriority>
+  </RecipeDef>
+
+  <RecipeDef ParentName="Rukaya_MakeAdvancedRangedWeaponBase">
+    <defName>Make_Rukaya_ATGMLauncher</defName>
+    <label>craft ATGM launcher</label>
+    <!-- 中文翻译：制作肩扛导弹发射器 -->
+    <workAmount>1000</workAmount>
+    <formingTicks>80000</formingTicks>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Rukaya_ActiveMatterContainer</li>
+          </thingDefs>
+        </filter>
+        <count>36</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ComponentSpacer</li>
+          </thingDefs>
+        </filter>
+        <count>5</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Rukaya_ActiveMatterContainer</li>
+        <li>ComponentSpacer</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Rukaya_ATGMLauncher>1</Rukaya_ATGMLauncher>
+    </products>
+    <researchPrerequisite>Rukaya_Weapon_III</researchPrerequisite>
+    <skillRequirements>
+      <Crafting>9</Crafting>
+    </skillRequirements>
+    <displayPriority>454</displayPriority>
+  </RecipeDef>
+
+  <RecipeDef ParentName="Rukaya_MakeAdvancedRangedWeaponBase">
+    <defName>Make_Rukaya_AutoCannon</defName>
+    <label>craft autocannon</label>
+    <!-- 中文翻译：制作单兵机炮 -->
+    <workAmount>1000</workAmount>
+    <formingTicks>86000</formingTicks>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Rukaya_ActiveMatterContainer</li>
+          </thingDefs>
+        </filter>
+        <count>38</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ComponentSpacer</li>
+          </thingDefs>
+        </filter>
+        <count>6</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Rukaya_ActiveMatterContainer</li>
+        <li>ComponentSpacer</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Rukaya_AutoCannon>1</Rukaya_AutoCannon>
+    </products>
+    <researchPrerequisite>Rukaya_Weapon_III</researchPrerequisite>
+    <skillRequirements>
+      <Crafting>9</Crafting>
+    </skillRequirements>
+    <displayPriority>455</displayPriority>
+  </RecipeDef>
+
+  <RecipeDef ParentName="Rukaya_MakeAdvancedRangedWeaponBase">
+    <defName>Make_Rukaya_AviationMachinegun</defName>
+    <label>craft aviation machine gun</label>
+    <!-- 中文翻译：制作航空机枪 -->
+    <jobString>Fabricating an aviation machine gun.</jobString>
+    <!-- 中文翻译：正在制造航空机枪。 -->
+    <workAmount>1000</workAmount>
+    <formingTicks>82000</formingTicks>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Rukaya_ActiveMatterContainer</li>
+          </thingDefs>
+        </filter>
+        <count>42</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ComponentSpacer</li>
+          </thingDefs>
+        </filter>
+        <count>5</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Rukaya_ActiveMatterContainer</li>
+        <li>ComponentSpacer</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Rukaya_AviationMachinegun>1</Rukaya_AviationMachinegun>
+    </products>
+    <researchPrerequisite>Rukaya_Weapon_III</researchPrerequisite>
+    <skillRequirements>
+      <Crafting>9</Crafting>
+    </skillRequirements>
+    <displayPriority>456</displayPriority>
+  </RecipeDef>
+
+  <RecipeDef Name="Rukaya_MakeEasterEggRangedWeaponBase" Abstract="True">
+    <jobString>Assembling a Rukaya special weapon.</jobString>
+    <!-- 中文翻译：正在组装一件卢卡娅特别武器。 -->
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <effectWorking>Smith</effectWorking>
+    <soundWorking>Recipe_Smith</soundWorking>
+    <workSkill>Crafting</workSkill>
+    <recipeUsers>
+      <li>TableMachining</li>
+      <li>Rukaya_Fabricator</li>
+    </recipeUsers>
+  </RecipeDef>
+
+  <RecipeDef ParentName="Rukaya_MakeEasterEggRangedWeaponBase">
+    <defName>Make_Rukaya_Phantom</defName>
+    <label>craft Phantom</label>
+    <!-- 中文翻译：制作魅影弓 -->
+    <jobString>Crafting a Phantom bow.</jobString>
+    <!-- 中文翻译：正在制作魅影弓。 -->
+    <workAmount>1000</workAmount>
+    <formingTicks>72000</formingTicks>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </filter>
+        <count>40</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ComponentSpacer</li>
+          </thingDefs>
+        </filter>
+        <count>2</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Rukaya_ActiveMatterContainer</li>
+          </thingDefs>
+        </filter>
+        <count>12</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Steel</li>
+        <li>ComponentSpacer</li>
+        <li>Rukaya_ActiveMatterContainer</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Rukaya_Phantom>1</Rukaya_Phantom>
+    </products>
+    <researchPrerequisite>Rukaya_Tech_End</researchPrerequisite>
+    <skillRequirements>
+      <Crafting>8</Crafting>
+    </skillRequirements>
+    <displayPriority>570</displayPriority>
+  </RecipeDef>
+
+  <RecipeDef ParentName="Rukaya_MakeEasterEggRangedWeaponBase">
+    <defName>Make_Rukaya_Peacekeeper</defName>
+    <label>craft Peacekeeper</label>
+    <!-- 中文翻译：制作维和者 -->
+    <jobString>Assembling a Peacekeeper revolver.</jobString>
+    <!-- 中文翻译：正在组装维和者。 -->
+    <workAmount>1000</workAmount>
+    <formingTicks>88000</formingTicks>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Rukaya_ActiveMatterContainer</li>
+          </thingDefs>
+        </filter>
+        <count>28</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ComponentSpacer</li>
+          </thingDefs>
+        </filter>
+        <count>4</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Rukaya_ActiveMatterContainer</li>
+        <li>ComponentSpacer</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Rukaya_Peacekeeper>1</Rukaya_Peacekeeper>
+    </products>
+    <researchPrerequisite>Rukaya_Tech_End</researchPrerequisite>
+    <skillRequirements>
+      <Crafting>9</Crafting>
+    </skillRequirements>
+    <displayPriority>571</displayPriority>
+  </RecipeDef>
+
+  <RecipeDef ParentName="Rukaya_MakeEasterEggRangedWeaponBase">
+    <defName>Make_Rukaya_Prototype</defName>
+    <label>craft Prototype</label>
+    <!-- 中文翻译：制作原型 -->
+    <jobString>Assembling a Prototype assault rifle.</jobString>
+    <!-- 中文翻译：正在组装原型。 -->
+    <workAmount>1000</workAmount>
+    <formingTicks>86000</formingTicks>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Rukaya_ActiveMatterContainer</li>
+          </thingDefs>
+        </filter>
+        <count>32</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ComponentSpacer</li>
+          </thingDefs>
+        </filter>
+        <count>5</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Rukaya_ActiveMatterContainer</li>
+        <li>ComponentSpacer</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Rukaya_Prototype>1</Rukaya_Prototype>
+    </products>
+    <researchPrerequisite>Rukaya_Tech_End</researchPrerequisite>
+    <skillRequirements>
+      <Crafting>9</Crafting>
+    </skillRequirements>
+    <displayPriority>572</displayPriority>
+  </RecipeDef>
+
+</Defs>

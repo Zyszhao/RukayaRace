@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ResearchTabDef>
+    <defName>Rukaya_ResearchTab</defName>
+    <label>Rukaya Research</label>
+    <!-- 中文翻译：卢卡娅科研 -->
+    <generalTitle>Rukaya Research</generalTitle>
+    <!-- 中文翻译：卢卡娅科研 -->
+    <generalDescription>Recovered knowledge, active matter processing, and the rebuilding of Rukaya material culture.</generalDescription>
+    <!-- 中文翻译：复原的知识、活性物质处理技术，以及卢卡娅物质文化的重建。 -->
+    <visibleByDefault>true</visibleByDefault>
+  </ResearchTabDef>
+</Defs>

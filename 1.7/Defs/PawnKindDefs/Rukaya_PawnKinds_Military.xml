@@ -1,0 +1,911 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ============================================================================
+       军事层：民兵（Militia）→ 正规军（Regular）→ 特战队（Special Operations）
+       ============================================================================
+       设计依据：设计文档/卢卡娅_PawnKind四级体系与武器服装词条建议.md
+       档位分配（对应 设定.md）：
+         民兵      Rukaya_T1_*              非战斗服装为主，无头盔
+         正规军    Rukaya_T2_*（少数越级）   野战服 + 野战护甲 + 野战钢盔
+         特战队    Rukaya_T3_*              Rukaya_PowerArmor（动力装甲）
+         军官/领袖 Rukaya_Officer / Rukaya_Commissar
+                   → 军官礼服套装（Rukaya_Dress_Officer：礼服 + 宽檐帽），
+                     配决斗剑或制式手枪
+       词条语义：weaponTags / apparelTags 是白名单并集，
+                 因此每个 kind 只挂「职能词条」，不与「档位词条」混写
+                 （否则并集会退化回整档武器）。
+                 武器职能词条由 1.6/Patches/Rukaya_PawnKindRoleTags.xml 追加到现有武器上；
+                 服装身份词条（Rukaya_Dress_Civilian / _Service / _Officer / _Field）
+                 直接写在各自服装 Def 的本地 <tags> 里 —— 补丁在 XmlInheritance.Resolve()
+                 之前执行，看不到继承来的 <apparel>/<tags>，写进补丁会静默失效并刷红字。
+       装备状态：武器全部为现有武器；正规军服装用现成美术的两套套装
+                 （阿富汗卡套 = 军服 + 阿富汗卡帽；正装套 = 正装制服 + 正装贝雷帽），
+                 原先三件美术占位的正规军制式装备（野战服 / 野战护甲 / 野战钢盔）
+                 已按需求删除。
+
+       【重要·动力甲泄漏防线】
+       XmlInheritance 对 <li> 是「追加」语义，所以 Rukaya_Armour 与 Rukaya_ArmourHelmet /
+       Rukaya_HeavyPowerArmorHelmet 的实际 tags 都是「父级的 Rukaya_OnSkin / Rukaya_OverHead」
+       +「自己的 Rukaya_PowerArmor」。
+       而 PawnApparelGenerator.GenerateSpecificRequiredApparel 是**绕过 apparelTags 白名单**
+       直接从全表取物的，只要 specificApparelRequirements 里写了
+       <requiredTag>Rukaya_OnSkin</requiredTag>，动力甲就会被选中（而且不受 apparelMoney 限制）。
+       因此：
+         · 民兵与平民的躯干锁位词条改为 Rukaya_Dress_Service / Rukaya_Dress_Civilian，
+           绝不能再写 Rukaya_OnSkin；
+         · 同时补 apparelDisallowTags = Rukaya_PowerArmor，把预算循环那条路也堵死
+           （apparelDisallowTags 只作用于预算循环，管不到 specificApparelRequirements，
+            两条防线必须同时存在）。
+       ============================================================================ -->
+
+  <!-- 军官礼服套装公共基线：派系领袖（Rukaya_Commissar）与军官（Rukaya_Officer）共用。
+       礼服与宽檐帽由 apparelRequired 直接点名，因此既不受 apparelTags 白名单影响、
+       也不受 apparelMoney 预算影响，生成出来必定是「礼服 + 宽檐帽」整套。 -->
+  <PawnKindDef ParentName="Rukaya_MilitaryPawnBase" Name="Rukaya_OfficerPawnBase" Abstract="True">
+    <itemQuality>Good</itemQuality>
+    <weaponMoney>500~1500</weaponMoney>
+    <weaponTags>
+      <li>Rukaya_T1_MeleeSword</li>
+      <li>Rukaya_T2_Pistol</li>
+    </weaponTags>
+    <apparelMoney>2500~4000</apparelMoney>
+    <apparelTags>
+      <li>Rukaya_Dress_Officer</li>
+      <li>Rukaya_Underwear</li>
+    </apparelTags>
+    <apparelDisallowTags>
+      <li>Rukaya_PowerArmor</li>
+    </apparelDisallowTags>
+    <apparelRequired>
+      <li>Rukaya_FormalDress</li>
+      <li>Rukaya_WideBrimHat</li>
+    </apparelRequired>
+    <backstoryFiltersOverride>
+      <li>
+        <categoriesChildhood>
+          <li>Rukaya_ChildGeneral</li>
+        </categoriesChildhood>
+        <categoriesAdulthood>
+          <li>Rukaya_AdultGeneral</li>
+        </categoriesAdulthood>
+      </li>
+    </backstoryFiltersOverride>
+  </PawnKindDef>
+
+  <!-- 军事层公共基线：战斗单位、非领袖、制式品质 -->
+  <PawnKindDef ParentName="Rukaya_PawnBase" Name="Rukaya_MilitaryPawnBase" Abstract="True">
+    <isFighter>true</isFighter>
+    <factionLeader>false</factionLeader>
+    <itemQuality>Normal</itemQuality>
+  </PawnKindDef>
+
+  <!-- 特战队公共基线：精英装备、高抗性、生物锁武器 -->
+  <PawnKindDef ParentName="Rukaya_MilitaryPawnBase" Name="Rukaya_SpecialOpsPawnBase" Abstract="True">
+    <combatPower>240</combatPower>
+    <itemQuality>Masterwork</itemQuality>
+    <gearHealthRange>0.9~1.0</gearHealthRange>
+    <initialWillRange>60~90</initialWillRange>
+    <initialResistanceRange>60~90</initialResistanceRange>
+    <biocodeWeaponChance>1.0</biocodeWeaponChance>
+    <maxGenerationAge>40</maxGenerationAge>
+    <minGenerationAge>24</minGenerationAge>
+    <techHediffsChance>0.15</techHediffsChance>
+    <techHediffsMoney>400~900</techHediffsMoney>
+    <techHediffsTags>
+      <li>Advanced</li>
+    </techHediffsTags>
+    <apparelMoney>6000~12000</apparelMoney>
+    <apparelTags>
+      <li>Rukaya_PowerArmor</li>
+      <li>Rukaya_Underwear</li>
+    </apparelTags>
+    <specificApparelRequirements>
+      <li>
+        <bodyPartGroup>Torso</bodyPartGroup>
+        <requiredTag>Rukaya_PowerArmor</requiredTag>
+      </li>
+      <li>
+        <bodyPartGroup>UpperHead</bodyPartGroup>
+        <requiredTag>Rukaya_PowerArmor</requiredTag>
+      </li>
+    </specificApparelRequirements>
+    <backstoryFiltersOverride>
+      <li>
+        <categoriesChildhood>
+          <li>Rukaya_ChildGeneral</li>
+        </categoriesChildhood>
+        <categoriesAdulthood>
+          <li>Rukaya_AdultGeneral</li>
+        </categoriesAdulthood>
+      </li>
+    </backstoryFiltersOverride>
+  </PawnKindDef>
+
+  <!-- ==================== 民兵（Militia）· T1 ==================== -->
+
+  <!-- 民兵：定居点防卫与应急战斗，装备与非战斗服装为主 -->
+  <PawnKindDef ParentName="Rukaya_MilitaryPawnBase">
+    <defName>Rukaya_Militia</defName>
+    <label>Rukaya militia</label>
+    <!-- 中文：卢卡娅民兵 -->
+    <combatPower>60</combatPower>
+    <gearHealthRange>0.5~1.0</gearHealthRange>
+    <weaponMoney>400~1200</weaponMoney>
+    <weaponTags>
+      <li>Rukaya_T1_Rifle</li>
+    </weaponTags>
+    <apparelMoney>400~900</apparelMoney>
+    <apparelTags>
+      <li>Rukaya_Dress_Service</li>
+      <li>Rukaya_Dress_Civilian</li>
+      <li>Rukaya_Underwear</li>
+    </apparelTags>
+    <!-- 民兵禁动力甲：躯干锁位用 Rukaya_Dress_Service（动力甲不带该词条），
+         再用 apparelDisallowTags 堵死预算循环。原因见本文件顶部说明。 -->
+    <apparelDisallowTags>
+      <li>Rukaya_PowerArmor</li>
+    </apparelDisallowTags>
+    <specificApparelRequirements>
+      <li>
+        <bodyPartGroup>Torso</bodyPartGroup>
+        <!-- 必须钉死贴身层：只写 bodyPartGroup + requiredTag 时，
+             Rukaya_TrenchCoat（Shell 外套层、同样带 Rukaya_Dress_Service、同样覆盖 Torso）
+             也会被选中，于是出现「只穿一件风衣、里面什么都没穿」的生成结果
+             （GenerateStartingApparelFor 的 CoatButNoShirt 重试次数有上限，重试不到就接受）。 -->
+        <apparelLayer>OnSkin</apparelLayer>
+        <requiredTag>Rukaya_Dress_Service</requiredTag>
+      </li>
+    </specificApparelRequirements>
+    <backstoryFiltersOverride>
+      <li>
+        <categoriesChildhood>
+          <li>Rukaya_ChildGeneral</li>
+        </categoriesChildhood>
+        <categoriesAdulthood>
+          <li>Rukaya_AdultGeneral</li>
+        </categoriesAdulthood>
+      </li>
+    </backstoryFiltersOverride>
+    <skills>
+      <li>
+        <skill>Shooting</skill>
+        <range>4~9</range>
+      </li>
+      <li>
+        <skill>Melee</skill>
+        <range>3~7</range>
+      </li>
+    </skills>
+  </PawnKindDef>
+
+  <!-- 民兵近战：决斗剑 / 工兵铲 / 战地十字镐 -->
+  <PawnKindDef ParentName="Rukaya_MilitaryPawnBase">
+    <defName>Rukaya_MilitiaMelee</defName>
+    <label>Rukaya militia melee</label>
+    <!-- 中文：卢卡娅民兵近战兵 -->
+    <combatPower>60</combatPower>
+    <gearHealthRange>0.5~1.0</gearHealthRange>
+    <weaponMoney>400~1200</weaponMoney>
+    <weaponTags>
+      <li>Rukaya_T1_MeleeSword</li>
+      <li>Rukaya_T1_MeleeTool</li>
+    </weaponTags>
+    <apparelMoney>400~900</apparelMoney>
+    <apparelTags>
+      <li>Rukaya_Dress_Service</li>
+      <li>Rukaya_Dress_Civilian</li>
+      <li>Rukaya_Underwear</li>
+    </apparelTags>
+    <!-- 民兵禁动力甲：躯干锁位用 Rukaya_Dress_Service（动力甲不带该词条），
+         再用 apparelDisallowTags 堵死预算循环。原因见本文件顶部说明。 -->
+    <apparelDisallowTags>
+      <li>Rukaya_PowerArmor</li>
+    </apparelDisallowTags>
+    <specificApparelRequirements>
+      <li>
+        <bodyPartGroup>Torso</bodyPartGroup>
+        <!-- 必须钉死贴身层：只写 bodyPartGroup + requiredTag 时，
+             Rukaya_TrenchCoat（Shell 外套层、同样带 Rukaya_Dress_Service、同样覆盖 Torso）
+             也会被选中，于是出现「只穿一件风衣、里面什么都没穿」的生成结果
+             （GenerateStartingApparelFor 的 CoatButNoShirt 重试次数有上限，重试不到就接受）。 -->
+        <apparelLayer>OnSkin</apparelLayer>
+        <requiredTag>Rukaya_Dress_Service</requiredTag>
+      </li>
+    </specificApparelRequirements>
+    <backstoryFiltersOverride>
+      <li>
+        <categoriesChildhood>
+          <li>Rukaya_ChildGeneral</li>
+        </categoriesChildhood>
+        <categoriesAdulthood>
+          <li>Rukaya_AdultGeneral</li>
+        </categoriesAdulthood>
+      </li>
+    </backstoryFiltersOverride>
+    <skills>
+      <li>
+        <skill>Melee</skill>
+        <range>5~10</range>
+      </li>
+      <li>
+        <skill>Shooting</skill>
+        <range>2~5</range>
+      </li>
+    </skills>
+  </PawnKindDef>
+
+  <!-- 民兵重支援：三联空爆发射器，每队至多一名 -->
+  <PawnKindDef ParentName="Rukaya_MilitaryPawnBase">
+    <defName>Rukaya_MilitiaSupport</defName>
+    <label>Rukaya militia support</label>
+    <!-- 中文：卢卡娅民兵支援兵 -->
+    <combatPower>75</combatPower>
+    <maxPerGroup>1</maxPerGroup>
+    <gearHealthRange>0.5~1.0</gearHealthRange>
+    <weaponMoney>700~1500</weaponMoney>
+    <weaponTags>
+      <li>Rukaya_T1_SupportLauncher</li>
+    </weaponTags>
+    <apparelMoney>400~900</apparelMoney>
+    <apparelTags>
+      <li>Rukaya_Dress_Service</li>
+      <li>Rukaya_Dress_Civilian</li>
+      <li>Rukaya_Underwear</li>
+    </apparelTags>
+    <!-- 民兵禁动力甲：躯干锁位用 Rukaya_Dress_Service（动力甲不带该词条），
+         再用 apparelDisallowTags 堵死预算循环。原因见本文件顶部说明。 -->
+    <apparelDisallowTags>
+      <li>Rukaya_PowerArmor</li>
+    </apparelDisallowTags>
+    <specificApparelRequirements>
+      <li>
+        <bodyPartGroup>Torso</bodyPartGroup>
+        <!-- 必须钉死贴身层：只写 bodyPartGroup + requiredTag 时，
+             Rukaya_TrenchCoat（Shell 外套层、同样带 Rukaya_Dress_Service、同样覆盖 Torso）
+             也会被选中，于是出现「只穿一件风衣、里面什么都没穿」的生成结果
+             （GenerateStartingApparelFor 的 CoatButNoShirt 重试次数有上限，重试不到就接受）。 -->
+        <apparelLayer>OnSkin</apparelLayer>
+        <requiredTag>Rukaya_Dress_Service</requiredTag>
+      </li>
+    </specificApparelRequirements>
+    <backstoryFiltersOverride>
+      <li>
+        <categoriesChildhood>
+          <li>Rukaya_ChildGeneral</li>
+        </categoriesChildhood>
+        <categoriesAdulthood>
+          <li>Rukaya_AdultGeneral</li>
+        </categoriesAdulthood>
+      </li>
+    </backstoryFiltersOverride>
+    <skills>
+      <li>
+        <skill>Shooting</skill>
+        <range>5~9</range>
+      </li>
+    </skills>
+  </PawnKindDef>
+
+  <!-- ==================== 正规军（Regular）· T2 为主 ==================== -->
+
+  <!-- 正规军步兵：冲锋枪 + 三种突击步枪变体（制式主力宽口径） -->
+  <PawnKindDef ParentName="Rukaya_MilitaryPawnBase">
+    <defName>Rukaya_RegularRifleman</defName>
+    <label>Rukaya regular rifleman</label>
+    <!-- 中文：卢卡娅正规军步枪手 -->
+    <combatPower>110</combatPower>
+    <weaponMoney>300~1200</weaponMoney>
+    <weaponTags>
+      <li>Rukaya_T2_Rifle</li>
+    </weaponTags>
+    <apparelMoney>2000~3500</apparelMoney>
+    <!-- 正规军制式服装：两套现成美术的套装随机 —— 阿富汗卡套（军服 + 阿富汗卡帽）
+         与正装套（正装制服 + 正装贝雷帽）。两套的四件都带 Rukaya_Dress_Service 词条，
+         所以躯干 / 头部各用一次 requiredTag 锁位，具体抽到哪一件由 commonality 决定。
+         躯干必须钉死贴身层，否则 Rukaya_TrenchCoat（Shell 层、同词条、覆盖 Torso）
+         会被当成躯干件选中，生成出只穿外套的士兵。
+         注：原三件占位符（Rukaya_FieldUniform / FieldVest / FieldHelmet）已按需求删除，
+         正规军不再有护甲与钢盔。 -->
+    <apparelTags>
+      <li>Rukaya_Dress_Service</li>
+      <li>Rukaya_Underwear</li>
+    </apparelTags>
+    <apparelDisallowTags>
+      <li>Rukaya_PowerArmor</li>
+    </apparelDisallowTags>
+    <specificApparelRequirements>
+      <li>
+        <bodyPartGroup>Torso</bodyPartGroup>
+        <apparelLayer>OnSkin</apparelLayer>
+        <requiredTag>Rukaya_Dress_Service</requiredTag>
+      </li>
+      <li>
+        <bodyPartGroup>UpperHead</bodyPartGroup>
+        <apparelLayer>Overhead</apparelLayer>
+        <requiredTag>Rukaya_Dress_Service</requiredTag>
+      </li>
+    </specificApparelRequirements>
+    <backstoryFiltersOverride>
+      <li>
+        <categoriesChildhood>
+          <li>Rukaya_ChildGeneral</li>
+        </categoriesChildhood>
+        <categoriesAdulthood>
+          <li>Rukaya_AdultGeneral</li>
+        </categoriesAdulthood>
+      </li>
+    </backstoryFiltersOverride>
+    <skills>
+      <li>
+        <skill>Shooting</skill>
+        <range>6~11</range>
+      </li>
+      <li>
+        <skill>Melee</skill>
+        <range>3~7</range>
+      </li>
+    </skills>
+  </PawnKindDef>
+
+  <!-- 正规军掷弹兵：榴弹发射器 / 榴弹手枪 -->
+  <PawnKindDef ParentName="Rukaya_MilitaryPawnBase">
+    <defName>Rukaya_RegularGrenadier</defName>
+    <label>Rukaya regular grenadier</label>
+    <!-- 中文：卢卡娅正规军掷弹兵 -->
+    <combatPower>110</combatPower>
+    <weaponMoney>300~1200</weaponMoney>
+    <weaponTags>
+      <li>Rukaya_T2_GrenadeLauncher</li>
+    </weaponTags>
+    <apparelMoney>2000~3500</apparelMoney>
+    <!-- 正规军制式服装：两套现成美术的套装随机 —— 阿富汗卡套（军服 + 阿富汗卡帽）
+         与正装套（正装制服 + 正装贝雷帽）。两套的四件都带 Rukaya_Dress_Service 词条，
+         所以躯干 / 头部各用一次 requiredTag 锁位，具体抽到哪一件由 commonality 决定。
+         躯干必须钉死贴身层，否则 Rukaya_TrenchCoat（Shell 层、同词条、覆盖 Torso）
+         会被当成躯干件选中，生成出只穿外套的士兵。
+         注：原三件占位符（Rukaya_FieldUniform / FieldVest / FieldHelmet）已按需求删除，
+         正规军不再有护甲与钢盔。 -->
+    <apparelTags>
+      <li>Rukaya_Dress_Service</li>
+      <li>Rukaya_Underwear</li>
+    </apparelTags>
+    <apparelDisallowTags>
+      <li>Rukaya_PowerArmor</li>
+    </apparelDisallowTags>
+    <specificApparelRequirements>
+      <li>
+        <bodyPartGroup>Torso</bodyPartGroup>
+        <apparelLayer>OnSkin</apparelLayer>
+        <requiredTag>Rukaya_Dress_Service</requiredTag>
+      </li>
+      <li>
+        <bodyPartGroup>UpperHead</bodyPartGroup>
+        <apparelLayer>Overhead</apparelLayer>
+        <requiredTag>Rukaya_Dress_Service</requiredTag>
+      </li>
+    </specificApparelRequirements>
+    <backstoryFiltersOverride>
+      <li>
+        <categoriesChildhood>
+          <li>Rukaya_ChildGeneral</li>
+        </categoriesChildhood>
+        <categoriesAdulthood>
+          <li>Rukaya_AdultGeneral</li>
+        </categoriesAdulthood>
+      </li>
+    </backstoryFiltersOverride>
+    <skills>
+      <li>
+        <skill>Shooting</skill>
+        <range>5~10</range>
+      </li>
+    </skills>
+  </PawnKindDef>
+
+  <!-- 正规军机枪手：轻机枪 -->
+  <PawnKindDef ParentName="Rukaya_MilitaryPawnBase">
+    <defName>Rukaya_RegularMachinegunner</defName>
+    <label>Rukaya regular machinegunner</label>
+    <!-- 中文：卢卡娅正规军机枪手 -->
+    <combatPower>125</combatPower>
+    <weaponMoney>400~1500</weaponMoney>
+    <weaponTags>
+      <li>Rukaya_T2_LMG</li>
+    </weaponTags>
+    <apparelMoney>2000~3500</apparelMoney>
+    <!-- 正规军制式服装：两套现成美术的套装随机 —— 阿富汗卡套（军服 + 阿富汗卡帽）
+         与正装套（正装制服 + 正装贝雷帽）。两套的四件都带 Rukaya_Dress_Service 词条，
+         所以躯干 / 头部各用一次 requiredTag 锁位，具体抽到哪一件由 commonality 决定。
+         躯干必须钉死贴身层，否则 Rukaya_TrenchCoat（Shell 层、同词条、覆盖 Torso）
+         会被当成躯干件选中，生成出只穿外套的士兵。
+         注：原三件占位符（Rukaya_FieldUniform / FieldVest / FieldHelmet）已按需求删除，
+         正规军不再有护甲与钢盔。 -->
+    <apparelTags>
+      <li>Rukaya_Dress_Service</li>
+      <li>Rukaya_Underwear</li>
+    </apparelTags>
+    <apparelDisallowTags>
+      <li>Rukaya_PowerArmor</li>
+    </apparelDisallowTags>
+    <specificApparelRequirements>
+      <li>
+        <bodyPartGroup>Torso</bodyPartGroup>
+        <apparelLayer>OnSkin</apparelLayer>
+        <requiredTag>Rukaya_Dress_Service</requiredTag>
+      </li>
+      <li>
+        <bodyPartGroup>UpperHead</bodyPartGroup>
+        <apparelLayer>Overhead</apparelLayer>
+        <requiredTag>Rukaya_Dress_Service</requiredTag>
+      </li>
+    </specificApparelRequirements>
+    <backstoryFiltersOverride>
+      <li>
+        <categoriesChildhood>
+          <li>Rukaya_ChildGeneral</li>
+        </categoriesChildhood>
+        <categoriesAdulthood>
+          <li>Rukaya_AdultGeneral</li>
+        </categoriesAdulthood>
+      </li>
+    </backstoryFiltersOverride>
+    <skills>
+      <li>
+        <skill>Shooting</skill>
+        <range>6~11</range>
+      </li>
+    </skills>
+  </PawnKindDef>
+
+  <!-- 正规军精确射手：精确射手步枪（T2 内的精确火力） -->
+  <PawnKindDef ParentName="Rukaya_MilitaryPawnBase">
+    <defName>Rukaya_RegularMarksman</defName>
+    <label>Rukaya regular marksman</label>
+    <!-- 中文：卢卡娅正规军精确射手 -->
+    <combatPower>115</combatPower>
+    <weaponMoney>400~1500</weaponMoney>
+    <weaponTags>
+      <li>Rukaya_T2_Marksman</li>
+    </weaponTags>
+    <apparelMoney>2000~3500</apparelMoney>
+    <!-- 正规军制式服装：两套现成美术的套装随机 —— 阿富汗卡套（军服 + 阿富汗卡帽）
+         与正装套（正装制服 + 正装贝雷帽）。两套的四件都带 Rukaya_Dress_Service 词条，
+         所以躯干 / 头部各用一次 requiredTag 锁位，具体抽到哪一件由 commonality 决定。
+         躯干必须钉死贴身层，否则 Rukaya_TrenchCoat（Shell 层、同词条、覆盖 Torso）
+         会被当成躯干件选中，生成出只穿外套的士兵。
+         注：原三件占位符（Rukaya_FieldUniform / FieldVest / FieldHelmet）已按需求删除，
+         正规军不再有护甲与钢盔。 -->
+    <apparelTags>
+      <li>Rukaya_Dress_Service</li>
+      <li>Rukaya_Underwear</li>
+    </apparelTags>
+    <apparelDisallowTags>
+      <li>Rukaya_PowerArmor</li>
+    </apparelDisallowTags>
+    <specificApparelRequirements>
+      <li>
+        <bodyPartGroup>Torso</bodyPartGroup>
+        <apparelLayer>OnSkin</apparelLayer>
+        <requiredTag>Rukaya_Dress_Service</requiredTag>
+      </li>
+      <li>
+        <bodyPartGroup>UpperHead</bodyPartGroup>
+        <apparelLayer>Overhead</apparelLayer>
+        <requiredTag>Rukaya_Dress_Service</requiredTag>
+      </li>
+    </specificApparelRequirements>
+    <backstoryFiltersOverride>
+      <li>
+        <categoriesChildhood>
+          <li>Rukaya_ChildGeneral</li>
+        </categoriesChildhood>
+        <categoriesAdulthood>
+          <li>Rukaya_AdultGeneral</li>
+        </categoriesAdulthood>
+      </li>
+    </backstoryFiltersOverride>
+    <skills>
+      <li>
+        <skill>Shooting</skill>
+        <range>8~13</range>
+      </li>
+    </skills>
+  </PawnKindDef>
+
+  <!-- 正规军反装甲/攻坚：无后坐力炮，每队至多一名 -->
+  <PawnKindDef ParentName="Rukaya_MilitaryPawnBase">
+    <defName>Rukaya_RegularRecoilless</defName>
+    <label>Rukaya regular recoilless gunner</label>
+    <!-- 中文：卢卡娅正规军无后坐力炮手 -->
+    <combatPower>130</combatPower>
+    <maxPerGroup>1</maxPerGroup>
+    <weaponMoney>500~1600</weaponMoney>
+    <weaponTags>
+      <li>Rukaya_T2_Recoilless</li>
+    </weaponTags>
+    <apparelMoney>2000~3500</apparelMoney>
+    <!-- 正规军制式服装：两套现成美术的套装随机 —— 阿富汗卡套（军服 + 阿富汗卡帽）
+         与正装套（正装制服 + 正装贝雷帽）。两套的四件都带 Rukaya_Dress_Service 词条，
+         所以躯干 / 头部各用一次 requiredTag 锁位，具体抽到哪一件由 commonality 决定。
+         躯干必须钉死贴身层，否则 Rukaya_TrenchCoat（Shell 层、同词条、覆盖 Torso）
+         会被当成躯干件选中，生成出只穿外套的士兵。
+         注：原三件占位符（Rukaya_FieldUniform / FieldVest / FieldHelmet）已按需求删除，
+         正规军不再有护甲与钢盔。 -->
+    <apparelTags>
+      <li>Rukaya_Dress_Service</li>
+      <li>Rukaya_Underwear</li>
+    </apparelTags>
+    <apparelDisallowTags>
+      <li>Rukaya_PowerArmor</li>
+    </apparelDisallowTags>
+    <specificApparelRequirements>
+      <li>
+        <bodyPartGroup>Torso</bodyPartGroup>
+        <apparelLayer>OnSkin</apparelLayer>
+        <requiredTag>Rukaya_Dress_Service</requiredTag>
+      </li>
+      <li>
+        <bodyPartGroup>UpperHead</bodyPartGroup>
+        <apparelLayer>Overhead</apparelLayer>
+        <requiredTag>Rukaya_Dress_Service</requiredTag>
+      </li>
+    </specificApparelRequirements>
+    <backstoryFiltersOverride>
+      <li>
+        <categoriesChildhood>
+          <li>Rukaya_ChildGeneral</li>
+        </categoriesChildhood>
+        <categoriesAdulthood>
+          <li>Rukaya_AdultGeneral</li>
+        </categoriesAdulthood>
+      </li>
+    </backstoryFiltersOverride>
+    <skills>
+      <li>
+        <skill>Shooting</skill>
+        <range>6~11</range>
+      </li>
+    </skills>
+  </PawnKindDef>
+
+  <!-- 正规军破门手：固定抽取具备 Demolish 能力的爆破锤，满足原版破墙 AI。 -->
+  <PawnKindDef ParentName="Rukaya_MilitaryPawnBase">
+    <defName>Rukaya_RegularBreacher</defName>
+    <label>Rukaya regular breacher</label>
+    <!-- 中文：卢卡娅正规军破门手 -->
+    <combatPower>120</combatPower>
+    <isGoodBreacher>true</isGoodBreacher>
+    <!-- 和原版专职破墙兵一样放开装备预算；专用标签保证只生成爆破锤，避免预算抽低后空手。 -->
+    <weaponMoney>9999~9999</weaponMoney>
+    <weaponTags>
+      <li>Rukaya_T2_BreachingHammer</li>
+    </weaponTags>
+    <apparelMoney>2000~3500</apparelMoney>
+    <!-- 正规军制式服装：两套现成美术的套装随机 —— 阿富汗卡套（军服 + 阿富汗卡帽）
+         与正装套（正装制服 + 正装贝雷帽）。两套的四件都带 Rukaya_Dress_Service 词条，
+         所以躯干 / 头部各用一次 requiredTag 锁位，具体抽到哪一件由 commonality 决定。
+         躯干必须钉死贴身层，否则 Rukaya_TrenchCoat（Shell 层、同词条、覆盖 Torso）
+         会被当成躯干件选中，生成出只穿外套的士兵。
+         注：原三件占位符（Rukaya_FieldUniform / FieldVest / FieldHelmet）已按需求删除，
+         正规军不再有护甲与钢盔。 -->
+    <apparelTags>
+      <li>Rukaya_Dress_Service</li>
+      <li>Rukaya_Underwear</li>
+    </apparelTags>
+    <apparelDisallowTags>
+      <li>Rukaya_PowerArmor</li>
+    </apparelDisallowTags>
+    <specificApparelRequirements>
+      <li>
+        <bodyPartGroup>Torso</bodyPartGroup>
+        <apparelLayer>OnSkin</apparelLayer>
+        <requiredTag>Rukaya_Dress_Service</requiredTag>
+      </li>
+      <li>
+        <bodyPartGroup>UpperHead</bodyPartGroup>
+        <apparelLayer>Overhead</apparelLayer>
+        <requiredTag>Rukaya_Dress_Service</requiredTag>
+      </li>
+    </specificApparelRequirements>
+    <backstoryFiltersOverride>
+      <li>
+        <categoriesChildhood>
+          <li>Rukaya_ChildGeneral</li>
+        </categoriesChildhood>
+        <categoriesAdulthood>
+          <li>Rukaya_AdultGeneral</li>
+        </categoriesAdulthood>
+      </li>
+    </backstoryFiltersOverride>
+    <skills>
+      <li>
+        <skill>Melee</skill>
+        <range>6~11</range>
+      </li>
+      <li>
+        <skill>Shooting</skill>
+        <range>3~7</range>
+      </li>
+    </skills>
+  </PawnKindDef>
+
+  <!-- 正规军工兵：T1 越级岗位，工兵铲 / 战地十字镐 -->
+  <PawnKindDef ParentName="Rukaya_MilitaryPawnBase">
+    <defName>Rukaya_RegularSapper</defName>
+    <label>Rukaya regular sapper</label>
+    <!-- 中文：卢卡娅正规军工兵 -->
+    <combatPower>95</combatPower>
+    <!-- Mining 4~9 已满足原版备用工兵的最低采矿等级；工具自带 Demolish。 -->
+    <canBeSapper>true</canBeSapper>
+    <weaponMoney>300~1200</weaponMoney>
+    <weaponTags>
+      <li>Rukaya_T1_MeleeTool</li>
+    </weaponTags>
+    <apparelMoney>2000~3500</apparelMoney>
+    <!-- 正规军制式服装：两套现成美术的套装随机 —— 阿富汗卡套（军服 + 阿富汗卡帽）
+         与正装套（正装制服 + 正装贝雷帽）。两套的四件都带 Rukaya_Dress_Service 词条，
+         所以躯干 / 头部各用一次 requiredTag 锁位，具体抽到哪一件由 commonality 决定。
+         躯干必须钉死贴身层，否则 Rukaya_TrenchCoat（Shell 层、同词条、覆盖 Torso）
+         会被当成躯干件选中，生成出只穿外套的士兵。
+         注：原三件占位符（Rukaya_FieldUniform / FieldVest / FieldHelmet）已按需求删除，
+         正规军不再有护甲与钢盔。 -->
+    <apparelTags>
+      <li>Rukaya_Dress_Service</li>
+      <li>Rukaya_Underwear</li>
+    </apparelTags>
+    <apparelDisallowTags>
+      <li>Rukaya_PowerArmor</li>
+    </apparelDisallowTags>
+    <specificApparelRequirements>
+      <li>
+        <bodyPartGroup>Torso</bodyPartGroup>
+        <apparelLayer>OnSkin</apparelLayer>
+        <requiredTag>Rukaya_Dress_Service</requiredTag>
+      </li>
+      <li>
+        <bodyPartGroup>UpperHead</bodyPartGroup>
+        <apparelLayer>Overhead</apparelLayer>
+        <requiredTag>Rukaya_Dress_Service</requiredTag>
+      </li>
+    </specificApparelRequirements>
+    <backstoryFiltersOverride>
+      <li>
+        <categoriesChildhood>
+          <li>Rukaya_ChildGeneral</li>
+        </categoriesChildhood>
+        <categoriesAdulthood>
+          <li>Rukaya_AdultGeneral</li>
+        </categoriesAdulthood>
+      </li>
+    </backstoryFiltersOverride>
+    <skills>
+      <li>
+        <skill>Construction</skill>
+        <range>5~10</range>
+      </li>
+      <li>
+        <skill>Mining</skill>
+        <range>4~9</range>
+      </li>
+      <li>
+        <skill>Melee</skill>
+        <range>3~6</range>
+      </li>
+    </skills>
+  </PawnKindDef>
+
+  <!-- 正规军狙击手：T3 越级岗位，等离子狙击枪，每队至多一名 -->
+  <PawnKindDef ParentName="Rukaya_MilitaryPawnBase">
+    <defName>Rukaya_RegularSniper</defName>
+    <label>Rukaya regular sniper</label>
+    <!-- 中文：卢卡娅正规军狙击手 -->
+    <combatPower>135</combatPower>
+    <maxPerGroup>1</maxPerGroup>
+    <weaponMoney>1500~3000</weaponMoney>
+    <weaponTags>
+      <li>Rukaya_T3_Sniper</li>
+    </weaponTags>
+    <apparelMoney>2000~3500</apparelMoney>
+    <!-- 正规军制式服装：两套现成美术的套装随机 —— 阿富汗卡套（军服 + 阿富汗卡帽）
+         与正装套（正装制服 + 正装贝雷帽）。两套的四件都带 Rukaya_Dress_Service 词条，
+         所以躯干 / 头部各用一次 requiredTag 锁位，具体抽到哪一件由 commonality 决定。
+         躯干必须钉死贴身层，否则 Rukaya_TrenchCoat（Shell 层、同词条、覆盖 Torso）
+         会被当成躯干件选中，生成出只穿外套的士兵。
+         注：原三件占位符（Rukaya_FieldUniform / FieldVest / FieldHelmet）已按需求删除，
+         正规军不再有护甲与钢盔。 -->
+    <apparelTags>
+      <li>Rukaya_Dress_Service</li>
+      <li>Rukaya_Underwear</li>
+    </apparelTags>
+    <apparelDisallowTags>
+      <li>Rukaya_PowerArmor</li>
+    </apparelDisallowTags>
+    <specificApparelRequirements>
+      <li>
+        <bodyPartGroup>Torso</bodyPartGroup>
+        <apparelLayer>OnSkin</apparelLayer>
+        <requiredTag>Rukaya_Dress_Service</requiredTag>
+      </li>
+      <li>
+        <bodyPartGroup>UpperHead</bodyPartGroup>
+        <apparelLayer>Overhead</apparelLayer>
+        <requiredTag>Rukaya_Dress_Service</requiredTag>
+      </li>
+    </specificApparelRequirements>
+    <backstoryFiltersOverride>
+      <li>
+        <categoriesChildhood>
+          <li>Rukaya_ChildGeneral</li>
+        </categoriesChildhood>
+        <categoriesAdulthood>
+          <li>Rukaya_AdultGeneral</li>
+        </categoriesAdulthood>
+      </li>
+    </backstoryFiltersOverride>
+    <skills>
+      <li>
+        <skill>Shooting</skill>
+        <range>9~14</range>
+      </li>
+    </skills>
+  </PawnKindDef>
+
+  <!-- 政委：**派系领袖专用 kind**（FactionDef.leaderTitle = Commissar）。
+       领袖身份由 <factionLeader>true</factionLeader> 声明；
+       Faction.TryGenerateNewLeader 只在 kindDef = Combat 的生成组里扫 factionLeader=true 的 kind，
+       所以 Rukaya_Commissar 必须留在至少一个 Combat 生成组中（见 Faction_Rukaya.xml 的正规军组）。
+       装备完全走 Rukaya_OfficerPawnBase：必定礼服 + 宽檐帽，武器为决斗剑或制式手枪。 -->
+  <PawnKindDef ParentName="Rukaya_OfficerPawnBase">
+    <defName>Rukaya_Commissar</defName>
+    <label>Rukaya commissar</label>
+    <!-- 中文：卢卡娅政委 -->
+    <combatPower>140</combatPower>
+    <factionLeader>true</factionLeader>
+    <skills>
+      <li>
+        <skill>Shooting</skill>
+        <range>5~10</range>
+      </li>
+      <li>
+        <skill>Melee</skill>
+        <range>5~10</range>
+      </li>
+      <li>
+        <skill>Social</skill>
+        <range>6~12</range>
+      </li>
+      <li>
+        <skill>Intellectual</skill>
+        <range>4~9</range>
+      </li>
+    </skills>
+  </PawnKindDef>
+
+  <!-- 军官：日常刷出来的指挥岗位。装备偏好与领袖**完全一致**
+       （军官礼服套装 + 决斗剑或制式手枪），但不承担 factionLeader 身份。
+       出现位置见 Faction_Rukaya.xml：Combat / Settlement 的
+       「正规军，带军官」「正规军与民兵混合」「民兵为主」三组，
+       以及 Peaceful / Trader 的少量配属（军官带领民兵与平民）。 -->
+  <PawnKindDef ParentName="Rukaya_OfficerPawnBase">
+    <defName>Rukaya_Officer</defName>
+    <label>Rukaya officer</label>
+    <!-- 中文：卢卡娅军官 -->
+    <combatPower>120</combatPower>
+    <factionLeader>false</factionLeader>
+    <skills>
+      <li>
+        <skill>Shooting</skill>
+        <range>5~10</range>
+      </li>
+      <li>
+        <skill>Melee</skill>
+        <range>5~10</range>
+      </li>
+      <li>
+        <skill>Social</skill>
+        <range>5~11</range>
+      </li>
+    </skills>
+  </PawnKindDef>
+
+  <!-- ==================== 特战队（Special Operations）· T3 ==================== -->
+
+  <!-- 特战突击手：激光步枪 / 等离子霰弹枪 -->
+  <PawnKindDef ParentName="Rukaya_SpecialOpsPawnBase">
+    <defName>Rukaya_SpetsnazAssault</defName>
+    <label>Rukaya special operations assault</label>
+    <!-- 中文：卢卡娅特战突击手 -->
+    <weaponMoney>1500~3000</weaponMoney>
+    <weaponTags>
+      <li>Rukaya_T3_Laser</li>
+      <li>Rukaya_T3_Shotgun</li>
+    </weaponTags>
+    <skills>
+      <li>
+        <skill>Shooting</skill>
+        <range>10~16</range>
+      </li>
+      <li>
+        <skill>Melee</skill>
+        <range>5~10</range>
+      </li>
+    </skills>
+  </PawnKindDef>
+
+  <!-- 特战狙击手：等离子狙击枪，每队至多一名 -->
+  <PawnKindDef ParentName="Rukaya_SpecialOpsPawnBase">
+    <defName>Rukaya_SpetsnazSniper</defName>
+    <label>Rukaya special operations sniper</label>
+    <!-- 中文：卢卡娅特战狙击手 -->
+    <maxPerGroup>1</maxPerGroup>
+    <weaponMoney>1500~3000</weaponMoney>
+    <weaponTags>
+      <li>Rukaya_T3_Sniper</li>
+    </weaponTags>
+    <skills>
+      <li>
+        <skill>Shooting</skill>
+        <range>12~18</range>
+      </li>
+    </skills>
+  </PawnKindDef>
+
+  <!-- 特战反装甲：肩扛导弹发射器，每队至多一名 -->
+  <PawnKindDef ParentName="Rukaya_SpecialOpsPawnBase">
+    <defName>Rukaya_SpetsnazAntiArmor</defName>
+    <label>Rukaya special operations anti-armour</label>
+    <!-- 中文：卢卡娅特战反装甲手 -->
+    <maxPerGroup>1</maxPerGroup>
+    <weaponMoney>1800~3200</weaponMoney>
+    <weaponTags>
+      <li>Rukaya_T3_ATGM</li>
+    </weaponTags>
+    <skills>
+      <li>
+        <skill>Shooting</skill>
+        <range>9~15</range>
+      </li>
+    </skills>
+  </PawnKindDef>
+
+  <!-- 特战支援：航空机枪 / 单兵机炮 -->
+  <PawnKindDef ParentName="Rukaya_SpecialOpsPawnBase">
+    <defName>Rukaya_SpetsnazSupport</defName>
+    <label>Rukaya special operations support</label>
+    <!-- 中文：卢卡娅特战支援手 -->
+    <weaponMoney>1800~3200</weaponMoney>
+    <weaponTags>
+      <li>Rukaya_T3_HMG</li>
+      <li>Rukaya_T3_AutoCannon</li>
+    </weaponTags>
+    <skills>
+      <li>
+        <skill>Shooting</skill>
+        <range>10~15</range>
+      </li>
+    </skills>
+  </PawnKindDef>
+
+  <!-- 特战近战：动力剑 -->
+  <PawnKindDef ParentName="Rukaya_SpecialOpsPawnBase">
+    <defName>Rukaya_SpetsnazBlade</defName>
+    <label>Rukaya special operations blade</label>
+    <!-- 中文：卢卡娅特战近战兵 -->
+    <weaponMoney>800~2000</weaponMoney>
+    <weaponTags>
+      <li>Rukaya_T3_MeleeBlade</li>
+    </weaponTags>
+    <skills>
+      <li>
+        <skill>Melee</skill>
+        <range>10~16</range>
+      </li>
+      <li>
+        <skill>Shooting</skill>
+        <range>4~8</range>
+      </li>
+    </skills>
+  </PawnKindDef>
+
+</Defs>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Rukaya_LoneDrifter.label>被放逐的卢卡娅</Rukaya_LoneDrifter.label>
+  <Rukaya_LoneDrifter.description>你接到了一个不情不愿的开拓任务：在监护三个被放逐的同僚的时候建立新的聚居地。这三位同族似乎曾经是著名又争议不断的游戏制作人，但联盟内不断流传出关于她们是什么秘密间谍或军情专家的传言，导致联盟内部不堪其扰，只好试图拉开距离。你被派往了选定的聚居地地址，而三位同族将会在得到必要的武器后，在愤怒的玩家们的见证下被装进空投仓，稍后与你会合。按照这些玩家们的说法，这只不过是让她们体验一下自己设计出来的大牢的痛苦而已。\n\n注意：你孤身开局，三名被放逐者会在你着陆后不久乘空投仓抵达。</Rukaya_LoneDrifter.description>
+
+  <Rukaya_LoneDrifter.scenario.name>被放逐的卢卡娅</Rukaya_LoneDrifter.scenario.name>
+  <Rukaya_LoneDrifter.scenario.description>你接到了一个不情不愿的开拓任务：在监护三个被放逐的同僚的时候建立新的聚居地。这三位同族似乎曾经是著名又争议不断的游戏制作人，但联盟内不断流传出关于她们是什么秘密间谍或军情专家的传言，导致联盟内部不堪其扰，只好试图拉开距离。你被派往了选定的聚居地地址，而三位同族将会在得到必要的武器后，在愤怒的玩家们的见证下被装进空投仓，稍后与你会合。按照这些玩家们的说法，这只不过是让她们体验一下自己设计出来的大牢的痛苦而已。\n\n注意：你孤身开局，三名被放逐者会在你着陆后不久乘空投仓抵达。</Rukaya_LoneDrifter.scenario.description>
+  <Rukaya_LoneDrifter.scenario.summary>三名被放逐的卢卡娅和一位监护者。似乎名字有点耳熟……</Rukaya_LoneDrifter.scenario.summary>
+
+  <Rukaya_LoneDrifter.scenario.parts.GameStartDialog.text>舱体在外壳冷却的咔哒声中静了下来，这片选址地除了你空无一物。三名同族正在途中，由你监护——联盟想把她们安置在这里，远到足以变成别人的麻烦。\n\n等她们拿到武器，就会降落。在她们抵达之前，先建起点能长久的东西吧。</Rukaya_LoneDrifter.scenario.parts.GameStartDialog.text>
+
+</LanguageData>

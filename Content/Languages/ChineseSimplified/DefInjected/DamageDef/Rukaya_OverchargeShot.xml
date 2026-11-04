@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Rukaya_OverchargeShot.label>过载弹命中</Rukaya_OverchargeShot.label>
+  <Rukaya_OverchargeShot.deathMessage>{0} 被射杀。</Rukaya_OverchargeShot.deathMessage>
+
+</LanguageData>

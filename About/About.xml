@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<name>Rukaya Race</name>
+	<author>Zyszhao, Coruja, Hailuan, BreadMo, Yushiren</author>
+	<supportedVersions>
+		<li>1.7</li>
+	</supportedVersions>
+	<packageId>zyszhao.rukayarace</packageId>
+	<description>
+      Play as the Rukaya, a long-lived, winged people scattered after the loss of their advanced homeworld. Rebuild their civilization through staged research, specialized weapons and apparel, active matter industry, controllable flight, and mechanoid engineering. Meet the neutral Drifter Alliance through its settlements, traders, and military forces, or begin as a lone exile awaiting three old companions.
+	</description>
+	<!-- 中文翻译：扮演卢卡娅——这个寿命悠长、背生双翼的族群在先进母星失落后散落星海。通过分阶段研究、专属武器与服装、活性物质工业、可控飞行和机械体技术，重建她们的文明。你可以在定居点、商队与军事力量中接触保持中立的漂泊者同盟，也可以作为孤身流亡者开局，等待三位旧日同伴到来。 -->
+	<modDependencies>
+		<li>
+			<packageId>Ludeon.RimWorld.Biotech</packageId>
+			<displayName>Biotech</displayName>
+			<downloadUrl>https://store.steampowered.com/app/1826140/</downloadUrl>
+		</li>
+	    <li>
+			<packageId>brrainz.harmony</packageId>
+			<displayName>Harmony</displayName>
+			<steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=2009463077</steamWorkshopUrl>
+		</li>
+	    <li>
+			<packageId>erdelf.HumanoidAlienRaces</packageId>
+			<displayName>Humanoid Alien Races</displayName>
+			<steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=839005762</steamWorkshopUrl>
+		</li>	
+	</modDependencies>
+	<loadAfter>
+		<li>Ludeon.RimWorld.Royalty</li>
+		<li>Ludeon.RimWorld.Ideology</li>
+		<li>Ludeon.RimWorld.Biotech</li>
+		<li>Ludeon.RimWorld.Anomaly</li>
+		<li>Ludeon.RimWorld.Odyssey</li>
+		<li>brrainz.harmony</li>
+		<li>erdelf.HumanoidAlienRaces</li>
+		<li>erdelf.HumanoidAlienRaces.dev</li>
+	</loadAfter>
+</ModMetaData>

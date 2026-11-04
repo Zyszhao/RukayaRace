@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Rukaya_ActiveMatterModeEnabled>{PAWN_labelShort}已开启活性物质模式。</Rukaya_ActiveMatterModeEnabled>
+  <Rukaya_ActiveMatterModeDisabled>{PAWN_labelShort}已将武器切回普通模式。</Rukaya_ActiveMatterModeDisabled>
+  <Rukaya_ActiveMatterAutoReloadEnabled>{PAWN_labelShort}将自动补充活性物质。</Rukaya_ActiveMatterAutoReloadEnabled>
+  <Rukaya_ActiveMatterAutoReloadDisabled>{PAWN_labelShort}将不再自动补充活性物质。</Rukaya_ActiveMatterAutoReloadDisabled>
+  <Rukaya_ActiveMatterInsufficient>{PAWN_labelShort}持有的{WEAPON}可用活性物质不足，已自动切回普通模式。</Rukaya_ActiveMatterInsufficient>
+
+  <Rukaya_ActiveMatterModeCommandOn>活性物质：开</Rukaya_ActiveMatterModeCommandOn>
+  <Rukaya_ActiveMatterModeCommandOff>活性物质：关</Rukaya_ActiveMatterModeCommandOff>
+  <Rukaya_ActiveMatterModeCommandDesc>在普通模式和活性物质模式之间切换武器。\n\n每次强化攻击会消耗{0}点活性物质。当前装填：{1}/{2}。</Rukaya_ActiveMatterModeCommandDesc>
+  <Rukaya_ActiveMatterAutoReloadCommandOn>自动装填：开</Rukaya_ActiveMatterAutoReloadCommandOn>
+  <Rukaya_ActiveMatterAutoReloadCommandOff>自动装填：关</Rukaya_ActiveMatterAutoReloadCommandOff>
+  <Rukaya_ActiveMatterAutoReloadCommandDesc>允许这把武器在小人处于安全且未征召状态时，自动从储存中的活性物质补充装填。</Rukaya_ActiveMatterAutoReloadCommandDesc>
+
+  <Rukaya_ActiveMatterLoadTitle>活性物质装填量</Rukaya_ActiveMatterLoadTitle>
+  <Rukaya_ActiveMatterTargetBar>目标：{0}</Rukaya_ActiveMatterTargetBar>
+  <Rukaya_ActiveMatterLoadTooltip>当前装填：{0}/{1}\n默认自动补充目标：{2}\n每次强化攻击消耗：{3}</Rukaya_ActiveMatterLoadTooltip>
+
+  <Rukaya_ActiveMatterInspect>活性物质：{0}/{1}</Rukaya_ActiveMatterInspect>
+  <Rukaya_ActiveMatterTargetInspect>自动补充目标：{0}</Rukaya_ActiveMatterTargetInspect>
+  <Rukaya_ActiveMatterModeOnShort>模式：活性物质</Rukaya_ActiveMatterModeOnShort>
+  <Rukaya_ActiveMatterModeOffShort>模式：普通</Rukaya_ActiveMatterModeOffShort>
+  <Rukaya_ActiveMatterAutoReloadOnShort>自动装填：已启用</Rukaya_ActiveMatterAutoReloadOnShort>
+  <Rukaya_ActiveMatterAutoReloadOffShort>自动装填：已禁用</Rukaya_ActiveMatterAutoReloadOffShort>
+  <Rukaya_ActiveMatterAIDecision>AI 活性物质决策：{0}</Rukaya_ActiveMatterAIDecision>
+  <Rukaya_ActiveMatterAI_Active>目标符合强化条件</Rukaya_ActiveMatterAI_Active>
+  <Rukaya_ActiveMatterAI_Insufficient>活性物质不足</Rukaya_ActiveMatterAI_Insufficient>
+  <Rukaya_ActiveMatterAI_FriendlyRisk>爆炸范围内有友军</Rukaya_ActiveMatterAI_FriendlyRisk>
+  <Rukaya_ActiveMatterAI_PolicyNotMet>目标不符合武器策略</Rukaya_ActiveMatterAI_PolicyNotMet>
+  <Rukaya_ActiveMatterAI_Reloaded>已从随身活性物质补给</Rukaya_ActiveMatterAI_Reloaded>
+
+  <Rukaya_ActiveMatterReloadFloatMenu>为{0}装填活性物质</Rukaya_ActiveMatterReloadFloatMenu>
+  <Rukaya_ActiveMatterDebugAdd>开发：+{0}</Rukaya_ActiveMatterDebugAdd>
+  <Rukaya_ActiveMatterDebugAddDesc>直接向这把武器增加{0}点活性物质装填。</Rukaya_ActiveMatterDebugAddDesc>
+  <Rukaya_ActiveMatterDebugSubtract>开发：-{0}</Rukaya_ActiveMatterDebugSubtract>
+  <Rukaya_ActiveMatterDebugSubtractDesc>直接从这把武器移除{0}点活性物质装填。</Rukaya_ActiveMatterDebugSubtractDesc>
+
+  <Rukaya_SettingsCategory>卢卡娅设置</Rukaya_SettingsCategory>
+  <Rukaya_FabricatorWorkSpeedLabel>制造台效率</Rukaya_FabricatorWorkSpeedLabel>
+  <Rukaya_FabricatorWorkSpeedDescription>调整卢卡娅制造台的工作台速度系数。</Rukaya_FabricatorWorkSpeedDescription>
+  <Rukaya_RefinerDailyOutputLabel>精炼器每日产量</Rukaya_RefinerDailyOutputLabel>
+  <Rukaya_RefinerDailyOutputDescription>调整卢卡娅精炼器每日产出的活性物质容器数量。（改动在下一次产出后生效）</Rukaya_RefinerDailyOutputDescription>
+  <Rukaya_AdvancedRefinerDailyOutputLabel>高级精炼器每日产量</Rukaya_AdvancedRefinerDailyOutputLabel>
+  <Rukaya_AdvancedRefinerDailyOutputDescription>调整卢卡娅高级精炼器每日产出的活性物质容器数量。（改动在下一次产出后生效）</Rukaya_AdvancedRefinerDailyOutputDescription>
+  <Rukaya_UseLightningForElectricWeaponsLabel>电击武器使用雷击</Rukaya_UseLightningForElectricWeaponsLabel>
+  <Rukaya_UseLightningForElectricWeaponsDescription>启用后，电弧震击榴弹和充能电棍命中会召唤雷击，而不是使用普通电击命中效果。</Rukaya_UseLightningForElectricWeaponsDescription>
+  <Rukaya_ResetSetting>重置</Rukaya_ResetSetting>
+
+</LanguageData>

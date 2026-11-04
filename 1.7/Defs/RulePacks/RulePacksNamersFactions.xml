@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <RulePackDef>
+        <defName>NamerFaction_RukayaFaction</defName>
+        <include>
+            <li>EmpireNameUtility</li>
+        </include>
+        <rulePack>
+            <rulesStrings>
+                <li>r_name->Drifter Alliance</li>
+                <!-- 中文翻译：r_name->漂泊者同盟 -->
+                <li>r_name->Iron Exile Syndicate</li>
+                <!-- 中文翻译：r_name->钢铁流亡者互助会 -->
+                <li>r_name->Falling Star Watcher</li>
+                <!-- 中文翻译：r_name->陨星守望者 -->
+                <li>r_name->Silent Front</li>
+                <!-- 中文翻译：r_name->静默阵线 -->
+                <li>r_name(p=0.1)->New Cadia</li>
+                <!-- 中文翻译：r_name(p=0.1)->新卡迪亚 -->
+            </rulesStrings>
+        </rulePack>
+    </RulePackDef>
+
+    <RulePackDef>
+        <defName>NamerSettlement_Rukaya</defName>
+        <rulePack>
+            <rulesStrings>
+                <li>r_name(p=7)->[rukaya_codename]-[rukaya_index]</li>
+                <!-- 中文翻译：r_name(p=7)->[rukaya_codename]-[rukaya_index] -->
+                <li>r_name(p=7)->[rukaya_cityname]-[rukaya_index]</li>
+                <!-- 中文翻译：r_name(p=7)->[rukaya_cityname]-[rukaya_index] -->
+                <li>r_name(p=5)->[rukaya_prefix] [rukaya_facility]</li>
+                <!-- 中文翻译：r_name(p=5)->[rukaya_prefix][rukaya_facility] -->
+                <li>r_name(p=3)->[rukaya_ruinstate] [rukaya_installation]</li>
+                <!-- 中文翻译：r_name(p=3)->[rukaya_ruinstate][rukaya_installation] -->
+
+                <li>rukaya_codename->Zarya</li>
+                <!-- 中文翻译：rukaya_codename->曙光 -->
+                <li>rukaya_codename->Buran</li>
+                <!-- 中文翻译：rukaya_codename->暴风雪 -->
+                <li>rukaya_codename->Vostok</li>
+                <!-- 中文翻译：rukaya_codename->东方 -->
+                <li>rukaya_codename->Molniya</li>
+                <!-- 中文翻译：rukaya_codename->闪电 -->
+                <li>rukaya_codename->Vikhr</li>
+                <!-- 中文翻译：rukaya_codename->旋风 -->
+                <li>rukaya_codename->Shtorm</li>
+                <!-- 中文翻译：rukaya_codename->风暴 -->
+                <li>rukaya_codename->Smerch</li>
+                <!-- 中文翻译：rukaya_codename->龙卷风 -->
+                <li>rukaya_codename->Shkval</li>
+                <!-- 中文翻译：rukaya_codename->狂风 -->
+                <li>rukaya_codename->Tayfun</li>
+                <!-- 中文翻译：rukaya_codename->台风 -->
+                <li>rukaya_codename->Spektr</li>
+                <!-- 中文翻译：rukaya_codename->光谱 -->
+                <li>rukaya_codename->Energia</li>
+                <!-- 中文翻译：rukaya_codename->能源 -->
+                <li>rukaya_codename->Poisk</li>
+                <!-- 中文翻译：rukaya_codename->搜索 -->
+                <li>rukaya_codename->Kvant</li>
+                <!-- 中文翻译：rukaya_codename->量子 -->
+                <li>rukaya_codename->Rassvet</li>
+                <!-- 中文翻译：rukaya_codename->黎明 -->
+                <li>rukaya_codename->Boevoy</li>
+                <!-- 中文翻译：rukaya_codename->战斗 -->
+
+                <li>rukaya_cityname->Arzamas</li>
+                <!-- 中文翻译：rukaya_cityname->阿尔扎马斯 -->
+                <li>rukaya_cityname->Chelyabinsk</li>
+                <!-- 中文翻译：rukaya_cityname->车里雅宾斯克 -->
+                <li>rukaya_cityname->Tomsk</li>
+                <!-- 中文翻译：rukaya_cityname->托木斯克 -->
+                <li>rukaya_cityname->Krasnoyarsk</li>
+                <!-- 中文翻译：rukaya_cityname->克拉斯诺亚尔斯克 -->
+                <li>rukaya_cityname->Sverdlovsk</li>
+                <!-- 中文翻译：rukaya_cityname->斯维尔德洛夫斯克 -->
+                <li>rukaya_cityname->Zlatoust</li>
+                <!-- 中文翻译：rukaya_cityname->兹拉托乌斯特 -->
+                <li>rukaya_cityname->Penza</li>
+                <!-- 中文翻译：rukaya_cityname->奔萨 -->
+                <li>rukaya_cityname->Omsk</li>
+                <!-- 中文翻译：rukaya_cityname->鄂木斯克 -->
+                <li>rukaya_cityname->Tyumen</li>
+                <!-- 中文翻译：rukaya_cityname->秋明 -->
+                <li>rukaya_cityname->Novosibirsk</li>
+                <!-- 中文翻译：rukaya_cityname->新西伯利亚 -->
+                <li>rukaya_cityname->Perm</li>
+                <!-- 中文翻译：rukaya_cityname->彼尔姆 -->
+                <li>rukaya_cityname->Murmansk</li>
+                <!-- 中文翻译：rukaya_cityname->摩尔曼斯克 -->
+
+                <li>rukaya_index->03</li>
+                <!-- 中文翻译：rukaya_index->03 -->
+                <li>rukaya_index->07</li>
+                <!-- 中文翻译：rukaya_index->07 -->
+                <li>rukaya_index->08</li>
+                <!-- 中文翻译：rukaya_index->08 -->
+                <li>rukaya_index->11</li>
+                <!-- 中文翻译：rukaya_index->11 -->
+                <li>rukaya_index->14</li>
+                <!-- 中文翻译：rukaya_index->14 -->
+                <li>rukaya_index->17</li>
+                <!-- 中文翻译：rukaya_index->17 -->
+                <li>rukaya_index->21</li>
+                <!-- 中文翻译：rukaya_index->21 -->
+                <li>rukaya_index->24</li>
+                <!-- 中文翻译：rukaya_index->24 -->
+                <li>rukaya_index->29</li>
+                <!-- 中文翻译：rukaya_index->29 -->
+                <li>rukaya_index->31</li>
+                <!-- 中文翻译：rukaya_index->31 -->
+                <li>rukaya_index->42</li>
+                <!-- 中文翻译：rukaya_index->42 -->
+                <li>rukaya_index->47</li>
+                <!-- 中文翻译：rukaya_index->47 -->
+                <li>rukaya_index->56</li>
+                <!-- 中文翻译：rukaya_index->56 -->
+                <li>rukaya_index->63</li>
+                <!-- 中文翻译：rukaya_index->63 -->
+                <li>rukaya_index->71</li>
+                <!-- 中文翻译：rukaya_index->71 -->
+                <li>rukaya_index->78</li>
+                <!-- 中文翻译：rukaya_index->78 -->
+                <li>rukaya_index->84</li>
+                <!-- 中文翻译：rukaya_index->84 -->
+                <li>rukaya_index->96</li>
+                <!-- 中文翻译：rukaya_index->96 -->
+
+                <li>rukaya_prefix->Farstar</li>
+                <!-- 中文翻译：rukaya_prefix->远星 -->
+                <li>rukaya_prefix->Silent</li>
+                <!-- 中文翻译：rukaya_prefix->静默 -->
+                <li>rukaya_prefix->Tundra</li>
+                <!-- 中文翻译：rukaya_prefix->冻土 -->
+                <li>rukaya_prefix->Rust</li>
+                <!-- 中文翻译：rukaya_prefix->锈蚀 -->
+                <li>rukaya_prefix->Zero</li>
+                <!-- 中文翻译：rukaya_prefix->第零 -->
+                <li>rukaya_prefix->Frostline</li>
+                <!-- 中文翻译：rukaya_prefix->霜线 -->
+                <li>rukaya_prefix->Whiteout</li>
+                <!-- 中文翻译：rukaya_prefix->白障 -->
+                <li>rukaya_prefix->Blacksite</li>
+                <!-- 中文翻译：rukaya_prefix->黑区 -->
+                <li>rukaya_prefix->Coldforge</li>
+                <!-- 中文翻译：rukaya_prefix->寒锻 -->
+                <li>rukaya_prefix->Graveline</li>
+                <!-- 中文翻译：rukaya_prefix->灰线 -->
+                <li>rukaya_prefix->Outer</li>
+                <!-- 中文翻译：rukaya_prefix->外环 -->
+                <li>rukaya_prefix->Lastlight</li>
+                <!-- 中文翻译：rukaya_prefix->余光 -->
+
+                <li>rukaya_facility->Station</li>
+                <!-- 中文翻译：rukaya_facility->观测站 -->
+                <li>rukaya_facility->Outpost</li>
+                <!-- 中文翻译：rukaya_facility->前哨 -->
+                <li>rukaya_facility->Camp</li>
+                <!-- 中文翻译：rukaya_facility->营地 -->
+                <li>rukaya_facility->Bunker</li>
+                <!-- 中文翻译：rukaya_facility->掩体 -->
+                <li>rukaya_facility->Relay</li>
+                <!-- 中文翻译：rukaya_facility->中继站 -->
+                <li>rukaya_facility->Depot</li>
+                <!-- 中文翻译：rukaya_facility->补给站 -->
+                <li>rukaya_facility->Redoubt</li>
+                <!-- 中文翻译：rukaya_facility->据守堡 -->
+                <li>rukaya_facility->Bastion</li>
+                <!-- 中文翻译：rukaya_facility->棱堡 -->
+                <li>rukaya_facility->Checkpoint</li>
+                <!-- 中文翻译：rukaya_facility->检查站 -->
+                <li>rukaya_facility->Worksite</li>
+                <!-- 中文翻译：rukaya_facility->工地站 -->
+                <li>rukaya_facility->Anchorage</li>
+                <!-- 中文翻译：rukaya_facility->锚地 -->
+                <li>rukaya_facility->Site</li>
+                <!-- 中文翻译：rukaya_facility->站点 -->
+
+                <li>rukaya_ruinstate->Shattered</li>
+                <!-- 中文翻译：rukaya_ruinstate->碎裂 -->
+                <li>rukaya_ruinstate->Forgotten</li>
+                <!-- 中文翻译：rukaya_ruinstate->遗忘 -->
+                <li>rukaya_ruinstate->Broken</li>
+                <!-- 中文翻译：rukaya_ruinstate->破损 -->
+                <li>rukaya_ruinstate->Abandoned</li>
+                <!-- 中文翻译：rukaya_ruinstate->废弃 -->
+                <li>rukaya_ruinstate->Collapsed</li>
+                <!-- 中文翻译：rukaya_ruinstate->坍塌 -->
+                <li>rukaya_ruinstate->Dead</li>
+                <!-- 中文翻译：rukaya_ruinstate->死寂 -->
+                <li>rukaya_ruinstate->Buried</li>
+                <!-- 中文翻译：rukaya_ruinstate->掩埋 -->
+                <li>rukaya_ruinstate->Frozen</li>
+                <!-- 中文翻译：rukaya_ruinstate->冻结 -->
+
+                <li>rukaya_installation->Reactor</li>
+                <!-- 中文翻译：rukaya_installation->反应堆 -->
+                <li>rukaya_installation->Dropzone</li>
+                <!-- 中文翻译：rukaya_installation->降落区 -->
+                <li>rukaya_installation->Relay</li>
+                <!-- 中文翻译：rukaya_installation->中继站 -->
+                <li>rukaya_installation->Array</li>
+                <!-- 中文翻译：rukaya_installation->阵列 -->
+                <li>rukaya_installation->Silo</li>
+                <!-- 中文翻译：rukaya_installation->发射井 -->
+                <li>rukaya_installation->Depot</li>
+                <!-- 中文翻译：rukaya_installation->储备库 -->
+                <li>rukaya_installation->Beacon</li>
+                <!-- 中文翻译：rukaya_installation->信标站 -->
+                <li>rukaya_installation->Vault</li>
+                <!-- 中文翻译：rukaya_installation->地库 -->
+                <li>rukaya_installation->Platform</li>
+                <!-- 中文翻译：rukaya_installation->平台 -->
+                <li>rukaya_installation->Gate</li>
+                <!-- 中文翻译：rukaya_installation->闸门 -->
+            </rulesStrings>
+        </rulePack>
+    </RulePackDef>
+</Defs>

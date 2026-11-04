@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <JobDef>
+    <defName>Rukaya_ReloadActiveMatterWeapon</defName>
+    <driverClass>RukayaRace.Weapons.JobDriver_ReloadActiveMatterWeapon</driverClass>
+    <casualInterruptible>true</casualInterruptible>
+    <playerInterruptible>true</playerInterruptible>
+    <neverShowWeapon>true</neverShowWeapon>
+  </JobDef>
+
+  <JobDef>
+    <defName>Rukaya_LoadActiveMatterReservoir</defName>
+    <driverClass>RukayaRace.Replication.JobDriver_LoadActiveMatterReservoir</driverClass>
+    <reportString>Loading active matter into TargetB.</reportString>
+    <!-- 中文翻译：正在向 TargetB 装填活性物质。 -->
+    <casualInterruptible>true</casualInterruptible>
+    <playerInterruptible>true</playerInterruptible>
+    <neverShowWeapon>true</neverShowWeapon>
+  </JobDef>
+</Defs>

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Rukaya_SettlementBuilder.title>聚居地营建员</Rukaya_SettlementBuilder.title>
+  <Rukaya_SettlementBuilder.titleFemale>聚居地营建员</Rukaya_SettlementBuilder.titleFemale>
+  <Rukaya_SettlementBuilder.titleShort>营建员</Rukaya_SettlementBuilder.titleShort>
+  <Rukaya_SettlementBuilder.titleShortFemale>营建员</Rukaya_SettlementBuilder.titleShortFemale>
+  <Rukaya_SettlementBuilder.description>[PAWN_nameDef]曾负责同盟聚居地的营建，把回收的金属构件和就地开凿的石料变成住处。她学会了加固地基、修补围墙，也习惯在动工前先想好，下次迁移时哪些东西还能带走。</Rukaya_SettlementBuilder.description>
+
+  <Rukaya_OrdnanceInspector.title>军需检验员</Rukaya_OrdnanceInspector.title>
+  <Rukaya_OrdnanceInspector.titleFemale>军需检验员</Rukaya_OrdnanceInspector.titleFemale>
+  <Rukaya_OrdnanceInspector.titleShort>检验员</Rukaya_OrdnanceInspector.titleShort>
+  <Rukaya_OrdnanceInspector.titleShortFemale>检验员</Rukaya_OrdnanceInspector.titleShortFemale>
+  <Rukaya_OrdnanceInspector.description>[PAWN_nameDef]负责验收同盟送往各驻地的武器和零件，能从磨损和装配误差里找出毛病。她熟记检验规程，对不合格的批次从不通融，久而久之，连日常谈话也像在挑别人的错。</Rukaya_OrdnanceInspector.description>
+
+  <Rukaya_HallHelper.title>礼堂帮手</Rukaya_HallHelper.title>
+  <Rukaya_HallHelper.titleFemale>礼堂帮手</Rukaya_HallHelper.titleFemale>
+  <Rukaya_HallHelper.titleShort>礼堂帮手</Rukaya_HallHelper.titleShort>
+  <Rukaya_HallHelper.titleShortFemale>礼堂帮手</Rukaya_HallHelper.titleShortFemale>
+  <Rukaya_HallHelper.description>[PAWN_nameDef]小时候常在聚居地的礼堂里帮忙，描补褪色的旗帜，为节日布置场地。长辈教她辨认旧式纹样，她则喜欢向来参加庆典的人解释，那些图案在故乡代表着什么。</Rukaya_HallHelper.description>
+
+  <Rukaya_WorkshopChild.title>工坊孩子</Rukaya_WorkshopChild.title>
+  <Rukaya_WorkshopChild.titleFemale>工坊孩子</Rukaya_WorkshopChild.titleFemale>
+  <Rukaya_WorkshopChild.titleShort>工坊孩子</Rukaya_WorkshopChild.titleShort>
+  <Rukaya_WorkshopChild.titleShortFemale>工坊孩子</Rukaya_WorkshopChild.titleShortFemale>
+  <Rukaya_WorkshopChild.description>[PAWN_nameDef]从小跟着家人在工坊里做活，给拆下来的零件分类，也帮忙修补门窗。她很早就会使用工具，却经常为了看大人修机器而逃课，学校里的功课因此落下了不少。</Rukaya_WorkshopChild.description>
+
+  <Rukaya_MilitiaTrainer.title>民兵教练</Rukaya_MilitiaTrainer.title>
+  <Rukaya_MilitiaTrainer.titleFemale>民兵教练</Rukaya_MilitiaTrainer.titleFemale>
+  <Rukaya_MilitiaTrainer.titleShort>民兵教练</Rukaya_MilitiaTrainer.titleShort>
+  <Rukaya_MilitiaTrainer.titleShortFemale>民兵教练</Rukaya_MilitiaTrainer.titleShortFemale>
+  <Rukaya_MilitiaTrainer.description>[PAWN_nameDef]在同盟聚居地训练民兵，教她们用短刀和棍棒自卫，也教她们怎样守住狭窄的通道。她习惯耐心地把每个动作拆开讲清楚，直到最怯场的学员也能跟上。</Rukaya_MilitiaTrainer.description>
+
+  <Rukaya_RegistryClerk.title>名册誊写员</Rukaya_RegistryClerk.title>
+  <Rukaya_RegistryClerk.titleFemale>名册誊写员</Rukaya_RegistryClerk.titleFemale>
+  <Rukaya_RegistryClerk.titleShort>誊写员</Rukaya_RegistryClerk.titleShort>
+  <Rukaya_RegistryClerk.titleShortFemale>誊写员</Rukaya_RegistryClerk.titleShortFemale>
+  <Rukaya_RegistryClerk.description>[PAWN_nameDef]为同盟誊写户籍名册，核对姓名和日期，整理受损的登记记录。旧册子脆得不能再翻时，她就把还能辨认的条目逐一比对，尽量不让哪一家人从缺页之间漏掉。</Rukaya_RegistryClerk.description>
+
+  <Rukaya_SettlementTeacher.title>聚居地教师</Rukaya_SettlementTeacher.title>
+  <Rukaya_SettlementTeacher.titleFemale>聚居地教师</Rukaya_SettlementTeacher.titleFemale>
+  <Rukaya_SettlementTeacher.titleShort>教师</Rukaya_SettlementTeacher.titleShort>
+  <Rukaya_SettlementTeacher.titleShortFemale>教师</Rukaya_SettlementTeacher.titleShortFemale>
+  <Rukaya_SettlementTeacher.description>[PAWN_nameDef]在同盟聚居地的学校里教识字和算术。孩子们总问起旧课本上的那些城市，她便去查残存的资料，也慢慢学会了怎样把陌生的事情讲得让一整间教室的人都听懂。</Rukaya_SettlementTeacher.description>
+
+  <Rukaya_TowerWatchkeeper.title>哨塔守夜人</Rukaya_TowerWatchkeeper.title>
+  <Rukaya_TowerWatchkeeper.titleFemale>哨塔守夜人</Rukaya_TowerWatchkeeper.titleFemale>
+  <Rukaya_TowerWatchkeeper.titleShort>守夜人</Rukaya_TowerWatchkeeper.titleShort>
+  <Rukaya_TowerWatchkeeper.titleShortFemale>守夜人</Rukaya_TowerWatchkeeper.titleShortFemale>
+  <Rukaya_TowerWatchkeeper.description>[PAWN_nameDef]在同盟聚居地外围的哨塔上值守，换岗后还要练习步枪射击。大多数夜晚都平安无事，她逐渐习惯了在电台里用几个字答话，下了哨也很少再多说什么。</Rukaya_TowerWatchkeeper.description>
+
+  <Rukaya_RefineryTechnician.title>提炼厂技师</Rukaya_RefineryTechnician.title>
+  <Rukaya_RefineryTechnician.titleFemale>提炼厂技师</Rukaya_RefineryTechnician.titleFemale>
+  <Rukaya_RefineryTechnician.titleShort>提炼技师</Rukaya_RefineryTechnician.titleShort>
+  <Rukaya_RefineryTechnician.titleShortFemale>提炼技师</Rukaya_RefineryTechnician.titleShortFemale>
+  <Rukaya_RefineryTechnician.description>[PAWN_nameDef]在活性物质提炼厂维护设备，校准仪表，更换磨损的密封件。她把处理规程读得很熟，能辨认出不正常的读数，每次都先停下生产线，再去寻找原因。</Rukaya_RefineryTechnician.description>
+
+  <Rukaya_PatrolVeteran.title>巡防老兵</Rukaya_PatrolVeteran.title>
+  <Rukaya_PatrolVeteran.titleFemale>巡防老兵</Rukaya_PatrolVeteran.titleFemale>
+  <Rukaya_PatrolVeteran.titleShort>巡防老兵</Rukaya_PatrolVeteran.titleShort>
+  <Rukaya_PatrolVeteran.titleShortFemale>巡防老兵</Rukaya_PatrolVeteran.titleShortFemale>
+  <Rukaya_PatrolVeteran.description>[PAWN_nameDef]常年在同盟聚居地之间巡防，学会了使用步枪，也学会了巡逻队被逼到近处时怎样还击。坏天气和迟来的接替队伍都是常事，她渐渐养成了沉住气、等所有人回到掩体再说的习惯。</Rukaya_PatrolVeteran.description>
+
+  <Rukaya_FieldCook.title>野战炊事员</Rukaya_FieldCook.title>
+  <Rukaya_FieldCook.titleFemale>野战炊事员</Rukaya_FieldCook.titleFemale>
+  <Rukaya_FieldCook.titleShort>炊事员</Rukaya_FieldCook.titleShort>
+  <Rukaya_FieldCook.titleShortFemale>炊事员</Rukaya_FieldCook.titleShortFemale>
+  <Rukaya_FieldCook.description>[PAWN_nameDef]在同盟野战队伍里做饭，开饭的间隙还要修补磕坏的炉具。她总是最早起来、最晚收工的那一批人，只要下一班岗哨还没吃上饭，就不肯先去休息。</Rukaya_FieldCook.description>
+
+  <Rukaya_ExcavationForeman.title>采掘班长</Rukaya_ExcavationForeman.title>
+  <Rukaya_ExcavationForeman.titleFemale>采掘班长</Rukaya_ExcavationForeman.titleFemale>
+  <Rukaya_ExcavationForeman.titleShort>采掘班长</Rukaya_ExcavationForeman.titleShort>
+  <Rukaya_ExcavationForeman.titleShortFemale>采掘班长</Rukaya_ExcavationForeman.titleShortFemale>
+  <Rukaya_ExcavationForeman.description>[PAWN_nameDef]带着同盟的采掘班，从旧地基里开出还能用的金属，加固不稳的矿道。早年尝试务农时，她曾弄坏一季收成，从此认定作物该交给懂行的人，再也不肯接下种植和照料庄稼的活。</Rukaya_ExcavationForeman.description>
+
+  <Rukaya_MemorialEngraver.title>纪念铭牌刻工</Rukaya_MemorialEngraver.title>
+  <Rukaya_MemorialEngraver.titleFemale>纪念铭牌刻工</Rukaya_MemorialEngraver.titleFemale>
+  <Rukaya_MemorialEngraver.titleShort>铭牌刻工</Rukaya_MemorialEngraver.titleShort>
+  <Rukaya_MemorialEngraver.titleShortFemale>铭牌刻工</Rukaya_MemorialEngraver.titleShortFemale>
+  <Rukaya_MemorialEngraver.description>[PAWN_nameDef]为同盟雕刻纪念铭牌，每一道不齐的刻痕都要修好，才肯接着刻下一个名字。没做完的铭牌会让她惦记得睡不着；亲眼见过一次采石场塌方后，她不肯再开采石料，只用别人送来的材料。</Rukaya_MemorialEngraver.description>
+
+  <Rukaya_NightDispatcher.title>夜班调度员</Rukaya_NightDispatcher.title>
+  <Rukaya_NightDispatcher.titleFemale>夜班调度员</Rukaya_NightDispatcher.titleFemale>
+  <Rukaya_NightDispatcher.titleShort>调度员</Rukaya_NightDispatcher.titleShort>
+  <Rukaya_NightDispatcher.titleShortFemale>调度员</Rukaya_NightDispatcher.titleShortFemale>
+  <Rukaya_NightDispatcher.description>[PAWN_nameDef]在同盟通讯站上夜班，核对沿途报告，安排接替的队伍。她学会了从不完整的消息里理出头绪，也学会了隔着电台把争执说清楚，免得一次交接耽误更多事情。</Rukaya_NightDispatcher.description>
+
+  <Rukaya_ItinerantMusician.title>流亡乐师</Rukaya_ItinerantMusician.title>
+  <Rukaya_ItinerantMusician.titleFemale>流亡乐师</Rukaya_ItinerantMusician.titleFemale>
+  <Rukaya_ItinerantMusician.titleShort>乐师</Rukaya_ItinerantMusician.titleShort>
+  <Rukaya_ItinerantMusician.titleShortFemale>乐师</Rukaya_ItinerantMusician.titleShortFemale>
+  <Rukaya_ItinerantMusician.description>[PAWN_nameDef]在各个聚居地之间演奏旧曲，也向沿途的人学些新歌。她慢慢知道怎样让围坐的人愿意开口合唱；哪怕一晚没收到多少报酬，她也总能想出下一站值得期待的事情。</Rukaya_ItinerantMusician.description>
+
+  <Rukaya_GreenhouseGrower.title>温室种植员</Rukaya_GreenhouseGrower.title>
+  <Rukaya_GreenhouseGrower.titleFemale>温室种植员</Rukaya_GreenhouseGrower.titleFemale>
+  <Rukaya_GreenhouseGrower.titleShort>种植员</Rukaya_GreenhouseGrower.titleShort>
+  <Rukaya_GreenhouseGrower.titleShortFemale>种植员</Rukaya_GreenhouseGrower.titleShortFemale>
+  <Rukaya_GreenhouseGrower.description>[PAWN_nameDef]照料同盟聚居地的温室，在寒潮和补给不稳的时候保住作物。收获之间，她还要修整种植床、补好损坏的框架，渐渐分清了哪些地方可以晚点修，哪些会耽误下一季收成。</Rukaya_GreenhouseGrower.description>
+
+  <Rukaya_PackAnimalKeeper.title>驮兽饲养员</Rukaya_PackAnimalKeeper.title>
+  <Rukaya_PackAnimalKeeper.titleFemale>驮兽饲养员</Rukaya_PackAnimalKeeper.titleFemale>
+  <Rukaya_PackAnimalKeeper.titleShort>驮兽饲养员</Rukaya_PackAnimalKeeper.titleShort>
+  <Rukaya_PackAnimalKeeper.titleShortFemale>驮兽饲养员</Rukaya_PackAnimalKeeper.titleShortFemale>
+  <Rukaya_PackAnimalKeeper.description>[PAWN_nameDef]照料同盟往返聚居地运送补给的驮兽，学会了安抚受惊的动物，也会在挽具磨出的伤口恶化前处理好。队伍停下来休息时，别人忙着卸货，她通常还在逐只检查蹄子。</Rukaya_PackAnimalKeeper.description>
+
+  <Rukaya_FieldMedic.title>随队医护员</Rukaya_FieldMedic.title>
+  <Rukaya_FieldMedic.titleFemale>随队医护员</Rukaya_FieldMedic.titleFemale>
+  <Rukaya_FieldMedic.titleShort>医护员</Rukaya_FieldMedic.titleShort>
+  <Rukaya_FieldMedic.titleShortFemale>医护员</Rukaya_FieldMedic.titleShortFemale>
+  <Rukaya_FieldMedic.description>[PAWN_nameDef]在同盟巡逻队里处理伤口，行程之间反复翻看那几本磨旧的急救手册。给别人包扎时，她的手总能稳住，轮到自己受伤，却连不大的伤口也觉得难以忍受。</Rukaya_FieldMedic.description>
+
+  <Rukaya_CaravanBroker.title>商队议价员</Rukaya_CaravanBroker.title>
+  <Rukaya_CaravanBroker.titleFemale>商队议价员</Rukaya_CaravanBroker.titleFemale>
+  <Rukaya_CaravanBroker.titleShort>议价员</Rukaya_CaravanBroker.titleShort>
+  <Rukaya_CaravanBroker.titleShortFemale>议价员</Rukaya_CaravanBroker.titleShortFemale>
+  <Rukaya_CaravanBroker.description>[PAWN_nameDef]为同盟补给商队商谈采购，记下各地的价钱，也记下每次答应过的事情。她学会了像核对账本一样留意陌生人的态度，毕竟这一次谈成的买卖，还得经得起下一次见面。</Rukaya_CaravanBroker.description>
+
+  <Rukaya_WaterworksTechnician.title>供水维修员</Rukaya_WaterworksTechnician.title>
+  <Rukaya_WaterworksTechnician.titleFemale>供水维修员</Rukaya_WaterworksTechnician.titleFemale>
+  <Rukaya_WaterworksTechnician.titleShort>供水维修员</Rukaya_WaterworksTechnician.titleShort>
+  <Rukaya_WaterworksTechnician.titleShortFemale>供水维修员</Rukaya_WaterworksTechnician.titleShortFemale>
+  <Rukaya_WaterworksTechnician.description>[PAWN_nameDef]在同盟聚居地修水泵和管线，找不到埋在地下的管子时，就去翻旧图纸。她渐渐擅长把不配套的零件接好，也能读懂那些原先的建造者没来得及写清楚的管路。</Rukaya_WaterworksTechnician.description>
+
+  <Rukaya_RangeInstructor.title>靶场教员</Rukaya_RangeInstructor.title>
+  <Rukaya_RangeInstructor.titleFemale>靶场教员</Rukaya_RangeInstructor.titleFemale>
+  <Rukaya_RangeInstructor.titleShort>靶场教员</Rukaya_RangeInstructor.titleShort>
+  <Rukaya_RangeInstructor.titleShortFemale>靶场教员</Rukaya_RangeInstructor.titleShortFemale>
+  <Rukaya_RangeInstructor.description>[PAWN_nameDef]在靶场教民兵射击，记录训练结果，分析每次脱靶的原因。她坚持看清瞄准线再扣扳机，这套习惯沿用久了，即使赶着开枪，也总要多花一点时间确认。</Rukaya_RangeInstructor.description>
+
+  <Rukaya_UniformTailor.title>制服裁缝</Rukaya_UniformTailor.title>
+  <Rukaya_UniformTailor.titleFemale>制服裁缝</Rukaya_UniformTailor.titleFemale>
+  <Rukaya_UniformTailor.titleShort>裁缝</Rukaya_UniformTailor.titleShort>
+  <Rukaya_UniformTailor.titleShortFemale>裁缝</Rukaya_UniformTailor.titleShortFemale>
+  <Rukaya_UniformTailor.description>[PAWN_nameDef]为同盟聚居地缝制制服，照着传下来的纸样，用手头能找到的布料改裁。她很留意翼根周围的接缝和标识的位置，哪怕衣服已经修补过几回，也尽量做得经得起检阅。</Rukaya_UniformTailor.description>
+
+  <Rukaya_ShelterChild.title>掩体孩子</Rukaya_ShelterChild.title>
+  <Rukaya_ShelterChild.titleFemale>掩体孩子</Rukaya_ShelterChild.titleFemale>
+  <Rukaya_ShelterChild.titleShort>掩体孩子</Rukaya_ShelterChild.titleShort>
+  <Rukaya_ShelterChild.titleShortFemale>掩体孩子</Rukaya_ShelterChild.titleShortFemale>
+  <Rukaya_ShelterChild.description>[PAWN_nameDef]在围着旧掩体建起来的聚居地长大。大人教她检查门上的密封条，读那些带编号的维修告示；她最初认得的字，大多是对着需要修理的东西一点点记住的。</Rukaya_ShelterChild.description>
+
+  <Rukaya_GarrisonChild.title>军营孩子</Rukaya_GarrisonChild.title>
+  <Rukaya_GarrisonChild.titleFemale>军营孩子</Rukaya_GarrisonChild.titleFemale>
+  <Rukaya_GarrisonChild.titleShort>军营孩子</Rukaya_GarrisonChild.titleShort>
+  <Rukaya_GarrisonChild.titleShortFemale>军营孩子</Rukaya_GarrisonChild.titleShortFemale>
+  <Rukaya_GarrisonChild.description>[PAWN_nameDef]在同盟驻军的家属区长大。休班的士兵有时会带孩子们去靶场练习，也教她们被人抓住时怎样挣脱；比起点名时安安静静地站好，她显然更喜欢这些课程。</Rukaya_GarrisonChild.description>
+
+  <Rukaya_SalvageChild.title>拾荒孩子</Rukaya_SalvageChild.title>
+  <Rukaya_SalvageChild.titleFemale>拾荒孩子</Rukaya_SalvageChild.titleFemale>
+  <Rukaya_SalvageChild.titleShort>拾荒孩子</Rukaya_SalvageChild.titleShort>
+  <Rukaya_SalvageChild.titleShortFemale>拾荒孩子</Rukaya_SalvageChild.titleShortFemale>
+  <Rukaya_SalvageChild.description>[PAWN_nameDef]小时候在同盟营地边帮忙分拣回收物，跟着大人清理还能用的零件。为了不放错箱子，她学着辨认旧部件上的标记，也总要问清楚，那些坏掉的机器原先是做什么的。</Rukaya_SalvageChild.description>
+
+  <Rukaya_CaravanChild.title>商队孩子</Rukaya_CaravanChild.title>
+  <Rukaya_CaravanChild.titleFemale>商队孩子</Rukaya_CaravanChild.titleFemale>
+  <Rukaya_CaravanChild.titleShort>商队孩子</Rukaya_CaravanChild.titleShort>
+  <Rukaya_CaravanChild.titleShortFemale>商队孩子</Rukaya_CaravanChild.titleShortFemale>
+  <Rukaya_CaravanChild.description>[PAWN_nameDef]小时候跟着同盟商队四处走，每到一处落脚点就去认识新朋友。赶路的日子里，她会帮忙给驮兽梳毛，也慢慢摸清了哪些动物愿意站着不动，让孩子检查挽具。</Rukaya_CaravanChild.description>
+
+  <Rukaya_KitchenHelper.title>帮厨孩子</Rukaya_KitchenHelper.title>
+  <Rukaya_KitchenHelper.titleFemale>帮厨孩子</Rukaya_KitchenHelper.titleFemale>
+  <Rukaya_KitchenHelper.titleShort>帮厨孩子</Rukaya_KitchenHelper.titleShort>
+  <Rukaya_KitchenHelper.titleShortFemale>帮厨孩子</Rukaya_KitchenHelper.titleShortFemale>
+  <Rukaya_KitchenHelper.description>[PAWN_nameDef]小时候在聚居地的厨房洗菜、分饭，跟着炊事员学会了照看锅里的东西，不把饭菜烧煳。到了开饭的时候，她还得想办法劝那些着急的邻居按顺序排好队。</Rukaya_KitchenHelper.description>
+
+  <Rukaya_MineChild.title>矿场孩子</Rukaya_MineChild.title>
+  <Rukaya_MineChild.titleFemale>矿场孩子</Rukaya_MineChild.titleFemale>
+  <Rukaya_MineChild.titleShort>矿场孩子</Rukaya_MineChild.titleShort>
+  <Rukaya_MineChild.titleShortFemale>矿场孩子</Rukaya_MineChild.titleShortFemale>
+  <Rukaya_MineChild.description>[PAWN_nameDef]在同盟矿场旁长大，帮忙挑拣矿石，也学会了辨认露在岩面上的矿脉。她把许多空闲时间都花在跟着作业队伍转，和其他孩子待在一起时，反倒常常插不上话。</Rukaya_MineChild.description>
+
+  <Rukaya_InfirmaryHelper.title>医务室帮手</Rukaya_InfirmaryHelper.title>
+  <Rukaya_InfirmaryHelper.titleFemale>医务室帮手</Rukaya_InfirmaryHelper.titleFemale>
+  <Rukaya_InfirmaryHelper.titleShort>医务室帮手</Rukaya_InfirmaryHelper.titleShort>
+  <Rukaya_InfirmaryHelper.titleShortFemale>医务室帮手</Rukaya_InfirmaryHelper.titleShortFemale>
+  <Rukaya_InfirmaryHelper.description>[PAWN_nameDef]小时候常在聚居地的医务室帮忙，卷绷带，替医护员念瓶子上的标签。她获准在大人看护下练习简单的包扎，还把急救手册里不认识的字抄进学校的练习本。</Rukaya_InfirmaryHelper.description>
+
+  <Rukaya_GreenhouseChild.title>温室孩子</Rukaya_GreenhouseChild.title>
+  <Rukaya_GreenhouseChild.titleFemale>温室孩子</Rukaya_GreenhouseChild.titleFemale>
+  <Rukaya_GreenhouseChild.titleShort>温室孩子</Rukaya_GreenhouseChild.titleShort>
+  <Rukaya_GreenhouseChild.titleShortFemale>温室孩子</Rukaya_GreenhouseChild.titleShortFemale>
+  <Rukaya_GreenhouseChild.description>[PAWN_nameDef]小时候常帮家里照看聚居地的温室，检查幼苗，把长势记在本子上。看见作物打蔫，她会先对着旧种植手册翻一翻，再去问大人究竟是哪里出了问题。</Rukaya_GreenhouseChild.description>
+
+  <Rukaya_RadioChild.title>电台旁的孩子</Rukaya_RadioChild.title>
+  <Rukaya_RadioChild.titleFemale>电台旁的孩子</Rukaya_RadioChild.titleFemale>
+  <Rukaya_RadioChild.titleShort>电台孩子</Rukaya_RadioChild.titleShort>
+  <Rukaya_RadioChild.titleShortFemale>电台孩子</Rukaya_RadioChild.titleShortFemale>
+  <Rukaya_RadioChild.description>[PAWN_nameDef]小时候在聚居地电台旁写功课，等值班的家人下班。她学会了抄下呼号，也会替大人传几句简短的消息，一遍遍把话复述清楚，直到另一头的人确认没有听错。</Rukaya_RadioChild.description>
+
+  <Rukaya_ReservoirChild.title>蓄水池边的孩子</Rukaya_ReservoirChild.title>
+  <Rukaya_ReservoirChild.titleFemale>蓄水池边的孩子</Rukaya_ReservoirChild.titleFemale>
+  <Rukaya_ReservoirChild.titleShort>水池孩子</Rukaya_ReservoirChild.titleShort>
+  <Rukaya_ReservoirChild.titleShortFemale>水池孩子</Rukaya_ReservoirChild.titleShortFemale>
+  <Rukaya_ReservoirChild.description>[PAWN_nameDef]在聚居地的蓄水池边长大，帮大人补围栏、堵小漏口。附近的散养动物常到水边来，她便学着安静地靠近，把它们领开，免得妨碍维修队做事。</Rukaya_ReservoirChild.description>
+
+  <Rukaya_ParcelRunner.title>送件孩子</Rukaya_ParcelRunner.title>
+  <Rukaya_ParcelRunner.titleFemale>送件孩子</Rukaya_ParcelRunner.titleFemale>
+  <Rukaya_ParcelRunner.titleShort>送件孩子</Rukaya_ParcelRunner.titleShort>
+  <Rukaya_ParcelRunner.titleShortFemale>送件孩子</Rukaya_ParcelRunner.titleShortFemale>
+  <Rukaya_ParcelRunner.description>[PAWN_nameDef]放学后替同盟聚居地的邻居送信和小包裹。她渐渐知道哪家的门要轻敲，哪位住户需要把口信再解释一遍，也不再害怕和比自己年长许多的人说话。</Rukaya_ParcelRunner.description>
+
+</LanguageData>

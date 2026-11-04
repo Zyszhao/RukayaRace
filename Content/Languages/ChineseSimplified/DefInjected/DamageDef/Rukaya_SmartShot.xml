@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Rukaya_SmartShot.label>智能锁定射击</Rukaya_SmartShot.label>
+  <Rukaya_SmartShot.deathMessage>{0} 被射杀。</Rukaya_SmartShot.deathMessage>
+
+</LanguageData>

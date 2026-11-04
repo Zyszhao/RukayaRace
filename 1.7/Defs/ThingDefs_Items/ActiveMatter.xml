@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="ResourceBase">
+    <defName>Rukaya_ActiveMatterContainer</defName>
+    <label>active matter container</label>
+    <!-- 中文：活性物质容器 -->
+    <description>A sealed canister containing active matter recovered and refined by the Rukaya. The
+      contents remain useful only while aggressively stabilized, making every container valuable,
+      unsightly, and dangerously volatile once damaged.</description>
+    <!-- 中文翻译：一个装有卢卡娅回收并提炼的活性物质的密封罐体。只有在被强力稳定时，其中的内容物才保持可用，因此每一个容器都既珍贵、碍眼，又会在受损后变得危险而易爆。 -->
+    <possessionCount>12</possessionCount>
+    <tickerType>Normal</tickerType>
+    <graphicData>
+      <texPath>Rukaya/Things/ActiveMatterContainer</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <stackLimit>75</stackLimit>
+    <healthAffectsPrice>false</healthAffectsPrice>
+    <intricate>true</intricate>
+    <statBases>
+      <Beauty>-8</Beauty>
+      <MaxHitPoints>50</MaxHitPoints>
+      <MarketValue>4.6</MarketValue>
+      <Mass>0.08</Mass>
+      <Flammability>2</Flammability>
+      <DeteriorationRate>1</DeteriorationRate>
+    </statBases>
+    <thingCategories>
+      <li>Manufactured</li>
+    </thingCategories>
+    <comps>
+      <li Class="RukayaRace.Weapons.CompProperties_RukayaActiveMatterContainer" />
+      <li Class="CompProperties_Explosive">
+        <explosiveRadius>1.1</explosiveRadius>
+        <explosiveDamageType>Flame</explosiveDamageType>
+        <explosiveExpandPerStackcount>0.07</explosiveExpandPerStackcount>
+        <startWickOnDamageTaken>
+          <li>Flame</li>
+        </startWickOnDamageTaken>
+        <startWickHitPointsPercent>0.2</startWickHitPointsPercent>
+        <preExplosionSpawnThingDef>Filth_Fuel</preExplosionSpawnThingDef>
+        <preExplosionSpawnChance>1</preExplosionSpawnChance>
+        <wickTicks>70~150</wickTicks>
+      </li>
+    </comps>
+    <allowedArchonexusCount>100</allowedArchonexusCount>
+  </ThingDef>
+</Defs>

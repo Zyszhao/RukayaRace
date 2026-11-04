@@ -1,0 +1,976 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <AlienRace.ThingDef_AlienRace ParentName="BasePawn"><!-- 种族定义，BasePawn-->
+    <defName>Alien_Rukaya</defName>
+    <label>Rukaya</label>
+    <!-- 中文翻译：卢卡娅 -->
+    <description>The Rukaya are a long-lived, predominantly female near-human race. They possess distinct chiropteran features, most notably keen animal ears and wings on their backs. Physiologically, they are highly adapted to a nocturnal lifestyle, preferring quiet and dimly lit environments. Psychologically, their extended lifespans burden the entire race with a heavy, indelible collective memory.
+
+
+      They are not native to this sector of the rim, but hail from a distant, ancient homeworld. In the past, their civilization built its advanced technology around a special resource known as "Active Matter," which remains central to their industry and armaments. Their homeworld was eventually lost, and its scattered survivors now carry on among the stars.</description>
+    <!--卢卡娅是一个以女性为主的长寿亚人种族。她们拥有明显的翼手目特征——敏锐的兽耳与背部的双翼。在生理上，卢卡娅高度适应夜行生活，偏好安静、低光照的环境；而在心理上，漫长的寿命让她们的族群始终背负着难以磨灭的沉重记忆。
+
+她们并非这片边缘星域的原住民，而是来自一颗遥远的古老母星。在过去，她们的文明围绕一种名为“活性物质”的特殊资源建立起了先进的技术，这种资源至今仍是其工业与军备的核心。她们的母星最终失落了，散落星海的幸存者如今在群星之间延续着生活。 -->
+
+    <statBases><!-- 数值-->
+      <Mass>50</Mass><!-- 质量/体重（千克）-->
+      <MarketValue>1900</MarketValue><!-- 价值-->
+      <MoveSpeed>5.5</MoveSpeed><!-- 移速-->
+      <MeatAmount>75</MeatAmount><!-- 肉量-->
+      <LeatherAmount>30</LeatherAmount><!-- 皮革量-->
+      <RoyalFavorValue MayRequire="Ludeon.RimWorld.Royalty">3</RoyalFavorValue><!-- 皇权交小人点数-->
+      <Flammability>1.0</Flammability>
+      <CarryingCapacity>50</CarryingCapacity><!-- 携带量-->
+
+      <ComfyTemperatureMin>18</ComfyTemperatureMin><!-- 最低适应温度-->
+      <ComfyTemperatureMax>45</ComfyTemperatureMax><!-- 最高适应温度-->
+      <ImmunityGainSpeed>2</ImmunityGainSpeed><!-- 免疫力增长速度-->
+      <ToxicResistance>0.2</ToxicResistance><!-- 毒素抗性-->
+      <ToxicEnvironmentResistance MayRequire="Ludeon.RimWorld.Biotech">0.2</ToxicEnvironmentResistance>
+      <RestRateMultiplier>0.8</RestRateMultiplier><!-- 睡眠效率-->
+
+      <GlobalLearningFactor>1.0</GlobalLearningFactor>
+      <PsychicSensitivity>0.8</PsychicSensitivity>
+      <MentalBreakThreshold>0.60</MentalBreakThreshold>
+      <PainShockThreshold>0.8</PainShockThreshold>
+      <SocialImpact>0.8</SocialImpact>
+      <NegotiationAbility>0.8</NegotiationAbility>
+      <TradePriceImprovement>0.8</TradePriceImprovement>
+
+      <AimingDelayFactor>0.8</AimingDelayFactor>
+      <ShootingAccuracyPawn>1.2</ShootingAccuracyPawn>
+      <MeleeHitChance>0.8</MeleeHitChance>
+      <MeleeDodgeChance>0.8</MeleeDodgeChance>
+      <ArmorRating_Blunt>0</ArmorRating_Blunt>
+      <ArmorRating_Heat>0</ArmorRating_Heat>
+
+      <WorkSpeedGlobal>0.9</WorkSpeedGlobal>
+      <GeneralLaborSpeed>1.0</GeneralLaborSpeed>
+      <ConstructionSpeed>0.8</ConstructionSpeed>
+      <!-- 植物工作速度：种族基础值120%，同时用于播种和采收；仍受全局工作速度、技能与身体能力影响。 -->
+      <PlantWorkSpeed>1.2</PlantWorkSpeed>
+      <!-- 植物收获量：种族基础值120%；药用作物收获量也通过原版属性因子继承此加成。 -->
+      <PlantHarvestYield>1.2</PlantHarvestYield>
+      <MiningSpeed>0.8</MiningSpeed>
+      <MiningYield>1.0</MiningYield>
+      <ResearchSpeed>1.2</ResearchSpeed>
+      <MedicalTendSpeed>2.0</MedicalTendSpeed>
+      <MedicalTendQuality>2.0</MedicalTendQuality>
+      <MedicalSurgerySuccessChance>1.5</MedicalSurgerySuccessChance>
+      <DrugSynthesisSpeed>1.5</DrugSynthesisSpeed>
+      <ButcheryFleshSpeed>1.0</ButcheryFleshSpeed>
+      <ButcheryFleshEfficiency>1.0</ButcheryFleshEfficiency>
+      <ButcheryMechanoidSpeed>0.8</ButcheryMechanoidSpeed>
+      <ButcheryMechanoidEfficiency>1.0</ButcheryMechanoidEfficiency>
+      <EatingSpeed>0.8</EatingSpeed>
+      <CookSpeed>1.0</CookSpeed>
+      <FoodPoisonChance>0.3</FoodPoisonChance>
+
+      <MaxFlightTime>5000</MaxFlightTime><!-- 最大滞空时间（秒）；原版默认 0，为 0 时整个飞行系统静默失效 -->
+      <FlightCooldown>0</FlightCooldown><!-- 落地后的飞行冷却（秒） -->
+    </statBases>
+
+    <alienRace>
+      <generalSettings>
+        <maleGenderProbability>0.000001</maleGenderProbability>
+        <minAgeForAdulthood>20</minAgeForAdulthood>
+        <immuneToXenophobia>false</immuneToXenophobia>
+        <immuneToAge>true</immuneToAge>
+        <humanRecipeImport>true</humanRecipeImport>
+        <maxDamageForSocialfight>8</maxDamageForSocialfight>
+        <forcedRaceTraitEntries>
+          <li>
+            <entry>NightOwl</entry>
+            <chance>100</chance>
+          </li>
+        </forcedRaceTraitEntries>
+        <disallowedTraits>
+          <!-- 体弱多病是免疫谱系（Immunity）的负向等级，必须带 Degree="-1" 才能只禁用它而不影响“超级免疫” -->
+          <li>
+            <entry Degree="-1">Immunity</entry>
+          </li>
+        </disallowedTraits>
+        <growthAges MayRequire="Ludeon.RimWorld.Biotech">
+          <li>7</li>
+          <li>10</li>
+          <li>13</li>
+        </growthAges>
+
+        <alienPartGenerator>
+          <bodyTypes>
+            <li>Female</li>
+            <li MayRequire="Ludeon.RimWorld.Biotech">Baby</li>
+            <li MayRequire="Ludeon.RimWorld.Biotech">Child</li>
+          </bodyTypes>
+          <headTypes Inherit="false">
+            <li>Rukaya_Head_A</li>
+            <li MayRequire="Ludeon.RimWorld.Anomaly">Ghoul_Normal</li>
+          </headTypes>
+
+          <headOffset>(0, 0)</headOffset>
+          <headOffsetDirectional><!-- 等待实测-->
+            <north>
+              <offset>(0, 0.02)</offset>
+              <bodyTypes MayRequire="Ludeon.RimWorld.Biotech">
+                <Child MayRequire="Ludeon.RimWorld.Biotech">(0,0)</Child>
+              </bodyTypes>
+            </north>
+            <south>
+              <offset>(0, 0.02)</offset>
+              <bodyTypes MayRequire="Ludeon.RimWorld.Biotech">
+                <Child MayRequire="Ludeon.RimWorld.Biotech">(0,0)</Child>
+              </bodyTypes>
+            </south>
+            <east>
+              <offset>(-0.1, 0.02)</offset>
+              <bodyTypes MayRequire="Ludeon.RimWorld.Biotech">
+                <Baby MayRequire="Ludeon.RimWorld.Biotech">(0.07,-0.01)</Baby>
+                <Child MayRequire="Ludeon.RimWorld.Biotech">(0.05,0.02)</Child>
+              </bodyTypes>
+            </east>
+            <west>
+              <offset>(0.1, 0.02)</offset>
+              <bodyTypes MayRequire="Ludeon.RimWorld.Biotech">
+                <Baby MayRequire="Ludeon.RimWorld.Biotech">(-0.07,-0.04)</Baby>
+                <Child MayRequire="Ludeon.RimWorld.Biotech">(-0.05,0.02)</Child>
+              </bodyTypes>
+            </west>
+          </headOffsetDirectional>
+          <customDrawSize>(1.0, 1.0)</customDrawSize>
+          <customHeadDrawSize>(1.0, 1.0)</customHeadDrawSize>
+          <customPortraitHeadDrawSize>(1.0, 1.0)</customPortraitHeadDrawSize>
+          <customPortraitDrawSize>(1.0, 1.0)</customPortraitDrawSize>
+          <borderScale>1</borderScale>
+          <atlasScale>3</atlasScale>
+
+          <bodyAddons>
+            <!--
+              本族 bodyAddons 现在只负责耳朵与头发。
+              翅膀**不再**走 HAR：静态翅是本族渲染树 Rukaya_Humanlike 里的原版节点
+              （1.7/Defs/PawnRenderTreeDefs/Rukaya_PawnRenderTrees.xml），
+              扑翼帧是本族 AnimationDef（1.7/Defs/AnimationDefs/Rukaya_WingFly.xml）。
+              HAR 的 bodyAddons 变体计数对散装 PNG 恒为 0，换不了帧，所以翅膀不走它。
+            -->
+            <!-- 左右耳朵-->
+            <li>
+              <userCustomizable>false</userCustomizable>
+              <path>Rukaya/BodyAddon/LeftEar/RukayaEarLeft</path>
+              <userCustomizable>false</userCustomizable>
+              <colorChannel>hair</colorChannel>   <!-- 继承发色 -->
+              <inFrontOfBody>true</inFrontOfBody> <!-- 耳朵在前面 -->
+              <alignWithHead>true</alignWithHead> <!-- 跟随头部转动 -->
+              <defaultOffset>Center</defaultOffset>
+              <layerInvert>false</layerInvert>
+              <drawSize>1</drawSize>
+              <scaleWithPawnDrawsize>true</scaleWithPawnDrawsize>
+
+              <useSkipFlags>
+                <li>Rukaya_HideEars</li>
+              </useSkipFlags>
+
+              <conditions>
+                <BodyPart>
+                  <bodyPartLabel>left ear</bodyPartLabel> <!-- 绑定到左耳，左耳被打断则贴图消失 -->
+                </BodyPart>
+                <Posture>
+                  <drawnStanding>true</drawnStanding>
+                  <drawnInBed>true</drawnInBed>
+                  <drawnLaying>true</drawnLaying>
+                </Posture>
+                <RotStage>Fresh,Rotting</RotStage>
+              </conditions>
+
+              <offsets>
+                <west>
+                  <bodyTypes>
+                    <Female>(0,0)</Female>
+                    <Baby MayRequire="Ludeon.RimWorld.Biotech">(0,0)</Baby>
+                    <Child MayRequire="Ludeon.RimWorld.Biotech">(0,0)</Child>
+                  </bodyTypes>
+                  <layerOffset>-0.268</layerOffset>
+                </west>
+                <south>
+                  <bodyTypes>
+                    <Female>(0,0)</Female>
+                    <Baby MayRequire="Ludeon.RimWorld.Biotech">(0,0)</Baby>
+                    <Child MayRequire="Ludeon.RimWorld.Biotech">(0,0)</Child>
+                  </bodyTypes>
+                  <layerOffset>-0.268</layerOffset>
+                </south>
+                <north>
+                  <bodyTypes>
+                    <Female>(0,0)</Female>
+                    <Baby MayRequire="Ludeon.RimWorld.Biotech">(0,0)</Baby>
+                    <Child MayRequire="Ludeon.RimWorld.Biotech">(0,0)</Child>
+                  </bodyTypes>
+                  <layerOffset>-0.280</layerOffset>
+                </north>
+                <east>
+                  <bodyTypes>
+                    <Female>(0,0)</Female>
+                    <Baby MayRequire="Ludeon.RimWorld.Biotech">(0,0)</Baby>
+                    <Child MayRequire="Ludeon.RimWorld.Biotech">(0,0)</Child>
+                  </bodyTypes>
+                  <layerOffset>-0.280</layerOffset>
+                </east>
+              </offsets>
+            </li>
+            <li>
+              <userCustomizable>false</userCustomizable>
+              <path>Rukaya/BodyAddon/RightEar/RukayaEarRight</path>
+              <userCustomizable>false</userCustomizable>
+              <colorChannel>hair</colorChannel>   <!-- 继承发色 -->
+              <inFrontOfBody>true</inFrontOfBody> <!-- 耳朵在前面 -->
+              <alignWithHead>true</alignWithHead> <!-- 跟随头部转动 -->
+              <defaultOffset>Center</defaultOffset>
+              <layerInvert>false</layerInvert>
+              <linkVariantIndexWithPrevious>true</linkVariantIndexWithPrevious>
+              <drawSize>1</drawSize>
+              <scaleWithPawnDrawsize>true</scaleWithPawnDrawsize>
+
+              <useSkipFlags>
+                <li>Rukaya_HideEars</li>
+              </useSkipFlags>
+
+              <conditions>
+                <BodyPart>
+                  <bodyPartLabel>right ear</bodyPartLabel> <!-- 绑定到左耳，左耳被打断则贴图消失 -->
+                </BodyPart>
+                <Posture>
+                  <drawnStanding>true</drawnStanding>
+                  <drawnInBed>true</drawnInBed>
+                  <drawnLaying>true</drawnLaying>
+                </Posture>
+                <RotStage>Fresh,Rotting</RotStage>
+              </conditions>
+
+              <offsets>
+                <west>
+                  <bodyTypes>
+                    <Female>(0,0)</Female>
+                    <Baby MayRequire="Ludeon.RimWorld.Biotech">(0,0)</Baby>
+                    <Child MayRequire="Ludeon.RimWorld.Biotech">(0,0)</Child>
+                  </bodyTypes>
+                  <layerOffset>-0.280</layerOffset>
+                </west>
+                <south>
+                  <bodyTypes>
+                    <Female>(0,0)</Female>
+                    <Baby MayRequire="Ludeon.RimWorld.Biotech">(0,0)</Baby>
+                    <Child MayRequire="Ludeon.RimWorld.Biotech">(0,0)</Child>
+                  </bodyTypes>
+                  <layerOffset>-0.268</layerOffset>
+                </south>
+                <north>
+                  <bodyTypes>
+                    <Female>(0,0)</Female>
+                    <Baby MayRequire="Ludeon.RimWorld.Biotech">(0,0)</Baby>
+                    <Child MayRequire="Ludeon.RimWorld.Biotech">(0,0)</Child>
+                  </bodyTypes>
+                  <layerOffset>-0.280</layerOffset>
+                </north>
+                <east>
+                  <bodyTypes>
+                    <Female>(0,0)</Female>
+                    <Baby MayRequire="Ludeon.RimWorld.Biotech">(0,0)</Baby>
+                    <Child MayRequire="Ludeon.RimWorld.Biotech">(0,0)</Child>
+                  </bodyTypes>
+                  <layerOffset>-0.268</layerOffset>
+                </east>
+              </offsets>
+            </li>
+            <!-- 头发前和头发后 -->
+            <li>
+              <userCustomizable>true</userCustomizable>
+              <path>Rukaya/Hair/RukayaHair</path>
+              <inFrontOfBody>true</inFrontOfBody>
+              <colorChannel>hair</colorChannel>
+              <layerInvert>false</layerInvert>
+              <angle>0</angle>
+              <drawSize>1</drawSize>
+              <scaleWithPawnDrawsize>true</scaleWithPawnDrawsize>
+              <defaultOffset>Center</defaultOffset>
+              <alignWithHead>true</alignWithHead>
+              <useSkipFlags>
+                <li>Rukaya_HideHair</li>
+              </useSkipFlags>
+              <conditions>
+                <BodyPart>
+                  <bodyPart>Head</bodyPart>
+                </BodyPart>
+                <Apparel>
+                </Apparel>
+                <Posture>
+                  <drawnStanding>true</drawnStanding>
+                  <drawnLaying>true</drawnLaying>
+                  <drawnInBed>true</drawnInBed>
+                </Posture>
+              </conditions>
+              <offsets>
+                <west>
+                  <layerOffset>-0.274</layerOffset>
+                </west>
+                <south>
+                  <layerOffset>-0.274</layerOffset>
+                </south>
+                <north>
+                  <layerOffset>-0.274</layerOffset>
+                </north>
+                <east>
+                  <layerOffset>-0.274</layerOffset>
+                </east>
+              </offsets>
+            </li>
+            <li>
+              <userCustomizable>true</userCustomizable>
+              <path>Rukaya/HairBack/RukayaHair</path>
+              <inFrontOfBody>false</inFrontOfBody>
+              <colorChannel>hair</colorChannel>
+              <layerInvert>false</layerInvert>
+              <linkVariantIndexWithPrevious>true</linkVariantIndexWithPrevious>
+              <angle>0</angle>
+              <drawSize>1</drawSize>
+              <scaleWithPawnDrawsize>true</scaleWithPawnDrawsize>
+              <defaultOffset>Center</defaultOffset>
+              <alignWithHead>true</alignWithHead>
+              <useSkipFlags>
+                <li>Rukaya_HideHair</li>
+              </useSkipFlags>
+              <conditions>
+                <BodyPart>
+                  <bodyPart>Head</bodyPart>
+                </BodyPart>
+                <Apparel>
+                </Apparel>
+                <Posture>
+                  <drawnStanding>true</drawnStanding>
+                  <drawnLaying>true</drawnLaying>
+                  <drawnInBed>true</drawnInBed>
+                </Posture>
+              </conditions>
+              <offsets>
+                <west>
+                  <layerOffset>-0.276</layerOffset>
+                </west>
+                <south>
+                  <layerOffset>-0.276</layerOffset>
+                </south>
+                <north>
+                  <layerOffset>-0.276</layerOffset>
+                </north>
+                <east>
+                  <layerOffset>-0.276</layerOffset>
+                </east>
+              </offsets>
+            </li>
+          </bodyAddons>
+
+          <colorChannels>
+            <li>
+              <name>skin</name>
+              <first Class="AlienRace.ColorGenerator_SkinColorMelanin">
+                <minMelanin>0</minMelanin>
+                <maxMelanin>0.08</maxMelanin>
+              </first>
+              <!-- 瞳色 -->
+              <second Class="ColorGenerator_Options">
+                <options>
+                  <li>
+                    <weight>10</weight>
+                    <min>RGB(150,150,150)</min>
+                    <max>RGB(255,255,255)</max>
+                  </li>
+                </options>
+              </second>
+            </li>
+            <li>
+              <name>hair</name>
+              <first Class="ColorGenerator_Options">
+                <!-- 灰色 -->
+                <options>
+                  <li>
+                    <weight>20</weight>
+                    <min>RGB(100,100,100)</min>
+                    <max>RGB(110,110,110)</max>
+                  </li>
+                  <li>
+                    <weight>20</weight>
+                    <min>RGB(150,150,150)</min>
+                    <max>RGB(170,170,170)</max>
+                  </li>
+                  <li>
+                    <weight>20</weight>
+                    <min>RGB(210,210,210)</min>
+                    <max>RGB(230,230,230)</max>
+                  </li>
+                  <!-- 黑色 -->
+                  <li>
+                    <weight>40</weight>
+                    <min>RGB(55,55,55)</min>
+                    <max>RGB(65,65,65)</max>
+                  </li>
+                  <!-- 棕色系 -->
+                  <li>
+                    <weight>8</weight>
+                    <only>RGB(75,51,35)</only>
+                  </li>
+                  <li>
+                    <weight>8</weight>
+                    <only>RGB(150,125,105)</only>
+                  </li>
+                  <li>
+                    <weight>8</weight>
+                    <only>RGB(220,195,175)</only>
+                  </li>
+                  <li>
+                    <weight>8</weight>
+                    <only>RGB(121,97,78)</only>
+                  </li>
+                  <li>
+                    <weight>8</weight>
+                    <only>RGB(123,65,41)</only>
+                  </li>
+                  <li>
+                    <weight>8</weight>
+                    <only>RGB(192,126,98)</only>
+                  </li>
+                  <li>
+                    <weight>8</weight>
+                    <only>RGB(184,132,86)</only>
+                  </li>
+                  <!-- 绿色系 -->
+                  <li>
+                    <weight>7.5</weight>
+                    <min>RGB(92,122,117)</min>
+                    <max>RGB(98,128,123)</max>
+                  </li>
+                  <li>
+                    <weight>7.5</weight>
+                    <min>RGB(57,92,87)</min>
+                    <max>RGB(63,98,93)</max>
+                  </li>
+                  <li>
+                    <weight>7.5</weight>
+                    <min>RGB(157,202,192)</min>
+                    <max>RGB(163,208,198)</max>
+                  </li>
+                  <!-- 卡其色 -->
+                  <li>
+                    <weight>11.25</weight>
+                    <min>RGB(167,167,132)</min>
+                    <max>RGB(173,173,138)</max>
+                  </li>
+                  <li>
+                    <weight>11.25</weight>
+                    <min>RGB(222,222,202)</min>
+                    <max>RGB(228,228,208)</max>
+                  </li>
+                  <!-- 橙色系 -->
+                  <li>
+                    <weight>7.5</weight>
+                    <only>RGB(233,180,125)</only>
+                  </li>
+                </options>
+              </first>
+            </li>
+            <li>
+              <name>base</name>
+              <first Class="ColorGenerator_Options">
+                <options>
+                  <li>
+                    <weight>100</weight>
+                    <only>(255,255,255)</only>
+                  </li>
+                </options>
+              </first>
+            </li>
+          </colorChannels>
+        </alienPartGenerator>
+      </generalSettings>
+
+      <graphicPaths>
+        <head>
+          <path>Rukaya/Head/RukayaHead</path>
+        </head>
+        <body>
+          <path>Rukaya/Body/Naked_Female</path>
+          <extendedGraphics>
+            <Age For="HumanlikePreTeenager" MayRequire="Ludeon.RimWorld.Biotech">
+              <path>Rukaya/Body/Naked_Female</path>
+              <extendedGraphics>
+                <Hediff MayRequire="Ludeon.RimWorld.Anomaly" For="Ghoul">
+                  Rukaya/Body/Naked_Female</Hediff>
+              </extendedGraphics>
+            </Age>
+            <Age For="HumanlikeChild">
+              <path>Rukaya/Body/Naked_Female</path>
+              <extendedGraphics>
+                <Hediff MayRequire="Ludeon.RimWorld.Anomaly" For="Ghoul">
+                  Rukaya/Body/Naked_Female</Hediff>
+              </extendedGraphics>
+            </Age>
+            <Age For="HumanlikeBaby">
+              <path>Rukaya/Body/Naked_Female</path>
+            </Age>
+            <Hediff MayRequire="Ludeon.RimWorld.Anomaly" For="Ghoul">Rukaya/Body/Naked_Female</Hediff>
+          </extendedGraphics>
+        </body>
+        <skeleton>Things/Pawn/Humanlike/Bodies/Dessicated/Dessicated_Thin</skeleton>
+      </graphicPaths>
+
+      <styleSettings>
+        <li>
+          <key>HairDef</key>
+          <value>
+            <hasStyle>false</hasStyle>
+          </value>
+        </li>
+        <li>
+          <key>BeardDef</key>
+          <value>
+            <hasStyle>false</hasStyle>
+          </value>
+        </li>
+        <li>
+          <key>TattooDef</key>
+          <value>
+            <hasStyle>false</hasStyle>
+          </value>
+        </li>
+      </styleSettings>
+
+      <thoughtSettings>
+
+      </thoughtSettings>
+
+      <relationSettings>
+        <relationChanceModifierChild>1</relationChanceModifierChild>
+        <relationChanceModifierExLover>1</relationChanceModifierExLover>
+        <relationChanceModifierExSpouse>1</relationChanceModifierExSpouse>
+        <relationChanceModifierFiance>1</relationChanceModifierFiance>
+        <relationChanceModifierLover>1</relationChanceModifierLover>
+        <relationChanceModifierParent>1</relationChanceModifierParent>
+        <relationChanceModifierSibling>1</relationChanceModifierSibling>
+        <relationChanceModifierSpouse>1</relationChanceModifierSpouse>
+      </relationSettings>
+
+      <raceRestriction>
+        <onlyUseRaceRestrictedApparel>false</onlyUseRaceRestrictedApparel>
+        <apparelList>
+          <!-- 这个列表是本种族才能用的服装，因此每次添加衣服都要在这里写入-->
+          <!-- 内衣-->
+          <li>Rukaya_BlackKneehighs</li>
+          <li>Rukaya_Swimsuit</li>
+          <li>Rukaya_SportsBra</li>
+          <li>Rukaya_FishnetStockings</li>
+          <li>Rukaya_WhitePantyhose</li>
+          <li>Rukaya_BlackPantyhose</li>
+          <li>Rukaya_BandageUnderwear</li>
+
+          <!-- 贴身-->
+          <li>Rukaya_StudentUniform</li>
+          <li>Rukaya_FormalUniform</li>
+          <li>Rukaya_FormalDress</li>
+          <li>Rukaya_CasualShirt</li>
+          <li>Rukaya_ServiceUniform</li>
+          <li>Rukaya_CombatBodysuit</li>
+          <li>Rukaya_VampirePajamas</li>
+          <li MayRequire="Ludeon.RimWorld.Odyssey">Rukaya_Vacsuit</li>
+
+          <!-- 贴身·作战：原外套层装甲，已按需求改为占用 OnSkin 层 -->
+          <li>Rukaya_Armour</li>
+
+          <!-- 夹层-->
+          <li>Rukaya_ChestRig</li>
+
+          <!-- 外套-->
+          <li>Rukaya_WinterCoat</li>
+          <li>Rukaya_WinterCape</li>
+          <li>Rukaya_CasualJacket</li>
+          <li>Rukaya_TrenchCoat</li>
+
+          <!-- 头部-->
+          <li>Rukaya_StudentHeadband</li>
+          <li>Rukaya_FormalBeret</li>
+          <li>Rukaya_AfghankaHat</li>
+          <li>Rukaya_WinterHat</li>
+          <li>Rukaya_ArmourHelmet</li>
+          <li>Rukaya_HeavyPowerArmorHelmet</li>
+          <li MayRequire="Ludeon.RimWorld.Odyssey">Rukaya_VacsuitHelmet</li>
+          <li>Rukaya_SteelHelmet</li>
+          <li>Rukaya_GarrisonCap</li>
+          <li>Rukaya_HeavyBallisticHelmet</li>
+          <li>Rukaya_HairBand</li>
+          <li>Rukaya_WideBrimHat</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">Rukaya_DroneControlGoggles</li>
+
+          <!-- 背包-->
+          <li MayRequire="Ludeon.RimWorld.Biotech">Rukaya_DroneSignalPack</li>
+        </apparelList>
+        <!-- 精确屏蔽所有具有正数真空抗性的原版服装（含父类继承）；不封禁其他原版或第三方服装。
+             HAR 会在装备生成前按 CanWear 过滤 allApparelPairs，真空防护补装也受此黑名单约束。 -->
+        <blackApparelList MayRequire="Ludeon.RimWorld.Odyssey">
+          <!-- Core -->
+          <li>Apparel_PowerArmor</li>
+          <li>Apparel_PowerArmorHelmet</li>
+          <li>Apparel_ArmorRecon</li>
+          <li>Apparel_ArmorHelmetRecon</li>
+          <!-- Odyssey -->
+          <li>Apparel_Vacsuit</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">Apparel_VacsuitChildren</li>
+          <li>Apparel_VacsuitHelmet</li>
+          <!-- Royalty：含精英型号及蝗虫甲、掷弹兵甲、凤凰甲 -->
+          <li MayRequire="Ludeon.RimWorld.Royalty">Apparel_ArmorReconPrestige</li>
+          <li MayRequire="Ludeon.RimWorld.Royalty">Apparel_ArmorHelmetReconPrestige</li>
+          <li MayRequire="Ludeon.RimWorld.Royalty">Apparel_ArmorMarinePrestige</li>
+          <li MayRequire="Ludeon.RimWorld.Royalty">Apparel_ArmorMarineHelmetPrestige</li>
+          <li MayRequire="Ludeon.RimWorld.Royalty">Apparel_ArmorCataphract</li>
+          <li MayRequire="Ludeon.RimWorld.Royalty">Apparel_ArmorHelmetCataphract</li>
+          <li MayRequire="Ludeon.RimWorld.Royalty">Apparel_ArmorCataphractPrestige</li>
+          <li MayRequire="Ludeon.RimWorld.Royalty">Apparel_ArmorHelmetCataphractPrestige</li>
+          <li MayRequire="Ludeon.RimWorld.Royalty">Apparel_ArmorLocust</li>
+          <li MayRequire="Ludeon.RimWorld.Royalty">Apparel_ArmorMarineGrenadier</li>
+          <li MayRequire="Ludeon.RimWorld.Royalty">Apparel_ArmorCataphractPhoenix</li>
+          <!-- Biotech -->
+          <li MayRequire="Ludeon.RimWorld.Biotech">Apparel_MechlordSuit</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">Apparel_ArmorHelmetMechCommander</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">Apparel_ArmorHelmetMechlordHelmet</li>
+        </blackApparelList>
+        <onlyUseRaceRestrictedWeapons>false</onlyUseRaceRestrictedWeapons>
+
+        <onlyHaveRaceRestrictedGenes>false</onlyHaveRaceRestrictedGenes>
+        <onlyUseRaceRestrictedXenotypes>true</onlyUseRaceRestrictedXenotypes>
+
+        <whiteXenotypeList>
+          <li MayRequire="Ludeon.RimWorld.Biotech">Baseliner</li>
+        </whiteXenotypeList>
+
+        <blackEndoCategories>
+          <li>Melanin</li>
+          <li>HairColor</li>
+          <li>BodyType</li>
+          <li>Ears</li>
+          <li>Nose</li>
+          <li>Voice</li>
+          <li>Headbone</li>
+          <li>Head</li>
+          <li>Jaw</li>
+        </blackEndoCategories>
+
+        <blackGeneList MayRequire="Ludeon.RimWorld.Biotech">
+          <li MayRequire="Ludeon.RimWorld.Biotech">Furskin</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">Brow_Heavy</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">FacialRidges</li>
+        </blackGeneList>
+
+        <blackGeneTags>
+          <li>EyeColor</li>
+          <li>HairStyle</li>
+          <li>BeardStyle</li>
+          <li>SkinColorOverride</li>
+          <li>Tail</li>
+          <li>BodyType</li>
+          <li>Ears</li>
+          <li>Nose</li>
+          <li>Ears</li>
+          <li>Voice</li>
+          <li>Headbone</li>
+          <li>Jaw</li>
+        </blackGeneTags>
+
+        <blackXenotypeList MayRequire="Ludeon.RimWorld.Biotech">
+          <li MayRequire="Ludeon.RimWorld.Biotech">Dirtmole</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">Genie</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">Hussar</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">Sanguophage</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">Neanderthal</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">Pigskin</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">Impid</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">Waster</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">Yttakin</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">Highmate</li>
+        </blackXenotypeList>
+      </raceRestriction>
+    </alienRace>
+
+    <comps>
+      <li Class="RukayaRace.Diet.CompProperties_RukayaDiet" />
+      <!-- 征召飞行档位（帧动画由渲染树 + AnimationDef 承载，见 Source/RukayaRace/Flight/） -->
+      <li Class="RukayaRace.Flight.CompProperties_RukayaFlightControl">
+        <wingBodyPart>Rukaya_Wing</wingBodyPart><!-- 飞行与扑翼都要求该部位完好 -->
+        <hungerPctThresholdCanFly>0.1</hungerPctThresholdCanFly><!-- 饱食低于该比例无法起飞、空中则强制落地 -->
+        <hungerPctCostPerSecondFly>0.001</hungerPctCostPerSecondFly><!-- 空中每秒消耗的饱食比例 -->
+        <inFlightHediff>Rukaya_InFlight</inFlightHediff><!-- 空中附加的状态 Hediff -->
+      </li>
+    </comps>
+
+    <tools>
+      <li>
+        <label>left fist</label>
+        <!-- 中文翻译：左拳 -->
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>8</power>
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
+        <surpriseAttack>
+          <extraMeleeDamages>
+            <li>
+              <def>Stun</def>
+              <amount>4</amount>
+            </li>
+          </extraMeleeDamages>
+        </surpriseAttack>
+      </li>
+      <li>
+        <label>right fist</label>
+        <!-- 中文翻译：右拳 -->
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>8</power>
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
+        <surpriseAttack>
+          <extraMeleeDamages>
+            <li>
+              <def>Stun</def>
+              <amount>4</amount>
+            </li>
+          </extraMeleeDamages>
+        </surpriseAttack>
+      </li>
+      <li>
+        <label>teeth</label>
+        <!-- 中文翻译：牙齿 -->
+        <capacities>
+          <li>Bite</li>
+        </capacities>
+        <power>12</power>
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
+        <chanceFactor>0.4</chanceFactor>
+      </li>
+      <li>
+        <label>head</label>
+        <!-- 中文翻译：头部 -->
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>5</power>
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+        <chanceFactor>0.1</chanceFactor>
+      </li>
+      <li>
+        <label>left wing</label>
+        <!-- 中文翻译：左翼 -->
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>14</power>
+        <cooldownTime>2.5</cooldownTime>
+        <linkedBodyPartsGroup>Rukaya_WingsGroup</linkedBodyPartsGroup>
+        <chanceFactor>0.2</chanceFactor>
+      </li>
+      <li>
+        <label>right wing</label>
+        <!-- 中文翻译：右翼 -->
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>14</power>
+        <cooldownTime>2.5</cooldownTime>
+        <linkedBodyPartsGroup>Rukaya_WingsGroup</linkedBodyPartsGroup>
+        <chanceFactor>0.2</chanceFactor>
+      </li>
+    </tools>
+
+    <race>
+      <thinkTreeMain>Humanlike</thinkTreeMain>
+      <thinkTreeConstant>HumanlikeConstant</thinkTreeConstant>
+      <intelligence>Humanlike</intelligence>
+      <bloodDef>Filth_Blood</bloodDef>
+      <canBecomeShambler>true</canBecomeShambler>
+      <makesFootprints>true</makesFootprints>
+      <lifeExpectancy>150</lifeExpectancy>
+      <leatherDef>Leather_Human</leatherDef>
+      <nameCategory>HumanStandard</nameCategory>
+      <body>Rukaya_Body</body><!-- 待修改-->
+      <!-- 本族自己的渲染树：在原版 Humanlike 骨架里插入翅膀节点（静态翅 + 扑翼帧挂点） -->
+      <renderTree>Rukaya_Humanlike</renderTree>
+      <baseBodySize>0.9</baseBodySize>
+      <baseHealthScale>0.9</baseHealthScale>
+      <foodType>OmnivoreHuman</foodType>
+      <knowledgeCategory MayRequire="Ludeon.RimWorld.Anomaly">Basic</knowledgeCategory>
+      <anomalyKnowledge>1</anomalyKnowledge>
+      <gestationPeriodDays>18</gestationPeriodDays>
+      <meatMarketValue>1</meatMarketValue>
+      <manhunterOnDamageChance>0.50</manhunterOnDamageChance>
+      <manhunterOnTameFailChance>0.10</manhunterOnTameFailChance>
+      <nameGenerator>NamerPerson_Rukaya</nameGenerator>
+      <litterSizeCurve>
+        <points>
+          <li>(0.5, 0)</li>
+          <li>(1, 1)</li>
+          <li>(1.01, 0.02)</li>
+          <li>(3.5, 0)</li>
+        </points>
+      </litterSizeCurve>
+
+      <lifeStageAges>
+        <li Class="AlienRace.LifeStageAgeAlien">
+          <def>HumanlikeBaby</def>
+          <minAge>0</minAge>
+          <headOffset>(0.2,-0.18)</headOffset>
+          <headFemaleOffset>(0.2,-0.18)</headFemaleOffset>
+        </li>
+        <li Class="AlienRace.LifeStageAgeAlien">
+          <def>HumanlikeChild</def>
+          <minAge>3</minAge>
+          <headOffset>(0.11,-0.01)</headOffset>
+          <headFemaleOffset>(0.11,-0.01)</headFemaleOffset>
+          <customDrawSize>(0.85,0.85)</customDrawSize>
+          <customPortraitDrawSize>(0.85,0.85)</customPortraitDrawSize>
+          <customHeadDrawSize>(0.6,0.6)</customHeadDrawSize>
+          <customPortraitHeadDrawSize>(0.6,0.6)</customPortraitHeadDrawSize>
+        </li>
+        <li Class="AlienRace.LifeStageAgeAlien" MayRequire="Ludeon.RimWorld.Biotech">
+          <def>HumanlikePreTeenager</def>
+          <minAge>8</minAge>
+          <headOffset>(0.04,-0.01)</headOffset>
+          <headFemaleOffset>(0.1,-0.01)</headFemaleOffset>
+        </li>
+        <li Class="AlienRace.LifeStageAgeAlien">
+          <def>HumanlikeTeenager</def>
+          <minAge>13</minAge>
+          <headOffset>(0.0,0.0)</headOffset>
+          <headFemaleOffset>(0,0)</headFemaleOffset>
+          <customDrawSize>(0.9,0.9)</customDrawSize>
+          <customPortraitDrawSize>(0.9,0.9)</customPortraitDrawSize>
+          <customHeadDrawSize>(0.64,0.64)</customHeadDrawSize>
+          <customPortraitHeadDrawSize>(0.64,0.64)</customPortraitHeadDrawSize>
+        </li>
+        <li Class="AlienRace.LifeStageAgeAlien">
+          <def>HumanlikeAdult</def>
+          <minAge>18</minAge>
+        </li>
+      </lifeStageAges>
+
+      <lifeStageWorkSettings MayRequire="Ludeon.RimWorld.Biotech">
+        <Firefighter>7</Firefighter>
+        <Patient>0</Patient>
+        <Doctor>13</Doctor>
+        <PatientBedRest>0</PatientBedRest>
+        <Childcare MayRequire="Ludeon.RimWorld.Biotech">0</Childcare>
+        <BasicWorker>7</BasicWorker>
+        <Warden>13</Warden>
+        <Handling>7</Handling>
+        <Cooking>7</Cooking>
+        <Hunting>13</Hunting>
+        <Construction>10</Construction>
+        <Growing>7</Growing>
+        <Mining>10</Mining>
+        <PlantCutting>7</PlantCutting>
+        <Smithing>10</Smithing>
+        <Tailoring>10</Tailoring>
+        <Art>10</Art>
+        <Crafting>10</Crafting>
+        <Hauling>3</Hauling>
+        <Cleaning>3</Cleaning>
+        <Research>13</Research>
+      </lifeStageWorkSettings>
+      <soundMeleeHitPawn>Pawn_Melee_SmallScratch_HitPawn</soundMeleeHitPawn>
+      <soundMeleeHitBuilding>Pawn_Melee_SmallScratch_HitBuilding</soundMeleeHitBuilding>
+      <soundMeleeMiss>Pawn_Melee_SmallScratch_Miss</soundMeleeMiss>
+      <specialShadowData>
+        <volume>(0, 0, 0)</volume>
+        <offset>(0,0,0)</offset>
+      </specialShadowData>
+      <ageGenerationCurve>
+        <points>
+          <li MayRequire="Ludeon.RimWorld.Biotech">(0,0)</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">(0.001,43)</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">(8,86)</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">(12.5,118)</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">(12.51,0)</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">(13,0)</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">(13.001,122)</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">(13.999,130)</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">(14.001,130)</li>
+          <li>(14,0)</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">(14.001,50)</li>
+          <li>(20,100)</li>
+          <li>(30,50)</li>
+          <li>(40,5)</li>
+          <li>(60,1)</li>
+          <li>(80,0)</li>
+          <li>(100,0)</li>
+        </points>
+      </ageGenerationCurve>
+      <hediffGiverSets>
+        <li>OrganicStandard</li>
+        <li>Human</li>
+      </hediffGiverSets>
+    </race>
+  </AlienRace.ThingDef_AlienRace>
+
+  <AlienRace.RaceSettings><!-- 种族生成设置-->
+    <defName>Rukaya_Settings</defName>
+    <pawnKindSettings>
+      <startingColonists><!-- 起始小人-->
+        <li>
+          <pawnKindEntries>
+            <li>
+              <kindDefs>
+                <li>Rukaya_Colonist</li>
+              </kindDefs>
+              <chance>100.0</chance>
+            </li>
+          </pawnKindEntries>
+          <factionDefs>
+            <li>Rukaya_PlayerFaction</li>
+          </factionDefs>
+        </li>
+      </startingColonists>
+
+      <alienslavekinds><!-- 奴隶-->
+        <li>
+          <kindDefs>
+            <li>Rukaya_Colonist</li>  <!-- 待定！-->
+          </kindDefs>
+          <chance>0.0001</chance>
+        </li>
+      </alienslavekinds>
+
+      <alienrefugeekinds><!-- 难民-->        <!-- pawnkinds listed here will show up as chased refugees for the event -->
+        <li>
+          <kindDefs>
+            <li>Rukaya_Refugee</li>
+          </kindDefs>
+          <chance>20.0</chance>
+        </li>
+      </alienrefugeekinds>
+
+      <alienwandererkinds><!-- 流浪者-->        <!-- pawnkinds listed here will show up as wanders that join your colony
+        for the event -->
+        <li>
+          <pawnKindEntries>
+            <li>
+              <kindDefs>
+                <li>Rukaya_Refugee</li>
+              </kindDefs>
+              <chance>20.0</chance>
+            </li>
+          </pawnKindEntries>
+          <factionDefs>
+            <li>Rukaya_PlayerFaction</li>
+          </factionDefs>
+        </li>
+      </alienwandererkinds>
+    </pawnKindSettings>
+  </AlienRace.RaceSettings>
+
+</Defs>

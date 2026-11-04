@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <ThingDef Name="Rukaya_UnderwearBase" ParentName="Rukaya_ApparelBase" Abstract="True">
+    <costList>
+      <Cloth>25</Cloth>
+    </costList>
+    <statBases>
+      <Mass>0.2</Mass>
+      <EquipDelay>1.2</EquipDelay>
+      <MaxHitPoints>150</MaxHitPoints>
+      <WorkToMake>1200</WorkToMake>
+      <StuffEffectMultiplierArmor>0.1</StuffEffectMultiplierArmor>
+      <Insulation_Cold>2</Insulation_Cold>
+      <Insulation_Heat>2</Insulation_Heat>
+      <StuffEffectMultiplierInsulation_Cold>0.20</StuffEffectMultiplierInsulation_Cold>
+      <StuffEffectMultiplierInsulation_Heat>0.40</StuffEffectMultiplierInsulation_Heat>
+    </statBases>
+    <apparel>
+      <developmentalStageFilter>Child, Adult</developmentalStageFilter>
+      <layers>
+        <li>Rukaya_Underwear</li>
+      </layers>
+      <tags>
+        <li>Rukaya_Underwear</li>
+        <li>Royal</li>
+        <li>RoyalTier5</li>
+      </tags>
+    </apparel>
+    <equippedStatOffsets>
+      <MentalBreakThreshold>-0.02</MentalBreakThreshold>
+    </equippedStatOffsets>
+    <thingCategories>
+      <li>Rukaya_Apparel_Underwear</li>
+    </thingCategories>
+    <tradeTags>
+      <li>Rukaya_DailyClothing</li>
+    </tradeTags>
+  </ThingDef>
+
+  <ThingDef Name="Rukaya_UnderwearBaseI" ParentName="Rukaya_UnderwearBase" Abstract="True">
+    <recipeMaker>
+      <researchPrerequisite>Rukaya_Apparel_I</researchPrerequisite>
+    </recipeMaker>
+  </ThingDef>
+
+  <ThingDef Name="Rukaya_UnderwearBaseII" ParentName="Rukaya_UnderwearBase" Abstract="True">
+    <recipeMaker>
+      <researchPrerequisite>Rukaya_Apparel_II</researchPrerequisite>
+    </recipeMaker>
+  </ThingDef>
+
+  <!-- 1级（Basic）· 黑色过膝袜内衣 -->
+  <ThingDef ParentName="Rukaya_UnderwearBaseI">
+    <defName>Rukaya_BlackKneehighs</defName>
+    <label>Rukaya underwear with black kneehighs</label>
+    <!-- 中文翻译：卢卡娅黑色过膝袜内衣 -->
+    <techLevel>Medieval</techLevel>
+    <description>A set of underwear with black opaque kneehigh stockings.</description>
+    <!-- 中文翻译：一套内衣，配有黑色不透明过膝长袜。 -->
+    <graphicData>
+      <texPath>Rukaya/Apparel/Underwear/BlackKneehighs/Rukaya_BlackKneehighs</texPath>
+    </graphicData>
+    <apparel>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Legs</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Rukaya/Apparel/Underwear/BlackKneehighs/Rukaya_BlackKneehighs</wornGraphicPath>
+      <!-- 身份词条必须写在叶子 Def 本地：补丁在 XmlInheritance.Resolve() 之前执行，
+           看不到从 Rukaya_*BaseI/II/III 继承来的 <tags>，只能替换本地已存在的节点。 -->
+      <tags>
+        <li>Rukaya_Underwear</li>
+        <li>Rukaya_Dress_Civilian</li>
+      </tags>
+    </apparel>
+  </ThingDef>
+
+  <!-- 1级（Basic）· 竞技紧身衣（贴图 6/Rukaya_Underwear1_*） -->
+  <ThingDef ParentName="Rukaya_UnderwearBaseI">
+    <defName>Rukaya_Swimsuit</defName>
+    <label>Rukaya competition bodysuit</label>
+    <!-- 中文：卢卡娅竞技紧身衣 -->
+    <techLevel>Medieval</techLevel>
+    <description>A sleek one-piece competition bodysuit cut for Rukaya anatomy. The stretch fabric
+      clings like a second skin, and the back is cut low so the wings stay entirely unhindered. Its
+      clean athletic lines make the wearer look poised and confident in any company, whether she is on
+      the track or at the negotiating table.</description>
+    <!-- 中文翻译：一件为卢卡娅体型裁制的修身连体竞技紧身衣。弹性面料如第二层皮肤般贴合身体，背部裁得很低，让翅膀完全不受束缚。简洁利落的运动线条让穿着者在任何场合都显得从容自信，无论身处赛道还是谈判桌前。 -->
+    <graphicData>
+      <texPath>Rukaya/Apparel/Underwear/Swimsuit/Rukaya_Swimsuit</texPath>
+    </graphicData>
+    <apparel>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Legs</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Rukaya/Apparel/Underwear/Swimsuit/Rukaya_Swimsuit</wornGraphicPath>
+      <tags>
+        <li>Rukaya_Underwear</li>
+        <li>Rukaya_Dress_Civilian</li>
+      </tags>
+    </apparel>
+    <equippedStatOffsets>
+      <SocialImpact>0.10</SocialImpact>
+    </equippedStatOffsets>
+  </ThingDef>
+
+  <!-- 2级（Advanced）· 运动内衣（贴图 6/Rukaya_Underwear2_*） -->
+  <ThingDef ParentName="Rukaya_UnderwearBaseII">
+    <defName>Rukaya_SportsBra</defName>
+    <label>Rukaya sports bra</label>
+    <!-- 中文：卢卡娅运动内衣 -->
+    <techLevel>Industrial</techLevel>
+    <description>A snug sports bra with a matching bottom, made for Rukaya anatomy. The firm elastic
+      band holds everything securely in place and the soft, breathable fabric keeps the chest steady,
+      so long marches and heavy labor never slow the wearer down.</description>
+    <!-- 中文翻译：一件为卢卡娅体型制作的贴身运动内衣，附同款下装。紧实的弹性底带稳稳固定，柔软透气的面料让胸部保持稳定，使长途行军与繁重劳作都不再拖慢穿着者的脚步。 -->
+    <graphicData>
+      <texPath>Rukaya/Apparel/Underwear/SportsBra/Rukaya_SportsBra</texPath>
+    </graphicData>
+    <apparel>
+      <bodyPartGroups>
+        <li>Torso</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Rukaya/Apparel/Underwear/SportsBra/Rukaya_SportsBra</wornGraphicPath>
+      <tags>
+        <li>Rukaya_Underwear</li>
+        <li>Rukaya_Dress_Civilian</li>
+      </tags>
+    </apparel>
+    <equippedStatOffsets>
+      <MoveSpeed>0.07</MoveSpeed>
+    </equippedStatOffsets>
+  </ThingDef>
+
+</Defs>

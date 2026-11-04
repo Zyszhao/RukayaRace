@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="Rukaya_OnSkinBaseI">
+    <defName>Rukaya_VampirePajamas</defName>
+    <techLevel>Medieval</techLevel>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Cutout</shaderType>
+      <texPath>Rukaya/Apparel/OnSkin/VampirePajamas/Rukaya_VampirePajamas</texPath>
+    </graphicData>
+    <statBases>
+      <WorkToMake>3200</WorkToMake>
+      <Mass>0.6</Mass>
+      <EquipDelay>1.5</EquipDelay>
+      <ArmorRating_Sharp>0.04</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.04</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.03</ArmorRating_Heat>
+      <Insulation_Cold>8</Insulation_Cold>
+      <Insulation_Heat>6</Insulation_Heat>
+    </statBases>
+    <costList>
+      <Cloth>65</Cloth>
+    </costList>
+    <apparel>
+      <useWornGraphicMask>false</useWornGraphicMask>
+      <developmentalStageFilter>Child, Adult</developmentalStageFilter>
+      <bodyPartGroups Inherit="false">
+        <li>Torso</li>
+        <li>Shoulders</li>
+        <li>Arms</li>
+        <li>Legs</li>
+      </bodyPartGroups>
+      <tags>
+        <li>Rukaya_OnSkin</li>
+        <li>Rukaya_Dress_Civilian</li>
+      </tags>
+      <wornGraphicPath>Rukaya/Apparel/OnSkin/VampirePajamas/Rukaya_VampirePajamas</wornGraphicPath>
+    </apparel>
+    <equippedStatOffsets>
+      <TradePriceImprovement>0.10</TradePriceImprovement>
+    </equippedStatOffsets>
+    <label>vampire pajamas</label>
+    <!-- 中文翻译：吸血鬼睡衣 -->
+    <description>Soft pink pajamas with ribbons and a playful vampire-inspired cut, tailored for the Rukaya. Their charming appearance helps the wearer secure better prices when trading.</description>
+    <!-- 中文翻译：一套为卢卡娅裁制的柔软粉色睡衣，缀有缎带，剪裁带着俏皮的吸血鬼风格。讨喜的外观让穿着者在交易时更容易争取到好价格。 -->
+  </ThingDef>
+</Defs>

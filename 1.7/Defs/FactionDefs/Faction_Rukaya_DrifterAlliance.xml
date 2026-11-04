@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- 卢卡娅 NPC 阵营（世界上刷出的据点 / 袭击 / 访客）。
+       注意：本 Def 在 2026-10-08 之前叫 Rukaya_PlayerFaction —— 名字与角色写反了，
+       现已按语义改正：NPC 阵营 = Rukaya_DrifterAlliance，玩家开局阵营 = Rukaya_PlayerFaction
+       （见 Faction_Rukaya_PlayerFaction.xml）。
+       原版判定玩家阵营只认 FactionDef.isPlayer，所以本 Def 不能带 isPlayer。 -->
+  <FactionDef ParentName="OutlanderFactionBase">
+    <defName>Rukaya_DrifterAlliance</defName>
+    <label>Rukaya Drifter Alliance</label>
+    <!-- 中文翻译：漂泊者同盟 -->
+    <description>The Rukaya are a long-lived, near-human race with distinct chiropteran features.
+      They are not native to this rimworld. In the distant past, their highly advanced homeworld was
+      lost, leaving its survivors scattered across the stars.
+
+      Now, the scattered survivors have banded together to form the Drifter Alliance. They are not
+      conquerors, but rather the solemn keepers of a lost civilization. They prefer the reliability
+      of rugged, industrial-era ballistics and the disciplined dignity of old-world military
+      uniforms over more exotic technology.
+
+      The Alliance seeks only to survive, maintain order, and preserve their fragmented history in
+      the dark. They are typically neutral traders, willing to share stories around a cold campfire.
+      However, do not mistake their self-imposed restraint for weakness; if threatened, these
+      drifters of a shattered world will unleash the terrifying military discipline of their lost
+      empire without hesitation.</description>
+    <!-- 中文翻译：卢卡娅是一个寿命悠长、带有类翼手目特征的亚人种族。她们并非这颗边缘星球的原住民。在遥远的过去，她们曾拥有高度发达的技术，但母星最终失落了，幸存者们散落星海。\n\n如今，散落星海的幸存者们聚拢在一起，成立了“漂泊者同盟”。她们不再以征服者自居，而是化作了失落文明的守墓人。相较于奇巧的科技，她们更偏爱粗犷可靠的工业时代实弹武器，以及带着旧日秩序感的挺括军装。\n\n同盟的诉求仅是在黑暗中生存、维系秩序并保存记忆。她们通常是中立的贸易者，愿意在寒夜的篝火旁与你分享旧日的故事。但切勿将她们的自我克制误认为软弱——一旦同族受到威胁，这些失去故乡的漂泊者将毫不犹豫地展现出旧日文明那令人胆寒的军事素养。 -->
+
+    <basicMemberKind>Rukaya_Colonist</basicMemberKind>
+    <requiredMemes MayRequire="Ludeon.RimWorld.Ideology">
+      <li>Rukaya_VegetarianTradition</li>
+    </requiredMemes>
+    <disallowedMemes MayRequire="Ludeon.RimWorld.Ideology">
+      <li>Cannibal</li>
+    </disallowedMemes>
+    <maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
+    <startingCountAtWorldCreation>1</startingCountAtWorldCreation>
+    <configurationListOrderPriority>15</configurationListOrderPriority>
+
+    <colorSpectrum>
+      <li>(0.95, 0.62, 0.18)</li>
+      <li>(1.00, 0.74, 0.30)</li>
+    </colorSpectrum>
+
+    <factionIconPath>Rukaya/Faction/RukayaFaction_Icon</factionIconPath>
+    <pawnSingular>Rukaya</pawnSingular>
+    <!-- 中文翻译：卢卡娅 -->
+    <pawnsPlural>Rukayas</pawnsPlural>
+    <!-- 中文翻译：卢卡娅 -->
+    <leaderTitle>Commissar</leaderTitle> <!-- 政委-->
+    <factionNameMaker>NamerFaction_RukayaFaction</factionNameMaker>
+    <settlementNameMaker>NamerSettlement_Rukaya</settlementNameMaker>
+
+    <caravanTraderKinds Inherit="false" />
+    <visitorTraderKinds Inherit="false" />
+    <baseTraderKinds Inherit="false" />
+    <canRequestTraders>false</canRequestTraders>
+
+    <!-- ============================================================================
+         生成组 pawnGroupMakers
+         ============================================================================
+         词条与岗位定义见 1.6/Defs/PawnKindDefs/Rukaya_PawnKinds_Military.xml，
+         岗位清单见 设计文档/卢卡娅_PawnKind四级体系与武器服装词条建议.md。
+
+         Combat 四个人类编组 + 三种机械化编组；Settlement 保留四个人类编组：
+           1) 全是特战队          —— 稀有（commonality 5），全员动力甲 T3
+           2) 全是正规军，带军官   —— 主力（commonality 100）
+           3) 正规军与民兵混合     —— 常备（commonality 30）
+           4) 民兵为主            —— 常见（commonality 45）
+           5) 正规军与机械支援    —— 常备（仅 Combat，commonality 30）
+           6) 特战队与机械支援    —— 低频（仅 Combat，commonality 10）
+           7) 纯机械体            —— 稀有（仅 Combat，commonality 5）
+         三种机械化编组参考 Miho：机械体直接加入 options、统一扣除袭击点数，不另行追加免费单位。
+         纯机械与特战机械组排除 Siege、Sappers、Breaching，避免选择缺少对应人类专职兵的策略；
+         原四组仍承担围攻、工兵与破墙。机械体受继承的单兵点数上限限制，低点数时这些组不可用。
+         混合 options 是随机候选池，不保证每次都抽到其中的每一种兵种。
+         Peaceful / Trader：平民为主，带少量民兵与一名军官（外事/护卫性质）。
+
+         说明 1：Rukaya_Commissar 是派系领袖专用 kind（factionLeader=true）。
+                 Faction.TryGenerateNewLeader 只扫 kindDef = Combat 的生成组，
+                 所以它必须留在 Combat 组里（这里是「全是正规军，带军官」）。
+        说明 2：Rukaya_Officer 不承担领袖身份，但装备偏好与领袖一致；
+                 它被放进「全是正规军，带军官」「民兵为主」两组（Combat 与 Settlement 各一组）
+                 以及 Peaceful / Trader，以保证"日常刷得出来"；
+                 「正规军与民兵混合」组按需求只放正规军与民兵，**不带军官**。
+        说明 3：maxPerGroup 已在 kind 上限制（无后坐力炮手 / 狙击手 / 特战狙击 /
+                 反装甲 / 民兵支援每队至多 1 名），因此权重不需要额外压低。
+        说明 4（Trader 组现状）：本派系 caravanTraderKinds / visitorTraderKinds /
+                 baseTraderKinds 全部显式清空且 canRequestTraders=false，
+                 而原版 PawnGroupKindWorker_Trader 只读取 PawnGroupMaker 的
+                 traders / carriers / guards 三个列表、完全不看 options。
+                 所以这里按需求写的 options 目前**不会实际触发**，只是把
+                 "平民为主 + 少量民兵"的编成意图落在 Def 上；等将来补
+                 TraderKindDef + 商队驮兽并恢复 canRequestTraders 时，
+                 需要把这一组改写成 traders / carriers / guards 三列表形式。
+         ============================================================================ -->
+    <pawnGroupMakers Inherit="false">
+      <!-- ========== Combat：全是特战队（稀有） ========== -->
+      <li>
+        <kindDef>Combat</kindDef>
+        <commonality>5</commonality>
+        <options>
+          <Rukaya_SpetsnazAssault>8</Rukaya_SpetsnazAssault>
+          <Rukaya_SpetsnazSupport>2</Rukaya_SpetsnazSupport>
+          <Rukaya_SpetsnazSniper>1</Rukaya_SpetsnazSniper>
+          <Rukaya_SpetsnazBlade>1</Rukaya_SpetsnazBlade>
+          <Rukaya_SpetsnazAntiArmor>1</Rukaya_SpetsnazAntiArmor>
+        </options>
+      </li>
+      <!-- ========== Combat：全是正规军，带军官（主力） ========== -->
+      <li>
+        <kindDef>Combat</kindDef>
+        <commonality>100</commonality>
+        <options>
+          <Rukaya_RegularRifleman>20</Rukaya_RegularRifleman>
+          <Rukaya_RegularGrenadier>4</Rukaya_RegularGrenadier>
+          <Rukaya_RegularMachinegunner>3</Rukaya_RegularMachinegunner>
+          <Rukaya_RegularMarksman>3</Rukaya_RegularMarksman>
+          <Rukaya_RegularBreacher>3</Rukaya_RegularBreacher>
+          <Rukaya_RegularSapper>2</Rukaya_RegularSapper>
+          <Rukaya_RegularRecoilless>1</Rukaya_RegularRecoilless>
+          <Rukaya_RegularSniper>1</Rukaya_RegularSniper>
+          <Rukaya_Officer>4</Rukaya_Officer>
+          <Rukaya_Commissar>1</Rukaya_Commissar>
+        </options>
+      </li>
+      <!-- ========== Combat：正规军与民兵混合（只有正规军 + 民兵，不带军官） ========== -->
+      <li>
+        <kindDef>Combat</kindDef>
+        <commonality>30</commonality>
+        <options>
+          <Rukaya_RegularRifleman>10</Rukaya_RegularRifleman>
+          <Rukaya_RegularMachinegunner>2</Rukaya_RegularMachinegunner>
+          <Rukaya_RegularMarksman>1</Rukaya_RegularMarksman>
+          <Rukaya_Militia>12</Rukaya_Militia>
+          <Rukaya_MilitiaMelee>6</Rukaya_MilitiaMelee>
+          <Rukaya_MilitiaSupport>1</Rukaya_MilitiaSupport>
+        </options>
+      </li>
+      <!-- ========== Combat：民兵为主（带一名军官带队） ========== -->
+      <li>
+        <kindDef>Combat</kindDef>
+        <commonality>45</commonality>
+        <options>
+          <Rukaya_Militia>20</Rukaya_Militia>
+          <Rukaya_MilitiaMelee>12</Rukaya_MilitiaMelee>
+          <Rukaya_MilitiaSupport>2</Rukaya_MilitiaSupport>
+          <Rukaya_RegularRifleman>3</Rukaya_RegularRifleman>
+          <Rukaya_RegularSapper>1</Rukaya_RegularSapper>
+          <Rukaya_Officer>1</Rukaya_Officer>
+        </options>
+      </li>
+      <!-- ========== Combat：正规军与机械支援（参考 Miho 的混合 options） ========== -->
+      <li>
+        <kindDef>Combat</kindDef>
+        <commonality>30</commonality>
+        <disallowedStrategies>
+          <li>Siege</li>
+        </disallowedStrategies>
+        <options>
+          <Rukaya_RegularRifleman>20</Rukaya_RegularRifleman>
+          <Rukaya_RegularGrenadier>4</Rukaya_RegularGrenadier>
+          <Rukaya_RegularMachinegunner>3</Rukaya_RegularMachinegunner>
+          <Rukaya_RegularMarksman>3</Rukaya_RegularMarksman>
+          <Rukaya_RegularBreacher>3</Rukaya_RegularBreacher>
+          <Rukaya_RegularSapper>2</Rukaya_RegularSapper>
+          <Rukaya_Officer>2</Rukaya_Officer>
+          <Rukaya_MechChassis_Laser>3</Rukaya_MechChassis_Laser>
+          <Rukaya_MechChassis_MachineCannon>3</Rukaya_MechChassis_MachineCannon>
+          <Rukaya_MechChassis_MineSweeper>1</Rukaya_MechChassis_MineSweeper>
+          <Rukaya_MechChassis_SAMLauncher>1</Rukaya_MechChassis_SAMLauncher>
+          <Rukaya_MechChassis_Mortar>1</Rukaya_MechChassis_Mortar>
+          <Rukaya_MechChassis_Plasma>2</Rukaya_MechChassis_Plasma>
+          <Rukaya_MechChassis_Rocket>2</Rukaya_MechChassis_Rocket>
+        </options>
+      </li>
+      <!-- ========== Combat：特战队与机械支援 ========== -->
+      <li>
+        <kindDef>Combat</kindDef>
+        <commonality>10</commonality>
+        <disallowedStrategies>
+          <li>Siege</li>
+          <li>ImmediateAttackSappers</li>
+          <li>ImmediateAttackBreaching</li>
+          <li>ImmediateAttackBreachingSmart</li>
+        </disallowedStrategies>
+        <options>
+          <Rukaya_SpetsnazAssault>8</Rukaya_SpetsnazAssault>
+          <Rukaya_SpetsnazSupport>2</Rukaya_SpetsnazSupport>
+          <Rukaya_SpetsnazSniper>1</Rukaya_SpetsnazSniper>
+          <Rukaya_SpetsnazBlade>1</Rukaya_SpetsnazBlade>
+          <Rukaya_SpetsnazAntiArmor>1</Rukaya_SpetsnazAntiArmor>
+          <Rukaya_MechChassis_Laser>3</Rukaya_MechChassis_Laser>
+          <Rukaya_MechChassis_MachineCannon>3</Rukaya_MechChassis_MachineCannon>
+          <Rukaya_MechChassis_MineSweeper>1</Rukaya_MechChassis_MineSweeper>
+          <Rukaya_MechChassis_SAMLauncher>1</Rukaya_MechChassis_SAMLauncher>
+          <Rukaya_MechChassis_Mortar>1</Rukaya_MechChassis_Mortar>
+          <Rukaya_MechChassis_Plasma>2</Rukaya_MechChassis_Plasma>
+          <Rukaya_MechChassis_Rocket>2</Rukaya_MechChassis_Rocket>
+        </options>
+      </li>
+      <!-- ========== Combat：纯机械体袭击 ========== -->
+      <li>
+        <kindDef>Combat</kindDef>
+        <commonality>5</commonality>
+        <disallowedStrategies>
+          <li>Siege</li>
+          <li>ImmediateAttackSappers</li>
+          <li>ImmediateAttackBreaching</li>
+          <li>ImmediateAttackBreachingSmart</li>
+        </disallowedStrategies>
+        <options>
+          <Rukaya_MechChassis_Laser>3</Rukaya_MechChassis_Laser>
+          <Rukaya_MechChassis_MachineCannon>3</Rukaya_MechChassis_MachineCannon>
+          <Rukaya_MechChassis_MineSweeper>1</Rukaya_MechChassis_MineSweeper>
+          <Rukaya_MechChassis_SAMLauncher>1</Rukaya_MechChassis_SAMLauncher>
+          <Rukaya_MechChassis_Mortar>1</Rukaya_MechChassis_Mortar>
+          <Rukaya_MechChassis_Plasma>2</Rukaya_MechChassis_Plasma>
+          <Rukaya_MechChassis_Rocket>2</Rukaya_MechChassis_Rocket>
+        </options>
+      </li>
+      <!-- ========== Peaceful：平民为主，带少量民兵与一名军官 ========== -->
+      <li>
+        <kindDef>Peaceful</kindDef>
+        <commonality>100</commonality>
+        <options>
+          <Rukaya_Towner>20</Rukaya_Towner>
+          <Rukaya_Colonist>10</Rukaya_Colonist>
+          <Rukaya_Officer>1</Rukaya_Officer>
+          <Rukaya_Militia>3</Rukaya_Militia>
+          <Rukaya_MilitiaMelee>1</Rukaya_MilitiaMelee>
+        </options>
+      </li>
+      <!-- ========== Trader：平民为主，带少量民兵（当前不实际触发，见顶部说明 4） ========== -->
+      <li>
+        <kindDef>Trader</kindDef>
+        <commonality>100</commonality>
+        <options>
+          <Rukaya_Towner>20</Rukaya_Towner>
+          <Rukaya_Colonist>10</Rukaya_Colonist>
+          <Rukaya_Officer>1</Rukaya_Officer>
+          <Rukaya_Militia>3</Rukaya_Militia>
+          <Rukaya_MilitiaMelee>1</Rukaya_MilitiaMelee>
+        </options>
+      </li>
+      <!-- ========== Settlement：参照 Combat，同样四组 ========== -->
+      <li>
+        <kindDef>Settlement</kindDef>
+        <commonality>5</commonality>
+        <options>
+          <Rukaya_SpetsnazAssault>8</Rukaya_SpetsnazAssault>
+          <Rukaya_SpetsnazSupport>2</Rukaya_SpetsnazSupport>
+          <Rukaya_SpetsnazSniper>1</Rukaya_SpetsnazSniper>
+          <Rukaya_SpetsnazBlade>1</Rukaya_SpetsnazBlade>
+          <Rukaya_SpetsnazAntiArmor>1</Rukaya_SpetsnazAntiArmor>
+        </options>
+      </li>
+      <li>
+        <kindDef>Settlement</kindDef>
+        <commonality>100</commonality>
+        <options>
+          <Rukaya_RegularRifleman>20</Rukaya_RegularRifleman>
+          <Rukaya_RegularGrenadier>4</Rukaya_RegularGrenadier>
+          <Rukaya_RegularMachinegunner>3</Rukaya_RegularMachinegunner>
+          <Rukaya_RegularMarksman>3</Rukaya_RegularMarksman>
+          <Rukaya_RegularBreacher>3</Rukaya_RegularBreacher>
+          <Rukaya_RegularSapper>2</Rukaya_RegularSapper>
+          <Rukaya_RegularRecoilless>1</Rukaya_RegularRecoilless>
+          <Rukaya_RegularSniper>1</Rukaya_RegularSniper>
+          <Rukaya_Officer>4</Rukaya_Officer>
+          <Rukaya_Commissar>1</Rukaya_Commissar>
+        </options>
+      </li>
+      <li>
+        <kindDef>Settlement</kindDef>
+        <commonality>30</commonality>
+        <options>
+          <Rukaya_RegularRifleman>10</Rukaya_RegularRifleman>
+          <Rukaya_RegularMachinegunner>2</Rukaya_RegularMachinegunner>
+          <Rukaya_RegularMarksman>1</Rukaya_RegularMarksman>
+          <Rukaya_Militia>12</Rukaya_Militia>
+          <Rukaya_MilitiaMelee>6</Rukaya_MilitiaMelee>
+          <Rukaya_MilitiaSupport>1</Rukaya_MilitiaSupport>
+        </options>
+      </li>
+      <li>
+        <kindDef>Settlement</kindDef>
+        <commonality>45</commonality>
+        <options>
+          <Rukaya_Militia>20</Rukaya_Militia>
+          <Rukaya_MilitiaMelee>12</Rukaya_MilitiaMelee>
+          <Rukaya_MilitiaSupport>2</Rukaya_MilitiaSupport>
+          <Rukaya_RegularRifleman>3</Rukaya_RegularRifleman>
+          <Rukaya_RegularSapper>1</Rukaya_RegularSapper>
+          <Rukaya_Officer>1</Rukaya_Officer>
+        </options>
+      </li>
+    </pawnGroupMakers>
+  </FactionDef>
+
+</Defs>

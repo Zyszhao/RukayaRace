@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- 说明：Rukaya_PawnBase 是 Name= 的 Abstract 抽象模板，不进 DefDatabase，
+       不能作为注入目标；各具体 PawnKindDef 各自注入 label 与 labelPlural。 -->
+
+  <Rukaya_Colonist.label>卢卡娅殖民者</Rukaya_Colonist.label>
+  <Rukaya_Colonist.labelPlural>卢卡娅殖民者</Rukaya_Colonist.labelPlural>
+
+  <Rukaya_Refugee.label>卢卡娅难民</Rukaya_Refugee.label>
+  <Rukaya_Refugee.labelPlural>卢卡娅难民</Rukaya_Refugee.labelPlural>
+
+</LanguageData>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Rukaya_SAMLauncher.label>卢卡娅地对空导弹发射架</Rukaya_SAMLauncher.label>
+  <Rukaya_SAMLauncher.description>一座固定式卢卡娅地对空导弹发射架。其密封发射导轨内始终备有可立即起竖的活性物质拦截弹；整套架体可用驻锄找平，并向任意方向回转以指向各条接近路线。</Rukaya_SAMLauncher.description>
+
+  <!-- CompRefuelable 的玩家可见字段（TranslationHandle 使用 compClass，而非属性类名） -->
+  <Rukaya_SAMLauncher.comps.CompRefuelable.fuelLabel>活性物质（直至重新装填）</Rukaya_SAMLauncher.comps.CompRefuelable.fuelLabel>
+  <Rukaya_SAMLauncher.comps.CompRefuelable.fuelGizmoLabel>活性物质</Rukaya_SAMLauncher.comps.CompRefuelable.fuelGizmoLabel>
+  <Rukaya_SAMLauncher.comps.CompRefuelable.outOfFuelMessage>需要装填活性物质</Rukaya_SAMLauncher.comps.CompRefuelable.outOfFuelMessage>
+
+</LanguageData>

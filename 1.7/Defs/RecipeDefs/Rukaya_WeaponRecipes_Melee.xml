@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <RecipeDef Name="Rukaya_MakeMeleeWeaponBase" Abstract="True">
+    <jobString>Forging a Rukaya melee weapon.</jobString>
+    <!-- 中文翻译：正在锻造一把卢卡娅近战武器。 -->
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <effectWorking>Smith</effectWorking>
+    <soundWorking>Recipe_Smith</soundWorking>
+    <workSkill>Crafting</workSkill>
+    <recipeUsers>
+      <li>ElectricSmithy</li>
+      <li>FueledSmithy</li>
+    </recipeUsers>
+  </RecipeDef>
+
+  <RecipeDef Name="Rukaya_MakeAdvancedMeleeWeaponBase" Abstract="True">
+    <jobString>Fabricating an advanced Rukaya melee weapon.</jobString>
+    <!-- 中文翻译：正在制造一把高级卢卡娅近战武器。 -->
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <effectWorking>Smith</effectWorking>
+    <soundWorking>Recipe_Smith</soundWorking>
+    <workSkill>Crafting</workSkill>
+    <recipeUsers>
+      <li>Rukaya_Fabricator</li>
+    </recipeUsers>
+  </RecipeDef>
+
+  <RecipeDef ParentName="Rukaya_MakeMeleeWeaponBase">
+    <defName>Make_Rukaya_Pickaxe</defName>
+    <label>forge field pickaxe</label>
+    <!-- 中文翻译：锻造十字镐 -->
+    <workAmount>9000</workAmount>
+    <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </filter>
+        <count>65</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ComponentIndustrial</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Steel</li>
+        <li>ComponentIndustrial</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Rukaya_Pickaxe>1</Rukaya_Pickaxe>
+    </products>
+    <researchPrerequisite>Rukaya_Weapon_I</researchPrerequisite>
+    <skillRequirements>
+      <Crafting>4</Crafting>
+    </skillRequirements>
+    <displayPriority>405</displayPriority>
+  </RecipeDef>
+
+  <RecipeDef ParentName="Rukaya_MakeMeleeWeaponBase">
+    <defName>Make_Rukaya_TrenchShowel</defName>
+    <label>forge trench shovel</label>
+    <!-- 中文翻译：锻造工兵铲 -->
+    <workAmount>8000</workAmount>
+    <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </filter>
+        <count>55</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ComponentIndustrial</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Steel</li>
+        <li>ComponentIndustrial</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Rukaya_TrenchShowel>1</Rukaya_TrenchShowel>
+    </products>
+    <researchPrerequisite>Rukaya_Weapon_I</researchPrerequisite>
+    <skillRequirements>
+      <Crafting>4</Crafting>
+    </skillRequirements>
+    <displayPriority>406</displayPriority>
+  </RecipeDef>
+
+  <RecipeDef ParentName="Rukaya_MakeMeleeWeaponBase">
+    <defName>Make_Rukaya_DuelSword</defName>
+    <label>forge dueling sword</label>
+    <!-- 中文翻译：锻造决斗剑 -->
+    <workAmount>16000</workAmount>
+    <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </filter>
+        <count>75</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ComponentIndustrial</li>
+          </thingDefs>
+        </filter>
+        <count>2</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Steel</li>
+        <li>ComponentIndustrial</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Rukaya_DuelSword>1</Rukaya_DuelSword>
+    </products>
+    <researchPrerequisite>Rukaya_Weapon_I</researchPrerequisite>
+    <skillRequirements>
+      <Crafting>5</Crafting>
+    </skillRequirements>
+    <displayPriority>410</displayPriority>
+  </RecipeDef>
+
+  <RecipeDef ParentName="Rukaya_MakeAdvancedMeleeWeaponBase">
+    <defName>Make_Rukaya_DivingKnife</defName>
+    <label>fabricate diving knife</label>
+    <!-- 中文翻译：制造潜水刀 -->
+    <workAmount>1000</workAmount>
+    <formingTicks>9000</formingTicks>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Rukaya_ActiveMatterContainer</li>
+          </thingDefs>
+        </filter>
+        <count>12</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Rukaya_ActiveMatterContainer</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Rukaya_DivingKnife>1</Rukaya_DivingKnife>
+    </products>
+    <researchPrerequisite>Rukaya_Weapon_II</researchPrerequisite>
+    <skillRequirements>
+      <Crafting>5</Crafting>
+    </skillRequirements>
+    <displayPriority>434</displayPriority>
+  </RecipeDef>
+
+  <RecipeDef ParentName="Rukaya_MakeAdvancedMeleeWeaponBase">
+    <defName>Make_Rukaya_SledgeHammer</defName>
+    <label>fabricate breaching sledgehammer</label>
+    <!-- 中文翻译：制造爆破锤 -->
+    <workAmount>1000</workAmount>
+    <formingTicks>19800</formingTicks>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Rukaya_ActiveMatterContainer</li>
+          </thingDefs>
+        </filter>
+        <count>18</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Rukaya_ActiveMatterContainer</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Rukaya_SledgeHammer>1</Rukaya_SledgeHammer>
+    </products>
+    <researchPrerequisite>Rukaya_Weapon_II</researchPrerequisite>
+    <skillRequirements>
+      <Crafting>6</Crafting>
+    </skillRequirements>
+    <displayPriority>435</displayPriority>
+  </RecipeDef>
+
+  <RecipeDef ParentName="Rukaya_MakeAdvancedMeleeWeaponBase">
+    <defName>Make_Rukaya_StunBaton</defName>
+    <label>fabricate stun baton</label>
+    <!-- 中文翻译：制造电棍 -->
+    <workAmount>1000</workAmount>
+    <formingTicks>16200</formingTicks>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Rukaya_ActiveMatterContainer</li>
+          </thingDefs>
+        </filter>
+        <count>16</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Rukaya_ActiveMatterContainer</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Rukaya_StunBaton>1</Rukaya_StunBaton>
+    </products>
+    <researchPrerequisite>Rukaya_Weapon_II</researchPrerequisite>
+    <skillRequirements>
+      <Crafting>6</Crafting>
+    </skillRequirements>
+    <displayPriority>436</displayPriority>
+  </RecipeDef>
+
+  <RecipeDef ParentName="Rukaya_MakeAdvancedMeleeWeaponBase">
+    <defName>Make_Rukaya_PowerSword</defName>
+    <label>fabricate power sword</label>
+    <!-- 中文翻译：制造动力剑 -->
+    <workAmount>1000</workAmount>
+    <formingTicks>57000</formingTicks>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Rukaya_ActiveMatterContainer</li>
+          </thingDefs>
+        </filter>
+        <count>40</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ComponentSpacer</li>
+          </thingDefs>
+        </filter>
+        <count>6</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Rukaya_ActiveMatterContainer</li>
+        <li>ComponentSpacer</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Rukaya_PowerSword>1</Rukaya_PowerSword>
+    </products>
+    <researchPrerequisite>Rukaya_Weapon_III</researchPrerequisite>
+    <skillRequirements>
+      <Crafting>8</Crafting>
+    </skillRequirements>
+    <displayPriority>445</displayPriority>
+  </RecipeDef>
+
+</Defs>

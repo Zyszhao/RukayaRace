@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Rukaya_FlightDisabledFunctionalWings>飞行需要两侧可用的自然翼或仿生翼，且每侧功能不低于50%。义翼无法支持飞行。</Rukaya_FlightDisabledFunctionalWings>
+  <Rukaya_EmergencyFly_FunctionalWings>{PAWN_labelShort}需要两侧可用的自然翼或仿生翼才能紧急飞行，且每侧功能不低于50%。</Rukaya_EmergencyFly_FunctionalWings>
+  <Rukaya_FlightModeCommandFunctionalWingsDesc>这名卢卡娅在征召时升空，直到关闭飞行或取消征召。存在敌人目标时会无视开关升空。\n\n需要两侧可用的自然翼或仿生翼、每侧功能不低于50%，且饱食不低于10%。义翼无法支持飞行。</Rukaya_FlightModeCommandFunctionalWingsDesc>
+</LanguageData>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Rukaya_Pickaxe.label>卢卡娅十字镐</Rukaya_Pickaxe.label>
+  <Rukaya_Pickaxe.description>一种兼作破拆工具与应急武器的强化工兵十字镐。它挥动起来很吃力，在决斗里也不算致命，但加重的镐头比临时工具更容易啃穿护甲。</Rukaya_Pickaxe.description>
+
+  <Rukaya_TrenchShowel.label>卢卡娅工兵铲</Rukaya_TrenchShowel.label>
+  <Rukaya_TrenchShowel.description>一把带加厚钢刃和长柄的工兵铲。它在近身搏斗中相当别扭，杀伤也弱于专业近战武器，但在野战工事作业中仍然很可靠。</Rukaya_TrenchShowel.description>
+
+  <Rukaya_DuelSword.label>卢卡娅决斗剑</Rukaya_DuelSword.label>
+  <Rukaya_DuelSword.description>一把为克制刺击而非狂猛劈砍设计的佩用决斗剑。它比专职战剑更重、杀伤也更保守，但配重更利于把攻击准确送进护甲缝隙。</Rukaya_DuelSword.description>
+
+  <Rukaya_DivingKnife.label>卢卡娅潜水刀</Rukaya_DivingKnife.label>
+  <Rukaya_DivingKnife.description>一把供登舰队员、潜水员和其他近距离作战专长人员携带的紧凑制式短刀。普通模式下，它比标准战斗刀更快，但杀伤更弱。活性物质模式可储存 30 点能量，并将其灌注进极其凶狠的近距离突刺中，意在用寥寥几次果断攻击结束战斗。</Rukaya_DivingKnife.description>
+
+  <Rukaya_SledgeHammer.label>卢卡娅爆破锤</Rukaya_SledgeHammer.label>
+  <Rukaya_SledgeHammer.description>一柄经过强化的突击大锤，专门用于在贴身距离砸开门锁、板材和披甲目标。普通模式下，它更像一柄纪律严整的爆破锤，而不是某种异域圣遗物。活性物质模式可储存 60 点能量，并把锤头变成一件震荡兵器，其打击比宙斯之锤更重，还会以强烈的击晕效应让目标陷入踉跄。</Rukaya_SledgeHammer.description>
+
+  <Rukaya_StunBaton.label>卢卡娅电棍</Rukaya_StunBaton.label>
+  <Rukaya_StunBaton.description>一根用于严整镇暴与近距离拘捕的制式电棍，前端装有紧凑的放电头。普通模式下，它只是一件伤害偏低、没有特殊放电效果的压制武器。活性物质模式会把它变成一件专职控制工具：伤害依旧不高，但持续的充能打击会施加强力击晕与 EMP 干扰，适合拘捕与反机械登舰作战。</Rukaya_StunBaton.description>
+
+  <Rukaya_PowerSword.label>卢卡娅动力剑</Rukaya_PowerSword.label>
+  <Rukaya_PowerSword.description>一把围绕活性物质刃缘组件打造的高等级卢卡娅军用长剑。普通模式下，它被刻意控制在不如单分子剑那般压倒性的水平，更强调纪律化的精准而非不可思议的刃缘质量。活性物质模式会把它推进到高于单分子剑的性能，带来更沉重的斩击、更强的穿透，以及灼烧性的次级创伤效果。对于这把 T3 武器而言，每个活性物质容器只提供 15 点充能。</Rukaya_PowerSword.description>
+
+
+  <Rukaya_Pickaxe.tools.0.label>柄</Rukaya_Pickaxe.tools.0.label>
+  <Rukaya_Pickaxe.tools.1.label>镐尖</Rukaya_Pickaxe.tools.1.label>
+  <Rukaya_Pickaxe.tools.2.label>镐尖</Rukaya_Pickaxe.tools.2.label>
+  <Rukaya_Pickaxe.tools.3.label>破拆镐尖</Rukaya_Pickaxe.tools.3.label>
+  <Rukaya_TrenchShowel.tools.0.label>铲柄</Rukaya_TrenchShowel.tools.0.label>
+  <Rukaya_TrenchShowel.tools.1.label>铲刃</Rukaya_TrenchShowel.tools.1.label>
+  <Rukaya_TrenchShowel.tools.2.label>铲尖</Rukaya_TrenchShowel.tools.2.label>
+  <Rukaya_TrenchShowel.tools.3.label>破拆铲刃</Rukaya_TrenchShowel.tools.3.label>
+  <Rukaya_DuelSword.tools.0.label>护手</Rukaya_DuelSword.tools.0.label>
+  <Rukaya_DuelSword.tools.1.label>剑尖</Rukaya_DuelSword.tools.1.label>
+  <Rukaya_DuelSword.tools.2.label>剑刃</Rukaya_DuelSword.tools.2.label>
+  <Rukaya_DivingKnife.tools.0.label>刀柄</Rukaya_DivingKnife.tools.0.label>
+  <Rukaya_DivingKnife.tools.1.label>刀刃</Rukaya_DivingKnife.tools.1.label>
+  <Rukaya_DivingKnife.tools.2.label>刀尖</Rukaya_DivingKnife.tools.2.label>
+  <Rukaya_DivingKnife.comps.CompRukayaActiveMatterWeapon.activeTools.0.label>充能刀柄</Rukaya_DivingKnife.comps.CompRukayaActiveMatterWeapon.activeTools.0.label>
+  <Rukaya_DivingKnife.comps.CompRukayaActiveMatterWeapon.activeTools.1.label>充能刀刃</Rukaya_DivingKnife.comps.CompRukayaActiveMatterWeapon.activeTools.1.label>
+  <Rukaya_DivingKnife.comps.CompRukayaActiveMatterWeapon.activeTools.2.label>充能刀尖</Rukaya_DivingKnife.comps.CompRukayaActiveMatterWeapon.activeTools.2.label>
+  <Rukaya_SledgeHammer.tools.0.label>锤柄</Rukaya_SledgeHammer.tools.0.label>
+  <Rukaya_SledgeHammer.tools.1.label>锤头</Rukaya_SledgeHammer.tools.1.label>
+  <Rukaya_SledgeHammer.tools.2.label>破拆锤头</Rukaya_SledgeHammer.tools.2.label>
+  <Rukaya_SledgeHammer.comps.CompRukayaActiveMatterWeapon.activeTools.0.label>充能锤柄</Rukaya_SledgeHammer.comps.CompRukayaActiveMatterWeapon.activeTools.0.label>
+  <Rukaya_SledgeHammer.comps.CompRukayaActiveMatterWeapon.activeTools.1.label>充能锤头</Rukaya_SledgeHammer.comps.CompRukayaActiveMatterWeapon.activeTools.1.label>
+  <Rukaya_StunBaton.tools.0.label>握柄</Rukaya_StunBaton.tools.0.label>
+  <Rukaya_StunBaton.tools.1.label>放电头</Rukaya_StunBaton.tools.1.label>
+  <Rukaya_StunBaton.comps.CompRukayaActiveMatterWeapon.activeTools.0.label>充能握柄</Rukaya_StunBaton.comps.CompRukayaActiveMatterWeapon.activeTools.0.label>
+  <Rukaya_StunBaton.comps.CompRukayaActiveMatterWeapon.activeTools.1.label>充能放电头</Rukaya_StunBaton.comps.CompRukayaActiveMatterWeapon.activeTools.1.label>
+  <Rukaya_PowerSword.tools.0.label>护手</Rukaya_PowerSword.tools.0.label>
+  <Rukaya_PowerSword.tools.1.label>剑刃</Rukaya_PowerSword.tools.1.label>
+  <Rukaya_PowerSword.tools.2.label>剑尖</Rukaya_PowerSword.tools.2.label>
+  <Rukaya_PowerSword.comps.CompRukayaActiveMatterWeapon.activeTools.0.label>充能护手</Rukaya_PowerSword.comps.CompRukayaActiveMatterWeapon.activeTools.0.label>
+  <Rukaya_PowerSword.comps.CompRukayaActiveMatterWeapon.activeTools.1.label>充能剑刃</Rukaya_PowerSword.comps.CompRukayaActiveMatterWeapon.activeTools.1.label>
+  <Rukaya_PowerSword.comps.CompRukayaActiveMatterWeapon.activeTools.2.label>充能剑尖</Rukaya_PowerSword.comps.CompRukayaActiveMatterWeapon.activeTools.2.label>
+
+</LanguageData>

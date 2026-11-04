@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Rukaya_BridgeMaintainer.title>桥梁维护员</Rukaya_BridgeMaintainer.title>
+  <Rukaya_BridgeMaintainer.titleFemale>桥梁维护员</Rukaya_BridgeMaintainer.titleFemale>
+  <Rukaya_BridgeMaintainer.titleShort>桥梁维护员</Rukaya_BridgeMaintainer.titleShort>
+  <Rukaya_BridgeMaintainer.titleShortFemale>桥梁维护员</Rukaya_BridgeMaintainer.titleShortFemale>
+  <Rukaya_BridgeMaintainer.description>[PAWN_nameDef]维护同盟聚居地之间的桥梁，更换腐朽的木板，把回收的金属配进受损的支架。补给车送来什么，她就想办法用上，每次都先把接头试牢，再让满载的商队通过。</Rukaya_BridgeMaintainer.description>
+
+  <Rukaya_SeedCurator.title>种源保管员</Rukaya_SeedCurator.title>
+  <Rukaya_SeedCurator.titleFemale>种源保管员</Rukaya_SeedCurator.titleFemale>
+  <Rukaya_SeedCurator.titleShort>种源保管员</Rukaya_SeedCurator.titleShort>
+  <Rukaya_SeedCurator.titleShortFemale>种源保管员</Rukaya_SeedCurator.titleShortFemale>
+  <Rukaya_SeedCurator.description>[PAWN_nameDef]保管同盟留下的种子，分批试种，对照旧种植记录检查长势。熟悉的作物在陌生土壤里长不好时，她就仔细记下差别，让下一个聚居地少走一次弯路。</Rukaya_SeedCurator.description>
+
+  <Rukaya_StoveMason.title>炉灶砌筑员</Rukaya_StoveMason.title>
+  <Rukaya_StoveMason.titleFemale>炉灶砌筑员</Rukaya_StoveMason.titleFemale>
+  <Rukaya_StoveMason.titleShort>砌灶员</Rukaya_StoveMason.titleShort>
+  <Rukaya_StoveMason.titleShortFemale>砌灶员</Rukaya_StoveMason.titleShortFemale>
+  <Rukaya_StoveMason.description>[PAWN_nameDef]为同盟营地砌筑炉灶，照着能找到的燃料调整炉膛和烟道。每砌好一座，她都要先在上面做顿饭才肯交工，后来不光会修炉子，也摸熟了让锅里的东西慢慢煮好的火候。</Rukaya_StoveMason.description>
+
+  <Rukaya_TrailScout.title>路标侦察员</Rukaya_TrailScout.title>
+  <Rukaya_TrailScout.titleFemale>路标侦察员</Rukaya_TrailScout.titleFemale>
+  <Rukaya_TrailScout.titleShort>路标员</Rukaya_TrailScout.titleShort>
+  <Rukaya_TrailScout.titleShortFemale>路标员</Rukaya_TrailScout.titleShortFemale>
+  <Rukaya_TrailScout.description>[PAWN_nameDef]为同盟补给队探路，清理旧路标旁的杂草，也常要开枪驱走挡路的野兽。她逐渐认清哪些植物下面还有小径，哪些灌丛最好别碰，再给后面的队伍标好绕行的路。</Rukaya_TrailScout.description>
+
+  <Rukaya_ArchiveRestorer.title>旧籍修复员</Rukaya_ArchiveRestorer.title>
+  <Rukaya_ArchiveRestorer.titleFemale>旧籍修复员</Rukaya_ArchiveRestorer.titleFemale>
+  <Rukaya_ArchiveRestorer.titleShort>旧籍修复员</Rukaya_ArchiveRestorer.titleShort>
+  <Rukaya_ArchiveRestorer.titleShortFemale>旧籍修复员</Rukaya_ArchiveRestorer.titleShortFemale>
+  <Rukaya_ArchiveRestorer.description>[PAWN_nameDef]为同盟修补受潮的书册，辨认缺字，照着旧法配制粘合剂。她把原样保存看得太重，后来连装饰和艺术创作也一概不肯做，只愿按留下的实物和记录进行修复。</Rukaya_ArchiveRestorer.description>
+
+  <Rukaya_QuarantineInspector.title>检疫员</Rukaya_QuarantineInspector.title>
+  <Rukaya_QuarantineInspector.titleFemale>检疫员</Rukaya_QuarantineInspector.titleFemale>
+  <Rukaya_QuarantineInspector.titleShort>检疫员</Rukaya_QuarantineInspector.titleShort>
+  <Rukaya_QuarantineInspector.titleShortFemale>检疫员</Rukaya_QuarantineInspector.titleShortFemale>
+  <Rukaya_QuarantineInspector.description>[PAWN_nameDef]在同盟检疫站检查病征，对照记录判断病情。隔离区发生过的一次食物污染，让她再也不肯为人做饭；后来即使只是例行检查漏看了一处，她也会在交班后紧张很久。</Rukaya_QuarantineInspector.description>
+
+  <Rukaya_SealedStorekeeper.title>封存库管员</Rukaya_SealedStorekeeper.title>
+  <Rukaya_SealedStorekeeper.titleFemale>封存库管员</Rukaya_SealedStorekeeper.titleFemale>
+  <Rukaya_SealedStorekeeper.titleShort>封存库管员</Rukaya_SealedStorekeeper.titleShort>
+  <Rukaya_SealedStorekeeper.titleShortFemale>封存库管员</Rukaya_SealedStorekeeper.titleShortFemale>
+  <Rukaya_SealedStorekeeper.description>[PAWN_nameDef]在同盟封存库核对器材目录，修整装箱的固定架。多年没开过的箱子，她也记得上面的标记；习惯了只凭清单交接之后，她不肯再负责商谈、劝说或管教囚犯，把所有交涉都留给联络员。</Rukaya_SealedStorekeeper.description>
+
+  <Rukaya_VeterinarySurgeon.title>畜群医师</Rukaya_VeterinarySurgeon.title>
+  <Rukaya_VeterinarySurgeon.titleFemale>畜群医师</Rukaya_VeterinarySurgeon.titleFemale>
+  <Rukaya_VeterinarySurgeon.titleShort>畜群医师</Rukaya_VeterinarySurgeon.titleShort>
+  <Rukaya_VeterinarySurgeon.titleShortFemale>畜群医师</Rukaya_VeterinarySurgeon.titleShortFemale>
+  <Rukaya_VeterinarySurgeon.description>[PAWN_nameDef]为同盟的畜群治病，学会了安抚受惊的动物，不让挣扎加重伤势。救治过一只被猎手打伤许久才找到的动物后，她不肯再参加狩猎，但仍愿意在营地受威胁时拿起武器自卫。</Rukaya_VeterinarySurgeon.description>
+
+  <Rukaya_SparringPartner.title>陪练员</Rukaya_SparringPartner.title>
+  <Rukaya_SparringPartner.titleFemale>陪练员</Rukaya_SparringPartner.titleFemale>
+  <Rukaya_SparringPartner.titleShort>陪练员</Rukaya_SparringPartner.titleShort>
+  <Rukaya_SparringPartner.titleShortFemale>陪练员</Rukaya_SparringPartner.titleShortFemale>
+  <Rukaya_SparringPartner.description>[PAWN_nameDef]在同盟训练馆陪新兵练习近身格斗，一遍遍重做动作，直到双方都能稳住分寸。她逐渐学会从肩膀的晃动里看出对方的意图，训练兵器还没碰到自己，人就已经侧身让开了。</Rukaya_SparringPartner.description>
+
+  <Rukaya_ItinerantRepairer.title>巡回修缮工</Rukaya_ItinerantRepairer.title>
+  <Rukaya_ItinerantRepairer.titleFemale>巡回修缮工</Rukaya_ItinerantRepairer.titleFemale>
+  <Rukaya_ItinerantRepairer.titleShort>修缮工</Rukaya_ItinerantRepairer.titleShort>
+  <Rukaya_ItinerantRepairer.titleShortFemale>修缮工</Rukaya_ItinerantRepairer.titleShortFemale>
+  <Rukaya_ItinerantRepairer.description>[PAWN_nameDef]在小聚居地之间巡回修屋顶、补工具，行李一直带得很少。久而久之，她只愿吃简单的饭食、住没有装饰的角落，哪怕主人诚心招待，丰盛的餐桌和华丽的卧房也会让她不自在。</Rukaya_ItinerantRepairer.description>
+
+  <Rukaya_SupplyAppraiser.title>物资估价员</Rukaya_SupplyAppraiser.title>
+  <Rukaya_SupplyAppraiser.titleFemale>物资估价员</Rukaya_SupplyAppraiser.titleFemale>
+  <Rukaya_SupplyAppraiser.titleShort>估价员</Rukaya_SupplyAppraiser.titleShort>
+  <Rukaya_SupplyAppraiser.titleShortFemale>估价员</Rukaya_SupplyAppraiser.titleShortFemale>
+  <Rukaya_SupplyAppraiser.description>[PAWN_nameDef]为交易的物资估价，核对账目，也向商队说明有争议的价钱。她渐渐擅长分辨东西的好坏，却也越来越在意自己的住处是否体面；即使生意顺利，分到简陋的卧房仍会让她闷闷不乐。</Rukaya_SupplyAppraiser.description>
+
+  <Rukaya_StationCaretaker.title>驿站看护员</Rukaya_StationCaretaker.title>
+  <Rukaya_StationCaretaker.titleFemale>驿站看护员</Rukaya_StationCaretaker.titleFemale>
+  <Rukaya_StationCaretaker.titleShort>驿站看护员</Rukaya_StationCaretaker.titleShort>
+  <Rukaya_StationCaretaker.titleShortFemale>驿站看护员</Rukaya_StationCaretaker.titleShortFemale>
+  <Rukaya_StationCaretaker.description>[PAWN_nameDef]照看同盟驿站的门窗、床铺和旧工具，多数小毛病都知道该怎么修。只是她逐渐贪恋起两支队伍到来之间的清闲，做事越来越慢，只要看着不急，就总要停下来歇一会儿。</Rukaya_StationCaretaker.description>
+
+  <Rukaya_MechanicalFitter.title>旧式机修师</Rukaya_MechanicalFitter.title>
+  <Rukaya_MechanicalFitter.titleFemale>旧式机修师</Rukaya_MechanicalFitter.titleFemale>
+  <Rukaya_MechanicalFitter.titleShort>机修师</Rukaya_MechanicalFitter.titleShort>
+  <Rukaya_MechanicalFitter.titleShortFemale>机修师</Rukaya_MechanicalFitter.titleShortFemale>
+  <Rukaya_MechanicalFitter.description>[PAWN_nameDef]在同盟工坊装配机器，零件不配套时就去查旧图纸。她信得过修好的设备，却始终反感人工肢体和人为改造身体的做法，不肯把自己的身体也当作一台可以拆换的机器。</Rukaya_MechanicalFitter.description>
+
+  <Rukaya_RationSupervisor.title>配给监督员</Rukaya_RationSupervisor.title>
+  <Rukaya_RationSupervisor.titleFemale>配给监督员</Rukaya_RationSupervisor.titleFemale>
+  <Rukaya_RationSupervisor.titleShort>配给监督员</Rukaya_RationSupervisor.titleShort>
+  <Rukaya_RationSupervisor.titleShortFemale>配给监督员</Rukaya_RationSupervisor.titleShortFemale>
+  <Rukaya_RationSupervisor.description>[PAWN_nameDef]在同盟配给处核对账目，处理分发时的争执。短缺的缘由她讲得清楚，只是心里怎么想，嘴上就怎么说，很少替人留情面；事情即使处理妥当，也常有人抱怨被她数落得难堪。</Rukaya_RationSupervisor.description>
+
+  <Rukaya_StonewarePotter.title>粗陶匠</Rukaya_StonewarePotter.title>
+  <Rukaya_StonewarePotter.titleFemale>粗陶匠</Rukaya_StonewarePotter.titleFemale>
+  <Rukaya_StonewarePotter.titleShort>陶匠</Rukaya_StonewarePotter.titleShort>
+  <Rukaya_StonewarePotter.titleShortFemale>陶匠</Rukaya_StonewarePotter.titleShortFemale>
+  <Rukaya_StonewarePotter.description>[PAWN_nameDef]为同盟聚居地烧制储物罐和餐具，反复调整把手和罐沿，让它们经得起长久使用。她也会把旧式纹样压进湿泥里，让一排普通的厨房架子上，还留着一点故乡的样子。</Rukaya_StonewarePotter.description>
+
+  <Rukaya_MushroomFarmer.title>菌床种植员</Rukaya_MushroomFarmer.title>
+  <Rukaya_MushroomFarmer.titleFemale>菌床种植员</Rukaya_MushroomFarmer.titleFemale>
+  <Rukaya_MushroomFarmer.titleShort>菌床种植员</Rukaya_MushroomFarmer.titleShort>
+  <Rukaya_MushroomFarmer.titleShortFemale>菌床种植员</Rukaya_MushroomFarmer.titleShortFemale>
+  <Rukaya_MushroomFarmer.description>[PAWN_nameDef]在同盟聚居地阴凉的地窖里照料菌床，调整湿度，清走坏掉的部分。少量收下来的菌菇常被她直接送进厨房，后来连口感差别很大的几种，也能做成一顿吃得惯的饭。</Rukaya_MushroomFarmer.description>
+
+  <Rukaya_PatternWeaver.title>纹样织工</Rukaya_PatternWeaver.title>
+  <Rukaya_PatternWeaver.titleFemale>纹样织工</Rukaya_PatternWeaver.titleFemale>
+  <Rukaya_PatternWeaver.titleShort>织工</Rukaya_PatternWeaver.titleShort>
+  <Rukaya_PatternWeaver.titleShortFemale>织工</Rukaya_PatternWeaver.titleShortFemale>
+  <Rukaya_PatternWeaver.description>[PAWN_nameDef]在同盟工坊织布，手边留着一小叠传下来的布样。纱线不够时，她便把还能找到的颜色重新排成简化的花纹，尽量少费线，也尽量让人认得出原来的纹样。</Rukaya_PatternWeaver.description>
+
+  <Rukaya_PackTrainGuard.title>驮队护卫</Rukaya_PackTrainGuard.title>
+  <Rukaya_PackTrainGuard.titleFemale>驮队护卫</Rukaya_PackTrainGuard.titleFemale>
+  <Rukaya_PackTrainGuard.titleShort>驮队护卫</Rukaya_PackTrainGuard.titleShort>
+  <Rukaya_PackTrainGuard.titleShortFemale>驮队护卫</Rukaya_PackTrainGuard.titleShortFemale>
+  <Rukaya_PackTrainGuard.description>[PAWN_nameDef]为同盟的驮队护行，牵着紧张的动物过窄路，遇到麻烦时就用随身的短兵器挡开。她学会了还击时也不让缰绳缠住，因为畜群一旦跑散，整支队伍都得停下来找。</Rukaya_PackTrainGuard.description>
+
+  <Rukaya_ReclamationWorker.title>旧址清理工</Rukaya_ReclamationWorker.title>
+  <Rukaya_ReclamationWorker.titleFemale>旧址清理工</Rukaya_ReclamationWorker.titleFemale>
+  <Rukaya_ReclamationWorker.titleShort>清理工</Rukaya_ReclamationWorker.titleShort>
+  <Rukaya_ReclamationWorker.titleShortFemale>清理工</Rukaya_ReclamationWorker.titleShortFemale>
+  <Rukaya_ReclamationWorker.description>[PAWN_nameDef]为同盟重新使用的旧址清理地基，拆掉不稳的砌墙，从掩埋的结构里挖出可用的金属。她逐渐认清了哪些墙还能撑起新屋顶，哪些必须在住人之前先拆干净。</Rukaya_ReclamationWorker.description>
+
+  <Rukaya_BallisticsRecorder.title>试射记录员</Rukaya_BallisticsRecorder.title>
+  <Rukaya_BallisticsRecorder.titleFemale>试射记录员</Rukaya_BallisticsRecorder.titleFemale>
+  <Rukaya_BallisticsRecorder.titleShort>试射记录员</Rukaya_BallisticsRecorder.titleShort>
+  <Rukaya_BallisticsRecorder.titleShortFemale>试射记录员</Rukaya_BallisticsRecorder.titleShortFemale>
+  <Rukaya_BallisticsRecorder.description>[PAWN_nameDef]在同盟试射场记录测试结果，亲自打出靶痕，再对照工坊送来的规格。她学会了分清究竟是持枪的人失手，还是瞄具出了毛病，并把结果写得让接手的维修员能看懂。</Rukaya_BallisticsRecorder.description>
+
+  <Rukaya_CampNegotiator.title>营地协调员</Rukaya_CampNegotiator.title>
+  <Rukaya_CampNegotiator.titleFemale>营地协调员</Rukaya_CampNegotiator.titleFemale>
+  <Rukaya_CampNegotiator.titleShort>协调员</Rukaya_CampNegotiator.titleShort>
+  <Rukaya_CampNegotiator.titleShortFemale>协调员</Rukaya_CampNegotiator.titleShortFemale>
+  <Rukaya_CampNegotiator.description>[PAWN_nameDef]替新到的家庭在同盟营地里安排住处，核对户籍，也调解挤在一起的人为房间起的争执。她逐渐学会先问清每家真正缺什么，再许诺，并把安排的理由讲给仍需等候的人听。</Rukaya_CampNegotiator.description>
+
+  <Rukaya_PoultryKeeper.title>禽舍饲养员</Rukaya_PoultryKeeper.title>
+  <Rukaya_PoultryKeeper.titleFemale>禽舍饲养员</Rukaya_PoultryKeeper.titleFemale>
+  <Rukaya_PoultryKeeper.titleShort>禽舍饲养员</Rukaya_PoultryKeeper.titleShort>
+  <Rukaya_PoultryKeeper.titleShortFemale>禽舍饲养员</Rukaya_PoultryKeeper.titleShortFemale>
+  <Rukaya_PoultryKeeper.description>[PAWN_nameDef]照看同盟聚居地禽舍里的鸟，隔开病禽，及时处理拥挤棚圈里常见的小伤。她逐渐学会了怎样稳稳抓住一只受惊的鸟，又不弄伤它挣扎的翅膀。</Rukaya_PoultryKeeper.description>
+
+  <Rukaya_KilnBurner.title>窑炉烧制工</Rukaya_KilnBurner.title>
+  <Rukaya_KilnBurner.titleFemale>窑炉烧制工</Rukaya_KilnBurner.titleFemale>
+  <Rukaya_KilnBurner.titleShort>烧窑工</Rukaya_KilnBurner.titleShort>
+  <Rukaya_KilnBurner.titleShortFemale>烧窑工</Rukaya_KilnBurner.titleShortFemale>
+  <Rukaya_KilnBurner.description>[PAWN_nameDef]在同盟工场照看窑炉，平日也去附近采料，挑出能用的部分，再看炉膛的颜色调整火候。她慢慢学会了在开窑之前辨认杂料，免得烧坏聚居地正等着用的一批砖。</Rukaya_KilnBurner.description>
+
+  <Rukaya_FuneralGuide.title>送行司仪</Rukaya_FuneralGuide.title>
+  <Rukaya_FuneralGuide.titleFemale>送行司仪</Rukaya_FuneralGuide.titleFemale>
+  <Rukaya_FuneralGuide.titleShort>送行司仪</Rukaya_FuneralGuide.titleShort>
+  <Rukaya_FuneralGuide.titleShortFemale>送行司仪</Rukaya_FuneralGuide.titleShortFemale>
+  <Rukaya_FuneralGuide.description>[PAWN_nameDef]替同盟的家庭安排送行，摆好遗物，在亲属说不出话时替她们把话说完。她学会了挑选简单的布置和几首熟悉的歌，不让仪式太过铺张，也不让来送别的人无处安放自己的心情。</Rukaya_FuneralGuide.description>
+
+  <Rukaya_PatternCutterKid.title>裁衣孩子</Rukaya_PatternCutterKid.title>
+  <Rukaya_PatternCutterKid.titleFemale>裁衣孩子</Rukaya_PatternCutterKid.titleFemale>
+  <Rukaya_PatternCutterKid.titleShort>裁衣孩子</Rukaya_PatternCutterKid.titleShort>
+  <Rukaya_PatternCutterKid.titleShortFemale>裁衣孩子</Rukaya_PatternCutterKid.titleShortFemale>
+  <Rukaya_PatternCutterKid.description>[PAWN_nameDef]小时候在聚居地帮人裁衣，照着量体册给邻居的肩和翼根别布料。真正下针的是长辈，她只负责把尺寸看准，也知道袖子哪里容易绷紧、哪里该多留余地。</Rukaya_PatternCutterKid.description>
+
+  <Rukaya_RouteFinderKid.title>认路孩子</Rukaya_RouteFinderKid.title>
+  <Rukaya_RouteFinderKid.titleFemale>认路孩子</Rukaya_RouteFinderKid.titleFemale>
+  <Rukaya_RouteFinderKid.titleShort>认路孩子</Rukaya_RouteFinderKid.titleShort>
+  <Rukaya_RouteFinderKid.titleShortFemale>认路孩子</Rukaya_RouteFinderKid.titleShortFemale>
+  <Rukaya_RouteFinderKid.description>[PAWN_nameDef]小时候喜欢把聚居地那张磨旧的街图铺在地上，借着灯把每条路描一遍。后来大人出门前常来问她怎么走，她给的方向大多是准的，错了也当着人承认再重新指。</Rukaya_RouteFinderKid.description>
+
+  <Rukaya_KilnChild.title>陶窑边的孩子</Rukaya_KilnChild.title>
+  <Rukaya_KilnChild.titleFemale>陶窑边的孩子</Rukaya_KilnChild.titleFemale>
+  <Rukaya_KilnChild.titleShort>陶窑孩子</Rukaya_KilnChild.titleShort>
+  <Rukaya_KilnChild.titleShortFemale>陶窑孩子</Rukaya_KilnChild.titleShortFemale>
+  <Rukaya_KilnChild.description>[PAWN_nameDef]在聚居地的陶窑旁长大，跟着大人码放陶坯，也去附近挖些黏土回来。她学会了挑出泥里的砂石，试着辨认哪些土容易捏成形，哪些一烧就会裂开。</Rukaya_KilnChild.description>
+
+  <Rukaya_OrchardKid.title>果园孩子</Rukaya_OrchardKid.title>
+  <Rukaya_OrchardKid.titleFemale>果园孩子</Rukaya_OrchardKid.titleFemale>
+  <Rukaya_OrchardKid.titleShort>果园孩子</Rukaya_OrchardKid.titleShort>
+  <Rukaya_OrchardKid.titleShortFemale>果园孩子</Rukaya_OrchardKid.titleShortFemale>
+  <Rukaya_OrchardKid.description>[PAWN_nameDef]小时候的夏天都待在同盟的果园里，爬上梯子够不到的枝头摘果子，提着小桶喂树根，也替老树查看裂开的树皮。她分得清哪根枝条承得住人，哪些已经撑不住了。</Rukaya_OrchardKid.description>
+
+  <Rukaya_DryingYardKid.title>晒粮孩子</Rukaya_DryingYardKid.title>
+  <Rukaya_DryingYardKid.titleFemale>晒粮孩子</Rukaya_DryingYardKid.titleFemale>
+  <Rukaya_DryingYardKid.titleShort>晒粮孩子</Rukaya_DryingYardKid.titleShort>
+  <Rukaya_DryingYardKid.titleShortFemale>晒粮孩子</Rukaya_DryingYardKid.titleShortFemale>
+  <Rukaya_DryingYardKid.description>[PAWN_nameDef]小时候看管聚居地的晒粮场，把谷子和果干摊开翻动，免得在太阳下捂坏。赶上连阴，她还会去灶边帮着把返潮的粮焙一遍。天上的雨点一落下来，总是她抢先跑到架子边把布盖上。</Rukaya_DryingYardKid.description>
+
+  <Rukaya_GroveWardenKid.title>护林孩子</Rukaya_GroveWardenKid.title>
+  <Rukaya_GroveWardenKid.titleFemale>护林孩子</Rukaya_GroveWardenKid.titleFemale>
+  <Rukaya_GroveWardenKid.titleShort>护林孩子</Rukaya_GroveWardenKid.titleShort>
+  <Rukaya_GroveWardenKid.titleShortFemale>护林孩子</Rukaya_GroveWardenKid.titleShortFemale>
+  <Rukaya_GroveWardenKid.description>[PAWN_nameDef]小时候常跟着护林人往聚居地上方去，帮忙给小树挂牌、清理小路上的倒枝，也在雨季前加固挡土的木桩。她记住了有些木头要等它自己落下来才去捡，路边的幼树再碍事也不能随手砍。</Rukaya_GroveWardenKid.description>
+
+  <Rukaya_RepairChild.title>旧物修补孩子</Rukaya_RepairChild.title>
+  <Rukaya_RepairChild.titleFemale>旧物修补孩子</Rukaya_RepairChild.titleFemale>
+  <Rukaya_RepairChild.titleShort>修补孩子</Rukaya_RepairChild.titleShort>
+  <Rukaya_RepairChild.titleShortFemale>修补孩子</Rukaya_RepairChild.titleShortFemale>
+  <Rukaya_RepairChild.description>[PAWN_nameDef]小时候常跟长辈在修补间里帮忙，学着把弯掉的铰链掰直、换上新的把手。修好的东西要挨家送回去，她也得听清邻居说哪里还不好使，再把话带给长辈。</Rukaya_RepairChild.description>
+
+  <Rukaya_JournalLoanKid.title>书刊借阅孩子</Rukaya_JournalLoanKid.title>
+  <Rukaya_JournalLoanKid.titleFemale>书刊借阅孩子</Rukaya_JournalLoanKid.titleFemale>
+  <Rukaya_JournalLoanKid.titleShort>借阅孩子</Rukaya_JournalLoanKid.titleShort>
+  <Rukaya_JournalLoanKid.titleShortFemale>借阅孩子</Rukaya_JournalLoanKid.titleShortFemale>
+  <Rukaya_JournalLoanKid.description>[PAWN_nameDef]小时候替聚居地的一排借阅架登记书刊，旧技术期刊和小说都在各家之间传递。等人来取书的时候，她会先翻几页；谁忘记归还，也由她照着本子去提醒。</Rukaya_JournalLoanKid.description>
+
+  <Rukaya_RangeScoreKid.title>靶场记分孩子</Rukaya_RangeScoreKid.title>
+  <Rukaya_RangeScoreKid.titleFemale>靶场记分孩子</Rukaya_RangeScoreKid.titleFemale>
+  <Rukaya_RangeScoreKid.titleShort>记分孩子</Rukaya_RangeScoreKid.titleShort>
+  <Rukaya_RangeScoreKid.titleShortFemale>记分孩子</Rukaya_RangeScoreKid.titleShortFemale>
+  <Rukaya_RangeScoreKid.description>[PAWN_nameDef]小时候在民兵靶场帮忙记分，站在射击线后核对靶纸，把每轮成绩加总。休息时，老兵偶尔让她在看护下试打几发，再一起看靶痕，讲清瞄准和握枪哪里还不对。</Rukaya_RangeScoreKid.description>
+
+  <Rukaya_FerryChild.title>渡口孩子</Rukaya_FerryChild.title>
+  <Rukaya_FerryChild.titleFemale>渡口孩子</Rukaya_FerryChild.titleFemale>
+  <Rukaya_FerryChild.titleShort>渡口孩子</Rukaya_FerryChild.titleShort>
+  <Rukaya_FerryChild.titleShortFemale>渡口孩子</Rukaya_FerryChild.titleShortFemale>
+  <Rukaya_FerryChild.description>[PAWN_nameDef]在聚居地的渡口边长大，跟着大人补跳板、固定松动的栏杆。运送牲畜时，她先在岸上安抚受惊的动物，再慢慢牵到船边，等它们站稳才把缰绳交出去。</Rukaya_FerryChild.description>
+
+  <Rukaya_MarketChild.title>集市孩子</Rukaya_MarketChild.title>
+  <Rukaya_MarketChild.titleFemale>集市孩子</Rukaya_MarketChild.titleFemale>
+  <Rukaya_MarketChild.titleShort>集市孩子</Rukaya_MarketChild.titleShort>
+  <Rukaya_MarketChild.titleShortFemale>集市孩子</Rukaya_MarketChild.titleShortFemale>
+  <Rukaya_MarketChild.description>[PAWN_nameDef]小时候每逢集市都在摊位之间跑腿，替人点清找零，传递口信。遇上讨价还价，她就在边上听着，慢慢记住哪个摊主肯换什么，也知道什么时候插话才不至于惹人烦。</Rukaya_MarketChild.description>
+
+  <Rukaya_SpinningChild.title>纺线孩子</Rukaya_SpinningChild.title>
+  <Rukaya_SpinningChild.titleFemale>纺线孩子</Rukaya_SpinningChild.titleFemale>
+  <Rukaya_SpinningChild.titleShort>纺线孩子</Rukaya_SpinningChild.titleShort>
+  <Rukaya_SpinningChild.titleShortFemale>纺线孩子</Rukaya_SpinningChild.titleShortFemale>
+  <Rukaya_SpinningChild.description>[PAWN_nameDef]小时候常在聚居地的阁楼上学纺线，听年长的人闲聊，手里慢慢绕着纱。线不再忽粗忽细之后，她开始试着搭配不同颜色，给织布的人留下一小段配好的样线。</Rukaya_SpinningChild.description>
+
+  <Rukaya_MemorialChild.title>纪念园孩子</Rukaya_MemorialChild.title>
+  <Rukaya_MemorialChild.titleFemale>纪念园孩子</Rukaya_MemorialChild.titleFemale>
+  <Rukaya_MemorialChild.titleShort>纪念园孩子</Rukaya_MemorialChild.titleShort>
+  <Rukaya_MemorialChild.titleShortFemale>纪念园孩子</Rukaya_MemorialChild.titleShortFemale>
+  <Rukaya_MemorialChild.description>[PAWN_nameDef]小时候帮忙清理纪念园的杂草，给新栽的花浇水。长辈描好碑边的纹样后，她会沿着细线补颜色，也慢慢记住了哪些来探望的人，喜欢在碑前留什么样的花。</Rukaya_MemorialChild.description>
+
+  <Rukaya_PaperMillChild.title>纸坊孩子</Rukaya_PaperMillChild.title>
+  <Rukaya_PaperMillChild.titleFemale>纸坊孩子</Rukaya_PaperMillChild.titleFemale>
+  <Rukaya_PaperMillChild.titleShort>纸坊孩子</Rukaya_PaperMillChild.titleShort>
+  <Rukaya_PaperMillChild.titleShortFemale>纸坊孩子</Rukaya_PaperMillChild.titleShortFemale>
+  <Rukaya_PaperMillChild.description>[PAWN_nameDef]在聚居地的纸坊旁长大，把泡软的碎布纤维搬上晾架，每天替纸页翻一次面。一件磨破的制服，要经过哪些人的手才能变成一叠空白的纸，她全都看在眼里。</Rukaya_PaperMillChild.description>
+
+  <Rukaya_HealerApprenticeKid.title>认药学童</Rukaya_HealerApprenticeKid.title>
+  <Rukaya_HealerApprenticeKid.titleFemale>认药学童</Rukaya_HealerApprenticeKid.titleFemale>
+  <Rukaya_HealerApprenticeKid.titleShort>认药学童</Rukaya_HealerApprenticeKid.titleShort>
+  <Rukaya_HealerApprenticeKid.titleShortFemale>认药学童</Rukaya_HealerApprenticeKid.titleShortFemale>
+  <Rukaya_HealerApprenticeKid.description>[PAWN_nameDef]小时候跟着配药的人辨认草药，记下叶子的气味和形状，也照着小册子学认药名。遇到拿不准的植物，她会带回枝叶请大人分辨，不肯自己往药筐里乱放。</Rukaya_HealerApprenticeKid.description>
+
+  <Rukaya_BellTowerChild.title>钟楼孩子</Rukaya_BellTowerChild.title>
+  <Rukaya_BellTowerChild.titleFemale>钟楼孩子</Rukaya_BellTowerChild.titleFemale>
+  <Rukaya_BellTowerChild.titleShort>钟楼孩子</Rukaya_BellTowerChild.titleShort>
+  <Rukaya_BellTowerChild.titleShortFemale>钟楼孩子</Rukaya_BellTowerChild.titleShortFemale>
+  <Rukaya_BellTowerChild.description>[PAWN_nameDef]小时候帮忙看护聚居地的瞭望钟，跟着长辈给吊架抹油、拧紧支架，换掉磨毛的绳子。她总想弄明白钟声是怎样传出去的，修完以后还会守在旁边，等换班的人来试敲。</Rukaya_BellTowerChild.description>
+
+</LanguageData>

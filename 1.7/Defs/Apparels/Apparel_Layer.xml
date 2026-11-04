@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<ApparelLayerDef>
+		<defName>Rukaya_Underwear</defName>
+		<label>underwear</label>
+		<!-- 中文翻译：内衣 -->
+		<drawOrder>-50</drawOrder>
+	</ApparelLayerDef>
+
+	<ApparelLayerDef>
+		<defName>Rukaya_OnSkin</defName>
+		<label>onskin</label>
+		<!-- 中文翻译：贴身 -->
+		<drawOrder>0</drawOrder>
+	</ApparelLayerDef>
+
+	<ApparelLayerDef>
+		<defName>Rukaya_Pants</defName>
+		<label>pants</label>
+		<!-- 中文翻译：裤装 -->
+		<drawOrder>-25</drawOrder>
+	</ApparelLayerDef>
+
+	<ApparelLayerDef>
+		<defName>Rukaya_Bag</defName>
+		<label>bag</label>
+		<!-- 中文翻译：背包 -->
+		<drawOrder>50</drawOrder>
+	</ApparelLayerDef>
+
+</Defs>

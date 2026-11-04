@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Rukaya_FlightModeCommandOn>Flight: on</Rukaya_FlightModeCommandOn>
+  <Rukaya_FlightModeCommandOnDesc>This Rukaya takes off on being drafted and stays airborne until this switch is turned off or she is undrafted.\n\nShe ignores this switch while engaging an enemy target and will take off regardless.\n\nRequires at least one wing intact and at least 10% satiety.</Rukaya_FlightModeCommandOnDesc>
+
+  <Rukaya_FlightModeCommandOff>Flight: off</Rukaya_FlightModeCommandOff>
+  <Rukaya_FlightModeCommandOffDesc>This Rukaya stays on the ground while drafted.\n\nShe still takes off while engaging an enemy target, and lands again once the fight is over, returning to this switch's state.\n\nUndrafting switches flight back off.</Rukaya_FlightModeCommandOffDesc>
+
+  <Rukaya_FlightModeSwitchedOn>{PAWN_labelShort} will take to the sky.</Rukaya_FlightModeSwitchedOn>
+  <Rukaya_FlightModeSwitchedOff>{PAWN_labelShort} will return to the ground.</Rukaya_FlightModeSwitchedOff>
+
+  <Rukaya_FlightDisabledNoWings>Both wings must be intact to fly.</Rukaya_FlightDisabledNoWings>
+  <Rukaya_FlightDisabledDowned>Cannot fly while downed.</Rukaya_FlightDisabledDowned>
+  <Rukaya_FlightDisabledHungry>Satiety must be at least {0}% to fly.</Rukaya_FlightDisabledHungry>
+
+</LanguageData>

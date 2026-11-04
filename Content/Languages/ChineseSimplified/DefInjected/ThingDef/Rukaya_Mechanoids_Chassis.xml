@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- 说明：Rukaya_BaseMechChassis 是 Name= 的 Abstract 抽象模板，不进 DefDatabase，
+       不能作为注入目标（写了会报 "Found no Verse.ThingDef named Rukaya_BaseMechChassis"）。
+       7 个具体底盘各自拥有独立 description，因此在这里逐个注入中文译文。 -->
+
+  <Rukaya_MechChassis_Laser.label>卢卡娅通用机械“激光型”</Rukaya_MechChassis_Laser.label>
+  <Rukaya_MechChassis_Laser.description>基于标准的卢卡娅机械底盘发展的专用机械体。其炮塔环上搭载一座聚焦发射器，向目标区域倾泻持续的充能光束。该发射器可切换至对空模式，将光束转向天空拦截飞行目标。</Rukaya_MechChassis_Laser.description>
+
+  <Rukaya_MechChassis_MachineCannon.label>卢卡娅通用机械“机炮型”</Rukaya_MechChassis_MachineCannon.label>
+  <Rukaya_MechChassis_MachineCannon.description>基于标准的卢卡娅机械底盘发展的专用机械体。其炮塔环上搭载一门高射速自动机炮，用于对集结的步兵提供近距支援。该炮座可切换至对空模式，用于拦截飞行目标。</Rukaya_MechChassis_MachineCannon.description>
+
+  <Rukaya_MechChassis_MineSweeper.label>卢卡娅通用机械“扫雷索型”</Rukaya_MechChassis_MineSweeper.label>
+  <Rukaya_MechChassis_MineSweeper.description>基于标准的卢卡娅机械底盘发展的专用机械体。其炮塔环上搭载一套扫雷索具：一枚火箭越过掩体飞向目标点，一路上在身后拖放出一串爆破装药，先在通路尽头炸开一个口子，再顺着整条通路依次引爆下去。</Rukaya_MechChassis_MineSweeper.description>
+
+  <Rukaya_MechChassis_SAMLauncher.label>卢卡娅通用机械“导弹型”</Rukaya_MechChassis_SAMLauncher.label>
+  <Rukaya_MechChassis_SAMLauncher.description>基于标准的卢卡娅机械底盘发展的专用机械体。其炮塔环上搭载一座每次发射一枚战斗部的制导导弹发射器。每枚导弹先爬升翻越掩体，随后被引导到目标上。独立的对空炮座负责拦截来袭空中威胁。</Rukaya_MechChassis_SAMLauncher.description>
+
+  <Rukaya_MechChassis_Mortar.label>卢卡娅通用机械“迫击炮型”</Rukaya_MechChassis_Mortar.label>
+  <Rukaya_MechChassis_Mortar.description>基于标准的卢卡娅机械底盘发展的专用机械体。其炮塔环上搭载一门机动火炮，炮弹以高抛越顶弹道飞行，因此能在敌方射程之外将火力逐步压制到设防阵地上。</Rukaya_MechChassis_Mortar.description>
+
+  <Rukaya_MechChassis_Plasma.label>卢卡娅通用机械“等离子型”</Rukaya_MechChassis_Plasma.label>
+  <Rukaya_MechChassis_Plasma.description>基于标准的卢卡娅机械底盘发展的专用机械体。其炮塔环上搭载一座活性物质等离子投射器，能够烧穿装甲并点燃一切残存目标。</Rukaya_MechChassis_Plasma.description>
+
+  <Rukaya_MechChassis_Rocket.label>卢卡娅通用机械“火箭型”</Rukaya_MechChassis_Rocket.label>
+  <Rukaya_MechChassis_Rocket.description>基于标准的卢卡娅机械底盘发展的专用机械体。其炮塔环上搭载一组多管火箭发射巢，会打出一轮短促的直射高爆火箭齐射；之后发射管需要很长时间才能重新装填并上药。</Rukaya_MechChassis_Rocket.description>
+
+  <Rukaya_MechRadar.label>卢卡娅通用机械“雷达型”</Rukaya_MechRadar.label>
+  <Rukaya_MechRadar.description>基于标准的卢卡娅机械底盘发展的专用机械体。其上部结构以旋转雷达天线为核心构建。它自身不携带任何武器，而是为整个集群提供协调：范围内的友方单位获得大范围的射手光环，范围内的敌方单位被施加强化版雷达标记，同时该底盘以自身为圆心投射一片额外的机械师控制范围，使火炮与导弹平台能够在自身被发现之前就先行打击目标。</Rukaya_MechRadar.description>
+
+  <!-- 具体 Def 继承的攻击部位；列表下标按 XML 继承后的顺序。 -->
+  <Rukaya_MechChassis_Laser.tools.0.label>撞角挡板</Rukaya_MechChassis_Laser.tools.0.label>
+  <Rukaya_MechChassis_MachineCannon.tools.0.label>撞角挡板</Rukaya_MechChassis_MachineCannon.tools.0.label>
+  <Rukaya_MechChassis_MineSweeper.tools.0.label>撞角挡板</Rukaya_MechChassis_MineSweeper.tools.0.label>
+  <Rukaya_MechChassis_SAMLauncher.tools.0.label>撞角挡板</Rukaya_MechChassis_SAMLauncher.tools.0.label>
+  <Rukaya_MechChassis_Mortar.tools.0.label>撞角挡板</Rukaya_MechChassis_Mortar.tools.0.label>
+  <Rukaya_MechChassis_Plasma.tools.0.label>撞角挡板</Rukaya_MechChassis_Plasma.tools.0.label>
+  <Rukaya_MechChassis_Rocket.tools.0.label>撞角挡板</Rukaya_MechChassis_Rocket.tools.0.label>
+
+</LanguageData>

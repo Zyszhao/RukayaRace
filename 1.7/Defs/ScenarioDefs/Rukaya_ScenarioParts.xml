@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- 剧本专用 ScenPart：开局把"玩家阵营 ↔ NPC 卢卡娅阵营"的好感度设为 100（同族）。
+       实现见 Source/RukayaRace/Scenario/ScenPart_RukayaKinRelations.cs（PostWorldGenerate）。
+       固定项：不允许玩家在剧本编辑器里增删、也不参与随机剧本生成。 -->
+  <ScenPartDef>
+    <defName>RukayaKinRelations</defName>
+    <label>Rukaya kinship</label>
+    <!-- 中文：卢卡娅同族关系 -->
+    <description>Your Rukaya start on good terms with the Rukaya Drifter Alliance: goodwill 100, natural goodwill 75.</description>
+    <!-- 中文翻译：你的卢卡娅与「漂泊者同盟」同族相亲：好感度 100，自然好感度 75。 -->
+    <scenPartClass>RukayaRace.Scenario.ScenPart_RukayaKinRelations</scenPartClass>
+    <category>Fixed</category>
+    <canBeRandomlyAdded>false</canBeRandomlyAdded>
+    <canBePlayerAddedRemoved>false</canBePlayerAddedRemoved>
+    <summaryPriority>500</summaryPriority>
+  </ScenPartDef>
+
+  <!-- 自然好感度局势：把 NPC 卢卡娅阵营对玩家的自然好感度偏移设为 75。
+       原版自然好感度是 GoodwillSituationManager 累加各 GoodwillSituationDef 的
+       Worker.GetNaturalGoodwillOffset 得到的（每 1000 tick 重算），没有存档字段，
+       因此只能这样做；worker 内部再限定"仅当剧本带 RukayaKinRelations 时生效"。
+       该 label 会出现在派系好感度说明里。 -->
+  <GoodwillSituationDef>
+    <defName>Rukaya_KinRelations</defName>
+    <label>Rukaya kinship</label>
+    <!-- 中文：卢卡娅同族亲情 -->
+    <workerClass>RukayaRace.Scenario.GoodwillSituationWorker_RukayaKin</workerClass>
+    <naturalGoodwillOffset>75</naturalGoodwillOffset>
+  </GoodwillSituationDef>
+
+</Defs>

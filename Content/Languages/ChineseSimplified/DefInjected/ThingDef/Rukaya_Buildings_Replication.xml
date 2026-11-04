@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Rukaya_TriplexScanner.label>三束射线装备扫描仪</Rukaya_TriplexScanner.label>
+  <Rukaya_TriplexScanner.description>一座卢卡娅分析终端，能够将武器与服装的结构记录为活性物质模板。更好的原型可以揭示更高的品质上限，也可以投入额外活性物质，将已恢复的模板提升到超过现存样品的水平。</Rukaya_TriplexScanner.description>
+  <Rukaya_ActiveMatterPrinter.label>活性物质装备打印机</Rukaya_ActiveMatterPrinter.label>
+  <Rukaya_ActiveMatterPrinter.description>一座卢卡娅自动化生产终端，能够使用内部储存的活性物质重构已扫描的武器与服装。只要电力、模板和内部活性物质储备仍然可用，它就会在无人操作的情况下继续执行有序生产清单。</Rukaya_ActiveMatterPrinter.description>
+</LanguageData>

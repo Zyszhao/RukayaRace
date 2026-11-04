@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Rukaya_AssaultRifleRadar_ScanPulse.label>雷达扫描脉冲</Rukaya_AssaultRifleRadar_ScanPulse.label>
+  <Rukaya_AssaultRifleRadar_ScanPulse.description>以聚焦雷达脉冲标记一个目标。主目标会被锁定以供后续集火，承受传感器干扰和 EMP 影响，而其周围的敌对单位会被暴露，失去隐身并无法再依赖致盲烟幕获得保护。</Rukaya_AssaultRifleRadar_ScanPulse.description>
+
+  <Rukaya_AssaultRifleFlame_Burner.label>下挂喷火器</Rukaya_AssaultRifleFlame_Burner.label>
+  <Rukaya_AssaultRifleFlame_Burner.description>启动这把步枪的紧凑喷火模块，向前方短锥形区域喷出燃烧燃料。喷射会把易燃液体泼洒到目标区域并立即点燃，非常适合强行点燃地面并把敌人从掩体后面逼出来。</Rukaya_AssaultRifleFlame_Burner.description>
+
+  <Rukaya_AssaultRifleGrenade_SignalFlare.label>发射信号弹</Rukaya_AssaultRifleGrenade_SignalFlare.label>
+  <Rukaya_AssaultRifleGrenade_SignalFlare.description>发射一枚活性物质信号弹。它落地后会以刺眼强光覆盖周围区域，扰乱隐藏目标，并以一次性燃烧爆发把点燃的燃料泼洒到附近地面。</Rukaya_AssaultRifleGrenade_SignalFlare.description>
+
+
+  <Rukaya_Prototype_SmokeGrenade.label>发射烟雾弹</Rukaya_Prototype_SmokeGrenade.label>
+  <Rukaya_Prototype_SmokeGrenade.description>从原型步枪的下挂弹仓发射一枚烟雾弹。命中后会释放标准的致盲烟幕，阻断炮塔锁定并降低来袭火力精度。</Rukaya_Prototype_SmokeGrenade.description>
+
+</LanguageData>

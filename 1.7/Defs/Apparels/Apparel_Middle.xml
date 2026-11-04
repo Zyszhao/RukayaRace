@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ===== 夹层（使用原版 Middle 层，drawOrder 100）：穿在贴身层之外、外套层之内 ===== -->
+  <ThingDef Name="Rukaya_MiddleBase" ParentName="Rukaya_ApparelBase" Abstract="True">
+    <statBases>
+      <Mass>0.6</Mass>
+      <EquipDelay>1.5</EquipDelay>
+    </statBases>
+    <apparel>
+      <layers>
+        <li>Middle</li>
+      </layers>
+    </apparel>
+    <thingCategories>
+      <li>Rukaya_Apparel_Middle</li>
+    </thingCategories>
+  </ThingDef>
+
+  <ThingDef Name="Rukaya_MiddleBaseI" ParentName="Rukaya_MiddleBase" Abstract="True">
+    <recipeMaker>
+      <researchPrerequisite>Rukaya_Apparel_I</researchPrerequisite>
+    </recipeMaker>
+    <apparel>
+      <tags>
+        <li>Rukaya_Middle</li>
+      </tags>
+    </apparel>
+    <tradeTags>
+      <li>Rukaya_DailyClothing</li>
+    </tradeTags>
+  </ThingDef>
+
+  <ThingDef Name="Rukaya_MiddleBaseII" ParentName="Rukaya_MiddleBase" Abstract="True">
+    <recipeMaker>
+      <researchPrerequisite>Rukaya_Apparel_II</researchPrerequisite>
+    </recipeMaker>
+    <apparel>
+      <tags>
+        <li>Rukaya_Middle</li>
+      </tags>
+    </apparel>
+    <tradeTags>
+      <li>Rukaya_DailyClothing</li>
+    </tradeTags>
+  </ThingDef>
+
+  <ThingDef Name="Rukaya_MiddleBaseIII" ParentName="Rukaya_MiddleBase" Abstract="True">
+    <recipeMaker>
+      <researchPrerequisite>Rukaya_Apparel_III</researchPrerequisite>
+    </recipeMaker>
+    <apparel>
+      <tags>
+        <li>Rukaya_Middle</li>
+      </tags>
+    </apparel>
+    <tradeTags>
+      <li>Rukaya_DailyClothing</li>
+    </tradeTags>
+  </ThingDef>
+
+  <!-- 2级（Advanced）· 胸挂（贴图 5/RukayaMiddle1_*）· 只覆盖躯干上段：
+       以织带与口袋收纳弹药，把前摇（瞄准时间）与后摇（连发间隔）都压下来，
+       代价是几乎没有防护，保温也只有一点点。 -->
+  <ThingDef ParentName="Rukaya_MiddleBaseII">
+    <defName>Rukaya_ChestRig</defName>
+    <label>Rukaya chest rig</label>
+    <!-- 中文：卢卡娅胸挂 -->
+    <techLevel>Industrial</techLevel>
+    <description>A light chest rig of webbing and pouches, worn over a uniform and under armour. The
+      load rides close to the chest and the open front keeps the wings clear, so a weapon comes up
+      and cycles noticeably faster. It offers almost no protection and only a little warmth.</description>
+    <!-- 中文翻译：一件由织带与口袋组成的轻便胸挂，穿在军服之外、装甲之内。负重紧贴胸口，胸前开口不碍翅膀，因此抬枪与连发都明显更快。它几乎不提供防护，保暖也只有一点点。 -->
+    <graphicData>
+      <texPath>Rukaya/Apparel/Middle/ChestRig/Rukaya_ChestRig</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Cutout</shaderType>
+    </graphicData>
+    <statBases>
+      <Mass>0.6</Mass>
+      <EquipDelay>1.5</EquipDelay>
+      <WorkToMake>3500</WorkToMake>
+      <ArmorRating_Sharp>0.16</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.08</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.06</ArmorRating_Heat>
+      <Insulation_Cold>4</Insulation_Cold>
+      <Insulation_Heat>5</Insulation_Heat>
+    </statBases>
+    <costList>
+      <Cloth>45</Cloth>
+      <Steel>20</Steel>
+    </costList>
+    <apparel>
+      <useWornGraphicMask>false</useWornGraphicMask>
+      <developmentalStageFilter>Child, Adult</developmentalStageFilter>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Neck</li>
+        <li>Shoulders</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Rukaya/Apparel/Middle/ChestRig/Rukaya_ChestRig</wornGraphicPath>
+    </apparel>
+    <equippedStatOffsets>
+      <AimingDelayFactor>-0.10</AimingDelayFactor>
+      <RangedCooldownFactor>-0.10</RangedCooldownFactor>
+    </equippedStatOffsets>
+  </ThingDef>
+
+  <!-- 2级（Advanced）· 防弹背心（贴图 7/RukayaMiddle2_*）· 定位对标原版防弹背心（Apparel_FlakVest）：
+       锐防 1.00 / 钝防 0.36 / 热防 0.27 / 移速 -0.12 / HP 200 / 造价 Cloth30+Steel60+ComponentIndustrial1
+       全部与原版一致，换来的是插板护住胸口、却完全不护四肢、几乎不保暖的定位（Insulation_Cold 1、
+       Insulation_Heat 2）。
+       有意偏离 1：原版 bodyPartGroups 只有 Torso + Neck；这里沿用本模组 Middle 夹层口径
+       （见 Rukaya_ChestRig）额外加上 Shoulders，让肩带也吃到同样的防护。
+       身份词条 Rukaya_Dress_Service（民兵/正规军常服池）与 Rukaya_Dress_Officer（军官池）
+       写在叶子 Def 本地，部位词条 Rukaya_Middle 亦需一并写全。 -->
+  <ThingDef ParentName="Rukaya_MiddleBaseII">
+    <defName>Rukaya_FlakVest</defName>
+    <label>Rukaya flak vest</label>
+    <!-- 中文：卢卡娅防弹背心 -->
+    <techLevel>Industrial</techLevel>
+    <description>A vest carrying front and back ballistic plates. It reliably stops bullets and stabs
+      aimed at the chest, but leaves the limbs completely unprotected. The padded lining and shoulder
+      straps weigh the wearer down, so their steps come a little slower.</description>
+    <!-- 中文翻译：一件插着前后防弹插板的背心。它能有效挡下打向胸口的枪弹与刺击，但对四肢毫无保护。加厚的内衬与肩带重量让穿着者的脚步稍慢。 -->
+    <graphicData>
+      <texPath>Rukaya/Apparel/Middle/FlakVest/Rukaya_FlakVest</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Cutout</shaderType>
+    </graphicData>
+    <statBases>
+      <Mass>3.5</Mass>
+      <EquipDelay>4.0</EquipDelay>
+      <WorkToMake>9000</WorkToMake>
+      <MaxHitPoints>200</MaxHitPoints>
+      <ArmorRating_Sharp>1.00</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.36</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.27</ArmorRating_Heat>
+      <Insulation_Cold>1</Insulation_Cold>
+      <Insulation_Heat>2</Insulation_Heat>
+    </statBases>
+    <costList>
+      <Cloth>30</Cloth>
+      <Steel>60</Steel>
+      <ComponentIndustrial>1</ComponentIndustrial>
+    </costList>
+    <apparel>
+      <useWornGraphicMask>false</useWornGraphicMask>
+      <developmentalStageFilter>Child, Adult</developmentalStageFilter>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Neck</li>
+        <li>Shoulders</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Rukaya/Apparel/Middle/FlakVest/Rukaya_FlakVest</wornGraphicPath>
+      <tags>
+        <li>Rukaya_Middle</li>
+        <li>Rukaya_Dress_Service</li>
+        <li>Rukaya_Dress_Officer</li>
+      </tags>
+    </apparel>
+    <equippedStatOffsets>
+      <MoveSpeed>-0.12</MoveSpeed>
+    </equippedStatOffsets>
+  </ThingDef>
+
+</Defs>

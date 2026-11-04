@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!--
+    紧急飞行：复用原版跳跃的表现（插值位移、影子、落地尘土、音效、特效、强制落地取消任务队列），
+    但换上调过手感的 Rukaya_EmergencyFlyer（见 1.7/Defs/ThingDefs_Misc/Rukaya_PawnFlyer.xml），
+    并附带一次性代价与疲惫累积。
+
+    链路（全部核对过原版源码）：
+      Ability.Activate → verb.TryStartCastOn → Verb_CastRukayaEmergencyFly.TryCastShot
+        → JumpUtility.DoJump(..., JumpFlyerDef)
+        → PawnFlyer.MakeFlyer + GenSpawn.Spawn
+
+    jobDef = CastJump：原版跳跃用的就是这个 job，行为（含 OrderForceTarget 的右键路径）完全一致。
+    真正的施放入口是 verb 的 TryCastShot，jobDef 只决定"玩家点击图标后如何排 job"。
+
+    ⚠ 落地后保持原状（飞行模式开着就继续飞、没开就不飞）是现有架构的自然结果，**不要**为了它加代码：
+      PawnFlyer 起飞时把 pawn DeSpawn 收进 innerContainer，飞行期间 CompRukayaFlightControl 不 tick，
+      所以 mode 不会被"不能兑现就归零"的 latch 误清；落地时 PawnFlyer 自己还原 Drafted；
+      RespawnPawn 后下一 tick comp 恢复 tick，按 ShouldFlyNow 自然决定是否重新起飞。
+      对应地，下面两个 comp 的 Apply 绝不碰 mode / Drafted / flightState
+      （详见 设计文档/飞行系统_浮动与紧急飞行实装.md §2.5）。
+  -->
+  <AbilityDef>
+    <defName>Rukaya_EmergencyFly</defName>
+    <label>emergency flight</label>
+    <!-- 中文：紧急飞行 -->
+    <description>A desperate burst of the wings that hurls the Rukaya across the field in an instant. Cheap to invoke, but every use leaves her wings burning with fatigue.</description>
+    <!-- 中文翻译：一次不顾一切的振翅爆发，转瞬间将卢卡娅抛过战场。施放代价低廉，但每一次使用都会让她的双翼因疲惫而灼痛。 -->
+    <!-- 专用的紧急飞行图标（Content/Textures/Rukaya/UI/Rukaya_EmergencyFlying.png）：
+         一只振开的翅膀配一枚指示突进方向的箭头。 -->
+    <iconPath>Rukaya/UI/Rukaya_EmergencyFlying</iconPath>
+    <!-- 冷却 1 秒（60 tick）。紧急飞行定位是"短促的战术位移"而不是一次性大招，
+         所以冷却压得很短，真正的代价由饱食度 / 休息值 / 疲惫累积承担，而不是由冷却承担。 -->
+    <cooldownTicksRange>60</cooldownTicksRange>
+    <hostile>false</hostile>
+    <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+
+    <verbProperties>
+      <verbClass>RukayaRace.Flight.Verb_CastRukayaEmergencyFly</verbClass>
+      <label>emergency flight</label>
+      <!-- 中文：紧急飞行 -->
+      <violent>false</violent>
+      <forceNormalTimeSpeed>false</forceNormalTimeSpeed>
+      <warmupTime>0.2</warmupTime>
+      <range>24.9</range>
+      <requireLineOfSight>true</requireLineOfSight>
+      <soundCast>Longjump_Jump</soundCast>
+      <soundLanding>Longjump_Land</soundLanding>
+      <targetParams>
+        <canTargetLocations>true</canTargetLocations>
+        <canTargetPawns>true</canTargetPawns>
+        <canTargetBuildings>true</canTargetBuildings>
+      </targetParams>
+    </verbProperties>
+
+    <!-- 复用原版跳跃 job：它已经会走 verb 的 TryCastShot 路径。 -->
+    <jobDef>CastJump</jobDef>
+
+    <comps>
+      <!-- 一次性饱食度 / 休息消耗 + 阈值门禁 + 疲惫累积。
+           饱食消耗从 0.04 降到 0.015：冷却只有 1 秒，若单次仍扣 4%，
+           连续使用会在极短时间内把饱食度吃干，饥饿门禁反而成了主要限制。
+           代价的重心放在"疲惫累积"上，饱食度只作为轻微的资源牵扯。 -->
+      <li Class="RukayaRace.Flight.CompProperties_AbilityRukayaFlightCost">
+        <hungerCost>0.015</hungerCost>
+        <hungerThreshold>0.2</hungerThreshold>
+        <restCost>0.01</restCost>
+        <restThreshold>0.2</restThreshold>
+        <exhaustionHediff>Rukaya_FlightExhaustion</exhaustionHediff>
+        <exhaustionPerUse>1.0</exhaustionPerUse>
+      </li>
+
+      <!-- 翅膀必须在：与持续飞行共用 PawnRenderNodeWorker_RukayaWing.PresentWings 这一个判定。 -->
+      <li Class="RukayaRace.Flight.CompProperties_AbilityRukayaWingRequirement">
+        <wingBodyPart>Rukaya_Wing</wingBodyPart>
+        <requireBothWings>true</requireBothWings>
+      </li>
+    </comps>
+  </AbilityDef>
+
+</Defs>

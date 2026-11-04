@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ============================================================
+       Rukaya 机械体（Mechanoids）· 雷达车（独立载具）
+       贴图：Content/Textures/Rukaya/Mechanoids/Rukaya_MechRadar_{east,north,south}.png
+       炮塔：无 —— 雷达车是纯传感载具，不挂载任何炮塔，
+             因此不使用原版 CompProperties_TurretGun（该 comp 要求挂载的 turretDef
+             至少有一个 verb，否则每个 tick 都会在 TurretDestroyed 处报空引用）。
+       身体结构：Rukaya_MechRadarBody —— 无炮塔环，改用雷达基座 / 发射机 / 天线 / 信号处理机
+       推进方式：螺旋推进（与 Rukaya_MechanoidChassis 同构，仅装甲更薄、机动更慢）
+       ============================================================ -->
+
+  <ThingDef ParentName="Rukaya_BaseMechChassis">
+    <defName>Rukaya_MechRadar</defName>
+    <label>卢卡娅通用机械“雷达型”</label>
+    <!-- 中文：卢卡娅通用机械“雷达型” -->
+    <description>A dedicated mechanoid developed from the standard Rukaya mechanoid chassis. Its upper structure
+      is built around a rotating radar antenna. It carries no weapon of its own. Instead it coordinates the group:
+      friendly units within range gain a wide-area marksman aura, enemy units within range are painted with an
+      enhanced radar marking, and the chassis projects an additional mechanitor control radius around itself, so
+      artillery and missile platforms can engage targets long before they are themselves detected.</description>
+    <!-- 中文翻译：基于标准的卢卡娅机械底盘发展的专用机械体。其上部结构以旋转雷达天线为核心构建。它自身不携带任何武器，而是为整个集群提供协调：范围内的友方单位获得大范围的射手光环，范围内的敌方单位被施加强化版雷达标记，同时该底盘以自身为圆心投射一片额外的机械师控制范围，使火炮与导弹平台能够在自身被发现之前就先行打击目标。 -->
+    <statBases>
+      <MoveSpeed>1.6</MoveSpeed>
+      <ArmorRating_Blunt>0.16</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.52</ArmorRating_Sharp>
+      <ArmorRating_Heat>1.8</ArmorRating_Heat>
+      <PsychicSensitivity>0.75</PsychicSensitivity>
+      <BandwidthCost MayRequire="Ludeon.RimWorld.Biotech">3</BandwidthCost>
+      <ControlTakingTime MayRequire="Ludeon.RimWorld.Biotech">12</ControlTakingTime>
+      <MechEnergyLossPerHP MayRequire="Ludeon.RimWorld.Biotech">0.2</MechEnergyLossPerHP>
+      <WastepacksPerRecharge MayRequire="Ludeon.RimWorld.Biotech">4</WastepacksPerRecharge>
+      <CarryingCapacity>60</CarryingCapacity>
+      <StaggerDurationFactor>0</StaggerDurationFactor>
+      <MechEnergyUsageFactor>0.5</MechEnergyUsageFactor>
+    </statBases>
+    <tools Inherit="False" />
+    <race>
+      <body>Rukaya_MechRadarBody</body>
+    </race>
+    <comps>
+      <!-- 雷达三接口的数据驱动实现：CompRukayaMechRadar。
+           光环 / 标记每 60 tick 刷新一次；雷达自身必须刷出、未死、未倒地、非精神错乱、未休眠、未眩晕、有余能。
+           光环覆盖同阵营与盟友，离开范围后 120 tick 自然结束；标记只给敌对单位，离开范围后 600 tick 自然结束，不造成伤害。
+           中继：同一机械师控制的机械可在雷达 24.9 格内接收指挥，不改变机械师绑定，不做递归中继。 -->
+      <li Class="RukayaRace.Radar.CompProperties_RukayaMechRadar" MayRequire="Ludeon.RimWorld.Biotech">
+        <requireAwake>true</requireAwake>
+        <requireEnergy>true</requireEnergy>
+        <minEnergyPercent>0</minEnergyPercent>
+        <auraRange>14.9</auraRange>
+        <auraRefreshIntervalTicks>60</auraRefreshIntervalTicks>
+        <auraDurationTicks>120</auraDurationTicks>
+        <auraHediff>Rukaya_MechRadarAura</auraHediff>
+        <markRange>24.9</markRange>
+        <markRefreshIntervalTicks>60</markRefreshIntervalTicks>
+        <markDurationTicks>600</markDurationTicks>
+        <lockOnHediff>Rukaya_RadarLockOn</lockOnHediff>
+        <exposedHediff>Rukaya_MechRadarExposed</exposedHediff>
+        <commandRelayRangeCells>24.9</commandRelayRangeCells>
+        <commandRelayRequireSameOverseer>true</commandRelayRequireSameOverseer>
+        <commandRelaySameMapOnly>true</commandRelaySameMapOnly>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <PawnKindDef ParentName="Rukaya_BaseMechanoidKind">
+    <defName>Rukaya_MechRadar</defName>
+    <label>卢卡娅通用机械“雷达型”</label>
+    <!-- 中文：卢卡娅通用机械“雷达型” -->
+    <race>Rukaya_MechRadar</race>
+    <combatPower>120</combatPower>
+    <isFighter>false</isFighter>
+    <!-- 无武器的雷达支援单位不能请求近战 verb，否则生成后的战斗 AI 会查询空的近战列表。 -->
+    <canMeleeAttack>false</canMeleeAttack>
+    <weaponTags />
+    <!-- Inherit="False" 必不可少：父模板 Rukaya_BaseMechanoidKind 已经有 2 条 lifeStages，
+         不声明 Inherit="False" 时 XML 继承会与本节点"追加"合并成 4 条，
+         并触发 "PawnKindDef defines 4 lifeStages while race def defines 2" 配置错误。 -->
+    <lifeStages Inherit="False">
+      <li MayRequire="Ludeon.RimWorld.Biotech">
+        <bodyGraphicData>
+          <texPath>Rukaya/Mechanoids/Rukaya_MechRadar</texPath>
+          <shaderType>CutoutComplex</shaderType>
+          <graphicClass>Graphic_Multi</graphicClass>
+          <drawSize>3</drawSize>
+          <shadowData>
+            <volume>(0.6, 0.8, 0.6)</volume>
+          </shadowData>
+        </bodyGraphicData>
+      </li>
+      <li>
+        <bodyGraphicData>
+          <texPath>Rukaya/Mechanoids/Rukaya_MechRadar</texPath>
+          <shaderType>CutoutComplex</shaderType>
+          <graphicClass>Graphic_Multi</graphicClass>
+          <drawSize>3</drawSize>
+          <shadowData>
+            <volume>(0.6, 0.8, 0.6)</volume>
+          </shadowData>
+        </bodyGraphicData>
+      </li>
+    </lifeStages>
+  </PawnKindDef>
+
+</Defs>

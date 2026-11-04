@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Rukaya_TrioSettings>Annual mysterious drop pods: one chance per successful event, at most one arrival per 60-day year. Only Valeriya and Galina; disabled in The Exiled Rukaya scenario.</Rukaya_TrioSettings>
+  <!-- 中文：年度神秘空投仓：每次成功事件进行判定，每60天最多抵达一次。仅瓦莱里娅与加林娜启用，被放逐的卢卡娅剧本禁用。 -->
+  <Rukaya_TrioInitial>First-event chance</Rukaya_TrioInitial>
+  <!-- 中文：每年首次判定概率 -->
+  <Rukaya_TrioDecay>Chance retained after each failed roll</Rukaya_TrioDecay>
+  <!-- 中文：每次未触发后保留的概率比例 -->
+  <Rukaya_TrioFloor>Minimum chance (cannot exceed first-event chance)</Rukaya_TrioFloor>
+  <!-- 中文：最低判定概率（不超过首次概率） -->
+  <Rukaya_TrioDeath>Death chance per passenger</Rukaya_TrioDeath>
+  <!-- 中文：每名乘员的死亡概率 -->
+  <Rukaya_TrioReset>Restore drop-pod probability defaults</Rukaya_TrioReset>
+  <!-- 中文：恢复空投概率默认值 -->
+  <Rukaya_TrioNameSeparator>, </Rukaya_TrioNameSeparator>
+  <!-- 中文：、 -->
+</LanguageData>

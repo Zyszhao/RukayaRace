@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Rukaya_FlightModeCommandOn>飞行：开</Rukaya_FlightModeCommandOn>
+  <Rukaya_FlightModeCommandOnDesc>征召后自动升空并保持在空中，直到关闭本开关或取消征召。\n\n接敌（存在敌人目标）时无视本开关，一律升空。\n\n需要至少一侧翅膀完好，且饱食不低于 10%。</Rukaya_FlightModeCommandOnDesc>
+
+  <Rukaya_FlightModeCommandOff>飞行：关</Rukaya_FlightModeCommandOff>
+  <Rukaya_FlightModeCommandOffDesc>征召后保持地面行动。\n\n接敌（存在敌人目标）时仍会升空，脱战后自动落地并回到本开关的状态。\n\n取消征召会自动关闭飞行。</Rukaya_FlightModeCommandOffDesc>
+
+  <Rukaya_FlightModeSwitchedOn>{PAWN_labelShort}将飞上天空。</Rukaya_FlightModeSwitchedOn>
+  <Rukaya_FlightModeSwitchedOff>{PAWN_labelShort}将落回地面。</Rukaya_FlightModeSwitchedOff>
+
+  <Rukaya_FlightDisabledNoWings>双翼必须完好才能飞行。</Rukaya_FlightDisabledNoWings>
+  <Rukaya_FlightDisabledDowned>倒地状态下无法飞行。</Rukaya_FlightDisabledDowned>
+  <Rukaya_FlightDisabledHungry>饱食度必须不低于 {0}% 才能飞行。</Rukaya_FlightDisabledHungry>
+
+</LanguageData>

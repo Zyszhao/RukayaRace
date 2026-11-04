@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Rukaya_ReplicationReservoirCapacityLabel>Replication reservoir capacity</Rukaya_ReplicationReservoirCapacityLabel>
+  <!-- 中文：复制设备储罐容量 -->
+  <Rukaya_ReplicationReservoirCapacityDescription>Sets the maximum number of active matter containers held by each scanner or printer. Lowering this value does not destroy containers already stored above the new limit.</Rukaya_ReplicationReservoirCapacityDescription>
+  <!-- 中文：设置每台扫描仪或打印机最多保存的活性物质容器数量。降低此数值不会销毁已经超出新上限的容器。 -->
+
+  <Rukaya_ReservoirInspect>Active matter reservoir: {0} / {1}</Rukaya_ReservoirInspect>
+  <!-- 中文：活性物质储罐：{0} / {1} -->
+  <Rukaya_LoadReservoirFloatMenu>Load active matter into {0}</Rukaya_LoadReservoirFloatMenu>
+  <!-- 中文：向{0}装填活性物质 -->
+  <Rukaya_ReservoirNoStoredMatter>No stored active matter is available.</Rukaya_ReservoirNoStoredMatter>
+  <!-- 中文：没有可用的已储存活性物质。 -->
+  <Rukaya_ReservoirInsufficient>Requires {0} active matter containers in the internal reservoir.</Rukaya_ReservoirInsufficient>
+  <!-- 中文：内部储罐中需要{0}个活性物质容器。 -->
+  <Rukaya_ReservoirInspectWithLimit>Active matter reservoir: {0} / {1} (custom limit, global {2})</Rukaya_ReservoirInspectWithLimit>
+  <!-- 中文：活性物质储罐：{0} / {1}（本机上限，全局 {2}） -->
+  <Rukaya_ReservoirLimitGizmo>Reservoir limit: {0}</Rukaya_ReservoirLimitGizmo>
+  <!-- 中文：本机储量上限：{0} -->
+  <Rukaya_ReservoirLimitGizmoDesc>Sets how many active matter containers this terminal may store. Haulers never load past this limit, and lowering it never destroys containers that are already stored. The leftmost slider position follows the global mod setting.</Rukaya_ReservoirLimitGizmoDesc>
+  <!-- 中文：设置该终端内部储罐允许储存的活性物质容器上限。搬运小人不会超过这一上限，降低上限也不会销毁已经存入的容器。滑条最左端表示跟随全局 mod 设置。 -->
+  <Rukaya_ReservoirLimitDialog>Set the reservoir limit of {0}: {1}</Rukaya_ReservoirLimitDialog>
+  <!-- 中文：设置{0}的储量上限：{1} -->
+  <Rukaya_ReservoirLimitFollowGlobal>following the global setting ({0} containers)</Rukaya_ReservoirLimitFollowGlobal>
+  <!-- 中文：跟随全局设置（{0} 个容器） -->
+  <Rukaya_ReservoirLimitValue>{0} containers</Rukaya_ReservoirLimitValue>
+  <!-- 中文：{0} 个容器 -->
+  <Rukaya_ReplicationBuildingUnavailable>The terminal must be powered, switched on, and operational.</Rukaya_ReplicationBuildingUnavailable>
+  <!-- 中文：终端必须通电、开启且处于正常运转状态。 -->
+
+  <Rukaya_OpenScanner>Open scanner</Rukaya_OpenScanner>
+  <!-- 中文：打开扫描仪 -->
+  <Rukaya_OpenScannerDesc>Scan accessible weapons and apparel or refine the quality limits of recovered templates.</Rukaya_OpenScannerDesc>
+  <!-- 中文：扫描可访问的武器与服装，或提升已恢复模板的品质上限。 -->
+  <Rukaya_ScannerWindowTitle>Triplex-Ray Equipment Scanner</Rukaya_ScannerWindowTitle>
+  <!-- 中文：三束射线装备扫描仪 -->
+  <Rukaya_ScannerSelectTarget>Select an accessible weapon or apparel item to inspect its template.</Rukaya_ScannerSelectTarget>
+  <!-- 中文：选择一件可访问的武器或服装，以检查其模板。 -->
+  <Rukaya_ScannerInvalidTarget>This item cannot be scanned by this terminal.</Rukaya_ScannerInvalidTarget>
+  <!-- 中文：该物品无法由此终端扫描。 -->
+  <Rukaya_ScannerNoUpgrade>This template is already unlocked at this quality or higher.</Rukaya_ScannerNoUpgrade>
+  <!-- 中文：该模板已经以相同或更高品质解锁。 -->
+  <Rukaya_ScannerTemplateLocked>Scan an example of this item before refining its template.</Rukaya_ScannerTemplateLocked>
+  <!-- 中文：提升模板前，必须先扫描该物品的样品。 -->
+  <Rukaya_ScannerQualityMaximum>This template has reached legendary quality.</Rukaya_ScannerQualityMaximum>
+  <!-- 中文：该模板已经达到传说品质。 -->
+  <Rukaya_ScannerSuccess>{0} is now printable up to {1} quality.</Rukaya_ScannerSuccess>
+  <!-- 中文：{0}现在最高可以打印至{1}品质。 -->
+  <Rukaya_ScannerUpgradeSuccess>{0}'s template quality limit has increased to {1}.</Rukaya_ScannerUpgradeSuccess>
+  <!-- 中文：{0}的模板品质上限已提升至{1}。 -->
+  <Rukaya_ScannerSourceQuality>Prototype quality: {0}</Rukaya_ScannerSourceQuality>
+  <!-- 中文：原型品质：{0} -->
+  <Rukaya_ScannerCurrentMaximum>Current template limit: {0}</Rukaya_ScannerCurrentMaximum>
+  <!-- 中文：当前模板上限：{0} -->
+  <Rukaya_ScannerResultMaximum>Limit after scan: {0}</Rukaya_ScannerResultMaximum>
+  <!-- 中文：扫描后的上限：{0} -->
+  <Rukaya_ScannerCost>Scan cost: {0} containers</Rukaya_ScannerCost>
+  <!-- 中文：扫描费用：{0}个容器 -->
+  <Rukaya_ScannerUpgradePreview>Raise the limit to {0}: {1} containers</Rukaya_ScannerUpgradePreview>
+  <!-- 中文：将上限提升至{0}：{1}个容器 -->
+  <Rukaya_ScanTemplate>Scan template</Rukaya_ScanTemplate>
+  <!-- 中文：扫描模板 -->
+  <Rukaya_ScannerUpgradeQuality>Refine quality limit</Rukaya_ScannerUpgradeQuality>
+  <!-- 中文：提升品质上限 -->
+
+  <Rukaya_CategoryWeapons>Weapons</Rukaya_CategoryWeapons>
+  <!-- 中文：武器 -->
+  <Rukaya_CategoryApparel>Apparel</Rukaya_CategoryApparel>
+  <!-- 中文：服饰 -->
+  <Rukaya_ScannerItemsHeader>Scannable items</Rukaya_ScannerItemsHeader>
+  <!-- 中文：可扫描物品 -->
+  <Rukaya_ScannerItemsEmpty>No scannable weapon or apparel item is accessible on this map.</Rukaya_ScannerItemsEmpty>
+  <!-- 中文：本地图上没有可访问的可扫描武器或服饰。 -->
+  <Rukaya_ScannerTemplatesHeader>Unlocked recipes</Rukaya_ScannerTemplatesHeader>
+  <!-- 中文：已解锁配方列表 -->
+  <Rukaya_ScannerTemplatesEmpty>No template of this category has been unlocked yet.</Rukaya_ScannerTemplatesEmpty>
+  <!-- 中文：尚未解锁该分类下的任何模板。 -->
+  <Rukaya_ScannerProjectHeader>Selected project</Rukaya_ScannerProjectHeader>
+  <!-- 中文：已选项目 -->
+  <Rukaya_ModGroupOther>Other sources</Rukaya_ModGroupOther>
+  <!-- 中文：其他来源 -->
+  <Rukaya_ModGroupCount>{0} entries</Rukaya_ModGroupCount>
+  <!-- 中文：{0} 项 -->
+  <Rukaya_ScannerTemplateRow>Limit: {0}</Rukaya_ScannerTemplateRow>
+  <!-- 中文：上限：{0} -->
+  <Rukaya_ScannerCheaperTier>One tier lower - {0}: {1} containers</Rukaya_ScannerCheaperTier>
+  <!-- 中文：低一档 - {0}：{1}个容器 -->
+  <Rukaya_ScannerPrintCostPreview>Print cost at {1}: {0} containers</Rukaya_ScannerPrintCostPreview>
+  <!-- 中文：以{1}品质打印的费用：{0}个容器 -->
+  <Rukaya_PrinterBillsEmpty>No production list yet. Add one from the unlocked recipes on the right.</Rukaya_PrinterBillsEmpty>
+  <!-- 中文：还没有生产清单。请在右侧的已解锁配方列表中点击添加。 -->
+  <Rukaya_PrinterTemplatesEmpty>No unlocked recipe of this category.</Rukaya_PrinterTemplatesEmpty>
+  <!-- 中文：该分类下没有已解锁的配方。 -->
+  <Rukaya_PrinterTemplateRow>Limit: {0}</Rukaya_PrinterTemplateRow>
+  <!-- 中文：上限：{0} -->
+
+  <Rukaya_OpenPrinter>Open production lists</Rukaya_OpenPrinter>
+  <!-- 中文：打开生产清单 -->
+  <Rukaya_OpenPrinterDesc>Configure ordered, autonomous production lists for unlocked equipment templates.</Rukaya_OpenPrinterDesc>
+  <!-- 中文：为已解锁的装备模板配置有序的自动生产清单。 -->
+  <Rukaya_PrinterWindowTitle>Active Matter Equipment Printer</Rukaya_PrinterWindowTitle>
+  <!-- 中文：活性物质装备打印机 -->
+  <Rukaya_PrinterSummary>Reservoir: {0} / {1}    Status: {2}</Rukaya_PrinterSummary>
+  <!-- 中文：储罐：{0} / {1}    状态：{2} -->
+  <Rukaya_PrinterBillsHeader>Ordered production lists</Rukaya_PrinterBillsHeader>
+  <!-- 中文：有序生产清单 -->
+  <Rukaya_PrinterConfigHeader>Selected list</Rukaya_PrinterConfigHeader>
+  <!-- 中文：已选清单 -->
+  <Rukaya_PrinterStatusHeader>Production status</Rukaya_PrinterStatusHeader>
+  <!-- 中文：生产状态 -->
+  <Rukaya_PrinterStatusLine>Status: {0}</Rukaya_PrinterStatusLine>
+  <!-- 中文：状态：{0} -->
+  <Rukaya_PrinterOutputState>Output: {0}</Rukaya_PrinterOutputState>
+  <!-- 中文：输出：{0} -->
+  <Rukaya_PrinterOutputReady>Clear</Rukaya_PrinterOutputReady>
+  <!-- 中文：畅通 -->
+  <Rukaya_PrinterOutputBlockedShort>Blocked</Rukaya_PrinterOutputBlockedShort>
+  <!-- 中文：受阻 -->
+  <Rukaya_PrinterCurrentProduct>Current item: {0}</Rukaya_PrinterCurrentProduct>
+  <!-- 中文：当前产品：{0} -->
+  <Rukaya_PrinterReservedCost>Reserved cost: {0} containers</Rukaya_PrinterReservedCost>
+  <!-- 中文：已预扣费用：{0}个容器 -->
+  <Rukaya_PrinterProgress>Progress: {0}%</Rukaya_PrinterProgress>
+  <!-- 中文：进度：{0}% -->
+  <Rukaya_PrinterTemplatesHeader>Unlocked templates - click to add</Rukaya_PrinterTemplatesHeader>
+  <!-- 中文：已解锁模板 - 点击添加 -->
+  <Rukaya_PrinterSelectBill>Select a production list to configure its material, quality, and repeat mode.</Rukaya_PrinterSelectBill>
+  <!-- 中文：选择一条生产清单，以配置其材质、品质和重复模式。 -->
+  <Rukaya_PrinterStatusIdle>Idle</Rukaya_PrinterStatusIdle>
+  <!-- 中文：空闲 -->
+  <Rukaya_PrinterStatusPrinting>Printing: {0}%</Rukaya_PrinterStatusPrinting>
+  <!-- 中文：正在打印：{0}% -->
+  <Rukaya_PrinterStatusInsufficient>Waiting for {0} active matter containers</Rukaya_PrinterStatusInsufficient>
+  <!-- 中文：正在等待{0}个活性物质容器 -->
+  <Rukaya_PrinterStatusOutputBlocked>Waiting for output space</Rukaya_PrinterStatusOutputBlocked>
+  <!-- 中文：正在等待输出空间 -->
+
+  <Rukaya_MaterialLabel>Material: {0}</Rukaya_MaterialLabel>
+  <!-- 中文：材质：{0} -->
+  <Rukaya_MaterialButton>Material: {0}</Rukaya_MaterialButton>
+  <!-- 中文：材质：{0} -->
+  <Rukaya_NoMaterial>No material</Rukaya_NoMaterial>
+  <!-- 中文：无材质 -->
+  <Rukaya_QualityButton>Quality: {0}</Rukaya_QualityButton>
+  <!-- 中文：品质：{0} -->
+  <Rukaya_RepeatModeButton>Repeat mode: {0}</Rukaya_RepeatModeButton>
+  <!-- 中文：重复模式：{0} -->
+  <Rukaya_TargetCount>Target count: {0}</Rukaya_TargetCount>
+  <!-- 中文：目标数量：{0} -->
+  <Rukaya_PrintCost>Cost per item: {0} containers</Rukaya_PrintCost>
+  <!-- 中文：单件费用：{0}个容器 -->
+  <Rukaya_PrintTime>Time per item: {0}</Rukaya_PrintTime>
+  <!-- 中文：单件用时：{0} -->
+  <Rukaya_CostShort>{0} AM</Rukaya_CostShort>
+  <!-- 中文：{0}活性物质 -->
+  <Rukaya_Locked>Locked</Rukaya_Locked>
+  <!-- 中文：未解锁 -->
+
+  <Rukaya_RepeatCount>Do X times</Rukaya_RepeatCount>
+  <!-- 中文：制作 X 次 -->
+  <Rukaya_RepeatForever>Do forever</Rukaya_RepeatForever>
+  <!-- 中文：永久制作 -->
+  <Rukaya_RepeatUntil>Do until stock reaches X</Rukaya_RepeatUntil>
+  <!-- 中文：制作至库存达到 X -->
+  <Rukaya_RepeatCountValue>{0} remaining</Rukaya_RepeatCountValue>
+  <!-- 中文：剩余{0}件 -->
+  <Rukaya_RepeatUntilValue>Until {0}</Rukaya_RepeatUntilValue>
+  <!-- 中文：制作至{0}件 -->
+  <Rukaya_BillProgress>Completed: {0} / {1}</Rukaya_BillProgress>
+  <!-- 中文：已完成：{0} / {1} -->
+  <Rukaya_StockProgress>Matching stock: {0} / {1}</Rukaya_StockProgress>
+  <!-- 中文：匹配库存：{0} / {1} -->
+  <Rukaya_BillSuspend>Suspend</Rukaya_BillSuspend>
+  <!-- 中文：暂停 -->
+  <Rukaya_BillCopy>Copy</Rukaya_BillCopy>
+  <!-- 中文：复制 -->
+  <Rukaya_BillDelete>Delete</Rukaya_BillDelete>
+  <!-- 中文：删除 -->
+  <Rukaya_BillCancelCurrent>Cancel current</Rukaya_BillCancelCurrent>
+  <!-- 中文：取消当前 -->
+  <Rukaya_BillMoveUp>Up</Rukaya_BillMoveUp>
+  <!-- 中文：上移 -->
+  <Rukaya_BillMoveDown>Down</Rukaya_BillMoveDown>
+  <!-- 中文：下移 -->
+  <Rukaya_DevFillReservoir>DEV: load active matter</Rukaya_DevFillReservoir>
+  <!-- 中文：开发：一键装填活性物质 -->
+  <Rukaya_DevFillReservoirDesc>Create and instantly load a specified number of active matter containers for testing, up to this terminal's storage limit. No existing stock is consumed.</Rukaya_DevFillReservoirDesc>
+  <!-- 中文：输入装填数量，直接生成活性物质容器并装入本机储罐以供测试，最多装至本机储量上限。不消耗现有库存。 -->
+  <Rukaya_DevFillReservoirPrompt>Load active matter into {0}. Enter the number of containers to add (free capacity: {1}). Amounts above the available capacity are capped.</Rukaya_DevFillReservoirPrompt>
+  <!-- 中文：向{0}装填活性物质。请输入本次新增的容器数量（剩余容量：{1}）。超过剩余容量时按剩余容量装填。 -->
+</LanguageData>

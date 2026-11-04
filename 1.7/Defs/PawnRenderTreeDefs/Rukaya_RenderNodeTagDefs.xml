@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!--
+    卢卡娅翅膀渲染节点的标记 def（纯标记，无字段）。
+    PawnRenderNodeTagDef 只提供 nodesByTag 的查表键，以及动画 keyframeParts 的键；
+    原版只有 Root / Head / ApparelHead / Body / ApparelBody 五个，新增的必须在这里声明，
+    否则节点会掉到 Root 下、动画 key 也对不上（静默不播）。
+    前缀 Rukaya_ 用于避免与其它模组的 tag 撞名。
+  -->
+
+  <PawnRenderNodeTagDef>
+    <defName>Rukaya_WingBack</defName>
+  </PawnRenderNodeTagDef>
+
+  <PawnRenderNodeTagDef>
+    <defName>Rukaya_WingFront</defName>
+  </PawnRenderNodeTagDef>
+
+  <PawnRenderNodeTagDef>
+    <defName>Rukaya_WingFlapBack</defName>
+  </PawnRenderNodeTagDef>
+
+  <PawnRenderNodeTagDef>
+    <defName>Rukaya_WingFlapFront</defName>
+  </PawnRenderNodeTagDef>
+
+</Defs>

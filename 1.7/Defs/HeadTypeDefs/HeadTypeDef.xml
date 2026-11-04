@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <HeadTypeDef ParentName="AverageBase">
+        <defName>Rukaya_Head_Blank</defName>
+        <graphicPath>Rukaya/Head/HeadBlank/Normal</graphicPath>
+        <gender>None</gender>
+    </HeadTypeDef>
+    <HeadTypeDef ParentName="AverageBase">
+        <defName>Rukaya_Head_A</defName>
+        <graphicPath>Rukaya/Head/RukayaHead</graphicPath>
+        <gender>None</gender>
+    </HeadTypeDef>
+</Defs>
