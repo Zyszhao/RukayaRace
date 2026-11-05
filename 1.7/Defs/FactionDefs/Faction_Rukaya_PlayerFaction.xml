@@ -27,9 +27,6 @@
     <allowedCultures>
       <li>Astropolitan</li>
     </allowedCultures>
-    <requiredMemes MayRequire="Ludeon.RimWorld.Ideology">
-      <li>Rukaya_VegetarianTradition</li>
-    </requiredMemes>
     <disallowedMemes MayRequire="Ludeon.RimWorld.Ideology">
       <li>Cannibal</li>
     </disallowedMemes>

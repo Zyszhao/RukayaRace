@@ -69,8 +69,8 @@
         <thingToSpawn>Rukaya_ActiveMatterContainer</thingToSpawn>
         <spawnCount>2</spawnCount>
         <spawnIntervalRange>
-          <min>60000</min>
-          <max>60000</max>
+          <min>15000</min>
+          <max>15000</max>
         </spawnIntervalRange>
         <writeTimeLeftToSpawn>true</writeTimeLeftToSpawn>
         <showMessageIfOwned>true</showMessageIfOwned>
@@ -184,8 +184,8 @@
         <thingToSpawn>Rukaya_ActiveMatterContainer</thingToSpawn>
         <spawnCount>10</spawnCount>
         <spawnIntervalRange>
-          <min>60000</min>
-          <max>60000</max>
+          <min>15000</min>
+          <max>15000</max>
         </spawnIntervalRange>
         <writeTimeLeftToSpawn>true</writeTimeLeftToSpawn>
         <showMessageIfOwned>true</showMessageIfOwned>
@@ -209,3 +209,5 @@
   </ThingDef>
 
 </Defs>
+
+<!-- 更新日志 2：将两种提炼器默认生产周期由 6000 ticks 调整为 15000 ticks，使日产量为原始值的四倍。 -->

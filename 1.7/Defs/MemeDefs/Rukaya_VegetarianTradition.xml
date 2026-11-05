@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
+  <!-- 仅用于解析旧存档的 Def 引用；空白名单禁止新文化选择，载入后由兼容迁移移除。
+       新文化直接采用原版 MeatEating_Disapproved 戒律，不占用模因栏位。 -->
   <MemeDef MayRequire="Ludeon.RimWorld.Ideology">
     <defName>Rukaya_VegetarianTradition</defName>
     <label>vegetarian tradition</label>
@@ -11,10 +13,7 @@
     <impact>1</impact>
     <renderOrder>850</renderOrder>
     <randomizationSelectionWeightFactor>0</randomizationSelectionWeightFactor>
-    <factionWhitelist>
-      <li>Rukaya_DrifterAlliance</li>
-      <li>Rukaya_PlayerFaction</li>
-    </factionWhitelist>
+    <factionWhitelist />
     <requireOne>
       <li>
         <li>MeatEating_Disapproved</li>

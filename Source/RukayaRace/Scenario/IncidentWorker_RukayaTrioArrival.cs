@@ -8,9 +8,9 @@ namespace RukayaRace.Scenario
     /// <summary>
     /// 剧本事件"三名同伴到来"：三人一批乘运输舱落到殖民地附近，并立即加入玩家。
     ///
-    /// 生成完全复用原版 <see cref="IncidentWorker_WandererJoin.GeneratePawn"/>（"流浪者加入"管线）：
+    /// 生成沿用原版 <see cref="IncidentWorker_WandererJoin.GeneratePawn"/> 的请求参数：
     /// 玩家阵营、<c>colonistRelationChanceFactor = 20</c>（因此有可能与已有殖民者是亲属）、
-    /// 特质 / 背景故事 / 服装 / 意识形态全部随机；姓氏由本模组 <c>NamerPerson_Rukaya</c> 的姓库随机给出。
+    /// 特质 / 背景故事 / 服装随机，意识形态固定为玩家主文化；姓氏由本模组姓库随机给出。
     /// 名字连同短名（Nick）一起改写，并设置固定武器、指定伤疤与持续半天的麻痹症。
     /// </summary>
     public class IncidentWorker_RukayaTrioArrival : IncidentWorker_WandererJoin
@@ -23,6 +23,19 @@ namespace RukayaRace.Scenario
         private static readonly HediffDef ScarHediff = DefDatabase<HediffDef>.GetNamed("Gunshot");
 
         private const int ArrivalAbasiaDurationTicks = GenDate.TicksPerDay / 2;
+
+        public override Pawn GeneratePawn(Map map)
+        {
+            // Vanilla WandererJoin deliberately prefers an ideology outside the player's
+            // faction. Set FixedIdeo before generation so gear and ideology agree, too.
+            Gender? gender = def.pawnFixedGender == Gender.None ? null : def.pawnFixedGender;
+            return PawnGenerator.GeneratePawn(new PawnGenerationRequest(def.pawnKind,
+                faction: Faction.OfPlayer, context: PawnGenerationContext.NonPlayer, tile: map?.Tile,
+                forceGenerateNewPawn: true, allowDead: false, allowDowned: false,
+                canGeneratePawnRelations: true, mustBeCapableOfViolence: def.pawnMustBeCapableOfViolence,
+                colonistRelationChanceFactor: 20f, fixedGender: gender,
+                fixedIdeo: ModsConfig.IdeologyActive ? Faction.OfPlayer.ideos?.PrimaryIdeo : null));
+        }
 
         protected override bool TryExecuteWorker(IncidentParms parms)
         {

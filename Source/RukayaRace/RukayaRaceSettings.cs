@@ -6,10 +6,12 @@ namespace RukayaRace
     {
         public const float MinSettingValue = 0.1f;
         public const float MaxSettingValue = 10f;
-        public const float MaxDailyOutputValue = 50f;
+        public const float MaxDailyOutputValue = 200f;
         public const float DefaultFabricatorWorkSpeed = 1f;
-        public const float DefaultRefinerDailyOutput = 2f;
-        public const float DefaultAdvancedRefinerDailyOutput = 10f;
+        public const float DefaultRefinerDailyOutput = 8f;
+        public const float DefaultAdvancedRefinerDailyOutput = 40f;
+        private const int CurrentRefinerOutputVersion = 2;
+        private int refinerOutputVersion = CurrentRefinerOutputVersion;
         public const float DefaultReplicationReservoirCapacity = 1000f;
         public const float MinReplicationReservoirCapacity = 100f;
         public const float MaxReplicationReservoirCapacity = 1000f;
@@ -28,14 +30,24 @@ namespace RukayaRace
         {
             base.ExposeData();
             Scribe_Values.Look(ref fabricatorWorkSpeedFactor, "fabricatorWorkSpeedFactor", DefaultFabricatorWorkSpeed);
-            Scribe_Values.Look(ref refinerDailyOutput, "refinerDailyOutput", DefaultRefinerDailyOutput);
-            Scribe_Values.Look(ref advancedRefinerDailyOutput, "advancedRefinerDailyOutput", DefaultAdvancedRefinerDailyOutput);
+            Scribe_Values.Look(ref refinerOutputVersion, "refinerOutputVersion", 0);
+            float defaultRefinerOutput = refinerOutputVersion == 0 ? 2f : (refinerOutputVersion == 1 ? 20f : DefaultRefinerDailyOutput);
+            float defaultAdvancedRefinerOutput = refinerOutputVersion == 0 ? 10f : (refinerOutputVersion == 1 ? 100f : DefaultAdvancedRefinerDailyOutput);
+            Scribe_Values.Look(ref refinerDailyOutput, "refinerDailyOutput", defaultRefinerOutput);
+            Scribe_Values.Look(ref advancedRefinerDailyOutput, "advancedRefinerDailyOutput", defaultAdvancedRefinerOutput);
             Scribe_Values.Look(ref replicationReservoirCapacity, "replicationReservoirCapacity", DefaultReplicationReservoirCapacity);
             Scribe_Values.Look(ref useLightningForElectricWeapons, "useLightningForElectricWeapons", false);
             Scribe_Values.Look(ref trioInitialChance, "trioInitialChance", 0.12f);
             Scribe_Values.Look(ref trioDecay, "trioDecay", 0.85f);
             Scribe_Values.Look(ref trioMinimumChance, "trioMinimumChance", 0.02f);
             Scribe_Values.Look(ref trioDeathChance, "trioDeathChance", 0.35f);
+            if (Scribe.mode == LoadSaveMode.PostLoadInit && refinerOutputVersion < CurrentRefinerOutputVersion)
+            {
+                float migrationFactor = refinerOutputVersion == 0 ? 4f : 0.4f;
+                refinerDailyOutput *= migrationFactor;
+                advancedRefinerDailyOutput *= migrationFactor;
+                refinerOutputVersion = CurrentRefinerOutputVersion;
+            }
             ClampValues();
         }
 
@@ -101,3 +113,5 @@ namespace RukayaRace
         }
     }
 }
+
+// 更新日志 2：将活性物质提炼产量调整为原始产量的四倍，并迁移旧版一倍/十倍设置。

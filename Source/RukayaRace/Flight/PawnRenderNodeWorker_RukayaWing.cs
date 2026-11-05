@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using RimWorld;
-using RukayaRace.Buildings;
 using Verse;
 
 namespace RukayaRace.Flight
@@ -100,7 +99,8 @@ namespace RukayaRace.Flight
                 return false;
             }
 
-            if (pawn.GetPosture().InBed() && RukayaHangingSleep.IsCurtainedBed(pawn.CurrentBed()?.def))
+            if (!parms.Portrait && !parms.Cache && !parms.Statue
+                && parms.posture.InBed() && parms.bed != null)
             {
                 return false;
             }

@@ -12,7 +12,7 @@ namespace RukayaRace.Scenario
     /// <c>PawnGenerationRequest</c> 也只有 <c>FixedLastName</c> / <c>FixedBirthName</c>（没有 firstname）。
     /// 所以这里在 <see cref="IncidentDef"/> 上挂一份 firstname 列表，
     /// 由 <see cref="IncidentWorker_RukayaTrioArrival"/> 在生成完成之后写进 pawn.Name：
-    /// firstname 强制，姓氏 / 特质 / 背景故事 / 服装 / 意识形态全部随机。
+    /// firstname 强制，姓氏 / 特质 / 背景故事 / 服装随机；剧本到来者使用玩家主文化。
     /// </summary>
     public class IncidentDef_RukayaTrioArrival : IncidentDef
     {

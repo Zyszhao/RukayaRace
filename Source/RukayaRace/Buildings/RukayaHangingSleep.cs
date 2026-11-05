@@ -57,8 +57,9 @@ namespace RukayaRace.Buildings
     [HarmonyPatch(typeof(PawnRenderer), "GetBodyPos")]
     internal static class Patch_HangingBed_GetBodyPos
     {
-        private static void Postfix(Pawn ___pawn, ref UnityEngine.Vector3 __result)
+        private static void Postfix(Pawn ___pawn, PawnPosture posture, ref UnityEngine.Vector3 __result)
         {
+            if (!posture.InBed()) return;
             Building_Bed bed = ___pawn?.CurrentBed();
             if (!RukayaHangingSleep.IsHangingBed(bed?.def)) return;
             float northOffset = bed.def.building.bed_pawnDrawOffset;
@@ -82,7 +83,10 @@ namespace RukayaRace.Buildings
 
         private static void Postfix(PawnDrawParms parms, ref UnityEngine.Vector3 __result)
         {
-            if (RukayaHangingSleep.IsCurtainedBed(parms.pawn?.CurrentBed()?.def))
+            // Portrait/cache passes draw an upright pawn even while its owner is in bed.
+            // Move only the head drawn inside the map's curtained sleep frame.
+            if (!parms.Portrait && !parms.Cache && !parms.Statue && parms.posture.InBed()
+                && RukayaHangingSleep.IsCurtainedBed(parms.bed?.def))
                 __result.z += HeadOffsetTowardFrame;
         }
     }
@@ -92,7 +96,9 @@ namespace RukayaRace.Buildings
     {
         private static void Prefix(Pawn ___pawn, ref bool disableCache)
         {
-            if (RukayaHangingSleep.IsHangingBed(___pawn?.CurrentBed()?.def)) disableCache = true;
+            // A standing cached sprite includes wings. In-bed map draws must evaluate
+            // the wing worker with the actual bed/posture rather than reuse that sprite.
+            if (RukayaHangingSleep.IsRukaya(___pawn) && ___pawn.GetPosture().InBed()) disableCache = true;
         }
     }
 

@@ -215,6 +215,11 @@
        占用 Middle + Shell 层；穿着时隐藏贴身层与内衣层服装的渲染。 -->
   <ThingDef ParentName="Rukaya_ShellBaseIII">
     <defName>Rukaya_Armour</defName>
+    <recipeMaker>
+      <researchPrerequisites>
+        <li>PoweredArmor</li>
+      </researchPrerequisites>
+    </recipeMaker>
     <label>Rukaya power armor</label>
     <!-- 中文：卢卡娅动力装甲 -->
     <techLevel>Spacer</techLevel>

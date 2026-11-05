@@ -573,11 +573,14 @@
           <li>Rukaya_FormalDress</li>
           <li>Rukaya_CasualShirt</li>
           <li>Rukaya_ServiceUniform</li>
+          <li>Rukaya_SailorUniform</li>
+          <li>Rukaya_TrainingUniform</li>
           <li>Rukaya_CombatBodysuit</li>
           <li>Rukaya_VampirePajamas</li>
 
           <!-- 夹层-->
           <li>Rukaya_ChestRig</li>
+          <li>Rukaya_FlakVest</li>
 
           <!-- 外层防护：占用 Middle + Shell -->
           <li MayRequire="Ludeon.RimWorld.Odyssey">Rukaya_Vacsuit</li>

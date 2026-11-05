@@ -4,8 +4,8 @@
   <!-- 剧本事件：三名指定 firstname 的卢卡娅同伴同批抵达并加入玩家。
        名字来自 IncidentDef_RukayaTrioArrival.firstNames（中文侧由
        Content/Languages/ChineseSimplified/DefInjected/IncidentDef/Rukaya_TrioArrival.xml 覆盖），
-       其余全部随机：姓氏走本模组 NamerPerson_Rukaya 的姓库，特质 / 背景故事 / 服装 / 意识形态都走
-       原版 IncidentWorker_WandererJoin 的"流浪者加入"生成管线。
+       姓氏走本模组 NamerPerson_Rukaya 的姓库，特质 / 背景故事 / 服装随机；
+       意识形态在生成前固定为玩家派系的主文化，不使用原版流浪者的外来文化抽选。
        weapons / scarHeadAndEye 与 firstNames **按下标一一对应**（三张表必须等长，否则 Def 会报 ConfigError）：
          · weapons       —— 生成时自带的固定武器，与剧本给开局角色发的那把枪无关
          · scarHeadAndEye—— true 表示该角色必定带一道头部伤疤 + 两只眼睛各一道伤疤（枪伤，几乎不影响数值）

@@ -367,6 +367,11 @@
        renderSkipFlags 只显式压掉头发，保留卢卡娅耳朵绘制。 -->
   <ThingDef ParentName="Rukaya_OverheadBaseIII">
     <defName>Rukaya_ArmourHelmet</defName>
+    <recipeMaker>
+      <researchPrerequisites>
+        <li>PoweredArmor</li>
+      </researchPrerequisites>
+    </recipeMaker>
     <label>Rukaya light power armor helmet</label>
     <!-- 中文：卢卡娅轻型动力甲头盔 -->
     <techLevel>Spacer</techLevel>
@@ -434,6 +439,11 @@
        保留卢卡娅耳朵绘制；仅隐藏头发。 -->
   <ThingDef ParentName="Rukaya_OverheadBaseIII">
     <defName>Rukaya_HeavyPowerArmorHelmet</defName>
+    <recipeMaker>
+      <researchPrerequisites>
+        <li>PoweredArmor</li>
+      </researchPrerequisites>
+    </recipeMaker>
     <label>Rukaya heavy power armor helmet</label>
     <!-- 中文：卢卡娅重型动力甲头盔 -->
     <techLevel>Spacer</techLevel>

@@ -41,6 +41,7 @@
     </tradeTags>
     <smeltable>true</smeltable>
     <apparel>
+      <canBeDesiredForIdeo>false</canBeDesiredForIdeo>
       <bodyPartGroups>
         <li>Torso</li>
         <li>Neck</li>
@@ -76,6 +77,9 @@
     </costList>
     <recipeMaker>
       <researchPrerequisite>OrbitalTech</researchPrerequisite>
+      <researchPrerequisites>
+        <li>Rukaya_Apparel_III</li>
+      </researchPrerequisites>
       <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
       <displayPriority>235</displayPriority>
       <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
@@ -166,6 +170,9 @@
     </costList>
     <recipeMaker>
       <researchPrerequisite>OrbitalTech</researchPrerequisite>
+      <researchPrerequisites>
+        <li>Rukaya_Apparel_III</li>
+      </researchPrerequisites>
       <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
       <displayPriority>237</displayPriority>
       <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
