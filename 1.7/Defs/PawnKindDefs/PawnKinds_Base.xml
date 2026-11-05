@@ -67,12 +67,11 @@
          动力甲 Rukaya_PowerArmor）。
          写成不存在的 tag 会让 PawnApparelGenerator 剔掉全部候选，殖民者直接裸体生成。
 
-         注意：躯干锁位**不能**再写 Rukaya_OnSkin。XmlInheritance 对 <li> 是追加语义，
-         动力甲 Rukaya_Armour 实际同时带 Rukaya_OnSkin 与 Rukaya_PowerArmor，
-         而 specificApparelRequirements 会绕过 apparelTags 白名单与 apparelMoney 预算直接取物，
-         于是平民/民兵会直接套着动力甲生成。改用 Rukaya_Dress_Civilian 锁位，
-         并补 apparelDisallowTags 堵住预算循环 —— 两条防线见
-         Rukaya_PawnKinds_Military.xml 顶部说明。
+         注意：躯干锁位应使用身份词条，而不是泛用的 Rukaya_OnSkin。动力甲现在继承
+         Rukaya_Shell 并带有 Rukaya_PowerArmor；specificApparelRequirements 会绕过
+         apparelTags 白名单与 apparelMoney 预算直接取物，因此低阶 PawnKind 不应以
+         Rukaya_PowerArmor 锁位。平民使用 Rukaya_Dress_Civilian，并用
+         apparelDisallowTags 堵住预算循环，详见 Rukaya_PawnKinds_Military.xml 顶部说明。
          另需 <apparelLayer>OnSkin</apparelLayer> 钉死贴身层：Rukaya_Dress_Civilian 同时挂在
          CasualJacket / WinterCape 两件 Shell 外套上，不钉层就会抽到外套当躯干件，
          生成出「只穿一件外套」的平民。 -->

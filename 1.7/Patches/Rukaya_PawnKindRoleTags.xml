@@ -25,7 +25,7 @@
        写法与本模组其它服装 Def 一致：
          Apparel_OnSkin.xml    : StudentUniform / FormalUniform / FormalDress / WinterCoat /
                                  CasualShirt / ServiceUniform
-         Apparel_Shell.xml     : WinterCape / CasualJacket / TrenchCoat
+         Apparel_Shell.xml     : WinterCape / CasualJacket / TrenchCoat / Armour
          Apparel_OverHead.xml  : StudentHeadband / FormalBeret / AfghankaHat / WinterHat /
                                  HairBand / WideBrimHat
          Apparel_Underwear.xml : BlackKneehighs / Swimsuit / SportsBra

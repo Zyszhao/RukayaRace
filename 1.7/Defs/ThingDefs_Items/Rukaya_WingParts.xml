@@ -26,7 +26,7 @@
         <Crafting>6</Crafting>
       </skillRequirements>
       <recipeUsers>
-        <li>TableMachining</li>
+        <li>Rukaya_Fabricator</li>
       </recipeUsers>
     </recipeMaker>
     <tradeTags>
@@ -60,7 +60,7 @@
         <Crafting>10</Crafting>
       </skillRequirements>
       <recipeUsers>
-        <li>FabricationBench</li>
+        <li>Rukaya_Fabricator</li>
       </recipeUsers>
     </recipeMaker>
     <tradeTags>

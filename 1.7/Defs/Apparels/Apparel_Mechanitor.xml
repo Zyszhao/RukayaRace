@@ -60,7 +60,7 @@
     <recipeMaker Inherit="false">
       <researchPrerequisite>Rukaya_Apparel_III</researchPrerequisite>
       <recipeUsers>
-        <li>TableMachining</li>
+        <li>Rukaya_Fabricator</li>
       </recipeUsers>
       <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
       <workSkill>Crafting</workSkill>
@@ -138,7 +138,7 @@
     <recipeMaker Inherit="false">
       <researchPrerequisite>Rukaya_Apparel_III</researchPrerequisite>
       <recipeUsers>
-        <li>TableMachining</li>
+        <li>Rukaya_Fabricator</li>
       </recipeUsers>
       <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
       <workSkill>Crafting</workSkill>

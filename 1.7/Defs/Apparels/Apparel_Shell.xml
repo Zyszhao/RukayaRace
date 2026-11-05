@@ -48,6 +48,9 @@
   <ThingDef Name="Rukaya_ShellBaseIII" ParentName="Rukaya_ShellBase" Abstract="True">
     <recipeMaker>
       <researchPrerequisite>Rukaya_Apparel_III</researchPrerequisite>
+      <recipeUsers Inherit="False">
+        <li>Rukaya_Fabricator</li>
+      </recipeUsers>
     </recipeMaker>
     <apparel>
       <tags>
@@ -104,12 +107,12 @@
     </apparel>
   </ThingDef>
 
-  <!-- 2级（Advanced）· 休闲夹克（贴图 new_textures/RukayaShell3_*）· 本套次级件，数值整体低于休闲衬衫且不覆腿 -->
-  <ThingDef ParentName="Rukaya_ShellBaseII">
+  <!-- 1级（Basic）· 休闲夹克（贴图 new_textures/RukayaShell3_*）· 本套次级件，数值整体低于休闲衬衫且不覆腿 -->
+  <ThingDef ParentName="Rukaya_ShellBaseI">
     <defName>Rukaya_CasualJacket</defName>
     <label>Rukaya casual jacket</label>
     <!-- 中文：卢卡娅休闲夹克 -->
-    <techLevel>Industrial</techLevel>
+    <techLevel>Medieval</techLevel>
     <description>A loose casual jacket worn over everything else against wind and grit. The open back
       leaves the wings free to move, and the reinforced shoulders take the strain out of heavy work.</description>
     <!-- 中文翻译：一件宽松的休闲夹克，罩在其他衣物之外抵御风沙。背部开口不碍翅膀活动，加固的肩部让繁重的工作也不再吃力。 -->
@@ -206,7 +209,74 @@
     </equippedStatOffsets>
   </ThingDef>
 
-  <!-- 注：原 Rukaya_Armour 已按需求改为占用 OnSkin 层，定义移至 Apparel_OnSkin.xml，
-       贴图同步迁到 Content/Textures/Rukaya/Apparel/OnSkin/Armour/。 -->
+  <!-- 3级（Combat）· 动力装甲（贴图仍沿用 OnSkin 目录）· 定位对标原版海军装甲
+       （marine armor）：全躯干覆盖 + 部分真空密封，但把原版的移动惩罚换成助力加成
+       （瞄准 / 近战 / 移动），温度上改用一整套宽幅隔热内衬，御寒与避热两端都能用。
+       占用 Middle + Shell 层；穿着时隐藏贴身层与内衣层服装的渲染。 -->
+  <ThingDef ParentName="Rukaya_ShellBaseIII">
+    <defName>Rukaya_Armour</defName>
+    <label>Rukaya power armor</label>
+    <!-- 中文：卢卡娅动力装甲 -->
+    <techLevel>Spacer</techLevel>
+    <description>A layered power armor suit rebuilt from recovered old-homeworld patterns and
+      built to marine-grade protection. Sealed joints and an insulated underlayer let the wearer
+      fight across a wide band of temperatures, while the suit's assistors steady the hands, speed
+      the draw and carry its own weight. Its seal against hard vacuum is only partial.</description>
+    <!-- 中文翻译：一套以复原的旧母星版型重建、按海军装甲级别打造的分层动力装甲。密封关节与隔热内衬让穿着者能在很宽的温度范围内作战，而动力装甲的助力装置能稳住双手、加快出枪，并替人承下自身的分量。它对真空只提供部分密封。 -->
+    <graphicData>
+      <texPath>Rukaya/Apparel/OnSkin/Armour/Rukaya_Armour</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Cutout</shaderType>
+    </graphicData>
+    <statBases>
+      <Mass>9.0</Mass>
+      <EquipDelay>10.0</EquipDelay>
+      <MaxHitPoints>320</MaxHitPoints>
+      <WorkToMake>42000</WorkToMake>
+      <ArmorRating_Sharp>1.05</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.45</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.55</ArmorRating_Heat>
+      <Insulation_Cold>55</Insulation_Cold>
+      <Insulation_Heat>45</Insulation_Heat>
+    </statBases>
+    <costList>
+      <Cloth>70</Cloth>
+      <Steel>60</Steel>
+      <Plasteel>60</Plasteel>
+      <ComponentIndustrial>6</ComponentIndustrial>
+      <!-- 助力外骨骼与密封关节依赖活性物质回路，因此装甲本体需消耗一定量的活性物质容器 -->
+      <Rukaya_ActiveMatterContainer>12</Rukaya_ActiveMatterContainer>
+    </costList>
+    <apparel>
+      <useWornGraphicMask>false</useWornGraphicMask>
+      <developmentalStageFilter>Child, Adult</developmentalStageFilter>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Neck</li>
+        <li>Shoulders</li>
+        <li>Arms</li>
+        <li>Legs</li>
+      </bodyPartGroups>
+      <layers Inherit="False">
+        <li>Middle</li>
+        <li>Shell</li>
+      </layers>
+      <wornGraphicPath>Rukaya/Apparel/OnSkin/Armour/Rukaya_Armour</wornGraphicPath>
+      <tags>
+        <li>Rukaya_PowerArmor</li>
+      </tags>
+    </apparel>
+    <equippedStatOffsets>
+      <AimingDelayFactor>-0.10</AimingDelayFactor>
+      <MeleeHitChance>0.10</MeleeHitChance>
+      <MeleeDodgeChance>0.05</MeleeDodgeChance>
+      <MoveSpeed>0.20</MoveSpeed>
+      <VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.3</VacuumResistance>
+    </equippedStatOffsets>
+    <tradeTags>
+      <li>Armor</li>
+      <li>HiTechArmor</li>
+    </tradeTags>
+  </ThingDef>
 
 </Defs>

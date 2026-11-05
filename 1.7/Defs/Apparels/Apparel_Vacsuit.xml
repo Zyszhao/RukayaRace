@@ -19,14 +19,12 @@
       <MaxHitPoints>180</MaxHitPoints>
       <Mass>12</Mass>
       <Flammability>0.4</Flammability>
-      <!-- 改为单独的 OnSkin 层；以基础学生装内搭（锐0.30/钝0.20/热0.20、隔温10/10）补偿。
-           护甲按零穿透时两层期望减伤近似合并，取整为0.70/0.42/0.77；隔温直接相加。
-           单层护甲不能在所有穿透条件下完全复现两层判定；此处用于补足日常内搭的防护。 -->
-      <ArmorRating_Sharp>0.70</ArmorRating_Sharp>
-      <ArmorRating_Blunt>0.42</ArmorRating_Blunt>
-      <ArmorRating_Heat>0.77</ArmorRating_Heat>
-      <Insulation_Cold>100</Insulation_Cold>
-      <Insulation_Heat>25</Insulation_Heat>
+      <!-- 外层本体数值按原版 Vacsuit 保留；贴身服装仍穿着并独立贡献属性。 -->
+      <ArmorRating_Sharp>0.52</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.25</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.66</ArmorRating_Heat>
+      <Insulation_Cold>90</Insulation_Cold>
+      <Insulation_Heat>15</Insulation_Heat>
       <EquipDelay>14</EquipDelay>
     </statBases>
     <equippedStatOffsets>
@@ -35,7 +33,7 @@
     </equippedStatOffsets>
     <thingCategories>
       <li>ApparelArmor</li>
-      <li>Rukaya_Apparel_OnSkin</li>
+      <li>Rukaya_Apparel_Shell</li>
     </thingCategories>
     <tradeTags>
       <li>HiTechArmor</li>
@@ -51,13 +49,14 @@
         <li>Legs</li>
       </bodyPartGroups>
       <wornGraphicPath>Rukaya/Apparel/OnSkin/Vacsuit/Rukaya_Vacsuit</wornGraphicPath>
-      <layers>
-        <li>OnSkin</li>
+      <layers Inherit="False">
+        <li>Middle</li>
+        <li>Shell</li>
       </layers>
       <tags>
         <li>SpacerMilitary</li>
         <li>Vacsuit</li>
-        <li>Rukaya_OnSkin</li>
+        <li>Rukaya_Shell</li>
       </tags>
       <defaultOutfitTags>
         <li>Spacefarer</li>
@@ -83,8 +82,8 @@
       <workSkill>Crafting</workSkill>
       <effectWorking>Smith</effectWorking>
       <soundWorking>Recipe_Smith</soundWorking>
-      <recipeUsers>
-        <li>TableMachining</li>
+      <recipeUsers Inherit="False">
+        <li>Rukaya_Fabricator</li>
       </recipeUsers>
     </recipeMaker>
   </ThingDef>
@@ -173,8 +172,8 @@
       <workSkill>Crafting</workSkill>
       <effectWorking>Smith</effectWorking>
       <soundWorking>Recipe_Smith</soundWorking>
-      <recipeUsers>
-        <li>TableMachining</li>
+      <recipeUsers Inherit="False">
+        <li>Rukaya_Fabricator</li>
       </recipeUsers>
     </recipeMaker>
     <thingCategories>

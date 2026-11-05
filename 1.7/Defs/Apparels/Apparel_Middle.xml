@@ -48,6 +48,9 @@
   <ThingDef Name="Rukaya_MiddleBaseIII" ParentName="Rukaya_MiddleBase" Abstract="True">
     <recipeMaker>
       <researchPrerequisite>Rukaya_Apparel_III</researchPrerequisite>
+      <recipeUsers Inherit="False">
+        <li>Rukaya_Fabricator</li>
+      </recipeUsers>
     </recipeMaker>
     <apparel>
       <tags>

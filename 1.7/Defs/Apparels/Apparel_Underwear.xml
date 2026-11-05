@@ -106,12 +106,12 @@
     </equippedStatOffsets>
   </ThingDef>
 
-  <!-- 2级（Advanced）· 运动内衣（贴图 6/Rukaya_Underwear2_*） -->
-  <ThingDef ParentName="Rukaya_UnderwearBaseII">
+  <!-- 1级（Basic）· 运动内衣（贴图 6/Rukaya_Underwear2_*） -->
+  <ThingDef ParentName="Rukaya_UnderwearBaseI">
     <defName>Rukaya_SportsBra</defName>
     <label>Rukaya sports bra</label>
     <!-- 中文：卢卡娅运动内衣 -->
-    <techLevel>Industrial</techLevel>
+    <techLevel>Medieval</techLevel>
     <description>A snug sports bra with a matching bottom, made for Rukaya anatomy. The firm elastic
       band holds everything securely in place and the soft, breathable fabric keeps the chest steady,
       so long marches and heavy labor never slow the wearer down.</description>

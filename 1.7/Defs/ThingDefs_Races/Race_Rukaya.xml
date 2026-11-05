@@ -575,13 +575,13 @@
           <li>Rukaya_ServiceUniform</li>
           <li>Rukaya_CombatBodysuit</li>
           <li>Rukaya_VampirePajamas</li>
-          <li MayRequire="Ludeon.RimWorld.Odyssey">Rukaya_Vacsuit</li>
-
-          <!-- 贴身·作战：原外套层装甲，已按需求改为占用 OnSkin 层 -->
-          <li>Rukaya_Armour</li>
 
           <!-- 夹层-->
           <li>Rukaya_ChestRig</li>
+
+          <!-- 外层防护：占用 Middle + Shell -->
+          <li MayRequire="Ludeon.RimWorld.Odyssey">Rukaya_Vacsuit</li>
+          <li>Rukaya_Armour</li>
 
           <!-- 外套-->
           <li>Rukaya_WinterCoat</li>

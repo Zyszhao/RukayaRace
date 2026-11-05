@@ -8,7 +8,7 @@
     <soundWorking>Recipe_Smith</soundWorking>
     <workSkill>Crafting</workSkill>
     <recipeUsers>
-      <li>TableMachining</li>
+      <li>Rukaya_Fabricator</li>
     </recipeUsers>
   </RecipeDef>
 
@@ -784,7 +784,6 @@
     <soundWorking>Recipe_Smith</soundWorking>
     <workSkill>Crafting</workSkill>
     <recipeUsers>
-      <li>TableMachining</li>
       <li>Rukaya_Fabricator</li>
     </recipeUsers>
   </RecipeDef>

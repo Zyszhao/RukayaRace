@@ -25,12 +25,10 @@
     <specificApparelRequirements>
       <li>
         <bodyPartGroup>Torso</bodyPartGroup>
-        <!-- 平民躯干锁位用 Rukaya_Dress_Civilian，而不是 Rukaya_OnSkin：
-             动力甲 Rukaya_Armour 因 XmlInheritance 的 <li> 追加语义同时带 Rukaya_OnSkin，
-             而 specificApparelRequirements 会绕过 apparelTags 白名单直接取物，
-             写 Rukaya_OnSkin 会让小镇居民直接穿动力甲生成。
-             另用 apparelDisallowTags 堵住预算循环（两条防线，见
-             Rukaya_PawnKinds_Military.xml 顶部说明）。
+        <!-- 平民躯干锁位用 Rukaya_Dress_Civilian，而不是泛用的 Rukaya_OnSkin：
+             specificApparelRequirements 会绕过 apparelTags 白名单直接取物，
+             使用身份词条可避免把其它躯干服装当作平民制服。另用 apparelDisallowTags
+             堵住动力甲的预算循环（两条防线，见 Rukaya_PawnKinds_Military.xml 顶部说明）。
              再用 apparelLayer 钉死贴身层：Rukaya_Dress_Civilian 也挂在 CasualJacket /
              WinterCape 两件 Shell 外套上，不钉层会抽到外套，生成出只穿一件外套的居民。 -->
         <apparelLayer>OnSkin</apparelLayer>

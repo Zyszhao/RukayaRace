@@ -26,14 +26,14 @@
 
        【重要·动力甲泄漏防线】
        XmlInheritance 对 <li> 是「追加」语义，所以 Rukaya_Armour 与 Rukaya_ArmourHelmet /
-       Rukaya_HeavyPowerArmorHelmet 的实际 tags 都是「父级的 Rukaya_OnSkin / Rukaya_OverHead」
+       Rukaya_HeavyPowerArmorHelmet 的实际 tags 都包含「父级的 Rukaya_Shell / Rukaya_OverHead」
        +「自己的 Rukaya_PowerArmor」。
        而 PawnApparelGenerator.GenerateSpecificRequiredApparel 是**绕过 apparelTags 白名单**
-       直接从全表取物的，只要 specificApparelRequirements 里写了
-       <requiredTag>Rukaya_OnSkin</requiredTag>，动力甲就会被选中（而且不受 apparelMoney 限制）。
+       直接从全表取物的，因此低阶 PawnKind 若用
+       <requiredTag>Rukaya_PowerArmor</requiredTag>，动力甲就会被强制选中（而且不受 apparelMoney 限制）。
        因此：
-         · 民兵与平民的躯干锁位词条改为 Rukaya_Dress_Service / Rukaya_Dress_Civilian，
-           绝不能再写 Rukaya_OnSkin；
+         · 民兵与平民的躯干锁位词条使用 Rukaya_Dress_Service / Rukaya_Dress_Civilian，
+           不使用动力甲专用的 Rukaya_PowerArmor；
          · 同时补 apparelDisallowTags = Rukaya_PowerArmor，把预算循环那条路也堵死
            （apparelDisallowTags 只作用于预算循环，管不到 specificApparelRequirements，
             两条防线必须同时存在）。
