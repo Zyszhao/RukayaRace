@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- 仅旧档已改造个体使用：加法恢复旧种族基础，保留原有基因和代谢。 -->
+  <HediffDef>
+    <defName>Rukaya_LegacyPhysiology</defName>
+    <label>Rukaya physiology</label>
+    <!-- 中文：卢卡娅生理特征 -->
+    <description>Inherited physiological traits shape this Rukaya's resistance and aptitude for precise work.</description>
+    <!-- 中文翻译：遗传的生理特征塑造了这名卢卡娅的抗性与精细作业能力。 -->
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <initialSeverity>1</initialSeverity>
+    <stages>
+      <li>
+        <becomeVisible>false</becomeVisible>
+        <statOffsets>
+          <ComfyTemperatureMin>5</ComfyTemperatureMin>
+          <ComfyTemperatureMax>20</ComfyTemperatureMax>
+          <ImmunityGainSpeed>0.6666667</ImmunityGainSpeed>
+          <PsychicSensitivity>-0.2</PsychicSensitivity>
+          <SocialImpact>-0.2</SocialImpact>
+          <NegotiationAbility>-0.2</NegotiationAbility>
+          <TradePriceImprovement>-0.2</TradePriceImprovement>
+          <AimingDelayFactor>-0.2</AimingDelayFactor>
+          <ShootingAccuracyPawn>0.2</ShootingAccuracyPawn>
+          <MeleeHitChance>-0.2</MeleeHitChance>
+          <MeleeDodgeChance>-0.2</MeleeDodgeChance>
+          <ConstructionSpeed>-0.2</ConstructionSpeed>
+          <PlantWorkSpeed>0.2</PlantWorkSpeed>
+          <PlantHarvestYield>0.2</PlantHarvestYield>
+          <MiningSpeed>-0.2</MiningSpeed>
+          <ResearchSpeed>0.2</ResearchSpeed>
+          <MedicalTendSpeed>1</MedicalTendSpeed>
+          <MedicalTendQuality>1</MedicalTendQuality>
+          <MedicalSurgerySuccessChance>0.5</MedicalSurgerySuccessChance>
+          <DrugSynthesisSpeed>0.5</DrugSynthesisSpeed>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+</Defs>

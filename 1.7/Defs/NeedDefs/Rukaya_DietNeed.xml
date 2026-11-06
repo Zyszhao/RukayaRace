@@ -5,8 +5,8 @@
     <needClass>RukayaRace.Diet.Need_RukayaVegetarian</needClass>
     <label>vegetarian satisfaction</label>
     <!-- 中文：素食满足度 -->
-    <description>Rukaya need regular vegetarian food. This bar tracks time since their last vegetarian meal, separately from hunger. It starts full, reaches half after three days, and empties after six days. More than three days without vegetarian food causes -3 mood; six days or longer causes -10. Eating vegetarian food refills the bar and grants +10 mood for one day, refreshing rather than stacking. Meat and meals containing meat provide 60% nutrition and do not refill this bar. Milk, eggs and fungi count as vegetarian food. Drugs and hemogen do not satisfy this need.</description>
-    <!-- 中文翻译：卢卡娅需要定期食用素食。这条需求记录距上次素食的时间，与饱食需求分别计算。刚吃素时为满，三天后降至一半，六天后归零。超过三天未吃素食时心情-3，达到六天后心情-10。吃素会补满需求条，并获得持续一天的心情+10；再次吃素刷新时长，不叠加。肉食及含肉混合餐只提供60%营养，不能补充素食满足度。奶、蛋与菌类按素食处理。药品与血原质不能满足这一需求。 -->
+    <description>Rukaya need regular vegetarian food. This bar tracks time since their last vegetarian meal, separately from hunger. It starts full, reaches half after three days, and empties after six days. More than three days without vegetarian food causes -3 mood; six days or longer causes -10. Eating vegetarian food refills the bar and grants +10 mood for one day, refreshing rather than stacking. Meat and meals containing meat provide 60% nutrition and do not refill this bar. Milk, eggs and fungi count as vegetarian food. Drugs and hemogen do not satisfy this need. While lent to another faction for a quest, vegetarian food is provided regularly, resetting this timer without granting the meal mood bonus. After returning, time is counted from the most recent provision.</description>
+    <!-- 中文翻译：卢卡娅需要定期食用素食。这条需求记录距上次素食的时间，与饱食需求分别计算。刚吃素时为满，三天后降至一半，六天后归零。超过三天未吃素食时心情-3，达到六天后心情-10。吃素会补满需求条，并获得持续一天的心情+10；再次吃素刷新时长，不叠加。肉食及含肉混合餐只提供60%营养，不能补充素食满足度。奶、蛋与菌类按素食处理。药品与血原质不能满足这一需求。任务借用期间，接收派系会定期提供素食，重置计时，但不发放吃素的心情奖励。返回后从最近一次供餐继续计时。 -->
     <minIntelligence>Humanlike</minIntelligence>
     <developmentalStageFilter>Child, Adult</developmentalStageFilter>
     <listPriority>750</listPriority>

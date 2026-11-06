@@ -140,7 +140,8 @@ namespace RukayaRace.Flight
 
         /// <summary>
         /// Player flight follows the drafted switch or an active combat target. Autonomous visitors,
-        /// allies and enemies also fly while moving, without rewriting the player's stance.
+        /// allies and enemies also fly while moving, except peaceful trading-party movement.
+        /// The player's stance is never rewritten by the AI policy.
         /// </summary>
         public bool ShouldFlyNow
         {
@@ -152,18 +153,17 @@ namespace RukayaRace.Flight
                     return false;
                 }
 
-                if (!IsWellFed || !BothWings)
+                if (!IsWellFed)
                 {
                     return false;
                 }
 
-                if (RukayaFlightAIUtility.HasCombatTarget(pawn))
-                {
-                    return true;
-                }
-
-                return (pawn.Drafted && mode == RukayaFlightMode.Always)
+                // Check intent before walking the health/wing data. Peaceful traders and idle
+                // pawns need no wing-function calculation merely to remain on the ground.
+                bool wantsFlight = (pawn.Drafted && mode == RukayaFlightMode.Always)
+                    || RukayaFlightAIUtility.HasCombatTarget(pawn)
                     || RukayaFlightAIUtility.ShouldFlyWhileMoving(pawn);
+                return wantsFlight && BothWings;
             }
         }
 

@@ -4,13 +4,9 @@
   <StorytellerDef ParentName="BaseStoryteller">
     <defName>Rukaya_Storyteller_ValeriyaDrozdVikhr</defName>
     <label>Valeriya Drozd Vikhr</label>
-    <!-- 中文：【旋风】瓦莱里娅·鸫鸟 -->
-    <description>Valeriya follows Cassandra Classic's rhythm, but with a colder patience. She leaves
-      longer pauses between major attacks, then returns with heavier pressure than before. Expect a
-      preference for mechanoid offensives, mortar sieges, and raids that breach straight through
-      your defenses. Her main assaults arrive as a single force on foot from the map edge, using siege,
-      sapper or breaching tactics when conditions permit, testing your positions and reserve defenses.</description>
-    <!-- 中文翻译：瓦莱里娅沿用了「经典」卡桑德拉那种起伏推进的节奏，但她更冷静，也更有耐心。她会把大型袭击之间的间隔拉得更长，然后在下一次回合中施加比此前更沉重的压力。她尤其偏爱机械族攻势、迫击炮围攻，以及直接破墙突入你防线的袭击。她通常派遣一支从地图边缘步行接近的完整部队，在条件允许时采用围攻、工兵或破墙战术，考验你的阵地与预备防线。 -->
+    <!-- 中文：「旋风」瓦莱里娅·鸫鸟 -->
+    <description>Valeriya believes a good story takes patience. She enjoys watching you raise high walls and fill your stores, then finding the oversights you missed. Whether you appreciate her reminders is of little concern to her.\n\nHer stories resemble Cassandra's, balancing tension with respite and favoring sieges and direct confrontations. Rest while it is quiet; when the wind rises, hold your ground.</description>
+    <!-- 中文翻译：瓦莱里娅相信，一个好故事需要耐心。她乐于看你筑起高墙、囤满仓库，再替你找出那些被忽略的疏漏。至于你是否喜欢她的提醒，她倒不太在意。\n\n她的故事与卡桑德拉较为相似，张弛有序，偏爱围攻与正面交锋。平静时尽可休养，风起时便要守稳阵地。 -->
     <portraitLarge>Rukaya/StoryTeller/StoryTellerA</portraitLarge>
     <portraitTiny>Rukaya/StoryTeller/StoryTellerASmall</portraitTiny>
     <listOrder>25</listOrder>
@@ -200,13 +196,9 @@
   <StorytellerDef ParentName="BaseStoryteller">
     <defName>Rukaya_Storyteller_GalinaRadugaUdar</defName>
     <label>Galina Raduga Udar</label>
-    <!-- 中文：【强袭】加林娜·彩虹 -->
-    <description>Galina builds on Randy Random's love of chaos, but sharpens it into sudden,
-      dangerous strikes. She throws more incidents at you, cuts back on merchants, and favors abrupt
-      surges of pressure that can spike far beyond what seems fair. Her assaults are separated by long
-      respites. Most raids arrive in two or three successive drop-pod waves from the same faction,
-      with no more than one center drop in each assault.</description>
-    <!-- 中文翻译：加林娜继承了「随机」兰迪对混乱与戏剧性的偏爱，并把它打磨成更加凶险的突发打击。她会抛出更多事件，减少商旅来访，并更频繁地制造来势汹汹、强度飙升的压力波动。你很难准确预测她的下一步，而这正是她最危险的地方。她的攻势之间有漫长的喘息期。大多数袭击会以同一派系的两至三批连续空投抵达，每轮攻势最多一次中心空投。 -->
+    <!-- 中文：「强袭」加林娜·彩虹 -->
+    <description>Galina dislikes telling stories by the book. She can leisurely accompany you through many uneventful days, then, on a whim, cram several spectacles onto a single page. A little chaos is fine, as long as it makes a good show.\n\nHer stories resemble Randy's, full of little incidents and unpredictable surprises. Fierce raids often descend from the sky, followed by a rare spell of peace.</description>
+    <!-- 中文翻译：加林娜不喜欢循规蹈矩地讲故事。她可以悠闲地陪你度过许多个平淡日子，也可以兴致一来，把几场好戏全挤在同一页上。只要足够精彩，场面乱些也无妨。\n\n她的故事与兰迪较为相似，琐事不断，惊喜难料。猛烈的袭击往往从天而降，随后才是一段难得的清闲。 -->
     <portraitLarge>Rukaya/StoryTeller/StoryTellerB</portraitLarge>
     <portraitTiny>Rukaya/StoryTeller/StoryTellerBSmall</portraitTiny>
     <listOrder>35</listOrder>

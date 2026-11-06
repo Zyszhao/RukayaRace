@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <XenotypeDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>Rukaya_Xenotype</defName>
+    <label>Rukaya</label>
+    <!-- 中文：卢卡娅种 -->
+    <description>Rukaya are nocturnal, heat-adapted near-humans with strong immunity. They have a natural aptitude for medicine, plants, research and shooting, but struggle with construction, mining, social interaction and close combat. Their eyes see well in darkness, while sunlight slows them down. Their minds are less receptive to psychic influence.</description>
+    <!-- 中文翻译：卢卡娅种是适应夜行与炎热环境、免疫力强的近人种。她们在医疗、种植、研究和射击方面颇具天赋，但不擅长建造、采矿、社交与近战。她们的双眼能够看清黑暗，阳光却会让她们行动迟缓。她们的心智对灵能影响较为迟钝。 -->
+    <descriptionShort>Nocturnal near-humans with strong immunity, keen medical and intellectual aptitudes, and a sensitivity to sunlight.</descriptionShort>
+    <!-- 中文翻译：免疫力强、擅长医疗与学术的夜行近人种，对阳光较为敏感。 -->
+    <iconPath>Rukaya/Genetics/Rukaya_Xenotype</iconPath>
+    <inheritable>true</inheritable>
+    <displayPriority>-100</displayPriority>
+    <combatPowerFactor>1</combatPowerFactor>
+    <canGenerateAsCombatant>true</canGenerateAsCombatant>
+    <factionlessGenerationWeight>0</factionlessGenerationWeight>
+    <!-- 默认激活组合代谢：-4（生理）-4（资质优势）+4（资质弱项）+4（日照/心灵）=0。 -->
+    <genes>
+      <li>DarkVision</li>
+      <li>Immunity_SuperStrong</li>
+      <li>MinTemp_SmallIncrease</li>
+      <li>MaxTemp_LargeIncrease</li>
+      <li>AptitudeStrong_Medicine</li>
+      <li>AptitudeStrong_Plants</li>
+      <li>AptitudeStrong_Intellectual</li>
+      <li>AptitudeStrong_Shooting</li>
+      <li>AptitudePoor_Construction</li>
+      <li>AptitudePoor_Mining</li>
+      <li>AptitudePoor_Social</li>
+      <li>AptitudePoor_Melee</li>
+      <li>UVSensitivity_Mild</li>
+      <li>PsychicAbility_Dull</li>
+    </genes>
+  </XenotypeDef>
+</Defs>

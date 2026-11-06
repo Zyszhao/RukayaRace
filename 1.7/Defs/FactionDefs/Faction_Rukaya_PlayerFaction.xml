@@ -17,6 +17,11 @@
     <!-- 中文翻译：你自己的那一小队卢卡娅幸存者，在一颗无人记得的边缘世界上重新刨出一个家。 -->
     <isPlayer>true</isPlayer>
     <basicMemberKind>Rukaya_Colonist</basicMemberKind>
+    <xenotypeSet Inherit="False">
+      <xenotypeChances>
+        <Rukaya_Xenotype>1</Rukaya_Xenotype>
+      </xenotypeChances>
+    </xenotypeSet>
     <pawnSingular>Rukaya</pawnSingular>
     <!-- 中文翻译：卢卡娅 -->
     <pawnsPlural>Rukayas</pawnsPlural>

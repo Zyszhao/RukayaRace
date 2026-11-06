@@ -1,9 +1,32 @@
 using HarmonyLib;
 using RimWorld;
+using RimWorld.Planet;
 using Verse;
 
 namespace RukayaRace.Diet
 {
+    [HarmonyPatch(typeof(GeneUtility), nameof(GeneUtility.SatisfyChemicalGenes))]
+    public static class RukayaBorrowedDietCarePatch
+    {
+        public static void Postfix(Pawn pawn)
+        {
+            // Follow vanilla world-pawn care, but only assume vegetarian meals for
+            // colonists entrusted to another faction by an ongoing lending quest.
+            if (!ModsConfig.BiotechActive || !RukayaDietUtility.IsRukaya(pawn)
+                || pawn.Dead || pawn.Destroyed || pawn.Suspended
+                || pawn.DevelopmentalStage.Baby() || pawn.Spawned
+                || !pawn.IsWorldPawn() || pawn.IsCaravanMember()
+                || PawnUtility.IsTravelingInTransportPodWorldObject(pawn))
+                return;
+
+            CompRukayaDiet diet = pawn.TryGetComp<CompRukayaDiet>();
+            if (diet != null && pawn.IsBorrowedByAnyFaction())
+                // Reset the shared clock and invalidate deprivation thoughts without
+                // awarding the positive memory reserved for actual ingestion.
+                diet.SetElapsedTicks(0);
+        }
+    }
+
     [HarmonyPatch(typeof(Pawn_NeedsTracker), "ShouldHaveNeed")]
     public static class RukayaVegetarianNeedFilterPatch
     {

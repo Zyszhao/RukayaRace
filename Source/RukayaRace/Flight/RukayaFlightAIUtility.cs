@@ -43,8 +43,40 @@ namespace RukayaRace.Flight
             }
 
             JobDef job = pawn.CurJobDef;
-            return pawn.pather?.Moving == true || job == JobDefOf.Goto
-                || job == JobDefOf.AttackMelee || IsFleeJob(job);
+            if (IsFleeJob(job))
+            {
+                return true;
+            }
+
+            bool moving = pawn.pather?.Moving == true || job == JobDefOf.Goto
+                || job == JobDefOf.AttackMelee;
+            if (!moving)
+            {
+                return false;
+            }
+
+            if (IsTradingPartyMember(pawn))
+            {
+                // Combat targets are handled by ShouldFlyNow before this movement-only decision.
+                // A normal arrival, patrol, follow or departure must not make traders take off.
+                return IsThreatenedExit(pawn, pawn.CurJob);
+            }
+
+            return true;
+        }
+
+        private static bool IsTradingPartyMember(Pawn pawn)
+        {
+            LordJob lordJob = pawn.GetLord()?.LordJob;
+            return lordJob is LordJob_TradeWithColony
+                || (lordJob is LordJob_VisitColony && pawn.TraderKind != null);
+        }
+
+        private static bool IsThreatenedExit(Pawn pawn, Job job)
+        {
+            // Only an actual exit job pays for the nearby-enemy search.
+            return job?.def == JobDefOf.Goto && job.exitMapOnArrival
+                && GenAI.EnemyIsNear(pawn, 30f, out _);
         }
 
         private static bool IsFleeJob(JobDef job)
@@ -70,8 +102,7 @@ namespace RukayaRace.Flight
             bool combatMove = giver is JobGiver_AIFightEnemy
                 && (movement.def == JobDefOf.Goto || melee) && HasCombatTarget(pawn);
             bool fleeing = IsFleeJob(movement.def);
-            bool retreating = movement.def == JobDefOf.Goto && movement.exitMapOnArrival
-                && GenAI.EnemyIsNear(pawn, 30f, out _);
+            bool retreating = !combatMove && !fleeing && IsThreatenedExit(pawn, movement);
             if (!combatMove && !fleeing && !retreating)
             {
                 return null;

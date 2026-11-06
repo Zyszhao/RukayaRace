@@ -22,42 +22,42 @@
       <Flammability>1.0</Flammability>
       <CarryingCapacity>50</CarryingCapacity><!-- 携带量-->
 
-      <ComfyTemperatureMin>18</ComfyTemperatureMin><!-- 最低适应温度-->
-      <ComfyTemperatureMax>45</ComfyTemperatureMax><!-- 最高适应温度-->
-      <ImmunityGainSpeed>2</ImmunityGainSpeed><!-- 免疫力增长速度-->
+      <ComfyTemperatureMin>13</ComfyTemperatureMin><!-- 最低适应温度-->
+      <ComfyTemperatureMax>25</ComfyTemperatureMax><!-- 最高适应温度-->
+      <ImmunityGainSpeed>1.3333333</ImmunityGainSpeed><!-- 免疫力增长速度-->
       <ToxicResistance>0.2</ToxicResistance><!-- 毒素抗性-->
       <ToxicEnvironmentResistance MayRequire="Ludeon.RimWorld.Biotech">0.2</ToxicEnvironmentResistance>
       <RestRateMultiplier>0.8</RestRateMultiplier><!-- 睡眠效率-->
 
       <GlobalLearningFactor>1.0</GlobalLearningFactor>
-      <PsychicSensitivity>0.8</PsychicSensitivity>
-      <MentalBreakThreshold>0.60</MentalBreakThreshold>
+      <PsychicSensitivity>1.0</PsychicSensitivity>
+      <MentalBreakThreshold>0.40</MentalBreakThreshold>
       <PainShockThreshold>0.8</PainShockThreshold>
-      <SocialImpact>0.8</SocialImpact>
-      <NegotiationAbility>0.8</NegotiationAbility>
-      <TradePriceImprovement>0.8</TradePriceImprovement>
+      <SocialImpact>1.0</SocialImpact>
+      <NegotiationAbility>1.0</NegotiationAbility>
+      <TradePriceImprovement>1.0</TradePriceImprovement>
 
-      <AimingDelayFactor>0.8</AimingDelayFactor>
-      <ShootingAccuracyPawn>1.2</ShootingAccuracyPawn>
-      <MeleeHitChance>0.8</MeleeHitChance>
-      <MeleeDodgeChance>0.8</MeleeDodgeChance>
+      <AimingDelayFactor>1.0</AimingDelayFactor>
+      <ShootingAccuracyPawn>1.0</ShootingAccuracyPawn>
+      <MeleeHitChance>1.0</MeleeHitChance>
+      <MeleeDodgeChance>1.0</MeleeDodgeChance>
       <ArmorRating_Blunt>0</ArmorRating_Blunt>
       <ArmorRating_Heat>0</ArmorRating_Heat>
 
       <WorkSpeedGlobal>0.9</WorkSpeedGlobal>
       <GeneralLaborSpeed>1.0</GeneralLaborSpeed>
-      <ConstructionSpeed>0.8</ConstructionSpeed>
-      <!-- 植物工作速度：种族基础值120%，同时用于播种和采收；仍受全局工作速度、技能与身体能力影响。 -->
-      <PlantWorkSpeed>1.2</PlantWorkSpeed>
-      <!-- 植物收获量：种族基础值120%；药用作物收获量也通过原版属性因子继承此加成。 -->
-      <PlantHarvestYield>1.2</PlantHarvestYield>
-      <MiningSpeed>0.8</MiningSpeed>
+      <ConstructionSpeed>1.0</ConstructionSpeed>
+      <!-- 植物工作速度：基础值100%，默认异种以原版种植资质+4表达优势；仍受全局工作速度与身体能力影响。 -->
+      <PlantWorkSpeed>1.0</PlantWorkSpeed>
+      <!-- 植物收获量：基础值100%，默认异种的种植资质参与原版收获公式。 -->
+      <PlantHarvestYield>1.0</PlantHarvestYield>
+      <MiningSpeed>1.0</MiningSpeed>
       <MiningYield>1.0</MiningYield>
-      <ResearchSpeed>1.2</ResearchSpeed>
-      <MedicalTendSpeed>2.0</MedicalTendSpeed>
-      <MedicalTendQuality>2.0</MedicalTendQuality>
-      <MedicalSurgerySuccessChance>1.5</MedicalSurgerySuccessChance>
-      <DrugSynthesisSpeed>1.5</DrugSynthesisSpeed>
+      <ResearchSpeed>1.0</ResearchSpeed>
+      <MedicalTendSpeed>1.0</MedicalTendSpeed>
+      <MedicalTendQuality>1.0</MedicalTendQuality>
+      <MedicalSurgerySuccessChance>1.0</MedicalSurgerySuccessChance>
+      <DrugSynthesisSpeed>1.0</DrugSynthesisSpeed>
       <ButcheryFleshSpeed>1.0</ButcheryFleshSpeed>
       <ButcheryFleshEfficiency>1.0</ButcheryFleshEfficiency>
       <ButcheryMechanoidSpeed>0.8</ButcheryMechanoidSpeed>
@@ -489,6 +489,11 @@
       </generalSettings>
 
       <graphicPaths>
+        <!-- 服装缺少当前体型贴图时回退到 Female；保留儿童逻辑体型及其生命阶段缩放。 -->
+        <apparel>
+          <bodyTypeFallback>Female</bodyTypeFallback>
+          <femaleBodyTypeFallback>Female</femaleBodyTypeFallback>
+        </apparel>
         <head>
           <path>Rukaya/Head/RukayaHead</path>
         </head>
@@ -645,6 +650,7 @@
         <onlyUseRaceRestrictedXenotypes>true</onlyUseRaceRestrictedXenotypes>
 
         <whiteXenotypeList>
+          <li MayRequire="Ludeon.RimWorld.Biotech">Rukaya_Xenotype</li>
           <li MayRequire="Ludeon.RimWorld.Biotech">Baseliner</li>
         </whiteXenotypeList>
 
@@ -697,6 +703,7 @@
     </alienRace>
 
     <comps>
+      <li Class="RukayaRace.Genetics.CompProperties_RukayaGenetics" />
       <li Class="RukayaRace.Diet.CompProperties_RukayaDiet" />
       <!-- 征召飞行档位（帧动画由渲染树 + AnimationDef 承载，见 Source/RukayaRace/Flight/） -->
       <li Class="RukayaRace.Flight.CompProperties_RukayaFlightControl">

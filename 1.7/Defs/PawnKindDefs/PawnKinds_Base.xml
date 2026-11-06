@@ -27,7 +27,7 @@
     </styleItemTags>
     <xenotypeSet>
       <xenotypeChances>
-        <Baseliner MayRequire="Ludeon.RimWorld.Biotech">1</Baseliner>
+        <Rukaya_Xenotype MayRequire="Ludeon.RimWorld.Biotech">1</Rukaya_Xenotype>
         <Dirtmole MayRequire="Ludeon.RimWorld.Biotech">0</Dirtmole>
         <Genie MayRequire="Ludeon.RimWorld.Biotech">0</Genie>
         <Hussar MayRequire="Ludeon.RimWorld.Biotech">0</Hussar>
