@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="SkyfallerBase">
+    <defName>Rukaya_WoundedArrivalFlyer</defName>
+    <label>descending Rukaya</label>
+    <!-- 中文：正在降落的卢卡娅 -->
+    <thingClass>RukayaRace.Storytelling.Skyfaller_RukayaWoundedArrival</thingClass>
+    <skyfaller>
+      <hitRoof>false</hitRoof>
+      <motesPerCell>0</motesPerCell>
+      <ticksToImpactRange>240~240</ticksToImpactRange>
+      <movementType>Decelerate</movementType>
+      <shadowSize>0.75</shadowSize>
+      <angleCurve>
+        <points><li>(0, -90)</li><li>(1, -90)</li></points>
+      </angleCurve>
+      <speedCurve>
+        <points><li>(0, 0.10)</li><li>(1, 0.025)</li></points>
+      </speedCurve>
+      <zPositionCurve>
+        <points><li>(0, 12)</li><li>(0.5, 5)</li><li>(0.85, 1)</li><li>(1, 0)</li></points>
+      </zPositionCurve>
+    </skyfaller>
+  </ThingDef>
+</Defs>

@@ -569,17 +569,17 @@
     </skills>
   </PawnKindDef>
 
-  <!-- 正规军破门手：固定抽取具备 Demolish 能力的爆破锤，满足原版破墙 AI。 -->
+  <!-- 正规军破门手：固定抽取 T1 十字镐，以 Demolish 攻击承担低级破墙袭击。 -->
   <PawnKindDef ParentName="Rukaya_MilitaryPawnBase">
     <defName>Rukaya_RegularBreacher</defName>
     <label>Rukaya regular breacher</label>
     <!-- 中文：卢卡娅正规军破门手 -->
     <combatPower>120</combatPower>
     <isGoodBreacher>true</isGoodBreacher>
-    <!-- 和原版专职破墙兵一样放开装备预算；专用标签保证只生成爆破锤，避免预算抽低后空手。 -->
+    <!-- 和原版专职破墙兵一样放开装备预算；专用标签保证只生成十字镐，避免预算抽低后空手。 -->
     <weaponMoney>9999~9999</weaponMoney>
     <weaponTags>
-      <li>Rukaya_T2_BreachingHammer</li>
+      <li>Rukaya_T1_BreachingPickaxe</li>
     </weaponTags>
     <apparelMoney>2000~3500</apparelMoney>
     <!-- 正规军制式服装：两套现成美术的套装随机 —— 阿富汗卡套（军服 + 阿富汗卡帽）

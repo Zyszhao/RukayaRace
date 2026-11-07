@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Rukaya_WandererJoin.label>卢卡娅流浪者加入</Rukaya_WandererJoin.label>
+  <Rukaya_WoundedArrival.label>迷航迫降</Rukaya_WoundedArrival.label>
+  <Rukaya_WoundedArrival.letterLabel>迷航迫降</Rukaya_WoundedArrival.letterLabel>
+  <Rukaya_WoundedArrival.letterText>一名卢卡娅在飞行中迷失了方向。{PAWN_nameDef}双翼严重受损，正勉强扇动翅膀，在附近迫降。她已筋疲力尽，需要救援。</Rukaya_WoundedArrival.letterText>
+</LanguageData>

@@ -86,6 +86,7 @@
     <xpath>Defs/ThingDef[defName="Rukaya_Pickaxe"]/weaponTags</xpath>
     <value>
       <li>Rukaya_T1_MeleeTool</li>
+      <li>Rukaya_T1_BreachingPickaxe</li>
     </value>
   </Operation>
 

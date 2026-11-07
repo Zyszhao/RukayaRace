@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <IncidentDef>
+    <defName>Rukaya_WandererJoin</defName>
+    <label>Rukaya wanderer joins</label>
+    <!-- 中文：卢卡娅流浪者加入 -->
+    <category>Misc</category>
+    <targetTags><li>Map_PlayerHome</li></targetTags>
+    <workerClass>IncidentWorker_GiveQuest</workerClass>
+    <questScriptDef>Rukaya_WandererJoins</questScriptDef>
+    <baseChance>0.4</baseChance>
+    <populationEffect>IncreaseEasy</populationEffect>
+    <earliestDay>5</earliestDay>
+    <minRefireDays>20</minRefireDays>
+    <requireColonistsPresent>true</requireColonistsPresent>
+  </IncidentDef>
+
+  <IncidentDef>
+    <defName>Rukaya_WoundedArrival</defName>
+    <label>lost in flight</label>
+    <!-- 中文：迷航迫降 -->
+    <category>Misc</category>
+    <targetTags><li>Map_PlayerHome</li></targetTags>
+    <workerClass>RukayaRace.Storytelling.IncidentWorker_RukayaWoundedArrival</workerClass>
+    <baseChance>0.4</baseChance>
+    <populationEffect>IncreaseMedium</populationEffect>
+    <earliestDay>10</earliestDay>
+    <minRefireDays>30</minRefireDays>
+    <requireColonistsPresent>true</requireColonistsPresent>
+    <letterDef>NeutralEvent</letterDef>
+    <letterLabel>Lost in flight</letterLabel>
+    <!-- 中文：迷航迫降 -->
+    <letterText>A Rukaya has lost her way in flight. With badly injured wings, {PAWN_nameDef} is struggling to land nearby. She is exhausted and needs rescue.</letterText>
+    <!-- 中文翻译：一名卢卡娅在飞行中迷失了方向。{PAWN_nameDef}双翼严重受损，正勉强扇动翅膀，在附近迫降。她已筋疲力尽，需要救援。 -->
+  </IncidentDef>
+</Defs>

@@ -88,6 +88,10 @@
       <WorkToMake>9000</WorkToMake>
       <Mass>2.8</Mass>
     </statBases>
+    <equippedStatOffsets>
+      <MiningSpeed>0.45</MiningSpeed>
+      <MiningYield>0.25</MiningYield>
+    </equippedStatOffsets>
     <costList>
       <Steel>65</Steel>
       <ComponentIndustrial>1</ComponentIndustrial>
@@ -125,7 +129,8 @@
         <capacities>
           <li>Demolish</li>
         </capacities>
-        <power>7.5</power>
+        <!-- 原版 Demolish 对建筑造成 10 倍伤害，对不可通行建筑再乘 0.75。 -->
+        <power>15</power>
         <cooldownTime>1</cooldownTime>
       </li>
     </tools>

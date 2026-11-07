@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <QuestScriptDef>
+    <defName>Rukaya_WandererJoins</defName>
+    <autoAccept>true</autoAccept>
+    <defaultHidden>true</defaultHidden>
+    <isRootSpecial>true</isRootSpecial>
+    <successHistoryEvent MayRequire="Ludeon.RimWorld.Ideology">CharityFulfilled_WandererJoins</successHistoryEvent>
+    <failedOrExpiredHistoryEvent MayRequire="Ludeon.RimWorld.Ideology">CharityRefused_WandererJoins</failedOrExpiredHistoryEvent>
+    <questNameRules>
+      <rulesStrings>
+        <li>questName-&gt;Rukaya wanderer joins</li>
+        <!-- 中文：卢卡娅流浪者加入 -->
+      </rulesStrings>
+    </questNameRules>
+    <questDescriptionRules>
+      <rulesStrings>
+        <li>questDescription-&gt;A Rukaya wanderer is looking for a new home.</li>
+        <!-- 中文：一名卢卡娅流浪者正在寻找新的家园。 -->
+      </rulesStrings>
+    </questDescriptionRules>
+    <root Class="RukayaRace.Storytelling.QuestNode_Root_RukayaWandererJoin" />
+  </QuestScriptDef>
+</Defs>

@@ -73,6 +73,13 @@ namespace RukayaRace.Flight
             get
             {
                 Pawn pawn = Pawn;
+                // Arrival skyfallers own an unspawned pawn. Render the existing flap frames
+                // while that carrier descends, including after loading a mid-flight save.
+                if (pawn?.ParentHolder is Storytelling.Skyfaller_RukayaWoundedArrival arrival
+                    && arrival.Spawned)
+                {
+                    return BothWings;
+                }
                 if (pawn == null || !pawn.Spawned || pawn.Map == null)
                 {
                     return false;
