@@ -688,6 +688,8 @@
         </blackGeneTags>
 
         <blackXenotypeList MayRequire="Ludeon.RimWorld.Biotech">
+          <!-- HAR 黑名单优先于白名单：开局预设异种列表排除智人种，仅保留卢卡娅种。 -->
+          <li MayRequire="Ludeon.RimWorld.Biotech">Baseliner</li>
           <li MayRequire="Ludeon.RimWorld.Biotech">Dirtmole</li>
           <li MayRequire="Ludeon.RimWorld.Biotech">Genie</li>
           <li MayRequire="Ludeon.RimWorld.Biotech">Hussar</li>
