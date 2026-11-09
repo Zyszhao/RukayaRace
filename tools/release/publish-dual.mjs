@@ -13,6 +13,8 @@ const steamRoot = resolve(value('--steam-root', 'D:/SteamCMD'));
 const version = value('--version', 'preview');
 const target = value('--target', 'Both');
 const live = args.includes('--publish');
+const updateExisting = args.includes('--update-existing-release');
+const preserveSteamTags = args.includes('--preserve-steam-tags');
 if (!['Both', 'GitHub', 'Steam'].includes(target)) throw new Error('Invalid target');
 if (live && !/^v?\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?$/.test(version)) throw new Error('正式发布须指定语义版本，例如 v0.2.4。');
 const tag = version === 'preview' ? version : version.startsWith('v') ? version : `v${version}`;
@@ -33,6 +35,15 @@ const origin = await git('remote', 'get-url', 'origin');
 const match = origin.match(/github\.com[:/]([^/]+\/[^/]+?)(?:\.git)?$/);
 if (!match) throw new Error('origin 必须指向 GitHub。');
 const githubRepo = match[1];
+let releaseCommit = head;
+if (updateExisting) {
+  // 只允许修订运行内容完全相同的已有 Release，绝不移动版本标签。
+  releaseCommit = await git('rev-parse', `refs/tags/${tag}^{commit}`);
+  if (await git('diff', '--name-only', releaseCommit, head, '--', 'About', '1.7', 'Content', 'StoryTellerFullBody', 'LoadFolders.xml', 'Source')) {
+    throw new Error('已有版本的运行内容或源码与当前提交不同，禁止修订此版本。');
+  }
+  await exec('gh', ['release', 'view', tag, '--repo', githubRepo]);
+}
 const notesFile = value('--notes-file');
 if (live && !notesFile) throw new Error('正式发布须传入 --notes-file（UTF-8 更新说明）。');
 const notes = notesFile ? await readFile(resolve(notesFile), 'utf8') : '发布预演';
@@ -45,12 +56,18 @@ const env = { ...process.env, STEAM_USERNAME: process.env.STEAM_USERNAME || 'wil
   STEAMCMD_PATH: join(steamRoot, 'steamcmd.exe'), STEAM_CONFIG_VDF: join(steamRoot, 'config/config.vdf') };
 if (steam && live) {
   await access(env.STEAM_CONFIG_VDF);
-  if (!env.STEAM_PASSWORD && !env.STEAM_REFRESH_TOKEN) throw new Error('标签认证需 STEAM_REFRESH_TOKEN 或 STEAM_PASSWORD；未配置时停止，避免半途上传。');
+  if (!preserveSteamTags && !env.STEAM_PASSWORD && !env.STEAM_REFRESH_TOKEN) throw new Error('标签认证需 STEAM_REFRESH_TOKEN 或 STEAM_PASSWORD；未配置时停止，避免半途上传。');
 }
 if (!live && !env.STEAM_PASSWORD && !env.STEAM_REFRESH_TOKEN) env.STEAM_REFRESH_TOKEN = 'offline-preview-only';
 const { stageModContent } = await import(pathToFileURL(join(steamRoot, 'tools/windows-steam-plugin.mjs')));
 const { publish } = await import(pathToFileURL(join(steamRoot, 'semantic-release-steam/index.mjs')));
 const options = { ...config, outputReadme: false, mods: [{ ...mod, path: repo }] };
+if (preserveSteamTags) {
+  const templates = await readdir(repo);
+  if (templates.some(name => /^README\.[^.]+\.template\.md$/.test(name))) throw new Error('存在多语言简介，不能跳过其认证更新。');
+  const publishTarget = config.branchTargets[branch];
+  options.mods[0].metadata = { ...mod.metadata, [publishTarget]: { ...mod.metadata?.[publishTarget], tags: [] } };
+}
 const context = { cwd: repo, branch: { name: branch }, env, options: { dryRun: true },
   nextRelease: { version: tag, notes }, logger: console };
 let stage;
@@ -79,7 +96,7 @@ try {
   }
   manifest.sort((a, b) => a.path.localeCompare(b.path));
   const manifestPath = join(work, `RukayaRace-${tag}.manifest.json`);
-  await writeFile(manifestPath, JSON.stringify({ tag, commit: head, files: manifest }, null, 2));
+  await writeFile(manifestPath, JSON.stringify({ tag, commit: releaseCommit, packagingCommit: head, files: manifest }, null, 2));
   console.log(`暂存校验通过：${manifest.length} 个文件，${manifest.reduce((n, x) => n + x.bytes, 0)} 字节；源码、Git、调试符号、发布工具均已排除。`);
   const zip = join(work, `RukayaRace-${tag}.zip`);
   if (github) {
@@ -100,20 +117,39 @@ try {
     }
     if (github) {
       const existingTag = await git('ls-remote', 'origin', `refs/tags/${tag}`);
-      if (existingTag) throw new Error(`标签已存在：${tag}；请先核对已有发布，禁止覆盖。`);
+      if (existingTag && !updateExisting) throw new Error(`标签已存在：${tag}；请先核对已有发布，禁止覆盖。`);
+      if (updateExisting) {
+        const remoteTag = await git('ls-remote', 'origin', `refs/tags/${tag}`, `refs/tags/${tag}^{}`);
+        const resolvedTag = remoteTag.split('\n').find(line => line.endsWith('^{}')) ?? remoteTag.split('\n')[0];
+        if (resolvedTag.split(/\s/)[0] !== releaseCommit) throw new Error('远端标签与已核对版本不一致。');
+      }
       await exec('gh', ['api', `repos/${githubRepo}`]);
       const body = join(work, 'notes.md');
       await writeFile(body, notes);
       const releaseArgs = ['release', 'create', tag, zip, manifestPath, '--repo', githubRepo, '--target', head,
         '--title', `Rukaya Race ${tag}`, '--notes-file', body];
       if (tag.includes('-')) releaseArgs.push('--prerelease');
-      const result = await exec('gh', releaseArgs);
-      console.log(`GitHub Release 完成：${result.stdout.trim()}`);
+      if (updateExisting) {
+        await exec('gh', ['release', 'upload', tag, zip, manifestPath, '--repo', githubRepo]);
+        await exec('gh', ['release', 'edit', tag, '--repo', githubRepo, '--notes-file', body]);
+        console.log(`GitHub Release 已更新（保留原标签）：https://github.com/${githubRepo}/releases/tag/${tag}`);
+      } else {
+        const result = await exec('gh', releaseArgs);
+        console.log(`GitHub Release 完成：${result.stdout.trim()}`);
+      }
+      const remoteRelease = JSON.parse((await exec('gh', ['release', 'view', tag, '--repo', githubRepo, '--json', 'assets'])).stdout);
+      for (const assetPath of [zip, manifestPath]) {
+        const name = assetPath.slice(assetPath.lastIndexOf('\\') + 1).split('/').pop();
+        const digest = `sha256:${createHash('sha256').update(await readFile(assetPath)).digest('hex')}`;
+        if (!remoteRelease.assets.some(asset => asset.name === name && asset.digest === digest)) throw new Error(`远端附件哈希校验失败：${name}`);
+      }
+      console.log('GitHub 两个附件远端 SHA-256 校验通过。');
     }
     if (steam) {
       const { createWorkshopVdf } = await import(pathToFileURL(join(steamRoot, 'semantic-release-steam/lib/vdf.mjs')));
       // 上游将 workshop.vdf 写入 contentfolder；此处移到包外，避免上传控制文件。
       await publish(options, { ...context, options: { dryRun: false }, stageModContent: async () => stage,
+        ...(preserveSteamTags ? { applyWorkshopUpdates: async () => console.log('保留现有工坊标签；本次未调用标签/多语言更新。') } : {}),
         uploadWorkshopItem: async data => {
           const vdf = join(work, 'workshop.vdf');
           await writeFile(vdf, createWorkshopVdf({ ...data, contentFolder: stage }));
