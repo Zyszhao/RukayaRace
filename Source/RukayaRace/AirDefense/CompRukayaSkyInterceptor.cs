@@ -682,6 +682,8 @@ namespace RukayaRace.AirDefense
         {
             if (faction == null || !IsLiveTarget(target, map))
                 return false;
+            if (RukayaBossgroupDropPodProtection.IsProtected(target))
+                return false;
             bool hostileShell = target.Faction != null && target.Faction.HostileTo(faction);
             if (target.Faction != null && !hostileShell)
                 return false;

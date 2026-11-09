@@ -29,7 +29,7 @@ namespace RukayaRace.AirDefense
         /// 不再重新过一次 <c>CanTarget</c>。否则会出现"拦截弹飞到目标跟前时，目标刚好进入
         /// 陨石最后 15 tick 落地段 / 已经不再满足某个条件"，让一次注定命中的拦截白白失效——
         /// 这正是"拦截行为与拦截动画解耦"要消掉的风险。
-        /// 仍然保留"目标已经不存在"的兜底：那种情况下没东西可拦，直接跳过。
+        /// 仍然保留"目标已经不存在"的兜底，以及首领任务空投仓的强制保护。
         /// </summary>
         public static bool TryIntercept(Thing target, Thing launcher, Faction faction,
             RukayaSkyCrashSettings settings, Vector3 shotPosition, bool alreadyCommitted = false)
@@ -67,6 +67,10 @@ namespace RukayaRace.AirDefense
 
         private static bool DestroyDropPod(Skyfaller pod)
         {
+            // 即使旧存档中的拦截弹已经发射，也不能跳过任务保护。
+            // Vanish 不会触发首领死亡、芯片掉落和任务击杀信号。
+            if (RukayaBossgroupDropPodProtection.IsProtected(pod))
+                return false;
             Map map = pod.Map;
             Vector3 position = pod.DrawPos;
             // Skyfaller.Destroy 会销毁 ActiveTransporter；后者递归销毁乘员和货物。
