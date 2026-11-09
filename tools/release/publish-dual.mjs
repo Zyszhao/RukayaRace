@@ -5,6 +5,7 @@ import { join, resolve, relative } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { tmpdir } from 'node:os';
 import { createHash } from 'node:crypto';
+import { confirmSteamUpload } from './confirm-steam-upload.mjs';
 
 const exec = promisify(execFile);
 const args = process.argv.slice(2);
@@ -153,10 +154,12 @@ try {
         uploadWorkshopItem: async data => {
           const vdf = join(work, 'workshop.vdf');
           await writeFile(vdf, createWorkshopVdf({ ...data, contentFolder: stage }));
+          const startedAt = Date.now();
           const result = await exec(env.STEAMCMD_PATH, ['+@ShutdownOnFailedCommand', '1', '+@NoPromptForPassword', '1',
             '+login', env.STEAM_USERNAME, '+workshop_build_item', vdf, '+quit'],
             { cwd: steamRoot, env, timeout: 600000, maxBuffer: 4 * 1024 * 1024 });
-          if (!/Success\. (?:Uploaded item|Published File)/i.test(result.stdout)) throw new Error('SteamCMD 未返回上传成功标志；请检查 D:/SteamCMD/logs，不以退出码代替成功判断。');
+          const confirmedBy = await confirmSteamUpload({ ...result, workshopId, notes, startedAt });
+          console.log(`上传核验依据：${confirmedBy}`);
           console.log(`SteamCMD 文件上传完成：${workshopId}；接下来更新标签。`);
           return vdf;
         } });

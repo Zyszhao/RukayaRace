@@ -5,7 +5,7 @@
 ## 部署
 
 1. 本目录同步到统一工作区 `tools/release/`；`.steamignore` 同时复制到统一工作区根目录。
-2. 将 `Publish-Release.ps1` 与 `publish-dual.mjs` 放在 `D:\SteamCMD` 同一目录。依赖现有 `tools/windows-steam-plugin.mjs`、`semantic-release-steam/`、`cygwin/`、Node.js、PowerShell 7、Git、gh。
+2. 将 `Publish-Release.ps1`、`publish-dual.mjs` 与 `confirm-steam-upload.mjs` 放在 `D:\SteamCMD` 同一目录。依赖现有 `tools/windows-steam-plugin.mjs`、`semantic-release-steam/`、`cygwin/`、Node.js、PowerShell 7、Git、gh。
 3. 本机 `D:\SteamCMD\workshop.config.json` 中 `mods[0].path` 指向统一工作区，沿用 appId 294100、stable 工坊 ID 3833580701；不可提交登录缓存和凭据。
 4. 工坊 `README.template.md` 在统一工作区根目录维护，沿用原工坊简介；它参与页面编译，但不进入运行包。
 
@@ -35,3 +35,5 @@ GitHub 安装 ZIP 和 Steam 内容共用一个暂存目录，ZIP 根层直接包
 用户明确要求修订已有 Release 时可加 `-UpdateExistingRelease`。须先取得本地对应标签；脚本核对标签与当前运行内容、生产源码完全一致，且远端标签仍指向原提交，才允许补充安装 ZIP、哈希清单和更新说明，始终不移动标签。新附件同名时上传会停止，不自动覆盖旧附件。
 
 仅更新工坊文件并沿用现有标签时可加 `-PreserveSteamTags`，不调用额外 Steam CM 标签认证，也不在上传 VDF 中写 tags。存在多语言模板时拒绝使用此选项。发布后需核对工坊原标签仍在。
+
+SteamCMD 上传成功判断兼容 stdout/stderr 与控制字符；无法识别成功文本时，再核对工坊远端更新记录的时间戳与本次完整更新说明，避免误判后重复上传。远端查询使用 PowerShell 网络栈以沿用 Windows 代理配置。
