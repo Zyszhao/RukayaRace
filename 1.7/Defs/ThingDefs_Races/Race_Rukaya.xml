@@ -515,7 +515,7 @@
               </extendedGraphics>
             </Age>
             <Age For="HumanlikeBaby">
-              <path>Rukaya/Body/Naked_Female</path>
+              <path>Rukaya/Body/Naked_Baby</path>
             </Age>
             <Hediff MayRequire="Ludeon.RimWorld.Anomaly" For="Ghoul">Rukaya/Body/Naked_Female</Hediff>
           </extendedGraphics>
@@ -836,8 +836,26 @@
         <li Class="AlienRace.LifeStageAgeAlien">
           <def>HumanlikeBaby</def>
           <minAge>0</minAge>
-          <headOffset>(0.2,-0.18)</headOffset>
-          <headFemaleOffset>(0.2,-0.18)</headFemaleOffset>
+          <!-- 婴儿保留原版身体与头部网格缩放，显式固定地图与肖像的额外倍率。 -->
+          <customDrawSize>(1,1)</customDrawSize>
+          <customPortraitDrawSize>(1,1)</customPortraitDrawSize>
+          <customHeadDrawSize>(1,1)</customHeadDrawSize>
+          <customPortraitHeadDrawSize>(1,1)</customPortraitHeadDrawSize>
+          <headOffset>(0.09,-0.11)</headOffset>
+          <headFemaleOffset>(0.09,-0.11)</headFemaleOffset>
+          <!-- 婴儿独立锚点，不叠加全局为成年头型设置的左右偏移。 -->
+          <headOffsetDirectional>
+            <north><offset>(0,0)</offset></north>
+            <south><offset>(0,0)</offset></south>
+            <east><offset>(0,0)</offset></east>
+            <west><offset>(0,0)</offset></west>
+          </headOffsetDirectional>
+          <headFemaleOffsetDirectional>
+            <north><offset>(0,0)</offset></north>
+            <south><offset>(0,0)</offset></south>
+            <east><offset>(0,0)</offset></east>
+            <west><offset>(0,0)</offset></west>
+          </headFemaleOffsetDirectional>
         </li>
         <li Class="AlienRace.LifeStageAgeAlien">
           <def>HumanlikeChild</def>

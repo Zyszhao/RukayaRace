@@ -13,6 +13,10 @@
         <countRange>1800~3000</countRange>
       </li>
       <li Class="StockGenerator_SingleDef">
+        <thingDef>Rukaya_ActiveMatterContainer</thingDef>
+        <countRange>75~150</countRange>
+      </li>
+      <li Class="StockGenerator_SingleDef">
         <thingDef>Steel</thingDef>
         <countRange>150~350</countRange>
       </li>
@@ -73,6 +77,10 @@
       <li Class="StockGenerator_SingleDef">
         <thingDef>Silver</thingDef>
         <countRange>2500~4000</countRange>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Rukaya_ActiveMatterContainer</thingDef>
+        <countRange>100~250</countRange>
       </li>
       <li Class="RukayaRace.Trade.StockGenerator_RukayaEquipment">
         <tradeTag>Rukaya_TradeArmsI</tradeTag>
@@ -145,6 +153,10 @@
       <li Class="StockGenerator_SingleDef">
         <thingDef>Silver</thingDef>
         <countRange>2000~3500</countRange>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Rukaya_ActiveMatterContainer</thingDef>
+        <countRange>30~75</countRange>
       </li>
       <li Class="StockGenerator_SingleDef">
         <thingDef>MedicineIndustrial</thingDef>
@@ -299,6 +311,10 @@
       <li Class="StockGenerator_SingleDef">
         <thingDef>Silver</thingDef>
         <countRange>5000~8000</countRange>
+      </li>
+      <li Class="StockGenerator_SingleDef">
+        <thingDef>Rukaya_ActiveMatterContainer</thingDef>
+        <countRange>300~600</countRange>
       </li>
       <li Class="StockGenerator_SingleDef">
         <thingDef>Steel</thingDef>
