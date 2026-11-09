@@ -1,0 +1,26 @@
+# Windows 适配器按“后写规则优先”解析；仅允许运行目录。
+*
+!/About/
+!/About/**
+!/1.7/
+!/1.7/**
+!/Content/
+!/Content/**
+!/StoryTellerFullBody/
+!/StoryTellerFullBody/**
+!/LoadFolders.xml
+# 即使位于运行目录，也不发布这些开发文件。
+.git/
+node_modules/
+bin/
+obj/
+.env
+.env.*
+*.pdb
+*.log
+*.cs
+*.csproj
+*.sln
+*.tmp
+*.bak
+README*.template.md

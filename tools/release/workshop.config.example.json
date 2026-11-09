@@ -1,0 +1,19 @@
+{
+  "appId": "294100",
+  "branchTargets": {
+    "main": "stable"
+  },
+  "mods": [
+    {
+      "name": "Rukaya Race",
+      "path": "E:/Rukaya Race OpenSource Branch",
+      "title": "Rukaya Race",
+      "workshopIds": {
+        "stable": "3833580701"
+      }
+    }
+  ],
+  "outputReadme": false,
+  "guardTimeoutSeconds": 300,
+  "guardRetries": 3
+}

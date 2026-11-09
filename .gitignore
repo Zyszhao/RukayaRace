@@ -20,3 +20,13 @@ RukayaWingDebug.log
 
 # 图片生成响应可能包含临时签名链接，不入库
 tmp/imagegen/*response*.json
+
+# 本机凭据与发布临时产物
+.env
+.env.*
+node_modules/
+*.log
+*.zip
+workshop.config.json
+config.vdf
+ssfn*
