@@ -6,6 +6,7 @@ import { pathToFileURL } from 'node:url';
 import { tmpdir } from 'node:os';
 import { createHash } from 'node:crypto';
 import { confirmSteamUpload } from './confirm-steam-upload.mjs';
+import { formatReleaseNotes } from './format-release-notes.mjs';
 
 const exec = promisify(execFile);
 const args = process.argv.slice(2);
@@ -47,8 +48,8 @@ if (updateExisting) {
 }
 const notesFile = value('--notes-file');
 if (live && !notesFile) throw new Error('正式发布须传入 --notes-file（UTF-8 更新说明）。');
-const notes = notesFile ? await readFile(resolve(notesFile), 'utf8') : '发布预演';
-if (!notes.trim()) throw new Error('更新说明不能为空。');
+const inputNotes = notesFile ? await readFile(resolve(notesFile), 'utf8') : '发布预演';
+const releaseNotes = formatReleaseNotes(tag, inputNotes);
 const status = await git('status', '--porcelain', '--untracked-files=all');
 if (live && status) throw new Error('统一工作区存在未提交文件；请先提交、推送并记录开发区摘要。');
 console.log(JSON.stringify({ mode: live ? 'publish' : 'preview', repo, head, branch, target, tag, githubRepo, workshopId, dirty: Boolean(status) }, null, 2));
@@ -70,7 +71,8 @@ if (preserveSteamTags) {
   options.mods[0].metadata = { ...mod.metadata, [publishTarget]: { ...mod.metadata?.[publishTarget], tags: [] } };
 }
 const context = { cwd: repo, branch: { name: branch }, env, options: { dryRun: true },
-  nextRelease: { version: tag, notes }, logger: console };
+  nextRelease: { version: tag, notes: releaseNotes.steam }, logger: console };
+console.log(`GitHub 更新说明：\n${releaseNotes.github}\nSteam 更新说明：\n${releaseNotes.steam}`);
 let stage;
 const work = await mkdtemp(join(tmpdir(), 'rukaya-dual-'));
 try {
@@ -126,7 +128,7 @@ try {
       }
       await exec('gh', ['api', `repos/${githubRepo}`]);
       const body = join(work, 'notes.md');
-      await writeFile(body, notes);
+      await writeFile(body, releaseNotes.github);
       const releaseArgs = ['release', 'create', tag, zip, manifestPath, '--repo', githubRepo, '--target', head,
         '--title', `Rukaya Race ${tag}`, '--notes-file', body];
       if (tag.includes('-')) releaseArgs.push('--prerelease');
@@ -158,7 +160,7 @@ try {
           const result = await exec(env.STEAMCMD_PATH, ['+@ShutdownOnFailedCommand', '1', '+@NoPromptForPassword', '1',
             '+login', env.STEAM_USERNAME, '+workshop_build_item', vdf, '+quit'],
             { cwd: steamRoot, env, timeout: 600000, maxBuffer: 4 * 1024 * 1024 });
-          const confirmedBy = await confirmSteamUpload({ ...result, workshopId, notes, startedAt });
+          const confirmedBy = await confirmSteamUpload({ ...result, workshopId, notes: releaseNotes.steam, startedAt });
           console.log(`上传核验依据：${confirmedBy}`);
           console.log(`SteamCMD 文件上传完成：${workshopId}；接下来更新标签。`);
           return vdf;
