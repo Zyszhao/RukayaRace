@@ -292,7 +292,7 @@ namespace RukayaRace.Replication
         private void DrawThingDetails(Rect rect, Thing thing)
         {
             GameComponent_RukayaReplicationLibrary library = RukayaReplicationUtility.Library;
-            ThingDef def = thing.def;
+            ThingDef def = RukayaReplicationUtility.PrototypeDef(thing.def);
             QualityCategory sourceQuality = RukayaReplicationUtility.GetQuality(thing);
             QualityCategory scanQuality = RukayaReplicationUtility.ClampTemplateQuality(sourceQuality);
             bool unlocked = library?.IsUnlocked(def) == true;

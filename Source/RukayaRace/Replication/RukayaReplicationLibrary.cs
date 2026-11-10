@@ -25,7 +25,7 @@ namespace RukayaRace.Replication
         public int completedCount;
         public bool suspended;
 
-        public ThingDef ThingDef => thingDefName.NullOrEmpty() ? null : DefDatabase<ThingDef>.GetNamedSilentFail(thingDefName);
+        public ThingDef ThingDef => thingDefName.NullOrEmpty() ? null : RukayaReplicationUtility.PrototypeDef(DefDatabase<ThingDef>.GetNamedSilentFail(thingDefName));
         public ThingDef StuffDef => stuffDefName.NullOrEmpty() ? null : DefDatabase<ThingDef>.GetNamedSilentFail(stuffDefName);
 
         public string Label
@@ -101,17 +101,20 @@ namespace RukayaRace.Replication
 
         public bool IsUnlocked(ThingDef def)
         {
+            def = RukayaReplicationUtility.PrototypeDef(def);
             return def != null && unlocked.ContainsKey(def.defName);
         }
 
         public QualityCategory GetMaxQuality(ThingDef def)
         {
+            def = RukayaReplicationUtility.PrototypeDef(def);
             QualityCategory value;
             return def != null && unlocked.TryGetValue(def.defName, out value) ? value : QualityCategory.Awful;
         }
 
         public bool UnlockOrUpgrade(ThingDef def, QualityCategory quality)
         {
+            def = RukayaReplicationUtility.PrototypeDef(def);
             if (!RukayaReplicationUtility.IsEligibleDef(def))
             {
                 return false;
@@ -155,6 +158,18 @@ namespace RukayaRace.Replication
 
         private void NormalizeLoadedQualities()
         {
+            // Merge old unique-weapon templates into their ordinary prototype, retaining the best tier.
+            foreach (string key in unlocked.Keys.ToList())
+            {
+                ThingDef original = DefDatabase<ThingDef>.GetNamedSilentFail(key);
+                ThingDef prototype = RukayaReplicationUtility.PrototypeDef(original);
+                if (prototype == original)
+                    continue;
+                QualityCategory quality = unlocked[key];
+                unlocked.Remove(key);
+                if (prototype != null && (!unlocked.TryGetValue(prototype.defName, out QualityCategory current) || quality > current))
+                    unlocked[prototype.defName] = quality;
+            }
             List<string> missing = unlocked.Keys.Where(x => DefDatabase<ThingDef>.GetNamedSilentFail(x) == null).ToList();
             for (int i = 0; i < missing.Count; i++)
             {
@@ -283,6 +298,7 @@ namespace RukayaRace.Replication
 
         public static bool IsEligibleDef(ThingDef def)
         {
+            def = PrototypeDef(def);
             return def != null
                 && def.category == ThingCategory.Item
                 && def.EverHaulable
@@ -404,6 +420,7 @@ namespace RukayaRace.Replication
 
         public static Thing MakePreview(ThingDef def, ThingDef stuff, QualityCategory quality)
         {
+            def = PrototypeDef(def);
             if (!IsEligibleDef(def))
             {
                 return null;
@@ -421,6 +438,25 @@ namespace RukayaRace.Replication
             preview.TryGetComp<CompBiocodable>()?.UnCode();
             preview.HitPoints = preview.MaxHitPoints;
             return preview;
+        }
+
+        private static bool HasWeaponTraits(ThingDef def)
+        {
+            return def?.comps?.Any(x => x.compClass != null && typeof(CompUniqueWeapon).IsAssignableFrom(x.compClass)) == true;
+        }
+
+        // Odyssey variants link to their ordinary weapon. Never instantiate a random-trait variant
+        // for pricing, previews or printing; the actual scanned weapon remains untouched.
+        public static ThingDef PrototypeDef(ThingDef def)
+        {
+            if (!HasWeaponTraits(def))
+                return def;
+            ThingDef prototype = def.descriptionHyperlinks?
+                .Select(x => x.def as ThingDef)
+                .FirstOrDefault(x => x != null && x.IsWeapon && !HasWeaponTraits(x));
+            if (prototype == null && def.defName.EndsWith("_Unique", StringComparison.Ordinal))
+                prototype = DefDatabase<ThingDef>.GetNamedSilentFail(def.defName.Substring(0, def.defName.Length - "_Unique".Length));
+            return prototype != null && prototype.IsWeapon && !HasWeaponTraits(prototype) ? prototype : null;
         }
 
         public static float StandardizedMarketValue(ThingDef def, ThingDef stuff, QualityCategory quality)

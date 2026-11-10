@@ -27,6 +27,15 @@ namespace RukayaRace.Buildings
     /// </summary>
     public class Building_RukayaNavalArtillery : Building_TurretGun
     {
+        public override void ExposeData()
+        {
+            base.ExposeData();
+            // Older saves wrote the air gun before the main gun under the same XML key.
+            // The host may therefore have loaded the air weapon as its ground weapon.
+            if (Scribe.mode == LoadSaveMode.PostLoadInit && gun?.def != def.building.turretGunDef)
+                HarmonyLib.AccessTools.Method(typeof(Building_TurretGun), "MakeGun").Invoke(this, null);
+        }
+
         /// <summary>
         /// 炮管层相对底座的高度增量（单位 = <see cref="Altitudes.AltIncVect"/> 的倍数）。
         /// 取 0.5 是刻意的：底座 &lt; 炮管 &lt; 炮塔顶，各差半个 AltInc（≈0.018 世界单位），

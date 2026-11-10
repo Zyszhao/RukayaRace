@@ -266,13 +266,23 @@ namespace RukayaRace.AirDefense
         }
 
         /// <summary>
-        /// 载体模式刻意不调用 base：宿主自己的枪由 <c>Building_TurretGun.ExposeData</c> 负责存档，
-        /// 而 base 在 PostLoadInit 发现 gun 为空时会再造一把（CompTurretGun 的兜底逻辑）——
-        /// 那正是载体模式要避免的第二把枪。这里改为只存组件自己的对空状态。
+        /// 载体的对空枪放在独立节点中，避免与宿主/地面组件的 gun、currentTarget 等字段重名。
+        /// 旧存档没有独立节点时重新建立对空枪，仍保留下面原有的对空开关和弹仓字段。
         /// </summary>
         public override void PostExposeData()
         {
-            base.PostExposeData();
+            if (!CarrierMode)
+                base.PostExposeData();
+            else
+            {
+                if (Scribe.mode == LoadSaveMode.PostLoadInit && gun == null)
+                    base.PostPostMake();
+                if (Scribe.EnterNode("rukayaAirTurret"))
+                {
+                    try { base.PostExposeData(); }
+                    finally { Scribe.ExitNode(); }
+                }
+            }
             Scribe_Values.Look(ref airMode, "rukayaAirMode");
             Scribe_References.Look(ref airTarget, "rukayaTrackedSkyTarget");
             // 炮塔顶朝向用的"本次已发射弹道"：纯表现状态，但存下来读档时炮塔顶不会突然回正。

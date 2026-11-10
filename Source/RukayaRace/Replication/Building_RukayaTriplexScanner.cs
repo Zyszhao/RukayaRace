@@ -22,10 +22,11 @@ namespace RukayaRace.Replication
             }
 
             GameComponent_RukayaReplicationLibrary library = RukayaReplicationUtility.Library;
+            ThingDef templateDef = RukayaReplicationUtility.PrototypeDef(source.def);
             QualityCategory scannedQuality = RukayaReplicationUtility.GetQuality(source);
             // Even sub-normal prototypes unlock normal-quality printing and all cheaper tiers.
             QualityCategory desiredQuality = RukayaReplicationUtility.ClampTemplateQuality(scannedQuality);
-            if (library == null || (library.IsUnlocked(source.def) && library.GetMaxQuality(source.def) >= desiredQuality))
+            if (library == null || (library.IsUnlocked(templateDef) && library.GetMaxQuality(templateDef) >= desiredQuality))
             {
                 reason = "Rukaya_ScannerNoUpgrade".Translate();
                 return false;
@@ -44,8 +45,8 @@ namespace RukayaRace.Replication
                 return false;
             }
 
-            library.UnlockOrUpgrade(source.def, desiredQuality);
-            reason = "Rukaya_ScannerSuccess".Translate(source.def.LabelCap, RukayaReplicationUtility.QualityLabel(desiredQuality));
+            library.UnlockOrUpgrade(templateDef, desiredQuality);
+            reason = "Rukaya_ScannerSuccess".Translate(templateDef.LabelCap, RukayaReplicationUtility.QualityLabel(desiredQuality));
             return true;
         }
 
@@ -96,7 +97,7 @@ namespace RukayaRace.Replication
             {
                 defaultLabel = "Rukaya_OpenScanner".Translate(),
                 defaultDesc = "Rukaya_OpenScannerDesc".Translate(),
-                icon = ContentFinder<UnityEngine.Texture2D>.Get("UI/Commands/Research", false),
+                icon = ContentFinder<UnityEngine.Texture2D>.Get("UI/Commands/LaunchReport"),
                 action = delegate { Find.WindowStack.Add(new Window_RukayaScanner(this)); }
             };
             if (!CanOperate)
