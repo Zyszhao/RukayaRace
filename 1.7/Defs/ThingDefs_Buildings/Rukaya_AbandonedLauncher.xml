@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="BuildingBase">
+    <defName>Rukaya_SAMLauncher_Abandoned</defName>
+    <label>abandoned missile launcher</label>
+    <!-- 中文：废弃导弹发射架 -->
+    <description>An inactive missile launcher. Investigate it to recover one memory module containing air-defense records.</description>
+    <!-- 中文：一座失效的导弹发射架。调查可获得一份保存防空导弹资料的磁芯存储器。 -->
+    <thingClass>Building</thingClass>
+    <graphicData>
+      <texPath>Rukaya/Building/Abandoned/SAMLauncher</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(8.48,8.48)</drawSize>
+      <drawOffset>(0,0,0.6)</drawOffset>
+    </graphicData>
+    <size>(5,3)</size>
+    <rotatable>false</rotatable>
+    <passability>Impassable</passability>
+    <fillPercent>0.6</fillPercent>
+    <statBases><MaxHitPoints>900</MaxHitPoints><Flammability>0</Flammability><Beauty>-8</Beauty></statBases>
+    <building><neverBuildable>true</neverBuildable><claimable>false</claimable><deconstructible>false</deconstructible><repairable>false</repairable><allowAutoroof>false</allowAutoroof></building>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <comps><li Class="RukayaRace.Research.CompProperties_RukayaArchiveInvestigation"><memory>Rukaya_CoreMemory_AirDefense</memory><workRequired>6000</workRequired></li></comps>
+  </ThingDef>
+</Defs>

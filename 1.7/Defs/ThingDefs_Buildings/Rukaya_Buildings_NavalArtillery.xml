@@ -76,7 +76,7 @@
     <designationCategory>Rukaya_Buildings</designationCategory>
     <designationHotKey>Misc3</designationHotKey>
     <researchPrerequisites>
-      <li>Rukaya_Weapon_III</li>
+      <li>Rukaya_NavalArtillery</li>
     </researchPrerequisites>
     <constructEffect>ConstructMetal</constructEffect>
     <repairEffect>Repair</repairEffect>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Rukaya_MemoryArchive.questNameRules.rulesStrings.0>questName-&gt;磁芯档案：[memoryResearch]</Rukaya_MemoryArchive.questNameRules.rulesStrings.0>
+  <Rukaya_MemoryArchive.questDescriptionRules.rulesStrings.0>questDescription-&gt;在[map_definite]附近发现了一处废弃设施。调查其中的废弃设备可获得一份[memoryLabel]，带回基地分析。\n\n[allSitePartsDescriptionsExceptFirst]\n\n请在[timeoutTicks_duration]内抵达，否则地点将失效。</Rukaya_MemoryArchive.questDescriptionRules.rulesStrings.0>
+  <Rukaya_MemoryArchive.root.nodes.11.node.nodes.0.label.slateRef>存储器地点失效</Rukaya_MemoryArchive.root.nodes.11.node.nodes.0.label.slateRef>
+  <Rukaya_MemoryArchive.root.nodes.11.node.nodes.0.text.slateRef>信号已消失，地点失效。</Rukaya_MemoryArchive.root.nodes.11.node.nodes.0.text.slateRef>
+</LanguageData>

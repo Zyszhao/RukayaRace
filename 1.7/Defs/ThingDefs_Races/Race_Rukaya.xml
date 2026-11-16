@@ -624,9 +624,9 @@
           <li>Apparel_ArmorRecon</li>
           <li>Apparel_ArmorHelmetRecon</li>
           <!-- Odyssey -->
-          <li>Apparel_Vacsuit</li>
-          <li MayRequire="Ludeon.RimWorld.Biotech">Apparel_VacsuitChildren</li>
-          <li>Apparel_VacsuitHelmet</li>
+          <li MayRequire="Ludeon.RimWorld.Odyssey">Apparel_Vacsuit</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech,Ludeon.RimWorld.Odyssey">Apparel_VacsuitChildren</li>
+          <li MayRequire="Ludeon.RimWorld.Odyssey">Apparel_VacsuitHelmet</li>
           <!-- Royalty：含精英型号及蝗虫甲、掷弹兵甲、凤凰甲 -->
           <li MayRequire="Ludeon.RimWorld.Royalty">Apparel_ArmorReconPrestige</li>
           <li MayRequire="Ludeon.RimWorld.Royalty">Apparel_ArmorHelmetReconPrestige</li>
@@ -872,6 +872,11 @@
           <minAge>8</minAge>
           <headOffset>(0.04,-0.01)</headOffset>
           <headFemaleOffset>(0.1,-0.01)</headFemaleOffset>
+          <!-- 延续儿童阶段的额外缩放；HAR 未填写时会回退全局值，不继承上一生命阶段。 -->
+          <customDrawSize>(0.85,0.85)</customDrawSize>
+          <customPortraitDrawSize>(0.85,0.85)</customPortraitDrawSize>
+          <customHeadDrawSize>(0.6,0.6)</customHeadDrawSize>
+          <customPortraitHeadDrawSize>(0.6,0.6)</customPortraitHeadDrawSize>
         </li>
         <li Class="AlienRace.LifeStageAgeAlien">
           <def>HumanlikeTeenager</def>

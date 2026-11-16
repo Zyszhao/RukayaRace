@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- 仅兼容旧航空存档，不提供建造入口或测试行为。 -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>RAV_Desk</defName><label>air operations desk</label>
+    <!-- 中文：航空调度台 -->
+    <description>Manage airfield exercises and aircraft raids.</description>
+    <!-- 中文：安排机场演习与飞机空袭。 -->
+    <thingClass>RukayaAviation.DispatchDesk</thingClass>
+    <graphicData><texPath>Things/Building/Misc/CommsConsole</texPath><graphicClass>Graphic_Multi</graphicClass><drawSize>(2,2)</drawSize></graphicData>
+    <size>(1,1)</size><rotatable>false</rotatable><passability>PassThroughOnly</passability><statBases><MaxHitPoints>300</MaxHitPoints><WorkToBuild>300</WorkToBuild></statBases><uiOrder>40</uiOrder>
+  </ThingDef>
+  <ThingDef ParentName="BuildingBase">
+    <defName>RAV_Defense</defName><label>air defense exercise gun</label>
+    <!-- 中文：演习防空炮 -->
+    <description>An autonomous gun that engages hostile aircraft within 64 cells. Requires no operator or ammunition.</description>
+    <!-- 中文：自动攻击64格内敌机的防空炮，无需操作员和弹药。 -->
+    <thingClass>RukayaAviation.ExerciseDefense</thingClass><tickerType>Normal</tickerType>
+    <graphicData><texPath>Aviation/Cannon</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>(2,3)</drawSize></graphicData>
+    <size>(1,1)</size><rotatable>false</rotatable><passability>PassThroughOnly</passability><statBases><MaxHitPoints>600</MaxHitPoints><WorkToBuild>800</WorkToBuild></statBases><uiOrder>50</uiOrder>
+  </ThingDef>
+</Defs>

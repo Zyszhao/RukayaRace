@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <RAV_AirRaidDrivenOff>{0}受到持续地面火力压制，正在撤离。</RAV_AirRaidDrivenOff>
+  <RAV_PreEntryInterceptTitle>敌机已被拦截</RAV_PreEntryInterceptTitle>
+  <RAV_PreEntryInterceptBody>重型地对空导弹在敌机发动进攻前将其击落。本次空袭已被阻止。</RAV_PreEntryInterceptBody>
+</LanguageData>

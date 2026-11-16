@@ -130,7 +130,6 @@
     <designationHotKey>Misc6</designationHotKey>
     <researchPrerequisites>
       <li>Rukaya_ActiveMatterRefining_II</li>
-      <li>GeothermalPower</li>
     </researchPrerequisites>
     <placeWorkers>
       <li>PlaceWorker_OnSteamGeyser</li>

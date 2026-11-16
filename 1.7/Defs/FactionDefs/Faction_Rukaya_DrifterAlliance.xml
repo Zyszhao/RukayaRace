@@ -33,7 +33,7 @@
       </xenotypeChances>
     </xenotypeSet>
     <disallowedMemes MayRequire="Ludeon.RimWorld.Ideology">
-      <li>Cannibal</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Cannibal</li>
     </disallowedMemes>
     <maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
     <startingCountAtWorldCreation>1</startingCountAtWorldCreation>

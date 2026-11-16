@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <QuestScriptDef>
+    <defName>Rukaya_MemoryArchive</defName>
+    <autoAccept>true</autoAccept>
+    <rootMinPoints>0</rootMinPoints>
+    <rootSelectionWeight>0.75</rootSelectionWeight>
+    <questNameRules><rulesStrings>
+      <li>questName-&gt;Magnetic-core archive: [memoryResearch]</li>
+      <!-- 中文：questName-&gt;磁芯档案：[memoryResearch] -->
+    </rulesStrings></questNameRules>
+    <questDescriptionRules><rulesStrings>
+      <li>questDescription-&gt;A ruined facility has been located near [map_definite]. Investigate its abandoned equipment to recover one [memoryLabel], then bring it home for analysis.\n\n[allSitePartsDescriptionsExceptFirst]\n\nArrive within [timeoutTicks_duration] before the location is lost.</li>
+      <!-- 中文：questDescription->在[map_definite]附近发现了一处废弃设施。调查其中的废弃设备可获得一份[memoryLabel]，带回基地分析。\n\n[allSitePartsDescriptionsExceptFirst]\n\n请在[timeoutTicks_duration]内抵达，否则地点将失效。 -->
+    </rulesStrings></questDescriptionRules>
+    <root Class="QuestNode_Sequence">
+      <nodes>
+        <li Class="RukayaRace.Research.QuestNode_RukayaSelectMemory" />
+        <li Class="QuestNode_GetMap" />
+        <li Class="QuestNode_SubScript"><def>Util_AdjustPointsForDistantFight</def></li>
+        <li Class="QuestNode_Set"><name>siteDistRange</name><value>7~20</value></li>
+        <li Class="QuestNode_GetSiteTile"><storeAs>siteTile</storeAs><preferCloserTiles>true</preferCloserTiles><selectLandmarkChance>0</selectLandmarkChance></li>
+        <li Class="QuestNode_ViolentQuestsAllowed">
+          <node Class="QuestNode_Set"><name>siteThreatChance</name><value>0.5</value></node>
+          <elseNode Class="QuestNode_Set"><name>siteThreatChance</name><value>0</value></elseNode>
+        </li>
+        <li Class="QuestNode_GetSitePartDefsByTagsAndFaction">
+          <storeAs>sitePartDefs</storeAs><storeFactionAs>siteFaction</storeFactionAs>
+          <sitePartsTags>
+            <li><tag>Rukaya_MemoryArchive</tag></li>
+            <li><tag>ItemStashQuestThreat</tag><chance>$siteThreatChance</chance></li>
+          </sitePartsTags>
+        </li>
+        <li Class="QuestNode_GetDefaultSitePartsParams"><tile>$siteTile</tile><faction>$siteFaction</faction><sitePartDefs>$sitePartDefs</sitePartDefs><storeSitePartsParamsAs>sitePartsParams</storeSitePartsParamsAs></li>
+        <li Class="QuestNode_SubScript"><def>Util_GenerateSite</def><parms><hiddenSitePartsPossible>true</hiddenSitePartsPossible></parms></li>
+        <li Class="QuestNode_SpawnWorldObjects"><worldObjects>$site</worldObjects></li>
+        <li Class="QuestNode_Set"><name>timeoutTicks</name><value>1800000</value></li>
+        <li Class="QuestNode_WorldObjectTimeout">
+          <worldObject>$site</worldObject><isQuestTimeout>true</isQuestTimeout><delayTicks>$timeoutTicks</delayTicks><inSignalDisable>site.MapGenerated</inSignalDisable>
+          <node Class="QuestNode_Sequence"><nodes>
+            <li Class="QuestNode_Letter">
+              <label>Archive location lost</label>
+              <!-- 中文：存储器地点失效 -->
+              <text>The signal has been lost.</text>
+              <!-- 中文：信号已消失，地点失效。 -->
+            </li>
+            <li Class="QuestNode_End"><outcome>Fail</outcome></li>
+          </nodes></node>
+        </li>
+        <li Class="QuestNode_NoWorldObject"><worldObject>$site</worldObject><node Class="QuestNode_End" /></li>
+      </nodes>
+    </root>
+  </QuestScriptDef>
+</Defs>

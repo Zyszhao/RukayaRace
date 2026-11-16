@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Rukaya_InvestigateArchive>调查{0}</Rukaya_InvestigateArchive>
+  <Rukaya_ArchiveRecovered>存储器已回收</Rukaya_ArchiveRecovered>
+  <Rukaya_ArchiveNoManipulation>无法操作</Rukaya_ArchiveNoManipulation>
+  <Rukaya_ArchiveProgress>调查进度：{0}\n内部保存着一份磁芯存储器。</Rukaya_ArchiveProgress>
+</LanguageData>

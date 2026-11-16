@@ -10,7 +10,7 @@
     <baseCost>1200</baseCost>
     <techLevel>Industrial</techLevel>
     <tab>Rukaya_ResearchTab</tab>
-    <researchViewX>1</researchViewX>
+    <researchViewX>0</researchViewX>
     <researchViewY>1.8</researchViewY>
   </ResearchProjectDef>
 
@@ -27,9 +27,15 @@
       <li>Rukaya_Apparel_III</li>
       <li>Rukaya_Weapon_III</li>
       <li>Rukaya_Mechanoid_I</li>
+      <li>Rukaya_ActiveMatterRefining_II</li>
+      <li>Rukaya_EquipmentTemplateScanning</li>
+      <li>Rukaya_ActiveMatterPrinting</li>
+      <li>Rukaya_AirDefenseMissiles</li>
+      <li>Rukaya_NavalArtillery</li>
+      <li>Rukaya_Mig31</li>
     </prerequisites>
     <tab>Rukaya_ResearchTab</tab>
-    <researchViewX>4</researchViewX>
+    <researchViewX>3</researchViewX>
     <researchViewY>1.8</researchViewY>
   </ResearchProjectDef>
 
@@ -43,7 +49,7 @@
     <baseCost>300</baseCost>
     <techLevel>Industrial</techLevel>
     <tab>Rukaya_ResearchTab</tab>
-    <researchViewX>1</researchViewX>
+    <researchViewX>0</researchViewX>
     <researchViewY>0.6</researchViewY>
   </ResearchProjectDef>
 
@@ -60,7 +66,7 @@
       <li>Rukaya_Apparel_I</li>
     </prerequisites>
     <tab>Rukaya_ResearchTab</tab>
-    <researchViewX>2</researchViewX>
+    <researchViewX>1</researchViewX>
     <researchViewY>0.6</researchViewY>
   </ResearchProjectDef>
 
@@ -77,7 +83,7 @@
       <li>Rukaya_Apparel_II</li>
     </prerequisites>
     <tab>Rukaya_ResearchTab</tab>
-    <researchViewX>3</researchViewX>
+    <researchViewX>2</researchViewX>
     <researchViewY>0.6</researchViewY>
   </ResearchProjectDef>
 
@@ -91,7 +97,7 @@
     <baseCost>500</baseCost>
     <techLevel>Industrial</techLevel>
     <tab>Rukaya_ResearchTab</tab>
-    <researchViewX>1</researchViewX>
+    <researchViewX>0</researchViewX>
     <researchViewY>2.4</researchViewY>
   </ResearchProjectDef>
 
@@ -109,7 +115,7 @@
       <li>Rukaya_ActiveMatterRefining</li>
     </prerequisites>
     <tab>Rukaya_ResearchTab</tab>
-    <researchViewX>2</researchViewX>
+    <researchViewX>1</researchViewX>
     <researchViewY>2.4</researchViewY>
   </ResearchProjectDef>
 
@@ -126,7 +132,7 @@
       <li>Rukaya_Weapon_II</li>
     </prerequisites>
     <tab>Rukaya_ResearchTab</tab>
-    <researchViewX>3</researchViewX>
+    <researchViewX>2</researchViewX>
     <researchViewY>2.4</researchViewY>
   </ResearchProjectDef>
 
@@ -135,19 +141,17 @@
     <label>Large-Scale Active Matter Refining</label>
     <!-- 中文：大规模活性物质提炼 -->
     <description>Scaling active matter processing beyond laboratory and workshop methods supports
-      bulk refinement without making it a required pillar of reconstruction.</description>
-    <!-- 中文翻译：将活性物质处理从实验室与工坊级扩展到大规模生产后，可以进行批量提炼，但它并非重建体系所必需的核心环节。 -->
+      bulk refinement and restores high-throughput industrial production.</description>
+    <!-- 中文翻译：将活性物质处理从实验室与工坊级扩展到大规模生产后，可以进行批量提炼，并恢复高吞吐量的工业生产。 -->
     <baseCost>1800</baseCost>
     <techLevel>Industrial</techLevel>
-    <prerequisites>
-      <li>Rukaya_ActiveMatterRefining</li>
-    </prerequisites>
+    <requiredAnalyzed><li>Rukaya_CoreMemory_Refining</li></requiredAnalyzed>
     <tab>Rukaya_ResearchTab</tab>
-    <researchViewX>2</researchViewX>
-    <researchViewY>1.2</researchViewY>
+    <researchViewX>0</researchViewX>
+    <researchViewY>5.4</researchViewY>
   </ResearchProjectDef>
 
-  <!-- 通用机械科技；导弹型另需完成防空导弹研究。 -->
+  <!-- 通用机械科技；所有机械体沿用本研究，固定防空导弹发射架单独解锁。 -->
   <ResearchProjectDef>
     <defName>Rukaya_Mechanoid_I</defName>
     <label>Rukaya Mechanized Units</label>
@@ -161,7 +165,7 @@
       <li>Rukaya_Weapon_II</li>
     </prerequisites>
     <tab>Rukaya_ResearchTab</tab>
-    <researchViewX>2</researchViewX>
+    <researchViewX>1</researchViewX>
     <researchViewY>3.0</researchViewY>
   </ResearchProjectDef>
 
@@ -169,16 +173,14 @@
     <defName>Rukaya_AirDefenseMissiles</defName>
     <label>Air-defense missiles</label>
     <!-- 中文：防空导弹 -->
-    <description>Active-matter interceptors and coordinated fire-control systems enable fixed surface-to-air missile launchers and missile-armed Rukaya mechanoids.</description>
-    <!-- 中文翻译：活性物质拦截弹与协同火控系统使建造固定式地对空导弹发射架及培育搭载导弹的卢卡娅机械体成为可能。 -->
+    <description>Active-matter interceptors and coordinated fire-control systems enable fixed surface-to-air missile launchers.</description>
+    <!-- 中文翻译：活性物质拦截弹与协同火控系统使建造固定式地对空导弹发射架成为可能。 -->
     <baseCost>1600</baseCost>
     <techLevel>Industrial</techLevel>
-    <prerequisites>
-      <li>Rukaya_Weapon_II</li>
-    </prerequisites>
+    <requiredAnalyzed><li>Rukaya_CoreMemory_AirDefense</li></requiredAnalyzed>
     <tab>Rukaya_ResearchTab</tab>
     <researchViewX>3</researchViewX>
-    <researchViewY>3.6</researchViewY>
+    <researchViewY>5.4</researchViewY>
   </ResearchProjectDef>
 
   <ResearchProjectDef>
@@ -189,14 +191,10 @@
     <!-- 中文翻译：三束射线分析技术能够从现有武器与服装中恢复可复制的活性物质模板，即使其原始研究路径已经遗失。 -->
     <baseCost>1800</baseCost>
     <techLevel>Industrial</techLevel>
-    <prerequisites>
-      <li>Rukaya_ActiveMatterRefining_II</li>
-      <li>Rukaya_Weapon_II</li>
-      <li>Rukaya_Apparel_II</li>
-    </prerequisites>
+    <requiredAnalyzed><li>Rukaya_CoreMemory_Scanning</li></requiredAnalyzed>
     <tab>Rukaya_ResearchTab</tab>
-    <researchViewX>3</researchViewX>
-    <researchViewY>1.2</researchViewY>
+    <researchViewX>1</researchViewX>
+    <researchViewY>5.4</researchViewY>
   </ResearchProjectDef>
 
   <ResearchProjectDef>
@@ -207,13 +205,36 @@
     <!-- 中文翻译：稳定的模板重构技术使自动终端能够按照选定的材质与品质，打印武器和服装模板。 -->
     <baseCost>2800</baseCost>
     <techLevel>Industrial</techLevel>
-    <prerequisites>
-      <li>Rukaya_EquipmentTemplateScanning</li>
-      <li>Rukaya_Weapon_III</li>
-      <li>Rukaya_Apparel_III</li>
-    </prerequisites>
+    <requiredAnalyzed><li>Rukaya_CoreMemory_Printing</li></requiredAnalyzed>
+    <tab>Rukaya_ResearchTab</tab>
+    <researchViewX>2</researchViewX>
+    <researchViewY>5.4</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>Rukaya_NavalArtillery</defName>
+    <label>Rukaya Naval Artillery</label>
+    <!-- 中文：卢卡娅舰炮 -->
+    <description>Recovered naval gunnery records allow paired active-matter guns to be adapted into autonomous land-based artillery turrets.</description>
+    <!-- 中文：恢复的舰炮技术记录，使双联活性物质火炮能够改装为自主索敌的陆基炮塔。 -->
+    <baseCost>2000</baseCost>
+    <techLevel>Industrial</techLevel>
+    <requiredAnalyzed><li>Rukaya_CoreMemory_Naval</li></requiredAnalyzed>
     <tab>Rukaya_ResearchTab</tab>
     <researchViewX>4</researchViewX>
-    <researchViewY>1.2</researchViewY>
+    <researchViewY>5.4</researchViewY>
+  </ResearchProjectDef>
+  <ResearchProjectDef>
+    <defName>Rukaya_Mig31</defName>
+    <label>Rukaya interceptor</label>
+    <!-- 中文：卢卡娅截击机 -->
+    <description>Allows construction of Rukaya interceptors.</description>
+    <!-- 中文：可建造卢卡娅截击机。 -->
+    <baseCost>2000</baseCost>
+    <techLevel>Industrial</techLevel>
+    <requiredAnalyzed><li>Rukaya_CoreMemory_Mig31</li></requiredAnalyzed>
+    <tab>Rukaya_ResearchTab</tab>
+    <researchViewX>5</researchViewX>
+    <researchViewY>5.4</researchViewY>
   </ResearchProjectDef>
 </Defs>

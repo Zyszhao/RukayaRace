@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef Name="RukayaCoreMemoryBase" ParentName="ResourceBase" Abstract="True">
+    <thingClass>ThingWithComps</thingClass>
+    <graphicData>
+      <texPath>Rukaya/Items/CoreMemory</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <stackLimit>1</stackLimit>
+    <thingCategories>
+      <li>Manufactured</li>
+    </thingCategories>
+    <tradeability>None</tradeability>
+    <statBases>
+      <MarketValue>500</MarketValue>
+      <Mass>0.5</Mass>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Flammability>0.2</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+    </statBases>
+  </ThingDef>
+  <ThingDef ParentName="RukayaCoreMemoryBase">
+    <defName>Rukaya_CoreMemory_Refining</defName>
+    <label>magnetic-core memory (large-scale refining)</label>
+    <!-- 中文：磁芯存储器（大规模精炼） -->
+    <description>A memory module that stores data in magnetic cores. Analyze it at a research bench; readout consumes the module.\n\nThis module contains records for large-scale refining. Analyze 2 of these modules to unlock the corresponding research.</description>
+    <!-- 中文：一份以磁环保存数据的存储器。可在研究台分析，读取后消耗。\n\n这篇存储器中保存着大规模精炼的技术资料。累计分析2份后可开始对应研究。 -->
+    <comps Inherit="False">
+      <li Class="CompProperties_Forbiddable" />
+      <li Class="CompProperties_CompAnalyzableUnlockResearch">
+        <requiresMechanitor>false</requiresMechanitor>
+        <analysisDurationHours>1.5</analysisDurationHours>
+        <destroyedOnAnalyzed>true</destroyedOnAnalyzed>
+        <showProgress>true</showProgress>
+        <activateTexPath>UI/Icons/Study</activateTexPath>
+        <progressedLetterDef>PositiveEvent</progressedLetterDef>
+        <completedLetterDef>PositiveEvent</completedLetterDef>
+        <progressedLetterLabel>Magnetic-core records recovered</progressedLetterLabel>
+        <!-- 中文：磁芯记录已恢复 -->
+        <completedLetterLabel>Magnetic-core analysis complete</completedLetterLabel>
+        <!-- 中文：磁芯存储器分析完成 -->
+        <completedLetter>{PAWN_labelShort} has recovered enough technical records to begin the research project(s) {RESEARCH}. The memory module was consumed during destructive readout.</completedLetter>
+        <!-- 中文：{PAWN_labelShort}已恢复足够的技术记录，可以开始研究{RESEARCH}。磁芯存储器在破坏性读取中已消耗。 -->
+        <activateLabelString>Analyze memory...</activateLabelString>
+        <!-- 中文：分析存储器…… -->
+        <activateDescString>Read and analyze the magnetic-core records at a research bench. This consumes one memory module.</activateDescString>
+        <!-- 中文：在研究台读取并分析磁芯记录。此操作会消耗一份磁芯存储器。 -->
+        <jobString>Analyzing magnetic-core memory.</jobString>
+        <!-- 中文：正在分析磁芯存储器。 -->
+        <guiLabelString>Choose who should analyze this memory</guiLabelString>
+        <!-- 中文：选择分析磁芯存储器的殖民者 -->
+        <inspectString>Contains technical records. Analysis consumes this memory module.</inspectString>
+        <!-- 中文：保存着技术记录，分析后将消耗这份磁芯存储器。 -->
+        <progressedLetters>
+          <li>Additional records have been recovered for {RESEARCH}. More memory modules are needed before research can begin. This module was consumed during destructive readout.</li>
+          <!-- 中文：已为{RESEARCH}恢复更多技术记录。仍需分析其他磁芯存储器才能开始研究。这份存储器在破坏性读取中已消耗。 -->
+        </progressedLetters>
+        <targetingParameters>
+          <canTargetBuildings>false</canTargetBuildings>
+          <canTargetAnimals>false</canTargetAnimals>
+          <canTargetMechs>false</canTargetMechs>
+          <onlyTargetControlledPawns>true</onlyTargetControlledPawns>
+        </targetingParameters>
+        <analysisID>19371001</analysisID>
+        <analysisRequiredRange>2</analysisRequiredRange>
+      </li>
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="RukayaCoreMemoryBase">
+    <defName>Rukaya_CoreMemory_Scanning</defName>
+    <label>magnetic-core memory (template scanning)</label>
+    <!-- 中文：磁芯存储器（模板扫描） -->
+    <description>A memory module that stores data in magnetic cores. Analyze it at a research bench; readout consumes the module.\n\nThis module contains records for equipment template scanning. Analyze 3 of these modules to unlock the corresponding research.</description>
+    <!-- 中文：一份以磁环保存数据的存储器。可在研究台分析，读取后消耗。\n\n这篇存储器中保存着模板扫描的技术资料。累计分析3份后可开始对应研究。 -->
+    <comps Inherit="False">
+      <li Class="CompProperties_Forbiddable" />
+      <li Class="CompProperties_CompAnalyzableUnlockResearch">
+        <requiresMechanitor>false</requiresMechanitor>
+        <analysisDurationHours>1.5</analysisDurationHours>
+        <destroyedOnAnalyzed>true</destroyedOnAnalyzed>
+        <showProgress>true</showProgress>
+        <activateTexPath>UI/Icons/Study</activateTexPath>
+        <progressedLetterDef>PositiveEvent</progressedLetterDef>
+        <completedLetterDef>PositiveEvent</completedLetterDef>
+        <progressedLetterLabel>Magnetic-core records recovered</progressedLetterLabel>
+        <!-- 中文：磁芯记录已恢复 -->
+        <completedLetterLabel>Magnetic-core analysis complete</completedLetterLabel>
+        <!-- 中文：磁芯存储器分析完成 -->
+        <completedLetter>{PAWN_labelShort} has recovered enough technical records to begin the research project(s) {RESEARCH}. The memory module was consumed during destructive readout.</completedLetter>
+        <!-- 中文：{PAWN_labelShort}已恢复足够的技术记录，可以开始研究{RESEARCH}。磁芯存储器在破坏性读取中已消耗。 -->
+        <activateLabelString>Analyze memory...</activateLabelString>
+        <!-- 中文：分析存储器…… -->
+        <activateDescString>Read and analyze the magnetic-core records at a research bench. This consumes one memory module.</activateDescString>
+        <!-- 中文：在研究台读取并分析磁芯记录。此操作会消耗一份磁芯存储器。 -->
+        <jobString>Analyzing magnetic-core memory.</jobString>
+        <!-- 中文：正在分析磁芯存储器。 -->
+        <guiLabelString>Choose who should analyze this memory</guiLabelString>
+        <!-- 中文：选择分析磁芯存储器的殖民者 -->
+        <inspectString>Contains technical records. Analysis consumes this memory module.</inspectString>
+        <!-- 中文：保存着技术记录，分析后将消耗这份磁芯存储器。 -->
+        <progressedLetters>
+          <li>Additional records have been recovered for {RESEARCH}. More memory modules are needed before research can begin. This module was consumed during destructive readout.</li>
+          <!-- 中文：已为{RESEARCH}恢复更多技术记录。仍需分析其他磁芯存储器才能开始研究。这份存储器在破坏性读取中已消耗。 -->
+        </progressedLetters>
+        <targetingParameters>
+          <canTargetBuildings>false</canTargetBuildings>
+          <canTargetAnimals>false</canTargetAnimals>
+          <canTargetMechs>false</canTargetMechs>
+          <onlyTargetControlledPawns>true</onlyTargetControlledPawns>
+        </targetingParameters>
+        <analysisID>19371002</analysisID>
+        <analysisRequiredRange>3</analysisRequiredRange>
+      </li>
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="RukayaCoreMemoryBase">
+    <defName>Rukaya_CoreMemory_Printing</defName>
+    <label>magnetic-core memory (equipment printing)</label>
+    <!-- 中文：磁芯存储器（装备打印） -->
+    <description>A memory module that stores data in magnetic cores. Analyze it at a research bench; readout consumes the module.\n\nThis module contains records for equipment printing. Analyze 3 of these modules to unlock the corresponding research.</description>
+    <!-- 中文：一份以磁环保存数据的存储器。可在研究台分析，读取后消耗。\n\n这篇存储器中保存着装备打印的技术资料。累计分析3份后可开始对应研究。 -->
+    <comps Inherit="False">
+      <li Class="CompProperties_Forbiddable" />
+      <li Class="CompProperties_CompAnalyzableUnlockResearch">
+        <requiresMechanitor>false</requiresMechanitor>
+        <analysisDurationHours>1.5</analysisDurationHours>
+        <destroyedOnAnalyzed>true</destroyedOnAnalyzed>
+        <showProgress>true</showProgress>
+        <activateTexPath>UI/Icons/Study</activateTexPath>
+        <progressedLetterDef>PositiveEvent</progressedLetterDef>
+        <completedLetterDef>PositiveEvent</completedLetterDef>
+        <progressedLetterLabel>Magnetic-core records recovered</progressedLetterLabel>
+        <!-- 中文：磁芯记录已恢复 -->
+        <completedLetterLabel>Magnetic-core analysis complete</completedLetterLabel>
+        <!-- 中文：磁芯存储器分析完成 -->
+        <completedLetter>{PAWN_labelShort} has recovered enough technical records to begin the research project(s) {RESEARCH}. The memory module was consumed during destructive readout.</completedLetter>
+        <!-- 中文：{PAWN_labelShort}已恢复足够的技术记录，可以开始研究{RESEARCH}。磁芯存储器在破坏性读取中已消耗。 -->
+        <activateLabelString>Analyze memory...</activateLabelString>
+        <!-- 中文：分析存储器…… -->
+        <activateDescString>Read and analyze the magnetic-core records at a research bench. This consumes one memory module.</activateDescString>
+        <!-- 中文：在研究台读取并分析磁芯记录。此操作会消耗一份磁芯存储器。 -->
+        <jobString>Analyzing magnetic-core memory.</jobString>
+        <!-- 中文：正在分析磁芯存储器。 -->
+        <guiLabelString>Choose who should analyze this memory</guiLabelString>
+        <!-- 中文：选择分析磁芯存储器的殖民者 -->
+        <inspectString>Contains technical records. Analysis consumes this memory module.</inspectString>
+        <!-- 中文：保存着技术记录，分析后将消耗这份磁芯存储器。 -->
+        <progressedLetters>
+          <li>Additional records have been recovered for {RESEARCH}. More memory modules are needed before research can begin. This module was consumed during destructive readout.</li>
+          <!-- 中文：已为{RESEARCH}恢复更多技术记录。仍需分析其他磁芯存储器才能开始研究。这份存储器在破坏性读取中已消耗。 -->
+        </progressedLetters>
+        <targetingParameters>
+          <canTargetBuildings>false</canTargetBuildings>
+          <canTargetAnimals>false</canTargetAnimals>
+          <canTargetMechs>false</canTargetMechs>
+          <onlyTargetControlledPawns>true</onlyTargetControlledPawns>
+        </targetingParameters>
+        <analysisID>19371003</analysisID>
+        <analysisRequiredRange>3</analysisRequiredRange>
+      </li>
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="RukayaCoreMemoryBase">
+    <defName>Rukaya_CoreMemory_AirDefense</defName>
+    <label>magnetic-core memory (air-defense missiles)</label>
+    <!-- 中文：磁芯存储器（防空导弹） -->
+    <description>A memory module that stores data in magnetic cores. Analyze it at a research bench; readout consumes the module.\n\nThis module contains records for air-defense missiles. Analyze 2 of these modules to unlock the corresponding research.</description>
+    <!-- 中文：一份以磁环保存数据的存储器。可在研究台分析，读取后消耗。\n\n这篇存储器中保存着防空导弹的技术资料。累计分析2份后可开始对应研究。 -->
+    <comps Inherit="False">
+      <li Class="CompProperties_Forbiddable" />
+      <li Class="CompProperties_CompAnalyzableUnlockResearch">
+        <requiresMechanitor>false</requiresMechanitor>
+        <analysisDurationHours>1.5</analysisDurationHours>
+        <destroyedOnAnalyzed>true</destroyedOnAnalyzed>
+        <showProgress>true</showProgress>
+        <activateTexPath>UI/Icons/Study</activateTexPath>
+        <progressedLetterDef>PositiveEvent</progressedLetterDef>
+        <completedLetterDef>PositiveEvent</completedLetterDef>
+        <progressedLetterLabel>Magnetic-core records recovered</progressedLetterLabel>
+        <!-- 中文：磁芯记录已恢复 -->
+        <completedLetterLabel>Magnetic-core analysis complete</completedLetterLabel>
+        <!-- 中文：磁芯存储器分析完成 -->
+        <completedLetter>{PAWN_labelShort} has recovered enough technical records to begin the research project(s) {RESEARCH}. The memory module was consumed during destructive readout.</completedLetter>
+        <!-- 中文：{PAWN_labelShort}已恢复足够的技术记录，可以开始研究{RESEARCH}。磁芯存储器在破坏性读取中已消耗。 -->
+        <activateLabelString>Analyze memory...</activateLabelString>
+        <!-- 中文：分析存储器…… -->
+        <activateDescString>Read and analyze the magnetic-core records at a research bench. This consumes one memory module.</activateDescString>
+        <!-- 中文：在研究台读取并分析磁芯记录。此操作会消耗一份磁芯存储器。 -->
+        <jobString>Analyzing magnetic-core memory.</jobString>
+        <!-- 中文：正在分析磁芯存储器。 -->
+        <guiLabelString>Choose who should analyze this memory</guiLabelString>
+        <!-- 中文：选择分析磁芯存储器的殖民者 -->
+        <inspectString>Contains technical records. Analysis consumes this memory module.</inspectString>
+        <!-- 中文：保存着技术记录，分析后将消耗这份磁芯存储器。 -->
+        <progressedLetters>
+          <li>Additional records have been recovered for {RESEARCH}. More memory modules are needed before research can begin. This module was consumed during destructive readout.</li>
+          <!-- 中文：已为{RESEARCH}恢复更多技术记录。仍需分析其他磁芯存储器才能开始研究。这份存储器在破坏性读取中已消耗。 -->
+        </progressedLetters>
+        <targetingParameters>
+          <canTargetBuildings>false</canTargetBuildings>
+          <canTargetAnimals>false</canTargetAnimals>
+          <canTargetMechs>false</canTargetMechs>
+          <onlyTargetControlledPawns>true</onlyTargetControlledPawns>
+        </targetingParameters>
+        <analysisID>19371004</analysisID>
+        <analysisRequiredRange>2</analysisRequiredRange>
+      </li>
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="RukayaCoreMemoryBase">
+    <defName>Rukaya_CoreMemory_Naval</defName>
+    <label>magnetic-core memory (naval artillery)</label>
+    <!-- 中文：磁芯存储器（舰炮） -->
+    <description>A memory module that stores data in magnetic cores. Analyze it at a research bench; readout consumes the module.\n\nThis module contains records for naval artillery. Analyze 1 of these modules to unlock the corresponding research.</description>
+    <!-- 中文：一份以磁环保存数据的存储器。可在研究台分析，读取后消耗。\n\n这篇存储器中保存着舰炮的技术资料。累计分析1份后可开始对应研究。 -->
+    <comps Inherit="False">
+      <li Class="CompProperties_Forbiddable" />
+      <li Class="CompProperties_CompAnalyzableUnlockResearch">
+        <requiresMechanitor>false</requiresMechanitor>
+        <analysisDurationHours>1.5</analysisDurationHours>
+        <destroyedOnAnalyzed>true</destroyedOnAnalyzed>
+        <showProgress>true</showProgress>
+        <activateTexPath>UI/Icons/Study</activateTexPath>
+        <progressedLetterDef>PositiveEvent</progressedLetterDef>
+        <completedLetterDef>PositiveEvent</completedLetterDef>
+        <progressedLetterLabel>Magnetic-core records recovered</progressedLetterLabel>
+        <!-- 中文：磁芯记录已恢复 -->
+        <completedLetterLabel>Magnetic-core analysis complete</completedLetterLabel>
+        <!-- 中文：磁芯存储器分析完成 -->
+        <completedLetter>{PAWN_labelShort} has recovered enough technical records to begin the research project(s) {RESEARCH}. The memory module was consumed during destructive readout.</completedLetter>
+        <!-- 中文：{PAWN_labelShort}已恢复足够的技术记录，可以开始研究{RESEARCH}。磁芯存储器在破坏性读取中已消耗。 -->
+        <activateLabelString>Analyze memory...</activateLabelString>
+        <!-- 中文：分析存储器…… -->
+        <activateDescString>Read and analyze the magnetic-core records at a research bench. This consumes one memory module.</activateDescString>
+        <!-- 中文：在研究台读取并分析磁芯记录。此操作会消耗一份磁芯存储器。 -->
+        <jobString>Analyzing magnetic-core memory.</jobString>
+        <!-- 中文：正在分析磁芯存储器。 -->
+        <guiLabelString>Choose who should analyze this memory</guiLabelString>
+        <!-- 中文：选择分析磁芯存储器的殖民者 -->
+        <inspectString>Contains technical records. Analysis consumes this memory module.</inspectString>
+        <!-- 中文：保存着技术记录，分析后将消耗这份磁芯存储器。 -->
+        <progressedLetters>
+          <li>Additional records have been recovered for {RESEARCH}. More memory modules are needed before research can begin. This module was consumed during destructive readout.</li>
+          <!-- 中文：已为{RESEARCH}恢复更多技术记录。仍需分析其他磁芯存储器才能开始研究。这份存储器在破坏性读取中已消耗。 -->
+        </progressedLetters>
+        <targetingParameters>
+          <canTargetBuildings>false</canTargetBuildings>
+          <canTargetAnimals>false</canTargetAnimals>
+          <canTargetMechs>false</canTargetMechs>
+          <onlyTargetControlledPawns>true</onlyTargetControlledPawns>
+        </targetingParameters>
+        <analysisID>19371005</analysisID>
+        <analysisRequiredRange>1</analysisRequiredRange>
+      </li>
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="RukayaCoreMemoryBase">
+    <defName>Rukaya_CoreMemory_Mig31</defName>
+    <label>magnetic-core memory (Rukaya interceptor)</label>
+    <!-- 中文：磁芯存储器（卢卡娅截击机） -->
+    <description>A memory module that stores data in magnetic cores. Analyze it at a research bench; readout consumes the module.\n\nContains Rukaya interceptor records. Analyze 1 module to unlock the corresponding research.</description>
+    <!-- 中文：一份以磁环保存数据的存储器。可在研究台分析，读取后消耗。\n\n其中保存着卢卡娅截击机的技术资料。分析1份后可开始对应研究。 -->
+    <comps Inherit="False">
+      <li Class="CompProperties_Forbiddable" />
+      <li Class="CompProperties_CompAnalyzableUnlockResearch">
+        <requiresMechanitor>false</requiresMechanitor>
+        <analysisDurationHours>1.5</analysisDurationHours>
+        <destroyedOnAnalyzed>true</destroyedOnAnalyzed>
+        <showProgress>true</showProgress>
+        <activateTexPath>UI/Icons/Study</activateTexPath>
+        <progressedLetterDef>PositiveEvent</progressedLetterDef>
+        <completedLetterDef>PositiveEvent</completedLetterDef>
+        <progressedLetterLabel>Magnetic-core records recovered</progressedLetterLabel>
+        <!-- 中文：磁芯记录已恢复 -->
+        <completedLetterLabel>Magnetic-core analysis complete</completedLetterLabel>
+        <!-- 中文：磁芯存储器分析完成 -->
+        <completedLetter>{PAWN_labelShort} has completed the analysis. Research can now begin on {RESEARCH}. The memory module was consumed.</completedLetter>
+        <!-- 中文：{PAWN_labelShort}已完成分析，可以开始研究{RESEARCH}。存储器已消耗。 -->
+        <activateLabelString>Analyze memory...</activateLabelString>
+        <!-- 中文：分析存储器…… -->
+        <activateDescString>Read and analyze the magnetic-core records at a research bench. This consumes one memory module.</activateDescString>
+        <!-- 中文：在研究台读取并分析磁芯记录。此操作会消耗一份磁芯存储器。 -->
+        <jobString>Analyzing magnetic-core memory.</jobString>
+        <!-- 中文：正在分析磁芯存储器。 -->
+        <guiLabelString>Choose who should analyze this memory</guiLabelString>
+        <!-- 中文：选择分析磁芯存储器的殖民者 -->
+        <inspectString>Contains technical records. Analysis consumes this memory module.</inspectString>
+        <!-- 中文：保存着技术记录，分析后将消耗这份磁芯存储器。 -->
+        <progressedLetters>
+          <li>Additional records have been recovered for {RESEARCH}. More memory modules are needed before research can begin. This module was consumed during destructive readout.</li>
+          <!-- 中文：已为{RESEARCH}恢复更多技术记录。仍需分析其他磁芯存储器才能开始研究。这份存储器在破坏性读取中已消耗。 -->
+        </progressedLetters>
+        <targetingParameters>
+          <canTargetBuildings>false</canTargetBuildings>
+          <canTargetAnimals>false</canTargetAnimals>
+          <canTargetMechs>false</canTargetMechs>
+          <onlyTargetControlledPawns>true</onlyTargetControlledPawns>
+        </targetingParameters>
+        <analysisID>19371006</analysisID>
+        <analysisRequiredRange>1</analysisRequiredRange>
+      </li>
+    </comps>
+  </ThingDef>
+</Defs>

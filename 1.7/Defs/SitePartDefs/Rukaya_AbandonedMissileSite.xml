@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <SitePartDef>
+    <defName>Rukaya_AbandonedMissileSite</defName>
+    <label>abandoned missile site</label>
+    <!-- 中文：废弃导弹阵地 -->
+    <description>An abandoned missile site. Investigate its launcher to recover an air-defense memory module.</description>
+    <!-- 中文：一处废弃导弹阵地。调查发射架可获得一份防空导弹磁芯存储器。 -->
+    <siteTexture>Rukaya/World/MemoryArchive</siteTexture>
+    <expandingIconTexture>Rukaya/World/MemoryArchive</expandingIconTexture>
+    <gravShipsCanLandOn>true</gravShipsCanLandOn>
+    <handlesWorldObjectTimeoutInspectString>true</handlesWorldObjectTimeoutInspectString>
+    <wantsThreatPoints>true</wantsThreatPoints>
+    <minMapSize>(120,1,120)</minMapSize>
+    <tags><li>Rukaya_AbandonedMissileSite</li></tags>
+  </SitePartDef>
+  <GenStepDef>
+    <defName>Rukaya_AbandonedMissileSite</defName>
+    <genStep Class="RukayaRace.Research.GenStep_RukayaMissileSite" />
+    <linkWithSite>Rukaya_AbandonedMissileSite</linkWithSite>
+    <order>400</order>
+  </GenStepDef>
+</Defs>

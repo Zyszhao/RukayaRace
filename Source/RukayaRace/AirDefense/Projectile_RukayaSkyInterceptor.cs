@@ -15,6 +15,7 @@ namespace RukayaRace.AirDefense
 
         public static bool HasShotFor(Thing skyTarget)
         {
+            if (skyTarget is RukayaAviation.Aircraft) return false;
             if (skyTarget == null || !shots.TryGetValue(skyTarget, out List<System.WeakReference<Projectile_RukayaSkyInterceptor>> references))
                 return false;
             for (int i = references.Count - 1; i >= 0; i--)

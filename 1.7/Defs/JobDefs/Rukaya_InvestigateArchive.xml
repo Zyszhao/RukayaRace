@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <JobDef>
+    <defName>Rukaya_InvestigateArchive</defName>
+    <reportString>Investigating TargetA.</reportString>
+    <!-- 中文：正在调查TargetA。 -->
+    <driverClass>RukayaRace.Research.JobDriver_RukayaInvestigateArchive</driverClass>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
+</Defs>

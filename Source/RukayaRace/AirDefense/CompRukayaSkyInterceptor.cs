@@ -668,6 +668,8 @@ namespace RukayaRace.AirDefense
         {
             if (target == null || !target.Spawned || target.Map != map || target.Destroyed)
                 return false;
+            if (target is RukayaAviation.Aircraft aircraft)
+                return aircraft.Airborne && aircraft.State != RukayaAviation.FlightState.Crashing;
             if (target is Skyfaller skyfaller)
                 return IsLiveTarget(skyfaller, map);
             if (target is PawnFlyer flyer)
@@ -734,6 +736,8 @@ namespace RukayaRace.AirDefense
         {
             if (faction == null || !IsLiveTarget(target, map))
                 return false;
+            if (target is RukayaAviation.Aircraft aircraft)
+                return aircraft.Faction != null && aircraft.Faction.HostileTo(faction);
             if (target is Skyfaller skyfaller)
                 return CanTarget(skyfaller, faction, map);
             if (target is PawnFlyer flyer)
@@ -745,6 +749,8 @@ namespace RukayaRace.AirDefense
 
         public static RukayaAirTargetCategory CategoryOf(Thing target)
         {
+            if (target is RukayaAviation.Aircraft)
+                return RukayaAirTargetCategory.Flyers;
             if (target is Skyfaller skyfaller)
             {
                 if (skyfaller is Skyfaller_FlyingPawn)
@@ -854,11 +860,17 @@ namespace RukayaRace.AirDefense
 
         private bool AllowsTarget(Thing target)
         {
+            // Extend aircraft only. Do not broaden the mask for vanilla flyers.
+            if (target is RukayaAviation.Aircraft)
+                return Props.allowedCategories != RukayaAirTargetCategory.None
+                    && (Props.targetDefBlacklist == null || !Props.targetDefBlacklist.Contains(target.def))
+                    && (Props.targetDefWhitelist == null || Props.targetDefWhitelist.Count == 0 || Props.targetDefWhitelist.Contains(target.def));
             return Props.AllowsTarget(CategoryOf(target), target?.def);
         }
 
         private bool IsClaimedByOther(Thing target)
         {
+            if (target is RukayaAviation.Aircraft) return false;
             if (!claims.TryGetValue(target, out System.WeakReference<CompRukayaSkyInterceptor> reference))
                 return false;
             if (reference.TryGetTarget(out CompRukayaSkyInterceptor owner) && owner != this

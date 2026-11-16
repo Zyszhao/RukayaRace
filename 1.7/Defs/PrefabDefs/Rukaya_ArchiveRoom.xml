@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- 四类设备共用的简易遗迹；调查目标由生成步骤按任务保存的资料类型放置。 -->
+  <PrefabDef>
+    <defName>Rukaya_ArchiveRoom</defName>
+    <size>(23,21)</size>
+    <rotations>North</rotations>
+    <terrain>
+      <Concrete><rects><li>(0,0,22,20)</li></rects></Concrete>
+      <MetalTile><rects><li>(2,2,20,5)</li><li>(2,7,20,18)</li></rects></MetalTile>
+    </terrain>
+    <things>
+      <Wall>
+        <stuff>BlocksGranite</stuff><hp>240</hp>
+        <rects>
+          <li>(1,1,10,1)</li><li>(12,1,21,1)</li><li>(1,19,21,19)</li>
+          <li>(1,2,1,18)</li><li>(21,2,21,18)</li>
+          <li>(2,6,10,6)</li><li>(12,6,20,6)</li>
+        </rects>
+      </Wall>
+      <Door><stuff>Steel</stuff><hp>100</hp><positions><li>(11,0,1)</li><li>(11,0,6)</li></positions></Door>
+      <ChunkSlagSteel><positions><li>(3,0,3)</li><li>(18,0,4)</li><li>(4,0,15)</li><li>(18,0,16)</li></positions></ChunkSlagSteel>
+    </things>
+  </PrefabDef>
+</Defs>

@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<LanguageData>
+  <Rukaya_Archive_Refining.label>废弃大型精炼器</Rukaya_Archive_Refining.label>
+  <Rukaya_Archive_Refining.description>一台失效的设备。调查可获得一份保存大规模精炼资料的磁芯存储器。</Rukaya_Archive_Refining.description>
+  <Rukaya_Archive_Scanning.label>废弃装备扫描仪</Rukaya_Archive_Scanning.label>
+  <Rukaya_Archive_Scanning.description>一台失效的设备。调查可获得一份保存模板扫描资料的磁芯存储器。</Rukaya_Archive_Scanning.description>
+  <Rukaya_Archive_Printing.label>废弃装备打印机</Rukaya_Archive_Printing.label>
+  <Rukaya_Archive_Printing.description>一台失效的设备。调查可获得一份保存装备打印资料的磁芯存储器。</Rukaya_Archive_Printing.description>
+  <Rukaya_Archive_Naval.label>废弃舰炮</Rukaya_Archive_Naval.label>
+  <Rukaya_Archive_Naval.description>一台失效的设备。调查可获得一份保存舰炮资料的磁芯存储器。</Rukaya_Archive_Naval.description>
+  <Rukaya_Archive_Mig31.label>废弃卢卡娅截击机</Rukaya_Archive_Mig31.label>
+  <Rukaya_Archive_Mig31.description>调查可获得一份磁芯存储器（卢卡娅截击机）。</Rukaya_Archive_Mig31.description>
+</LanguageData>

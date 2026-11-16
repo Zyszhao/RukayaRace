@@ -5,7 +5,7 @@
        Rukaya 机械体（Mechanoids）· 培养配方
        制造场所：LargeMechGestator（大型机械培育舱）
          —— 通过公共父配方的 recipeUsers 显式挂载，重量等级不会自动分配制造设施。
-       研究前置：Rukaya_Mechanoid_I（卢卡娅机械体）；导弹型另需 Rukaya_AirDefenseMissiles。
+       研究前置：Rukaya_Mechanoid_I（卢卡娅机械体）；导弹型不再要求固定发射架科技。
        ============================================================ -->
 
   <RecipeDef Name="Rukaya_BaseMechanoidRecipe" ParentName="BaseMechanoidRecipe" Abstract="True">
@@ -109,9 +109,6 @@
 
   <RecipeDef ParentName="Rukaya_BaseMechanoidRecipe">
     <defName>Rukaya_GestateMechanoid_SAMLauncher</defName>
-    <researchPrerequisites>
-      <li>Rukaya_AirDefenseMissiles</li>
-    </researchPrerequisites>
     <label>培育卢卡娅通用机械“导弹型”</label>
     <!-- 中文：培育卢卡娅通用机械“导弹型” -->
     <description>Gestate a dedicated Rukaya mechanoid armed with a missile turret.</description>

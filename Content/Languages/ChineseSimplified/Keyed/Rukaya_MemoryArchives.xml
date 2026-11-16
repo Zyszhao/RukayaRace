@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Rukaya_MemoryScanMode>磁芯存储器信号</Rukaya_MemoryScanMode>
+  <Rukaya_MemoryScanOn>存储器扫描：开</Rukaya_MemoryScanOn>
+  <Rukaya_MemoryScanOff>存储器扫描：关</Rukaya_MemoryScanOff>
+  <Rukaya_MemoryScanDescription>切换矿物扫描与磁芯存储器信号扫描。存储器信号会指向仍缺少技术记录的项目，每个地点保存一份存储器。两种模式分别保存扫描进度。</Rukaya_MemoryScanDescription>
+  <Rukaya_MemoryScanNoTarget>暂无待定位的技术记录，或对应存储器已备齐、已有地点可供回收。</Rukaya_MemoryScanNoTarget>
+  <Rukaya_MemoryScanRetry>已取得信号，正在寻找合适的地点。</Rukaya_MemoryScanRetry>
+  <Rukaya_MemoryScanActive>正在定位缺失的技术记录。</Rukaya_MemoryScanActive>
+</LanguageData>

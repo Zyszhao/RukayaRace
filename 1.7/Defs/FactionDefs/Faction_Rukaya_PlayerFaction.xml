@@ -33,7 +33,7 @@
       <li>Astropolitan</li>
     </allowedCultures>
     <disallowedMemes MayRequire="Ludeon.RimWorld.Ideology">
-      <li>Cannibal</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Cannibal</li>
     </disallowedMemes>
     <backstoryFilters>
       <li>

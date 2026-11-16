@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <SitePartDef>
+    <defName>Rukaya_MemoryArchive</defName>
+    <label>magnetic-core archive</label>
+    <!-- 中文：磁芯存储器藏匿点 -->
+    <description>A ruined facility containing a machine with recoverable technical records.</description>
+    <!-- 中文：一处废弃设施，设备中留有可回收的技术资料。 -->
+    <siteTexture>Rukaya/World/MemoryArchive</siteTexture>
+    <expandingIconTexture>Rukaya/World/MemoryArchive</expandingIconTexture>
+    <gravShipsCanLandOn>true</gravShipsCanLandOn>
+    <handlesWorldObjectTimeoutInspectString>true</handlesWorldObjectTimeoutInspectString>
+    <tags><li>Rukaya_MemoryArchive</li></tags>
+    <workerClass>SitePartWorker_ItemStash</workerClass>
+    <minMapSize>(80,1,80)</minMapSize>
+  </SitePartDef>
+  <GenStepDef>
+    <defName>Rukaya_MemoryArchive</defName>
+    <genStep Class="RukayaRace.Research.GenStep_RukayaMemoryArchive" />
+    <linkWithSite>Rukaya_MemoryArchive</linkWithSite>
+    <order>400</order>
+  </GenStepDef>
+</Defs>

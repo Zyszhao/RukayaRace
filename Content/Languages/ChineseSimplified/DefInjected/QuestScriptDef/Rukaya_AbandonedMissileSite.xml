@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Rukaya_AbandonedMissileSite.questNameRules.rulesStrings.0>questName-&gt;废弃导弹阵地</Rukaya_AbandonedMissileSite.questNameRules.rulesStrings.0>
+  <Rukaya_AbandonedMissileSite.questDescriptionRules.rulesStrings.0>questDescription-&gt;在[map_definite]附近发现了一处废弃导弹阵地。调查发射架可获得一份[memoryLabel]，带回基地分析。现场可能有驻守者。\n\n请在[timeoutTicks_duration]内抵达，否则地点将失效。</Rukaya_AbandonedMissileSite.questDescriptionRules.rulesStrings.0>
+  <Rukaya_AbandonedMissileSite.root.nodes.10.node.nodes.0.label.slateRef>存储器地点失效</Rukaya_AbandonedMissileSite.root.nodes.10.node.nodes.0.label.slateRef>
+  <Rukaya_AbandonedMissileSite.root.nodes.10.node.nodes.0.text.slateRef>信号已消失，地点失效。</Rukaya_AbandonedMissileSite.root.nodes.10.node.nodes.0.text.slateRef>
+</LanguageData>

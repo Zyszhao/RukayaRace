@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <RAV_AirRaidDrivenOff>{0} is breaking off its attack under sustained ground fire.</RAV_AirRaidDrivenOff>
+  <!-- 中文：{0}受到持续地面火力压制，正在撤离。 -->
+  <RAV_PreEntryInterceptTitle>Enemy aircraft intercepted</RAV_PreEntryInterceptTitle>
+  <!-- 中文：敌机已被拦截 -->
+  <RAV_PreEntryInterceptBody>A heavy surface-to-air missile destroyed the approaching enemy aircraft before it could begin its attack. The air raid has been stopped.</RAV_PreEntryInterceptBody>
+  <!-- 中文：重型地对空导弹在敌机发动进攻前将其击落。本次空袭已被阻止。 -->
+</LanguageData>

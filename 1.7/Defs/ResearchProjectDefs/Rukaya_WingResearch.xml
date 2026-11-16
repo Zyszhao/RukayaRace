@@ -13,7 +13,7 @@
       <li>Rukaya_ActiveMatterRefining</li>
     </prerequisites>
     <tab>Rukaya_ResearchTab</tab>
-    <researchViewX>3</researchViewX>
+    <researchViewX>2</researchViewX>
     <researchViewY>4.4</researchViewY>
   </ResearchProjectDef>
 </Defs>

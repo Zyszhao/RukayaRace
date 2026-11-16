@@ -36,6 +36,8 @@ namespace RukayaRace.AirDefense
         {
             if (target == null || target.Destroyed || !target.Spawned)
                 return false;
+            if (target is RukayaAviation.Aircraft aircraft)
+                return RukayaAviation.AirDefenseBridge.TryHit(aircraft, launcher, faction);
             if (!alreadyCommitted && !CompRukayaSkyInterceptor.CanTarget(target, faction, target?.Map))
                 return false;
             if (target is Skyfaller skyfaller)

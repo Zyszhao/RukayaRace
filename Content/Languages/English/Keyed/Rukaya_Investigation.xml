@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Rukaya_InvestigateArchive>Investigate {0}</Rukaya_InvestigateArchive>
+  <!-- 中文：调查{0} -->
+  <Rukaya_ArchiveRecovered>Memory module recovered</Rukaya_ArchiveRecovered>
+  <!-- 中文：存储器已回收 -->
+  <Rukaya_ArchiveNoManipulation>Incapable of manipulation</Rukaya_ArchiveNoManipulation>
+  <!-- 中文：无法操作 -->
+  <Rukaya_ArchiveProgress>Investigation: {0}\nContains one magnetic-core memory module.</Rukaya_ArchiveProgress>
+  <!-- 中文：调查进度：{0}\n内部保存着一份磁芯存储器。 -->
+</LanguageData>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <RAV_Yak141Aircraft.label>卢卡娅轻型战斗机</RAV_Yak141Aircraft.label>
+  <RAV_Yak141Aircraft.description>单座战斗机，配有五个挂点和固定机炮。可垂直或沿跑道起飞；垂直起飞耗油更多、载荷更低。中央挂点限装副油箱或运输吊舱。需在停机坪建造。</RAV_Yak141Aircraft.description>
+  <RAV_Mig31Aircraft.label>卢卡娅截击机</RAV_Mig31Aircraft.label>
+  <RAV_Mig31Aircraft.description>双座截击机，配有七个挂点。需在停机坪建造，并使用至少9×44格的净空跑道起降。</RAV_Mig31Aircraft.description>
+  <RAV_Pad.label>飞机停机坪</RAV_Pad.label>
+  <RAV_Pad.description>11×11格的停机框，可指定机头朝向。选中后可绑定飞机并查看滑行路线。</RAV_Pad.description>
+  <RAV_Desk.label>航空调度台</RAV_Desk.label>
+  <RAV_Desk.description>安排机场演习与飞机空袭。</RAV_Desk.description>
+  <RAV_Defense.label>演习防空炮</RAV_Defense.label>
+  <RAV_Defense.description>自动攻击64格内敌机的防空炮，无需操作员和弹药。</RAV_Defense.description>
+  <RAV_BombProjectile.label>航空炸弹</RAV_BombProjectile.label>
+  <RAV_RocketProjectile.label>航空火箭弹</RAV_RocketProjectile.label>
+  <RAV_CannonProjectile.label>航空机炮弹</RAV_CannonProjectile.label>
+  <RAV_IncendiaryBombProjectile.label>航空燃烧弹</RAV_IncendiaryBombProjectile.label>
+  <RAV_ClusterBombProjectile.label>航空集束炸弹</RAV_ClusterBombProjectile.label>
+  <RAV_ClusterFragmentProjectile.label>集束子炸弹</RAV_ClusterFragmentProjectile.label>
+  <RAV_GroundMissileProjectile.label>空对地导弹</RAV_GroundMissileProjectile.label>
+  <RAV_ActiveMatterMissileProjectile.label>活性物质导弹</RAV_ActiveMatterMissileProjectile.label>
+</LanguageData>

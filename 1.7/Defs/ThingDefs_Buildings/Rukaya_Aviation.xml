@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <DesignationCategoryDef>
+    <defName>RAV_Aviation</defName>
+    <label>aviation</label>
+    <!-- 中文：航空 -->
+    <order>85</order>
+    <specialDesignatorClasses><li>RukayaAviation.Designator_Runway</li></specialDesignatorClasses>
+  </DesignationCategoryDef>
+
+  <ThingDef Name="RAV_AircraftBase" ParentName="BuildingBase" Abstract="True">
+    <thingClass>RukayaAviation.Aircraft</thingClass>
+    <category>Building</category>
+    <tickerType>Normal</tickerType>
+    <drawerType>RealtimeOnly</drawerType>
+    <altitudeLayer>BuildingOnTop</altitudeLayer>
+    <passability>Standable</passability>
+    <fillPercent>0</fillPercent>
+    <canOverlapZones>true</canOverlapZones>
+    <seeThroughFog>true</seeThroughFog>
+    <rotatable>false</rotatable>
+    <size>(5,7)</size>
+    <designationCategory>RAV_Aviation</designationCategory>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <researchPrerequisites><li>Rukaya_Weapon_III</li></researchPrerequisites>
+    <placeWorkers><li>RukayaAviation.PlaceWorker_Aircraft</li></placeWorkers>
+    <building><isEdifice>false</isEdifice><ai_combatDangerous>true</ai_combatDangerous></building>
+    <inspectorTabs><li>ITab_ContentsTransporter</li></inspectorTabs>
+    <statBases><MaxHitPoints>1600</MaxHitPoints><WorkToBuild>6000</WorkToBuild><Flammability>0</Flammability><Mass>1000</Mass></statBases>
+    <costList><Steel>500</Steel><ComponentIndustrial>20</ComponentIndustrial></costList>
+  </ThingDef>
+  <ThingDef ParentName="RAV_AircraftBase">
+    <defName>RAV_Yak141Aircraft</defName>
+    <label>Rukaya light fighter</label>
+    <!-- 中文：卢卡娅轻型战斗机 -->
+    <description>A single-seat fighter with five hardpoints and a fixed cannon. Can take off vertically or from a runway; vertical takeoff uses more fuel and reduces payload. The center hardpoint accepts only a drop tank or transport pod. Build on a parking pad.</description>
+    <!-- 中文：单座战斗机，配有五个挂点和固定机炮。可垂直或沿跑道起飞；垂直起飞耗油更多、载荷更低。中央挂点限装副油箱或运输吊舱。需在停机坪建造。 -->
+    <graphicData><texPath>Aviation/Yak141</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>(7,7)</drawSize><shaderType>CutoutComplex</shaderType></graphicData>
+    <comps>
+      <li Class="RukayaAviation.AircraftTransporterProps"><massCapacity>1500</massCapacity><restEffectiveness>0.8</restEffectiveness><canChangeAssignedThingsAfterStarting>true</canChangeAssignedThingsAfterStarting><max1PerGroup>true</max1PerGroup></li>
+      <li Class="RukayaAviation.AircraftFuelProps">
+        <fuelCapacity>180</fuelCapacity><targetFuelLevelConfigurable>true</targetFuelLevelConfigurable><initialConfigurableTargetFuelLevel>180</initialConfigurableTargetFuelLevel>
+        <fuelFilter><thingDefs><li>Chemfuel</li></thingDefs></fuelFilter><consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed><autoRefuelPercent>1</autoRefuelPercent>
+        <showFuelGizmo>true</showFuelGizmo><drawOutOfFuelOverlay>false</drawOutOfFuelOverlay><drawFuelGaugeInMap>true</drawFuelGaugeInMap><showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle><canEjectFuel>true</canEjectFuel><hideGizmosIfNotPlayerFaction>true</hideGizmosIfNotPlayerFaction>
+      </li>
+    </comps>
+    <uiOrder>10</uiOrder>
+  </ThingDef>
+  <ThingDef ParentName="RAV_AircraftBase">
+    <defName>RAV_Mig31Aircraft</defName>
+    <researchPrerequisites Inherit="False"><li>Rukaya_Mig31</li></researchPrerequisites>
+    <label>Rukaya interceptor</label>
+    <!-- 中文：卢卡娅截击机 -->
+    <description>A two-seat interceptor with seven hardpoints. Build on a parking pad. Requires a clear runway at least 9 by 44 cells for takeoff and landing.</description>
+    <!-- 中文：双座截击机，配有七个挂点。需在停机坪建造，并使用至少9×44格的净空跑道起降。 -->
+    <size>(7,9)</size>
+    <graphicData><texPath>Aviation/Mig31</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>(9,9)</drawSize><shaderType>CutoutComplex</shaderType></graphicData>
+    <statBases><MaxHitPoints>2400</MaxHitPoints><Mass>1800</Mass></statBases>
+    <costList><Steel>400</Steel><ComponentIndustrial>10</ComponentIndustrial></costList>
+    <comps>
+      <li Class="RukayaAviation.AircraftTransporterProps"><massCapacity>4200</massCapacity><restEffectiveness>0.8</restEffectiveness><canChangeAssignedThingsAfterStarting>true</canChangeAssignedThingsAfterStarting><max1PerGroup>true</max1PerGroup></li>
+      <li Class="RukayaAviation.AircraftFuelProps">
+        <fuelCapacity>650</fuelCapacity><targetFuelLevelConfigurable>true</targetFuelLevelConfigurable><initialConfigurableTargetFuelLevel>650</initialConfigurableTargetFuelLevel>
+        <fuelFilter><thingDefs><li>Chemfuel</li></thingDefs></fuelFilter><consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed><autoRefuelPercent>1</autoRefuelPercent>
+        <showFuelGizmo>true</showFuelGizmo><drawOutOfFuelOverlay>false</drawOutOfFuelOverlay><drawFuelGaugeInMap>true</drawFuelGaugeInMap><showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle><canEjectFuel>true</canEjectFuel><hideGizmosIfNotPlayerFaction>true</hideGizmosIfNotPlayerFaction>
+      </li>
+    </comps>
+    <uiOrder>20</uiOrder>
+  </ThingDef>
+  <ThingDef ParentName="BuildingBase">
+    <defName>RAV_Pad</defName>
+    <label>aircraft parking pad</label>
+    <!-- 中文：飞机停机坪 -->
+    <description>An eleven-cell-square parking outline with a fixed aircraft heading. Select a pad to assign an aircraft and preview its taxi route.</description>
+    <!-- 中文：11×11格的停机框，可指定机头朝向。选中后可绑定飞机并查看滑行路线。 -->
+    <thingClass>RukayaAviation.ParkingPad</thingClass>
+    <uiIconPath>UI/Commands/Aviation/Rukaya_ApronIcon</uiIconPath>
+    <graphicData><texPath>Things/Building/Production/CraftingSpot</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>(11,11)</drawSize><color>(0.4,0.8,1)</color></graphicData>
+    <altitudeLayer>FloorEmplacement</altitudeLayer><drawerType>RealtimeOnly</drawerType><size>(11,11)</size><rotatable>true</rotatable><fillPercent>0</fillPercent><passability>Standable</passability><canOverlapZones>true</canOverlapZones>
+    <placeWorkers><li>RukayaAviation.PlaceWorker_ParkingPad</li></placeWorkers>
+    <building><isEdifice>false</isEdifice></building>
+    <designationCategory>RAV_Aviation</designationCategory><statBases><MaxHitPoints>300</MaxHitPoints><WorkToBuild>0</WorkToBuild><Flammability>0</Flammability></statBases>
+    <uiOrder>30</uiOrder>
+  </ThingDef>
+
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>RAV_BombProjectile</defName><label>aircraft bomb</label>
+    <!-- 中文：航空炸弹 -->
+    <thingClass>Projectile_Explosive</thingClass>
+    <graphicData><texPath>Aviation/Stores/Bomb</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>(1.4,1.4)</drawSize></graphicData>
+    <projectile><damageDef>Bomb</damageDef><damageAmountBase>65</damageAmountBase><armorPenetrationBase>0.3</armorPenetrationBase><explosionRadius>4.2</explosionRadius><speed>22</speed><arcHeightFactor>0.6</arcHeightFactor></projectile>
+  </ThingDef>
+  <ThingDef ParentName="BaseBullet">
+    <defName>RAV_RocketProjectile</defName><label>aircraft rocket</label>
+    <!-- 中文：航空火箭弹 -->
+    <thingClass>RukayaAviation.GuidedOrdnance</thingClass>
+    <graphicData><texPath>Aviation/Projectiles/Rocket</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>(1,1)</drawSize></graphicData>
+    <projectile><damageDef>Bomb</damageDef><damageAmountBase>38</damageAmountBase><armorPenetrationBase>0.25</armorPenetrationBase><explosionRadius>2.3</explosionRadius><speed>180</speed></projectile>
+  </ThingDef>
+  <ThingDef ParentName="BaseBullet">
+    <defName>RAV_CannonProjectile</defName><label>aircraft cannon round</label>
+    <!-- 中文：航空机炮弹 -->
+    <graphicData><texPath>Things/Projectile/Bullet_Big</texPath><graphicClass>Graphic_Single</graphicClass></graphicData>
+    <projectile><damageDef>Bullet</damageDef><damageAmountBase>24</damageAmountBase><armorPenetrationBase>0.45</armorPenetrationBase><speed>140</speed><stoppingPower>1</stoppingPower></projectile>
+  </ThingDef>
+  <ThingDef ParentName="BaseBullet">
+    <defName>RAV_IncendiaryBombProjectile</defName><label>aircraft incendiary bomb</label>
+    <!-- 中文：航空燃烧弹 -->
+    <thingClass>Projectile_Explosive</thingClass>
+    <graphicData><texPath>Aviation/Stores/IncendiaryBomb</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>(1.6,1.6)</drawSize></graphicData>
+    <projectile><damageDef>Flame</damageDef><damageAmountBase>25</damageAmountBase><explosionRadius>5</explosionRadius><explosionChanceToStartFire>1</explosionChanceToStartFire><speed>22</speed><arcHeightFactor>0.6</arcHeightFactor></projectile>
+  </ThingDef>
+  <ThingDef ParentName="BaseBullet">
+    <defName>RAV_ClusterBombProjectile</defName><label>aircraft cluster bomb</label>
+    <!-- 中文：航空集束炸弹 -->
+    <thingClass>RukayaAviation.Projectile_ClusterBomb</thingClass>
+    <graphicData><texPath>Aviation/Stores/ClusterBomb</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>(1.4,1.4)</drawSize></graphicData>
+    <projectile><damageDef>Bomb</damageDef><damageAmountBase>1</damageAmountBase><explosionRadius>0.1</explosionRadius><speed>22</speed><arcHeightFactor>0.6</arcHeightFactor></projectile>
+    <modExtensions><li Class="RukayaAviation.ClusterProjectileExtension"><fragmentProjectile>RAV_ClusterFragmentProjectile</fragmentProjectile><fragmentCount>12</fragmentCount><fragmentSearchRadius>7</fragmentSearchRadius><preferPawnCells>true</preferPawnCells><fragmentVisualSegments>3</fragmentVisualSegments><fragmentVisualArcHeight>0.4</fragmentVisualArcHeight><fragmentLaunchDelayMaxSeconds>0.8</fragmentLaunchDelayMaxSeconds></li></modExtensions>
+  </ThingDef>
+  <ThingDef ParentName="BaseBullet">
+    <defName>RAV_ClusterFragmentProjectile</defName><label>cluster submunition</label>
+    <!-- 中文：集束子炸弹 -->
+    <thingClass>Projectile_Explosive</thingClass>
+    <graphicData><texPath>Things/Projectile/ShellHighExplosive</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>(0.3,0.3)</drawSize></graphicData>
+    <projectile><damageDef>Bomb</damageDef><damageAmountBase>30</damageAmountBase><armorPenetrationBase>0.25</armorPenetrationBase><explosionRadius>1.8</explosionRadius><speed>80</speed><arcHeightFactor>0.4</arcHeightFactor></projectile>
+  </ThingDef>
+  <ThingDef ParentName="BaseBullet">
+    <defName>RAV_GroundMissileProjectile</defName><label>air-to-ground missile</label>
+    <!-- 中文：空对地导弹 -->
+    <thingClass>RukayaAviation.GuidedOrdnance</thingClass>
+    <graphicData><texPath>Aviation/Stores/GroundMissile</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>(1.8,1.8)</drawSize></graphicData>
+    <projectile><damageDef>Bomb</damageDef><damageAmountBase>25</damageAmountBase><armorPenetrationBase>0.25</armorPenetrationBase><explosionRadius>1.5</explosionRadius><speed>220</speed></projectile>
+    <modExtensions><li Class="RukayaAviation.AviationWarheadExtension"><directDamage>200</directDamage><directArmorPenetration>2.5</directArmorPenetration></li></modExtensions>
+  </ThingDef>
+  <ThingDef ParentName="BaseBullet">
+    <defName>RAV_ActiveMatterMissileProjectile</defName><label>active matter missile</label>
+    <!-- 中文：活性物质导弹 -->
+    <thingClass>RukayaAviation.GuidedOrdnance</thingClass>
+    <graphicData><texPath>Aviation/Stores/ActiveMatterMissile</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>(2.5,2.5)</drawSize></graphicData>
+    <projectile><damageDef>BombSuper</damageDef><damageAmountBase>800</damageAmountBase><armorPenetrationBase>2</armorPenetrationBase><explosionRadius>18</explosionRadius><explosionChanceToStartFire>0.35</explosionChanceToStartFire><explosionDamageFalloff>true</explosionDamageFalloff><explosionEffect>GiantExplosion</explosionEffect><soundExplode>Explosion_GiantBomb</soundExplode><preExplosionSpawnSingleThingDef>CraterMedium</preExplosionSpawnSingleThingDef><speed>220</speed></projectile>
+  </ThingDef>
+  <WorldObjectDef>
+    <defName>RAV_Flight</defName><label>aircraft flight</label>
+    <!-- 中文：飞机航班 -->
+    <worldObjectClass>RukayaAviation.WorldFlight</worldObjectClass><texture>Aviation/Mig31</texture><expandingIcon>true</expandingIcon><expandingIconTexture>Aviation/Mig31</expandingIconTexture><selectable>true</selectable><canHaveFaction>true</canHaveFaction><useDynamicDrawer>true</useDynamicDrawer>
+  </WorldObjectDef>
+  <!-- 兼容旧存档已生成的地图；新航班不再创建此世界对象。 -->
+  <WorldObjectDef>
+    <defName>RAV_LandingSite</defName><label>field landing site</label>
+    <!-- 中文：野外着陆点 -->
+    <worldObjectClass>MapParent</worldObjectClass><texture>UI/Commands/Aviation/Rukaya_Landing</texture><expandingIcon>true</expandingIcon><selectable>true</selectable><canHaveFaction>true</canHaveFaction><mapGenerator>Encounter</mapGenerator>
+  </WorldObjectDef>
+  <IncidentDef>
+    <defName>RAV_AirRaid</defName><label>air raid</label>
+    <!-- 中文：飞机空袭 -->
+    <workerClass>RukayaAviation.IncidentWorker_AirRaid</workerClass><category>ThreatBig</category><targetTags><li>Map_PlayerHome</li></targetTags><baseChance>1</baseChance><minThreatPoints>800</minThreatPoints><earliestDay>20</earliestDay><letterDef>ThreatBig</letterDef><pointsScaleable>true</pointsScaleable>
+  </IncidentDef>
+  <FleckDef ParentName="FleckBase">
+    <defName>RAV_EngineJet</defName>
+    <altitudeLayer>MetaOverlays</altitudeLayer><altitudeLayerIncOffset>0.05</altitudeLayerIncOffset>
+    <fleckSystemClass>FleckSystemStatic</fleckSystemClass>
+    <realTime>false</realTime><solidTime>0.03</solidTime><fadeOutTime>0.05</fadeOutTime>
+    <graphicData><graphicClass>Graphic_Fleck</graphicClass><shaderType>MoteGlow</shaderType><texPath>Things/Mote/ShotFlash</texPath></graphicData>
+  </FleckDef>
+  <FleckDef ParentName="FleckBase">
+    <defName>RAV_MissileTrail</defName>
+    <altitudeLayer>MetaOverlays</altitudeLayer>
+    <fleckSystemClass>FleckSystemStatic</fleckSystemClass>
+    <realTime>false</realTime><fadeInTime>0</fadeInTime><solidTime>0.12</solidTime><fadeOutTime>1</fadeOutTime>
+    <graphicData><graphicClass>Graphic_Fleck</graphicClass><shaderType>Mote</shaderType><texPath>Things/Mote/Smoke</texPath><renderInstanced>true</renderInstanced></graphicData>
+  </FleckDef>
+</Defs>
