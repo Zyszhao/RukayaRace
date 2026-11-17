@@ -55,15 +55,15 @@
   <Rukaya_CoreMemory_Naval.comps.CompAnalyzableUnlockResearch.guiLabelString>选择分析磁芯存储器的殖民者</Rukaya_CoreMemory_Naval.comps.CompAnalyzableUnlockResearch.guiLabelString>
   <Rukaya_CoreMemory_Naval.comps.CompAnalyzableUnlockResearch.inspectString>保存着技术记录，分析后将消耗这份磁芯存储器。</Rukaya_CoreMemory_Naval.comps.CompAnalyzableUnlockResearch.inspectString>
   <Rukaya_CoreMemory_Naval.comps.CompAnalyzableUnlockResearch.progressedLetters.0>已为{RESEARCH}恢复更多技术记录。仍需分析其他磁芯存储器才能开始研究。这份存储器在破坏性读取中已消耗。</Rukaya_CoreMemory_Naval.comps.CompAnalyzableUnlockResearch.progressedLetters.0>
-  <Rukaya_CoreMemory_Mig31.label>磁芯存储器（卢卡娅截击机）</Rukaya_CoreMemory_Mig31.label>
-  <Rukaya_CoreMemory_Mig31.description>一份以磁环保存数据的存储器。可在研究台分析，读取后消耗。\n\n其中保存着卢卡娅截击机的技术资料。分析1份后可开始对应研究。</Rukaya_CoreMemory_Mig31.description>
-  <Rukaya_CoreMemory_Mig31.comps.CompAnalyzableUnlockResearch.progressedLetterLabel>磁芯记录已恢复</Rukaya_CoreMemory_Mig31.comps.CompAnalyzableUnlockResearch.progressedLetterLabel>
-  <Rukaya_CoreMemory_Mig31.comps.CompAnalyzableUnlockResearch.completedLetterLabel>磁芯存储器分析完成</Rukaya_CoreMemory_Mig31.comps.CompAnalyzableUnlockResearch.completedLetterLabel>
-  <Rukaya_CoreMemory_Mig31.comps.CompAnalyzableUnlockResearch.completedLetter>{PAWN_labelShort}已完成分析，可以开始研究{RESEARCH}。存储器已消耗。</Rukaya_CoreMemory_Mig31.comps.CompAnalyzableUnlockResearch.completedLetter>
-  <Rukaya_CoreMemory_Mig31.comps.CompAnalyzableUnlockResearch.activateLabelString>分析存储器……</Rukaya_CoreMemory_Mig31.comps.CompAnalyzableUnlockResearch.activateLabelString>
-  <Rukaya_CoreMemory_Mig31.comps.CompAnalyzableUnlockResearch.activateDescString>在研究台读取并分析磁芯记录。此操作会消耗一份磁芯存储器。</Rukaya_CoreMemory_Mig31.comps.CompAnalyzableUnlockResearch.activateDescString>
-  <Rukaya_CoreMemory_Mig31.comps.CompAnalyzableUnlockResearch.jobString>正在分析磁芯存储器。</Rukaya_CoreMemory_Mig31.comps.CompAnalyzableUnlockResearch.jobString>
-  <Rukaya_CoreMemory_Mig31.comps.CompAnalyzableUnlockResearch.guiLabelString>选择分析磁芯存储器的殖民者</Rukaya_CoreMemory_Mig31.comps.CompAnalyzableUnlockResearch.guiLabelString>
-  <Rukaya_CoreMemory_Mig31.comps.CompAnalyzableUnlockResearch.inspectString>保存着技术记录，分析后将消耗这份磁芯存储器。</Rukaya_CoreMemory_Mig31.comps.CompAnalyzableUnlockResearch.inspectString>
-  <Rukaya_CoreMemory_Mig31.comps.CompAnalyzableUnlockResearch.progressedLetters.0>已为{RESEARCH}恢复更多技术记录。仍需分析其他磁芯存储器才能开始研究。这份存储器在破坏性读取中已消耗。</Rukaya_CoreMemory_Mig31.comps.CompAnalyzableUnlockResearch.progressedLetters.0>
+  <Rukaya_CoreMemory_Mig31Memory.label>磁芯存储器（卢卡娅截击机）</Rukaya_CoreMemory_Mig31Memory.label>
+  <Rukaya_CoreMemory_Mig31Memory.description>一份以磁环保存数据的存储器。可在研究台分析，读取后消耗。\n\n其中保存着卢卡娅截击机的技术资料。分析1份后可开始对应研究。</Rukaya_CoreMemory_Mig31Memory.description>
+  <Rukaya_CoreMemory_Mig31Memory.comps.CompAnalyzableUnlockResearch.progressedLetterLabel>磁芯记录已恢复</Rukaya_CoreMemory_Mig31Memory.comps.CompAnalyzableUnlockResearch.progressedLetterLabel>
+  <Rukaya_CoreMemory_Mig31Memory.comps.CompAnalyzableUnlockResearch.completedLetterLabel>磁芯存储器分析完成</Rukaya_CoreMemory_Mig31Memory.comps.CompAnalyzableUnlockResearch.completedLetterLabel>
+  <Rukaya_CoreMemory_Mig31Memory.comps.CompAnalyzableUnlockResearch.completedLetter>{PAWN_labelShort}已完成分析，可以开始研究{RESEARCH}。存储器已消耗。</Rukaya_CoreMemory_Mig31Memory.comps.CompAnalyzableUnlockResearch.completedLetter>
+  <Rukaya_CoreMemory_Mig31Memory.comps.CompAnalyzableUnlockResearch.activateLabelString>分析存储器……</Rukaya_CoreMemory_Mig31Memory.comps.CompAnalyzableUnlockResearch.activateLabelString>
+  <Rukaya_CoreMemory_Mig31Memory.comps.CompAnalyzableUnlockResearch.activateDescString>在研究台读取并分析磁芯记录。此操作会消耗一份磁芯存储器。</Rukaya_CoreMemory_Mig31Memory.comps.CompAnalyzableUnlockResearch.activateDescString>
+  <Rukaya_CoreMemory_Mig31Memory.comps.CompAnalyzableUnlockResearch.jobString>正在分析磁芯存储器。</Rukaya_CoreMemory_Mig31Memory.comps.CompAnalyzableUnlockResearch.jobString>
+  <Rukaya_CoreMemory_Mig31Memory.comps.CompAnalyzableUnlockResearch.guiLabelString>选择分析磁芯存储器的殖民者</Rukaya_CoreMemory_Mig31Memory.comps.CompAnalyzableUnlockResearch.guiLabelString>
+  <Rukaya_CoreMemory_Mig31Memory.comps.CompAnalyzableUnlockResearch.inspectString>保存着技术记录，分析后将消耗这份磁芯存储器。</Rukaya_CoreMemory_Mig31Memory.comps.CompAnalyzableUnlockResearch.inspectString>
+  <Rukaya_CoreMemory_Mig31Memory.comps.CompAnalyzableUnlockResearch.progressedLetters.0>已为{RESEARCH}恢复更多技术记录。仍需分析其他磁芯存储器才能开始研究。这份存储器在破坏性读取中已消耗。</Rukaya_CoreMemory_Mig31Memory.comps.CompAnalyzableUnlockResearch.progressedLetters.0>
 </LanguageData>

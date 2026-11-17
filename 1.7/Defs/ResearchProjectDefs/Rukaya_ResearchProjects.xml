@@ -32,7 +32,7 @@
       <li>Rukaya_ActiveMatterPrinting</li>
       <li>Rukaya_AirDefenseMissiles</li>
       <li>Rukaya_NavalArtillery</li>
-      <li>Rukaya_Mig31</li>
+      <li>Rukaya_Mig31Research</li>
     </prerequisites>
     <tab>Rukaya_ResearchTab</tab>
     <researchViewX>3</researchViewX>
@@ -225,14 +225,14 @@
     <researchViewY>5.4</researchViewY>
   </ResearchProjectDef>
   <ResearchProjectDef>
-    <defName>Rukaya_Mig31</defName>
+    <defName>Rukaya_Mig31Research</defName>
     <label>Rukaya interceptor</label>
     <!-- 中文：卢卡娅截击机 -->
     <description>Allows construction of Rukaya interceptors.</description>
     <!-- 中文：可建造卢卡娅截击机。 -->
     <baseCost>2000</baseCost>
     <techLevel>Industrial</techLevel>
-    <requiredAnalyzed><li>Rukaya_CoreMemory_Mig31</li></requiredAnalyzed>
+    <requiredAnalyzed><li>Rukaya_CoreMemory_Mig31Memory</li></requiredAnalyzed>
     <tab>Rukaya_ResearchTab</tab>
     <researchViewX>5</researchViewX>
     <researchViewY>5.4</researchViewY>

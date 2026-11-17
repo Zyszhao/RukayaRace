@@ -26,6 +26,6 @@
 
   <Rukaya_NavalArtillery.label>卢卡娅舰炮</Rukaya_NavalArtillery.label>
   <Rukaya_NavalArtillery.description>恢复的舰炮技术记录，使双联活性物质火炮能够改装为自主索敌的陆基炮塔。</Rukaya_NavalArtillery.description>
-  <Rukaya_Mig31.label>卢卡娅截击机</Rukaya_Mig31.label>
-  <Rukaya_Mig31.description>可建造卢卡娅截击机。</Rukaya_Mig31.description>
+  <Rukaya_Mig31Research.label>卢卡娅截击机</Rukaya_Mig31Research.label>
+  <Rukaya_Mig31Research.description>可建造卢卡娅截击机。</Rukaya_Mig31Research.description>
 </LanguageData>

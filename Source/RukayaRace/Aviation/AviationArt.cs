@@ -17,13 +17,12 @@ public static class AviationArt
     // stores retain their own silhouette and padding; no width stretching.
     public static Vector2 StoreSize(StoreKind kind) => kind switch
     {
-        StoreKind.Bomb or StoreKind.ClusterBomb => Vector2.one * 1.4f,
-        StoreKind.IncendiaryBomb or StoreKind.Cannon => Vector2.one * 1.6f,
-        StoreKind.Rocket => Vector2.one * 1.5f,
-        StoreKind.GroundMissile => Vector2.one * 1.8f,
+        StoreKind.Bomb or StoreKind.ClusterBomb => Vector2.one * 0.91f,
+        StoreKind.IncendiaryBomb or StoreKind.Cannon => Vector2.one * 1.04f,
+        StoreKind.Rocket => Vector2.one * 0.975f,
+        StoreKind.GroundMissile => Vector2.one * 1.17f,
         StoreKind.ActiveMatterMissile => Vector2.one * 2.5f,
-        StoreKind.Tank => Vector2.one * 2f,
-        StoreKind.CargoPod or StoreKind.PassengerPod => Vector2.one * 1.8f,
+        StoreKind.Tank or StoreKind.CargoPod or StoreKind.PassengerPod => Vector2.one * 2f,
         _ => new Vector2(0.65f, 1.4f)
     };
     public static bool HasVisibleStore(Hardpoint mount) => mount.kind != StoreKind.Empty

@@ -116,7 +116,7 @@
     </comps>
   </ThingDef>
   <ThingDef ParentName="RukayaArchiveBuildingBase">
-    <defName>Rukaya_Archive_Mig31</defName>
+    <defName>Rukaya_Archive_Mig31Site</defName>
     <label>abandoned Rukaya interceptor</label>
     <!-- 中文：废弃卢卡娅截击机 -->
     <description>Investigate to recover one magnetic-core memory for Rukaya interceptor research.</description>
@@ -125,7 +125,7 @@
     <size>(7,9)</size>
     <comps>
       <li Class="RukayaRace.Research.CompProperties_RukayaArchiveInvestigation">
-        <memory>Rukaya_CoreMemory_Mig31</memory><workRequired>6000</workRequired>
+        <memory>Rukaya_CoreMemory_Mig31Memory</memory><workRequired>6000</workRequired>
       </li>
     </comps>
   </ThingDef>

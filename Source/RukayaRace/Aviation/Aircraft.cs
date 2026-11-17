@@ -179,12 +179,13 @@ public partial class Aircraft : Building, IAttackTarget, IRenameable
     public override CellRect? CustomRectForSelector => CellRect.CenteredOn(DrawPos.ToIntVec3(), def.size);
     public Vector3 MountPosition(int i)
     {
-        // Three wing pairs plus center on the interceptor; two pairs plus center on the light fighter.
+        // Follow each texture's swept wing: outer stations sit farther aft.
+        // Coordinates are relative to the square aircraft canvas, not its transparent margins.
         float side = i - CenterHardpoint;
-        // Preserve the mounts' locations relative to the original aircraft art
-        // when correcting the width of its formerly stretched drawing quad.
-        float widthScale = def.graphicData.drawSize.x / (Heavy ? 7f : 6f);
-        Vector3 local = new Vector3(side * (Heavy ? 0.75f : 1.05f) * widthScale, 0, -1.1f + Mathf.Abs(side) * 0.35f);
+        float widthScale = def.graphicData.drawSize.x / (Heavy ? 9f : 7f);
+        float lengthScale = def.graphicData.drawSize.y / (Heavy ? 9f : 7f);
+        Vector3 local = new Vector3(side * (Heavy ? 0.72f : 0.8f) * widthScale, 0,
+            ((Heavy ? -0.8f : -0.85f) - Mathf.Abs(side) * (Heavy ? 0.35f : 0.05f)) * lengthScale);
         return realPos + Quaternion.AngleAxis(yaw, Vector3.up) * local;
     }
     public override void SpawnSetup(Map map, bool respawningAfterLoad)

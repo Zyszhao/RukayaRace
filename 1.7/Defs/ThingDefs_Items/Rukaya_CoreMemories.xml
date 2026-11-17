@@ -255,7 +255,7 @@
     </comps>
   </ThingDef>
   <ThingDef ParentName="RukayaCoreMemoryBase">
-    <defName>Rukaya_CoreMemory_Mig31</defName>
+    <defName>Rukaya_CoreMemory_Mig31Memory</defName>
     <label>magnetic-core memory (Rukaya interceptor)</label>
     <!-- 中文：磁芯存储器（卢卡娅截击机） -->
     <description>A memory module that stores data in magnetic cores. Analyze it at a research bench; readout consumes the module.\n\nContains Rukaya interceptor records. Analyze 1 module to unlock the corresponding research.</description>

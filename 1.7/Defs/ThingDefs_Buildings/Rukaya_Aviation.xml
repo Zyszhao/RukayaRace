@@ -48,7 +48,7 @@
   </ThingDef>
   <ThingDef ParentName="RAV_AircraftBase">
     <defName>RAV_Mig31Aircraft</defName>
-    <researchPrerequisites Inherit="False"><li>Rukaya_Mig31</li></researchPrerequisites>
+    <researchPrerequisites Inherit="False"><li>Rukaya_Mig31Research</li></researchPrerequisites>
     <label>Rukaya interceptor</label>
     <!-- 中文：卢卡娅截击机 -->
     <description>A two-seat interceptor with seven hardpoints. Build on a parking pad. Requires a clear runway at least 9 by 44 cells for takeoff and landing.</description>
