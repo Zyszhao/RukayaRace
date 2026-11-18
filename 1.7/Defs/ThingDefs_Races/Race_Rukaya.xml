@@ -24,7 +24,7 @@
 
       <ComfyTemperatureMin>13</ComfyTemperatureMin><!-- 最低适应温度-->
       <ComfyTemperatureMax>25</ComfyTemperatureMax><!-- 最高适应温度-->
-      <ImmunityGainSpeed>1.3333333</ImmunityGainSpeed><!-- 免疫力增长速度-->
+      <ImmunityGainSpeed>1.8181818</ImmunityGainSpeed><!-- 免疫力增长速度：配合强免疫×1.1，保持默认组合约200%。 -->
       <ToxicResistance>0.2</ToxicResistance><!-- 毒素抗性-->
       <ToxicEnvironmentResistance MayRequire="Ludeon.RimWorld.Biotech">0.2</ToxicEnvironmentResistance>
       <RestRateMultiplier>0.8</RestRateMultiplier><!-- 睡眠效率-->

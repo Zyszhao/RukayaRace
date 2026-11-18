@@ -30,7 +30,7 @@
     <letterDef>NeutralEvent</letterDef>
     <letterLabel>Lost in flight</letterLabel>
     <!-- 中文：迷航迫降 -->
-    <letterText>A Rukaya has lost her way in flight. With badly injured wings, {PAWN_nameDef} is struggling to land nearby. She is exhausted and needs rescue.</letterText>
-    <!-- 中文翻译：一名卢卡娅在飞行中迷失了方向。{PAWN_nameDef}双翼严重受损，正勉强扇动翅膀，在附近迫降。她已筋疲力尽，需要救援。 -->
+    <letterText>A Rukaya has lost her way in flight. With badly injured wings, {PAWN_nameDef} is struggling to land nearby. She is exhausted and needs rescue.\n\nThis person seems to have no faction affiliation. You can do as you please with her.</letterText>
+    <!-- 中文翻译：一名卢卡娅在飞行中迷失了方向。{PAWN_nameDef}双翼严重受损，正勉强扇动翅膀，在附近迫降。她已筋疲力尽，需要救援。\n\n此人似乎没有派系身份，你可以随意处置她。 -->
   </IncidentDef>
 </Defs>

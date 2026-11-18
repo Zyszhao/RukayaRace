@@ -64,41 +64,59 @@ namespace RukayaRace.Genetics
     {
         // New pawns begin at the current version. Missing fields in old saves load as
         // zero. Per-pawn serialization also covers corpses and nested thing holders.
-        private int migrationVersion = 1;
+        private int migrationVersion = 2;
         private bool defaultMigrationPending;
 
         public override void PostExposeData()
         {
             Scribe_Values.Look(ref migrationVersion, "rukayaGeneticsVersion", 0);
             Scribe_Values.Look(ref defaultMigrationPending, "rukayaDefaultGeneticsMigrationPending", false);
-            if (Scribe.mode == LoadSaveMode.PostLoadInit && migrationVersion < 1)
+            if (Scribe.mode == LoadSaveMode.PostLoadInit && migrationVersion < 2)
                 LongEventHandler.ExecuteWhenFinished(MigrateLegacyPawn);
         }
 
         private void MigrateLegacyPawn()
         {
-            if (migrationVersion >= 1 || parent is not Pawn pawn || !RukayaGenetics.IsRukaya(pawn)) return;
+            if (migrationVersion >= 2 || parent is not Pawn pawn || !RukayaGenetics.IsRukaya(pawn)) return;
             try
             {
                 XenotypeDef xenotype = DefDatabase<XenotypeDef>.GetNamed(RukayaGenetics.XenotypeName);
-                if (ModsConfig.BiotechActive && (defaultMigrationPending || RukayaGenetics.IsUnmodifiedBaseliner(pawn)))
+                if (migrationVersion < 1)
                 {
-                    // Retain the selected route if a third-party gene hook interrupts
-                    // migration; a retry must not mistake our partial additions for edits.
-                    defaultMigrationPending = true;
-                    foreach (GeneDef gene in xenotype.genes)
-                        pawn.genes.AddGene(gene, xenogene: false);
-                    // Changes only identity, never clears xenogenes or existing genes.
-                    pawn.genes.SetXenotypeDirect(xenotype);
-                    RukayaGenetics.RemoveLegacyPhysiology(pawn);
+                    if (ModsConfig.BiotechActive && (defaultMigrationPending || RukayaGenetics.IsUnmodifiedBaseliner(pawn)))
+                    {
+                        // Retain the selected route if a third-party gene hook interrupts
+                        // migration; a retry must not mistake our partial additions for edits.
+                        defaultMigrationPending = true;
+                        foreach (GeneDef gene in xenotype.genes)
+                            pawn.genes.AddGene(gene, xenogene: false);
+                        // Changes only identity, never clears xenogenes or existing genes.
+                        pawn.genes.SetXenotypeDirect(xenotype);
+                        RukayaGenetics.RemoveLegacyPhysiology(pawn);
+                    }
+                    else if (pawn.genes?.Xenotype != xenotype)
+                    {
+                        HediffDef legacy = DefDatabase<HediffDef>.GetNamed(RukayaGenetics.LegacyPhysiology);
+                        if (!pawn.health.hediffSet.HasHediff(legacy)) pawn.health.AddHediff(legacy);
+                    }
+                    migrationVersion = 1;
+                    defaultMigrationPending = false;
                 }
-                else if (pawn.genes?.Xenotype != xenotype)
+
+                // Update only the default xenotype's inherited package. Player
+                // xenogenes and other/custom xenotypes retain their selected genes.
+                if (ModsConfig.BiotechActive && pawn.genes?.Xenotype == xenotype)
                 {
-                    HediffDef legacy = DefDatabase<HediffDef>.GetNamed(RukayaGenetics.LegacyPhysiology);
-                    if (!pawn.health.hediffSet.HasHediff(legacy)) pawn.health.AddHediff(legacy);
+                    Gene oldImmunity = pawn.genes.Endogenes.FirstOrDefault(g => g.def.defName == "Immunity_SuperStrong");
+                    if (oldImmunity != null)
+                    {
+                        pawn.genes.AddGene(DefDatabase<GeneDef>.GetNamed("Immunity_Strong"), xenogene: false);
+                        pawn.genes.RemoveGene(oldImmunity);
+                    }
+                    foreach (Gene gene in pawn.genes.Endogenes.Where(g => g.def.defName == "AptitudePoor_Construction").ToList())
+                        pawn.genes.RemoveGene(gene);
                 }
-                migrationVersion = 1;
-                defaultMigrationPending = false;
+                migrationVersion = 2;
             }
             catch (Exception exception)
             {

@@ -105,6 +105,13 @@
     <graphicData>
       <texPath>Rukaya/Mechanoids/Rukaya_MechTurretMachineCannon</texPath>
     </graphicData>
+    <!-- 持续实弹支援：比速射蜈蚣射程更远、火力更强；保留散布与弹体飞行时间。 -->
+    <statBases>
+      <AccuracyTouch>0.40</AccuracyTouch>
+      <AccuracyShort>0.55</AccuracyShort>
+      <AccuracyMedium>0.45</AccuracyMedium>
+      <AccuracyLong>0.30</AccuracyLong>
+    </statBases>
     <verbs>
       <li>
         <verbClass>RukayaRace.Weapons.Verb_RukayaMechTurretShoot</verbClass>
@@ -112,14 +119,14 @@
         <defaultProjectile>Bullet_Rukaya_MechAutocannon</defaultProjectile>
 
         <ai_ProjectileLaunchingIgnoresMeleeThreats>true</ai_ProjectileLaunchingIgnoresMeleeThreats>
-        <range>26.9</range>
+        <range>34.9</range>
         <warmupTime>1.25</warmupTime>
         <ticksBetweenBurstShots>4</ticksBetweenBurstShots>
         <burstShotCount>25</burstShotCount>
         <soundCast>Shot_Minigun</soundCast>
         <soundCastTail>GunTail_Heavy</soundCastTail>
         <muzzleFlashScale>10</muzzleFlashScale>
-        <defaultCooldownTime>6.5</defaultCooldownTime>
+        <defaultCooldownTime>2.0</defaultCooldownTime>
         <linkedBodyPartsGroup>Rukaya_TurretMount</linkedBodyPartsGroup>
         <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
       </li>
@@ -178,7 +185,7 @@
 
         <ai_ProjectileLaunchingIgnoresMeleeThreats>true</ai_ProjectileLaunchingIgnoresMeleeThreats>
         <minRange>6</minRange>
-        <range>26.9</range>
+        <range>39.9</range>
         <warmupTime>1.5</warmupTime>
         <ticksBetweenBurstShots>8</ticksBetweenBurstShots>
         <burstShotCount>1</burstShotCount>
@@ -239,10 +246,10 @@
       <texPath>Rukaya/Mechanoids/Rukaya_MechTurretPlasma</texPath>
     </graphicData>
     <statBases>
-      <AccuracyTouch>1</AccuracyTouch>
-      <AccuracyShort>1</AccuracyShort>
-      <AccuracyMedium>1</AccuracyMedium>
-      <AccuracyLong>1</AccuracyLong>
+      <AccuracyTouch>0.45</AccuracyTouch>
+      <AccuracyShort>0.65</AccuracyShort>
+      <AccuracyMedium>0.80</AccuracyMedium>
+      <AccuracyLong>0.85</AccuracyLong>
     </statBases>
     <verbs>
       <li>
@@ -251,7 +258,7 @@
         <defaultProjectile>Bullet_Rukaya_MechPlasma</defaultProjectile>
 
         <ai_ProjectileLaunchingIgnoresMeleeThreats>true</ai_ProjectileLaunchingIgnoresMeleeThreats>
-        <canGoWild>false</canGoWild>
+        <canGoWild>true</canGoWild>
         <range>45.9</range>
         <warmupTime>1.5</warmupTime>
         <burstShotCount>1</burstShotCount>
@@ -330,8 +337,8 @@
     </modExtensions>
     <projectile>
       <damageDef>Bullet</damageDef>
-      <damageAmountBase>14</damageAmountBase>
-      <armorPenetrationBase>0.32</armorPenetrationBase>
+      <damageAmountBase>18</damageAmountBase>
+      <armorPenetrationBase>0.40</armorPenetrationBase>
       <stoppingPower>1.2</stoppingPower>
       <speed>110</speed>
     </projectile>

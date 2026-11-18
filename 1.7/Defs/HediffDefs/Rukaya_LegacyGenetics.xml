@@ -17,7 +17,7 @@
         <statOffsets>
           <ComfyTemperatureMin>5</ComfyTemperatureMin>
           <ComfyTemperatureMax>20</ComfyTemperatureMax>
-          <ImmunityGainSpeed>0.6666667</ImmunityGainSpeed>
+          <ImmunityGainSpeed>0.1818182</ImmunityGainSpeed>
           <PsychicSensitivity>-0.2</PsychicSensitivity>
           <SocialImpact>-0.2</SocialImpact>
           <NegotiationAbility>-0.2</NegotiationAbility>
