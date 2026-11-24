@@ -19,22 +19,41 @@ public class WorldFlight : WorldObject, IThingHolder
     public bool docked;
     public Settlement dockSettlement;
     public PlanetTile returnTile = PlanetTile.Invalid;
-    public Aircraft Plane => contents?.OfType<Aircraft>().FirstOrDefault();
+    private string cachedVisualTexPath;
+    private Material cachedMaterial;
+    private Texture2D cachedExpandingIcon;
+    private Material cachedExpandingMaterial;
+    public Aircraft Plane
+    {
+        get
+        {
+            if (contents == null || contents.Count == 0) return null;
+            if (contents[0] is Aircraft first) return first;
+            for (int i = 1; i < contents.Count; i++)
+                if (contents[i] is Aircraft a) return a;
+            return null;
+        }
+    }
     public WorldFlight() { contents = new ThingOwner<Thing>(this); }
     protected override int UpdateRateTicks => 1;
-    // Resolve from this flight's cargo; the shared WorldObjectDef is also used by
-    // other aircraft and must not be changed, including during save loading.
-    public override Material Material => Plane is Aircraft plane
-        ? MaterialPool.MatFrom(plane.def.graphicData.texPath, def.shader?.Shader ?? ShaderDatabase.WorldOverlayTransparentLit, 3550)
-        : base.Material;
-    public override Texture2D ExpandingIcon => Plane is Aircraft plane
-        ? AV.Icon(plane.def.graphicData.texPath) : base.ExpandingIcon;
-    public override Material ExpandingMaterial => def.expandingShader == null ? null
-        : MaterialPool.MatFrom(new MaterialRequest
+    private void RefreshVisualCache(Aircraft plane)
+    {
+        string texPath = plane.BodyTexPath;
+        if (cachedVisualTexPath == texPath) return;
+        cachedVisualTexPath = texPath;
+        cachedMaterial = MaterialPool.MatFrom(texPath, def.shader?.Shader ?? ShaderDatabase.WorldOverlayTransparentLit, 3550);
+        cachedExpandingIcon = AV.Icon(texPath);
+        cachedExpandingMaterial = def.expandingShader == null ? null : MaterialPool.MatFrom(new MaterialRequest
         {
-            mainTex = ExpandingIcon, shader = def.expandingShader.Shader,
+            mainTex = cachedExpandingIcon, shader = def.expandingShader.Shader,
             color = Color.white, maskTex = def.ExpandingIconTextureMask
         });
+    }
+    // Resolve from this flight's cargo; the shared WorldObjectDef is also used by
+    // other aircraft and must not be changed, including during save loading.
+    public override Material Material { get { if (Plane is Aircraft p) { RefreshVisualCache(p); return cachedMaterial; } return base.Material; } }
+    public override Texture2D ExpandingIcon { get { if (Plane is Aircraft p) { RefreshVisualCache(p); return cachedExpandingIcon; } return base.ExpandingIcon; } }
+    public override Material ExpandingMaterial { get { if (Plane is Aircraft p) { RefreshVisualCache(p); return cachedExpandingMaterial; } return base.ExpandingMaterial; } }
     public override string Label => Plane?.LabelCap + (docked ? dockSettlement != null ? "（驻留据点）" : "（驻留）" : "（飞行中）");
     public override Vector3 DrawPos => docked ? Find.WorldGrid.GetTileCenter(Tile) : Vector3.Slerp(Find.WorldGrid.GetTileCenter(origin), Find.WorldGrid.GetTileCenter(destination),
         totalTicks > 0 ? 1f - (float)ticksLeft / totalTicks : 1f);
@@ -113,6 +132,28 @@ public class WorldFlight : WorldObject, IThingHolder
         }, "GeneratingMap", false, null);
         retryTicks = 600; // Occupied destination: keep aircraft and payload safely in holding orbit.
     }
+    private static IntVec3 FindClosestCell(Map map, Predicate<IntVec3> validator)
+    {
+        IntVec3 center = map.Center;
+        if (validator(center)) return center;
+        int maxRadius = Mathf.CeilToInt(Mathf.Sqrt(map.Size.x * map.Size.x + map.Size.z * map.Size.z) * 0.5f);
+        int radialLimit = Math.Min(GenRadial.MaxRadialPatternRadius > 0 ? (int)GenRadial.MaxRadialPatternRadius : 56, maxRadius);
+        int count = GenRadial.NumCellsInRadius(radialLimit);
+        for (int i = 1; i < count; i++)
+        {
+            IntVec3 c = center + GenRadial.RadialPattern[i];
+            if (c.InBounds(map) && validator(c)) return c;
+        }
+        IntVec3 best = IntVec3.Invalid;
+        int bestDistSq = int.MaxValue;
+        foreach (IntVec3 c in map.AllCells)
+        {
+            int d = c.DistanceToSquared(center);
+            if (d < bestDistSq && validator(c)) { bestDistSq = d; best = c; }
+        }
+        return best;
+    }
+
     public void Arrive()
     {
         Aircraft plane = Plane; if (plane == null) return;
@@ -145,7 +186,7 @@ public class WorldFlight : WorldObject, IThingHolder
         ParkingPad pad = null; RunwayZone runway = null; IntVec3 pos = IntVec3.Invalid;
         if (plane.arriveAirborne)
         {
-            pos = map.AllCells.OrderBy(c => c.DistanceToSquared(map.Center)).FirstOrDefault(c => AV.SafeAir(c, map, 42), IntVec3.Invalid);
+            pos = FindClosestCell(map, c => AV.SafeAir(c, map, 42));
             if (!pos.IsValid) return;
         }
         else if (map.IsPlayerHome)
@@ -155,7 +196,7 @@ public class WorldFlight : WorldObject, IThingHolder
         }
         else
         {
-            pos = map.AllCells.OrderBy(c => c.DistanceToSquared(map.Center)).FirstOrDefault(c => AV.SafeAir(c, map, 24) && AV.Clear(c, map, plane.Clearance), IntVec3.Invalid);
+            pos = FindClosestCell(map, c => AV.SafeAir(c, map, 24) && AV.Clear(c, map, plane.Clearance));
             if (!pos.IsValid || !AV.Clear(pos, map, plane.Clearance)) return;
         }
         contents.Remove(plane); plane.State = FlightState.Parked; plane.worldDeparture = false; plane.worldDestination = PlanetTile.Invalid;

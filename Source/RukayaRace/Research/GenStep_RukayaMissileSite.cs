@@ -6,7 +6,7 @@ using Verse.AI.Group;
 
 namespace RukayaRace.Research
 {
-    public enum RukayaRuinOccupants { Mechanoids, Rukaya, Fleshbeasts, Pirates }
+    public enum RukayaRuinOccupants { Mechanoids, Rukaya, Fleshbeasts, Pirates, RukayaBrokenStar }
 
     // New choices are saved without regenerating any buildings or pawns from existing maps.
     public class RukayaMissileSiteState : MapComponent
@@ -25,18 +25,22 @@ namespace RukayaRace.Research
 
     public class GenStep_RukayaMissileSite : GenStep
     {
+        private const string BaseLayout = "Rukaya_AbandonedMissileSite";
+        private const string WorkshopLayout = BaseLayout + "_Workshop";
+        private const string BarracksLayout = BaseLayout + "_Barracks";
+
         public override int SeedPart => 174205931;
         public static bool UsesRuins => ModsConfig.OdysseyActive || ModsConfig.IdeologyActive;
         public static string ContentsTheme => ModsConfig.OdysseyActive ? "Odyssey"
             : ModsConfig.IdeologyActive ? "Ideology" : "CoreFallback";
 
-        public static string ChooseLayout() => new[] { "Rukaya_AbandonedMissileSite",
-            "Rukaya_AbandonedMissileSite_Workshop", "Rukaya_AbandonedMissileSite_Barracks" }.RandomElement();
+        public static string ChooseLayout() => new[] { BaseLayout, WorkshopLayout, BarracksLayout }.RandomElement();
 
         public static List<RukayaRuinOccupants> AvailableOccupants()
         {
             var choices = new List<RukayaRuinOccupants> { RukayaRuinOccupants.Mechanoids };
             if (RukayaFaction != null) choices.Add(RukayaRuinOccupants.Rukaya);
+            if (BrokenStarFaction != null) choices.Add(RukayaRuinOccupants.RukayaBrokenStar);
             if (ModsConfig.AnomalyActive && Faction.OfEntities != null) choices.Add(RukayaRuinOccupants.Fleshbeasts);
             if (PirateFaction != null) choices.Add(RukayaRuinOccupants.Pirates);
             return choices;
@@ -45,6 +49,8 @@ namespace RukayaRace.Research
         public static RukayaRuinOccupants ChooseOccupants() => AvailableOccupants().RandomElement();
         private static Faction RukayaFaction => Find.FactionManager.AllFactionsListForReading
             .FirstOrDefault(f => f.def.defName == "Rukaya_DrifterAlliance" && !f.defeated && !f.IsPlayer);
+        private static Faction BrokenStarFaction => Find.FactionManager.AllFactionsListForReading
+            .FirstOrDefault(f => f.def.defName == "Rukaya_BrokenStarCorps" && !f.defeated && !f.IsPlayer);
         // Faction.OfPirates only finds the baseline gang, not Biotech's waster/yttakin pirate factions.
         private static Faction PirateFaction => Find.FactionManager.AllFactionsListForReading.FirstOrDefault(f =>
             !f.defeated && (f.def.defName == "Pirate" || f.def.defName == "PirateYttakin"
@@ -60,11 +66,22 @@ namespace RukayaRace.Research
             var footprints = new List<CellRect>();
             var hutAreas = new List<CellRect>();
             var hutExits = new List<IntVec3>();
-            SpawnModule(prefab, map.Center, map, footprints);
+            SpawnModule(prefab, map.Center, map, footprints, clearImpassableTerrain: true);
+
+            // Coordinates are local to the matching PrefabDef.
+            (int gateX, CellRect[] sections) = state.layout switch
+            {
+                WorkshopLayout => (42, new[] { new CellRect(18, 25, 8, 9), new CellRect(31, 18, 17, 11),
+                    new CellRect(53, 23, 15, 9), new CellRect(12, 11, 12, 5), new CellRect(32, 36, 14, 4) }),
+                BarracksLayout => (43, new[] { new CellRect(32, 48, 12, 11), new CellRect(5, 35, 10, 7),
+                    new CellRect(47, 33, 7, 10), new CellRect(20, 23, 16, 17), new CellRect(16, 48, 10, 11) }),
+                _ => (34, new[] { new CellRect(36, 32, 4, 4), new CellRect(48, 16, 7, 10),
+                    new CellRect(9, 51, 10, 7), new CellRect(4, 16, 16, 8), new CellRect(48, 40, 16, 6) })
+            };
 
             // Each detached hut has its own sealed shell and several open cells to the main building.
-            var offsets = new List<IntVec3> { new IntVec3(-17, 0, 6), new IntVec3(-16, 0, 43),
-                new IntVec3(73, 0, 17), new IntVec3(52, 0, 68) };
+            var offsets = new List<IntVec3> { new IntVec3(-17, 0, 6), new IntVec3(-16, 0, System.Math.Min(43, prefab.size.z - 11)),
+                new IntVec3(prefab.size.x + 4, 0, 17), new IntVec3(prefab.size.x - 17, 0, prefab.size.z + 5) };
             offsets.Shuffle();
             var huts = new List<string> { "guard", "relay", "supply" };
             huts.Shuffle();
@@ -75,7 +92,7 @@ namespace RukayaRace.Research
                 CellRect footprint = new CellRect(root.x + offsets[i].x, root.z + offsets[i].z, hut.size.x, hut.size.z);
                 // Older queued sites may request smaller maps; omit a hut instead of spawning outside the map.
                 if (!footprint.Cells.All(c => c.InBounds(map))) continue;
-                SpawnModule(hut, center, map, footprints);
+                SpawnModule(hut, center, map, footprints, clearImpassableTerrain: true);
                 state.outbuildings.Add(hut.defName);
                 hutAreas.Add(new CellRect(footprint.minX + 2, footprint.minZ + 2, 9, 7));
                 IntVec3 exit = huts[i] == "guard" ? new IntVec3(8, 0, 0)
@@ -83,10 +100,10 @@ namespace RukayaRace.Research
                 hutExits.Add(root + offsets[i] + exit);
             }
 
-            CellRect approach = new CellRect(root.x + 32, 0, 5, root.z + 2);
+            CellRect approach = new CellRect(root.x + gateX - 2, 0, 5, root.z + 2);
             Prepare(approach, map);
             foreach (IntVec3 c in approach.Cells) map.terrainGrid.SetTerrain(c, TerrainDefOf.Concrete);
-            MapGenerator.PlayerStartSpot = root + new IntVec3(34, 0, -4);
+            MapGenerator.PlayerStartSpot = root + new IntVec3(gateX, 0, -4);
             foreach (IntVec3 exit in hutExits) ClearOutdoorPath(exit, MapGenerator.PlayerStartSpot, footprints, map);
             MapGenerator.rootsToUnfog.RemoveAll(c => footprints.Any(r => r.Contains(c)));
 
@@ -95,21 +112,29 @@ namespace RukayaRace.Research
                 throw new System.InvalidOperationException("Rukaya missile site must contain exactly one investigation target.");
 
             if (Find.Storyteller.difficulty.allowViolentQuests)
-                SpawnOccupants(map, root, state.occupants, parms.sitePart?.parms.threatPoints ?? 300f, hutAreas);
+                SpawnOccupants(map, root, state.occupants, parms.sitePart?.parms.threatPoints ?? 300f, hutAreas, sections);
         }
 
-        private static void SpawnModule(PrefabDef prefab, IntVec3 center, Map map, List<CellRect> footprints)
+        internal static void SpawnModule(PrefabDef prefab, IntVec3 center, Map map, List<CellRect> footprints,
+            bool clearImpassableTerrain = false, string contentsPrefix = null)
         {
             IntVec3 root = PrefabUtility.GetRoot(prefab, center, Rot4.North);
             CellRect footprint = new CellRect(root.x, root.z, prefab.size.x, prefab.size.z);
             Prepare(footprint, map);
-            ThingDef wall = ModsConfig.OdysseyActive ? DefDatabase<ThingDef>.GetNamed("AncientFortifiedWall") : null;
-            PrefabUtility.SpawnPrefab(prefab, map, center, Rot4.North, overrideSpawnData: data =>
-                wall != null && data.def == ThingDefOf.Wall ? System.Tuple.Create<ThingDef, ThingDef>(wall, null) : null);
-            PrefabUtility.SpawnPrefab(DefDatabase<PrefabDef>.GetNamed(prefab.defName + "_" + ContentsTheme), map, center, Rot4.North);
+            if (clearImpassableTerrain)
+                foreach (IntVec3 cell in footprint.Cells.Where(cell => cell.InBounds(map)
+                    && cell.GetTerrain(map).passability == Traversability.Impassable
+                    && !cell.GetThingList(map).Any(thing => !thing.def.destroyable)))
+                    map.terrainGrid.SetTerrain(cell, TerrainDefOf.Gravel);
+            PrefabUtility.SpawnPrefab(prefab, map, center, Rot4.North);
+            string contentsName = (contentsPrefix ?? prefab.defName) + "_" + ContentsTheme;
+            PrefabDef contentsDef = DefDatabase<PrefabDef>.GetNamedSilentFail(contentsName);
+            if (contentsDef != null)
+                PrefabUtility.SpawnPrefab(contentsDef, map, center, Rot4.North);
             foreach (var (data, local) in prefab.GetTerrain())
             {
                 IntVec3 cell = root + local;
+                if (data.def.defName == "BrokenAsphalt") continue;
                 bool indoors = data.def == TerrainDefOf.PavedTile || data.def == TerrainDefOf.MetalTile;
                 if (indoors) map.roofGrid.SetRoof(cell, RoofDefOf.RoofConstructed);
                 if (UsesRuins) map.terrainGrid.SetTerrain(cell,
@@ -119,16 +144,16 @@ namespace RukayaRace.Research
             MapGenerator.UsedRects.Add(footprint);
         }
 
-        private static void SpawnOccupants(Map map, IntVec3 root, RukayaRuinOccupants theme, float points, List<CellRect> hutAreas)
+        internal static void SpawnOccupants(Map map, IntVec3 root, RukayaRuinOccupants theme, float points, List<CellRect> hutAreas,
+            CellRect[] sections)
         {
             Faction faction = theme == RukayaRuinOccupants.Rukaya ? RukayaFaction
+                : theme == RukayaRuinOccupants.RukayaBrokenStar ? BrokenStarFaction
                 : theme == RukayaRuinOccupants.Pirates ? PirateFaction
                 : theme == RukayaRuinOccupants.Fleshbeasts ? Faction.OfEntities : Faction.OfMechanoids;
             int count = theme == RukayaRuinOccupants.Mechanoids ? (points >= 800f ? 3 : points >= 400f ? 2 : 1)
                 : theme == RukayaRuinOccupants.Fleshbeasts ? UnityEngine.Mathf.Clamp((int)(points / 120f) + 1, 2, 8)
                 : UnityEngine.Mathf.Clamp((int)(points / 180f) + 1, 2, 6);
-            CellRect[] sections = { new CellRect(36, 32, 4, 4), new CellRect(48, 16, 7, 10),
-                new CellRect(9, 51, 10, 7), new CellRect(4, 16, 16, 8), new CellRect(48, 40, 16, 6) };
             var sleeping = new List<Pawn>();
             for (int i = 0; i < count; i++)
             {
@@ -139,7 +164,7 @@ namespace RukayaRace.Research
                     && (!inHut || c.Roofed(map)) && c.GetEdifice(map) == null && c.GetFirstPawn(map) == null).ToList();
                 if (cells.Count == 0) continue;
                 IntVec3 cell = cells.RandomElement();
-                string kind = theme == RukayaRuinOccupants.Rukaya
+                string kind = theme == RukayaRuinOccupants.Rukaya || theme == RukayaRuinOccupants.RukayaBrokenStar
                     ? new[] { "Rukaya_Militia", "Rukaya_MilitiaMelee", "Rukaya_RegularRifleman" }.RandomElement()
                     : theme == RukayaRuinOccupants.Pirates ? new[] { "Pirate", "Drifter", "Scavenger" }.RandomElement()
                     : theme == RukayaRuinOccupants.Fleshbeasts ? (i % 3 == 0 && points >= 400f ? "Trispike" : "Fingerspike")
@@ -167,6 +192,7 @@ namespace RukayaRace.Research
         {
             foreach (IntVec3 c in rect.Cells.Where(c => c.InBounds(map)))
             {
+                if (c.GetThingList(map).Any(thing => !thing.def.destroyable)) continue;
                 foreach (Thing thing in c.GetThingList(map).ToList())
                     if (thing is Building || thing is Plant || thing.def.category == ThingCategory.Item || thing.def.category == ThingCategory.Filth)
                         thing.Destroy(DestroyMode.Vanish);

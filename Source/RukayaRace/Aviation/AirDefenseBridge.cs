@@ -17,11 +17,11 @@ public static class AirDefenseBridge
         ThingDef projectile = weapon?.verbProps.defaultProjectile;
         float damage = projectile?.defName switch
         {
-            "Bullet_Rukaya_MechAA_Gun" => 180,
-            "Bullet_Rukaya_MechAA_Laser" => 240,
-            "Bullet_Rukaya_MechAA_SAMLauncher" => 650,
-            "Bullet_Rukaya_InterceptorMissile" => 900,
-            _ => Math.Max(120, projectile?.projectile?.GetDamageAmount(launcher) ?? 0)
+            "Bullet_Rukaya_MechAA_Gun" => 220,
+            "Bullet_Rukaya_MechAA_Laser" => 280,
+            "Bullet_Rukaya_MechAA_SAMLauncher" => 750,
+            "Bullet_Rukaya_InterceptorMissile" => 1050,
+            _ => Math.Max(140, projectile?.projectile?.GetDamageAmount(launcher) ?? 0)
         };
         plane.ApplyAirDefenseDamage(damage, launcher);
         if (plane.Spawned) FleckMaker.ThrowMicroSparks(plane.DrawPos, plane.Map);

@@ -8,23 +8,38 @@ namespace RukayaAviation;
 
 public sealed class AircraftTradeDialog : Dialog_Trade
 {
+    private static readonly System.Reflection.MethodInfo CacheTradeablesMethod =
+        typeof(Dialog_Trade).GetMethod("CacheTradeables", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
     private readonly AircraftTrader aircraftTrader;
+    private int lastCargoCount = -1;
     public AircraftTradeDialog(Pawn negotiator, AircraftTrader trader) : base(negotiator, trader) { aircraftTrader = trader; AddCargo(); }
     private bool AddCargo()
     {
+        int currentCount = aircraftTrader.CargoCount;
+        if (currentCount == lastCargoCount) return false;
+        lastCargoCount = currentCount;
+        List<Tradeable> tradeables = TradeSession.deal.AllTradeables;
+        HashSet<Thing> existing = new HashSet<Thing>();
+        for (int i = 0; i < tradeables.Count; i++)
+        {
+            List<Thing> colony = tradeables[i].thingsColony;
+            for (int j = 0; j < colony.Count; j++) existing.Add(colony[j]);
+        }
         bool changed = false;
         foreach (Thing t in aircraftTrader.ColonyThingsWillingToBuy(TradeSession.playerNegotiator))
         {
-            if (!TradeUtility.PlayerSellableNow(t, aircraftTrader) || TradeSession.deal.AllTradeables.Any(x => x.thingsColony.Contains(t))) continue;
-            Tradeable matching = TransferableUtility.TradeableMatching(t, TradeSession.deal.AllTradeables);
-            if (matching == null) { matching = t is Pawn ? new Tradeable_Pawn() : new Tradeable(); TradeSession.deal.AllTradeables.Add(matching); }
-            matching.AddThing(t, Transactor.Colony); changed = true;
+            if (!TradeUtility.PlayerSellableNow(t, aircraftTrader) || existing.Contains(t)) continue;
+            Tradeable matching = TransferableUtility.TradeableMatching(t, tradeables);
+            if (matching == null) { matching = t is Pawn ? new Tradeable_Pawn() : new Tradeable(); tradeables.Add(matching); }
+            matching.AddThing(t, Transactor.Colony);
+            existing.Add(t);
+            changed = true;
         }
         return changed;
     }
     public override void DoWindowContents(UnityEngine.Rect rect)
     {
-        if (AddCargo()) typeof(Dialog_Trade).GetMethod("CacheTradeables", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).Invoke(this, null);
+        if (AddCargo()) CacheTradeablesMethod?.Invoke(this, null);
         base.DoWindowContents(rect);
     }
 }
@@ -34,6 +49,7 @@ public sealed class AircraftTrader : ITrader
 {
     private readonly Aircraft plane;
     private readonly Settlement settlement;
+    public int CargoCount => plane.Cargo?.innerContainer?.Count ?? 0;
     public AircraftTrader(Aircraft plane, Settlement settlement) { this.plane = plane; this.settlement = settlement; }
     public TraderKindDef TraderKind => settlement.TraderKind;
     public IEnumerable<Thing> Goods => settlement.Goods;

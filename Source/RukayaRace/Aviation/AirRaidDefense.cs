@@ -12,8 +12,8 @@ public partial class Aircraft
     public float airPressure;
     public int lastPressureTick;
     private bool applyingAirDefenseDamage;
-    public float PressureLimit => Heavy ? 260 : 160;
-    public bool CanBeSuppressed => raid && Spawned && Airborne && !raidExiting && State != FlightState.Crashing
+    public float PressureLimit => IsTransport ? 360 : Heavy ? 260 : 160;
+    public bool CanBeSuppressed => raid && !airborneRaid && Spawned && Airborne && !raidExiting && State != FlightState.Crashing
         && Faction != null && Faction.HostileTo(Faction.OfPlayer);
 
     public void ApplyAirDefenseDamage(float amount, Thing launcher)
@@ -66,6 +66,9 @@ public partial class AirportMap
     private List<Projectile> pressureShots = new();
     private HashSet<Projectile> seenPressureShots = new();
 
+    private readonly List<Aircraft> suppressibleTargets = new();
+    private static ThingDef cachedAirInterceptorProjectileDef;
+
     public void QueueRaid(bool heavy, int arrivalTick, Faction faction)
     {
         var raid = new PendingAirRaid { heavy = heavy, arrivalTick = arrivalTick, faction = faction };
@@ -76,41 +79,61 @@ public partial class AirportMap
         int now = Find.TickManager.TicksGame;
         // Migrate the old single warning without discarding it or duplicating it on load.
         if (raidAt >= 0) { QueueRaid(heavyRaid, raidAt, AirRaids.HostileFaction()); raidAt = -1; }
-        foreach (PendingAirRaid raid in pendingRaids.ToList())
+        if (pendingRaids.Count > 0)
         {
-            // Also accept a launcher rearmed after the warning, right up to entry.
-            if (!raid.intercepted && (now % 30 == 0 || now >= raid.arrivalTick)) raid.TryIntercept(map);
-            if (raid.intercepted)
+            for (int i = pendingRaids.Count - 1; i >= 0; i--)
             {
-                if (now < raid.resolveTick) continue;
-                pendingRaids.Remove(raid);
-                Find.LetterStack.ReceiveLetter("RAV_PreEntryInterceptTitle".Translate(),
-                    "RAV_PreEntryInterceptBody".Translate(), LetterDefOf.PositiveEvent, new TargetInfo(map.Center, map));
-            }
-            else if (now >= raid.arrivalTick)
-            {
-                pendingRaids.Remove(raid);
-                if (raid.faction != null && raid.faction.HostileTo(Faction.OfPlayer)) AirRaids.SpawnRaidUnchecked(map, raid.heavy, raid.faction);
+                PendingAirRaid raid = pendingRaids[i];
+                // Also accept a launcher rearmed after the warning, right up to entry.
+                if (!raid.intercepted && (now % 30 == 0 || now >= raid.arrivalTick)) raid.TryIntercept(map);
+                if (raid.intercepted)
+                {
+                    if (now < raid.resolveTick) continue;
+                    pendingRaids.RemoveAt(i);
+                    Find.LetterStack.ReceiveLetter("RAV_PreEntryInterceptTitle".Translate(),
+                        "RAV_PreEntryInterceptBody".Translate(), LetterDefOf.PositiveEvent, new TargetInfo(map.Center, map));
+                }
+                else if (now >= raid.arrivalTick)
+                {
+                    pendingRaids.RemoveAt(i);
+                    if (raid.faction != null && raid.faction.HostileTo(Faction.OfPlayer)) AirRaids.SpawnRaidUnchecked(map, raid.heavy, raid.faction);
+                }
             }
         }
 
-        var targets = AV.Planes(map).Where(p => p.CanBeSuppressed).ToList();
-        if (now % 60 == 0)
+        if (now % 60 == 0 && (pressureShots.Count > 0 || seenPressureShots.Count > 0))
         {
             pressureShots.RemoveAll(p => p == null || !p.Spawned || p.Destroyed);
-            seenPressureShots = new HashSet<Projectile>(pressureShots);
+            seenPressureShots.Clear();
+            for (int i = 0; i < pressureShots.Count; i++) seenPressureShots.Add(pressureShots[i]);
         }
-        if (targets.Count == 0) return;
-        foreach (Aircraft plane in targets)
-            if (now - plane.lastPressureTick > 180 && now % 30 == 0) plane.airPressure = Mathf.Max(0, plane.airPressure - 1);
+
+        suppressibleTargets.Clear();
+        foreach (Aircraft plane in AV.Planes(map))
+            if (plane.CanBeSuppressed) suppressibleTargets.Add(plane);
+        if (suppressibleTargets.Count == 0) return;
+
+        if (now % 30 == 0)
+        {
+            for (int i = 0; i < suppressibleTargets.Count; i++)
+            {
+                Aircraft plane = suppressibleTargets[i];
+                if (now - plane.lastPressureTick > 180) plane.airPressure = Mathf.Max(0, plane.airPressure - 1);
+            }
+        }
+
         // Count actual shots, including misses. Normal verb range, LOS and ammunition
         // checks still apply. Interceptor visual rounds must never count as small arms.
-        foreach (Projectile shot in map.listerThings.AllThings.OfType<Projectile>())
+        ThingDef airInterceptorDef = cachedAirInterceptorProjectileDef ??= DefDatabase<ThingDef>.GetNamedSilentFail("Rukaya_SkyInterceptorAirProjectile");
+        List<Thing> projectiles = map.listerThings.ThingsInGroup(ThingRequestGroup.Projectile);
+        for (int i = 0; i < projectiles.Count; i++)
         {
+            if (projectiles[i] is not Projectile shot) continue;
             if (shot.intendedTarget.Thing is not Aircraft plane || !plane.CanBeSuppressed
                 || shot.Launcher is Aircraft || shot.Launcher?.Faction == null || !plane.Faction.HostileTo(shot.Launcher.Faction)
                 || !(shot.DamageDef.isRanged || shot.EquipmentDef?.IsRangedWeapon == true)
-                || shot.def.defName == "Rukaya_SkyInterceptorAirProjectile" || !seenPressureShots.Add(shot)) continue;
+                || (airInterceptorDef != null ? shot.def == airInterceptorDef : shot.def.defName == "Rukaya_SkyInterceptorAirProjectile")
+                || !seenPressureShots.Add(shot)) continue;
             pressureShots.Add(shot);
             plane.AddAirPressure(Mathf.Clamp(3 + shot.DamageAmount * 0.25f, 3, 12), shot.Launcher);
         }

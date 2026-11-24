@@ -22,6 +22,9 @@ public class AircraftFogSelection : MapComponent
     {
         if (Find.CurrentMap != map || Find.World.renderer.wantedMode != RimWorld.Planet.WorldRenderMode.None) return;
         Event e = Event.current;
+        if (e == null) return;
+        EventType type = e.rawType;
+        if (type != EventType.MouseDown && type != EventType.MouseUp) return;
         if (Find.Targeter.IsTargeting || Find.DesignatorManager.SelectedDesignator != null || Mouse.IsInputBlockedNow)
         { dragging = false; return; }
         HandleMapInput(e, UI.MouseMapPosition());

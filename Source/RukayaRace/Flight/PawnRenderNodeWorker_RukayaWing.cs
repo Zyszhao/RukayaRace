@@ -82,9 +82,7 @@ namespace RukayaRace.Flight
         }
 
         private static readonly BodyPartDef WingPartDef = DefDatabase<BodyPartDef>.GetNamedSilentFail("Rukaya_Wing");
-
-        private const string LeftWingLabel = "left wing";
-        private const string RightWingLabel = "right wing";
+        private static readonly Dictionary<string, WingSide> SideCache = new Dictionary<string, WingSide>(System.StringComparer.Ordinal);
 
         public override bool CanDrawNow(PawnRenderNode node, PawnDrawParms parms)
         {
@@ -150,39 +148,17 @@ namespace RukayaRace.Flight
         public static Wings PresentWings(Pawn pawn)
         {
             BodyDef body = pawn?.RaceProps?.body;
-            if (body == null || WingPartDef == null || pawn.health?.hediffSet == null)
+            HediffSet hediffSet = pawn?.health?.hediffSet;
+            if (body == null || WingPartDef == null || hediffSet == null)
             {
                 // No body or no health system means there is nothing that could have removed a wing. Report
                 // everything present so a half-built pawn never renders wingless by accident.
                 return Wings.Both;
             }
 
-            bool left = false;
-            bool right = false;
-            List<BodyPartRecord> parts = body.AllParts;
-            for (int i = 0; i < parts.Count; i++)
-            {
-                BodyPartRecord part = parts[i];
-                if (part == null || part.def != WingPartDef)
-                {
-                    continue;
-                }
-
-                if (pawn.health.hediffSet.PartIsMissing(part))
-                {
-                    continue;
-                }
-
-                if (part.untranslatedCustomLabel == LeftWingLabel)
-                {
-                    left = true;
-                }
-                else if (part.untranslatedCustomLabel == RightWingLabel)
-                {
-                    right = true;
-                }
-            }
-
+            RukayaWingUtility.GetWingParts(body, out BodyPartRecord leftPart, out BodyPartRecord rightPart);
+            bool left = leftPart != null && !hediffSet.PartIsMissing(leftPart);
+            bool right = rightPart != null && !hediffSet.PartIsMissing(rightPart);
             return (left ? Wings.Left : Wings.None) | (right ? Wings.Right : Wings.None);
         }
 
@@ -205,17 +181,23 @@ namespace RukayaRace.Flight
                 return WingSide.None;
             }
 
-            if (path.Contains("LeftWing"))
+            if (SideCache.TryGetValue(path, out WingSide cached))
             {
-                return WingSide.Left;
+                return cached;
             }
 
-            if (path.Contains("RightWing"))
+            WingSide side = WingSide.None;
+            if (path.IndexOf("LeftWing", System.StringComparison.Ordinal) >= 0)
             {
-                return WingSide.Right;
+                side = WingSide.Left;
+            }
+            else if (path.IndexOf("RightWing", System.StringComparison.Ordinal) >= 0)
+            {
+                side = WingSide.Right;
             }
 
-            return WingSide.None;
+            SideCache[path] = side;
+            return side;
         }
 
     }

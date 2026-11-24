@@ -20,16 +20,58 @@ namespace RukayaRace.Weapons
         private static readonly AccessTools.FieldRef<CompTurretGun, bool> FireAtWill =
             AccessTools.FieldRefAccess<CompTurretGun, bool>("fireAtWill");
 
-        public bool HasWeapon => gun?.TryGetComp<CompEquippable>()?.PrimaryVerb != null;
+        private bool compsCached;
+        private CompRukayaLaserHeat cachedLaserHeat;
+        private CompCanBeDormant cachedDormancy;
+        private Thing cachedGun;
+        private CompEquippable cachedGunEq;
+
+        private void EnsureCompCache()
+        {
+            if (compsCached || parent == null)
+                return;
+            compsCached = true;
+            cachedLaserHeat = parent.TryGetComp<CompRukayaLaserHeat>();
+            cachedDormancy = parent.TryGetComp<CompCanBeDormant>();
+        }
+
+        private CompEquippable CachedGunEq
+        {
+            get
+            {
+                if (gun != cachedGun)
+                {
+                    cachedGun = gun;
+                    cachedGunEq = gun?.TryGetComp<CompEquippable>();
+                }
+                return cachedGunEq;
+            }
+        }
+
+        public bool HasWeapon => CachedGunEq?.PrimaryVerb != null;
 
         // Shared with the anti-air mount; null means this chassis has no heat pool.
-        public CompRukayaLaserHeat LaserHeat => parent.TryGetComp<CompRukayaLaserHeat>();
+        public CompRukayaLaserHeat LaserHeat
+        {
+            get
+            {
+                EnsureCompCache();
+                return cachedLaserHeat;
+            }
+        }
 
         public bool LaserHeatCanFire => LaserHeat?.CanFire ?? true;
 
-        public bool CanOperate => HasWeapon && parent is Pawn pawn && pawn.Spawned && !pawn.Dead && !pawn.Downed
-            && pawn.Awake() && !pawn.stances.stunner.Stunned && !TurretDestroyed
-            && (parent.TryGetComp<CompCanBeDormant>()?.Awake ?? true);
+        public bool CanOperate
+        {
+            get
+            {
+                EnsureCompCache();
+                return HasWeapon && parent is Pawn pawn && pawn.Spawned && !pawn.Dead && !pawn.Downed
+                    && pawn.Awake() && !pawn.stances.stunner.Stunned && !TurretDestroyed
+                    && (cachedDormancy == null || cachedDormancy.Awake);
+            }
+        }
 
         public bool CanStartCast => CanOperate && LaserHeatCanFire && burstCooldownTicksLeft <= 0
             && AttackVerb.state != VerbState.Bursting
@@ -111,14 +153,21 @@ namespace RukayaRace.Weapons
                 && currentTarget.Thing.Spawned && !currentTarget.Thing.Destroyed
                 && (!(currentTarget.Thing is Pawn targetPawn)
                     || !targetPawn.Dead && !targetPawn.Downed && !targetPawn.IsPsychologicallyInvisible())
-                && parent.HostileTo(currentTarget.Thing)
-                && AttackVerb.CanHitTarget(currentTarget))
+                && parent.HostileTo(currentTarget.Thing))
             {
                 if (burstCooldownTicksLeft > 0)
-                    burstCooldownTicksLeft--;
-                if (burstCooldownTicksLeft <= 0)
+                {
+                    if (!parent.IsHashIntervalTick(10) || AttackVerb.CanHitTarget(currentTarget))
+                    {
+                        burstCooldownTicksLeft--;
+                        return;
+                    }
+                }
+                else if (AttackVerb.CanHitTarget(currentTarget))
+                {
                     AttackVerb.TryStartCastOn(currentTarget, nonInterruptingSelfCast: true);
-                return;
+                    return;
+                }
             }
 
             base.CompTick();

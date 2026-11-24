@@ -8,7 +8,7 @@
   <Rukaya_ReservoirInsufficient>内部储罐中需要{0}个活性物质容器。</Rukaya_ReservoirInsufficient>
   <Rukaya_ReservoirInspectWithLimit>活性物质储罐：{0} / {1}（本机上限，全局 {2}）</Rukaya_ReservoirInspectWithLimit>
   <Rukaya_ReservoirLimitGizmo>本机储量上限：{0}</Rukaya_ReservoirLimitGizmo>
-  <Rukaya_ReservoirLimitGizmoDesc>设置该终端内部储罐允许储存的活性物质容器上限。搬运小人不会超过这一上限，降低上限也不会销毁已经存入的容器。滑条最左端表示跟随全局 mod 设置。</Rukaya_ReservoirLimitGizmoDesc>
+  <Rukaya_ReservoirLimitGizmoDesc>设置该终端内部储罐允许储存的活性物质容器上限。搬运殖民者不会超过这一上限，降低上限也不会销毁已经存入的容器。滑条最左端表示跟随全局模组设置。</Rukaya_ReservoirLimitGizmoDesc>
   <Rukaya_ReservoirLimitDialog>设置{0}的储量上限：{1}</Rukaya_ReservoirLimitDialog>
   <Rukaya_ReservoirLimitFollowGlobal>跟随全局设置（{0} 个容器）</Rukaya_ReservoirLimitFollowGlobal>
   <Rukaya_ReservoirLimitValue>{0} 个容器</Rukaya_ReservoirLimitValue>
@@ -89,9 +89,6 @@
   <Rukaya_BillMoveUp>上移</Rukaya_BillMoveUp>
   <Rukaya_BillMoveDown>下移</Rukaya_BillMoveDown>
   <Rukaya_DevFillReservoir>开发：一键装填活性物质</Rukaya_DevFillReservoir>
-  <!-- 中文：开发：一键装填活性物质 -->
   <Rukaya_DevFillReservoirDesc>输入装填数量，直接生成活性物质容器并装入本机储罐以供测试，最多装至本机储量上限。不消耗现有库存。</Rukaya_DevFillReservoirDesc>
-  <!-- 中文：输入装填数量，直接生成活性物质容器并装入本机储罐以供测试，最多装至本机储量上限。不消耗现有库存。 -->
   <Rukaya_DevFillReservoirPrompt>向{0}装填活性物质。请输入本次新增的容器数量（剩余容量：{1}）。超过剩余容量时按剩余容量装填。</Rukaya_DevFillReservoirPrompt>
-  <!-- 中文：向{0}装填活性物质。请输入本次新增的容器数量（剩余容量：{1}）。超过剩余容量时按剩余容量装填。 -->
 </LanguageData>

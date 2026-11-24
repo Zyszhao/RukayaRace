@@ -94,21 +94,35 @@ namespace RukayaRace.Replication
 
             if (OutputBlocked)
             {
-                TryEjectOutput();
+                if (this.IsHashIntervalTick(30))
+                {
+                    TryEjectOutput();
+                }
+
                 if (OutputBlocked)
                 {
                     return;
                 }
             }
 
-            if (!CanOperate)
+            if (!HasActiveJob)
             {
+                if (bills.Count == 0 || !this.IsHashIntervalTick(30))
+                {
+                    return;
+                }
+
+                if (!CanOperate)
+                {
+                    return;
+                }
+
+                TryStartNextBill();
                 return;
             }
 
-            if (!HasActiveJob)
+            if (!CanOperate)
             {
-                TryStartNextBill();
                 return;
             }
 
@@ -269,12 +283,30 @@ namespace RukayaRace.Replication
         private RukayaPrintBill FindNextBill()
         {
             GameComponent_RukayaReplicationLibrary library = RukayaReplicationUtility.Library;
-            return bills.FirstOrDefault(x => x != null
-                && !x.suspended
-                && x.ThingDef != null
-                && RukayaReplicationUtility.IsEligibleDef(x.ThingDef)
-                && library?.IsUnlocked(x.ThingDef) == true
-                && !x.IsFinished(Map));
+            if (library == null)
+            {
+                return null;
+            }
+
+            for (int i = 0; i < bills.Count; i++)
+            {
+                RukayaPrintBill bill = bills[i];
+                if (bill == null || bill.suspended)
+                {
+                    continue;
+                }
+
+                ThingDef def = bill.ThingDef;
+                if (def != null
+                    && RukayaReplicationUtility.IsEligibleDef(def)
+                    && library.IsUnlocked(def)
+                    && !bill.IsFinished(Map))
+                {
+                    return bill;
+                }
+            }
+
+            return null;
         }
 
         private void TryStartNextBill()

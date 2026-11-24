@@ -19,6 +19,10 @@ namespace RukayaRace.Radar
     /// </summary>
     public class CompRukayaMechRadar : ThingComp
     {
+        private bool dormancyCached;
+        private CompCanBeDormant cachedDormancy;
+        private static readonly HashSet<HediffDef> VerifiedDisappearsDefs = new HashSet<HediffDef>();
+
         public CompProperties_RukayaMechRadar Props => (CompProperties_RukayaMechRadar)this.props;
 
         /// <summary>雷达自身是否处于可工作状态。</summary>
@@ -41,8 +45,12 @@ namespace RukayaRace.Radar
             }
 
             // 休眠：带 CompCanBeDormant 的单位由该 comp 判定
-            CompCanBeDormant dormancy = radar.TryGetComp<CompCanBeDormant>();
-            if (dormancy != null && !dormancy.Awake)
+            if (!dormancyCached)
+            {
+                dormancyCached = true;
+                cachedDormancy = radar.TryGetComp<CompCanBeDormant>();
+            }
+            if (cachedDormancy != null && !cachedDormancy.Awake)
             {
                 return false;
             }
@@ -71,6 +79,15 @@ namespace RukayaRace.Radar
                 return;
             }
 
+            int auraInterval = Mathf.Max(1, this.Props.auraRefreshIntervalTicks);
+            int markInterval = Mathf.Max(1, this.Props.markRefreshIntervalTicks);
+            bool doAura = radar.IsHashIntervalTick(auraInterval, delta);
+            bool doMark = radar.IsHashIntervalTick(markInterval, delta);
+            if (!doAura && !doMark)
+            {
+                return;
+            }
+
             if (!this.CanOperateRadar())
             {
                 return;
@@ -82,14 +99,12 @@ namespace RukayaRace.Radar
                 return;
             }
 
-            int auraInterval = Mathf.Max(1, this.Props.auraRefreshIntervalTicks);
-            if (radar.IsHashIntervalTick(auraInterval, delta))
+            if (doAura)
             {
                 this.RefreshAura(radar, map);
             }
 
-            int markInterval = Mathf.Max(1, this.Props.markRefreshIntervalTicks);
-            if (radar.IsHashIntervalTick(markInterval, delta))
+            if (doMark)
             {
                 this.RefreshMarks(radar, map);
             }
@@ -136,12 +151,12 @@ namespace RukayaRace.Radar
             for (int i = 0; i < friendlies.Count; i++)
             {
                 Pawn pawn = friendlies[i];
-                if (!IsAuraTarget(radar, pawn))
+                if (pawn == null || pawn == radar || radarPos.DistanceToSquared(pawn.PositionHeld) > rangeSquared)
                 {
                     continue;
                 }
 
-                if (radarPos.DistanceToSquared(pawn.PositionHeld) > rangeSquared)
+                if (!IsAuraTarget(radar, pawn))
                 {
                     continue;
                 }
@@ -168,13 +183,13 @@ namespace RukayaRace.Radar
                     continue;
                 }
 
-                // 敌对过滤
-                if (!radar.HostileTo(pawn))
+                if (radarPos.DistanceToSquared(pawn.PositionHeld) > rangeSquared)
                 {
                     continue;
                 }
 
-                if (radarPos.DistanceToSquared(pawn.PositionHeld) > rangeSquared)
+                // 敌对过滤
+                if (!radar.HostileTo(pawn))
                 {
                     continue;
                 }
@@ -201,23 +216,28 @@ namespace RukayaRace.Radar
             Hediff hediff = target.health.hediffSet.GetFirstHediffOfDef(def);
             if (hediff == null)
             {
-                bool hasDisappears = false;
-                if (def.comps != null)
+                if (!VerifiedDisappearsDefs.Contains(def))
                 {
-                    for (int i = 0; i < def.comps.Count; i++)
+                    bool hasDisappears = false;
+                    if (def.comps != null)
                     {
-                        if (def.comps[i] is HediffCompProperties_Disappears)
+                        for (int i = 0; i < def.comps.Count; i++)
                         {
-                            hasDisappears = true;
-                            break;
+                            if (def.comps[i] is HediffCompProperties_Disappears)
+                            {
+                                hasDisappears = true;
+                                break;
+                            }
                         }
                     }
-                }
 
-                if (!hasDisappears)
-                {
-                    Log.WarningOnce("[Rukaya] Radar effect " + def.defName + " needs a HediffCompProperties_Disappears to expire; skipped.", def.GetHashCode());
-                    return;
+                    if (!hasDisappears)
+                    {
+                        Log.WarningOnce("[Rukaya] Radar effect " + def.defName + " needs a HediffCompProperties_Disappears to expire; skipped.", def.GetHashCode());
+                        return;
+                    }
+
+                    VerifiedDisappearsDefs.Add(def);
                 }
 
                 hediff = HediffMaker.MakeHediff(def, target);

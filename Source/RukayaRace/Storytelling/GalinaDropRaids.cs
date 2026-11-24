@@ -19,7 +19,8 @@ namespace RukayaRace.Storytelling
                 || worker is PawnsArrivalModeWorker_EdgeDrop
                 || worker is PawnsArrivalModeWorker_EdgeDropGroups
                 || worker is PawnsArrivalModeWorker_RandomDrop
-                || worker is PawnsArrivalModeWorker_SpecificLocationDrop;
+                || worker is PawnsArrivalModeWorker_SpecificLocationDrop
+                || worker is RukayaAviation.PawnsArrivalModeWorker_RukayaAirborne;
         }
 
         private static bool IsCenter(PawnsArrivalModeDef mode) => mode?.Worker is PawnsArrivalModeWorker_CenterDrop;

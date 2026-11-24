@@ -111,8 +111,9 @@ namespace RukayaRace.Weapons
             for (int i = 0; i < numCells; i++)
             {
                 IntVec3 current = this.Pawn.Position + GenRadial.RadialPattern[i];
-                if (this.CanUseCell(current) &&
-                    Mathf.Abs(Mathf.DeltaAngle(Vector3.SignedAngle(current.ToVector3Shifted().Yto0() - casterPos, Vector3.right, Vector3.up), targetAngle)) <= coneAngle)
+                if (current != this.Pawn.Position
+                    && Mathf.Abs(Mathf.DeltaAngle(Vector3.SignedAngle(current.ToVector3Shifted().Yto0() - casterPos, Vector3.right, Vector3.up), targetAngle)) <= coneAngle
+                    && this.CanUseCell(current))
                 {
                     this.tmpCells.Add(current);
                 }

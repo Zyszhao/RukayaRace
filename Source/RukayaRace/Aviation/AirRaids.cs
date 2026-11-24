@@ -17,8 +17,8 @@ public static class AirRaids
     }
     public static Faction HostileFaction()
     {
-        return Find.FactionManager.AllFactionsVisible.FirstOrDefault(f => !f.IsPlayer && f.HostileTo(Faction.OfPlayer)
-            && f.def.defName == "Rukaya_DrifterAlliance");
+        return Find.FactionManager.AllFactionsVisible.Where(f => !f.IsPlayer && f.HostileTo(Faction.OfPlayer)
+            && RukayaAirborneUtility.IsRukayaFaction(f)).RandomElementWithFallback();
     }
     public static Aircraft SpawnRaid(Map map, bool heavy)
     {
@@ -36,20 +36,32 @@ public static class AirRaids
         plane.ResetFlightVisuals(); plane.Refuelable.SyncGroundAccess();
         plane.raidDuration = heavy ? 12000 : 3600;
         plane.SetRoute(new[] { AV.Flat(new IntVec3(west ? 35 : map.Size.x - 36, 0, map.Center.z)) });
-        for (int i = 0; i < plane.mounts.Count; i++) { plane.mounts[i].kind = heavy ? StoreKind.Bomb : i == 2 ? StoreKind.Empty : i < 2 ? StoreKind.Rocket : StoreKind.Cannon; plane.mounts[i].rounds = plane.StoreCapacity(i, plane.mounts[i].kind); }
+        foreach (Hardpoint mount in plane.mounts)
+        {
+            mount.kind = StoreKind.Empty;
+            mount.rounds = 0;
+        }
+        StoreKind weapon = Rand.Bool ? StoreKind.Bomb : StoreKind.Cannon;
+        for (int offset = -1; offset <= 1; offset += 2)
+        {
+            int index = plane.CenterHardpoint + offset;
+            plane.mounts[index].kind = weapon;
+            plane.mounts[index].rounds = plane.StoreCapacity(index, weapon);
+        }
+        if (!heavy) plane.FixedCannon.rounds = 0;
         return plane;
     }
     public static void RaidPass(Aircraft p)
     {
         if (p.raidExiting) return;
         if ((p.Heavy && p.passes >= 1) || !p.Heavy && p.ageTicks >= p.raidDuration) { p.BeginRaidExit(); return; }
+        AttackKind kind = p.Ammo(AttackKind.Bomb) > 0 ? AttackKind.Bomb : AttackKind.Cannon;
+        if (p.Ammo(kind) <= 0) { p.BeginRaidExit(); return; }
         p.passes++;
         IntVec3 center = p.Map.listerThings.AllThings.Where(t => t.Faction == Faction.OfPlayer && t is Building && !(t is Aircraft))
             .Select(t => t.Position).RandomElementWithFallback(p.Map.Center);
         center.x = Mathf.Clamp(center.x, 55, p.Map.Size.x - 56); center.z = Mathf.Clamp(center.z, 55, p.Map.Size.z - 56);
         IntVec3 direction = p.passes % 2 == 0 ? IntVec3.West : IntVec3.East;
-        AttackKind kind = p.mounts.Any(m => m.kind == StoreKind.Bomb && m.rounds > 0) ? AttackKind.Bomb
-            : p.mounts.Any(m => m.kind == StoreKind.Rocket && m.rounds > 0) ? AttackKind.Rocket : AttackKind.Cannon;
         if (!p.OrderAttack(kind, center - direction * 14, center + direction * 14)) p.BeginRaidExit();
     }
 }

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 using System.Runtime.CompilerServices;
+using HarmonyLib;
 using RimWorld;
 using RukayaRace.Projectiles;
 using RukayaRace.Weapons;
@@ -18,8 +18,19 @@ namespace RukayaRace.AirDefense
         public int AvailableAirRounds => Math.Max(0, airRoundsLeft);
         private bool UsesAirMagazine => Props.airMagazineCapacity > 0;
         private bool HasAirResources => (!UsesAirMagazine || AvailableAirRounds > 0)
-            && (parent.GetComp<CompRukayaLaserHeat>()?.CanFire ?? true);
-        public Verb_RukayaSkyInterceptorShoot WeaponVerb => gun?.TryGetComp<CompEquippable>()?.PrimaryVerb as Verb_RukayaSkyInterceptorShoot;
+            && (CachedLaserHeat?.CanFire ?? true);
+        public Verb_RukayaSkyInterceptorShoot WeaponVerb
+        {
+            get
+            {
+                if (gun != cachedGun)
+                {
+                    cachedGun = gun;
+                    cachedWeaponVerb = gun?.TryGetComp<CompEquippable>()?.PrimaryVerb as Verb_RukayaSkyInterceptorShoot;
+                }
+                return cachedWeaponVerb;
+            }
+        }
 
         /// <summary>
         /// 载体模式：宿主已经自带一门负责地面火力的炮时返回 true，本组件退化成**只管对空**的
@@ -56,15 +67,47 @@ namespace RukayaRace.AirDefense
         {
             get
             {
-                if (!(parent is ThingWithComps host))
-                    return null;
+                EnsureHostCompCache();
+                return cachedGroundTurretCompanion;
+            }
+        }
+
+        private CompRukayaLaserHeat CachedLaserHeat
+        {
+            get
+            {
+                EnsureHostCompCache();
+                return cachedLaserHeat;
+            }
+        }
+
+        private void EnsureHostCompCache()
+        {
+            if (hostCompsCached || parent == null)
+                return;
+            hostCompsCached = true;
+            cachedPower = parent.GetComp<CompPowerTrader>();
+            cachedFlickable = parent.GetComp<CompFlickable>();
+            cachedBreakdownable = parent.GetComp<CompBreakdownable>();
+            cachedRefuelable = parent.GetComp<CompRefuelable>();
+            cachedDormant = parent.GetComp<CompCanBeDormant>();
+            cachedStunnable = parent.GetComp<CompStunnable>();
+            cachedMannable = parent.GetComp<CompMannable>();
+            cachedInitiatable = parent.GetComp<CompInitiatable>();
+            cachedMechPowerCell = parent.GetComp<CompMechPowerCell>();
+            cachedHackable = parent.GetComp<CompHackable>();
+            cachedLaserHeat = parent.GetComp<CompRukayaLaserHeat>();
+            if (parent is ThingWithComps host)
+            {
                 List<ThingComp> comps = host.AllComps;
                 for (int i = 0; i < comps.Count; i++)
                 {
                     if (comps[i] is CompTurretGun turret && turret != this)
-                        return turret;
+                    {
+                        cachedGroundTurretCompanion = turret;
+                        break;
+                    }
                 }
-                return null;
             }
         }
 
@@ -133,25 +176,26 @@ namespace RukayaRace.AirDefense
             {
                 if (!parent.Spawned || WeaponVerb == null || fireAtWillField == null)
                     return false;
-                if (parent.GetComp<CompPowerTrader>() is CompPowerTrader power && !power.PowerOn)
+                EnsureHostCompCache();
+                if (cachedPower != null && !cachedPower.PowerOn)
                     return false;
-                if (parent.GetComp<CompFlickable>() is CompFlickable flickable && !flickable.SwitchIsOn)
+                if (cachedFlickable != null && !cachedFlickable.SwitchIsOn)
                     return false;
-                if (parent.GetComp<CompBreakdownable>() is CompBreakdownable breakdownable && breakdownable.BrokenDown)
+                if (cachedBreakdownable != null && cachedBreakdownable.BrokenDown)
                     return false;
-                if (parent.GetComp<CompRefuelable>() is CompRefuelable fuel && !fuel.HasFuel)
+                if (cachedRefuelable != null && !cachedRefuelable.HasFuel)
                     return false;
-                if (parent.GetComp<CompCanBeDormant>() is CompCanBeDormant dormant && !dormant.Awake)
+                if (cachedDormant != null && !cachedDormant.Awake)
                     return false;
                 if (parent is Pawn pawn)
                     return !pawn.Dead && !pawn.Downed && pawn.Awake() && !pawn.stances.stunner.Stunned
-                        && !TurretDestroyed && (!pawn.IsColonyMechPlayerControlled || (bool)fireAtWillField.GetValue(this));
+                        && !TurretDestroyed && (!pawn.IsColonyMechPlayerControlled || fireAtWillField(this));
                 if (parent is Building)
-                    return !(parent.GetComp<CompStunnable>()?.StunHandler.Stunned ?? false)
-                        && (parent.GetComp<CompMannable>()?.MannedNow ?? true)
-                        && (parent.GetComp<CompInitiatable>()?.Initiated ?? true)
-                        && !(parent.GetComp<CompMechPowerCell>()?.depleted ?? false)
-                        && !(parent.GetComp<CompHackable>()?.IsHacked ?? false);
+                    return !(cachedStunnable?.StunHandler.Stunned ?? false)
+                        && (cachedMannable?.MannedNow ?? true)
+                        && (cachedInitiatable?.Initiated ?? true)
+                        && !(cachedMechPowerCell?.depleted ?? false)
+                        && !(cachedHackable?.IsHacked ?? false);
                 return false;
             }
         }
@@ -159,7 +203,8 @@ namespace RukayaRace.AirDefense
         public override void CompTick()
         {
             RefreshMagazine();
-            if (!CanOperateCore)
+            bool canOperateCore = CanOperateCore;
+            if (!canOperateCore)
             {
                 FinishBurst();
                 EndAirBurst();
@@ -175,18 +220,20 @@ namespace RukayaRace.AirDefense
                 return;
             }
             // 机炮/激光保留完整视觉连发；导弹每发重新选敌、逐发扣弹，空弹或无目标即结束。
+            Verb_RukayaSkyInterceptorShoot verb = WeaponVerb;
             if (airBurstActive)
             {
-                if (WeaponVerb.state == VerbState.Bursting)
+                if (verb.state == VerbState.Bursting)
                 {
                     curRotation = airBurstAimAngle;
-                    WeaponVerb.VerbTick();
+                    verb.VerbTick();
                     return;
                 }
                 EndAirBurst();
             }
+            bool carrierMode = CarrierMode;
             // 恢复冷却按时间流逝，不能在两波目标之间冻结，否则新空投到达时又白等一轮。
-            if (CarrierMode && burstCooldownTicksLeft > 0)
+            if (carrierMode && burstCooldownTicksLeft > 0)
                 burstCooldownTicksLeft--;
             if (!HasAirResources)
             {
@@ -198,23 +245,24 @@ namespace RukayaRace.AirDefense
             if (airTarget != null && (!CanTarget(airTarget, parent.Faction, parent.Map)
                 || !AllowsTarget(airTarget) || !IsWithinAirRange(airTarget) || IsClaimedByOther(airTarget)))
                 SetAirTarget(null);
-            if (airTarget != null && WeaponVerb.state != VerbState.Bursting
+            if (airTarget != null && verb.state != VerbState.Bursting
                 && Projectile_RukayaSkyInterceptor.HasShotFor(airTarget))
                 SetAirTarget(null);
             if (airTarget != null)
                 ClaimAirTarget(airTarget);
             // 保留有效锁定，避免密集空投更换最近目标时反复重置预热。
-            if (airTarget == null && WeaponVerb.state != VerbState.Bursting && parent.IsHashIntervalTick(Props.scanIntervalTicks))
+            if (airTarget == null && verb.state != VerbState.Bursting && parent.IsHashIntervalTick(Props.scanIntervalTicks))
                 SetAirTarget(FindTarget());
+            bool canOperate = canOperateCore && !parent.Position.Roofed(parent.Map);
             Thing current = currentTarget.Thing;
             // 只有"这一轮 burst 确实是本组件自己的对空射击"时才交给下面的对空分支。
             // 独立模式（宿主没有第二门炮，见 CarrierMode）下，本组件那把枪同时负责地面火力：
             // 对地连发打到一半时 current 是地面目标，CanEngage 必然为 false —— 不区分就会
             // 把 24 连发的地面 burst 打断成单发。加这一条后，地面 burst 落到下面的
             // "WeaponVerb.state == Bursting → GroundTick()" 分支，由原版逻辑继续推进。
-            if (WeaponVerb.state == VerbState.Bursting && current != null && IsAirTarget(current))
+            if (verb.state == VerbState.Bursting && current != null && IsAirTarget(current))
             {
-                if (!CanEngage(current))
+                if (!canOperate || !CanEngageAssumingOperate(current))
                 {
                     FinishBurst();
                     ResetAirTarget();
@@ -223,20 +271,20 @@ namespace RukayaRace.AirDefense
                 else
                 {
                     curRotation = (current.DrawPos - parent.DrawPos).AngleFlat() + Props.angleOffset;
-                    WeaponVerb.VerbTick();
+                    verb.VerbTick();
                     return;
                 }
             }
-            if (!CanOperate || airTarget == null || !CanEngage(airTarget))
+            if (!canOperate || airTarget == null || !CanEngageAssumingOperate(airTarget))
             {
-                if (!CanOperate)
+                if (!canOperate)
                     SetAirTarget(null);
                 if (IsAirTarget(currentTarget.Thing))
                     ResetAirTarget();
                 GroundTick();
                 return;
             }
-            if (WeaponVerb.state == VerbState.Bursting)
+            if (verb.state == VerbState.Bursting)
             {
                 GroundTick();
                 return;
@@ -247,20 +295,20 @@ namespace RukayaRace.AirDefense
                 burstWarmupTicksLeft = 0;
             }
             curRotation = (airTarget.DrawPos - parent.DrawPos).AngleFlat() + Props.angleOffset;
-            WeaponVerb.VerbTick();
+            verb.VerbTick();
             if (burstWarmupTicksLeft > 0)
             {
                 burstWarmupTicksLeft--;
-                if (burstWarmupTicksLeft == 0 && CanEngage(airTarget) && WeaponVerb.Available())
+                if (burstWarmupTicksLeft == 0 && CanEngageAssumingOperate(airTarget) && verb.Available())
                     BeginAirBurst(airTarget);
                 return;
             }
-            if (!CarrierMode && burstCooldownTicksLeft > 0)
+            if (!carrierMode && burstCooldownTicksLeft > 0)
                 burstCooldownTicksLeft--;
-            if (burstCooldownTicksLeft > 0 || !WeaponVerb.Available())
+            if (burstCooldownTicksLeft > 0 || !verb.Available())
                 return;
             float aimingFactor = parent is Pawn pawn ? pawn.GetStatValue(StatDefOf.AimingDelayFactor) : 1f;
-            burstWarmupTicksLeft = Mathf.Max(1, (WeaponVerb.WarmupTime * aimingFactor).SecondsToTicks());
+            burstWarmupTicksLeft = Mathf.Max(1, (verb.WarmupTime * aimingFactor).SecondsToTicks());
             if (airTarget is DropPodIncoming)
                 burstWarmupTicksLeft = Math.Min(burstWarmupTicksLeft, Props.dropPodWarmupTicks);
         }
@@ -401,7 +449,12 @@ namespace RukayaRace.AirDefense
 
         public bool CanEngage(Thing target)
         {
-            return CanOperate && CanTarget(target, parent.Faction, parent.Map)
+            return CanOperate && CanEngageAssumingOperate(target);
+        }
+
+        private bool CanEngageAssumingOperate(Thing target)
+        {
+            return CanTarget(target, parent.Faction, parent.Map)
                 && AllowsTarget(target) && IsWithinAirRange(target) && !IsClaimedByOther(target)
                 && !Projectile_RukayaSkyInterceptor.HasShotFor(target);
         }
@@ -452,7 +505,7 @@ namespace RukayaRace.AirDefense
             if (!LaunchInterceptorAt(target, verb, projectile, settings))
                 return false;
             NotifyAirRoundLaunched();
-            parent.GetComp<CompRukayaLaserHeat>()?.NotifyAirShot();
+            CachedLaserHeat?.NotifyAirShot();
             committedShotTarget = target;
             committedShotAngle = launchAngle;
             // 机炮/激光后续只补视觉；有备弹限制的导弹每发重新结算。
@@ -552,7 +605,8 @@ namespace RukayaRace.AirDefense
             Projectile_RukayaSkyInterceptor airProjectile = null;
             try
             {
-                ThingDef airProjectileDef = DefDatabase<ThingDef>.GetNamed("Rukaya_SkyInterceptorAirProjectile");
+                ThingDef airProjectileDef = RukayaAirDefenseDefCache.AirProjectileDef
+                    ?? DefDatabase<ThingDef>.GetNamed("Rukaya_SkyInterceptorAirProjectile");
                 airProjectile = (Projectile_RukayaSkyInterceptor)ThingMaker.MakeThing(airProjectileDef);
                 if (GenSpawn.Spawn(airProjectile, parent.Position, parent.Map) != airProjectile || !airProjectile.Spawned)
                     throw new InvalidOperationException("Air burst visual projectile could not be spawned.");
@@ -593,7 +647,8 @@ namespace RukayaRace.AirDefense
                 Projectile_RukayaSkyInterceptor airProjectile = null;
                 try
                 {
-                    ThingDef airProjectileDef = DefDatabase<ThingDef>.GetNamed("Rukaya_SkyInterceptorAirProjectile");
+                    ThingDef airProjectileDef = RukayaAirDefenseDefCache.AirProjectileDef
+                    ?? DefDatabase<ThingDef>.GetNamed("Rukaya_SkyInterceptorAirProjectile");
                     airProjectile = (Projectile_RukayaSkyInterceptor)ThingMaker.MakeThing(airProjectileDef);
                     if (GenSpawn.Spawn(airProjectile, parent.Position, map) != airProjectile || !airProjectile.Spawned)
                         throw new InvalidOperationException("Air projectile could not be spawned.");
@@ -619,6 +674,43 @@ namespace RukayaRace.AirDefense
         /// 的水平距离在 <see cref="CompProperties_RukayaSkyInterceptor.interceptBlastRadius"/> 之内、
         /// 且本组件本来就有权打的其它空中目标（按距离由近到远）。数量上限由 <c>maxSecondaryTargets</c> 在外层截断。
         /// </summary>
+        private static List<Thing> GetAirTargetCandidates(Map map)
+        {
+            int tick = Find.TickManager.TicksGame;
+            if (cachedAirTargetMapRef != null && cachedAirTargetTick == tick
+                && cachedAirTargetMapRef.TryGetTarget(out Map cachedMap) && cachedMap == map)
+                return cachedAirTargets;
+
+            if (cachedAirTargetMapRef == null || !cachedAirTargetMapRef.TryGetTarget(out Map prevMap) || prevMap != map)
+                cachedAirTargetMapRef = new System.WeakReference<Map>(map);
+            cachedAirTargetTick = tick;
+            cachedAirTargets.Clear();
+
+            ListerThings lister = map.listerThings;
+            List<Thing> projectiles = lister.ThingsInGroup(ThingRequestGroup.Projectile);
+            for (int i = 0; i < projectiles.Count; i++)
+            {
+                Thing thing = projectiles[i];
+                if (thing is Projectile && !(thing is Projectile_RukayaSkyInterceptor)
+                    && CategoryOf(thing) != RukayaAirTargetCategory.None)
+                {
+                    cachedAirTargets.Add(thing);
+                }
+            }
+
+            List<ThingDef> airDefs = RukayaAirDefenseDefCache.SkyfallerAndFlyerDefs;
+            for (int d = 0; d < airDefs.Count; d++)
+            {
+                List<Thing> list = lister.ThingsOfDef(airDefs[d]);
+                for (int i = 0; i < list.Count; i++)
+                {
+                    cachedAirTargets.Add(list[i]);
+                }
+            }
+
+            return cachedAirTargets;
+        }
+
         private List<Thing> BlastCandidates(Thing primary, IntVec3 primaryCell)
         {
             List<Thing> candidates = new List<Thing>();
@@ -627,8 +719,10 @@ namespace RukayaRace.AirDefense
                 return candidates;
             float radius = primary is DropPodIncoming ? Props.dropPodBlastRadius : Props.interceptBlastRadius;
             float radiusSquared = radius * radius;
-            foreach (Thing thing in map.listerThings.AllThings)
+            List<Thing> airTargets = GetAirTargetCandidates(map);
+            for (int i = 0; i < airTargets.Count; i++)
             {
+                Thing thing = airTargets[i];
                 if (thing == primary || !CanTarget(thing, parent.Faction, map) || !AllowsTarget(thing) || !IsWithinAirRange(thing)
                     || IsClaimedByOther(thing) || Projectile_RukayaSkyInterceptor.HasShotFor(thing))
                     continue;
@@ -803,12 +897,17 @@ namespace RukayaRace.AirDefense
             Thing best = null;
             int bestUrgency = int.MaxValue;
             float bestDistance = float.MaxValue;
-            foreach (Thing thing in parent.Map.listerThings.AllThings)
+            Map map = parent.Map;
+            Faction faction = parent.Faction;
+            IntVec3 parentPos = parent.Position;
+            List<Thing> airTargets = GetAirTargetCandidates(map);
+            for (int i = 0; i < airTargets.Count; i++)
             {
-                if (!CanTarget(thing, parent.Faction, parent.Map) || !AllowsTarget(thing)
+                Thing thing = airTargets[i];
+                if (!CanTarget(thing, faction, map) || !AllowsTarget(thing)
                     || IsClaimedByOther(thing) || Projectile_RukayaSkyInterceptor.HasShotFor(thing))
                     continue;
-                float distance = (thing.Position - parent.Position).LengthHorizontalSquared;
+                float distance = (thing.Position - parentPos).LengthHorizontalSquared;
                 if (!IsWithinAirRange(thing))
                     continue;
                 int urgency = thing is Skyfaller skyfaller ? skyfaller.ticksToImpact : int.MaxValue / 2;
@@ -826,9 +925,24 @@ namespace RukayaRace.AirDefense
         {
             if (target == null || !target.Spawned || target.Map != parent.Map)
                 return false;
+            if (target is RukayaAviation.Aircraft)
+            {
+                float aircraftRange = GetAircraftEngagementRange();
+                return (target.Position - parent.Position).LengthHorizontalSquared <= aircraftRange * aircraftRange;
+            }
             RukayaAirTargetCategory category = CategoryOf(target);
             return category == RukayaAirTargetCategory.DropPods || category == RukayaAirTargetCategory.NaturalSkyfallers
                 || (target.Position - parent.Position).LengthHorizontalSquared <= Props.airDefenseRange * Props.airDefenseRange;
+        }
+
+        private float GetAircraftEngagementRange()
+        {
+            string projDefName = WeaponVerb?.verbProps?.defaultProjectile?.defName;
+            if (projDefName == "Bullet_Rukaya_InterceptorMissile" || projDefName == "Bullet_Rukaya_MechAA_SAMLauncher")
+                return Mathf.Max(Props.airDefenseRange, 110f);
+            if (projDefName == "Bullet_Rukaya_MechAA_Laser" || projDefName == "Bullet_Rukaya_MechAA_Gun")
+                return Mathf.Max(Props.airDefenseRange, 65f);
+            return Mathf.Max(Props.airDefenseRange * 2.5f, 95f);
         }
 
         private void RefreshMagazine()
@@ -885,8 +999,11 @@ namespace RukayaRace.AirDefense
         {
             if (target == null)
                 return;
+            if (claims.TryGetValue(target, out System.WeakReference<CompRukayaSkyInterceptor> existing)
+                && existing.TryGetTarget(out CompRukayaSkyInterceptor owner) && owner == this)
+                return;
             claims.Remove(target);
-            claims.Add(target, new System.WeakReference<CompRukayaSkyInterceptor>(this));
+            claims.Add(target, selfWeakRef ??= new System.WeakReference<CompRukayaSkyInterceptor>(this));
         }
 
         private void SetAirTarget(Thing target)
@@ -916,7 +1033,7 @@ namespace RukayaRace.AirDefense
             completed?.Invoke();
             verb.castCompleteCallback = completed;
             if (verb.verbProps.consumeFuelPerBurst > 0f)
-                parent.GetComp<CompRefuelable>()?.ConsumeFuel(verb.verbProps.consumeFuelPerBurst);
+                cachedRefuelable?.ConsumeFuel(verb.verbProps.consumeFuelPerBurst);
         }
 
         private string BindingError()
@@ -961,7 +1078,28 @@ namespace RukayaRace.AirDefense
         public static readonly Color AirRangeRingColorActive = new Color(0.25f, 0.95f, 0.35f);
         /// <summary>不可作战时（断电/断料/开关关掉/被屋顶挡住）的防空范围圈颜色（暗绿）。</summary>
         public static readonly Color AirRangeRingColorIdle = new Color(0.30f, 0.45f, 0.32f);
-        private static readonly FieldInfo fireAtWillField = typeof(CompTurretGun).GetField("fireAtWill", BindingFlags.Instance | BindingFlags.NonPublic);
+        private bool hostCompsCached;
+        private CompPowerTrader cachedPower;
+        private CompFlickable cachedFlickable;
+        private CompBreakdownable cachedBreakdownable;
+        private CompRefuelable cachedRefuelable;
+        private CompCanBeDormant cachedDormant;
+        private CompStunnable cachedStunnable;
+        private CompMannable cachedMannable;
+        private CompInitiatable cachedInitiatable;
+        private CompMechPowerCell cachedMechPowerCell;
+        private CompHackable cachedHackable;
+        private CompRukayaLaserHeat cachedLaserHeat;
+        private CompTurretGun cachedGroundTurretCompanion;
+        private Thing cachedGun;
+        private Verb_RukayaSkyInterceptorShoot cachedWeaponVerb;
+        private System.WeakReference<CompRukayaSkyInterceptor> selfWeakRef;
+        private static System.WeakReference<Map> cachedAirTargetMapRef;
+        private static int cachedAirTargetTick = -1;
+        private static readonly List<Thing> cachedAirTargets = new List<Thing>();
+        private static readonly AccessTools.FieldRef<CompTurretGun, bool> fireAtWillField =
+            AccessTools.Field(typeof(CompTurretGun), "fireAtWill") != null
+                ? AccessTools.FieldRefAccess<CompTurretGun, bool>("fireAtWill") : null;
         private static readonly ConditionalWeakTable<Thing, System.WeakReference<CompRukayaSkyInterceptor>> claims = new ConditionalWeakTable<Thing, System.WeakReference<CompRukayaSkyInterceptor>>();
     }
 }

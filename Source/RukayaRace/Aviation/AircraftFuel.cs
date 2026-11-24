@@ -59,16 +59,23 @@ public class AircraftFuel : CompRefuelable
 
 public class AircraftNames : GameComponent
 {
-    private int nextYak = 1, nextMig = 1;
+    private int nextYak = 1, nextMig = 1, nextAn72 = 1;
     public AircraftNames(Game game) { }
     public int Register(Aircraft plane, int number)
     {
-        ref int next = ref (plane.Heavy ? ref nextMig : ref nextYak);
+        ref int next = ref nextYak;
+        if (plane.IsTransport) next = ref nextAn72;
+        else if (plane.IsInterceptor) next = ref nextMig;
         if (number <= 0) number = next++;
         else next = Math.Max(next, number + 1);
         return number;
     }
-    public override void ExposeData() { Scribe_Values.Look(ref nextYak, "ravNextYak", 1); Scribe_Values.Look(ref nextMig, "ravNextMig", 1); }
+    public override void ExposeData()
+    {
+        Scribe_Values.Look(ref nextYak, "ravNextYak", 1);
+        Scribe_Values.Look(ref nextMig, "ravNextMig", 1);
+        Scribe_Values.Look(ref nextAn72, "ravNextAn72", 1);
+    }
 }
 
 public class Dialog_RenameAircraft : Dialog_Rename<Aircraft>

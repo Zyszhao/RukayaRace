@@ -9,7 +9,12 @@ namespace RukayaRace.Flight
     {
         public static void Postfix(Pawn pawn, ref ThinkResult __result)
         {
-            if (__result.FromQueue || (__result.Job != null && __result.Job == pawn?.CurJob))
+            if (__result.Job == null || __result.FromQueue || __result.Job == pawn?.CurJob)
+            {
+                return;
+            }
+
+            if (pawn == null || !RukayaWingUtility.FlightCapableDefs.Contains(pawn.def))
             {
                 return;
             }

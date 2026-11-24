@@ -8,6 +8,7 @@
     <specialDesignatorClasses>
       <li>Designator_Cancel</li>
       <li>Designator_Deconstruct</li>
+      <li>RukayaAviation.Designator_Runway</li>
     </specialDesignatorClasses>
   </DesignationCategoryDef>
 </Defs>

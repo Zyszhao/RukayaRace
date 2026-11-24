@@ -13,12 +13,16 @@ public static class AviationSaveCompatibility
 {
     public static string ConvertReference(string value)
     {
-        if (value != null && value.StartsWith("Thing_", StringComparison.Ordinal))
+        if (string.IsNullOrEmpty(value)) return value;
+        char first = value[0];
+        if (first != 'R' && first != 'T') return value;
+        if (first == 'T' && value.StartsWith("Thing_", StringComparison.Ordinal))
         {
             string original = value.Substring("Thing_".Length);
             string renamed = ConvertReference(original);
             return renamed == original ? value : "Thing_" + renamed;
         }
+        if (first != 'R') return value;
         if (value == "Rukaya_Mig31") return "Rukaya_Mig31Research";
         string converted = ConvertThingReference(value, "Rukaya_CoreMemory_Mig31", "Rukaya_CoreMemory_Mig31Memory");
         return ConvertThingReference(converted, "Rukaya_Archive_Mig31", "Rukaya_Archive_Mig31Site");

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Rukaya_BrokenStarCorps.label>卢卡娅残星兵团</Rukaya_BrokenStarCorps.label>
+  <Rukaya_BrokenStarCorps.description>残星兵团由卢卡娅军阀、武装头目与掌控物资通路的寡头聚拢而成，靠着残缺的旧番号与实用的工业军备维系。各支队伍以征税、劫掠和维持这些收入的武力为生。她们默认将外来者视作对手，但若条件合算，即使面对强硬的敌人，也仍有谈判的余地。</Rukaya_BrokenStarCorps.description>
+  <Rukaya_BrokenStarCorps.pawnSingular>卢卡娅</Rukaya_BrokenStarCorps.pawnSingular>
+  <Rukaya_BrokenStarCorps.pawnsPlural>卢卡娅</Rukaya_BrokenStarCorps.pawnsPlural>
+  <Rukaya_BrokenStarCorps.leaderTitle>司令官</Rukaya_BrokenStarCorps.leaderTitle>
+</LanguageData>

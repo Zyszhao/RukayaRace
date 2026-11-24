@@ -1,4 +1,4 @@
-using System.Reflection;
+using System.Collections.Generic;
 using HarmonyLib;
 using RimWorld;
 using UnityEngine;
@@ -6,6 +6,68 @@ using Verse;
 
 namespace RukayaRace.AirDefense
 {
+    [StaticConstructorOnStartup]
+    internal static class RukayaAirDefenseDefCache
+    {
+        public static readonly HashSet<ThingDef> SkyInterceptorHostDefs = BuildSkyInterceptorHostDefs();
+        public static readonly List<ThingDef> SAMLauncherDefs = BuildSAMLauncherDefs();
+        public static readonly List<ThingDef> SkyfallerAndFlyerDefs = BuildSkyfallerAndFlyerDefs();
+        public static readonly ThingDef AirProjectileDef = DefDatabase<ThingDef>.GetNamedSilentFail("Rukaya_SkyInterceptorAirProjectile");
+        public static readonly FleckDef LightningGlowDef = DefDatabase<FleckDef>.GetNamedSilentFail("LightningGlow");
+
+        private static HashSet<ThingDef> BuildSkyInterceptorHostDefs()
+        {
+            HashSet<ThingDef> set = new HashSet<ThingDef>();
+            List<ThingDef> allDefs = DefDatabase<ThingDef>.AllDefsListForReading;
+            for (int i = 0; i < allDefs.Count; i++)
+            {
+                ThingDef def = allDefs[i];
+                if (def.HasComp(typeof(CompRukayaSkyInterceptor)))
+                {
+                    set.Add(def);
+                }
+            }
+            return set;
+        }
+
+        private static List<ThingDef> BuildSAMLauncherDefs()
+        {
+            List<ThingDef> list = new List<ThingDef>();
+            List<ThingDef> allDefs = DefDatabase<ThingDef>.AllDefsListForReading;
+            for (int i = 0; i < allDefs.Count; i++)
+            {
+                ThingDef def = allDefs[i];
+                if (def.HasComp(typeof(CompRukayaSAMLauncher)))
+                {
+                    list.Add(def);
+                }
+            }
+            return list;
+        }
+
+        private static List<ThingDef> BuildSkyfallerAndFlyerDefs()
+        {
+            List<ThingDef> list = new List<ThingDef>();
+            List<ThingDef> allDefs = DefDatabase<ThingDef>.AllDefsListForReading;
+            for (int i = 0; i < allDefs.Count; i++)
+            {
+                ThingDef def = allDefs[i];
+                System.Type tc = def.thingClass;
+                if (tc == null)
+                {
+                    continue;
+                }
+                if (typeof(Skyfaller).IsAssignableFrom(tc)
+                    || typeof(PawnFlyer).IsAssignableFrom(tc)
+                    || typeof(RukayaAviation.Aircraft).IsAssignableFrom(tc))
+                {
+                    list.Add(def);
+                }
+            }
+            return list;
+        }
+    }
+
     /// <summary>
     /// 把**宿主炮塔顶**扳向空中目标（仅限本组件确实在对空交战时）。
     ///
@@ -33,7 +95,9 @@ namespace RukayaRace.AirDefense
         {
             if (__instance == null || ParentTurretField == null)
                 return;
-            if (!(ParentTurretField.GetValue(__instance) is Building_TurretGun turret))
+            if (!(ParentTurretField(__instance) is Building_TurretGun turret))
+                return;
+            if (!RukayaAirDefenseDefCache.SkyInterceptorHostDefs.Contains(turret.def))
                 return;
             CompRukayaSkyInterceptor interceptor = turret.GetComp<CompRukayaSkyInterceptor>();
             if (interceptor == null)
@@ -55,8 +119,9 @@ namespace RukayaRace.AirDefense
         }
 
         /// <summary>TurretTop 只把宿主记在私有字段里，取回它才能拿到组件。</summary>
-        private static readonly FieldInfo ParentTurretField =
-            typeof(TurretTop).GetField("parentTurret", BindingFlags.Instance | BindingFlags.NonPublic);
+        private static readonly AccessTools.FieldRef<TurretTop, Building_Turret> ParentTurretField =
+            AccessTools.Field(typeof(TurretTop), "parentTurret") != null
+                ? AccessTools.FieldRefAccess<TurretTop, Building_Turret>("parentTurret") : null;
     }
 
     /// <summary>
@@ -88,6 +153,8 @@ namespace RukayaRace.AirDefense
                 return;
             CompTurretGun turretComp = turretNode.turretComp;
             if (turretComp?.parent == null)
+                return;
+            if (!RukayaAirDefenseDefCache.SkyInterceptorHostDefs.Contains(turretComp.parent.def))
                 return;
             CompRukayaSkyInterceptor interceptor = turretComp.parent.GetComp<CompRukayaSkyInterceptor>();
             if (interceptor == null)

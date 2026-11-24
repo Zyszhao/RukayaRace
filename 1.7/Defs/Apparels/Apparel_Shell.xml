@@ -164,10 +164,8 @@
     <label>Rukaya trench coat</label>
     <!-- 中文：卢卡娅风衣 -->
     <techLevel>Medieval</techLevel>
-    <description>A long trench coat cut for the Rukaya's frame, in the same heavy outdoor pattern as
-      the duster. The tails hang clear of the wings, and the sweeping lines give the wearer a
-      composed, deliberate presence that carries into any negotiation.</description>
-    <!-- 中文翻译：一件按卢卡娅体型裁制的长风衣，版式与原版风衣同属厚重的户外款式。下摆为翅膀留出空间，利落的线条让穿着者看上去沉稳而从容，这份气度在任何谈判场合都用得上。 -->
+    <description>A heavy long trench coat tailored for a Rukaya frame, split at the back for the wings. Its crisp lines give the wearer a composed bearing during negotiations.</description>
+    <!-- 中文翻译：按卢卡娅体型裁制的厚重长摆户外风衣，背部留有翅膀开口，线条利落，适合外出与交涉场合。 -->
     <graphicData>
       <texPath>Rukaya/Apparel/Shell/TrenchCoat/Rukaya_TrenchCoat</texPath>
       <graphicClass>Graphic_Single</graphicClass>

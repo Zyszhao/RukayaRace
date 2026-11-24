@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 using HarmonyLib;
 using UnityEngine;
 using Verse;
@@ -10,8 +9,37 @@ namespace RukayaRace.Weapons
 {
     public static class RukayaRadarUtility
     {
-        private static readonly FieldInfo ShotReportTargetField = AccessTools.Field(typeof(ShotReport), "target");
-        private static readonly FieldInfo ShotReportGasField = AccessTools.Field(typeof(ShotReport), "factorFromCoveringGas");
+        private static Dictionary<HediffDef, RukayaRadarTargetingExtension> cachedTargetingDefs;
+        [ThreadStatic]
+        private static List<IntVec3> reusableDestCells;
+        [ThreadStatic]
+        private static List<IntVec3> reusableSourceCells;
+
+        private static Dictionary<HediffDef, RukayaRadarTargetingExtension> TargetingDefs
+        {
+            get
+            {
+                if (cachedTargetingDefs != null)
+                {
+                    return cachedTargetingDefs;
+                }
+
+                Dictionary<HediffDef, RukayaRadarTargetingExtension> map = new Dictionary<HediffDef, RukayaRadarTargetingExtension>();
+                List<HediffDef> allDefs = DefDatabase<HediffDef>.AllDefsListForReading;
+                for (int i = 0; i < allDefs.Count; i++)
+                {
+                    HediffDef def = allDefs[i];
+                    RukayaRadarTargetingExtension ext = def.GetModExtension<RukayaRadarTargetingExtension>();
+                    if (ext != null)
+                    {
+                        map[def] = ext;
+                    }
+                }
+
+                cachedTargetingDefs = map;
+                return map;
+            }
+        }
 
         public static bool TryGetTargetingData(Pawn pawn, out float aimOnTargetChanceFactor, out bool ignoreBlindSmoke)
         {
@@ -22,12 +50,22 @@ namespace RukayaRace.Weapons
                 return false;
             }
 
-            bool found = false;
             List<Hediff> hediffs = pawn.health.hediffSet.hediffs;
+            if (hediffs.Count == 0)
+            {
+                return false;
+            }
+
+            Dictionary<HediffDef, RukayaRadarTargetingExtension> map = TargetingDefs;
+            if (map.Count == 0)
+            {
+                return false;
+            }
+
+            bool found = false;
             for (int i = 0; i < hediffs.Count; i++)
             {
-                RukayaRadarTargetingExtension extension = hediffs[i].def.GetModExtension<RukayaRadarTargetingExtension>();
-                if (extension == null)
+                if (!map.TryGetValue(hediffs[i].def, out RukayaRadarTargetingExtension extension))
                 {
                     continue;
                 }
@@ -40,29 +78,6 @@ namespace RukayaRace.Weapons
             return found;
         }
 
-        public static Pawn GetShotReportPawn(ShotReport report)
-        {
-            if (ShotReportTargetField == null)
-            {
-                return null;
-            }
-
-            object boxed = report;
-            TargetInfo targetInfo = (TargetInfo)ShotReportTargetField.GetValue(boxed);
-            return targetInfo.Thing as Pawn;
-        }
-
-        public static float GetCoveringGasFactor(ShotReport report)
-        {
-            if (ShotReportGasField == null)
-            {
-                return 1f;
-            }
-
-            object boxed = report;
-            return (float)ShotReportGasField.GetValue(boxed);
-        }
-
         public static bool CanSeeIgnoringBlindSmoke(Thing seer, Thing target)
         {
             if (seer == null || target == null || seer.Map != target.Map || seer.Map == null)
@@ -70,7 +85,8 @@ namespace RukayaRace.Weapons
                 return false;
             }
 
-            List<IntVec3> destCells = new List<IntVec3>();
+            List<IntVec3> destCells = reusableDestCells ?? (reusableDestCells = new List<IntVec3>());
+            destCells.Clear();
             ShootLeanUtility.CalcShootableCellsOf(destCells, target, seer.Position);
             for (int i = 0; i < destCells.Count; i++)
             {
@@ -80,7 +96,8 @@ namespace RukayaRace.Weapons
                 }
             }
 
-            List<IntVec3> sourceCells = new List<IntVec3>();
+            List<IntVec3> sourceCells = reusableSourceCells ?? (reusableSourceCells = new List<IntVec3>());
+            sourceCells.Clear();
             ShootLeanUtility.LeanShootingSourcesFromTo(seer.Position, target.Position, seer.Map, sourceCells);
             for (int i = 0; i < sourceCells.Count; i++)
             {
@@ -105,21 +122,17 @@ namespace RukayaRace.Weapons
     [HarmonyPatch(typeof(ShotReport), "get_AimOnTargetChance_StandardTarget")]
     public static class Patch_ShotReport_AimOnTargetChance_StandardTarget
     {
-        public static void Postfix(ShotReport __instance, ref float __result)
+        public static void Postfix(TargetInfo ___target, float ___factorFromCoveringGas, ref float __result)
         {
-            Pawn targetPawn = RukayaRadarUtility.GetShotReportPawn(__instance);
-            if (!RukayaRadarUtility.TryGetTargetingData(targetPawn, out float aimFactor, out bool ignoreBlindSmoke))
+            Pawn targetPawn = ___target.Thing as Pawn;
+            if (targetPawn == null || !RukayaRadarUtility.TryGetTargetingData(targetPawn, out float aimFactor, out bool ignoreBlindSmoke))
             {
                 return;
             }
 
-            if (ignoreBlindSmoke)
+            if (ignoreBlindSmoke && ___factorFromCoveringGas > 0f && ___factorFromCoveringGas < 0.999f)
             {
-                float gasFactor = RukayaRadarUtility.GetCoveringGasFactor(__instance);
-                if (gasFactor > 0f && gasFactor < 0.999f)
-                {
-                    __result /= gasFactor;
-                }
+                __result /= ___factorFromCoveringGas;
             }
 
             if (aimFactor > 1f)

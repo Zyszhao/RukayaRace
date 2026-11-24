@@ -35,7 +35,7 @@ namespace RukayaRace.Projectiles
 
         private void ThrowCyanGlow(RukayaPlasmaProjectileExtension extension)
         {
-            FleckDef glowDef = DefDatabase<FleckDef>.GetNamedSilentFail("LightningGlow");
+            FleckDef glowDef = RukayaPlasmaProjectileUtility.LightningGlowDef;
             if (glowDef == null)
             {
                 FleckMaker.ThrowLightningGlow(this.ExactPosition, this.Map, extension.glowSize);
@@ -47,7 +47,10 @@ namespace RukayaRace.Projectiles
             this.Map.flecks.CreateFleck(data);
         }
 
+        private static readonly RukayaPlasmaProjectileExtension DefaultExtension = new RukayaPlasmaProjectileExtension();
+        private RukayaPlasmaProjectileExtension cachedExtension;
+
         private RukayaPlasmaProjectileExtension Extension =>
-            this.def.GetModExtension<RukayaPlasmaProjectileExtension>() ?? new RukayaPlasmaProjectileExtension();
+            cachedExtension ?? (cachedExtension = this.def.GetModExtension<RukayaPlasmaProjectileExtension>() ?? DefaultExtension);
     }
 }

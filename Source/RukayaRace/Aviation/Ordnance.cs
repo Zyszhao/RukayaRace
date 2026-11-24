@@ -19,7 +19,18 @@ public static class Ordnance
     };
     public static bool Matches(StoreKind store, AttackKind attack) => attack != AttackKind.None && store == Store(attack);
     public static bool IsBomb(AttackKind kind) => kind is AttackKind.Bomb or AttackKind.IncendiaryBomb or AttackKind.ClusterBomb;
-    public static ThingDef ProjectileDef(AttackKind kind) => AV.Def(kind + "Projectile");
+    private static readonly ThingDef[] CachedProjectileDefs = new ThingDef[Enum.GetValues(typeof(AttackKind)).Length];
+    private static ThingDef cachedIncendiaryShellDef;
+    private static ThingDef cachedAntigrainShellDef;
+    public static ThingDef ProjectileDef(AttackKind kind)
+    {
+        int idx = (int)kind;
+        if (idx >= 0 && idx < CachedProjectileDefs.Length)
+        {
+            return CachedProjectileDefs[idx] ??= AV.Def(kind + "Projectile");
+        }
+        return AV.Def(kind + "Projectile");
+    }
     public static float PreviewRadius(AttackKind kind) => kind == AttackKind.ClusterBomb
         ? ProjectileDef(kind).GetModExtension<ClusterProjectileExtension>().fragmentSearchRadius
         : ProjectileDef(kind).projectile.explosionRadius;
@@ -31,12 +42,12 @@ public static class Ordnance
     public static List<(ThingDef def, int count)> RearmCost(StoreKind kind, int count) => kind switch
     {
         StoreKind.Bomb => new() { (ThingDefOf.Shell_HighExplosive, count) },
-        StoreKind.IncendiaryBomb => new() { (DefDatabase<ThingDef>.GetNamed("Shell_Incendiary"), count) },
+        StoreKind.IncendiaryBomb => new() { (cachedIncendiaryShellDef ??= DefDatabase<ThingDef>.GetNamed("Shell_Incendiary"), count) },
         StoreKind.ClusterBomb => new() { (ThingDefOf.Shell_HighExplosive, count * 2), (ThingDefOf.ComponentIndustrial, count) },
         StoreKind.Rocket => new() { (ThingDefOf.Steel, count * 2), (ThingDefOf.Chemfuel, count) },
         StoreKind.Cannon => new() { (ThingDefOf.Steel, Mathf.CeilToInt(count / 20f)) },
         StoreKind.GroundMissile => new() { (ThingDefOf.Shell_HighExplosive, count), (ThingDefOf.ComponentIndustrial, count * 2) },
-        StoreKind.ActiveMatterMissile => new() { (DefDatabase<ThingDef>.GetNamed("Shell_AntigrainWarhead"), count), (ThingDefOf.ComponentIndustrial, count * 4) },
+        StoreKind.ActiveMatterMissile => new() { (cachedAntigrainShellDef ??= DefDatabase<ThingDef>.GetNamed("Shell_AntigrainWarhead"), count), (ThingDefOf.ComponentIndustrial, count * 4) },
         _ => new()
     };
 }
@@ -65,7 +76,7 @@ public partial class Aircraft
         if (needsThing && !ValidGroundTarget(target) || !needsThing && (target != null || !point.InBounds(Map)))
         { AV.Say("请选择有效地面单位或建筑；活性物质导弹只能指定地面点。"); return false; }
         point = needsThing ? target.Position : point;
-        if (kind == AttackKind.ActiveMatterMissile && (!Heavy || mounts[CenterHardpoint].kind != StoreKind.ActiveMatterMissile || mounts[CenterHardpoint].rounds <= 0)) return false;
+        if (kind == AttackKind.ActiveMatterMissile && (!IsInterceptor || CenterHardpoint < 0 || mounts[CenterHardpoint].kind != StoreKind.ActiveMatterMissile || mounts[CenterHardpoint].rounds <= 0)) return false;
         float distance = AV.Distance(realPos, AV.Flat(point));
         if (!Heavy && (distance < 6 || distance > (hover ? 40 : 100)))
         { AV.Say(hover ? "悬停攻击距离为6至40格。" : "导弹攻击距离为6至100格。"); return false; }

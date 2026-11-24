@@ -10,16 +10,74 @@
       <MetalTile><rects><li>(2,2,20,5)</li><li>(2,7,20,18)</li></rects></MetalTile>
     </terrain>
     <things>
-      <Wall>
-        <stuff>BlocksGranite</stuff><hp>240</hp>
+      <Rukaya_FacilityWallGreen>
+        <hp>240</hp>
         <rects>
           <li>(1,1,10,1)</li><li>(12,1,21,1)</li><li>(1,19,21,19)</li>
           <li>(1,2,1,18)</li><li>(21,2,21,18)</li>
           <li>(2,6,10,6)</li><li>(12,6,20,6)</li>
         </rects>
-      </Wall>
+      </Rukaya_FacilityWallGreen>
       <Door><stuff>Steel</stuff><hp>100</hp><positions><li>(11,0,1)</li><li>(11,0,6)</li></positions></Door>
-      <ChunkSlagSteel><positions><li>(3,0,3)</li><li>(18,0,4)</li><li>(4,0,15)</li><li>(18,0,16)</li></positions></ChunkSlagSteel>
+      <!-- 门厅为登记和器材交接区。 -->
+      <AncientLockerBank><relativeRotation>Opposite</relativeRotation><positions>
+        <li>(3,0,2)</li><li>(6,0,2)</li><li>(16,0,2)</li><li>(19,0,2)</li>
+      </positions></AncientLockerBank>
+      <AncientDisplayBank><relativeRotation>Opposite</relativeRotation><positions>
+        <li>(5,0,5)</li><li>(17,0,5)</li>
+      </positions></AncientDisplayBank>
+      <AncientCrate><positions>
+        <li>(3,0,4)</li><li>(4,0,4)</li><li>(18,0,4)</li><li>(20,0,4)</li>
+      </positions></AncientCrate>
+      <AncientLamp><positions>
+        <li>(2,0,5)</li><li>(20,0,5)</li>
+      </positions></AncientLamp>
+      <Table2x2c><stuff>Steel</stuff><hp>60</hp><positions>
+        <li>(8,0,3)</li><li>(14,0,3)</li>
+      </positions></Table2x2c>
+      <Stool><stuff>Steel</stuff><positions>
+        <li>(8,0,5)</li><li>(14,0,5)</li>
+      </positions></Stool>
+      <!-- 设备室的两翼分别用于拆检和记录归档。中央净空容纳不同任务的调查设备。 -->
+      <AncientEquipmentBlocks><positions>
+        <li>(4,0,8)</li><li>(17,0,8)</li>
+      </positions></AncientEquipmentBlocks>
+      <AncientDisplayBank><relativeRotation>Opposite</relativeRotation><positions>
+        <li>(4,0,18)</li><li>(17,0,18)</li>
+      </positions></AncientDisplayBank>
+      <AncientSystemRack><positions>
+        <li>(2,0,12)</li><li>(2,0,16)</li><li>(20,0,12)</li><li>(20,0,16)</li>
+      </positions></AncientSystemRack>
+      <AncientStorageCylinder><positions>
+        <li>(4,0,10)</li><li>(18,0,10)</li><li>(4,0,16)</li><li>(18,0,16)</li>
+      </positions></AncientStorageCylinder>
+      <AncientCrate><positions>
+        <li>(6,0,7)</li><li>(16,0,7)</li><li>(19,0,7)</li><li>(3,0,17)</li><li>(6,0,17)</li><li>(16,0,17)</li>
+        <li>(19,0,17)</li>
+      </positions></AncientCrate>
+      <AncientLamp><positions>
+        <li>(6,0,11)</li><li>(16,0,11)</li><li>(7,0,18)</li><li>(15,0,18)</li>
+      </positions></AncientLamp>
+    </things>
+  </PrefabDef>
+  <PrefabDef MayRequire="Ludeon.RimWorld.Odyssey">
+    <defName>Rukaya_ArchiveRoom_Odyssey</defName>
+    <size>(23,21)</size>
+    <rotations>North</rotations>
+    <things>
+      <!-- 沿墙的研究台与故障控制台搭配凳子和档案柜。 -->
+      <AncientSimpleResearchBench><positions>
+        <li>(4,0,13)</li><li>(18,0,13)</li>
+      </positions></AncientSimpleResearchBench>
+      <Stool><stuff>Steel</stuff><positions>
+        <li>(4,0,12)</li><li>(18,0,12)</li>
+      </positions></Stool>
+      <AncientDestroyedConsoleLarge><relativeRotation>Opposite</relativeRotation><positions>
+        <li>(5,0,15)</li><li>(18,0,15)</li>
+      </positions></AncientDestroyedConsoleLarge>
+      <AncientFilingCabinet><positions>
+        <li>(6,0,18)</li><li>(14,0,18)</li><li>(2,0,14)</li><li>(20,0,14)</li>
+      </positions></AncientFilingCabinet>
     </things>
   </PrefabDef>
 </Defs>

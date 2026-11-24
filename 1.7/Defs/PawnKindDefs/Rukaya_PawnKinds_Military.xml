@@ -782,6 +782,28 @@
     </skills>
   </PawnKindDef>
 
+  <PawnKindDef ParentName="Rukaya_OfficerPawnBase">
+    <defName>Rukaya_Commandant</defName>
+    <label>Rukaya commandant</label>
+    <!-- 中文：卢卡娅司令官 -->
+    <combatPower>160</combatPower>
+    <factionLeader>true</factionLeader>
+    <skills>
+      <li>
+        <skill>Shooting</skill>
+        <range>7~12</range>
+      </li>
+      <li>
+        <skill>Melee</skill>
+        <range>5~10</range>
+      </li>
+      <li>
+        <skill>Social</skill>
+        <range>5~10</range>
+      </li>
+    </skills>
+  </PawnKindDef>
+
   <!-- 军官：日常刷出来的指挥岗位。装备偏好与领袖**完全一致**
        （军官礼服套装 + 决斗剑或制式手枪），但不承担 factionLeader 身份。
        出现位置见 Faction_Rukaya.xml：Combat / Settlement 的

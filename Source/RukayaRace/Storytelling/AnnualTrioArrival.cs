@@ -13,15 +13,21 @@ namespace RukayaRace.Storytelling
     public sealed class AnnualTrioGame : GameComponent
     {
         public const string EventName = "Rukaya_AnnualTrioArrival";
+        private const int FirstArrivalWindow = 2 * GenDate.TicksPerQuadrum;
+        // Leave one day for retries if a colony map or landing spot is temporarily unavailable.
+        private const int FirstArrivalFallbackDelay = FirstArrivalWindow - GenDate.TicksPerDay;
         private readonly AnnualTrioSchedule schedule = new AnnualTrioSchedule();
+        private int firstArrivalStartTick = -1;
+        private bool firstArrivalCompleted;
+        private int nextFallbackAttemptTick;
+        private bool loadedFromSave;
         private bool busy;
         internal bool Delivering => busy;
+        internal bool FirstArrivalPending => firstArrivalStartTick >= 0 && !firstArrivalCompleted;
         public AnnualTrioGame(Game game) { }
 
-        public static bool Eligible => Current.Game != null
-            && (Find.Storyteller?.def?.defName == GalinaCycleGame.StorytellerName
-                || Find.Storyteller?.def?.defName == "Rukaya_Storyteller_ValeriyaDrozdVikhr")
-            && Find.Scenario != null && !Find.Scenario.AllParts.Any(p => p is ScenPart_RukayaKinRelations
+        public static bool Eligible => Current.Game != null && Find.Scenario != null
+            && !Find.Scenario.AllParts.Any(p => p is ScenPart_RukayaKinRelations
                 || p is ScenPart_IncidentBase incident && incident.Incident?.defName == "Rukaya_TrioArrival");
 
         private void UpdateYear()
@@ -29,9 +35,38 @@ namespace RukayaRace.Storytelling
             schedule.RefreshYear(GenDate.YearsPassed);
         }
 
+        public override void StartedNewGame() => ScheduleFirstArrival();
+
+        public override void LoadedGame()
+        {
+            // A newly installed mod has no component data in the save. Older versions
+            // already wrote this component but cannot tell whether a past year had an arrival.
+            if (!loadedFromSave) ScheduleFirstArrival();
+        }
+
+        private void ScheduleFirstArrival()
+        {
+            if (Eligible) firstArrivalStartTick = Find.TickManager.TicksGame;
+        }
+
+        public override void GameComponentTick()
+        {
+            if (!FirstArrivalPending || busy) return;
+            int now = Find.TickManager.TicksGame;
+            if (now - firstArrivalStartTick < FirstArrivalFallbackDelay || now < nextFallbackAttemptTick) return;
+            nextFallbackAttemptTick = now + GenDate.TicksPerHour;
+            if (!Eligible) return;
+            Map map = Find.AnyPlayerHomeMap;
+            if (map == null) return;
+            UpdateYear();
+            if (!schedule.Occurred) TryDeliver(map, null);
+        }
+
         public void AfterIncident(IncidentDef source, IncidentParms original, string letterTitle)
         {
             if (!Eligible || busy || source.defName == EventName) return;
+            // Mid-save installs can cross a game-year boundary during the first two quadrums.
+            if (firstArrivalCompleted && Find.TickManager.TicksGame - firstArrivalStartTick < FirstArrivalWindow) return;
             UpdateYear();
             if (schedule.Occurred) return;
             Map map = original.target as Map;
@@ -44,30 +79,41 @@ namespace RukayaRace.Storytelling
             bool passed = Rand.Chance(chance);
             if (Prefs.DevMode) Log.Message($"[Rukaya AnnualTrio] year={schedule.Year + 1} attempt={schedule.Attempts} chance={chance:P2} source={source.defName} roll={passed}");
             if (!passed) return;
-            IncidentDef arrival = DefDatabase<IncidentDef>.GetNamed(EventName);
-            IncidentParms parms = new IncidentParms { target = map };
             string title = letterTitle.NullOrEmpty() ? source.LabelCap.ToString() : letterTitle;
-            parms.customLetterText = title;
+            TryDeliver(map, title);
+        }
+
+        private void TryDeliver(Map map, string sourceTitle)
+        {
+            IncidentDef arrival = DefDatabase<IncidentDef>.GetNamed(EventName);
+            var parms = new IncidentParms { target = map, customLetterText = sourceTitle };
             busy = true;
-            // Reserve before spawning, so reentrant events cannot create a second group.
-            schedule.Occurred = true;
             try
             {
-                if (!arrival.Worker.TryExecute(parms)) schedule.Occurred = false;
+                arrival.Worker.TryExecute(parms);
             }
             catch (Exception ex)
             {
-                // Spawning may have partially completed. Keep the reservation to avoid duplicates.
-                Log.Error("[Rukaya AnnualTrio] Arrival failed; annual reservation retained to prevent duplicate pods.\n" + ex);
+                Log.Error("[Rukaya AnnualTrio] Arrival failed.\n" + ex);
             }
             finally { busy = false; }
         }
 
+        internal void ReserveArrival()
+        {
+            // Once spawning begins, keep the reservation even if only some pods are spawned.
+            schedule.Occurred = true;
+            if (FirstArrivalPending) firstArrivalCompleted = true;
+        }
+
         public override void ExposeData()
         {
+            if (Scribe.mode == LoadSaveMode.LoadingVars) loadedFromSave = true;
             Scribe_Values.Look(ref schedule.Year, "annualTrioYear", -1);
             Scribe_Values.Look(ref schedule.Attempts, "annualTrioAttempts", 0);
             Scribe_Values.Look(ref schedule.Occurred, "annualTrioOccurred", false);
+            Scribe_Values.Look(ref firstArrivalStartTick, "annualTrioFirstArrivalStartTick", -1);
+            Scribe_Values.Look(ref firstArrivalCompleted, "annualTrioFirstArrivalCompleted", false);
         }
 
         [DebugAction("Rukaya", "Annual trio: log status", allowedGameStates = AllowedGameStates.PlayingOnMap)]
@@ -75,7 +121,7 @@ namespace RukayaRace.Storytelling
         {
             var game = Current.Game.GetComponent<AnnualTrioGame>();
             game.UpdateYear();
-            Log.Message($"[Rukaya AnnualTrio] eligible={Eligible} year={game.schedule.Year + 1} attempts={game.schedule.Attempts} occurred={game.schedule.Occurred}");
+            Log.Message($"[Rukaya AnnualTrio] eligible={Eligible} year={game.schedule.Year + 1} attempts={game.schedule.Attempts} occurred={game.schedule.Occurred} firstArrivalPending={game.FirstArrivalPending} firstArrivalStartTick={game.firstArrivalStartTick}");
         }
     }
 
@@ -143,8 +189,10 @@ namespace RukayaRace.Storytelling
 
         protected override bool TryExecuteWorker(IncidentParms parms)
         {
-            if (!(parms.target is Map map) || !AnnualTrioGame.Eligible
-                || !Current.Game.GetComponent<AnnualTrioGame>().Delivering) return false;
+            if (!(parms.target is Map map) || !AnnualTrioGame.Eligible) return false;
+            var game = Current.Game.GetComponent<AnnualTrioGame>();
+            if (!game.Delivering) return false;
+            bool firstArrival = game.FirstArrivalPending;
             var preset = (IncidentDef_RukayaTrioArrival)DefDatabase<IncidentDef>.GetNamed("Rukaya_TrioArrival");
             var worker = (IncidentWorker_RukayaTrioArrival)preset.Worker;
             IntVec3 spot = DropCellFinder.TradeDropSpot(map);
@@ -156,19 +204,20 @@ namespace RukayaRace.Storytelling
             var contents = new List<Thing>();
             var names = new List<string>();
             float deathChance = RukayaRaceMod.Settings?.trioDeathChance ?? 0.35f;
-            Faction alliance = Find.FactionManager.FirstFactionOfDef(RukayaScenarioDefOf.Rukaya_DrifterAlliance);
+            Faction alliance = firstArrival ? null : Find.FactionManager.FirstFactionOfDef(RukayaScenarioDefOf.Rukaya_DrifterAlliance);
             for (int i = 0; i < count; i++)
             {
                 int index = indices[i];
                 // Decide faction before generation and death, independently for each passenger.
                 Pawn pawn = PawnGenerator.GeneratePawn(new PawnGenerationRequest(preset.pawnKind,
-                    faction: ChooseArrivalFaction(alliance), context: PawnGenerationContext.NonPlayer, tile: map.Tile,
+                    faction: firstArrival ? null : ChooseArrivalFaction(alliance),
+                    context: PawnGenerationContext.NonPlayer, tile: map.Tile,
                     forceGenerateNewPawn: true, allowDead: false, allowDowned: false,
                     fixedGender: Gender.Female, allowPregnant: false));
                 worker.ConfigureCompanion(pawn, index);
-                bool dead = Rand.Chance(deathChance);
+                if (firstArrival && pawn.Dead) continue;
                 Thing cargo = pawn;
-                if (dead)
+                if (!firstArrival && Rand.Chance(deathChance))
                 {
                     pawn.Kill(null);
                     cargo = pawn.Corpse;
@@ -178,12 +227,14 @@ namespace RukayaRace.Storytelling
                 names.Add(preset.firstNames[index]);
             }
             if (contents.Count == 0) return false;
+            game.ReserveArrival();
             // Pass a fresh list: DropPodUtility's own static tempList must not be shared.
             DropPodUtility.DropThingsNear(spot, map, contents, 110, false, false, true, false, false);
-            string sourceTitle = parms.customLetterText.NullOrEmpty() ? def.LabelCap.ToString() : parms.customLetterText;
             // Localize the separator alongside the letter to retain each language's punctuation.
             string passengerNames = string.Join("Rukaya_TrioNameSeparator".Translate().ToString(), names);
-            TaggedString text = def.letterText.Formatted(sourceTitle.Named("EVENT"), passengerNames.Named("PAWNS"));
+            TaggedString text = parms.customLetterText.NullOrEmpty()
+                ? "Rukaya_TrioStandaloneLetter".Translate(passengerNames.Named("PAWNS"))
+                : def.letterText.Formatted(parms.customLetterText.Named("EVENT"), passengerNames.Named("PAWNS"));
             Find.LetterStack.ReceiveLetter(def.letterLabel, text, def.letterDef, new LookTargets(contents));
             if (Prefs.DevMode) Log.Message($"[Rukaya AnnualTrio] delivered={contents.Count} names={string.Join(",", names)}");
             return true;

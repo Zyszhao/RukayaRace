@@ -101,8 +101,7 @@
       </MetalTile>
     </terrain>
     <things>
-      <Wall>
-        <stuff>BlocksGranite</stuff>
+      <Rukaya_FacilityWallGreen>
         <hp>320</hp>
         <rects>
           <li>(22,2,33,2)</li>
@@ -193,7 +192,7 @@
           <li>(38,61,46,61)</li>
           <li>(54,61,64,61)</li>
         </rects>
-      </Wall>
+      </Rukaya_FacilityWallGreen>
       <Door>
         <stuff>Steel</stuff>
         <hp>100</hp>
@@ -235,6 +234,18 @@
           <li>(34,0,38)</li>
         </positions>
       </Rukaya_SAMLauncher_Abandoned>
+      <Rukaya_AncientDecor_SAMLauncherA>
+        <hp>420</hp>
+        <positions>
+          <li>(34,0,21)</li>
+        </positions>
+      </Rukaya_AncientDecor_SAMLauncherA>
+      <Rukaya_AncientDecor_SAMLauncherB>
+        <hp>420</hp>
+        <positions>
+          <li>(34,0,8)</li>
+        </positions>
+      </Rukaya_AncientDecor_SAMLauncherB>
       <Sandbags>
         <stuff>Cloth</stuff>
         <hp>110</hp>
@@ -259,543 +270,433 @@
         </positions>
         <stackCountRange>3</stackCountRange>
       </ComponentIndustrial>
+      <!-- 入口值班区。长桌、短凳与登记终端在两侧成组。 -->
+      <Table2x2c><stuff>Steel</stuff><hp>65</hp><positions>
+        <li>(26,0,6)</li><li>(41,0,6)</li><li>(27,0,10)</li><li>(40,0,10)</li>
+      </positions></Table2x2c>
+      <Stool><stuff>Steel</stuff><positions>
+        <li>(25,0,6)</li><li>(28,0,6)</li><li>(40,0,6)</li><li>(43,0,6)</li><li>(26,0,10)</li><li>(29,0,10)</li>
+        <li>(39,0,10)</li><li>(42,0,10)</li>
+      </positions></Stool>
+      <AncientDisplayBank><relativeRotation>Opposite</relativeRotation><positions>
+        <li>(27,0,12)</li><li>(42,0,12)</li>
+      </positions></AncientDisplayBank>
+      <AncientCrate><positions>
+        <li>(31,0,3)</li><li>(32,0,3)</li><li>(37,0,3)</li><li>(38,0,3)</li><li>(30,0,13)</li>
+      </positions></AncientCrate>
+      <!-- 南侧中庭的列架靠边排布，中央保持通行。 -->
+      <AncientLockerBank><relativeRotation>Clockwise</relativeRotation><positions>
+        <li>(28,0,25)</li><li>(40,0,25)</li>
+      </positions></AncientLockerBank>
+      <AncientEquipmentBlocks><positions>
+        <li>(31,0,24)</li><li>(37,0,24)</li>
+      </positions></AncientEquipmentBlocks>
+      <AncientCrate><positions>
+        <li>(30,0,21)</li><li>(38,0,21)</li><li>(30,0,26)</li><li>(31,0,26)</li><li>(37,0,26)</li><li>(38,0,26)</li>
+      </positions></AncientCrate>
+      <AncientLamp><positions>
+        <li>(29,0,20)</li><li>(39,0,20)</li><li>(33,0,26)</li><li>(35,0,26)</li>
+      </positions></AncientLamp>
+      <!-- 控制台与检修设备围绕发射架，南北通路与两侧门保持畅通。 -->
+      <AncientDisplayBank><relativeRotation>Opposite</relativeRotation><positions>
+        <li>(31,0,46)</li><li>(37,0,46)</li>
+      </positions></AncientDisplayBank>
+      <AncientSystemRack><positions>
+        <li>(29,0,41)</li><li>(39,0,41)</li>
+      </positions></AncientSystemRack>
+      <AncientEquipmentBlocks><positions>
+        <li>(31,0,33)</li><li>(37,0,33)</li>
+      </positions></AncientEquipmentBlocks>
+      <AncientCrate><positions>
+        <li>(30,0,35)</li><li>(31,0,35)</li><li>(37,0,35)</li><li>(38,0,35)</li><li>(30,0,45)</li><li>(38,0,45)</li>
+      </positions></AncientCrate>
+      <AncientLamp><positions>
+        <li>(30,0,40)</li><li>(38,0,40)</li><li>(33,0,45)</li><li>(35,0,45)</li>
+      </positions></AncientLamp>
+      <!-- 餐厨、维修、通信和后勤各自补齐成套设施。 -->
+      <AncientKitchenSink><positions>
+        <li>(10,0,27)</li><li>(5,0,35)</li>
+      </positions></AncientKitchenSink>
+      <AncientStove><position>(6,0,29)</position></AncientStove>
+      <AncientStorageCylinder><positions>
+        <li>(8,0,34)</li><li>(15,0,30)</li><li>(19,0,30)</li><li>(49,0,56)</li><li>(53,0,56)</li><li>(58,0,56)</li>
+      </positions></AncientStorageCylinder>
+      <Table2x2c><stuff>Steel</stuff><hp>60</hp><positions>
+        <li>(16,0,34)</li><li>(19,0,34)</li><li>(51,0,44)</li><li>(57,0,44)</li><li>(26,0,55)</li><li>(38,0,55)</li>
+      </positions></Table2x2c>
+      <Stool><stuff>Steel</stuff><positions>
+        <li>(16,0,33)</li><li>(19,0,33)</li><li>(26,0,54)</li><li>(30,0,54)</li><li>(38,0,54)</li><li>(42,0,54)</li>
+        <li>(50,0,44)</li><li>(53,0,44)</li><li>(56,0,44)</li><li>(59,0,44)</li>
+      </positions></Stool>
+      <AncientEquipmentBlocks><positions>
+        <li>(17,0,53)</li><li>(61,0,44)</li>
+      </positions></AncientEquipmentBlocks>
+      <AncientSystemRack><positions>
+        <li>(10,0,57)</li><li>(19,0,57)</li><li>(56,0,58)</li><li>(60,0,58)</li>
+      </positions></AncientSystemRack>
+      <AncientLockerBank><relativeRotation>Opposite</relativeRotation><positions>
+        <li>(26,0,57)</li><li>(51,0,53)</li><li>(58,0,53)</li>
+      </positions></AncientLockerBank>
+      <AncientLamp><positions>
+        <li>(8,0,56)</li><li>(16,0,56)</li><li>(18,0,44)</li>
+      </positions></AncientLamp>
+      <!-- 西翼宿舍和医疗间补成床铺、储柜、医务设备的组合。 -->
+      <AncientBed><relativeRotation>Opposite</relativeRotation><positions>
+        <li>(5,0,23)</li><li>(7,0,23)</li><li>(9,0,23)</li><li>(14,0,23)</li><li>(16,0,23)</li><li>(18,0,23)</li>
+      </positions></AncientBed>
+      <AncientOperatingTable><relativeRotation>Opposite</relativeRotation><positions>
+        <li>(5,0,40)</li><li>(7,0,40)</li>
+      </positions></AncientOperatingTable>
+      <AncientStorageCylinder><positions>
+        <li>(5,0,46)</li><li>(18,0,46)</li>
+      </positions></AncientStorageCylinder>
     </things>
   </PrefabDef>
   <PrefabDef>
     <defName>Rukaya_AbandonedMissileSite_Workshop</defName>
-    <size>(69,63)</size>
+    <size>(74,47)</size>
     <rotations>North</rotations>
     <terrain>
-      <Concrete>
-        <rects>
-          <li>(22,2,46,2)</li>
-          <li>(4,3,22,3)</li>
-          <li>(46,3,46,3)</li>
-          <li>(46,4,63,4)</li>
-          <li>(4,4,4,6)</li>
-          <li>(2,7,4,7)</li>
-          <li>(63,5,63,8)</li>
-          <li>(63,9,66,9)</li>
-          <li>(22,4,22,13)</li>
-          <li>(46,5,46,13)</li>
-          <li>(2,8,2,13)</li>
-          <li>(66,10,66,13)</li>
-          <li>(2,14,66,14)</li>
-          <li>(12,15,12,20)</li>
-          <li>(22,15,22,20)</li>
-          <li>(46,15,46,20)</li>
-          <li>(66,15,66,20)</li>
-          <li>(12,21,22,21)</li>
-          <li>(46,21,66,21)</li>
-          <li>(2,15,2,25)</li>
-          <li>(22,22,22,25)</li>
-          <li>(2,26,22,26)</li>
-          <li>(46,22,46,27)</li>
-          <li>(55,22,55,27)</li>
-          <li>(66,22,66,27)</li>
-          <li>(46,28,66,28)</li>
-          <li>(4,27,4,36)</li>
-          <li>(13,27,13,36)</li>
-          <li>(22,27,22,36)</li>
-          <li>(46,29,46,37)</li>
-          <li>(59,29,59,37)</li>
-          <li>(66,29,66,37)</li>
-          <li>(2,37,22,37)</li>
-          <li>(46,38,66,38)</li>
-          <li>(27,15,41,47)</li>
-          <li>(2,38,2,47)</li>
-          <li>(14,38,14,47)</li>
-          <li>(22,38,22,47)</li>
-          <li>(46,39,46,47)</li>
-          <li>(66,39,66,47)</li>
-          <li>(2,48,66,48)</li>
-          <li>(7,49,7,51)</li>
-          <li>(2,52,7,52)</li>
-          <li>(34,49,34,56)</li>
-          <li>(46,49,46,57)</li>
-          <li>(34,57,38,57)</li>
-          <li>(46,58,54,58)</li>
-          <li>(22,49,22,59)</li>
-          <li>(2,53,2,59)</li>
-          <li>(34,58,34,59)</li>
-          <li>(64,49,64,60)</li>
-          <li>(38,58,38,60)</li>
-          <li>(46,59,46,60)</li>
-          <li>(54,59,54,60)</li>
-          <li>(2,60,34,60)</li>
-          <li>(38,61,46,61)</li>
-          <li>(54,61,64,61)</li>
-        </rects>
-      </Concrete>
-      <PavedTile>
-        <rects>
-          <li>(5,4,21,7)</li>
-          <li>(23,3,45,13)</li>
-          <li>(3,8,21,13)</li>
-          <li>(13,15,21,20)</li>
-          <li>(3,15,11,21)</li>
-          <li>(3,22,21,25)</li>
-          <li>(56,22,65,27)</li>
-          <li>(5,27,12,36)</li>
-          <li>(14,27,21,36)</li>
-          <li>(47,29,58,37)</li>
-          <li>(23,15,26,47)</li>
-          <li>(42,15,45,47)</li>
-          <li>(3,38,13,47)</li>
-          <li>(15,38,21,47)</li>
-          <li>(35,49,45,56)</li>
-          <li>(47,49,63,57)</li>
-          <li>(39,57,45,60)</li>
-          <li>(55,58,63,60)</li>
-        </rects>
-      </PavedTile>
-      <MetalTile>
-        <rects>
-          <li>(47,5,62,9)</li>
-          <li>(47,10,65,13)</li>
-          <li>(47,15,65,20)</li>
-          <li>(47,22,54,27)</li>
-          <li>(60,29,65,37)</li>
-          <li>(47,39,65,47)</li>
-          <li>(8,49,21,52)</li>
-          <li>(23,49,33,59)</li>
-          <li>(3,53,21,59)</li>
-        </rects>
-      </MetalTile>
+      <Concrete><rects>
+        <li>(39,0,45,2)</li><li>(34,2,38,2)</li><li>(46,2,51,2)</li><li>(34,3,34,9)</li><li>(51,3,51,43)</li>
+        <li>(10,6,27,9)</li><li>(60,8,72,11)</li><li>(28,9,33,9)</li><li>(35,9,50,9)</li><li>(10,10,10,17)</li>
+        <li>(27,10,27,43)</li><li>(52,12,70,12)</li><li>(70,13,70,32)</li><li>(7,17,9,17)</li><li>(11,17,26,17)</li>
+        <li>(7,18,7,34)</li><li>(17,18,17,34)</li><li>(52,21,69,21)</li><li>(52,32,69,32)</li><li>(64,33,64,40)</li>
+        <li>(8,34,16,34)</li><li>(18,34,26,34)</li><li>(28,34,50,34)</li><li>(12,35,12,43)</li><li>(52,40,63,40)</li>
+        <li>(13,43,26,43)</li><li>(28,43,50,43)</li>
+      </rects></Concrete>
+      <PavedTile><rects>
+        <li>(35,3,50,8)</li><li>(52,13,69,20)</li><li>(8,18,16,33)</li><li>(52,33,63,39)</li><li>(13,35,26,42)</li>
+        <li>(28,35,50,42)</li>
+      </rects></PavedTile>
+      <MetalTile><rects>
+        <li>(11,10,26,16)</li><li>(28,10,50,33)</li><li>(18,18,26,33)</li><li>(52,22,69,31)</li>
+      </rects></MetalTile>
     </terrain>
     <things>
-      <Wall>
-        <stuff>BlocksGranite</stuff>
-        <hp>320</hp>
-        <rects>
-          <li>(22,2,33,2)</li>
-          <li>(35,2,46,2)</li>
-          <li>(4,3,22,3)</li>
-          <li>(46,3,46,3)</li>
-          <li>(46,4,63,4)</li>
-          <li>(4,4,4,6)</li>
-          <li>(22,4,22,7)</li>
-          <li>(2,7,4,7)</li>
-          <li>(63,5,63,8)</li>
-          <li>(46,5,46,9)</li>
-          <li>(63,9,66,9)</li>
-          <li>(66,10,66,11)</li>
-          <li>(2,8,2,13)</li>
-          <li>(22,9,22,13)</li>
-          <li>(46,11,46,13)</li>
-          <li>(66,13,66,13)</li>
-          <li>(2,14,24,14)</li>
-          <li>(26,14,33,14)</li>
-          <li>(35,14,42,14)</li>
-          <li>(44,14,66,14)</li>
-          <li>(12,15,12,17)</li>
-          <li>(22,15,22,17)</li>
-          <li>(46,15,46,17)</li>
-          <li>(27,15,27,20)</li>
-          <li>(41,15,41,20)</li>
-          <li>(66,15,66,20)</li>
-          <li>(12,19,12,20)</li>
-          <li>(22,19,22,20)</li>
-          <li>(46,19,46,20)</li>
-          <li>(12,21,22,21)</li>
-          <li>(46,21,50,21)</li>
-          <li>(52,21,66,21)</li>
-          <li>(55,22,55,23)</li>
-          <li>(46,22,46,24)</li>
-          <li>(2,15,2,25)</li>
-          <li>(22,22,22,25)</li>
-          <li>(2,26,22,26)</li>
-          <li>(27,22,27,27)</li>
-          <li>(41,22,41,27)</li>
-          <li>(66,22,66,27)</li>
-          <li>(55,25,55,27)</li>
-          <li>(46,26,46,27)</li>
-          <li>(27,28,33,28)</li>
-          <li>(35,28,41,28)</li>
-          <li>(46,28,66,28)</li>
-          <li>(22,27,22,30)</li>
-          <li>(13,27,13,31)</li>
-          <li>(46,29,46,31)</li>
-          <li>(59,29,59,34)</li>
-          <li>(4,27,4,36)</li>
-          <li>(22,32,22,36)</li>
-          <li>(13,33,13,36)</li>
-          <li>(27,29,27,37)</li>
-          <li>(41,29,41,37)</li>
-          <li>(66,29,66,37)</li>
-          <li>(46,33,46,37)</li>
-          <li>(59,36,59,37)</li>
-          <li>(2,37,22,37)</li>
-          <li>(46,38,66,38)</li>
-          <li>(14,38,14,41)</li>
-          <li>(46,39,46,42)</li>
-          <li>(22,38,22,43)</li>
-          <li>(2,38,2,47)</li>
-          <li>(27,39,27,47)</li>
-          <li>(41,39,41,47)</li>
-          <li>(66,39,66,47)</li>
-          <li>(14,43,14,47)</li>
-          <li>(46,44,46,47)</li>
-          <li>(22,45,22,47)</li>
-          <li>(2,48,24,48)</li>
-          <li>(26,48,30,48)</li>
-          <li>(32,48,42,48)</li>
-          <li>(44,48,66,48)</li>
-          <li>(7,49,7,51)</li>
-          <li>(2,52,7,52)</li>
-          <li>(22,49,22,53)</li>
-          <li>(34,49,34,53)</li>
-          <li>(46,49,46,53)</li>
-          <li>(34,55,34,56)</li>
-          <li>(46,55,46,57)</li>
-          <li>(34,57,38,57)</li>
-          <li>(46,58,54,58)</li>
-          <li>(2,53,2,59)</li>
-          <li>(22,55,22,59)</li>
-          <li>(34,58,34,59)</li>
-          <li>(64,49,64,60)</li>
-          <li>(38,58,38,60)</li>
-          <li>(46,59,46,60)</li>
-          <li>(54,59,54,60)</li>
-          <li>(2,60,34,60)</li>
-          <li>(38,61,46,61)</li>
-          <li>(54,61,64,61)</li>
-        </rects>
-      </Wall>
-      <Door>
-        <stuff>Steel</stuff>
-        <hp>100</hp>
-        <positions>
-          <li>(34,0,2)</li>
-          <li>(22,0,8)</li>
-          <li>(46,0,10)</li>
-          <li>(66,0,12)</li>
-          <li>(25,0,14)</li>
-          <li>(34,0,14)</li>
-          <li>(43,0,14)</li>
-          <li>(27,0,21)</li>
-          <li>(41,0,21)</li>
-          <li>(34,0,28)</li>
-          <li>(13,0,32)</li>
-          <li>(22,0,31)</li>
-          <li>(27,0,38)</li>
-          <li>(41,0,38)</li>
-          <li>(22,0,54)</li>
-          <li>(25,0,48)</li>
-          <li>(31,0,48)</li>
-          <li>(34,0,54)</li>
-          <li>(43,0,48)</li>
-          <li>(46,0,54)</li>
-          <li>(46,0,43)</li>
-          <li>(12,0,18)</li>
-          <li>(22,0,18)</li>
-          <li>(14,0,42)</li>
-          <li>(22,0,44)</li>
-          <li>(51,0,21)</li>
-          <li>(55,0,24)</li>
-          <li>(46,0,18)</li>
-          <li>(46,0,25)</li>
-          <li>(59,0,35)</li>
-          <li>(46,0,32)</li>
-        </positions>
-      </Door>
-      <Rukaya_SAMLauncher_Abandoned>
-        <hp>480</hp>
-        <positions>
-          <li>(34,0,38)</li>
-        </positions>
-      </Rukaya_SAMLauncher_Abandoned>
-      <Sandbags>
-        <stuff>Cloth</stuff>
-        <hp>110</hp>
-        <rects>
-          <li>(29,18,31,18)</li>
-          <li>(37,18,39,18)</li>
-          <li>(29,31,31,31)</li>
-          <li>(37,31,39,31)</li>
-          <li>(29,44,31,44)</li>
-          <li>(37,44,39,44)</li>
-        </rects>
-      </Sandbags>
-      <Steel>
-        <positions>
-          <li>(61,0,33)</li>
-        </positions>
-        <stackCountRange>30</stackCountRange>
-      </Steel>
-      <ComponentIndustrial>
-        <positions>
-          <li>(63,0,33)</li>
-        </positions>
-        <stackCountRange>3</stackCountRange>
-      </ComponentIndustrial>
+      <Rukaya_FacilityWallGreen><hp>320</hp><rects>
+        <li>(34,2,41,2)</li><li>(43,2,51,2)</li><li>(34,3,34,9)</li><li>(51,3,51,16)</li><li>(10,9,18,9)</li>
+        <li>(20,9,33,9)</li><li>(35,9,41,9)</li><li>(43,9,50,9)</li><li>(10,10,10,17)</li><li>(27,10,27,12)</li>
+        <li>(52,12,70,12)</li><li>(70,13,70,32)</li><li>(27,14,27,25)</li><li>(7,17,9,17)</li><li>(11,17,13,17)</li>
+        <li>(15,17,26,17)</li><li>(7,18,7,34)</li><li>(17,18,17,23)</li><li>(51,18,51,27)</li><li>(52,21,60,21)</li>
+        <li>(62,21,69,21)</li><li>(17,25,17,34)</li><li>(27,27,27,37)</li><li>(51,29,51,43)</li><li>(52,32,57,32)</li>
+        <li>(59,32,69,32)</li><li>(64,33,64,40)</li><li>(8,34,16,34)</li><li>(18,34,19,34)</li><li>(21,34,26,34)</li>
+        <li>(28,34,40,34)</li><li>(42,34,50,34)</li><li>(12,35,12,43)</li><li>(27,39,27,43)</li><li>(52,40,63,40)</li>
+        <li>(13,43,26,43)</li><li>(28,43,50,43)</li>
+      </rects></Rukaya_FacilityWallGreen>
+      <Door><stuff>Steel</stuff><hp>100</hp><positions>
+        <li>(42,0,2)</li><li>(42,0,9)</li><li>(19,0,9)</li><li>(27,0,13)</li><li>(14,0,17)</li>
+        <li>(17,0,24)</li><li>(27,0,26)</li><li>(41,0,34)</li><li>(20,0,34)</li><li>(27,0,38)</li>
+        <li>(51,0,17)</li><li>(51,0,28)</li><li>(61,0,21)</li><li>(58,0,32)</li>
+      </positions></Door>
+      <Rukaya_SAMLauncher_Abandoned><hp>480</hp><position>(39,0,25)</position></Rukaya_SAMLauncher_Abandoned>
+      <Rukaya_AncientDecor_SAMLauncherA><hp>420</hp><position>(39,0,16)</position></Rukaya_AncientDecor_SAMLauncherA>
+      <Rukaya_AncientDecor_SAMLauncherB><hp>420</hp><position>(44,0,25)</position></Rukaya_AncientDecor_SAMLauncherB>
+      <!-- 收货门厅与动力房。 -->
+      <AncientLockerBank><relativeRotation>Opposite</relativeRotation><positions>
+        <li>(36,0,3)</li><li>(39,0,3)</li><li>(48,0,3)</li>
+      </positions></AncientLockerBank>
+      <AncientDisplayBank><relativeRotation>Opposite</relativeRotation><positions>
+        <li>(36,0,8)</li><li>(48,0,8)</li>
+      </positions></AncientDisplayBank>
+      <AncientCrate><positions>
+        <li>(35,0,6)</li><li>(36,0,6)</li><li>(49,0,6)</li><li>(50,0,6)</li>
+      </positions></AncientCrate>
+      <AncientGenerator><positions>
+        <li>(12,0,15)</li><li>(16,0,15)</li><li>(23,0,15)</li>
+      </positions></AncientGenerator>
+      <AncientSystemRack><positions>
+        <li>(26,0,11)</li><li>(26,0,15)</li>
+      </positions></AncientSystemRack>
+      <AncientBarrel><positions>
+        <li>(11,0,10)</li><li>(12,0,10)</li><li>(14,0,10)</li><li>(15,0,10)</li><li>(25,0,16)</li>
+      </positions></AncientBarrel>
+      <AncientLamp><positions>
+        <li>(24,0,11)</li><li>(39,0,6)</li><li>(46,0,6)</li>
+      </positions></AncientLamp>
+      <!-- 西翼零件库与拆检工位。 -->
+      <AncientStorageCylinder><relativeRotation>Clockwise</relativeRotation><positions>
+        <li>(8,0,20)</li><li>(8,0,23)</li><li>(8,0,27)</li><li>(8,0,30)</li><li>(15,0,20)</li>
+        <li>(15,0,29)</li>
+      </positions></AncientStorageCylinder>
+      <AncientCrate><positions>
+        <li>(9,0,18)</li><li>(10,0,18)</li><li>(11,0,18)</li><li>(15,0,18)</li><li>(16,0,18)</li>
+        <li>(9,0,33)</li><li>(11,0,33)</li><li>(14,0,33)</li><li>(15,0,33)</li>
+      </positions></AncientCrate>
+      <AncientEquipmentBlocks><positions>
+        <li>(21,0,19)</li><li>(22,0,30)</li>
+      </positions></AncientEquipmentBlocks>
+      <AncientSystemRack><positions>
+        <li>(18,0,22)</li><li>(18,0,30)</li><li>(26,0,20)</li><li>(26,0,31)</li>
+      </positions></AncientSystemRack>
+      <AncientCrate><positions>
+        <li>(19,0,27)</li><li>(20,0,27)</li><li>(22,0,27)</li><li>(24,0,27)</li>
+      </positions></AncientCrate>
+      <AncientLamp><positions>
+        <li>(9,0,28)</li><li>(25,0,28)</li>
+      </positions></AncientLamp>
+      <!-- 试车大厅。中央净空，两侧是设备列与观察台。 -->
+      <AncientMachine><positions>
+        <li>(32,0,12)</li><li>(47,0,12)</li><li>(32,0,31)</li><li>(47,0,31)</li>
+      </positions></AncientMachine>
+      <AncientEquipmentBlocks><positions>
+        <li>(31,0,19)</li><li>(46,0,19)</li><li>(30,0,27)</li><li>(47,0,27)</li>
+      </positions></AncientEquipmentBlocks>
+      <AncientDisplayBank><relativeRotation>Opposite</relativeRotation><positions>
+        <li>(36,0,33)</li><li>(44,0,33)</li>
+      </positions></AncientDisplayBank>
+      <AncientSystemRack><positions>
+        <li>(28,0,17)</li><li>(28,0,22)</li><li>(28,0,30)</li><li>(50,0,22)</li><li>(50,0,31)</li>
+      </positions></AncientSystemRack>
+      <AncientStorageCylinder><positions>
+        <li>(32,0,15)</li><li>(47,0,15)</li><li>(31,0,23)</li><li>(47,0,23)</li>
+      </positions></AncientStorageCylinder>
+      <AncientCrate><positions>
+        <li>(34,0,21)</li><li>(44,0,21)</li><li>(35,0,29)</li><li>(44,0,29)</li>
+      </positions></AncientCrate>
+      <AncientLamp><positions>
+        <li>(35,0,16)</li><li>(45,0,16)</li><li>(37,0,28)</li><li>(41,0,28)</li>
+      </positions></AncientLamp>
+      <!-- 东翼货站、重型器材仓与调度室。 -->
+      <AncientLargeContainer><positions>
+        <li>(56,0,26)</li><li>(64,0,26)</li>
+      </positions></AncientLargeContainer>
+      <AncientEquipmentBlocks><positions>
+        <li>(55,0,14)</li><li>(65,0,14)</li>
+      </positions></AncientEquipmentBlocks>
+      <AncientStorageCylinder><positions>
+        <li>(54,0,19)</li><li>(57,0,19)</li><li>(65,0,19)</li><li>(68,0,19)</li><li>(54,0,30)</li>
+        <li>(59,0,30)</li><li>(67,0,30)</li>
+      </positions></AncientStorageCylinder>
+      <AncientCrate><positions>
+        <li>(52,0,22)</li><li>(53,0,22)</li><li>(57,0,22)</li><li>(66,0,22)</li><li>(67,0,22)</li>
+        <li>(69,0,22)</li><li>(53,0,31)</li><li>(54,0,31)</li><li>(61,0,31)</li><li>(63,0,31)</li>
+        <li>(68,0,31)</li>
+      </positions></AncientCrate>
+      <AncientDisplayBank><relativeRotation>Opposite</relativeRotation><positions>
+        <li>(54,0,39)</li><li>(61,0,39)</li>
+      </positions></AncientDisplayBank>
+      <AncientLockerBank><relativeRotation>Opposite</relativeRotation><positions>
+        <li>(54,0,33)</li><li>(62,0,33)</li>
+      </positions></AncientLockerBank>
+      <Table2x2c><stuff>Steel</stuff><hp>75</hp><positions>
+        <li>(54,0,35)</li><li>(61,0,35)</li>
+      </positions></Table2x2c>
+      <Stool><stuff>Steel</stuff><hp>75</hp><positions>
+        <li>(53,0,35)</li><li>(56,0,35)</li><li>(60,0,35)</li><li>(63,0,35)</li>
+      </positions></Stool>
+      <AncientLamp><positions>
+        <li>(52,0,38)</li><li>(63,0,38)</li>
+      </positions></AncientLamp>
+      <!-- 北侧返修库和质检控制室。 -->
+      <AncientMachine><positions>
+        <li>(16,0,40)</li><li>(23,0,40)</li>
+      </positions></AncientMachine>
+      <AncientCrate><positions>
+        <li>(14,0,35)</li><li>(15,0,35)</li><li>(23,0,35)</li><li>(25,0,35)</li><li>(14,0,42)</li>
+        <li>(21,0,42)</li><li>(25,0,42)</li>
+      </positions></AncientCrate>
+      <AncientEquipmentBlocks><positions>
+        <li>(30,0,41)</li><li>(47,0,41)</li>
+      </positions></AncientEquipmentBlocks>
+      <AncientDisplayBank><relativeRotation>Opposite</relativeRotation><positions>
+        <li>(35,0,42)</li><li>(40,0,42)</li>
+      </positions></AncientDisplayBank>
+      <AncientSystemRack><positions>
+        <li>(28,0,36)</li><li>(50,0,36)</li>
+      </positions></AncientSystemRack>
+      <AncientLamp><positions>
+        <li>(33,0,40)</li><li>(46,0,40)</li>
+      </positions></AncientLamp>
+      <Table2x2c><stuff>Steel</stuff><hp>75</hp><positions>
+        <li>(35,0,37)</li><li>(45,0,37)</li>
+      </positions></Table2x2c>
+      <Stool><stuff>Steel</stuff><hp>75</hp><positions>
+        <li>(34,0,37)</li><li>(37,0,37)</li><li>(44,0,37)</li><li>(47,0,37)</li>
+      </positions></Stool>
     </things>
   </PrefabDef>
   <PrefabDef>
     <defName>Rukaya_AbandonedMissileSite_Barracks</defName>
-    <size>(69,63)</size>
+    <size>(59,65)</size>
     <rotations>North</rotations>
     <terrain>
-      <Concrete>
-        <rects>
-          <li>(22,2,46,2)</li>
-          <li>(4,3,22,3)</li>
-          <li>(46,3,46,3)</li>
-          <li>(46,4,63,4)</li>
-          <li>(4,4,4,6)</li>
-          <li>(2,7,4,7)</li>
-          <li>(63,5,63,8)</li>
-          <li>(63,9,66,9)</li>
-          <li>(22,4,22,13)</li>
-          <li>(46,5,46,13)</li>
-          <li>(2,8,2,13)</li>
-          <li>(66,10,66,13)</li>
-          <li>(2,14,66,14)</li>
-          <li>(2,15,2,19)</li>
-          <li>(11,15,11,19)</li>
-          <li>(56,15,56,20)</li>
-          <li>(66,15,66,20)</li>
-          <li>(2,20,11,20)</li>
-          <li>(56,21,66,21)</li>
-          <li>(22,15,22,25)</li>
-          <li>(2,21,2,25)</li>
-          <li>(11,21,11,25)</li>
-          <li>(2,26,22,26)</li>
-          <li>(46,15,46,27)</li>
-          <li>(56,22,56,27)</li>
-          <li>(66,22,66,27)</li>
-          <li>(46,28,66,28)</li>
-          <li>(4,27,4,36)</li>
-          <li>(13,27,13,36)</li>
-          <li>(22,27,22,36)</li>
-          <li>(46,29,46,37)</li>
-          <li>(66,29,66,37)</li>
-          <li>(2,37,22,37)</li>
-          <li>(46,38,66,38)</li>
-          <li>(2,38,2,44)</li>
-          <li>(2,45,6,45)</li>
-          <li>(27,15,41,47)</li>
-          <li>(22,38,22,47)</li>
-          <li>(46,39,46,47)</li>
-          <li>(66,39,66,47)</li>
-          <li>(6,46,6,47)</li>
-          <li>(6,48,66,48)</li>
-          <li>(7,49,7,51)</li>
-          <li>(2,52,7,52)</li>
-          <li>(34,49,34,56)</li>
-          <li>(46,49,46,57)</li>
-          <li>(34,57,38,57)</li>
-          <li>(46,58,54,58)</li>
-          <li>(22,49,22,59)</li>
-          <li>(2,53,2,59)</li>
-          <li>(34,58,34,59)</li>
-          <li>(64,49,64,60)</li>
-          <li>(38,58,38,60)</li>
-          <li>(46,59,46,60)</li>
-          <li>(54,59,54,60)</li>
-          <li>(2,60,34,60)</li>
-          <li>(38,61,46,61)</li>
-          <li>(54,61,64,61)</li>
-        </rects>
-      </Concrete>
-      <PavedTile>
-        <rects>
-          <li>(5,4,21,7)</li>
-          <li>(23,3,45,13)</li>
-          <li>(3,8,21,13)</li>
-          <li>(3,15,10,19)</li>
-          <li>(12,15,21,25)</li>
-          <li>(3,21,10,25)</li>
-          <li>(57,22,65,27)</li>
-          <li>(5,27,12,36)</li>
-          <li>(14,27,21,36)</li>
-          <li>(47,29,65,37)</li>
-          <li>(3,38,21,44)</li>
-          <li>(23,15,26,47)</li>
-          <li>(42,15,45,47)</li>
-          <li>(7,45,21,47)</li>
-          <li>(35,49,45,56)</li>
-          <li>(47,49,63,57)</li>
-          <li>(39,57,45,60)</li>
-          <li>(55,58,63,60)</li>
-        </rects>
-      </PavedTile>
-      <MetalTile>
-        <rects>
-          <li>(47,5,62,9)</li>
-          <li>(47,10,65,13)</li>
-          <li>(57,15,65,20)</li>
-          <li>(47,15,55,27)</li>
-          <li>(47,39,65,47)</li>
-          <li>(8,49,21,52)</li>
-          <li>(23,49,33,59)</li>
-          <li>(3,53,21,59)</li>
-        </rects>
-      </MetalTile>
+      <Concrete><rects>
+        <li>(40,0,46,2)</li><li>(33,2,39,2)</li><li>(47,2,54,2)</li><li>(33,3,33,10)</li><li>(54,3,54,17)</li>
+        <li>(4,7,26,7)</li><li>(4,8,4,45)</li><li>(16,8,16,61)</li><li>(26,8,26,45)</li><li>(27,10,32,10)</li>
+        <li>(34,10,53,10)</li><li>(5,17,15,17)</li><li>(17,17,25,45)</li><li>(27,17,53,17)</li><li>(55,17,55,45)</li>
+        <li>(27,18,43,45)</li><li>(5,29,15,29)</li><li>(44,30,54,30)</li><li>(5,45,15,45)</li><li>(44,45,54,45)</li>
+        <li>(28,46,28,61)</li><li>(46,46,46,61)</li><li>(54,46,54,61)</li><li>(17,61,27,61)</li><li>(29,61,45,61)</li>
+        <li>(47,61,53,61)</li>
+      </rects></Concrete>
+      <PavedTile><rects>
+        <li>(34,3,53,9)</li><li>(5,8,15,16)</li><li>(27,11,53,16)</li><li>(5,18,15,28)</li><li>(44,18,54,29)</li>
+        <li>(5,30,15,44)</li><li>(44,31,54,44)</li><li>(17,46,27,60)</li><li>(47,46,53,60)</li>
+      </rects></PavedTile>
+      <MetalTile><rects>
+        <li>(17,8,25,16)</li><li>(29,46,45,60)</li>
+      </rects></MetalTile>
     </terrain>
     <things>
-      <Wall>
-        <stuff>BlocksGranite</stuff>
-        <hp>320</hp>
-        <rects>
-          <li>(22,2,33,2)</li>
-          <li>(35,2,46,2)</li>
-          <li>(4,3,22,3)</li>
-          <li>(46,3,46,3)</li>
-          <li>(46,4,63,4)</li>
-          <li>(4,4,4,6)</li>
-          <li>(22,4,22,7)</li>
-          <li>(2,7,4,7)</li>
-          <li>(63,5,63,8)</li>
-          <li>(46,5,46,9)</li>
-          <li>(63,9,66,9)</li>
-          <li>(66,10,66,11)</li>
-          <li>(2,8,2,13)</li>
-          <li>(22,9,22,13)</li>
-          <li>(46,11,46,13)</li>
-          <li>(66,13,66,13)</li>
-          <li>(2,14,24,14)</li>
-          <li>(26,14,33,14)</li>
-          <li>(35,14,42,14)</li>
-          <li>(44,14,66,14)</li>
-          <li>(11,15,11,16)</li>
-          <li>(56,15,56,17)</li>
-          <li>(2,15,2,19)</li>
-          <li>(22,15,22,19)</li>
-          <li>(46,15,46,19)</li>
-          <li>(11,18,11,19)</li>
-          <li>(27,15,27,20)</li>
-          <li>(41,15,41,20)</li>
-          <li>(66,15,66,20)</li>
-          <li>(56,19,56,20)</li>
-          <li>(2,20,11,20)</li>
-          <li>(56,21,66,21)</li>
-          <li>(11,21,11,22)</li>
-          <li>(56,22,56,23)</li>
-          <li>(2,21,2,25)</li>
-          <li>(22,21,22,25)</li>
-          <li>(11,24,11,25)</li>
-          <li>(2,26,22,26)</li>
-          <li>(46,21,46,27)</li>
-          <li>(27,22,27,27)</li>
-          <li>(41,22,41,27)</li>
-          <li>(66,22,66,27)</li>
-          <li>(56,25,56,27)</li>
-          <li>(27,28,33,28)</li>
-          <li>(35,28,41,28)</li>
-          <li>(46,28,66,28)</li>
-          <li>(22,27,22,30)</li>
-          <li>(13,27,13,31)</li>
-          <li>(46,29,46,31)</li>
-          <li>(4,27,4,36)</li>
-          <li>(22,32,22,36)</li>
-          <li>(13,33,13,36)</li>
-          <li>(27,29,27,37)</li>
-          <li>(41,29,41,37)</li>
-          <li>(66,29,66,37)</li>
-          <li>(46,33,46,37)</li>
-          <li>(2,37,22,37)</li>
-          <li>(46,38,66,38)</li>
-          <li>(22,38,22,42)</li>
-          <li>(46,39,46,42)</li>
-          <li>(2,38,2,44)</li>
-          <li>(2,45,6,45)</li>
-          <li>(27,39,27,47)</li>
-          <li>(41,39,41,47)</li>
-          <li>(66,39,66,47)</li>
-          <li>(22,44,22,47)</li>
-          <li>(46,44,46,47)</li>
-          <li>(6,46,6,47)</li>
-          <li>(6,48,24,48)</li>
-          <li>(26,48,30,48)</li>
-          <li>(32,48,42,48)</li>
-          <li>(44,48,66,48)</li>
-          <li>(7,49,7,51)</li>
-          <li>(2,52,7,52)</li>
-          <li>(22,49,22,53)</li>
-          <li>(34,49,34,53)</li>
-          <li>(46,49,46,53)</li>
-          <li>(34,55,34,56)</li>
-          <li>(46,55,46,57)</li>
-          <li>(34,57,38,57)</li>
-          <li>(46,58,54,58)</li>
-          <li>(2,53,2,59)</li>
-          <li>(22,55,22,59)</li>
-          <li>(34,58,34,59)</li>
-          <li>(64,49,64,60)</li>
-          <li>(38,58,38,60)</li>
-          <li>(46,59,46,60)</li>
-          <li>(54,59,54,60)</li>
-          <li>(2,60,34,60)</li>
-          <li>(38,61,46,61)</li>
-          <li>(54,61,64,61)</li>
-        </rects>
-      </Wall>
-      <Door>
-        <stuff>Steel</stuff>
-        <hp>100</hp>
-        <positions>
-          <li>(34,0,2)</li>
-          <li>(22,0,8)</li>
-          <li>(46,0,10)</li>
-          <li>(66,0,12)</li>
-          <li>(25,0,14)</li>
-          <li>(34,0,14)</li>
-          <li>(43,0,14)</li>
-          <li>(27,0,21)</li>
-          <li>(41,0,21)</li>
-          <li>(34,0,28)</li>
-          <li>(13,0,32)</li>
-          <li>(22,0,31)</li>
-          <li>(27,0,38)</li>
-          <li>(41,0,38)</li>
-          <li>(22,0,54)</li>
-          <li>(25,0,48)</li>
-          <li>(31,0,48)</li>
-          <li>(34,0,54)</li>
-          <li>(43,0,48)</li>
-          <li>(46,0,54)</li>
-          <li>(46,0,43)</li>
-          <li>(11,0,17)</li>
-          <li>(11,0,23)</li>
-          <li>(22,0,20)</li>
-          <li>(22,0,43)</li>
-          <li>(56,0,18)</li>
-          <li>(56,0,24)</li>
-          <li>(46,0,20)</li>
-          <li>(46,0,32)</li>
-        </positions>
-      </Door>
-      <Rukaya_SAMLauncher_Abandoned>
-        <hp>480</hp>
-        <positions>
-          <li>(34,0,38)</li>
-        </positions>
-      </Rukaya_SAMLauncher_Abandoned>
-      <Sandbags>
-        <stuff>Cloth</stuff>
-        <hp>110</hp>
-        <rects>
-          <li>(29,18,31,18)</li>
-          <li>(37,18,39,18)</li>
-          <li>(29,31,31,31)</li>
-          <li>(37,31,39,31)</li>
-          <li>(29,44,31,44)</li>
-          <li>(37,44,39,44)</li>
-        </rects>
-      </Sandbags>
-      <Steel>
-        <positions>
-          <li>(61,0,33)</li>
-        </positions>
-        <stackCountRange>30</stackCountRange>
-      </Steel>
-      <ComponentIndustrial>
-        <positions>
-          <li>(63,0,33)</li>
-        </positions>
-        <stackCountRange>3</stackCountRange>
-      </ComponentIndustrial>
+      <Rukaya_FacilityWallGreen><hp>320</hp><rects>
+        <li>(33,2,42,2)</li><li>(44,2,54,2)</li><li>(33,3,33,10)</li><li>(54,3,54,17)</li><li>(4,7,26,7)</li>
+        <li>(4,8,4,45)</li><li>(16,8,16,12)</li><li>(26,8,26,12)</li><li>(27,10,32,10)</li><li>(34,10,42,10)</li>
+        <li>(44,10,53,10)</li><li>(16,14,16,22)</li><li>(26,14,26,17)</li><li>(5,17,15,17)</li><li>(17,17,25,17)</li>
+        <li>(27,17,37,17)</li><li>(39,17,53,17)</li><li>(55,17,55,45)</li><li>(43,18,43,22)</li><li>(16,24,16,36)</li>
+        <li>(43,24,43,36)</li><li>(5,29,15,29)</li><li>(44,30,54,30)</li><li>(16,38,16,61)</li><li>(43,38,43,45)</li>
+        <li>(5,45,15,45)</li><li>(17,45,21,45)</li><li>(23,45,35,45)</li><li>(37,45,42,45)</li><li>(44,45,48,45)</li>
+        <li>(50,45,54,45)</li><li>(28,46,28,53)</li><li>(46,46,46,53)</li><li>(54,46,54,61)</li><li>(28,55,28,61)</li>
+        <li>(46,55,46,61)</li><li>(17,61,27,61)</li><li>(29,61,45,61)</li><li>(47,61,53,61)</li>
+      </rects></Rukaya_FacilityWallGreen>
+      <Door><stuff>Steel</stuff><hp>100</hp><positions>
+        <li>(43,0,2)</li><li>(43,0,10)</li><li>(38,0,17)</li><li>(26,0,13)</li><li>(16,0,13)</li>
+        <li>(16,0,23)</li><li>(16,0,37)</li><li>(43,0,23)</li><li>(43,0,37)</li><li>(22,0,45)</li>
+        <li>(36,0,45)</li><li>(49,0,45)</li><li>(46,0,54)</li><li>(28,0,54)</li>
+      </positions></Door>
+      <!-- 南门的登记台与分列的领用柜。 -->
+      <AncientDisplayBank><relativeRotation>Opposite</relativeRotation><positions>
+        <li>(36,0,9)</li><li>(49,0,9)</li>
+      </positions></AncientDisplayBank>
+      <AncientLockerBank><relativeRotation>Opposite</relativeRotation><positions>
+        <li>(36,0,3)</li><li>(39,0,3)</li><li>(48,0,3)</li><li>(51,0,3)</li>
+      </positions></AncientLockerBank>
+      <Table2x2c><stuff>Steel</stuff><hp>75</hp><positions>
+        <li>(37,0,5)</li><li>(49,0,5)</li>
+      </positions></Table2x2c>
+      <Stool><stuff>Steel</stuff><hp>75</hp><positions>
+        <li>(36,0,5)</li><li>(39,0,5)</li><li>(48,0,5)</li><li>(51,0,5)</li>
+      </positions></Stool>
+      <AncientLamp><positions>
+        <li>(35,0,8)</li><li>(52,0,8)</li>
+      </positions></AncientLamp>
+      <AncientLockerBank><relativeRotation>Opposite</relativeRotation><positions>
+        <li>(28,0,11)</li><li>(31,0,11)</li><li>(34,0,11)</li><li>(48,0,11)</li><li>(51,0,11)</li>
+        <li>(28,0,16)</li><li>(31,0,16)</li><li>(34,0,16)</li><li>(47,0,16)</li><li>(50,0,16)</li>
+      </positions></AncientLockerBank>
+      <AncientCrate><positions>
+        <li>(27,0,14)</li><li>(28,0,14)</li><li>(51,0,14)</li><li>(52,0,14)</li>
+      </positions></AncientCrate>
+      <AncientLamp><positions>
+        <li>(32,0,13)</li><li>(48,0,13)</li>
+      </positions></AncientLamp>
+      <!-- 食堂与备餐间。 -->
+      <Table2x2c><stuff>Steel</stuff><hp>75</hp><positions>
+        <li>(7,0,10)</li><li>(12,0,10)</li><li>(7,0,14)</li><li>(12,0,14)</li>
+      </positions></Table2x2c>
+      <Stool><stuff>Steel</stuff><hp>75</hp><positions>
+        <li>(6,0,10)</li><li>(9,0,10)</li><li>(11,0,10)</li><li>(14,0,10)</li><li>(6,0,14)</li>
+        <li>(9,0,14)</li><li>(11,0,14)</li><li>(14,0,14)</li>
+      </positions></Stool>
+      <AncientStove><positions>
+        <li>(18,0,15)</li><li>(20,0,15)</li><li>(22,0,15)</li>
+      </positions></AncientStove>
+      <AncientKitchenSink><position>(24,0,15)</position></AncientKitchenSink>
+      <AncientOven><positions>
+        <li>(18,0,16)</li><li>(20,0,16)</li><li>(22,0,16)</li>
+      </positions></AncientOven>
+      <AncientStorageCylinder><positions>
+        <li>(18,0,8)</li><li>(22,0,8)</li><li>(24,0,8)</li>
+      </positions></AncientStorageCylinder>
+      <AncientLamp><positions>
+        <li>(5,0,16)</li><li>(15,0,16)</li><li>(25,0,16)</li>
+      </positions></AncientLamp>
+      <!-- 西翼两间宿舍。床头靠外墙，中央有储柜和交谈用长桌。 -->
+      <AncientBed><relativeRotation>Counterclockwise</relativeRotation><positions>
+        <li>(6,0,19)</li><li>(6,0,21)</li><li>(6,0,23)</li><li>(6,0,25)</li><li>(6,0,27)</li>
+        <li>(6,0,31)</li><li>(6,0,33)</li><li>(6,0,35)</li><li>(6,0,37)</li><li>(6,0,39)</li>
+        <li>(6,0,41)</li><li>(6,0,43)</li>
+      </positions></AncientBed>
+      <AncientLockerBank><relativeRotation>Clockwise</relativeRotation><positions>
+        <li>(12,0,19)</li><li>(12,0,26)</li><li>(12,0,32)</li><li>(12,0,39)</li><li>(12,0,43)</li>
+      </positions></AncientLockerBank>
+      <Table2x2c><stuff>Steel</stuff><hp>75</hp><positions>
+        <li>(10,0,21)</li><li>(10,0,34)</li><li>(10,0,41)</li>
+      </positions></Table2x2c>
+      <Stool><stuff>Steel</stuff><hp>75</hp><positions>
+        <li>(9,0,21)</li><li>(9,0,34)</li><li>(9,0,41)</li>
+      </positions></Stool>
+      <AncientLamp><positions>
+        <li>(14,0,21)</li><li>(14,0,26)</li><li>(14,0,34)</li><li>(14,0,41)</li>
+      </positions></AncientLamp>
+      <AncientCrate><positions>
+        <li>(15,0,19)</li><li>(15,0,27)</li><li>(15,0,31)</li><li>(15,0,42)</li>
+      </positions></AncientCrate>
+      <!-- 东翼宿舍与医务间。 -->
+      <AncientBed><relativeRotation>Clockwise</relativeRotation><positions>
+        <li>(51,0,19)</li><li>(51,0,21)</li><li>(51,0,23)</li><li>(51,0,25)</li><li>(51,0,27)</li>
+      </positions></AncientBed>
+      <AncientLockerBank><relativeRotation>Clockwise</relativeRotation><positions>
+        <li>(48,0,19)</li><li>(48,0,26)</li>
+      </positions></AncientLockerBank>
+      <Table2x2c><stuff>Steel</stuff><hp>75</hp><position>(45,0,27)</position></Table2x2c>
+      <Stool><stuff>Steel</stuff><hp>75</hp><position>(47,0,27)</position></Stool>
+      <AncientOperatingTable><relativeRotation>Clockwise</relativeRotation><positions>
+        <li>(52,0,32)</li><li>(52,0,35)</li><li>(52,0,38)</li><li>(52,0,41)</li><li>(52,0,43)</li>
+      </positions></AncientOperatingTable>
+      <AncientStorageCylinder><positions>
+        <li>(45,0,44)</li><li>(47,0,44)</li>
+      </positions></AncientStorageCylinder>
+      <AncientCrate><positions>
+        <li>(44,0,32)</li><li>(44,0,34)</li><li>(44,0,41)</li><li>(54,0,32)</li><li>(54,0,35)</li>
+        <li>(54,0,38)</li><li>(54,0,41)</li>
+      </positions></AncientCrate>
+      <AncientLamp><positions>
+        <li>(47,0,21)</li><li>(47,0,25)</li><li>(47,0,34)</li><li>(47,0,41)</li>
+      </positions></AncientLamp>
+      <!-- 发射架位于露天集合院中央，长凳、照明和装具箱沿边放置。 -->
+      <Rukaya_SAMLauncher_Abandoned><hp>480</hp><position>(30,0,33)</position></Rukaya_SAMLauncher_Abandoned>
+      <Rukaya_AncientDecor_SAMLauncherA><hp>420</hp><position>(25,0,24)</position></Rukaya_AncientDecor_SAMLauncherA>
+      <Rukaya_AncientDecor_SAMLauncherB><hp>420</hp><position>(35,0,24)</position></Rukaya_AncientDecor_SAMLauncherB>
+      <AncientCrate><positions>
+        <li>(18,0,20)</li><li>(18,0,21)</li><li>(18,0,26)</li><li>(18,0,27)</li><li>(18,0,32)</li>
+        <li>(18,0,33)</li><li>(18,0,41)</li><li>(18,0,42)</li><li>(41,0,20)</li><li>(41,0,21)</li>
+        <li>(41,0,26)</li><li>(41,0,27)</li><li>(41,0,32)</li><li>(41,0,33)</li><li>(41,0,41)</li>
+        <li>(41,0,42)</li>
+      </positions></AncientCrate>
+      <Table1x2c><stuff>Steel</stuff><hp>75</hp><positions>
+        <li>(21,0,28)</li><li>(39,0,28)</li><li>(21,0,36)</li><li>(39,0,36)</li>
+      </positions></Table1x2c>
+      <Stool><stuff>Steel</stuff><hp>75</hp><positions>
+        <li>(20,0,28)</li><li>(22,0,28)</li><li>(38,0,28)</li><li>(40,0,28)</li><li>(20,0,36)</li>
+        <li>(22,0,36)</li><li>(38,0,36)</li><li>(40,0,36)</li>
+      </positions></Stool>
+      <AncientLamp><positions>
+        <li>(20,0,19)</li><li>(40,0,19)</li><li>(20,0,42)</li><li>(40,0,42)</li>
+      </positions></AncientLamp>
+      <!-- 北侧指挥掩体与军需、值班用房。 -->
+      <AncientStorageCylinder><positions>
+        <li>(18,0,47)</li><li>(24,0,47)</li><li>(18,0,58)</li><li>(24,0,58)</li>
+      </positions></AncientStorageCylinder>
+      <AncientLockerBank><relativeRotation>Clockwise</relativeRotation><positions>
+        <li>(17,0,51)</li><li>(17,0,54)</li><li>(17,0,57)</li><li>(27,0,49)</li><li>(27,0,57)</li>
+      </positions></AncientLockerBank>
+      <AncientCrate><positions>
+        <li>(18,0,60)</li><li>(20,0,60)</li><li>(23,0,60)</li><li>(25,0,60)</li><li>(27,0,60)</li>
+        <li>(20,0,55)</li><li>(24,0,55)</li>
+      </positions></AncientCrate>
+      <AncientDisplayBank><relativeRotation>Opposite</relativeRotation><positions>
+        <li>(31,0,60)</li><li>(36,0,60)</li><li>(42,0,60)</li>
+      </positions></AncientDisplayBank>
+      <AncientSystemRack><positions>
+        <li>(29,0,48)</li><li>(29,0,57)</li><li>(45,0,48)</li><li>(45,0,57)</li>
+      </positions></AncientSystemRack>
+      <AncientEquipmentBlocks><positions>
+        <li>(31,0,48)</li><li>(41,0,48)</li>
+      </positions></AncientEquipmentBlocks>
+      <AncientLamp><positions>
+        <li>(33,0,58)</li><li>(39,0,58)</li><li>(33,0,50)</li><li>(39,0,50)</li><li>(52,0,51)</li>
+        <li>(52,0,57)</li>
+      </positions></AncientLamp>
+      <AncientLockerBank><relativeRotation>Opposite</relativeRotation><positions>
+        <li>(49,0,60)</li><li>(52,0,60)</li>
+      </positions></AncientLockerBank>
+      <AncientDisplayBank><position>(51,0,46)</position></AncientDisplayBank>
+      <Table2x2c><stuff>Steel</stuff><hp>75</hp><positions>
+        <li>(50,0,49)</li><li>(50,0,56)</li>
+      </positions></Table2x2c>
+      <Stool><stuff>Steel</stuff><hp>75</hp><positions>
+        <li>(49,0,49)</li><li>(52,0,49)</li><li>(49,0,56)</li><li>(52,0,56)</li>
+      </positions></Stool>
     </things>
   </PrefabDef>
   <PrefabDef>
@@ -820,8 +721,7 @@
       </PavedTile>
     </terrain>
     <things>
-      <Wall>
-        <stuff>BlocksGranite</stuff>
+      <Rukaya_FacilityWallGreen>
         <hp>320</hp>
         <rects>
           <li>(1,1,7,1)</li>
@@ -832,7 +732,7 @@
           <li>(6,6,6,8)</li>
           <li>(1,9,11,9)</li>
         </rects>
-      </Wall>
+      </Rukaya_FacilityWallGreen>
       <Door>
         <stuff>Steel</stuff>
         <hp>100</hp>
@@ -841,6 +741,7 @@
           <li>(6,0,5)</li>
         </positions>
       </Door>
+
     </things>
   </PrefabDef>
   <PrefabDef>
@@ -866,8 +767,7 @@
       </MetalTile>
     </terrain>
     <things>
-      <Wall>
-        <stuff>BlocksGranite</stuff>
+      <Rukaya_FacilityWallGreen>
         <hp>320</hp>
         <rects>
           <li>(1,1,11,1)</li>
@@ -878,7 +778,7 @@
           <li>(5,8,5,8)</li>
           <li>(5,9,11,9)</li>
         </rects>
-      </Wall>
+      </Rukaya_FacilityWallGreen>
       <Door>
         <stuff>Steel</stuff>
         <hp>100</hp>
@@ -886,6 +786,9 @@
           <li>(11,0,4)</li>
         </positions>
       </Door>
+      <!-- 信号间设检修桌和零件柜。 -->
+      <AncientCrate><position>(5,0,2)</position></AncientCrate>
+      <AncientLamp><position>(9,0,6)</position></AncientLamp>
     </things>
   </PrefabDef>
   <PrefabDef>
@@ -911,8 +814,7 @@
       </PavedTile>
     </terrain>
     <things>
-      <Wall>
-        <stuff>BlocksGranite</stuff>
+      <Rukaya_FacilityWallGreen>
         <hp>320</hp>
         <rects>
           <li>(1,1,11,1)</li>
@@ -923,7 +825,7 @@
           <li>(4,8,4,8)</li>
           <li>(4,9,11,9)</li>
         </rects>
-      </Wall>
+      </Rukaya_FacilityWallGreen>
       <Door>
         <stuff>Steel</stuff>
         <hp>100</hp>
@@ -931,6 +833,13 @@
           <li>(1,0,4)</li>
         </positions>
       </Door>
+      <!-- 补给间以边缘成组的周转件扩充存量。 -->
+      <AncientCrate><positions>
+        <li>(4,0,3)</li><li>(8,0,3)</li><li>(9,0,3)</li><li>(5,0,7)</li><li>(8,0,7)</li>
+      </positions></AncientCrate>
+      <AncientBarrel><positions>
+        <li>(4,0,2)</li><li>(9,0,2)</li><li>(9,0,7)</li>
+      </positions></AncientBarrel>
     </things>
   </PrefabDef>
 </Defs>

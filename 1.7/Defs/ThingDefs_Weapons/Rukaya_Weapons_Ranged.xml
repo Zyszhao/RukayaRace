@@ -1659,11 +1659,8 @@ Active matter mode fires incendiary marksman rifle rounds.</description>
     <defName>Rukaya_Pistol</defName>
     <label>Rukaya service pistol</label>
     <!-- 中文：卢卡娅制式手枪 -->
-    <description>A standardized self-loading pistol issued to regular Rukaya troops. It is a clear step above emergency sidearms in handling and sustained fire, but it still remains a sidearm meant for disciplined close combat rather than long-range marksmanship.
-
-Fed active matter, the weapon overdrives every round: each shot strikes harder with tighter aim, and the whole firing cycle runs faster and reaches further while the charge lasts. Overcharged rounds also carry a neuroshock payload, so every landed hit drags the victim's movement down and dulls its awareness. Scattered hits only slow a target; it takes sustained fire on one enemy to put it on the ground, and the harder it was pressed, the longer it stays there. The pistol is built to take enemies alive rather than to simply kill them.</description>
-    <!-- 中文翻译：一把配发给卢卡娅正规部队的标准化半自动手枪。它在操控性和持续火力上明显强于应急副武器，但本质上仍是一种用于纪律化近距离交战的手枪，而不是拿来进行远距离精确射击的武器。
-灌注活性物质后，武器会过载每一发弹药：每一发命中更重、瞄准更稳，且在充能存续期间整体射击循环更快、射程更远。过载弹还携带神经震荡载荷，因此每一次命中都会拖慢中弹者的移动、钝化其意识。零散的命中只能拖慢目标；只有持续把火力压在同一个敌人身上，才能把它放倒，而且压制得越彻底，它趴在地上的时间就越长。这把武器被设计成尽可能活捉敌人，而不是单纯将其击杀。 -->
+    <description>A standardized self-loading sidearm issued to regular Rukaya troops for disciplined close combat. In active matter mode, it fires faster, farther, and carries a neuroshock charge that rapidly slows and downs targets for live capture.</description>
+    <!-- 中文翻译：配发给卢卡娅正规部队的制式半自动手枪，适合近距离自卫。开启活性物质模式后射速更快、射程更远，弹头附带的神经震荡效应可迅速迟滞并放倒目标以供活捉。 -->
     <graphicData>
       <texPath>Rukaya/Weapon/Rukaya_Pistol</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -1725,11 +1722,8 @@ Fed active matter, the weapon overdrives every round: each shot strikes harder w
     <defName>Rukaya_GrenadePistol</defName>
     <label>Rukaya grenade pistol</label>
     <!-- 中文：卢卡娅榴弹手枪 -->
-    <description>A compact launcher built around a pistol-sized grip and a short grenade tube. It gives ordinary infantry a controllable explosive sidearm, trading blast radius and reach for portability and quick handling.
-
-Active matter mode loads incendiary canisters that splash fuel across the impact area and ignite it without the signal flare's anti-invisibility pulse.</description>
-    <!-- 中文翻译：一把围绕手枪式握把与短榴弹管构建的紧凑发射器。它让普通步兵也能携带可控的爆炸性副武器，以较小的杀伤半径和射程换取便携性与更快的操控。
-活性物质模式会装填燃烧弹筒，在落点周围泼洒燃料并点燃，但不带信号弹的反隐身脉冲。 -->
+    <description>A compact single-shot launcher on a pistol grip, trading range and blast radius for quick handling. Active matter mode fires incendiary canisters that splash burning fuel across the impact area.</description>
+    <!-- 中文翻译：采用手枪握把的紧凑型榴弹发射器，以射程与杀伤半径换取便携与操控速度。开启活性物质模式后发射燃烧弹筒，在落点泼洒燃烧燃料。 -->
     <graphicData>
       <texPath>Rukaya/Weapon/Rukaya_GrenadePistol</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -1794,11 +1788,8 @@ Active matter mode loads incendiary canisters that splash fuel across the impact
     <defName>Rukaya_SubMachinegun</defName>
     <label>Rukaya submachine gun</label>
     <!-- 中文：卢卡娅冲锋枪 -->
-    <description>A compact automatic firearm for boarding actions, corridor fighting, and mobile assaults. It is easy to bring onto target and pours rounds out quickly, but its small cartridge and short barrel make it fade fast outside close-range combat.
-
-Fed active matter, the gun overdrives both cartridge and action: heavier hits, tighter aim, a faster firing cycle, and longer reach while the charge lasts. Overcharged rounds also carry a neuroshock payload. Because the gun fires in bursts the shock piles up quickly, but it also bleeds off quickly: one landed burst leaves a target barely able to move, and a second one pressed straight after it is what actually puts the target on the ground. The longer an enemy is kept under this fire, the longer it stays down. The submachine gun is built to take enemies alive rather than to simply kill them.</description>
-    <!-- 中文翻译：一把为登舰作战、走廊战斗与机动突击设计的紧凑自动武器。它能够很快指向目标并高速倾泻火力，但受限于较小弹药和短枪管，一旦超出近距离交战范围，表现就会迅速下滑。
-灌注活性物质后，这把枪会同时过载弹药与枪机：在充能存续期间获得更高的伤害、更稳的瞄准、更快的射击循环与更远的射程。过载弹还携带神经震荡载荷。由于这把枪以点射方式射击，震荡累积得很快，但消退得同样很快：一次命中点射会让目标几乎无法移动，紧接着压上第二个点射才能真正把它放倒。敌人被这种火力压制的越久，倒地后趴着的时间就越长。这把枪被设计成尽可能活捉敌人，而不是单纯将其击杀。 -->
+    <description>A compact automatic weapon for boarding actions and close assaults, fast to aim at short range. Active matter mode overdrives its bursts with higher velocity and a neuroshock charge that quickly drops enemies alive under sustained fire.</description>
+    <!-- 中文翻译：用于登舰突击与近距清场的紧凑型冲锋枪，短距指向迅捷。开启活性物质模式后点射更快更稳，附带的神经震荡弹头可在持续火力下迅速放倒并活捉目标。 -->
     <graphicData>
       <texPath>Rukaya/Weapon/Rukaya_SubMachinegun</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -1933,8 +1924,8 @@ Active matter mode loads suppressive incendiary rounds. Each hit has a chance to
     <defName>Rukaya_AviationMachinegun</defName>
     <label>Rukaya aviation machine gun</label>
     <!-- 中文：卢卡娅航空机枪 -->
-    <description>An aviation-pattern rotary machine gun built around the same full-power ammunition as the Rukaya light machine gun. Its electrically driven barrel cluster launches those rounds at higher velocity and cycles through a long burst with brutal consistency, but its conventional feed can jam under sustained fire, cutting the burst short and forcing a lengthy clearing cycle. The weapon is also heavy and difficult to handle. An oversized active matter reservoir keeps its powered firing system supplied through sustained fire. Active matter mode loads suppressive incendiary rounds and stabilizes the feed, preventing jams.</description>
-    <!-- 中文翻译：一挺围绕与卢卡娅轻机枪相同全威力弹药打造的航空型多管机枪。它通过电驱动的枪管组以更高弹速发射同样的弹药，并以凶猛而稳定的长点射持续循环，但常规供弹机构可能在持续射击时卡壳，使点射提前中断并迫使射手进行漫长的排障。整枪也十分沉重且难以操控。加大的活性物质储量能够支撑持续火力。活性物质模式会装填压制燃烧弹并稳定供弹机构，从而避免卡壳。 -->
+    <description>A heavy, electrically driven rotary machine gun originally built for aircraft mounts. It fires full-power rounds in blistering bursts, though conventional feeds risk jamming under sustained fire. Active matter mode stabilizes the feed to prevent jams and loads suppressive incendiary rounds.</description>
+    <!-- 中文翻译：源自航空机载武器的重型电驱多管机枪，能以极高射速倾泻全威力弹幕，但常规供弹在持续射击时容易卡壳。开启活性物质模式后可稳定供弹避免卡壳，并改打压制燃烧弹。 -->
     <graphicData>
       <texPath>Rukaya/Weapon/Rukaya_AviationMachinegun</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -2091,12 +2082,8 @@ Active matter mode loads arc shock grenades that search farther than the blast i
     <defName>Rukaya_RecoillessGun</defName>
     <label>Rukaya recoilless gun</label>
     <!-- 中文：卢卡娅无后坐力炮 -->
-    <description>An engineer's improvisation elevated into a field weapon: someone looked at a fixed recoilless cannon, decided it would be faster to unbolt it and carry it by hand, and then actually made it work. The result hits brutally hard, but the sheer mass drags its operator down and makes quick target acquisition miserable.
-
-Its standard shell is a single armor-piercing round that concentrates all force into one target. Active matter mode loads an overcharged shell that strikes even harder, penetrates deeper, and detonates on impact to catch nearby enemies in the blast.</description>
-    <!-- 中文翻译：一种由工程师突发奇想硬生生变成野战武器的产物：有人看着一门固定式无后坐力炮，认定把它拆下来扛着跑会更快，然后居然真的把这件事做成了。它的命中威力极其凶猛，但可怕的重量会拖慢携带者的行动，也让快速瞄准变得十分痛苦。
-
-标准炮弹是一发把全部威力集中于单一目标的穿甲弹。活性物质模式则会装填过载弹头，命中更重、穿透更深，并在撞击时引爆，把附近敌人一并卷入爆炸。 -->
+    <description>A fixed recoilless cannon unbolted from its mount and adapted for infantry carry. Heavy and slow to aim, it fires heavy single-target armor-piercing shells, or overcharged explosive rounds in active matter mode.</description>
+    <!-- 中文翻译：从固定炮架拆下改装为单兵携行的无后坐力炮，笨重而瞄准缓慢。常规弹药为高穿单体穿甲弹；开启活性物质模式后改打穿透更深并附带爆炸伤害的过载弹。 -->
     <graphicData>
       <texPath>Rukaya/Weapon/Rukaya_RecoillessGun</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -2454,11 +2441,8 @@ Its standard shell is a single armor-piercing round that concentrates all force 
     <defName>Rukaya_PlasmaRailgun</defName>
     <label>Rukaya plasma railgun</label>
     <!-- 中文：卢卡娅等离子狙击枪 -->
-    <description>A precision long gun that magnetically accelerates a plasma-sheathed penetrator. Its firing cycle is deliberate and power-hungry, but each shot reaches deep into armor and stays dangerous far beyond the distances where ordinary rifles begin to fail.
-
-Each shot resolves instantly in a blue-white plasma pulse, leaving a luminous beam that fades along its path and a bright impact flash. Active matter mode increases direct-hit damage and armor penetration.</description>
-    <!-- 中文翻译：一把以磁轨加速等离子包覆穿透体的精密长枪。它的射击循环缓慢且能耗很高，但每一发都能深深钻入护甲，并在普通步枪开始失效的超远距离上维持危险的终端威力。
-每一发都以蓝白色等离子脉冲瞬时命中，沿射击路径留下逐渐消退的明亮光束，并在命中点迸发闪光。活性物质模式会提高直击伤害与穿甲能力。 -->
+    <description>A precision long gun that magnetically accelerates a plasma-sheathed penetrator over extreme range. Slow to cycle, it punches straight through heavy armor; active matter mode further boosts its direct-hit damage and penetration.</description>
+    <!-- 中文翻译：以磁轨超高速发射等离子包覆弹芯的远程精密步枪。射速缓慢但穿透极深，开启活性物质模式可进一步提高直击伤害与穿甲能力。 -->
     <graphicData>
       <texPath>Rukaya/Weapon/Rukaya_PlasmaRailgun</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -2650,11 +2634,8 @@ Each shot resolves instantly in a blue-white plasma pulse, leaving a luminous be
     <defName>Rukaya_ATGMLauncher</defName>
     <label>Rukaya ATGM launcher</label>
     <!-- 中文：卢卡娅肩扛导弹发射器 -->
-    <description>A shoulder-launched anti-armor guided missile frame issued to heavy infantry and ambush teams. Its operator must hold the sightline after launch, walking the missile onto the target by command-line guidance. With a clear view and no smoke interference, the missile corrects onto its mark; radar-locked targets are struck with a sharper armor-piercing attack.
-
-Active matter mode loads a charged missile that streaks to its mark at far higher speed. On impact the warhead douses the blast zone in burning fuel and releases an electric surge that chains through every hostile still standing nearby.</description>
-    <!-- 中文翻译：一具配发给重步兵与伏击小组的肩射反装甲导弹发射器。发射后，操作者必须持续保持瞄准线，通过指令线制导将导弹引向目标。在视线清晰且没有烟雾干扰时，导弹会修正到目标上；被雷达锁定的目标会遭受穿甲能力更强的打击。
-活性物质模式会装填充能导弹，以高得多的速度直扑目标。命中时弹头会向冲击区泼洒燃烧燃料，并释放一道电涌，连锁扫过周围仍站立的所有敌对单位。 -->
+    <description>A shoulder-launched anti-armor missile system guided along the operator's line of sight, gaining stronger armor penetration against radar-locked targets. Active matter mode fires a high-speed charged missile that splashes burning fuel and unleashes a chaining electric surge on impact.</description>
+    <!-- 中文翻译：配发给反装甲小组的肩射视线制导导弹，对雷达锁定目标具备更强的穿甲威力。开启活性物质模式后发射高速充能导弹，命中时泼洒燃烧燃料并引发连锁电涌。 -->
     <graphicData>
       <texPath>Rukaya/Weapon/Rukaya_ATGMLauncher</texPath>
       <graphicClass>Graphic_Single</graphicClass>

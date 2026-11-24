@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using RimWorld;
 using RukayaRace.Weapons;
 using UnityEngine;
@@ -7,6 +8,9 @@ namespace RukayaRace.Projectiles
 {
     public class Projectile_RukayaSuppressionIncendiaryBullet : Bullet
     {
+        private static readonly RukayaSuppressionProjectileExtension DefaultExtension = new RukayaSuppressionProjectileExtension();
+        private RukayaSuppressionProjectileExtension cachedExtension;
+
         protected override void Impact(Thing hitThing, bool blockedByShield = false)
         {
             Pawn launcherPawn = this.launcher as Pawn;
@@ -15,55 +19,67 @@ namespace RukayaRace.Projectiles
 
             if (!blockedByShield)
             {
-                if (hitThing != null && hitThing.CanEverAttachFire() && Rand.Chance(this.Extension.igniteChance))
+                RukayaSuppressionProjectileExtension ext = this.Extension;
+                if (hitThing != null && hitThing.CanEverAttachFire() && Rand.Chance(ext.igniteChance))
                 {
-                    hitThing.TryAttachFire(this.Extension.fireSize, this.launcher);
+                    hitThing.TryAttachFire(ext.fireSize, this.launcher);
                 }
 
                 if (map != null)
                 {
-                    this.ApplySuppression(impactCell, map, launcherPawn);
+                    this.ApplySuppression(impactCell, map, launcherPawn, ext);
                 }
             }
 
             base.Impact(hitThing, blockedByShield);
         }
 
-        private void ApplySuppression(IntVec3 center, Map map, Pawn launcherPawn)
+        private void ApplySuppression(IntVec3 center, Map map, Pawn launcherPawn, RukayaSuppressionProjectileExtension ext)
         {
-            HediffDef hediffDef = this.Extension.suppressionHediff;
-            if (hediffDef == null)
+            HediffDef hediffDef = ext.suppressionHediff;
+            if (hediffDef == null || ext.suppressionRadius <= 0f)
             {
                 return;
             }
 
-            foreach (Pawn pawn in map.mapPawns.AllPawnsSpawned)
+            int numCells = GenRadial.NumCellsInRadius(ext.suppressionRadius);
+            for (int c = 0; c < numCells; c++)
             {
-                if (pawn == null || pawn.Dead || !pawn.Position.InHorDistOf(center, this.Extension.suppressionRadius))
+                IntVec3 cell = center + GenRadial.RadialPattern[c];
+                if (!cell.InBounds(map))
                 {
                     continue;
                 }
 
-                if (launcherPawn != null && !launcherPawn.HostileTo(pawn))
+                List<Thing> things = cell.GetThingList(map);
+                for (int i = 0; i < things.Count; i++)
                 {
-                    continue;
+                    if (!(things[i] is Pawn pawn) || pawn.Dead)
+                    {
+                        continue;
+                    }
+
+                    if (launcherPawn != null && !launcherPawn.HostileTo(pawn))
+                    {
+                        continue;
+                    }
+
+                    Hediff existing = pawn.health?.hediffSet?.GetFirstHediffOfDef(hediffDef);
+                    if (existing == null)
+                    {
+                        existing = HediffMaker.MakeHediff(hediffDef, pawn);
+                        pawn.health.AddHediff(existing);
+                    }
+
+                    existing.Severity = Mathf.Min(1f, existing.Severity + ext.suppressionSeverityPerHit);
+
+                    HediffComp_RukayaSuppression suppressionComp = existing.TryGetComp<HediffComp_RukayaSuppression>();
+                    suppressionComp?.NotifyRefreshed();
                 }
-
-                Hediff existing = pawn.health?.hediffSet?.GetFirstHediffOfDef(hediffDef);
-                if (existing == null)
-                {
-                    existing = HediffMaker.MakeHediff(hediffDef, pawn);
-                    pawn.health.AddHediff(existing);
-                }
-
-                existing.Severity = Mathf.Min(1f, existing.Severity + this.Extension.suppressionSeverityPerHit);
-
-                HediffComp_RukayaSuppression suppressionComp = existing.TryGetComp<HediffComp_RukayaSuppression>();
-                suppressionComp?.NotifyRefreshed();
             }
         }
 
         private RukayaSuppressionProjectileExtension Extension =>
-            this.def.GetModExtension<RukayaSuppressionProjectileExtension>() ?? new RukayaSuppressionProjectileExtension();
+            cachedExtension ?? (cachedExtension = this.def.GetModExtension<RukayaSuppressionProjectileExtension>() ?? DefaultExtension);
     }
 }

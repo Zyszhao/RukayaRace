@@ -30,8 +30,22 @@ namespace RukayaRace.Replication
         private ThingDef selectedTemplate;
         private RukayaTemplateCategory itemCategory = RukayaTemplateCategory.Weapons;
         private RukayaTemplateCategory templateCategory = RukayaTemplateCategory.Weapons;
+        private List<RukayaModGroup<Thing>> cachedItemGroups;
+        private int cachedItemGroupsTick = -9999;
+        private string cachedItemSearch;
+        private RukayaTemplateCategory cachedItemCategory;
+        private List<RukayaModGroup<ThingDef>> cachedTemplateGroups;
+        private int cachedTemplateGroupsTick = -9999;
+        private string cachedTemplateSearch;
+        private RukayaTemplateCategory cachedTemplateCategory;
 
         public override Vector2 InitialSize => RukayaReplicationUI.WindowSize;
+
+        private void InvalidateListCaches()
+        {
+            cachedItemGroups = null;
+            cachedTemplateGroups = null;
+        }
 
         public Window_RukayaScanner(Building_RukayaTriplexScanner scanner)
         {
@@ -105,16 +119,27 @@ namespace RukayaRace.Replication
                 RukayaReplicationUI.PanelSearchHeight);
             itemSearch = Widgets.TextField(searchRect, itemSearch ?? string.Empty);
 
-            List<Thing> items = RukayaReplicationUtility.FindEligibleThings(scanner.Map)
-                .Where(x => RukayaReplicationUI.MatchesCategory(x.def, itemCategory))
-                .Where(x => itemSearch.NullOrEmpty()
-                    || x.LabelCap.ToString().IndexOf(itemSearch, StringComparison.OrdinalIgnoreCase) >= 0)
-                .OrderBy(x => RukayaReplicationUI.ModGroupLabel(x.def))
-                .ThenBy(x => x.def.label)
-                .ThenByDescending(RukayaReplicationUtility.GetQuality)
-                .ToList();
+            int tick = Find.TickManager.TicksGame;
+            string currentSearch = itemSearch ?? string.Empty;
+            if (cachedItemGroups == null || cachedItemSearch != currentSearch || cachedItemCategory != itemCategory
+                || tick - cachedItemGroupsTick >= 30 || tick < cachedItemGroupsTick)
+            {
+                List<Thing> items = RukayaReplicationUtility.FindEligibleThings(scanner.Map)
+                    .Where(x => RukayaReplicationUI.MatchesCategory(x.def, itemCategory))
+                    .Where(x => currentSearch.NullOrEmpty()
+                        || x.LabelCap.ToString().IndexOf(currentSearch, StringComparison.OrdinalIgnoreCase) >= 0)
+                    .OrderBy(x => RukayaReplicationUI.ModGroupLabel(x.def))
+                    .ThenBy(x => x.def.label)
+                    .ThenByDescending(RukayaReplicationUtility.GetQuality)
+                    .ToList();
 
-            List<RukayaModGroup<Thing>> groups = RukayaReplicationUI.BuildModGroups(items, x => x.def);
+                cachedItemGroups = RukayaReplicationUI.BuildModGroups(items, x => x.def);
+                cachedItemGroupsTick = tick;
+                cachedItemSearch = currentSearch;
+                cachedItemCategory = itemCategory;
+            }
+
+            List<RukayaModGroup<Thing>> groups = cachedItemGroups;
 
             Rect listRect = new Rect(rect.x, searchRect.yMax + 6f, rect.width, Mathf.Max(0f, rect.yMax - searchRect.yMax - 6f));
             RukayaReplicationUI.DrawGroupedList(
@@ -182,7 +207,18 @@ namespace RukayaRace.Replication
                 RukayaReplicationUI.PanelSearchHeight);
             templateSearch = Widgets.TextField(searchRect, templateSearch ?? string.Empty);
 
-            List<RukayaModGroup<ThingDef>> groups = RukayaReplicationUI.GroupedUnlockedTemplates(templateSearch, templateCategory);
+            int tick = Find.TickManager.TicksGame;
+            string currentSearch = templateSearch ?? string.Empty;
+            if (cachedTemplateGroups == null || cachedTemplateSearch != currentSearch || cachedTemplateCategory != templateCategory
+                || tick - cachedTemplateGroupsTick >= 30 || tick < cachedTemplateGroupsTick)
+            {
+                cachedTemplateGroups = RukayaReplicationUI.GroupedUnlockedTemplates(currentSearch, templateCategory);
+                cachedTemplateGroupsTick = tick;
+                cachedTemplateSearch = currentSearch;
+                cachedTemplateCategory = templateCategory;
+            }
+
+            List<RukayaModGroup<ThingDef>> groups = cachedTemplateGroups;
 
             Rect listRect = new Rect(rect.x, searchRect.yMax + 6f, rect.width, Mathf.Max(0f, rect.yMax - searchRect.yMax - 6f));
             RukayaReplicationUI.DrawGroupedList(
@@ -360,6 +396,11 @@ namespace RukayaRace.Replication
 
         private void ShowResult(bool success, string text)
         {
+            if (success)
+            {
+                InvalidateListCaches();
+            }
+
             Messages.Message(text, scanner, success ? MessageTypeDefOf.PositiveEvent : MessageTypeDefOf.RejectInput, false);
         }
     }

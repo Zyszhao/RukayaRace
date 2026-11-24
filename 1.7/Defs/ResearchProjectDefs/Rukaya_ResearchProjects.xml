@@ -141,8 +141,12 @@
     <label>Large-Scale Active Matter Refining</label>
     <!-- 中文：大规模活性物质提炼 -->
     <description>Scaling active matter processing beyond laboratory and workshop methods supports
-      bulk refinement and restores high-throughput industrial production.</description>
-    <!-- 中文翻译：将活性物质处理从实验室与工坊级扩展到大规模生产后，可以进行批量提炼，并恢复高吞吐量的工业生产。 -->
+      bulk refinement and restores high-throughput industrial production.
+
+This technology requires magnetic-core memory analysis to unlock. Memory-site quests can be found with a long-range scanner or may appear at random.</description>
+    <!-- 中文翻译：将活性物质处理从实验室与工坊级扩展到大规模生产后，可以进行批量提炼，并恢复高吞吐量的工业生产。
+
+这个科技需要调查磁芯存储器来解锁，相关遗迹任务可通过远距离扫描仪获取，或随机刷新。 -->
     <baseCost>1800</baseCost>
     <techLevel>Industrial</techLevel>
     <requiredAnalyzed><li>Rukaya_CoreMemory_Refining</li></requiredAnalyzed>
@@ -173,8 +177,12 @@
     <defName>Rukaya_AirDefenseMissiles</defName>
     <label>Air-defense missiles</label>
     <!-- 中文：防空导弹 -->
-    <description>Active-matter interceptors and coordinated fire-control systems enable fixed surface-to-air missile launchers.</description>
-    <!-- 中文翻译：活性物质拦截弹与协同火控系统使建造固定式地对空导弹发射架成为可能。 -->
+    <description>Active-matter interceptors and coordinated fire-control systems enable fixed surface-to-air missile launchers.
+
+This technology requires magnetic-core memory analysis to unlock. Memory-site quests can be found with a long-range scanner or may appear at random.</description>
+    <!-- 中文翻译：活性物质拦截弹与协同火控系统使建造固定式地对空导弹发射架成为可能。
+
+这个科技需要调查磁芯存储器来解锁，相关遗迹任务可通过远距离扫描仪获取，或随机刷新。 -->
     <baseCost>1600</baseCost>
     <techLevel>Industrial</techLevel>
     <requiredAnalyzed><li>Rukaya_CoreMemory_AirDefense</li></requiredAnalyzed>
@@ -187,8 +195,12 @@
     <defName>Rukaya_EquipmentTemplateScanning</defName>
     <label>Equipment Template Scanning</label>
     <!-- 中文：装备模板扫描 -->
-    <description>Triplex-ray analysis can recover reproducible active-matter templates from existing weapons and apparel, even when their original research path has been lost.</description>
-    <!-- 中文翻译：三束射线分析技术能够从现有武器与服装中恢复可复制的活性物质模板，即使其原始研究路径已经遗失。 -->
+    <description>Triplex-ray analysis can recover reproducible active-matter templates from existing weapons and apparel, even when their original research path has been lost.
+
+This technology requires magnetic-core memory analysis to unlock. Memory-site quests can be found with a long-range scanner or may appear at random.</description>
+    <!-- 中文翻译：三束射线分析技术能够从现有武器与服装中恢复可复制的活性物质模板，即使其原始研究路径已经遗失。
+
+这个科技需要调查磁芯存储器来解锁，相关遗迹任务可通过远距离扫描仪获取，或随机刷新。 -->
     <baseCost>1800</baseCost>
     <techLevel>Industrial</techLevel>
     <requiredAnalyzed><li>Rukaya_CoreMemory_Scanning</li></requiredAnalyzed>
@@ -201,8 +213,12 @@
     <defName>Rukaya_ActiveMatterPrinting</defName>
     <label>Active Matter Equipment Printing</label>
     <!-- 中文：活性物质装备打印 -->
-    <description>Stabilized template reconstruction allows autonomous terminals to print selected weapon and apparel patterns at controlled materials and quality levels.</description>
-    <!-- 中文翻译：稳定的模板重构技术使自动终端能够按照选定的材质与品质，打印武器和服装模板。 -->
+    <description>Stabilized template reconstruction allows autonomous terminals to print selected weapon and apparel patterns at controlled materials and quality levels.
+
+This technology requires magnetic-core memory analysis to unlock. Memory-site quests can be found with a long-range scanner or may appear at random.</description>
+    <!-- 中文翻译：稳定的模板重构技术使自动终端能够按照选定的材质与品质，打印武器和服装模板。
+
+这个科技需要调查磁芯存储器来解锁，相关遗迹任务可通过远距离扫描仪获取，或随机刷新。 -->
     <baseCost>2800</baseCost>
     <techLevel>Industrial</techLevel>
     <requiredAnalyzed><li>Rukaya_CoreMemory_Printing</li></requiredAnalyzed>
@@ -215,8 +231,12 @@
     <defName>Rukaya_NavalArtillery</defName>
     <label>Rukaya Naval Artillery</label>
     <!-- 中文：卢卡娅舰炮 -->
-    <description>Recovered naval gunnery records allow paired active-matter guns to be adapted into autonomous land-based artillery turrets.</description>
-    <!-- 中文：恢复的舰炮技术记录，使双联活性物质火炮能够改装为自主索敌的陆基炮塔。 -->
+    <description>Recovered naval gunnery records allow paired active-matter guns to be adapted into autonomous land-based artillery turrets.
+
+This technology requires magnetic-core memory analysis to unlock. Memory-site quests can be found with a long-range scanner or may appear at random.</description>
+    <!-- 中文：恢复的舰炮技术记录，使双联活性物质火炮能够改装为自主索敌的陆基炮塔。
+
+这个科技需要调查磁芯存储器来解锁，相关遗迹任务可通过远距离扫描仪获取，或随机刷新。 -->
     <baseCost>2000</baseCost>
     <techLevel>Industrial</techLevel>
     <requiredAnalyzed><li>Rukaya_CoreMemory_Naval</li></requiredAnalyzed>
@@ -228,8 +248,12 @@
     <defName>Rukaya_Mig31Research</defName>
     <label>Rukaya interceptor</label>
     <!-- 中文：卢卡娅截击机 -->
-    <description>Allows construction of Rukaya interceptors.</description>
-    <!-- 中文：可建造卢卡娅截击机。 -->
+    <description>Allows construction of Rukaya interceptors.
+
+This technology requires magnetic-core memory analysis to unlock. Memory-site quests can be found with a long-range scanner or may appear at random.</description>
+    <!-- 中文：可建造卢卡娅截击机。
+
+这个科技需要调查磁芯存储器来解锁，相关遗迹任务可通过远距离扫描仪获取，或随机刷新。 -->
     <baseCost>2000</baseCost>
     <techLevel>Industrial</techLevel>
     <requiredAnalyzed><li>Rukaya_CoreMemory_Mig31Memory</li></requiredAnalyzed>

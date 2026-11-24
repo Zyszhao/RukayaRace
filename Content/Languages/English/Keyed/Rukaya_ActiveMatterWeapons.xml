@@ -12,8 +12,8 @@
   <Rukaya_ActiveMatterModeCommandDesc>Toggle the weapon between ordinary fire and active matter fire.\n\nEach enhanced attack consumes {0} active matter. Current load: {1}/{2}.</Rukaya_ActiveMatterModeCommandDesc>
   <Rukaya_ActiveMatterAutoReloadCommandOn>Auto Reload: On</Rukaya_ActiveMatterAutoReloadCommandOn>
   <Rukaya_ActiveMatterAutoReloadCommandOff>Auto Reload: Off</Rukaya_ActiveMatterAutoReloadCommandOff>
-  <Rukaya_ActiveMatterAutoReloadCommandDesc>Allow this weapon to be automatically reloaded from stored active matter while the pawn is safe and undrafted.</Rukaya_ActiveMatterAutoReloadCommandDesc>
-  <!-- 中文：允许这把武器在小人处于安全且未征召状态时，自动从储存中的活性物质补充装填。 -->
+  <Rukaya_ActiveMatterAutoReloadCommandDesc>Allow this weapon to be automatically reloaded from stored active matter while the wearer is safe and undrafted.</Rukaya_ActiveMatterAutoReloadCommandDesc>
+  <!-- 中文：允许这把武器在持有者处于安全且未征召状态时，自动从储存中的活性物质补充装填。 -->
 
   <Rukaya_ActiveMatterLoadTitle>Active Matter Load</Rukaya_ActiveMatterLoadTitle>
   <Rukaya_ActiveMatterTargetBar>Target: {0}</Rukaya_ActiveMatterTargetBar>
@@ -52,11 +52,11 @@
   <!-- 中文：调整卢卡娅制造台的工作台速度系数。 -->
   <Rukaya_RefinerDailyOutputLabel>Refiner daily output</Rukaya_RefinerDailyOutputLabel>
   <!-- 中文：精炼器每日产量 -->
-  <Rukaya_RefinerDailyOutputDescription>Adjusts how many active matter containers each Rukaya refiner produces per day. (Change will affects after next production)</Rukaya_RefinerDailyOutputDescription>
+  <Rukaya_RefinerDailyOutputDescription>Adjusts how many active matter containers each Rukaya refiner produces per day. Takes effect after the next cycle.</Rukaya_RefinerDailyOutputDescription>
   <!-- 中文：调整卢卡娅精炼器每日产出的活性物质容器数量。（改动在下一次产出后生效） -->
   <Rukaya_AdvancedRefinerDailyOutputLabel>Advanced refiner daily output</Rukaya_AdvancedRefinerDailyOutputLabel>
   <!-- 中文：高级精炼器每日产量 -->
-  <Rukaya_AdvancedRefinerDailyOutputDescription>Adjusts how many active matter containers each advanced Rukaya refiner produces per day. (Change will affects after next production)</Rukaya_AdvancedRefinerDailyOutputDescription>
+  <Rukaya_AdvancedRefinerDailyOutputDescription>Adjusts how many active matter containers each advanced Rukaya refiner produces per day. Takes effect after the next cycle.</Rukaya_AdvancedRefinerDailyOutputDescription>
   <!-- 中文：调整卢卡娅高级精炼器每日产出的活性物质容器数量。（改动在下一次产出后生效） -->
   <Rukaya_UseLightningForElectricWeaponsLabel>Use lightning for electric weapons</Rukaya_UseLightningForElectricWeaponsLabel>
   <!-- 中文：电击武器使用雷击 -->

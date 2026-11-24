@@ -24,14 +24,7 @@ namespace RukayaRace.Weapons
             }
 
             weapon.InitializeAISupplyIfNeeded(__instance);
-            bool shouldUse = RukayaActiveMatterAIUtility.ShouldUseActiveMode(__instance, targ.Thing, weapon);
-            string reason = shouldUse
-                ? "Rukaya_ActiveMatterAI_Active"
-                : !weapon.CanUseActiveModeNow()
-                    ? "Rukaya_ActiveMatterAI_Insufficient"
-                    : !RukayaActiveMatterAIUtility.HasSafeImpactArea(__instance, targ.Thing, weapon)
-                        ? "Rukaya_ActiveMatterAI_FriendlyRisk"
-                        : "Rukaya_ActiveMatterAI_PolicyNotMet";
+            bool shouldUse = RukayaActiveMatterAIUtility.ShouldUseActiveMode(__instance, targ.Thing, weapon, out string reason);
             weapon.SetAIMode(shouldUse, reason);
         }
     }

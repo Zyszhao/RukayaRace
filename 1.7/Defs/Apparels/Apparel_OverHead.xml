@@ -117,10 +117,8 @@
     <label>Rukaya formal beret</label>
     <!-- 中文翻译：卢卡娅正装贝雷帽 -->
     <techLevel>Medieval</techLevel>
-    <description>A formal beret worn with the Rukaya dress uniform, a style carried over from their
-      ancient homeworld. Worn at a sharp angle to fit comfortably with their beast ears, it carries
-      the fading memory of a planetary defense force that vanished into the cosmos eons ago.</description>
-    <!-- 中文翻译：与正装制服配套的贝雷帽，形制同样承自卢卡娅失落的母星。斜戴的角度正好让兽耳舒适地安放，帽中还残留着那支早已消散于星海的行星防卫军的记忆。 -->
+    <description>A formal beret worn with the Rukaya dress uniform, cut in an old service pattern and angled to sit comfortably beside the ears.</description>
+    <!-- 中文翻译：与正装制服配套的贝雷帽，沿用旧式军帽形制，斜戴时正好避开兽耳。 -->
     <graphicData>
       <texPath>Rukaya/Apparel/OverHead/FormalBeret/Rukaya_FormalBeret</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -309,10 +307,8 @@
     <label>Rukaya wide-brim hat</label>
     <!-- 中文：卢卡娅宽檐帽 -->
     <techLevel>Medieval</techLevel>
-    <description>A broad-brimmed hat that shades the face and keeps the sun and rain off. It lends
-      the wearer a commanding silhouette - people listen a little more readily, talks go a little
-      more smoothly, and those under her charge are slower to test her.</description>
-    <!-- 中文翻译：一顶遮住面庞、挡开日晒雨淋的宽檐帽。它为穿着者添上一道威严的轮廓——别人更愿意听她说话，交涉也顺畅一些，而她手下的人也更不敢试探她。 -->
+    <description>A broad-brimmed officer's hat that shields the eyes from sun and rain while lending the wearer a stern, authoritative bearing.</description>
+    <!-- 中文翻译：一顶能遮阳挡雨的宽檐军官帽，轮廓硬朗，戴上后更显威严。 -->
     <graphicData>
       <texPath>Rukaya/Apparel/OverHead/WideBrimHat/Rukaya_WideBrimHat</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -508,9 +504,8 @@
     <label>Rukaya steel helmet</label>
     <!-- 中文：卢卡娅钢盔 -->
     <techLevel>Industrial</techLevel>
-    <description>A standard-issue military helmet with a reinforced steel shell. Against steel
-      materials, its armor rating matches a vanilla flak helmet.</description>
-    <!-- 中文翻译：一顶加固钢制外壳的制式军用头盔，使用钢材制作时的护甲评级与原版防弹头盔一致。 -->
+    <description>A standard-issue military helmet with a deep steel shell shaped to protect the skull against shrapnel and small-arms fire.</description>
+    <!-- 中文翻译：一顶深帽壳的制式军用钢盔，用于抵御弹片与轻武器射击。 -->
     <graphicData>
       <texPath>Rukaya/Apparel/OverHead/SteelHelmet/Rukaya_SteelHelmet</texPath>
       <graphicClass>Graphic_Single</graphicClass>

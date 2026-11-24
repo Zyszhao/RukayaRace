@@ -14,13 +14,50 @@ namespace RukayaRace.Trade
         public float caravanCapacity = 300f;
     }
 
+    internal static class RukayaTransportDefCache
+    {
+        private static Dictionary<ThingDef, RukayaTransportExtension> transportDefs;
+        private static FactionDef drifterAllianceDef;
+        private static bool initialized;
+
+        private static void EnsureInitialized()
+        {
+            if (initialized)
+                return;
+            initialized = true;
+            drifterAllianceDef = DefDatabase<FactionDef>.GetNamedSilentFail("Rukaya_DrifterAlliance");
+            transportDefs = new Dictionary<ThingDef, RukayaTransportExtension>();
+            List<ThingDef> allDefs = DefDatabase<ThingDef>.AllDefsListForReading;
+            for (int i = 0; i < allDefs.Count; i++)
+            {
+                ThingDef def = allDefs[i];
+                RukayaTransportExtension ext = def.GetModExtension<RukayaTransportExtension>();
+                if (ext != null)
+                    transportDefs[def] = ext;
+            }
+        }
+
+        public static bool TryGet(ThingDef def, out RukayaTransportExtension ext)
+        {
+            EnsureInitialized();
+            return transportDefs.TryGetValue(def, out ext);
+        }
+
+        public static bool IsDrifterAlliance(Faction faction)
+        {
+            if (faction == null)
+                return false;
+            EnsureInitialized();
+            return drifterAllianceDef != null && faction.def == drifterAllianceDef;
+        }
+    }
+
     [HarmonyPatch(typeof(MassUtility), nameof(MassUtility.Capacity))]
     public static class Patch_RukayaTransportCapacity
     {
         public static bool Prefix(Pawn p, StringBuilder explanation, ref float __result)
         {
-            RukayaTransportExtension transport = p.def.GetModExtension<RukayaTransportExtension>();
-            if (transport == null)
+            if (p == null || !RukayaTransportDefCache.TryGet(p.def, out RukayaTransportExtension transport))
                 return true;
 
             __result = MassUtility.CanEverCarryAnything(p) ? transport.caravanCapacity : 0f;
@@ -39,8 +76,8 @@ namespace RukayaRace.Trade
     {
         public static void Postfix(Pawn p, ref TraderCaravanRole __result)
         {
-            if (p.def.GetModExtension<RukayaTransportExtension>() != null
-                && p.Faction?.def.defName == "Rukaya_DrifterAlliance"
+            if (p != null && RukayaTransportDefCache.TryGet(p.def, out _)
+                && RukayaTransportDefCache.IsDrifterAlliance(p.Faction)
                 && p.GetLord()?.LordJob is LordJob_TradeWithColony)
                 __result = TraderCaravanRole.Carrier;
         }
@@ -82,11 +119,21 @@ namespace RukayaRace.Trade
 
             foreach (Thing stack in cargo)
             {
+                float unitMass = stack.GetStatValue(StatDefOf.Mass);
                 while (!stack.Destroyed && stack.stackCount > 0)
                 {
-                    float unitMass = stack.GetStatValue(StatDefOf.Mass);
-                    Pawn carrier = carriers.OrderByDescending(MassUtility.FreeSpace).First();
-                    int count = FitCount(MassUtility.FreeSpace(carrier), unitMass, stack.stackCount);
+                    Pawn carrier = carriers[0];
+                    float bestFree = MassUtility.FreeSpace(carrier);
+                    for (int i = 1; i < carriers.Count; i++)
+                    {
+                        float free = MassUtility.FreeSpace(carriers[i]);
+                        if (free > bestFree)
+                        {
+                            bestFree = free;
+                            carrier = carriers[i];
+                        }
+                    }
+                    int count = FitCount(bestFree, unitMass, stack.stackCount);
                     if (count == 0)
                     {
                         carrier = AddCarrier();

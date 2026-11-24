@@ -12,7 +12,7 @@
     <handlesWorldObjectTimeoutInspectString>true</handlesWorldObjectTimeoutInspectString>
     <tags><li>Rukaya_MemoryArchive</li></tags>
     <workerClass>SitePartWorker_ItemStash</workerClass>
-    <minMapSize>(80,1,80)</minMapSize>
+    <minMapSize>(220,1,220)</minMapSize>
   </SitePartDef>
   <GenStepDef>
     <defName>Rukaya_MemoryArchive</defName>

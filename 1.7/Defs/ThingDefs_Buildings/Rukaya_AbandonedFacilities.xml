@@ -26,7 +26,7 @@
     <description>An inactive machine. Investigate it to recover one memory module containing refining records.</description>
     <!-- 中文：一台失效的设备。调查可获得一份保存大规模精炼资料的磁芯存储器。 -->
     <graphicData>
-      <texPath>Rukaya/Building/Rukaya_AdvancedRefiner/Rukaya_AdvancedRefiner</texPath>
+      <texPath>Rukaya/Building/Abandoned/Rukaya_Ancient_LargeRefinary</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <shaderType>CutoutComplex</shaderType>
       <drawSize>(6,6)</drawSize>
@@ -54,7 +54,7 @@
     <description>An inactive machine. Investigate it to recover one memory module containing template-scanning records.</description>
     <!-- 中文：一台失效的设备。调查可获得一份保存模板扫描资料的磁芯存储器。 -->
     <graphicData>
-      <texPath>Rukaya/Building/Rukaya_Scanner/Rukaya_Scanner</texPath>
+      <texPath>Rukaya/Building/Abandoned/Rukaya_Ancient_Scanner</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <shaderType>CutoutComplex</shaderType>
       <drawSize>(4.6,4.6)</drawSize>
@@ -75,7 +75,7 @@
     <description>An inactive machine. Investigate it to recover one memory module containing equipment-printing records.</description>
     <!-- 中文：一台失效的设备。调查可获得一份保存装备打印资料的磁芯存储器。 -->
     <graphicData>
-      <texPath>Rukaya/Building/Rukaya_AdvanceFabricator/Rukaya_AdvanceFabricator</texPath>
+      <texPath>Rukaya/Building/Abandoned/Rukaya_Ancient_LargeFabricator</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <shaderType>CutoutComplex</shaderType>
       <drawSize>(5.6,5.6)</drawSize>
@@ -96,7 +96,7 @@
     <description>An inactive machine. Investigate it to recover one memory module containing naval-artillery records.</description>
     <!-- 中文：一台失效的设备。调查可获得一份保存舰炮资料的磁芯存储器。 -->
     <graphicData>
-      <texPath>Rukaya/Building/Rukaya_NavalArtillery/Rukaya_NavalArtillery_base</texPath>
+      <texPath>Rukaya/Building/Abandoned/Rukaya_Ancient_NavalArtillery</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <shaderType>CutoutComplex</shaderType>
       <drawSize>(7.6,7.6)</drawSize>
@@ -106,8 +106,6 @@
       </shadowData>
     </graphicData>
     <size>(3,3)</size>
-    <thingClass>RukayaRace.Research.Building_RukayaAbandonedNaval</thingClass>
-    <drawerType>MapMeshAndRealTime</drawerType>
     <comps>
       <li Class="RukayaRace.Research.CompProperties_RukayaArchiveInvestigation">
         <memory>Rukaya_CoreMemory_Naval</memory>
@@ -121,7 +119,7 @@
     <!-- 中文：废弃卢卡娅截击机 -->
     <description>Investigate to recover one magnetic-core memory for Rukaya interceptor research.</description>
     <!-- 中文：调查可获得一份磁芯存储器（卢卡娅截击机）。 -->
-    <graphicData><texPath>Aviation/Mig31</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>(9,9)</drawSize><shaderType>CutoutComplex</shaderType></graphicData>
+    <graphicData><texPath>Rukaya/Building/Abandoned/Rukaya_Ancient_MiG25</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>(10.5,10.5)</drawSize><shaderType>CutoutComplex</shaderType></graphicData>
     <size>(7,9)</size>
     <comps>
       <li Class="RukayaRace.Research.CompProperties_RukayaArchiveInvestigation">

@@ -7,19 +7,44 @@ namespace RukayaRace.Replication
 {
     public abstract class Building_RukayaReplicationBase : Building
     {
-        public CompRukayaActiveMatterReservoir Reservoir => GetComp<CompRukayaActiveMatterReservoir>();
+        private bool compsCached;
+        private CompRukayaActiveMatterReservoir cachedReservoir;
+        private CompPowerTrader cachedPower;
+        private CompFlickable cachedFlick;
+        private CompBreakdownable cachedBreakdown;
+
+        private void EnsureCompCache()
+        {
+            if (compsCached)
+            {
+                return;
+            }
+
+            compsCached = true;
+            cachedReservoir = GetComp<CompRukayaActiveMatterReservoir>();
+            cachedPower = GetComp<CompPowerTrader>();
+            cachedFlick = GetComp<CompFlickable>();
+            cachedBreakdown = GetComp<CompBreakdownable>();
+        }
+
+        public CompRukayaActiveMatterReservoir Reservoir
+        {
+            get
+            {
+                EnsureCompCache();
+                return cachedReservoir;
+            }
+        }
 
         public bool CanOperate
         {
             get
             {
-                CompPowerTrader power = GetComp<CompPowerTrader>();
-                CompFlickable flick = GetComp<CompFlickable>();
-                CompBreakdownable breakdown = GetComp<CompBreakdownable>();
+                EnsureCompCache();
                 return Spawned && !Destroyed
-                    && (power == null || power.PowerOn)
-                    && (flick == null || flick.SwitchIsOn)
-                    && (breakdown == null || !breakdown.BrokenDown);
+                    && (cachedPower == null || cachedPower.PowerOn)
+                    && (cachedFlick == null || cachedFlick.SwitchIsOn)
+                    && (cachedBreakdown == null || !cachedBreakdown.BrokenDown);
             }
         }
 

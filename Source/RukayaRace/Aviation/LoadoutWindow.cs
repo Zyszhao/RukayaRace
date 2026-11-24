@@ -10,7 +10,7 @@ public class LoadoutWindow : Window
 {
     private readonly Aircraft plane;
     private string status = "";
-    public override Vector2 InitialSize => new Vector2(plane.Heavy ? 1260 : 1060, 760);
+    public override Vector2 InitialSize => new Vector2(plane.IsInterceptor ? 1260 : plane.IsTransport ? 880 : 1060, 760);
     public LoadoutWindow(Aircraft plane)
     {
         this.plane = plane; doCloseX = true; doCloseButton = true; absorbInputAroundWindow = true;
@@ -23,8 +23,12 @@ public class LoadoutWindow : Window
         Widgets.Label(new Rect(12, 50, 900, 50), $"货舱 {plane.Cargo.MassUsage:F0}/{plane.CargoCapacity:F0} kg  ·  挂载 {plane.MountWeight:F0} kg  ·  起飞上限 {plane.TakeoffLimit:F0} kg\n乘员 {plane.Cargo.innerContainer.OfType<Pawn>().Count()}/{plane.Seats}  ·  航程 {plane.Range}  ·  速度 {plane.Speed:F1} 格/秒  ·  载荷效率 {plane.FlightPerformance:P0}");
         Widgets.DrawBoxSolid(new Rect(12, 105, width, 226), new Color(0.09f, 0.12f, 0.15f));
         GUI.DrawTexture(new Rect(12 + width / 2 - 200, 107, 400, 220), plane.def.uiIcon, ScaleMode.ScaleToFit);
-        Widgets.Label(new Rect(30, 122, 290, 75), plane.Heavy ? "左翼至右翼：1—7号。\n3、4、5号可装副油箱和吊舱。\n4号炸弹8枚、导弹2枚。" : "左翼至右翼：1—5号。\n3号仅限副油箱和运输吊舱。\n自带中线固定机炮。");
-        Widgets.Label(new Rect(width - 266, 122, 270, 75), plane.Heavy ? "常规点炸弹4枚、导弹1枚。\n活性物质导弹限4号。" : "2、4号可挂武器或吊舱。\n垂直起飞：1100 kg，耗油18。\n跑道起飞：1800 kg，耗油5。");
+        Widgets.Label(new Rect(30, 122, 290, 75), plane.IsTransport
+            ? "1—2号挂点（机翼外侧）\n可挂武器、副油箱或吊舱"
+            : plane.Heavy ? "1—7号挂点\n3、4、5号可挂副油箱与吊舱" : "1—5号挂点，含固定机炮\n3号仅限副油箱与吊舱");
+        Widgets.Label(new Rect(width - 266, 122, 270, 75), plane.IsTransport
+            ? "不可挂活性物质导弹\n需2名飞行员"
+            : plane.Heavy ? "4号挂点双倍备弹\n活性物质导弹限4号" : "垂直起飞：1100 kg / 18燃料\n跑道起飞：1800 kg / 5燃料");
         for (int i = 0; i < plane.mounts.Count; i++)
         {
             int index = i; Hardpoint m = plane.mounts[i];
@@ -45,7 +49,17 @@ public class LoadoutWindow : Window
                 var costs = Ordnance.RearmCost(m.kind, Math.Max(0, plane.StoreCapacity(i, m.kind) - m.rounds));
                 TooltipHandler.TipRegion(rearmRect, costs.Any(c => c.count > 0) ? "补满需要：" + string.Join("、", costs.Where(c => c.count > 0).Select(c => $"{c.count} {c.def.LabelCap}")) : "弹药已满。");
             }
-            float dotX = 12 + width / 2 - 12 + (i - plane.CenterHardpoint) * 32, dotY = 242 + (plane.CenterHardpoint - Mathf.Abs(i - plane.CenterHardpoint)) * 12;
+            float dotX, dotY;
+            if (plane.IsTransport)
+            {
+                dotX = 12 + width / 2 - 12 + (i == 0 ? -42f : 42f);
+                dotY = 212f;
+            }
+            else
+            {
+                dotX = 12 + width / 2 - 12 + (i - plane.CenterHardpoint) * 32;
+                dotY = 242 + (plane.CenterHardpoint - Mathf.Abs(i - plane.CenterHardpoint)) * 12;
+            }
             Widgets.DrawBoxSolid(new Rect(dotX, dotY, 24, 24), Color.black);
             Widgets.Label(new Rect(dotX + 5, dotY, 24, 24), (i + 1).ToString());
         }
@@ -55,7 +69,7 @@ public class LoadoutWindow : Window
             if (Widgets.ButtonText(new Rect(550, 500, 180, 30), "补充机炮弹药")) Rearm(-1);
             TooltipHandler.TipRegion(new Rect(550, 500, 180, 30), "每20发消耗1钢铁；固定机炮不可更换或拆除。");
         }
-        Widgets.Label(new Rect(16, 550, width - 8, 52), "更换挂载：10钢铁、1组件；使用18格内物资。悬停补弹按钮可查看材料。\n拆卸副油箱会卸下剩余燃料。吊舱与载荷会降低速度。");
+        Widgets.Label(new Rect(16, 550, width - 8, 52), "更换挂载消耗10钢铁、1工业组件（18格内）；悬停补弹可看材料。拆副油箱会卸出余油，挂载会略降航速。");
         Widgets.Label(new Rect(16, 625, width - 8, 28), status);
     }
     public void Install(int index, StoreKind kind)

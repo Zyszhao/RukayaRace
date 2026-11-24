@@ -161,12 +161,39 @@ namespace RukayaRace.Replication
         /// <summary>Shadow drawn along the bottom inside edge of the selected toggle button.</summary>
         private static readonly Color PressedShadowColor = new Color(0f, 0f, 0f, 0.35f);
 
+        private readonly struct PreviewIconKey : IEquatable<PreviewIconKey>
+        {
+            public readonly ThingDef def;
+            public readonly ThingDef stuff;
+            public readonly QualityCategory quality;
+
+            public PreviewIconKey(ThingDef def, ThingDef stuff, QualityCategory quality)
+            {
+                this.def = def;
+                this.stuff = stuff;
+                this.quality = quality;
+            }
+
+            public bool Equals(PreviewIconKey other) => def == other.def && stuff == other.stuff && quality == other.quality;
+            public override bool Equals(object obj) => obj is PreviewIconKey other && Equals(other);
+            public override int GetHashCode()
+            {
+                unchecked
+                {
+                    int h = def != null ? def.GetHashCode() : 0;
+                    h = (h * 397) ^ (stuff != null ? stuff.GetHashCode() : 0);
+                    return (h * 397) ^ (int)quality;
+                }
+            }
+        }
+
         /// <summary>
         /// Thumbnails are rebuilt only when their key changes. CompQuality assignment regenerates the
         /// thing's graphic, so a per-row preview would otherwise be recreated on every IMGUI pass.
         /// </summary>
-        private static readonly Dictionary<string, Thing> iconCache = new Dictionary<string, Thing>();
+        private static readonly Dictionary<PreviewIconKey, Thing> iconCache = new Dictionary<PreviewIconKey, Thing>();
 
+        private static Game iconCacheGame;
         private static int iconCacheGeneration = -1;
 
         /// <summary>
@@ -176,11 +203,19 @@ namespace RukayaRace.Replication
         private static readonly Dictionary<string, bool> modGroupOpenState = new Dictionary<string, bool>();
 
         /// <summary>
-        /// Drops the cached preview things at the start of every frame so a long session cannot keep
-        /// an unbounded number of generated things alive.
+        /// Drops the cached preview things across save/game switches or when the cache exceeds 256 entries
+        /// so a long session cannot keep stale or unbounded generated things alive.
         /// </summary>
         private static void TrimIconCache()
         {
+            Game currentGame = Current.Game;
+            if (iconCacheGame != currentGame)
+            {
+                iconCacheGame = currentGame;
+                ClearIconCache();
+                return;
+            }
+
             int frame = Time.frameCount;
             if (iconCacheGeneration == frame)
             {
@@ -193,16 +228,24 @@ namespace RukayaRace.Replication
                 return;
             }
 
+            ClearIconCache();
+        }
+
+        private static void ClearIconCache()
+        {
             foreach (Thing thing in iconCache.Values)
             {
-                thing?.Destroy();
+                if (thing != null && !thing.Destroyed)
+                {
+                    thing.Destroy();
+                }
             }
 
             iconCache.Clear();
         }
 
         /// <summary>
-        /// Returns (and caches per frame) a rendered example of the given template. The caller must not
+        /// Returns (and caches per game/session) a rendered example of the given template. The caller must not
         /// destroy the result; it is owned by the cache.
         /// </summary>
         public static Thing PreviewThing(ThingDef def, ThingDef stuff, QualityCategory quality)
@@ -213,7 +256,7 @@ namespace RukayaRace.Replication
             }
 
             TrimIconCache();
-            string key = def.defName + "|" + (stuff?.defName ?? string.Empty) + "|" + (int)quality;
+            PreviewIconKey key = new PreviewIconKey(def, stuff, quality);
             if (iconCache.TryGetValue(key, out Thing cached) && cached != null && !cached.Destroyed)
             {
                 return cached;
@@ -674,6 +717,8 @@ namespace RukayaRace.Replication
             }
 
             float y = 0f;
+            float viewTop = scroll.y;
+            float viewBottom = scroll.y + outRect.height;
             for (int i = 0; i < groups.Count; i++)
             {
                 RukayaModGroup<T> group = groups[i];
@@ -681,7 +726,10 @@ namespace RukayaRace.Replication
                 // The foldout state is captured before the header is drawn, so a click that collapses a
                 // folder takes effect on the next pass instead of leaving this pass half relaid out.
                 bool open = IsModGroupOpen(group.Key);
-                DrawModGroupHeader(new Rect(0f, y, view.width, ModGroupHeaderHeight), group, open);
+                if (y + ModGroupHeaderHeight >= viewTop && y <= viewBottom)
+                {
+                    DrawModGroupHeader(new Rect(0f, y, view.width, ModGroupHeaderHeight), group, open);
+                }
                 y += ModGroupHeaderHeight;
 
                 if (!open)
@@ -689,16 +737,26 @@ namespace RukayaRace.Replication
                     continue;
                 }
 
-                for (int j = 0; j < group.Items.Count; j++)
+                float groupHeight = group.Items.Count * rowHeight;
+                if (y + groupHeight < viewTop || y > viewBottom)
                 {
-                    Rect row = new Rect(ModGroupIndent, y, Mathf.Max(0f, view.width - ModGroupIndent), rowHeight);
+                    y += groupHeight;
+                    continue;
+                }
+
+                int firstVisible = Mathf.Max(0, Mathf.FloorToInt((viewTop - y) / rowHeight));
+                int lastVisible = Mathf.Min(group.Items.Count - 1, Mathf.CeilToInt((viewBottom - y) / rowHeight));
+                for (int j = firstVisible; j <= lastVisible; j++)
+                {
+                    float rowY = y + j * rowHeight;
+                    Rect row = new Rect(ModGroupIndent, rowY, Mathf.Max(0f, view.width - ModGroupIndent), rowHeight);
                     if (drawRow != null)
                     {
                         drawRow(row, view, group.Items[j]);
                     }
-
-                    y += rowHeight;
                 }
+
+                y += groupHeight;
             }
 
             Widgets.EndScrollView();

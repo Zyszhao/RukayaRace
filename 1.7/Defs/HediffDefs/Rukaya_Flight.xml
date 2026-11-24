@@ -4,7 +4,7 @@
     <defName>Rukaya_InFlight</defName>
     <label>in flight</label>
     <!-- 中文：飞行中 -->
-    <description>This Rukaya is airborne on her own wings.</description>
+    <description>This Rukaya is airborne on her own wings. Each wingbeat maintains lift and makes her harder to strike in melee.</description>
     <!-- 中文翻译：这名卢卡娅正以自己的双翼停留在空中。翅膀的每一次扇动都在维持升力，同时也让她更难被近战命中。 -->
     <hediffClass>HediffWithComps</hediffClass>
     <isBad>false</isBad>

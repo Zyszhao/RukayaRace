@@ -11,7 +11,7 @@
     <possessionCount>12</possessionCount>
     <tickerType>Normal</tickerType>
     <graphicData>
-      <texPath>Rukaya/Things/ActiveMatterContainer</texPath>
+      <texPath>Rukaya/Items/ActiveMatterContainer</texPath>
       <graphicClass>Graphic_StackCount</graphicClass>
     </graphicData>
     <stackLimit>75</stackLimit>

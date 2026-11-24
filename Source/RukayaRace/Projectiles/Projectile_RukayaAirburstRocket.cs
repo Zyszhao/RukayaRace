@@ -18,7 +18,13 @@ namespace RukayaRace.Projectiles
             if (!blockedByShield && impactMap != null)
             {
                 this.ApplyDirectDamage(hitThing);
-                this.LaunchFragments(impactCell, impactMap);
+                LaunchFragments(
+                    impactCell,
+                    impactMap,
+                    this.Extension,
+                    this.launcher,
+                    this.preventFriendlyFire,
+                    this.equipment);
             }
 
             base.Impact(hitThing, blockedByShield);
@@ -45,23 +51,28 @@ namespace RukayaRace.Projectiles
             hitThing.TakeDamage(damageInfo);
         }
 
-        private void LaunchFragments(IntVec3 impactCell, Map map)
+        internal static void LaunchFragments(
+            IntVec3 impactCell,
+            Map map,
+            RukayaAirburstProjectileExtension extension,
+            Thing launcher,
+            bool preventFriendlyFire,
+            Thing equipment)
         {
-            RukayaAirburstProjectileExtension extension = this.Extension;
-            if (extension.fragmentProjectile == null || extension.fragmentCount <= 0)
+            if (extension == null || extension.fragmentProjectile == null || extension.fragmentCount <= 0)
             {
                 return;
             }
 
             SelectedCells.Clear();
-            this.SelectFragmentCells(impactCell, map, extension);
+            SelectFragmentCells(impactCell, map, extension, launcher);
 
             Vector3 origin = impactCell.ToVector3Shifted();
             int maxDelayTicks = Mathf.Max(0, Mathf.RoundToInt(extension.fragmentLaunchDelayMaxSeconds * 60f));
             for (int i = 0; i < SelectedCells.Count; i++)
             {
                 IntVec3 targetCell = SelectedCells[i];
-                LocalTargetInfo target = this.TargetForCell(targetCell, map);
+                LocalTargetInfo target = TargetForCell(targetCell, map, launcher);
                 if (maxDelayTicks > 0)
                 {
                     map.GetComponent<MapComponent_RukayaAirburstFragments>().Schedule(
@@ -69,9 +80,9 @@ namespace RukayaRace.Projectiles
                         targetCell,
                         target,
                         extension.fragmentProjectile,
-                        this.launcher,
-                        this.preventFriendlyFire,
-                        this.equipment,
+                        launcher,
+                        preventFriendlyFire,
+                        equipment,
                         extension.fragmentVisualSegments,
                         extension.fragmentVisualArcHeight,
                         Rand.RangeInclusive(0, maxDelayTicks));
@@ -89,29 +100,33 @@ namespace RukayaRace.Projectiles
                         target,
                         map,
                         extension.fragmentProjectile,
-                        this.launcher,
-                        this.preventFriendlyFire,
-                        this.equipment);
+                        launcher,
+                        preventFriendlyFire,
+                        equipment);
                 }
             }
 
             SelectedCells.Clear();
         }
 
-        private void SelectFragmentCells(IntVec3 impactCell, Map map, RukayaAirburstProjectileExtension extension)
+        private static void SelectFragmentCells(
+            IntVec3 impactCell,
+            Map map,
+            RukayaAirburstProjectileExtension extension,
+            Thing launcher)
         {
             if (extension.preferPawnCells)
             {
                 foreach (Pawn pawn in map.mapPawns.AllPawnsSpawned)
                 {
-                    if (pawn == null || pawn.Destroyed || pawn.Dead || pawn == this.launcher)
+                    if (pawn == null || pawn.Destroyed || pawn.Dead || pawn == launcher)
                     {
                         continue;
                     }
 
                     if (pawn.Position.InHorDistOf(impactCell, extension.fragmentSearchRadius))
                     {
-                        this.TryAddSelectedCell(pawn.Position, map, extension.fragmentCount);
+                        TryAddSelectedCell(pawn.Position, map, extension.fragmentCount);
                     }
                 }
 
@@ -134,13 +149,13 @@ namespace RukayaRace.Projectiles
             CandidateCells.Shuffle();
             for (int i = 0; i < CandidateCells.Count && SelectedCells.Count < extension.fragmentCount; i++)
             {
-                this.TryAddSelectedCell(CandidateCells[i], map, extension.fragmentCount);
+                TryAddSelectedCell(CandidateCells[i], map, extension.fragmentCount);
             }
 
             CandidateCells.Clear();
         }
 
-        private void TryAddSelectedCell(IntVec3 cell, Map map, int maxCount)
+        private static void TryAddSelectedCell(IntVec3 cell, Map map, int maxCount)
         {
             if (SelectedCells.Count >= maxCount || !cell.InBounds(map) || SelectedCells.Contains(cell))
             {
@@ -179,12 +194,12 @@ namespace RukayaRace.Projectiles
                 null);
         }
 
-        private LocalTargetInfo TargetForCell(IntVec3 targetCell, Map map)
+        private static LocalTargetInfo TargetForCell(IntVec3 targetCell, Map map, Thing launcher)
         {
             List<Thing> thingList = targetCell.GetThingList(map);
             for (int i = 0; i < thingList.Count; i++)
             {
-                if (thingList[i] is Pawn pawn && pawn != this.launcher && !pawn.Dead && !pawn.Destroyed)
+                if (thingList[i] is Pawn pawn && pawn != launcher && !pawn.Dead && !pawn.Destroyed)
                 {
                     return pawn;
                 }

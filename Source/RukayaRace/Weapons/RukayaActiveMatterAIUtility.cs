@@ -54,9 +54,15 @@ namespace RukayaRace.Weapons
 
         public static bool ShouldUseActiveMode(Pawn pawn, Thing target, CompRukayaActiveMatterWeapon weapon)
         {
+            return ShouldUseActiveMode(pawn, target, weapon, out _);
+        }
+
+        public static bool ShouldUseActiveMode(Pawn pawn, Thing target, CompRukayaActiveMatterWeapon weapon, out string reason)
+        {
             if (pawn == null || target == null || weapon == null || !weapon.SupportsActiveMode
                 || !weapon.CanUseActiveModeNow())
             {
+                reason = "Rukaya_ActiveMatterAI_Insufficient";
                 return false;
             }
 
@@ -85,11 +91,19 @@ namespace RukayaRace.Weapons
                     break;
             }
 
-            if (!policySatisfied || !HasSafeImpactArea(pawn, target, weapon))
+            if (!policySatisfied)
             {
+                reason = "Rukaya_ActiveMatterAI_PolicyNotMet";
                 return false;
             }
 
+            if (!HasSafeImpactArea(pawn, target, weapon))
+            {
+                reason = "Rukaya_ActiveMatterAI_FriendlyRisk";
+                return false;
+            }
+
+            reason = "Rukaya_ActiveMatterAI_Active";
             return true;
         }
 
@@ -100,8 +114,7 @@ namespace RukayaRace.Weapons
                 return false;
             }
 
-            StatDef sharpArmor = DefDatabase<StatDef>.GetNamedSilentFail("ArmorRating_Sharp");
-            return sharpArmor != null && target.GetStatValue(sharpArmor, true) >= threshold;
+            return StatDefOf.ArmorRating_Sharp != null && target.GetStatValue(StatDefOf.ArmorRating_Sharp, true) >= threshold;
         }
 
         public static int CountHostilesNearTarget(Pawn pawn, Thing target, float radius)

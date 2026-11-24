@@ -125,6 +125,22 @@ namespace RukayaRace.Buildings
         /// * 对空 —— 对空组件那把**独立的** AA 炮身的 verb（载体模式下它不占用宿主 verb，
         ///   所以必须单独查，否则对空射击时炮管不会后坐）。
         /// </summary>
+        private bool skyInterceptorResolved;
+        private CompRukayaSkyInterceptor cachedSkyInterceptor;
+
+        private CompRukayaSkyInterceptor SkyInterceptor
+        {
+            get
+            {
+                if (!skyInterceptorResolved)
+                {
+                    skyInterceptorResolved = true;
+                    cachedSkyInterceptor = GetComp<CompRukayaSkyInterceptor>();
+                }
+                return cachedSkyInterceptor;
+            }
+        }
+
         private int LastBarrelShotTick
         {
             get
@@ -133,7 +149,7 @@ namespace RukayaRace.Buildings
                 Verb ground = AttackVerb;
                 if (ground != null)
                     last = ground.LastShotTick;
-                Verb air = GetComp<CompRukayaSkyInterceptor>()?.WeaponVerb;
+                Verb air = SkyInterceptor?.WeaponVerb;
                 if (air != null && air.LastShotTick > last)
                     last = air.LastShotTick;
                 return last;

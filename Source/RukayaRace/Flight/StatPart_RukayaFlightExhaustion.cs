@@ -55,7 +55,18 @@ namespace RukayaRace.Flight
                 return false;
             }
 
-            exhaustion = pawn.health?.hediffSet?.GetFirstHediffOfDef(def) as Hediff_FlightExhaustion;
+            if (!RukayaWingUtility.FlightCapableDefs.Contains(pawn.def))
+            {
+                return false;
+            }
+
+            HediffSet hediffSet = pawn.health?.hediffSet;
+            if (hediffSet == null || hediffSet.hediffs.Count == 0)
+            {
+                return false;
+            }
+
+            exhaustion = hediffSet.GetFirstHediffOfDef(def) as Hediff_FlightExhaustion;
             return exhaustion != null;
         }
     }

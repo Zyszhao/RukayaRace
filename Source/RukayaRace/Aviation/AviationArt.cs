@@ -4,7 +4,7 @@ namespace RukayaAviation;
 
 public static class AviationArt
 {
-    public const string Commands = "UI/Commands/Aviation/";
+    public const string Commands = "Rukaya/UI/Aviation/";
     public const string Chemfuel = "Things/Item/Resource/Chemfuel";
     public const string ArrivalMode = Commands + "Rukaya_Aerial_ArriveMode";
     public const string Move = "Things/Mote/FeedbackGoto";

@@ -12,7 +12,7 @@
   <Rukaya_ActiveMatterModeCommandDesc>在普通模式和活性物质模式之间切换武器。\n\n每次强化攻击会消耗{0}点活性物质。当前装填：{1}/{2}。</Rukaya_ActiveMatterModeCommandDesc>
   <Rukaya_ActiveMatterAutoReloadCommandOn>自动装填：开</Rukaya_ActiveMatterAutoReloadCommandOn>
   <Rukaya_ActiveMatterAutoReloadCommandOff>自动装填：关</Rukaya_ActiveMatterAutoReloadCommandOff>
-  <Rukaya_ActiveMatterAutoReloadCommandDesc>允许这把武器在小人处于安全且未征召状态时，自动从储存中的活性物质补充装填。</Rukaya_ActiveMatterAutoReloadCommandDesc>
+  <Rukaya_ActiveMatterAutoReloadCommandDesc>允许这把武器在持有者处于安全且未征召状态时，自动从储存中的活性物质补充装填。</Rukaya_ActiveMatterAutoReloadCommandDesc>
 
   <Rukaya_ActiveMatterLoadTitle>活性物质装填量</Rukaya_ActiveMatterLoadTitle>
   <Rukaya_ActiveMatterTargetBar>目标：{0}</Rukaya_ActiveMatterTargetBar>

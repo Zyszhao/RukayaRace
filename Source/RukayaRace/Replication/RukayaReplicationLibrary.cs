@@ -25,8 +25,48 @@ namespace RukayaRace.Replication
         public int completedCount;
         public bool suspended;
 
-        public ThingDef ThingDef => thingDefName.NullOrEmpty() ? null : RukayaReplicationUtility.PrototypeDef(DefDatabase<ThingDef>.GetNamedSilentFail(thingDefName));
-        public ThingDef StuffDef => stuffDefName.NullOrEmpty() ? null : DefDatabase<ThingDef>.GetNamedSilentFail(stuffDefName);
+        private string cachedThingDefName;
+        private ThingDef cachedThingDef;
+        private string cachedStuffDefName;
+        private ThingDef cachedStuffDef;
+
+        public ThingDef ThingDef
+        {
+            get
+            {
+                if (thingDefName.NullOrEmpty())
+                {
+                    return null;
+                }
+
+                if (cachedThingDefName != thingDefName)
+                {
+                    cachedThingDefName = thingDefName;
+                    cachedThingDef = RukayaReplicationUtility.PrototypeDef(DefDatabase<ThingDef>.GetNamedSilentFail(thingDefName));
+                }
+
+                return cachedThingDef;
+            }
+        }
+
+        public ThingDef StuffDef
+        {
+            get
+            {
+                if (stuffDefName.NullOrEmpty())
+                {
+                    return null;
+                }
+
+                if (cachedStuffDefName != stuffDefName)
+                {
+                    cachedStuffDefName = stuffDefName;
+                    cachedStuffDef = DefDatabase<ThingDef>.GetNamedSilentFail(stuffDefName);
+                }
+
+                return cachedStuffDef;
+            }
+        }
 
         public string Label
         {
@@ -296,11 +336,52 @@ namespace RukayaRace.Replication
 
         public static GameComponent_RukayaReplicationLibrary Library => Current.Game?.GetComponent<GameComponent_RukayaReplicationLibrary>();
 
+        private readonly struct MarketValueKey : IEquatable<MarketValueKey>
+        {
+            public readonly ThingDef def;
+            public readonly ThingDef stuff;
+            public readonly QualityCategory quality;
+
+            public MarketValueKey(ThingDef def, ThingDef stuff, QualityCategory quality)
+            {
+                this.def = def;
+                this.stuff = stuff;
+                this.quality = quality;
+            }
+
+            public bool Equals(MarketValueKey other) => def == other.def && stuff == other.stuff && quality == other.quality;
+            public override bool Equals(object obj) => obj is MarketValueKey other && Equals(other);
+            public override int GetHashCode()
+            {
+                unchecked
+                {
+                    int h = def != null ? def.GetHashCode() : 0;
+                    h = (h * 397) ^ (stuff != null ? stuff.GetHashCode() : 0);
+                    return (h * 397) ^ (int)quality;
+                }
+            }
+        }
+
+        private static readonly Dictionary<ThingDef, bool> EligibleDefCache = new Dictionary<ThingDef, bool>();
+        private static readonly Dictionary<ThingDef, ThingDef> PrototypeDefCache = new Dictionary<ThingDef, ThingDef>();
+        private static readonly Dictionary<ThingDef, List<ThingDef>> AllowedStuffsCache = new Dictionary<ThingDef, List<ThingDef>>();
+        private static readonly Dictionary<MarketValueKey, float> MarketValueCache = new Dictionary<MarketValueKey, float>();
+        private static Game cachedMarketValueGame;
+
         public static bool IsEligibleDef(ThingDef def)
         {
             def = PrototypeDef(def);
-            return def != null
-                && def.category == ThingCategory.Item
+            if (def == null)
+            {
+                return false;
+            }
+
+            if (EligibleDefCache.TryGetValue(def, out bool cached))
+            {
+                return cached;
+            }
+
+            bool eligible = def.category == ThingCategory.Item
                 && def.EverHaulable
                 && !def.destroyOnDrop
                 && (def.IsWeapon || def.apparel != null)
@@ -309,6 +390,8 @@ namespace RukayaRace.Replication
                 // preserve them or provide stable preview values. Include derived mod components.
                 && !def.comps.Any(x => x.compClass != null && typeof(CompBladelinkWeapon).IsAssignableFrom(x.compClass))
                 && def.comps.Any(x => x.compClass == typeof(CompQuality));
+            EligibleDefCache[def] = eligible;
+            return eligible;
         }
 
         public static bool IsEligibleThing(Thing thing)
@@ -386,21 +469,45 @@ namespace RukayaRace.Replication
 
         public static List<ThingDef> AllowedStuffs(ThingDef def)
         {
+            if (def == null)
+            {
+                return new List<ThingDef> { null };
+            }
+
+            if (AllowedStuffsCache.TryGetValue(def, out List<ThingDef> cached))
+            {
+                return cached;
+            }
+
             List<ThingDef> result = new List<ThingDef>();
-            if (def == null || !def.MadeFromStuff)
+            if (!def.MadeFromStuff)
             {
                 result.Add(null);
+                AllowedStuffsCache[def] = result;
                 return result;
             }
 
-            foreach (ThingDef stuff in DefDatabase<ThingDef>.AllDefsListForReading)
+            List<ThingDef> allDefs = DefDatabase<ThingDef>.AllDefsListForReading;
+            for (int i = 0; i < allDefs.Count; i++)
             {
+                ThingDef stuff = allDefs[i];
                 if (!stuff.IsStuff || stuff.stuffProps?.categories == null || def.stuffCategories == null)
                 {
                     continue;
                 }
 
-                if (stuff.stuffProps.categories.Any(x => def.stuffCategories.Contains(x)))
+                List<StuffCategoryDef> stuffCats = stuff.stuffProps.categories;
+                bool matched = false;
+                for (int c = 0; c < stuffCats.Count; c++)
+                {
+                    if (def.stuffCategories.Contains(stuffCats[c]))
+                    {
+                        matched = true;
+                        break;
+                    }
+                }
+
+                if (matched)
                 {
                     result.Add(stuff);
                 }
@@ -415,7 +522,9 @@ namespace RukayaRace.Replication
                 }
             }
 
-            return result.OrderBy(x => x?.label ?? string.Empty).ToList();
+            result.Sort((a, b) => string.Compare(a?.label ?? string.Empty, b?.label ?? string.Empty, StringComparison.Ordinal));
+            AllowedStuffsCache[def] = result;
+            return result;
         }
 
         public static Thing MakePreview(ThingDef def, ThingDef stuff, QualityCategory quality)
@@ -449,27 +558,68 @@ namespace RukayaRace.Replication
         // for pricing, previews or printing; the actual scanned weapon remains untouched.
         public static ThingDef PrototypeDef(ThingDef def)
         {
-            if (!HasWeaponTraits(def))
-                return def;
-            ThingDef prototype = def.descriptionHyperlinks?
-                .Select(x => x.def as ThingDef)
-                .FirstOrDefault(x => x != null && x.IsWeapon && !HasWeaponTraits(x));
-            if (prototype == null && def.defName.EndsWith("_Unique", StringComparison.Ordinal))
-                prototype = DefDatabase<ThingDef>.GetNamedSilentFail(def.defName.Substring(0, def.defName.Length - "_Unique".Length));
-            return prototype != null && prototype.IsWeapon && !HasWeaponTraits(prototype) ? prototype : null;
+            if (def == null)
+            {
+                return null;
+            }
+
+            if (PrototypeDefCache.TryGetValue(def, out ThingDef cached))
+            {
+                return cached;
+            }
+
+            ThingDef resolved = def;
+            if (HasWeaponTraits(def))
+            {
+                ThingDef prototype = def.descriptionHyperlinks?
+                    .Select(x => x.def as ThingDef)
+                    .FirstOrDefault(x => x != null && x.IsWeapon && !HasWeaponTraits(x));
+                if (prototype == null && def.defName.EndsWith("_Unique", StringComparison.Ordinal))
+                    prototype = DefDatabase<ThingDef>.GetNamedSilentFail(def.defName.Substring(0, def.defName.Length - "_Unique".Length));
+                resolved = prototype != null && prototype.IsWeapon && !HasWeaponTraits(prototype) ? prototype : null;
+            }
+
+            PrototypeDefCache[def] = resolved;
+            return resolved;
         }
 
         public static float StandardizedMarketValue(ThingDef def, ThingDef stuff, QualityCategory quality)
         {
-            Thing preview = MakePreview(def, stuff, quality);
-            if (preview == null)
+            def = PrototypeDef(def);
+            if (def == null)
             {
                 return 0f;
             }
 
-            float value = preview.GetStatValue(StatDefOf.MarketValue);
+            if (def.MadeFromStuff && stuff == null)
+            {
+                stuff = GenStuff.DefaultStuffFor(def);
+            }
+
+            Game currentGame = Current.Game;
+            if (cachedMarketValueGame != currentGame)
+            {
+                cachedMarketValueGame = currentGame;
+                MarketValueCache.Clear();
+            }
+
+            MarketValueKey key = new MarketValueKey(def, stuff, quality);
+            if (MarketValueCache.TryGetValue(key, out float cachedValue))
+            {
+                return cachedValue;
+            }
+
+            Thing preview = MakePreview(def, stuff, quality);
+            if (preview == null)
+            {
+                MarketValueCache[key] = 0f;
+                return 0f;
+            }
+
+            float value = Mathf.Max(0f, preview.GetStatValue(StatDefOf.MarketValue));
             preview.Destroy();
-            return Mathf.Max(0f, value);
+            MarketValueCache[key] = value;
+            return value;
         }
 
         public static int GetScanCost(Thing source)
@@ -535,27 +685,46 @@ namespace RukayaRace.Replication
                 }
             }
 
-            foreach (Pawn pawn in map.mapPawns.FreeColonistsSpawned)
+            List<Pawn> colonists = map.mapPawns.FreeColonistsSpawned;
+            for (int p = 0; p < colonists.Count; p++)
             {
-                IEnumerable<Thing> held = Enumerable.Empty<Thing>();
-                if (pawn.equipment?.AllEquipmentListForReading != null)
+                Pawn pawn = colonists[p];
+                List<ThingWithComps> equipment = pawn.equipment?.AllEquipmentListForReading;
+                if (equipment != null)
                 {
-                    held = held.Concat(pawn.equipment.AllEquipmentListForReading);
-                }
-                if (pawn.apparel?.WornApparel != null)
-                {
-                    held = held.Concat(pawn.apparel.WornApparel);
-                }
-                if (pawn.inventory?.innerContainer != null)
-                {
-                    held = held.Concat(pawn.inventory.innerContainer);
+                    for (int i = 0; i < equipment.Count; i++)
+                    {
+                        Thing thing = equipment[i];
+                        if (thing.def == def && thing.Stuff == stuff && GetQuality(thing) >= minimumQuality)
+                        {
+                            count += thing.stackCount;
+                        }
+                    }
                 }
 
-                foreach (Thing thing in held)
+                List<RimWorld.Apparel> apparel = pawn.apparel?.WornApparel;
+                if (apparel != null)
                 {
-                    if (thing.def == def && thing.Stuff == stuff && GetQuality(thing) >= minimumQuality)
+                    for (int i = 0; i < apparel.Count; i++)
                     {
-                        count += thing.stackCount;
+                        Thing thing = apparel[i];
+                        if (thing.def == def && thing.Stuff == stuff && GetQuality(thing) >= minimumQuality)
+                        {
+                            count += thing.stackCount;
+                        }
+                    }
+                }
+
+                ThingOwner<Thing> inventory = pawn.inventory?.innerContainer;
+                if (inventory != null)
+                {
+                    for (int i = 0; i < inventory.Count; i++)
+                    {
+                        Thing thing = inventory[i];
+                        if (thing.def == def && thing.Stuff == stuff && GetQuality(thing) >= minimumQuality)
+                        {
+                            count += thing.stackCount;
+                        }
                     }
                 }
             }

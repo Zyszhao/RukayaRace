@@ -44,6 +44,13 @@ namespace RukayaRace.Weapons
             }
 
             weapon.InitializeAISupplyIfNeeded(pawn);
+            if (weapon.GetAutoReloadContainerCount(int.MaxValue) <= 0
+                || pawn.inventory?.innerContainer == null
+                || !HasReloadContainerInInventory(pawn, weapon.Props.activeMatterThingDef))
+            {
+                return;
+            }
+
             if (RukayaActiveMatterAIUtility.IsCombatActive(pawn)
                 || RukayaActiveMatterAIUtility.HasHostileNear(pawn, SafeReloadRadius))
             {
@@ -55,6 +62,26 @@ namespace RukayaRace.Weapons
             {
                 weapon.SetAILastDecision("Rukaya_ActiveMatterAI_Reloaded");
             }
+        }
+
+        private static bool HasReloadContainerInInventory(Pawn pawn, ThingDef containerDef)
+        {
+            if (containerDef == null)
+            {
+                return false;
+            }
+
+            ThingOwner<Thing> inv = pawn.inventory.innerContainer;
+            for (int i = 0; i < inv.Count; i++)
+            {
+                Thing item = inv[i];
+                if (item.def == containerDef && item.stackCount > 0)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

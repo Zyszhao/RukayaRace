@@ -59,10 +59,8 @@
     <defName>Rukaya_MechWeapon_Laser</defName>
     <label>Rukaya laser turret</label>
     <!-- 中文：卢卡娅激光炮塔 -->
-    <description>A focused-emitter turret that pours a continuous stream of charged light into a target area. Its pulses land
-      instantly, and each one lingers as a beam long enough to blend into the next, so a burst reads as one unbroken lance of
-      light. It can be switched to an anti-air mode against flying targets. Ground and anti-air fire share one heat sink: sustained fire locks both emitters until it cools.</description>
-    <!-- 中文翻译：一座聚焦发射炮塔，向目标区域倾泻持续的充能光束。它的脉冲当场命中，且每一发的光束会残留到下一发打出来， 因此一轮连发看上去就是一道不断的光矛。可切换至对空模式，用于拦截飞行目标。 对地与对空火力共用散热系统：持续射击导致过热后，两套发射器均须冷却后才能恢复开火。 -->
+    <description>A focused-emitter turret that fires sustained bursts of charged laser light. Ground and anti-air modes share a single heat sink; overheating locks both until the emitter cools.</description>
+    <!-- 中文翻译：一座向目标倾泻持续高能激光脉冲的聚焦炮塔。对地与对空模式共用散热系统，过热后须冷却才能恢复射击。 -->
     <graphicData>
       <texPath>Rukaya/Mechanoids/Rukaya_MechTurretLaser</texPath>
     </graphicData>
@@ -80,7 +78,7 @@
 
         <ai_ProjectileLaunchingIgnoresMeleeThreats>true</ai_ProjectileLaunchingIgnoresMeleeThreats>
         <canGoWild>false</canGoWild>
-        <range>26.9</range>
+        <range>19.9</range>
         <warmupTime>0.0166667</warmupTime>
         <ticksBetweenBurstShots>5</ticksBetweenBurstShots>
         <burstShotCount>24</burstShotCount>
@@ -121,7 +119,7 @@
         <ai_ProjectileLaunchingIgnoresMeleeThreats>true</ai_ProjectileLaunchingIgnoresMeleeThreats>
         <range>34.9</range>
         <warmupTime>1.25</warmupTime>
-        <ticksBetweenBurstShots>4</ticksBetweenBurstShots>
+        <ticksBetweenBurstShots>3</ticksBetweenBurstShots>
         <burstShotCount>25</burstShotCount>
         <soundCast>Shot_Minigun</soundCast>
         <soundCastTail>GunTail_Heavy</soundCastTail>
@@ -278,9 +276,8 @@
     <defName>Bullet_Rukaya_MechLaser</defName>
     <label>Rukaya mech laser pulse</label>
     <!-- 中文：卢卡娅机械激光脉冲束 -->
-    <description>An instant laser pulse fired by Rukaya laser turrets. It has no travel time: the shot lands on the firing tick
-      and leaves a beam hanging in the air long enough to meet the next pulse.</description>
-    <!-- 中文翻译：卢卡娅激光炮塔发射的瞬时光束脉冲。它没有飞行时间：开火当场命中，并在空中留下一道足够撑到下一发脉冲的光束。 -->
+    <description>A high-energy laser pulse fired by Rukaya laser turrets, burning its target almost instantaneously.</description>
+    <!-- 中文翻译：卢卡娅激光炮塔发射的高能激光脉冲，几乎在开火瞬间烧灼目标。 -->
     <thingClass>RukayaRace.Projectiles.Projectile_RukayaLaserPulse</thingClass>
     <graphicData>
       <texPath>Things/Projectile/Bullet_Small</texPath>
@@ -308,7 +305,7 @@
     <projectile>
       <damageDef>Burn</damageDef>
       <damageAmountBase>20</damageAmountBase>
-      <armorPenetrationBase>0.5</armorPenetrationBase>
+      <armorPenetrationBase>0.30</armorPenetrationBase>
       <stoppingPower>0.9</stoppingPower>
       <speed>86</speed>
     </projectile>
@@ -334,13 +331,40 @@
         <tracerSwayPeriodTicks>100</tracerSwayPeriodTicks>
         <tracerWobbleCycles>1.6</tracerWobbleCycles>
       </li>
+      <li Class="RukayaRace.Projectiles.RukayaAirburstProjectileExtension">
+        <fragmentProjectile>Rukaya_AutoCannon_FlechetteFragment</fragmentProjectile>
+        <fragmentCount>2</fragmentCount>
+        <fragmentSearchRadius>2.5</fragmentSearchRadius>
+        <preferPawnCells>true</preferPawnCells>
+        <fragmentVisualSegments>2</fragmentVisualSegments>
+      </li>
     </modExtensions>
     <projectile>
       <damageDef>Bullet</damageDef>
       <damageAmountBase>18</damageAmountBase>
-      <armorPenetrationBase>0.40</armorPenetrationBase>
+      <armorPenetrationBase>0.60</armorPenetrationBase>
       <stoppingPower>1.2</stoppingPower>
       <speed>110</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Rukaya_MechAutocannonFragment</defName>
+    <label>Rukaya mech autocannon fragment</label>
+    <!-- 中文：卢卡娅机械机炮破片 -->
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <color>(255,232,170)</color>
+      <drawSize>(0.26,0.26)</drawSize>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>9</damageAmountBase>
+      <armorPenetrationBase>0.32</armorPenetrationBase>
+      <stoppingPower>0.45</stoppingPower>
+      <speed>86</speed>
     </projectile>
   </ThingDef>
 
@@ -440,8 +464,8 @@
     <defName>Bullet_Rukaya_MechPlasma</defName>
     <label>Rukaya mech plasma slug</label>
     <!-- 中文：卢卡娅机械等离子弹丸 -->
-    <description>A focused plasma pulse fired by Rukaya plasma turrets. It resolves instantly at its impact point and leaves a short-lived luminous beam along its forward path.</description>
-    <!-- 中文翻译：卢卡娅等离子炮塔发射的聚焦等离子脉冲。它在命中点瞬时结算，并沿向前的射击路径留下一道短暂的明亮光束。 -->
+    <description>A focused active-matter plasma bolt fired by Rukaya plasma turrets, tearing through heavy armor along a blazing blue-white path.</description>
+    <!-- 中文翻译：卢卡娅等离子炮塔发射的聚焦活性物质等离子束，沿灼热的蓝白轨迹贯通重甲。 -->
     <thingClass>RukayaRace.Projectiles.Projectile_RukayaMechPlasmaPulse</thingClass>
     <graphicData>
       <texPath>Rukaya/Weapon/Rukaya_Plasma_Projectile</texPath>
@@ -536,11 +560,8 @@
     <defName>Rukaya_MechWeapon_LaserAA</defName>
     <label>Rukaya laser anti-air mount</label>
     <!-- 中文：卢卡娅激光对空炮座 -->
-    <description>An anti-air emitter slaved to the Rukaya laser turret ring. It holds a burst of focused pulses on incoming
-      overhead artillery shells and leaves the mount's ground fire untouched. The first pulse is the one that burns through;
-      the rest keep pouring light into the same point so the mount reads as a single unbroken beam.
-      The emitter also tracks hostile incoming drop pods. Its emitter shares the ground laser's heat sink. Permitted drop pods are tracked across the map; overhead shells are intercepted within 35 cells.</description>
-    <!-- 中文翻译：一套从属于卢卡娅激光炮塔环的对空发射器。它对着来袭的越顶炮击弹打出一轮聚焦脉冲连发，且完全不影响炮座的对地射击。 真正烧穿目标的是第一发脉冲，其余几发继续把光倾泻在同一个点上，因此看上去是一道不断的光束。发射器还会追踪来袭的敌方空投仓。 发射器与地面激光共用散热系统。敌方空投仓可在全图范围内追踪；越顶炮弹的拦截范围为35格。 -->
+    <description>An anti-air laser emitter slaved to the Rukaya laser turret ring, sharing its heat sink with the main gun. It intercepts incoming overhead shells within 35 cells and tracks hostile drop pods across the map.</description>
+    <!-- 中文翻译：从属于卢卡娅激光炮塔环的对空发射器，与主炮共用散热系统。可拦截35格内来袭的越顶炮弹，并在全图范围内追踪敌方空投仓。 -->
     <graphicData>
       <texPath>Rukaya/Mechanoids/Rukaya_MechTurretLaser</texPath>
     </graphicData>
@@ -572,10 +593,8 @@
     <defName>Rukaya_MechWeapon_MachineCannonAA</defName>
     <label>Rukaya machine cannon anti-air mount</label>
     <!-- 中文：卢卡娅机炮对空炮座 -->
-    <description>An anti-air autocannon slaved to the Rukaya machine cannon turret ring. It throws a visible tracer burst into
-      incoming overhead artillery shells and leaves the mount's ground fire untouched. The first round of the burst is the one
-      that knocks the shell down; the rest of the burst keeps walking tracers into the same point. It also directly destroys hostile drop pods anywhere on the map; overhead shells remain limited to 35 cells.</description>
-    <!-- 中文翻译：一门从属于卢卡娅机炮炮塔环的对空机炮。它向来袭的越顶炮击弹打出可见曳光弹连发，且完全不影响炮座的对地射击。 真正把炮弹打下来的是连发里的第一发，其余几发继续把曳光弹倾泻到同一个点上。 它也会在全图范围内直接击毁敌方空投仓；越顶炮弹的拦截范围限于35格。 -->
+    <description>An anti-air autocannon slaved to the Rukaya machine cannon turret ring. It sweeps incoming overhead shells within 35 cells with high-velocity tracers and destroys hostile drop pods across the map.</description>
+    <!-- 中文翻译：从属于卢卡娅机炮炮塔环的对空机炮。以高初速曳光弹拦截35格内来袭的越顶炮弹，并在全图范围内击毁敌方空投仓。 -->
     <graphicData>
       <texPath>Rukaya/Mechanoids/Rukaya_MechTurretMachineCannon</texPath>
     </graphicData>
@@ -603,9 +622,8 @@
     <defName>Rukaya_MechWeapon_SAMLauncherAA</defName>
     <label>Rukaya missile anti-air mount</label>
     <!-- 中文：卢卡娅导弹对空炮座 -->
-    <description>An anti-air launcher slaved to the Rukaya missile turret ring. It launches visible interceptors that are walked
-      onto incoming drop pods and meteorites on a command line, and leaves the mount's ground fire untouched. It carries four anti-air missiles and fires at most four per salvo, spaced 0.3 seconds apart. Each missile engages a separate target. An empty magazine reloads in six seconds; unused rounds remain loaded. Drop pods and meteorites can be engaged anywhere on the map.</description>
-    <!-- 中文翻译：一座从属于卢卡娅导弹炮塔环的对空发射巢。它发射可见拦截弹，并沿指令线把这些拦截弹引向来袭的空投仓与陨石， 且完全不影响炮座的对地射击。 防空弹仓备有四枚导弹，每轮最多发射四枚，逐发间隔0.3秒；每枚导弹拦截一个目标。弹仓打空后装填六秒，未发射的备弹留在仓内。空投仓与陨石均可在全图范围内拦截。 -->
+    <description>A four-tube anti-air missile launcher slaved to the Rukaya missile turret ring. Each guided interceptor engages a separate incoming drop pod or meteorite anywhere on the map before the launcher cycles a reload.</description>
+    <!-- 中文翻译：从属于卢卡娅导弹炮塔环的四联装对空发射巢。每枚制导拦截弹可在全图范围内独立拦截一个来袭空投仓或陨石，打空后重新装填。 -->
     <graphicData>
       <texPath>Rukaya/Mechanoids/Rukaya_MechTurretMissile</texPath>
     </graphicData>
@@ -634,9 +652,8 @@
     <defName>Bullet_Rukaya_MechAA_Laser</defName>
     <label>Rukaya laser air-defense pulse</label>
     <!-- 中文：卢卡娅激光对空脉冲 -->
-    <description>A focused pulse template for Rukaya laser air defense. It only carries the beam look; the shot
-      itself resolves instantly and no projectile is ever spawned.</description>
-    <!-- 中文翻译：卢卡娅激光防空用的聚焦脉冲模板。它只承载光束外观，射击当场结算、不会生成任何弹体。 -->
+    <description>A focused high-energy pulse emitted by Rukaya laser air-defense mounts to burn through incoming shells and drop pods.</description>
+    <!-- 中文翻译：卢卡娅激光对空炮座发射的聚焦高能脉冲，用于烧毁来袭炮弹与空投仓。 -->
     <graphicData>
       <texPath>Things/Projectile/Bullet_Small</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -670,9 +687,8 @@
     <defName>Bullet_Rukaya_MechAA_Gun</defName>
     <label>Rukaya air-defense tracer round</label>
     <!-- 中文：卢卡娅对空曳光弹 -->
-    <description>An air-defense tracer round template for Rukaya machine cannon mounts. It only carries the
-      interceptor's flight look and speed; the hit is resolved by the air-defense system, not by impact damage.</description>
-    <!-- 中文翻译：卢卡娅机炮对空炮座用的曳光弹模板。它只承载拦截弹的飞行外观与速度，命中由防空系统结算，而非弹丸碰撞伤害。 -->
+    <description>A high-velocity tracer round fired by Rukaya anti-air machine cannons to shatter incoming aerial targets.</description>
+    <!-- 中文翻译：卢卡娅机炮对空炮座发射的高初速曳光弹，用于击毁来袭空中目标。 -->
     <graphicData>
       <texPath>Things/Projectile/Bullet_big</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -698,10 +714,8 @@
     <defName>Bullet_Rukaya_MechAA_SAMLauncher</defName>
     <label>Rukaya air-defense interceptor missile</label>
     <!-- 中文：卢卡娅对空拦截导弹 -->
-    <description>An air-defense interceptor template for Rukaya missile mounts. It carries the interceptor's flight look and
-      speed plus the mod's missile guidance law, so the interceptor visibly walks itself onto the target; the hit itself is
-      resolved by the air-defense system, not by impact damage.</description>
-    <!-- 中文翻译：卢卡娅导弹对空炮座用的拦截弹模板。它承载拦截弹的飞行外观与速度，并挂上本模组已有的导引律，因此拦截弹会一路修正到目标上；命中本身由防空系统结算，而非弹丸碰撞伤害。 -->
+    <description>A guided surface-to-air interceptor missile fired by Rukaya missile mounts to track and destroy incoming drop pods and meteorites.</description>
+    <!-- 中文翻译：卢卡娅导弹对空炮座发射的制导防空拦截导弹，用于追踪并击毁来袭空投仓与陨石。 -->
     <graphicData>
       <texPath>Rukaya/Mechanoids/Rukaya_SAM_Neva</texPath>
       <graphicClass>Graphic_Single</graphicClass>

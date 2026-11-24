@@ -1,10 +1,74 @@
 using System;
+using System.Collections.Generic;
 using HarmonyLib;
 using UnityEngine;
 using Verse;
 
 namespace RukayaRace.Weapons
 {
+    internal static class RukayaSmartOverdriveDefCache
+    {
+        private static HashSet<ThingDef> accuracyBoostDefs;
+        private static HashSet<ThingDef> cooldownBoostDefs;
+
+        public static HashSet<ThingDef> AccuracyBoostDefs
+        {
+            get
+            {
+                if (accuracyBoostDefs != null)
+                {
+                    return accuracyBoostDefs;
+                }
+
+                Build();
+                return accuracyBoostDefs;
+            }
+        }
+
+        public static HashSet<ThingDef> CooldownBoostDefs
+        {
+            get
+            {
+                if (cooldownBoostDefs != null)
+                {
+                    return cooldownBoostDefs;
+                }
+
+                Build();
+                return cooldownBoostDefs;
+            }
+        }
+
+        private static void Build()
+        {
+            HashSet<ThingDef> acc = new HashSet<ThingDef>();
+            HashSet<ThingDef> cd = new HashSet<ThingDef>();
+            List<ThingDef> allDefs = DefDatabase<ThingDef>.AllDefsListForReading;
+            for (int i = 0; i < allDefs.Count; i++)
+            {
+                ThingDef def = allDefs[i];
+                CompProperties_RukayaActiveMatterWeapon props = def.GetCompProperties<CompProperties_RukayaActiveMatterWeapon>();
+                if (props == null)
+                {
+                    continue;
+                }
+
+                if (props.activeAccuracyFactor > 1f)
+                {
+                    acc.Add(def);
+                }
+
+                if (props.activeCooldownMultiplier > 0f && props.activeCooldownMultiplier != 1f)
+                {
+                    cd.Add(def);
+                }
+            }
+
+            accuracyBoostDefs = acc;
+            cooldownBoostDefs = cd;
+        }
+    }
+
     // The two remaining Harmony patches for the Rukaya overdrive sidearms
     // (Rukaya_SmartRevolver, Rukaya_Pistol, Rukaya_SubMachinegun). Both scale values that are
     // computed deep inside VerbProperties (non-virtual methods on the shared def-level props object),
@@ -26,7 +90,8 @@ namespace RukayaRace.Weapons
     {
         public static void Postfix(Thing equipment, ref float __result)
         {
-            if (equipment is not ThingWithComps thingWithComps)
+            if (equipment is not ThingWithComps thingWithComps
+                || !RukayaSmartOverdriveDefCache.AccuracyBoostDefs.Contains(thingWithComps.def))
             {
                 return;
             }
@@ -60,7 +125,7 @@ namespace RukayaRace.Weapons
         public static void Postfix(Verb ownerVerb, ref float __result)
         {
             ThingWithComps equipment = ownerVerb?.EquipmentSource;
-            if (equipment == null)
+            if (equipment == null || !RukayaSmartOverdriveDefCache.CooldownBoostDefs.Contains(equipment.def))
             {
                 return;
             }

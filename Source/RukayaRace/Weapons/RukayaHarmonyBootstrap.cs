@@ -23,7 +23,7 @@ namespace RukayaRace.Weapons
             try
             {
                 Harmony harmony = new Harmony("zyshzao.rukayarace");
-                harmony.PatchAll();
+                harmony.PatchAll(typeof(RukayaHarmonyBootstrap).Assembly);
             }
             catch (Exception ex)
             {

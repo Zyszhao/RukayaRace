@@ -8,7 +8,7 @@
     <!-- 中文：一座失效的导弹发射架。调查可获得一份保存防空导弹资料的磁芯存储器。 -->
     <thingClass>Building</thingClass>
     <graphicData>
-      <texPath>Rukaya/Building/Abandoned/SAMLauncher</texPath>
+      <texPath>Rukaya/Building/Abandoned/Rukaya_Ancient_SAMLauncher</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <drawSize>(8.48,8.48)</drawSize>
       <drawOffset>(0,0,0.6)</drawOffset>
@@ -21,5 +21,51 @@
     <building><neverBuildable>true</neverBuildable><claimable>false</claimable><deconstructible>false</deconstructible><repairable>false</repairable><allowAutoroof>false</allowAutoroof></building>
     <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
     <comps><li Class="RukayaRace.Research.CompProperties_RukayaArchiveInvestigation"><memory>Rukaya_CoreMemory_AirDefense</memory><workRequired>6000</workRequired></li></comps>
+  </ThingDef>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>Rukaya_AncientDecor_SAMLauncherA</defName>
+    <label>damaged missile launcher</label>
+    <!-- 中文：损毁导弹发射架 -->
+    <description>A rusted and dismantled surface-to-air missile launcher frame left standing in the site. Its guidance electronics and firing mechanisms have long since corroded beyond recovery.</description>
+    <!-- 中文翻译：遗留在阵地中的锈蚀防空导弹发射架残骸，其制导电子设备与发射机构早已锈蚀殆尽，无法再使用。 -->
+    <thingClass>Building</thingClass>
+    <graphicData>
+      <texPath>Rukaya/Building/Abandoned/Rukaya_AncientDecor_SAMLauncher1</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(8.48,8.48)</drawSize>
+      <drawOffset>(0,0,0.4)</drawOffset>
+    </graphicData>
+    <size>(3,5)</size>
+    <rotatable>false</rotatable>
+    <passability>Impassable</passability>
+    <fillPercent>0.6</fillPercent>
+    <statBases><MaxHitPoints>750</MaxHitPoints><Flammability>0</Flammability><Beauty>-8</Beauty></statBases>
+    <building><neverBuildable>true</neverBuildable><claimable>false</claimable><deconstructible>false</deconstructible><repairable>false</repairable><allowAutoroof>false</allowAutoroof></building>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+  </ThingDef>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>Rukaya_AncientDecor_SAMLauncherB</defName>
+    <label>abandoned missile rack</label>
+    <!-- 中文：废弃导弹挂架 -->
+    <description>An abandoned surface-to-air missile launcher still holding a weathered interceptor on its rail. Both the warhead and propellant have long degraded into inert scrap.</description>
+    <!-- 中文翻译：一座废弃的防空导弹发射架，导轨上仍滞留着一枚风化严重的拦截弹，战斗部与推进剂早已失效。 -->
+    <thingClass>Building</thingClass>
+    <graphicData>
+      <texPath>Rukaya/Building/Abandoned/Rukaya_AncientDecor_SAMLauncher2</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(8.48,8.48)</drawSize>
+      <drawOffset>(0,0,0.4)</drawOffset>
+    </graphicData>
+    <size>(3,5)</size>
+    <rotatable>false</rotatable>
+    <passability>Impassable</passability>
+    <fillPercent>0.6</fillPercent>
+    <statBases><MaxHitPoints>750</MaxHitPoints><Flammability>0</Flammability><Beauty>-8</Beauty></statBases>
+    <building><neverBuildable>true</neverBuildable><claimable>false</claimable><deconstructible>false</deconstructible><repairable>false</repairable><allowAutoroof>false</allowAutoroof></building>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
   </ThingDef>
 </Defs>

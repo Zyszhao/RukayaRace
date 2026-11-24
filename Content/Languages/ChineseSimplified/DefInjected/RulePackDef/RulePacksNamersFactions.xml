@@ -96,4 +96,72 @@
   <NamerSettlement_Rukaya.rulePack.rulesStrings.88>rukaya_installation-&gt;地库</NamerSettlement_Rukaya.rulePack.rulesStrings.88>
   <NamerSettlement_Rukaya.rulePack.rulesStrings.89>rukaya_installation-&gt;平台</NamerSettlement_Rukaya.rulePack.rulesStrings.89>
   <NamerSettlement_Rukaya.rulePack.rulesStrings.90>rukaya_installation-&gt;闸门</NamerSettlement_Rukaya.rulePack.rulesStrings.90>
+  <NamerFaction_RukayaBrokenStar.rulePack.rulesStrings.0>r_name-&gt;残星兵团</NamerFaction_RukayaBrokenStar.rulePack.rulesStrings.0>
+  <NamerFaction_RukayaBrokenStar.rulePack.rulesStrings.1>r_name-&gt;锈线指挥部</NamerFaction_RukayaBrokenStar.rulePack.rulesStrings.1>
+  <NamerFaction_RukayaBrokenStar.rulePack.rulesStrings.2>r_name-&gt;赤账联合体</NamerFaction_RukayaBrokenStar.rulePack.rulesStrings.2>
+  <NamerFaction_RukayaBrokenStar.rulePack.rulesStrings.3>r_name-&gt;铁税兵团</NamerFaction_RukayaBrokenStar.rulePack.rulesStrings.3>
+  <NamerFaction_RukayaBrokenStar.rulePack.rulesStrings.4>r_name-&gt;灰烬旗纵队</NamerFaction_RukayaBrokenStar.rulePack.rulesStrings.4>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.0>r_name(p=6)-&gt;[brokenstar_prefix] [brokenstar_site]</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.0>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.1>r_name(p=3)-&gt;[brokenstar_codename]-[rukaya_index]</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.1>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.2>r_name(p=1)-&gt;[brokenstar_index] [brokenstar_site]</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.2>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.3>brokenstar_prefix-&gt;锈线</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.3>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.4>brokenstar_prefix-&gt;赤账</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.4>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.5>brokenstar_prefix-&gt;铁税</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.5>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.6>brokenstar_prefix-&gt;残星</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.6>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.7>brokenstar_prefix-&gt;灰旗</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.7>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.8>brokenstar_prefix-&gt;黑市</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.8>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.9>brokenstar_prefix-&gt;旧番号</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.9>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.10>brokenstar_prefix-&gt;猩红兵团</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.10>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.11>brokenstar_prefix-&gt;尘路</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.11>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.12>brokenstar_prefix-&gt;堡垒</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.12>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.13>brokenstar_site-&gt;卡口</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.13>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.14>brokenstar_site-&gt;收费站</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.14>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.15>brokenstar_site-&gt;仓库</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.15>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.16>brokenstar_site-&gt;黑市</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.16>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.17>brokenstar_site-&gt;据点</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.17>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.18>brokenstar_site-&gt;路边站</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.18>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.19>brokenstar_site-&gt;补给场</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.19>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.20>brokenstar_site-&gt;要塞</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.20>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.21>brokenstar_site-&gt;路口</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.21>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.22>brokenstar_site-&gt;废料场</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.22>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.23>brokenstar_site-&gt;储藏仓</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.23>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.24>brokenstar_site-&gt;营地</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.24>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.25>brokenstar_codename-&gt;曙光</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.25>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.26>brokenstar_codename-&gt;暴风雪</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.26>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.27>brokenstar_codename-&gt;东方</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.27>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.28>brokenstar_codename-&gt;闪电</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.28>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.29>brokenstar_codename-&gt;旋风</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.29>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.30>brokenstar_codename-&gt;风暴</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.30>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.31>brokenstar_codename-&gt;龙卷风</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.31>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.32>brokenstar_codename-&gt;狂风</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.32>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.33>brokenstar_codename-&gt;光谱</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.33>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.34>brokenstar_codename-&gt;能源</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.34>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.35>rukaya_index-&gt;03</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.35>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.36>rukaya_index-&gt;07</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.36>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.37>rukaya_index-&gt;08</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.37>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.38>rukaya_index-&gt;11</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.38>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.39>rukaya_index-&gt;14</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.39>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.40>rukaya_index-&gt;17</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.40>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.41>rukaya_index-&gt;21</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.41>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.42>rukaya_index-&gt;24</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.42>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.43>rukaya_index-&gt;29</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.43>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.44>rukaya_index-&gt;31</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.44>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.45>rukaya_index-&gt;42</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.45>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.46>rukaya_index-&gt;47</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.46>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.47>rukaya_index-&gt;56</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.47>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.48>rukaya_index-&gt;63</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.48>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.49>rukaya_index-&gt;71</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.49>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.50>rukaya_index-&gt;78</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.50>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.51>rukaya_index-&gt;84</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.51>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.52>rukaya_index-&gt;96</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.52>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.53>brokenstar_index-&gt;03</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.53>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.54>brokenstar_index-&gt;07</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.54>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.55>brokenstar_index-&gt;11</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.55>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.56>brokenstar_index-&gt;14</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.56>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.57>brokenstar_index-&gt;21</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.57>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.58>brokenstar_index-&gt;29</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.58>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.59>brokenstar_index-&gt;42</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.59>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.60>brokenstar_index-&gt;56</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.60>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.61>brokenstar_index-&gt;71</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.61>
+  <NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.62>brokenstar_index-&gt;84</NamerSettlement_RukayaBrokenStar.rulePack.rulesStrings.62>
 </LanguageData>

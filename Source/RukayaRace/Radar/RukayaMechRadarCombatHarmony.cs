@@ -10,7 +10,7 @@ namespace RukayaRace.Radar
         internal static bool IsNonCombatRadar(Pawn pawn)
         {
             return pawn?.kindDef?.canMeleeAttack == false
-                && pawn.def.HasComp(typeof(CompRukayaMechRadar));
+                && Patch_Pawn_MechanitorTracker_CanCommandTo.RadarDefs.Contains(pawn.def);
         }
     }
 

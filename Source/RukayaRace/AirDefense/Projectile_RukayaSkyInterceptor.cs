@@ -247,7 +247,7 @@ namespace RukayaRace.AirDefense
             if (guidanceExtension.guidanceGlowSize <= 0f || guidanceExtension.guidanceGlowIntervalTicks <= 0
                 || hash % guidanceExtension.guidanceGlowIntervalTicks != 0)
                 return;
-            FleckDef glowDef = DefDatabase<FleckDef>.GetNamedSilentFail("LightningGlow");
+            FleckDef glowDef = RukayaAirDefenseDefCache.LightningGlowDef;
             if (glowDef == null)
             {
                 FleckMaker.ThrowLightningGlow(ExactPosition, Map, guidanceExtension.guidanceGlowSize);

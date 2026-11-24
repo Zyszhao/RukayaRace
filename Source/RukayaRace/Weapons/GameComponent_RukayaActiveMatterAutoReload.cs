@@ -8,6 +8,7 @@ namespace RukayaRace.Weapons
     public class GameComponent_RukayaActiveMatterAutoReload : GameComponent
     {
         private const int ScanInterval = 180;
+        private readonly Dictionary<Map, bool> mapThreatCache = new Dictionary<Map, bool>();
 
         public GameComponent_RukayaActiveMatterAutoReload(Game game)
         {
@@ -21,10 +22,29 @@ namespace RukayaRace.Weapons
             }
 
             List<Pawn> pawns = PawnsFinder.HomeMaps_FreeColonistsSpawned;
+            if (pawns.Count == 0)
+            {
+                return;
+            }
+
+            mapThreatCache.Clear();
             for (int i = 0; i < pawns.Count; i++)
             {
                 this.TryIssueReloadJob(pawns[i]);
             }
+            mapThreatCache.Clear();
+        }
+
+        private bool HasHostileThreat(Map map)
+        {
+            if (mapThreatCache.TryGetValue(map, out bool threat))
+            {
+                return threat;
+            }
+
+            threat = GenHostility.AnyHostileActiveThreatToPlayer(map, false, false);
+            mapThreatCache[map] = threat;
+            return threat;
         }
 
         private void TryIssueReloadJob(Pawn pawn)
@@ -45,6 +65,11 @@ namespace RukayaRace.Weapons
                 return;
             }
 
+            if (weaponComp.GetAutoReloadContainerCount(int.MaxValue) <= 0)
+            {
+                return;
+            }
+
             if (weaponComp.Props.autoReloadPlayerOnly && !pawn.IsColonistPlayerControlled)
             {
                 return;
@@ -55,17 +80,17 @@ namespace RukayaRace.Weapons
                 return;
             }
 
-            if (weaponComp.Props.autoReloadRequireSafe && GenHostility.AnyHostileActiveThreatToPlayer(pawn.Map, false, false))
-            {
-                return;
-            }
-
             if (pawn.jobs == null || pawn.CurJobDef == RukayaActiveMatterDefOf.Rukaya_ReloadActiveMatterWeapon)
             {
                 return;
             }
 
             if (pawn.CurJob != null && (pawn.CurJob.playerForced || !pawn.jobs.IsCurrentJobPlayerInterruptible()))
+            {
+                return;
+            }
+
+            if (weaponComp.Props.autoReloadRequireSafe && this.HasHostileThreat(pawn.Map))
             {
                 return;
             }

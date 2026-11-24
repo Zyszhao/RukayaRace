@@ -50,49 +50,49 @@
 
   <PawnKindDef ParentName="Rukaya_BaseMechanoidKind">
     <defName>Rukaya_MechChassis_Laser</defName>
-    <label>卢卡娅通用机械“激光型”</label>
+    <label>Rukaya laser mechanoid</label>
     <!-- 中文：卢卡娅通用机械“激光型” -->
     <race>Rukaya_MechChassis_Laser</race>
   </PawnKindDef>
 
   <PawnKindDef ParentName="Rukaya_BaseMechanoidKind">
     <defName>Rukaya_MechChassis_MachineCannon</defName>
-    <label>卢卡娅通用机械“机炮型”</label>
+    <label>Rukaya autocannon mechanoid</label>
     <!-- 中文：卢卡娅通用机械“机炮型” -->
     <race>Rukaya_MechChassis_MachineCannon</race>
   </PawnKindDef>
 
   <PawnKindDef ParentName="Rukaya_BaseMechanoidKind">
     <defName>Rukaya_MechChassis_MineSweeper</defName>
-    <label>卢卡娅通用机械“扫雷索型”</label>
+    <label>Rukaya line-charge mechanoid</label>
     <!-- 中文：卢卡娅通用机械“扫雷索型” -->
     <race>Rukaya_MechChassis_MineSweeper</race>
   </PawnKindDef>
 
   <PawnKindDef ParentName="Rukaya_BaseMechanoidKind">
     <defName>Rukaya_MechChassis_SAMLauncher</defName>
-    <label>卢卡娅通用机械“导弹型”</label>
+    <label>Rukaya missile mechanoid</label>
     <!-- 中文：卢卡娅通用机械“导弹型” -->
     <race>Rukaya_MechChassis_SAMLauncher</race>
   </PawnKindDef>
 
   <PawnKindDef ParentName="Rukaya_BaseMechanoidKind">
     <defName>Rukaya_MechChassis_Mortar</defName>
-    <label>卢卡娅通用机械“迫击炮型”</label>
+    <label>Rukaya mortar mechanoid</label>
     <!-- 中文：卢卡娅通用机械“迫击炮型” -->
     <race>Rukaya_MechChassis_Mortar</race>
   </PawnKindDef>
 
   <PawnKindDef ParentName="Rukaya_BaseMechanoidKind">
     <defName>Rukaya_MechChassis_Plasma</defName>
-    <label>卢卡娅通用机械“等离子型”</label>
+    <label>Rukaya plasma mechanoid</label>
     <!-- 中文：卢卡娅通用机械“等离子型” -->
     <race>Rukaya_MechChassis_Plasma</race>
   </PawnKindDef>
 
   <PawnKindDef ParentName="Rukaya_BaseMechanoidKind">
     <defName>Rukaya_MechChassis_Rocket</defName>
-    <label>卢卡娅通用机械“火箭型”</label>
+    <label>Rukaya rocket mechanoid</label>
     <!-- 中文：卢卡娅通用机械“火箭型” -->
     <race>Rukaya_MechChassis_Rocket</race>
   </PawnKindDef>

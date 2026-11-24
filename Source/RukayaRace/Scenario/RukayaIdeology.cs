@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml;
 using HarmonyLib;
 using RimWorld;
 using Verse;
@@ -11,12 +13,12 @@ namespace RukayaRace.Scenario
         internal const string LegacyMeme = "Rukaya_VegetarianTradition";
 
         public static bool IsRukayaFaction(FactionDef def) => def?.defName == "Rukaya_PlayerFaction"
-            || def?.defName == "Rukaya_DrifterAlliance";
+            || def?.defName == "Rukaya_DrifterAlliance"
+            || def?.defName == "Rukaya_BrokenStarCorps";
 
         public static bool IsRukayaIdeo(Ideo ideo)
         {
             if (ideo == null) return false;
-            if (ideo.memes.Any(m => m.defName == LegacyMeme)) return true;
             if (Find.GameInitData?.playerFaction is Faction player && IsRukayaFaction(player.def)
                 && player.ideos?.PrimaryIdeo == ideo) return true;
             return Find.World != null && Find.FactionManager.AllFactionsListForReading.Any(f =>
@@ -110,6 +112,37 @@ namespace RukayaRace.Scenario
         }
     }
 
+    // Strip removed legacy meme references from saved XML before Scribe resolves MemeDef names,
+    // so old saves load without missing-def errors and migrate cleanly to MeatEating_Disapproved.
+    [HarmonyPatch(typeof(ScribeLoader), nameof(ScribeLoader.InitLoading))]
+    internal static class Patch_RukayaIdeo_StripLegacyMemeFromSave
+    {
+        internal static readonly HashSet<int> MigratedIdeoIds = new();
+
+        private static void Postfix(ScribeLoader __instance)
+        {
+            MigratedIdeoIds.Clear();
+            if (Scribe.mode != LoadSaveMode.LoadingVars || __instance.curXmlParent == null) return;
+            XmlNodeList memeLists = __instance.curXmlParent.SelectNodes(".//ideos/li/memes");
+            if (memeLists == null) return;
+            foreach (XmlNode memesNode in memeLists)
+            {
+                bool removed = false;
+                for (int i = memesNode.ChildNodes.Count - 1; i >= 0; i--)
+                {
+                    XmlNode item = memesNode.ChildNodes[i];
+                    if (string.Equals(item.InnerText?.Trim(), RukayaIdeology.LegacyMeme, StringComparison.Ordinal))
+                    {
+                        memesNode.RemoveChild(item);
+                        removed = true;
+                    }
+                }
+                if (removed && int.TryParse(memesNode.ParentNode?["id"]?.InnerText, out int ideoId))
+                    MigratedIdeoIds.Add(ideoId);
+            }
+        }
+    }
+
     public sealed class GameComponent_RukayaIdeologyCompatibility : GameComponent
     {
         public GameComponent_RukayaIdeologyCompatibility(Game game) { }
@@ -117,13 +150,15 @@ namespace RukayaRace.Scenario
         public override void FinalizeInit()
         {
             if (!ModsConfig.IdeologyActive) return;
+            bool hadLegacy = Patch_RukayaIdeo_StripLegacyMemeFromSave.MigratedIdeoIds.Count > 0;
             foreach (Ideo ideo in Find.IdeoManager.IdeosListForReading)
             {
-                bool rukaya = RukayaIdeology.IsRukayaIdeo(ideo);
-                if (ideo.memes.RemoveAll(m => m.defName == RukayaIdeology.LegacyMeme) > 0)
+                bool migrated = Patch_RukayaIdeo_StripLegacyMemeFromSave.MigratedIdeoIds.Remove(ideo.id);
+                bool rukaya = migrated || RukayaIdeology.IsRukayaIdeo(ideo);
+                if (ideo.memes.RemoveAll(m => m == null || m.defName == RukayaIdeology.LegacyMeme) > 0)
+                    migrated = true;
+                if (migrated)
                 {
-                    // Keep the existing Ideo object/id and its followers. Resolve the old
-                    // MemeDef normally, then remove only that meme once references are ready.
                     RukayaIdeology.SetVegetarianPrecept(ideo);
                     ideo.RecachePrecepts();
                     ideo.RegenerateDescription();
@@ -131,6 +166,7 @@ namespace RukayaRace.Scenario
                 }
                 if (rukaya) RukayaIdeology.RemoveApparelPreferences(ideo);
             }
+            if (hadLegacy) Patch_RukayaIdeo_StripLegacyMemeFromSave.MigratedIdeoIds.Clear();
         }
     }
 }

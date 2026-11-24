@@ -106,7 +106,8 @@ namespace RukayaRace.AirDefense
         {
             return mode == PawnsArrivalModeDefOf.CenterDrop || mode == PawnsArrivalModeDefOf.EdgeDrop
                 || mode == PawnsArrivalModeDefOf.RandomDrop || mode == PawnsArrivalModeDefOf.SpecificDropDebug
-                || mode?.defName == "EdgeDropGroups";
+                || mode?.defName == "EdgeDropGroups"
+                || mode?.defName == "Rukaya_Airborne";
         }
 
         private struct RaidState

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-  <Rukaya_TrioSettings>年度神秘空投仓：每次成功事件进行判定，每60天最多抵达一次。仅瓦莱里娅与加林娜启用，被放逐的卢卡娅剧本禁用。</Rukaya_TrioSettings>
+  <Rukaya_TrioSettings>年度神秘空投仓：每次成功事件进行判定，每60天最多抵达一次。新开局或在存档中加入本模组后的30天内必定迎来首次空投，所有乘员均存活且无派系。适用于所有叙述者。被放逐的卢卡娅剧本禁用。</Rukaya_TrioSettings>
+  <Rukaya_TrioStandaloneLetter>几个载有卢卡娅的空投仓在你的殖民地附近坠落。其中搭载的人包括：{PAWNS}</Rukaya_TrioStandaloneLetter>
   <Rukaya_TrioInitial>每年首次判定概率</Rukaya_TrioInitial>
   <Rukaya_TrioDecay>每次未触发后保留的概率比例</Rukaya_TrioDecay>
   <Rukaya_TrioFloor>最低判定概率（不超过首次概率）</Rukaya_TrioFloor>

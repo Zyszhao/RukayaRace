@@ -16,7 +16,7 @@
     <description>An autonomous gun that engages hostile aircraft within 64 cells. Requires no operator or ammunition.</description>
     <!-- 中文：自动攻击64格内敌机的防空炮，无需操作员和弹药。 -->
     <thingClass>RukayaAviation.ExerciseDefense</thingClass><tickerType>Normal</tickerType>
-    <graphicData><texPath>Aviation/Cannon</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>(2,3)</drawSize></graphicData>
+    <graphicData><texPath>Rukaya/Aviation/Stores/CannonPod</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>(2,3)</drawSize></graphicData>
     <size>(1,1)</size><rotatable>false</rotatable><passability>PassThroughOnly</passability><statBases><MaxHitPoints>600</MaxHitPoints><WorkToBuild>800</WorkToBuild></statBases><uiOrder>50</uiOrder>
   </ThingDef>
 </Defs>

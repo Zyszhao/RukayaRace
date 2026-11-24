@@ -13,14 +13,10 @@
 
   <ThingDef ParentName="Rukaya_BaseMechChassis">
     <defName>Rukaya_MechRadar</defName>
-    <label>卢卡娅通用机械“雷达型”</label>
+    <label>Rukaya radar mechanoid</label>
     <!-- 中文：卢卡娅通用机械“雷达型” -->
-    <description>A dedicated mechanoid developed from the standard Rukaya mechanoid chassis. Its upper structure
-      is built around a rotating radar antenna. It carries no weapon of its own. Instead it coordinates the group:
-      friendly units within range gain a wide-area marksman aura, enemy units within range are painted with an
-      enhanced radar marking, and the chassis projects an additional mechanitor control radius around itself, so
-      artillery and missile platforms can engage targets long before they are themselves detected.</description>
-    <!-- 中文翻译：基于标准的卢卡娅机械底盘发展的专用机械体。其上部结构以旋转雷达天线为核心构建。它自身不携带任何武器，而是为整个集群提供协调：范围内的友方单位获得大范围的射手光环，范围内的敌方单位被施加强化版雷达标记，同时该底盘以自身为圆心投射一片额外的机械师控制范围，使火炮与导弹平台能够在自身被发现之前就先行打击目标。 -->
+    <description>An unarmed support mechanoid fitted with a rotating radar array. It improves allied marksmanship, paints nearby enemies for guided munitions and stealth disruption, and extends its mechanitor's command range.</description>
+    <!-- 中文翻译：搭载旋转雷达阵列的无武装支援机械体，可为友军提供瞄准辅助、标记附近敌军以配合制导武器与反隐身，并延伸所属机械师的指挥范围。 -->
     <statBases>
       <MoveSpeed>1.6</MoveSpeed>
       <ArmorRating_Blunt>0.16</ArmorRating_Blunt>
@@ -66,7 +62,7 @@
 
   <PawnKindDef ParentName="Rukaya_BaseMechanoidKind">
     <defName>Rukaya_MechRadar</defName>
-    <label>卢卡娅通用机械“雷达型”</label>
+    <label>Rukaya radar mechanoid</label>
     <!-- 中文：卢卡娅通用机械“雷达型” -->
     <race>Rukaya_MechRadar</race>
     <combatPower>120</combatPower>

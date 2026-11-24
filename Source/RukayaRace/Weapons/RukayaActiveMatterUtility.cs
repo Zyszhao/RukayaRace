@@ -73,6 +73,7 @@ namespace RukayaRace.Weapons
                 return null;
             }
 
+            // ClosestThing_Global_Reachable already enforces CanReach with the passed TraverseParms/PathEndMode.
             return GenClosest.ClosestThing_Global_Reachable(
                 pawn.Position,
                 pawn.Map,
@@ -80,7 +81,9 @@ namespace RukayaRace.Weapons
                 PathEndMode.ClosestTouch,
                 TraverseParms.For(pawn, Danger.Some),
                 9999f,
-                t => CanUseReloadSource(t, pawn, requireStorage));
+                t => t != null && !t.Destroyed && t.stackCount > 0
+                    && (!requireStorage || t.IsInValidStorage())
+                    && !t.IsForbidden(pawn) && pawn.CanReserve(t));
         }
 
         public static void ShowModeSwitchMessage(Pawn pawn, bool enabled)

@@ -34,41 +34,49 @@ namespace RukayaRace.Diet
             return IsEligiblePawn(pawn) && RukayaDietUtility.LackStage(elapsedTicks) >= 0;
         }
 
-        private void CalculateTargets()
+        private void CalculateTargets(bool buildDescriptions)
         {
             targets.Clear();
-            targetDescriptions.Clear();
+            if (buildDescriptions)
+                targetDescriptions.Clear();
             anySevere = false;
 
             // Includes colony prisoners, caravans and travelling transporters; excludes world NPCs.
-            foreach (Pawn pawn in PawnsFinder.AllMapsCaravansAndTravellingTransporters_Alive)
+            List<Pawn> allPawns = PawnsFinder.AllMapsCaravansAndTravellingTransporters_Alive;
+            for (int i = 0; i < allPawns.Count; i++)
             {
+                Pawn pawn = allPawns[i];
+                if (!IsEligiblePawn(pawn))
+                    continue;
                 CompRukayaDiet comp = pawn.TryGetComp<CompRukayaDiet>();
                 if (comp == null)
                     continue;
                 int elapsedTicks = comp.TicksSinceVegetarianMeal;
-                if (!ShouldAlert(pawn, elapsedTicks))
-                    continue;
                 int stage = RukayaDietUtility.LackStage(elapsedTicks);
+                if (stage < 0)
+                    continue;
 
                 anySevere |= stage == 1;
                 targets.Add(pawn);
-                targetDescriptions.Add("Rukaya_DietAlertPawn".Translate(
-                    pawn.NameShortColored.Resolve(),
-                    GenDate.ToStringTicksToPeriod(elapsedTicks),
-                    stage == 1 ? "-10" : "-3").Resolve());
+                if (buildDescriptions)
+                {
+                    targetDescriptions.Add("Rukaya_DietAlertPawn".Translate(
+                        pawn.NameShortColored.Resolve(),
+                        GenDate.ToStringTicksToPeriod(elapsedTicks),
+                        stage == 1 ? "-10" : "-3").Resolve());
+                }
             }
         }
 
         public override AlertReport GetReport()
         {
-            CalculateTargets();
+            CalculateTargets(false);
             return AlertReport.CulpritsAre(targets);
         }
 
         public override TaggedString GetExplanation()
         {
-            CalculateTargets();
+            CalculateTargets(true);
             return "Rukaya_DietAlertDescription".Translate(targetDescriptions.ToLineList("  - "));
         }
     }

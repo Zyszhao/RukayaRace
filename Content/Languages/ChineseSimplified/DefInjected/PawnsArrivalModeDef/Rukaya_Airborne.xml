@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Rukaya_Airborne.label>空降</Rukaya_Airborne.label>
+  <Rukaya_Airborne.textEnemy>搭载着来自{1}的{0}的卢卡娅运输机已飞入空域，正在实施空降突袭！</Rukaya_Airborne.textEnemy>
+  <Rukaya_Airborne.textFriendly>搭载着来自{1}的友方{0}的卢卡娅运输机已飞入空域，正在空降增援。</Rukaya_Airborne.textFriendly>
+  <Rukaya_Airborne.textWillArrive>{0_pawnsPluralDef}将乘坐卢卡娅运输机实施空降。</Rukaya_Airborne.textWillArrive>
+</LanguageData>

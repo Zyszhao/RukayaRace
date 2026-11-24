@@ -6,28 +6,28 @@
        7 个具体底盘各自拥有独立 description，因此在这里逐个注入中文译文。 -->
 
   <Rukaya_MechChassis_Laser.label>卢卡娅通用机械“激光型”</Rukaya_MechChassis_Laser.label>
-  <Rukaya_MechChassis_Laser.description>基于标准的卢卡娅机械底盘发展的专用机械体。其炮塔环上搭载一座聚焦发射器，向目标区域倾泻持续的充能光束。该发射器可切换至对空模式，将光束转向天空拦截飞行目标。</Rukaya_MechChassis_Laser.description>
+  <Rukaya_MechChassis_Laser.description>搭载聚焦激光炮塔的螺旋推进式卢卡娅战斗机械体，能以持续高能光束灼烧目标，也可转为防空拦截来袭炮弹与敌方空投仓。</Rukaya_MechChassis_Laser.description>
 
   <Rukaya_MechChassis_MachineCannon.label>卢卡娅通用机械“机炮型”</Rukaya_MechChassis_MachineCannon.label>
-  <Rukaya_MechChassis_MachineCannon.description>基于标准的卢卡娅机械底盘发展的专用机械体。其炮塔环上搭载一门高射速自动机炮，用于对集结的步兵提供近距支援。该炮座可切换至对空模式，用于拦截飞行目标。</Rukaya_MechChassis_MachineCannon.description>
+  <Rukaya_MechChassis_MachineCannon.description>装备高射速自动机炮的螺旋推进式卢卡娅火力支援机械体，擅长以密集连射压制开阔地带的步兵，并兼顾近程防空。</Rukaya_MechChassis_MachineCannon.description>
 
   <Rukaya_MechChassis_MineSweeper.label>卢卡娅通用机械“扫雷索型”</Rukaya_MechChassis_MineSweeper.label>
-  <Rukaya_MechChassis_MineSweeper.description>基于标准的卢卡娅机械底盘发展的专用机械体。其炮塔环上搭载一套扫雷索具：一枚火箭越过掩体飞向目标点，一路上在身后拖放出一串爆破装药，先在通路尽头炸开一个口子，再顺着整条通路依次引爆下去。</Rukaya_MechChassis_MineSweeper.description>
+  <Rukaya_MechChassis_MineSweeper.description>搭载火箭拖曳扫雷索的卢卡娅破障机械体，发射越过掩体的爆破索并在落地后沿通路依次引爆。</Rukaya_MechChassis_MineSweeper.description>
 
   <Rukaya_MechChassis_SAMLauncher.label>卢卡娅通用机械“导弹型”</Rukaya_MechChassis_SAMLauncher.label>
-  <Rukaya_MechChassis_SAMLauncher.description>基于标准的卢卡娅机械底盘发展的专用机械体。其炮塔环上搭载一座每次发射一枚战斗部的制导导弹发射器。每枚导弹先爬升翻越掩体，随后被引导到目标上。独立的对空炮座负责拦截来袭空中威胁。</Rukaya_MechChassis_SAMLauncher.description>
+  <Rukaya_MechChassis_SAMLauncher.description>搭载越顶制导对地导弹与四联装防空发射巢的卢卡娅导弹机械体，既能越过掩体精准打击地面目标，也可拦截空投仓与陨石。</Rukaya_MechChassis_SAMLauncher.description>
 
   <Rukaya_MechChassis_Mortar.label>卢卡娅通用机械“迫击炮型”</Rukaya_MechChassis_Mortar.label>
-  <Rukaya_MechChassis_Mortar.description>基于标准的卢卡娅机械底盘发展的专用机械体。其炮塔环上搭载一门机动火炮，炮弹以高抛越顶弹道飞行，因此能在敌方射程之外将火力逐步压制到设防阵地上。</Rukaya_MechChassis_Mortar.description>
+  <Rukaya_MechChassis_Mortar.description>搭载重型迫击炮塔的机动火炮机械体，能以高抛弹道从直射射程之外轰击设防阵地。</Rukaya_MechChassis_Mortar.description>
 
   <Rukaya_MechChassis_Plasma.label>卢卡娅通用机械“等离子型”</Rukaya_MechChassis_Plasma.label>
-  <Rukaya_MechChassis_Plasma.description>基于标准的卢卡娅机械底盘发展的专用机械体。其炮塔环上搭载一座活性物质等离子投射器，能够烧穿装甲并点燃一切残存目标。</Rukaya_MechChassis_Plasma.description>
+  <Rukaya_MechChassis_Plasma.description>搭载远程活性物质等离子投射器的重型反装甲机械体，能以沉稳的单发射击贯通厚重装甲。</Rukaya_MechChassis_Plasma.description>
 
   <Rukaya_MechChassis_Rocket.label>卢卡娅通用机械“火箭型”</Rukaya_MechChassis_Rocket.label>
-  <Rukaya_MechChassis_Rocket.description>基于标准的卢卡娅机械底盘发展的专用机械体。其炮塔环上搭载一组多管火箭发射巢，会打出一轮短促的直射高爆火箭齐射；之后发射管需要很长时间才能重新装填并上药。</Rukaya_MechChassis_Rocket.description>
+  <Rukaya_MechChassis_Rocket.description>搭载多管火箭发射巢的卢卡娅突击机械体，能快速倾泻六发高爆火箭齐射，随后需要较长时间重新装填。</Rukaya_MechChassis_Rocket.description>
 
   <Rukaya_MechRadar.label>卢卡娅通用机械“雷达型”</Rukaya_MechRadar.label>
-  <Rukaya_MechRadar.description>基于标准的卢卡娅机械底盘发展的专用机械体。其上部结构以旋转雷达天线为核心构建。它自身不携带任何武器，而是为整个集群提供协调：范围内的友方单位获得大范围的射手光环，范围内的敌方单位被施加强化版雷达标记，同时该底盘以自身为圆心投射一片额外的机械师控制范围，使火炮与导弹平台能够在自身被发现之前就先行打击目标。</Rukaya_MechRadar.description>
+  <Rukaya_MechRadar.description>搭载旋转雷达阵列的无武装支援机械体，可为友军提供瞄准辅助、标记附近敌军以配合制导武器与反隐身，并延伸所属机械师的指挥范围。</Rukaya_MechRadar.description>
 
   <!-- 具体 Def 继承的攻击部位；列表下标按 XML 继承后的顺序。 -->
   <Rukaya_MechChassis_Laser.tools.0.label>撞角挡板</Rukaya_MechChassis_Laser.tools.0.label>

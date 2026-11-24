@@ -10,9 +10,52 @@ namespace RukayaRace.Buildings
         public const string FrameDefName = "Rukaya_HangingBed";
         public const string SpotDefName = "Rukaya_HangingSleepingSpot";
 
-        public static bool IsHangingBed(ThingDef def) => def?.defName == FrameDefName || def?.defName == SpotDefName;
-        public static bool IsCurtainedBed(ThingDef def) => def?.defName == FrameDefName;
-        public static bool IsRukaya(Pawn pawn) => pawn?.def?.defName == "Alien_Rukaya";
+        private static bool defsResolved;
+        private static ThingDef frameDef;
+        private static ThingDef spotDef;
+        private static ThingDef rukayaDef;
+        private static ThoughtDef sleptHangingDef;
+
+        private static void EnsureDefs()
+        {
+            if (defsResolved) return;
+            defsResolved = true;
+            frameDef = DefDatabase<ThingDef>.GetNamedSilentFail(FrameDefName);
+            spotDef = DefDatabase<ThingDef>.GetNamedSilentFail(SpotDefName);
+            rukayaDef = DefDatabase<ThingDef>.GetNamedSilentFail("Alien_Rukaya");
+            sleptHangingDef = DefDatabase<ThoughtDef>.GetNamedSilentFail("Rukaya_SleptHanging");
+        }
+
+        internal static ThoughtDef SleptHangingThought
+        {
+            get { EnsureDefs(); return sleptHangingDef; }
+        }
+
+        internal static ThingDef SpotDef
+        {
+            get { EnsureDefs(); return spotDef; }
+        }
+
+        public static bool IsHangingBed(ThingDef def)
+        {
+            if (def == null) return false;
+            EnsureDefs();
+            return (frameDef != null && def == frameDef) || (spotDef != null && def == spotDef);
+        }
+
+        public static bool IsCurtainedBed(ThingDef def)
+        {
+            if (def == null) return false;
+            EnsureDefs();
+            return frameDef != null && def == frameDef;
+        }
+
+        public static bool IsRukaya(Pawn pawn)
+        {
+            if (pawn == null) return false;
+            EnsureDefs();
+            return rukayaDef != null && pawn.def == rukayaDef;
+        }
 
         public static bool HasRoof(Building_Bed bed)
         {
@@ -38,7 +81,7 @@ namespace RukayaRace.Buildings
     {
         private static void Postfix(Thing bedThing, ref bool __result)
         {
-            if (__result && bedThing is Building_Bed bed && bed.def.defName == RukayaHangingSleep.SpotDefName)
+            if (__result && bedThing is Building_Bed bed && bed.def == RukayaHangingSleep.SpotDef)
                 __result = RukayaHangingSleep.HasRoof(bed);
         }
     }
@@ -131,7 +174,7 @@ namespace RukayaRace.Buildings
             sleepTicks += 60;
             if (sleepTicks >= 2500 && sleeper.needs?.mood != null)
             {
-                ThoughtDef thought = DefDatabase<ThoughtDef>.GetNamed("Rukaya_SleptHanging");
+                ThoughtDef thought = RukayaHangingSleep.SleptHangingThought ?? DefDatabase<ThoughtDef>.GetNamed("Rukaya_SleptHanging");
                 sleeper.needs.mood.thoughts.memories.TryGainMemory(thought);
                 awarded = true;
             }

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/RaidStrategyDef[defName="ImmediateAttack" or defName="ImmediateAttackSmart" or defName="StageThenAttack"]/arriveModes</xpath>
+    <value>
+      <li>Rukaya_Airborne</li>
+    </value>
+  </Operation>
+
+  <!-- Zero out vanilla drop-pod arrival mode weights for Rukaya_DrifterAlliance so Rukaya drop raids use An-72 airborne transports -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/PawnsArrivalModeDef[defName="EdgeDrop"]/selectionWeightCurvesPerFaction</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/PawnsArrivalModeDef[defName="EdgeDrop"]/selectionWeightCurvesPerFaction</xpath>
+      <value>
+        <li>
+          <faction>Rukaya_DrifterAlliance</faction>
+          <selectionWeightPerPointsCurve>
+            <points>
+              <li>(0, 0)</li>
+            </points>
+          </selectionWeightPerPointsCurve>
+        </li>
+      </value>
+    </match>
+    <nomatch Class="PatchOperationAdd">
+      <xpath>Defs/PawnsArrivalModeDef[defName="EdgeDrop"]</xpath>
+      <value>
+        <selectionWeightCurvesPerFaction>
+          <li>
+            <faction>Rukaya_DrifterAlliance</faction>
+            <selectionWeightPerPointsCurve>
+              <points>
+                <li>(0, 0)</li>
+              </points>
+            </selectionWeightPerPointsCurve>
+          </li>
+        </selectionWeightCurvesPerFaction>
+      </value>
+    </nomatch>
+  </Operation>
+
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/PawnsArrivalModeDef[defName="EdgeDropGroups"]/selectionWeightCurvesPerFaction</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/PawnsArrivalModeDef[defName="EdgeDropGroups"]/selectionWeightCurvesPerFaction</xpath>
+      <value>
+        <li>
+          <faction>Rukaya_DrifterAlliance</faction>
+          <selectionWeightPerPointsCurve>
+            <points>
+              <li>(0, 0)</li>
+            </points>
+          </selectionWeightPerPointsCurve>
+        </li>
+      </value>
+    </match>
+    <nomatch Class="PatchOperationAdd">
+      <xpath>Defs/PawnsArrivalModeDef[defName="EdgeDropGroups"]</xpath>
+      <value>
+        <selectionWeightCurvesPerFaction>
+          <li>
+            <faction>Rukaya_DrifterAlliance</faction>
+            <selectionWeightPerPointsCurve>
+              <points>
+                <li>(0, 0)</li>
+              </points>
+            </selectionWeightPerPointsCurve>
+          </li>
+        </selectionWeightCurvesPerFaction>
+      </value>
+    </nomatch>
+  </Operation>
+
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/PawnsArrivalModeDef[defName="CenterDrop"]/selectionWeightCurvesPerFaction</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/PawnsArrivalModeDef[defName="CenterDrop"]/selectionWeightCurvesPerFaction</xpath>
+      <value>
+        <li>
+          <faction>Rukaya_DrifterAlliance</faction>
+          <selectionWeightPerPointsCurve>
+            <points>
+              <li>(0, 0)</li>
+            </points>
+          </selectionWeightPerPointsCurve>
+        </li>
+      </value>
+    </match>
+    <nomatch Class="PatchOperationAdd">
+      <xpath>Defs/PawnsArrivalModeDef[defName="CenterDrop"]</xpath>
+      <value>
+        <selectionWeightCurvesPerFaction>
+          <li>
+            <faction>Rukaya_DrifterAlliance</faction>
+            <selectionWeightPerPointsCurve>
+              <points>
+                <li>(0, 0)</li>
+              </points>
+            </selectionWeightPerPointsCurve>
+          </li>
+        </selectionWeightCurvesPerFaction>
+      </value>
+    </nomatch>
+  </Operation>
+
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/PawnsArrivalModeDef[defName="RandomDrop"]/selectionWeightCurvesPerFaction</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/PawnsArrivalModeDef[defName="RandomDrop"]/selectionWeightCurvesPerFaction</xpath>
+      <value>
+        <li>
+          <faction>Rukaya_DrifterAlliance</faction>
+          <selectionWeightPerPointsCurve>
+            <points>
+              <li>(0, 0)</li>
+            </points>
+          </selectionWeightPerPointsCurve>
+        </li>
+      </value>
+    </match>
+    <nomatch Class="PatchOperationAdd">
+      <xpath>Defs/PawnsArrivalModeDef[defName="RandomDrop"]</xpath>
+      <value>
+        <selectionWeightCurvesPerFaction>
+          <li>
+            <faction>Rukaya_DrifterAlliance</faction>
+            <selectionWeightPerPointsCurve>
+              <points>
+                <li>(0, 0)</li>
+              </points>
+            </selectionWeightPerPointsCurve>
+          </li>
+        </selectionWeightCurvesPerFaction>
+      </value>
+    </nomatch>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/PawnsArrivalModeDef[defName="EdgeDrop" or defName="EdgeDropGroups" or defName="CenterDrop" or defName="RandomDrop"]/selectionWeightCurvesPerFaction</xpath>
+    <value>
+      <li>
+        <faction>Rukaya_BrokenStarCorps</faction>
+        <selectionWeightPerPointsCurve>
+          <points>
+            <li>(0, 0)</li>
+          </points>
+        </selectionWeightPerPointsCurve>
+      </li>
+    </value>
+  </Operation>
+</Patch>

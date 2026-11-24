@@ -8,21 +8,27 @@ namespace RukayaRace.Weapons
     [HarmonyPatch(typeof(Pawn), nameof(Pawn.TryGetAttackVerb))]
     public static class Patch_Pawn_TryGetAttackVerb_RukayaMech
     {
-        public static void Prefix(Pawn __instance, ref bool allowTurrets)
+        public static void Prefix(Pawn __instance, ref bool allowTurrets, out CompRukayaMechTurretGun __state)
         {
             // Mechanoid patrol, escort and lord AI normally ignore CompTurretGun and
             // see only the ram plate. Expose this mod's ground turret to those jobs.
             // Select it explicitly in Postfix so an AA companion is never selected.
-            if (__instance.GetComp<CompRukayaMechTurretGun>() != null)
+            if (!__instance.RaceProps.IsMechanoid)
+            {
+                __state = null;
+                return;
+            }
+
+            __state = __instance.GetComp<CompRukayaMechTurretGun>();
+            if (__state != null)
                 allowTurrets = false;
         }
 
-        public static void Postfix(Pawn __instance, ref Verb __result)
+        public static void Postfix(CompRukayaMechTurretGun __state, ref Verb __result)
         {
-            CompRukayaMechTurretGun turret = __instance.GetComp<CompRukayaMechTurretGun>();
-            if (turret != null && turret.HasWeapon && !turret.TurretDestroyed && turret.AttackVerb.Available()
+            if (__state != null && __state.HasWeapon && !__state.TurretDestroyed && __state.AttackVerb.Available()
                 && (__result == null || __result.verbProps.IsMeleeAttack))
-                __result = turret.AttackVerb;
+                __result = __state.AttackVerb;
         }
     }
 
@@ -31,10 +37,12 @@ namespace RukayaRace.Weapons
     {
         public static void Postfix(Pawn pawn, ref Job __result)
         {
+            if (__result?.def != JobDefOf.Goto || !pawn.RaceProps.IsMechanoid)
+                return;
             CompRukayaMechTurretGun turret = pawn.GetComp<CompRukayaMechTurretGun>();
             Thing target = pawn.mindState.enemyTarget;
             if (turret == null || !turret.CanOperate || pawn.InMentalState
-                || __result?.def != JobDefOf.Goto || target == null
+                || target == null
                 || !turret.AttackVerb.Available() || !turret.AttackVerb.CanHitTarget(target))
                 return;
 

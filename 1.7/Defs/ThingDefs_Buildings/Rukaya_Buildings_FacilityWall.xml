@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <DesignatorDropdownGroupDef>
+    <defName>Rukaya_FacilityWallGroup</defName>
+    <label>Rukaya facility wall</label>
+    <!-- 中文：卢卡娅设施墙 -->
+    <iconSource>Placed</iconSource>
+  </DesignatorDropdownGroupDef>
+
+  <ThingDef ParentName="Wall" Name="Rukaya_FacilityWallBase" Abstract="True">
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <uiIconPathsStuff Inherit="False" />
+    <statBases>
+      <MaxHitPoints>510</MaxHitPoints>
+      <WorkToBuild>950</WorkToBuild>
+      <Flammability>0</Flammability>
+      <MeditationFocusStrength>0.22</MeditationFocusStrength>
+    </statBases>
+    <costStuffCount>0</costStuffCount>
+    <stuffCategories Inherit="False" />
+    <costList>
+      <Steel>10</Steel>
+    </costList>
+    <useStuffTerrainAffordance>false</useStuffTerrainAffordance>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <designationCategory>Rukaya_Buildings</designationCategory>
+    <designatorDropdown>Rukaya_FacilityWallGroup</designatorDropdown>
+    <uiOrder>2005</uiOrder>
+    <designationHotKey IsNull="True" />
+    <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+    <building>
+      <isStuffableAirtight>false</isStuffableAirtight>
+      <isAirtight>true</isAirtight>
+    </building>
+  </ThingDef>
+
+  <ThingDef ParentName="Rukaya_FacilityWallBase">
+    <defName>Rukaya_FacilityWallGreen</defName>
+    <label>Rukaya facility wall (green)</label>
+    <!-- 中文：卢卡娅设施墙（绿色） -->
+    <description>An impassable steel-framed wall finished with green wainscoting. Capable of holding up a roof.</description>
+    <!-- 中文翻译：一面带有绿色墙裙的墙。能够支撑屋顶。 -->
+    <graphicData>
+      <texPath>Rukaya/Building/Rukaya_FacilityWall/Rukaya_WallGreen_Atlas</texPath>
+    </graphicData>
+    <uiIconPath>Rukaya/Building/Rukaya_FacilityWall/Rukaya_WallGreen_Icon</uiIconPath>
+  </ThingDef>
+
+  <ThingDef ParentName="Rukaya_FacilityWallBase">
+    <defName>Rukaya_FacilityWallBlue</defName>
+    <label>Rukaya facility wall (blue)</label>
+    <!-- 中文：卢卡娅设施墙（蓝色） -->
+    <description>An impassable steel-framed wall finished with blue wainscoting. Capable of holding up a roof.</description>
+    <!-- 中文翻译：一面带有蓝色墙裙的墙。能够支撑屋顶。 -->
+    <graphicData>
+      <texPath>Rukaya/Building/Rukaya_FacilityWall/Rukaya_WallBlue_Atlas</texPath>
+    </graphicData>
+    <uiIconPath>Rukaya/Building/Rukaya_FacilityWall/Rukaya_WallBlue_Icon</uiIconPath>
+  </ThingDef>
+</Defs>

@@ -23,6 +23,32 @@ namespace RukayaRace.Radar
     public static class Patch_Pawn_MechanitorTracker_CanCommandTo
     {
         private static List<Pawn> tmpMechs = new List<Pawn>();
+        private static HashSet<ThingDef> cachedRadarDefs;
+
+        internal static HashSet<ThingDef> RadarDefs
+        {
+            get
+            {
+                if (cachedRadarDefs != null)
+                {
+                    return cachedRadarDefs;
+                }
+
+                HashSet<ThingDef> set = new HashSet<ThingDef>();
+                List<ThingDef> allDefs = DefDatabase<ThingDef>.AllDefsListForReading;
+                for (int i = 0; i < allDefs.Count; i++)
+                {
+                    ThingDef def = allDefs[i];
+                    if (def.HasComp(typeof(CompRukayaMechRadar)))
+                    {
+                        set.Add(def);
+                    }
+                }
+
+                cachedRadarDefs = set;
+                return set;
+            }
+        }
 
         public static void Postfix(Pawn_MechanitorTracker __instance, LocalTargetInfo target, ref bool __result)
         {
@@ -52,6 +78,7 @@ namespace RukayaRace.Radar
             tmpMechs.Clear();
             MechanitorUtility.GetMechsInAssignedOrder(overseer, ref tmpMechs);
             bool relayed = false;
+            HashSet<ThingDef> radarDefs = RadarDefs;
 
             for (int i = 0; i < tmpMechs.Count; i++)
             {
@@ -61,7 +88,7 @@ namespace RukayaRace.Radar
                     continue;
                 }
 
-                if (!mech.def.HasComp(typeof(CompRukayaMechRadar)))
+                if (!radarDefs.Contains(mech.def))
                 {
                     continue;
                 }

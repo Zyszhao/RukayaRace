@@ -10,7 +10,19 @@ namespace RukayaRace.Diet
         public const int GraceTicks = 3 * GenDate.TicksPerDay;
         public const int SevereTicks = 6 * GenDate.TicksPerDay;
 
-        public static bool IsRukaya(Pawn pawn) => pawn?.def?.defName == "Alien_Rukaya";
+        private static ThingDef cachedRukayaDef;
+        private static bool rukayaDefResolved;
+
+        public static bool IsRukaya(Pawn pawn)
+        {
+            if (pawn == null) return false;
+            if (!rukayaDefResolved)
+            {
+                rukayaDefResolved = true;
+                cachedRukayaDef = DefDatabase<ThingDef>.GetNamedSilentFail("Alien_Rukaya");
+            }
+            return cachedRukayaDef != null && pawn.def == cachedRukayaDef;
+        }
 
         // Any includes milk/eggs. We deliberately have only two dietary categories.
         // GetFoodKind examines CompIngredients, so any meat makes a mixed meal meat food.

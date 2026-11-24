@@ -49,7 +49,7 @@ public partial class Aircraft
         }
         if (hardpointLayoutVersion < 3)
         {
-            if (Heavy && mounts.Count == 5)
+            if (IsInterceptor && mounts.Count == 5)
             {
                 // Preserve the center and both old wing pairs; add empty outer pylons.
                 mounts.Insert(0, new Hardpoint()); mounts.Add(new Hardpoint());
@@ -71,20 +71,23 @@ public partial class Aircraft
     }
     private void RecoverRetiredMounts()
     {
+        if (retiredMounts.Count == 0 && pendingAmmoRefunds.Count == 0) return;
         if (!Spawned || State != FlightState.Parked || Cargo?.innerContainer == null) return;
-        foreach (Hardpoint store in retiredMounts.ToList())
+        for (int i = retiredMounts.Count - 1; i >= 0; i--)
         {
+            Hardpoint store = retiredMounts[i];
             if (store.kind != StoreKind.Empty)
             {
                 Refund(ThingDefOf.Steel, 10); Refund(ThingDefOf.ComponentIndustrial, 1);
                 foreach (var cost in Ordnance.RearmCost(store.kind, store.rounds)) Refund(cost.def, cost.count);
             }
-            retiredMounts.Remove(store);
+            retiredMounts.RemoveAt(i);
         }
-        foreach (Hardpoint ammo in pendingAmmoRefunds.ToList())
+        for (int i = pendingAmmoRefunds.Count - 1; i >= 0; i--)
         {
+            Hardpoint ammo = pendingAmmoRefunds[i];
             foreach (var cost in Ordnance.RearmCost(ammo.kind, ammo.rounds)) Refund(cost.def, cost.count);
-            pendingAmmoRefunds.Remove(ammo);
+            pendingAmmoRefunds.RemoveAt(i);
         }
     }
     private void Refund(ThingDef def, int count)
@@ -96,7 +99,13 @@ public partial class Aircraft
         }
     }
     private List<Hardpoint> pendingAmmoRefunds = new();
-    public bool HasWeapon(AttackKind kind) => !Heavy && kind == AttackKind.Cannon || mounts.Any(m => Ordnance.Matches(m.kind, kind));
+    public bool HasWeapon(AttackKind kind)
+    {
+        if (!Heavy && kind == AttackKind.Cannon) return true;
+        for (int i = 0; i < mounts.Count; i++)
+            if (Ordnance.Matches(mounts[i].kind, kind)) return true;
+        return false;
+    }
     private Command_Action WeaponCommand(AttackKind kind, string label, string description, Action action, string icon = null)
     {
         Command_Action command = AV.Button($"{label}（{Ammo(kind)}）", description, action,
@@ -108,20 +117,45 @@ public partial class Aircraft
     public Thing FindCorrectedTarget(AttackKind kind, Vector3 origin, IntVec3 nominal)
     {
         if (kind is not (AttackKind.Rocket or AttackKind.Cannon) || Map == null) return null;
-        float radius = kind == AttackKind.Rocket ? 4 : 3;
+        float radius = kind == AttackKind.Rocket ? 4f : 3f;
         Vector3 center = AV.Flat(nominal), forward = AV.Dir(yaw), segment = attackEnd - attackStart;
         float lengthSquared = segment.sqrMagnitude;
-        return Map.listerThings.AllThings.Where(t => t != this && t is not Aircraft && t.Spawned && !t.Position.Fogged(Map) && t.HostileTo(this)
-                && (t is Pawn pawn && !pawn.Dead && !pawn.Downed || t is Building && t.def.useHitPoints && t.def.fillPercent > 0.1f))
-            .Where(t =>
+        Thing best = null;
+        int bestDistSq = int.MaxValue;
+        int bestTypeRank = int.MaxValue;
+        int bestId = int.MaxValue;
+        int numCells = GenRadial.NumCellsInRadius(radius);
+        for (int cIdx = 0; cIdx < numCells; cIdx++)
+        {
+            IntVec3 cell = nominal + GenRadial.RadialPattern[cIdx];
+            if (!cell.InBounds(Map) || cell.Fogged(Map)) continue;
+            List<Thing> things = cell.GetThingList(Map);
+            for (int i = 0; i < things.Count; i++)
             {
+                Thing t = things[i];
+                if (t == this || t is Aircraft || !t.Spawned || t.Position != cell || !t.HostileTo(this)) continue;
+                bool isPawn = t is Pawn pawn && !pawn.Dead && !pawn.Downed;
+                if (!isPawn && !(t is Building && t.def.useHitPoints && t.def.fillPercent > 0.1f)) continue;
                 Vector3 point = AV.Flat(t.Position), to = point - origin;
-                if (AV.Distance(point, center) > radius || Vector3.Dot(to, forward) < 1 || Mathf.Abs(Mathf.DeltaAngle(yaw, to.AngleFlat())) > 18) return false;
-                if (attackPhase == AttackPhase.Hover) return true;
-                float along = lengthSquared > 0 ? Vector3.Dot(point - attackStart, segment) / lengthSquared : 0;
-                if (along < 0 || along > 1) return false;
-                return AV.Distance(point, attackStart + segment * along) <= radius;
-            })
-            .OrderBy(t => t.Position.DistanceToSquared(nominal)).ThenBy(t => t is Pawn ? 0 : 1).ThenBy(t => t.thingIDNumber).FirstOrDefault();
+                if (AV.Distance(point, center) > radius || Vector3.Dot(to, forward) < 1f || Mathf.Abs(Mathf.DeltaAngle(yaw, to.AngleFlat())) > 18f) continue;
+                if (attackPhase != AttackPhase.Hover)
+                {
+                    float along = lengthSquared > 0f ? Vector3.Dot(point - attackStart, segment) / lengthSquared : 0f;
+                    if (along < 0f || along > 1f) continue;
+                    if (AV.Distance(point, attackStart + segment * along) > radius) continue;
+                }
+                int distSq = t.Position.DistanceToSquared(nominal);
+                int typeRank = isPawn ? 0 : 1;
+                if (best == null || distSq < bestDistSq
+                    || (distSq == bestDistSq && (typeRank < bestTypeRank || (typeRank == bestTypeRank && t.thingIDNumber < bestId))))
+                {
+                    best = t;
+                    bestDistSq = distSq;
+                    bestTypeRank = typeRank;
+                    bestId = t.thingIDNumber;
+                }
+            }
+        }
+        return best;
     }
 }

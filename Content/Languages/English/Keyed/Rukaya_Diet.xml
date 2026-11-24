@@ -8,8 +8,8 @@
   <!-- 中文：饮食需求 -->
   <Rukaya_DietInfoValue>Vegetarian preference</Rukaya_DietInfoValue>
   <!-- 中文：偏好素食 -->
-  <Rukaya_DietInfoDescription>Rukaya need regular vegetarian food. More than three days without it causes -3 mood; six days or longer causes -10. Eating vegetarian food resets this timer and grants +10 mood for one day, refreshing rather than stacking. Meat and meals containing meat provide 60% nutrition and do not satisfy this need. Milk, eggs and fungi count as vegetarian food. Drugs and hemogen do not satisfy this need. While lent to another faction for a quest, vegetarian food is provided regularly, resetting this timer without granting the meal mood bonus. After returning, time is counted from the most recent provision.</Rukaya_DietInfoDescription>
-  <!-- 中文翻译：卢卡娅需要定期食用素食。超过三天未吃素食时心情-3，达到六天后心情-10。吃素会重置计时，并获得持续一天的心情+10；再次吃素刷新时长，不叠加。肉食及含肉混合餐只提供60%营养，不能满足素食需求。奶、蛋与菌类按素食处理。药品与血原质不能满足这一需求。任务借用期间，接收派系会定期提供素食，重置计时，但不发放吃素的心情奖励。返回后从最近一次供餐继续计时。 -->
+  <Rukaya_DietInfoDescription>Rukaya thrive on vegetarian food, including milk, eggs, and fungi. Eating vegetarian meals grants a short mood boost, while going more than three days without them causes mood penalties. Meat and mixed meals provide only 60% nutrition and do not satisfy this need.</Rukaya_DietInfoDescription>
+  <!-- 中文翻译：卢卡娅偏好素食（含奶、蛋与菌类）。食用素食可获得短暂的心情提升，超过三天未进食素食则会出现心情惩罚；肉食与含肉混合餐仅提供60%营养，且无法满足素食需求。 -->
   <Rukaya_DietAlertLabel>Rukaya lack vegetarian food</Rukaya_DietAlertLabel>
   <!-- 中文：卢卡娅缺乏素食 -->
   <Rukaya_DietAlertPawn>{0}: {1} without vegetarian food (mood {2})</Rukaya_DietAlertPawn>

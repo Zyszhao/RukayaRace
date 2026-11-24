@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <FactionDef ParentName="OutlanderFactionBase">
+    <defName>Rukaya_BrokenStarCorps</defName>
+    <label>Rukaya Broken-Star Corps</label>
+    <!-- 中文：卢卡娅残星兵团 -->
+    <description>Formed from Rukaya warlords, armed captains, and oligarchs who control the supply routes, the Broken-Star Corps holds together under worn designations and practical industrial arms. Its bands live by levies, raids, and the force to keep both in place. They approach outsiders as adversaries by default, but even a hard opponent may find room to bargain when the terms are worthwhile.</description>
+    <!-- 中文翻译：残星兵团由卢卡娅军阀、武装头目与掌控物资通路的寡头聚拢而成，靠着残缺的旧番号与实用的工业军备维系。各支队伍以征税、劫掠和维持这些收入的武力为生。她们默认将外来者视作对手，但若条件合算，即使面对强硬的敌人，也仍有谈判的余地。 -->
+    <basicMemberKind>Rukaya_Colonist</basicMemberKind>
+    <xenotypeSet Inherit="False">
+      <xenotypeChances>
+        <Rukaya_Xenotype>1</Rukaya_Xenotype>
+      </xenotypeChances>
+    </xenotypeSet>
+    <requiredMemes MayRequire="Ludeon.RimWorld.Ideology">
+      <li MayRequire="Ludeon.RimWorld.Ideology">Raider</li>
+    </requiredMemes>
+    <disallowedMemes MayRequire="Ludeon.RimWorld.Ideology">
+      <li MayRequire="Ludeon.RimWorld.Ideology">Cannibal</li>
+    </disallowedMemes>
+    <naturalEnemy>true</naturalEnemy>
+    <permanentEnemy>false</permanentEnemy>
+    <maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
+    <startingCountAtWorldCreation>1</startingCountAtWorldCreation>
+    <configurationListOrderPriority>16</configurationListOrderPriority>
+    <colorSpectrum>
+      <li>(0.68, 0.24, 0.16)</li>
+      <li>(0.56, 0.19, 0.13)</li>
+    </colorSpectrum>
+    <factionIconPath>Rukaya/Faction/RukayaFactionHostile_Icon</factionIconPath>
+    <pawnSingular>Rukaya</pawnSingular>
+    <!-- 中文翻译：卢卡娅 -->
+    <pawnsPlural>Rukayas</pawnsPlural>
+    <!-- 中文翻译：卢卡娅 -->
+    <leaderTitle>Commandant</leaderTitle>
+    <!-- 中文翻译：司令官 -->
+    <factionNameMaker>NamerFaction_RukayaBrokenStar</factionNameMaker>
+    <settlementNameMaker>NamerSettlement_RukayaBrokenStar</settlementNameMaker>
+    <caravanTraderKinds Inherit="false" />
+    <visitorTraderKinds Inherit="false" />
+    <baseTraderKinds Inherit="false" />
+    <canRequestTraders>false</canRequestTraders>
+    <pawnGroupMakers Inherit="false">
+      <li>
+        <kindDef>Combat</kindDef>
+        <commonality>100</commonality>
+        <options>
+          <Rukaya_Commandant>1</Rukaya_Commandant>
+          <Rukaya_Officer>2</Rukaya_Officer>
+          <Rukaya_Militia>18</Rukaya_Militia>
+          <Rukaya_MilitiaMelee>10</Rukaya_MilitiaMelee>
+          <Rukaya_MilitiaSupport>2</Rukaya_MilitiaSupport>
+          <Rukaya_RegularRifleman>8</Rukaya_RegularRifleman>
+          <Rukaya_RegularGrenadier>4</Rukaya_RegularGrenadier>
+          <Rukaya_RegularMachinegunner>3</Rukaya_RegularMachinegunner>
+          <Rukaya_RegularBreacher>3</Rukaya_RegularBreacher>
+          <Rukaya_RegularSapper>3</Rukaya_RegularSapper>
+          <Rukaya_RegularRecoilless>2</Rukaya_RegularRecoilless>
+          <Rukaya_RegularMarksman>2</Rukaya_RegularMarksman>
+        </options>
+      </li>
+      <li>
+        <kindDef>Combat</kindDef>
+        <commonality>50</commonality>
+        <options>
+          <Rukaya_Militia>24</Rukaya_Militia>
+          <Rukaya_MilitiaMelee>14</Rukaya_MilitiaMelee>
+          <Rukaya_MilitiaSupport>3</Rukaya_MilitiaSupport>
+          <Rukaya_RegularRifleman>4</Rukaya_RegularRifleman>
+          <Rukaya_RegularBreacher>2</Rukaya_RegularBreacher>
+          <Rukaya_RegularSapper>2</Rukaya_RegularSapper>
+          <Rukaya_Officer>1</Rukaya_Officer>
+        </options>
+      </li>
+      <li>
+        <kindDef>Combat</kindDef>
+        <commonality>35</commonality>
+        <disallowedStrategies>
+          <li>Siege</li>
+        </disallowedStrategies>
+        <options>
+          <Rukaya_Militia>12</Rukaya_Militia>
+          <Rukaya_RegularRifleman>10</Rukaya_RegularRifleman>
+          <Rukaya_RegularGrenadier>3</Rukaya_RegularGrenadier>
+          <Rukaya_RegularMachinegunner>3</Rukaya_RegularMachinegunner>
+          <Rukaya_RegularBreacher>2</Rukaya_RegularBreacher>
+          <Rukaya_MechChassis_MachineCannon>3</Rukaya_MechChassis_MachineCannon>
+          <Rukaya_MechChassis_Rocket>2</Rukaya_MechChassis_Rocket>
+          <Rukaya_MechChassis_Laser>2</Rukaya_MechChassis_Laser>
+          <Rukaya_MechChassis_MineSweeper>1</Rukaya_MechChassis_MineSweeper>
+          <Rukaya_MechChassis_Mortar>1</Rukaya_MechChassis_Mortar>
+        </options>
+      </li>
+      <li>
+        <kindDef>Combat</kindDef>
+        <commonality>10</commonality>
+        <options>
+          <Rukaya_SpetsnazAssault>8</Rukaya_SpetsnazAssault>
+          <Rukaya_SpetsnazSupport>2</Rukaya_SpetsnazSupport>
+          <Rukaya_SpetsnazBlade>1</Rukaya_SpetsnazBlade>
+          <Rukaya_SpetsnazAntiArmor>1</Rukaya_SpetsnazAntiArmor>
+          <Rukaya_SpetsnazSniper>1</Rukaya_SpetsnazSniper>
+          <Rukaya_RegularRifleman>2</Rukaya_RegularRifleman>
+        </options>
+      </li>
+      <li>
+        <kindDef>Peaceful</kindDef>
+        <commonality>100</commonality>
+        <options>
+          <Rukaya_Towner>20</Rukaya_Towner>
+          <Rukaya_Colonist>10</Rukaya_Colonist>
+          <Rukaya_Militia>3</Rukaya_Militia>
+          <Rukaya_Officer>1</Rukaya_Officer>
+        </options>
+      </li>
+      <li>
+        <kindDef>Trader</kindDef>
+        <commonality>100</commonality>
+        <options>
+          <Rukaya_Towner>20</Rukaya_Towner>
+          <Rukaya_Colonist>10</Rukaya_Colonist>
+          <Rukaya_Militia>3</Rukaya_Militia>
+        </options>
+      </li>
+      <li>
+        <kindDef>Settlement</kindDef>
+        <commonality>60</commonality>
+        <options>
+          <Rukaya_Militia>18</Rukaya_Militia>
+          <Rukaya_MilitiaMelee>10</Rukaya_MilitiaMelee>
+          <Rukaya_MilitiaSupport>2</Rukaya_MilitiaSupport>
+          <Rukaya_RegularRifleman>8</Rukaya_RegularRifleman>
+          <Rukaya_RegularGrenadier>4</Rukaya_RegularGrenadier>
+          <Rukaya_RegularMachinegunner>3</Rukaya_RegularMachinegunner>
+          <Rukaya_RegularBreacher>3</Rukaya_RegularBreacher>
+          <Rukaya_RegularSapper>3</Rukaya_RegularSapper>
+          <Rukaya_RegularRecoilless>2</Rukaya_RegularRecoilless>
+          <Rukaya_RegularMarksman>2</Rukaya_RegularMarksman>
+          <Rukaya_Officer>1</Rukaya_Officer>
+        </options>
+      </li>
+      <li>
+        <kindDef>Settlement</kindDef>
+        <commonality>40</commonality>
+        <options>
+          <Rukaya_Militia>20</Rukaya_Militia>
+          <Rukaya_MilitiaMelee>12</Rukaya_MilitiaMelee>
+          <Rukaya_MilitiaSupport>2</Rukaya_MilitiaSupport>
+          <Rukaya_RegularRifleman>4</Rukaya_RegularRifleman>
+          <Rukaya_RegularSapper>2</Rukaya_RegularSapper>
+          <Rukaya_Officer>1</Rukaya_Officer>
+        </options>
+      </li>
+    </pawnGroupMakers>
+  </FactionDef>
+</Defs>

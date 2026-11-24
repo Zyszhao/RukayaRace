@@ -119,11 +119,8 @@
     <label>Rukaya formal uniform</label>
     <!-- 中文翻译：卢卡娅正装制服 -->
     <techLevel>Medieval</techLevel>
-    <description>A formal dress uniform preserved from the Rukaya's long-lost homeworld. The
-      destruction of their planet happened so long ago that it has faded into a distant collective
-      memory, yet this uniform's design still survives as formal attire. Cut with specialized back
-      slits for their wings, it favors dignity and durability over ornamentation.</description>
-    <!-- 中文翻译：一套从卢卡娅失落母星流传下来的正装制服。母星毁灭的年代过于久远，早已化作模糊的集体记忆，唯有这身制服的形制仍作为正式礼服延续至今。背部开有专门为翅膀留下的开口，比起装饰，它更看重体面与耐用。 -->
+    <description>A formal dress uniform cut in a traditional Rukaya service pattern, with back slits tailored for the wings. Plain, durable, and built for formal duties.</description>
+    <!-- 中文翻译：沿用传统军礼服形制的卢卡娅正装制服，背部为翅膀留有开口，剪裁端庄而耐穿。 -->
     <graphicData>
       <texPath>Rukaya/Apparel/OnSkin/FormalUniform/Rukaya_FormalUniform</texPath>
       <graphicClass>Graphic_Single</graphicClass>

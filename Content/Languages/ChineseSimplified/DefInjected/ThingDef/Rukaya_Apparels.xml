@@ -6,7 +6,7 @@
   <Rukaya_StudentUniform.description>为卢卡娅量身裁制的学生装，剪裁为兽耳与翅膀留出了余量，布料也能长久保持原本的色泽。</Rukaya_StudentUniform.description>
 
   <Rukaya_FormalUniform.label>卢卡娅正装制服</Rukaya_FormalUniform.label>
-  <Rukaya_FormalUniform.description>一套从卢卡娅失落母星流传下来的正装制服。母星毁灭的年代过于久远，早已化作模糊的集体记忆，唯有这身制服的形制仍作为正式礼服延续至今。背部开有专门为翅膀留下的开口，比起装饰，它更看重体面与耐用。</Rukaya_FormalUniform.description>
+  <Rukaya_FormalUniform.description>沿用传统军礼服形制的卢卡娅正装制服，背部为翅膀留有开口，剪裁端庄而耐穿。</Rukaya_FormalUniform.description>
 
   <Rukaya_FormalDress.label>卢卡娅礼服</Rukaya_FormalDress.label>
   <Rukaya_FormalDress.description>为卢卡娅裁制的优雅礼服，垂顺的剪裁不碍兽耳与翅膀，精工的面料让她在任何场合都足够得体。</Rukaya_FormalDress.description>
@@ -44,14 +44,14 @@
   <Rukaya_Armour.description>一套以复原的旧母星版型重建、按海军装甲级别打造的分层动力装甲。密封关节与隔热内衬让穿着者能在很宽的温度范围内作战，而动力装甲的助力装置能稳住双手、加快出枪，并替人承下自身的分量。它对真空只提供部分密封。</Rukaya_Armour.description>
 
   <Rukaya_TrenchCoat.label>卢卡娅风衣</Rukaya_TrenchCoat.label>
-  <Rukaya_TrenchCoat.description>一件按卢卡娅体型裁制的长风衣，版式与原版风衣同属厚重的户外款式。下摆为翅膀留出空间，利落的线条让穿着者看上去沉稳而从容，这份气度在任何谈判场合都用得上。</Rukaya_TrenchCoat.description>
+  <Rukaya_TrenchCoat.description>按卢卡娅体型裁制的厚重长摆户外风衣，背部留有翅膀开口，线条利落，适合外出与交涉场合。</Rukaya_TrenchCoat.description>
 
   <!-- ===== 头饰（Overhead 层）===== -->
   <Rukaya_StudentHeadband.label>卢卡娅学生头饰</Rukaya_StudentHeadband.label>
   <Rukaya_StudentHeadband.description>与学生装配套的可爱头饰，能稳稳地戴在发间，也正好容得下她的耳朵。</Rukaya_StudentHeadband.description>
 
   <Rukaya_FormalBeret.label>卢卡娅正装贝雷帽</Rukaya_FormalBeret.label>
-  <Rukaya_FormalBeret.description>与正装制服配套的贝雷帽，形制同样承自卢卡娅失落的母星。斜戴的角度正好让兽耳舒适地安放，帽中还残留着那支早已消散于星海的行星防卫军的记忆。</Rukaya_FormalBeret.description>
+  <Rukaya_FormalBeret.description>与正装制服配套的贝雷帽，沿用旧式军帽形制，斜戴时正好避开兽耳。</Rukaya_FormalBeret.description>
 
   <Rukaya_AfghankaHat.label>卢卡娅阿富汗卡帽</Rukaya_AfghankaHat.label>
   <Rukaya_AfghankaHat.description>一顶轻便的野战帽，形制来自卢卡娅远古母星的步兵旧款。它能挡开烈日与热浪，熟悉的剪裁戴起来也让人安心。</Rukaya_AfghankaHat.description>
@@ -66,7 +66,7 @@
   <Rukaya_HeavyPowerArmorHelmet.description>一顶采用厚重装甲与密封护目的动力头盔。致密合金层保护头部，密封结构还可在真空中提供部分防护。</Rukaya_HeavyPowerArmorHelmet.description>
 
   <Rukaya_SteelHelmet.label>卢卡娅钢盔</Rukaya_SteelHelmet.label>
-  <Rukaya_SteelHelmet.description>一顶加固钢制外壳的制式军用头盔，使用钢材制作时的护甲评级与原版防弹头盔一致。</Rukaya_SteelHelmet.description>
+  <Rukaya_SteelHelmet.description>一顶深帽壳的制式军用钢盔，用于抵御弹片与轻武器射击。</Rukaya_SteelHelmet.description>
 
   <Rukaya_GarrisonCap.label>卢卡娅船形帽</Rukaya_GarrisonCap.label>
   <Rukaya_GarrisonCap.description>一顶轻便的布制船形帽，采用常服帽的经典剪裁。它的隔温能力较弱，整洁的外形则能提升穿着者的社交表现。</Rukaya_GarrisonCap.description>
@@ -78,14 +78,14 @@
   <Rukaya_HairBand.description>一条素净的布发带，把头发束在脑后。它简单而整洁，让人看着更顺眼，也让长发不再碍手，因此厨房里的活计能快上一点。</Rukaya_HairBand.description>
 
   <Rukaya_WideBrimHat.label>卢卡娅宽檐帽</Rukaya_WideBrimHat.label>
-  <Rukaya_WideBrimHat.description>一顶遮住面庞、挡开日晒雨淋的宽檐帽。它为穿着者添上一道威严的轮廓——别人更愿意听她说话，交涉也顺畅一些，而她手下的人也更不敢试探她。</Rukaya_WideBrimHat.description>
+  <Rukaya_WideBrimHat.description>一顶能遮阳挡雨的宽檐军官帽，轮廓硬朗，戴上后更显威严。</Rukaya_WideBrimHat.description>
 
   <!-- ===== 内衣（Rukaya_Underwear 层）===== -->
   <Rukaya_BlackKneehighs.label>卢卡娅黑色过膝袜内衣</Rukaya_BlackKneehighs.label>
   <Rukaya_BlackKneehighs.description>一套内衣，配有黑色不透明过膝长袜。</Rukaya_BlackKneehighs.description>
 
   <Rukaya_Swimsuit.label>卢卡娅竞技紧身衣</Rukaya_Swimsuit.label>
-  <Rukaya_Swimsuit.description>一件为卢卡娅体型裁制的修身连体竞技紧身衣。弹性面料如第二层皮肤般贴合身体，背部裁得很低，让翅膀完全不受束缚。简洁利落的运动线条让穿着者在任何场合都显得从容自信，无论身处赛道还是谈判桌前。</Rukaya_Swimsuit.description>
+  <Rukaya_Swimsuit.description>贴身的弹性连体竞技紧身衣，低背剪裁完全不妨碍翅膀活动。</Rukaya_Swimsuit.description>
 
   <Rukaya_SportsBra.label>卢卡娅运动内衣</Rukaya_SportsBra.label>
   <Rukaya_SportsBra.description>一件为卢卡娅体型制作的贴身运动内衣，附同款下装。紧实的弹性底带稳稳固定，柔软透气的面料让胸部保持稳定，使长途行军与繁重劳作都不再拖慢穿着者的脚步。</Rukaya_SportsBra.description>

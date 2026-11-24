@@ -87,13 +87,14 @@ namespace RukayaRace.Weapons
 
             foreach (Pawn pawn in map.mapPawns.AllPawnsSpawned)
             {
-                if (!this.AffectsPawn(pawn, this.Props.disruptRadius))
+                if (pawn == null || !pawn.Spawned || pawn.MapHeld != map
+                    || !pawn.Position.InHorDistOf(this.parent.Position, this.Props.disruptRadius))
                 {
                     continue;
                 }
 
                 HediffComp_Invisibility invisibility = pawn.GetInvisibilityComp();
-                if (invisibility != null)
+                if (invisibility != null && GenSight.LineOfSightToThing(this.parent.Position, pawn, map))
                 {
                     invisibility.DisruptInvisibility();
                 }

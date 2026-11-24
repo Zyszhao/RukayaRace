@@ -23,11 +23,11 @@ public class Hardpoint : IExposable
     public static string Name(StoreKind k) => k switch { StoreKind.Bomb => "高爆炸弹架", StoreKind.IncendiaryBomb => "燃烧弹架", StoreKind.ClusterBomb => "集束炸弹架", StoreKind.GroundMissile => "空对地导弹", StoreKind.ActiveMatterMissile => "活性物质导弹", StoreKind.Rocket => "火箭巢", StoreKind.Cannon => "机炮吊舱", StoreKind.Tank => "副油箱", StoreKind.CargoPod => "货物吊舱（+600 kg）", StoreKind.PassengerPod => "人员吊舱（+1席）", _ => "空载" };
     public static string Texture(StoreKind k) => k switch
     {
-        StoreKind.Bomb => "Aviation/Stores/Bomb", StoreKind.IncendiaryBomb => "Aviation/Stores/IncendiaryBomb",
-        StoreKind.ClusterBomb => "Aviation/Stores/ClusterBomb", StoreKind.Rocket => "Aviation/Stores/RocketPod",
-        StoreKind.Cannon => "Aviation/Stores/CannonPod", StoreKind.GroundMissile => "Aviation/Stores/GroundMissile",
-        StoreKind.ActiveMatterMissile => "Aviation/Stores/ActiveMatterMissile", StoreKind.Tank => "Aviation/Stores/DropTank",
-        StoreKind.CargoPod => "Aviation/Stores/CargoPod", StoreKind.PassengerPod => "Aviation/Stores/PassengerPod",
+        StoreKind.Bomb => "Rukaya/Aviation/Stores/Bomb", StoreKind.IncendiaryBomb => "Rukaya/Aviation/Stores/IncendiaryBomb",
+        StoreKind.ClusterBomb => "Rukaya/Aviation/Stores/ClusterBomb", StoreKind.Rocket => "Rukaya/Aviation/Stores/RocketPod",
+        StoreKind.Cannon => "Rukaya/Aviation/Stores/CannonPod", StoreKind.GroundMissile => "Rukaya/Aviation/Stores/GroundMissile",
+        StoreKind.ActiveMatterMissile => "Rukaya/Aviation/Stores/ActiveMatterMissile", StoreKind.Tank => "Rukaya/Aviation/Stores/DropTank",
+        StoreKind.CargoPod => "Rukaya/Aviation/Stores/CargoPod", StoreKind.PassengerPod => "Rukaya/Aviation/Stores/PassengerPod",
         _ => "Things/Projectile/ShellHighExplosive"
     };
     public void ExposeData() { Scribe_Values.Look(ref kind, "kind"); Scribe_Values.Look(ref rounds, "rounds"); }
@@ -39,7 +39,9 @@ public partial class Aircraft : Building, IAttackTarget, IRenameable
     public FlightState State;
     public Vector3 realPos;
     public float yaw;
-    public AircraftFuel Refuelable => GetComp<AircraftFuel>();
+    private AircraftFuel cachedRefuelable;
+    private CompTransporter cachedCargo;
+    public AircraftFuel Refuelable => cachedRefuelable ??= GetComp<AircraftFuel>();
     public float fuel
     {
         get => Refuelable.Fuel;
@@ -50,7 +52,9 @@ public partial class Aircraft : Building, IAttackTarget, IRenameable
     private float pendingFuelUnload;
     public float visualLift = -1;
     private Material bodyMaterial, shadowMaterial;
+    private string cachedBodyTexPath;
     private readonly Dictionary<StoreKind, Material> storeMaterials = new();
+    private static readonly List<IntVec3> SingleCellDrawList = new(1);
     public string BaseLabel => def.label + " " + aircraftNumber;
     public string RenamableLabel { get => customName ?? BaseLabel; set => customName = string.IsNullOrWhiteSpace(value) ? null : value.Trim(); }
     public string InspectLabel => RenamableLabel;
@@ -94,29 +98,95 @@ public partial class Aircraft : Building, IAttackTarget, IRenameable
     private int nextTaxiRetry;
     private bool crewLimitWarned;
 
-    public bool Heavy => def.defName == "RAV_Mig31Aircraft";
+    public bool IsInterceptor => def.defName == "RAV_Mig31Aircraft";
+    public bool IsTransport => def.defName == "RAV_An72Aircraft";
+    internal string BodyTexPath => Faction?.def?.defName == RukayaAirborneUtility.BrokenStarFactionDefName
+        ? def.defName switch
+        {
+            "RAV_An72Aircraft" => "Rukaya/Aviation/An72_Alt",
+            "RAV_Mig31Aircraft" => "Rukaya/Aviation/Mig31_Alt",
+            "RAV_Yak141Aircraft" => "Rukaya/Aviation/Yak141_Alt",
+            _ => def.graphicData.texPath
+        }
+        : def.graphicData.texPath;
+    // Fixed-wing heavy airframes (interceptor & transport) share runway takeoff/landing, orbit loiter, and non-VTOL flight dynamics.
+    public bool Heavy => IsInterceptor || IsTransport;
     // A swept envelope includes nose/tail as the aircraft turns, not just its wingspan.
-    public int Clearance => Heavy ? 5 : 4;
-    public float Speed => (Heavy ? 21f : 10f) * FlightPerformance;
-    public float BaseFuel => Heavy ? 650f : 180f;
-    public float DropTankCapacity => Heavy ? 120f : 60f;
-    public float MaxFuel => BaseFuel + mounts.Count(m => m.kind == StoreKind.Tank) * DropTankCapacity;
-    public int Range => (Heavy ? 180 : 45) + mounts.Count(m => m.kind == StoreKind.Tank) * (Heavy ? 35 : 15);
-    public float MountWeight => mounts.Sum(m => m.Weight) + (!Heavy ? FixedCannon.Weight : 0);
-    public float TakeoffLimit => Heavy ? 4200 : runwayTakeoff ? 1800 : 1100;
+    public int Clearance => IsTransport ? 7 : IsInterceptor ? 5 : 4;
+    public PadSize RequiredPadSize => IsTransport ? PadSize.Large : IsInterceptor ? PadSize.Medium : PadSize.Small;
+    public int MinRunwayWidth => IsTransport ? 13 : IsInterceptor ? 9 : 7;
+    public int MinRunwayLength => IsTransport ? 54 : IsInterceptor ? 46 : 34;
+    public float Speed => (IsTransport ? 14f : IsInterceptor ? 21f : 10f) * FlightPerformance;
+    public float BaseFuel => IsTransport ? 900f : IsInterceptor ? 650f : 180f;
+    public float DropTankCapacity => IsTransport ? 200f : IsInterceptor ? 120f : 60f;
+    public float MaxFuel
+    {
+        get
+        {
+            int tanks = 0;
+            for (int i = 0; i < mounts.Count; i++) if (mounts[i].kind == StoreKind.Tank) tanks++;
+            return BaseFuel + tanks * DropTankCapacity;
+        }
+    }
+    public int Range
+    {
+        get
+        {
+            int tanks = 0;
+            for (int i = 0; i < mounts.Count; i++) if (mounts[i].kind == StoreKind.Tank) tanks++;
+            return (IsTransport ? 240 : IsInterceptor ? 180 : 45) + tanks * (IsTransport ? 45 : IsInterceptor ? 35 : 15);
+        }
+    }
+    public float MountWeight
+    {
+        get
+        {
+            float weight = !Heavy ? FixedCannon.Weight : 0f;
+            for (int i = 0; i < mounts.Count; i++) weight += mounts[i].Weight;
+            return weight;
+        }
+    }
+    public float TakeoffLimit => IsTransport ? 8500 : IsInterceptor ? 4200 : runwayTakeoff ? 1800 : 1100;
     public bool runwayTakeoff;
     public bool UsesRunwayTakeoff => Heavy || runwayTakeoff;
-    public float TakeoffFuelCost => UsesRunwayTakeoff ? 5 : 18;
-    public int HardpointCount => Heavy ? 7 : 5;
-    public int CenterHardpoint => Heavy ? 3 : 2;
+    public float TakeoffFuelCost => UsesRunwayTakeoff ? (IsTransport ? 8 : 5) : 18;
+    public int HardpointCount => IsTransport ? 2 : IsInterceptor ? 7 : 5;
+    public int CenterHardpoint => IsTransport ? -1 : IsInterceptor ? 3 : 2;
     public Hardpoint fixedCannon = new() { kind = StoreKind.Cannon, rounds = 160 };
     public Hardpoint FixedCannon => fixedCannon ??= new Hardpoint { kind = StoreKind.Cannon, rounds = 160 };
-    public int StoreCapacity(int index, StoreKind kind) => Hardpoint.Capacity(kind) * (Heavy && index == CenterHardpoint && kind is StoreKind.Bomb or StoreKind.IncendiaryBomb or StoreKind.ClusterBomb or StoreKind.GroundMissile ? 2 : 1);
+    public int StoreCapacity(int index, StoreKind kind) => Hardpoint.Capacity(kind) * (IsInterceptor && index == CenterHardpoint && kind is StoreKind.Bomb or StoreKind.IncendiaryBomb or StoreKind.ClusterBomb or StoreKind.GroundMissile ? 2 : 1);
     public int CrewRequired => Heavy ? 2 : 1;
-    public int Seats => CrewRequired + mounts.Count(m => m.kind == StoreKind.PassengerPod);
-    public float CargoCapacity => (Heavy ? 1200 : 300) + mounts.Count(m => m.kind == StoreKind.CargoPod) * 600 + mounts.Count(m => m.kind == StoreKind.PassengerPod) * 100;
-    public bool IsMiddleMount(int i) => Mathf.Abs(i - CenterHardpoint) <= 1;
-    public bool CanMount(int i, StoreKind kind) => i >= 0 && i < HardpointCount && (Heavy || i != CenterHardpoint || kind is StoreKind.Empty or StoreKind.Tank or StoreKind.CargoPod or StoreKind.PassengerPod) && (kind != StoreKind.ActiveMatterMissile || Heavy && i == CenterHardpoint) && (kind is not (StoreKind.Tank or StoreKind.CargoPod or StoreKind.PassengerPod) || IsMiddleMount(i));
+    public int BaseSeats => IsTransport ? 16 : CrewRequired;
+    public int Seats
+    {
+        get
+        {
+            int pods = 0;
+            for (int i = 0; i < mounts.Count; i++) if (mounts[i].kind == StoreKind.PassengerPod) pods++;
+            return BaseSeats + pods;
+        }
+    }
+    public float CargoCapacity
+    {
+        get
+        {
+            float cap = IsTransport ? 6000 : IsInterceptor ? 1200 : 300;
+            for (int i = 0; i < mounts.Count; i++)
+            {
+                StoreKind k = mounts[i].kind;
+                if (k == StoreKind.CargoPod) cap += 600;
+                else if (k == StoreKind.PassengerPod) cap += 100;
+            }
+            return cap;
+        }
+    }
+    public bool IsMiddleMount(int i) => IsTransport || Mathf.Abs(i - CenterHardpoint) <= 1;
+    public bool CanMount(int i, StoreKind kind) => i >= 0 && i < HardpointCount
+        && (IsTransport
+            ? kind != StoreKind.ActiveMatterMissile
+            : (Heavy || i != CenterHardpoint || kind is StoreKind.Empty or StoreKind.Tank or StoreKind.CargoPod or StoreKind.PassengerPod)
+                && (kind != StoreKind.ActiveMatterMissile || IsInterceptor && i == CenterHardpoint)
+                && (kind is not (StoreKind.Tank or StoreKind.CargoPod or StoreKind.PassengerPod) || IsMiddleMount(i)));
     public void RefreshCapacity() { if (Cargo != null) Cargo.massCapacityOverride = CargoCapacity; Refuelable?.RefreshCapacity(); }
     public void RemoveDropTankFuel()
     {
@@ -145,7 +215,7 @@ public partial class Aircraft : Building, IAttackTarget, IRenameable
         if (Cargo.MassUsage + MountWeight > TakeoffLimit) return "超过起飞重量上限。";
         return null;
     }
-    public CompTransporter Cargo => GetComp<CompTransporter>();
+    public CompTransporter Cargo => cachedCargo ??= GetComp<CompTransporter>();
     public bool Airborne => State is FlightState.Flying or FlightState.Landing or FlightState.Crashing || State == FlightState.TakingOff && phaseTicks > 70;
     public Thing Thing => this;
     public LocalTargetInfo TargetCurrentlyAimingAt => LocalTargetInfo.Invalid;
@@ -179,6 +249,13 @@ public partial class Aircraft : Building, IAttackTarget, IRenameable
     public override CellRect? CustomRectForSelector => CellRect.CenteredOn(DrawPos.ToIntVec3(), def.size);
     public Vector3 MountPosition(int i)
     {
+        if (IsTransport)
+        {
+            // Two wing hardpoints just outboard of the twin top-mounted engines (An-72 1024px canvas).
+            float u = i == 0 ? 310f / 1024f : 714f / 1024f;
+            float v = 455f / 1024f;
+            return AirframePoint(u, v);
+        }
         // Follow each texture's swept wing: outer stations sit farther aft.
         // Coordinates are relative to the square aircraft canvas, not its transparent margins.
         float side = i - CenterHardpoint;
@@ -199,7 +276,7 @@ public partial class Aircraft : Building, IAttackTarget, IRenameable
         RefreshCapacity();
         if (!respawningAfterLoad && State == FlightState.Parked && Faction == Faction.OfPlayer)
         {
-            ParkingPad pad = AV.Pads(map).FirstOrDefault(p => p.Position == Position && p.Faction == Faction && (p.bound == null || p.bound.Destroyed) && (p.reserved == null || p.reserved == this));
+            ParkingPad pad = AV.Pads(map).FirstOrDefault(p => p.Position == Position && p.Faction == Faction && p.Supports(this) && (p.bound == null || p.bound.Destroyed) && (p.reserved == null || p.reserved == this));
             if (pad != null) { pad.Bind(this); yaw = pad.Heading; }
         }
     }
@@ -227,7 +304,13 @@ public partial class Aircraft : Building, IAttackTarget, IRenameable
             Vector2 size = AviationArt.StoreSize(m.kind);
             Graphics.DrawMesh(MeshPool.plane10, Matrix4x4.TRS(p, Quaternion.AngleAxis(yaw, Vector3.up), new Vector3(size.x, 1, size.y)), mat, 0);
         }
-        bodyMaterial ??= new Material(MaterialPool.MatFrom(def.graphicData.texPath, ShaderDatabase.Cutout));
+        string bodyTexPath = BodyTexPath;
+        if (bodyMaterial == null || cachedBodyTexPath != bodyTexPath)
+        {
+            if (bodyMaterial != null) UnityEngine.Object.Destroy(bodyMaterial);
+            bodyMaterial = new Material(MaterialPool.MatFrom(bodyTexPath, ShaderDatabase.Cutout));
+            cachedBodyTexPath = bodyTexPath;
+        }
         bodyMaterial.color = tint;
         Graphics.DrawMesh(MeshPool.plane10, Matrix4x4.TRS(drawLoc, Quaternion.AngleAxis(yaw, Vector3.up),
             new Vector3(def.graphicData.drawSize.x, 1, def.graphicData.drawSize.y)), bodyMaterial, 0);
@@ -235,14 +318,14 @@ public partial class Aircraft : Building, IAttackTarget, IRenameable
     public override void DrawExtraSelectionOverlays()
     {
         base.DrawExtraSelectionOverlays();
-        if (taxi != null && State is FlightState.TaxiOut or FlightState.TaxiIn) AV.DrawPath(taxi.Skip(taxiIndex), DrawPos, SimpleColor.Cyan);
+        if (taxi != null && State is FlightState.TaxiOut or FlightState.TaxiIn) AV.DrawPath(taxi, taxiIndex, DrawPos, SimpleColor.Cyan);
         if (State == FlightState.Parked && homePad?.Spawned == true) homePad.DrawConnection();
         if (route != null && route.Count > routeIndex)
         {
             Vector3 previous = DrawPos;
             for (int i = routeIndex; i < route.Count; i++) { GenDraw.DrawLineBetween(previous, route[i]); previous = route[i]; }
         }
-        if (attack != AttackKind.None) DrawAttackPreview(attack, attackStart, attackEnd, plannedImpacts.Skip(shotIndex));
+        if (attack != AttackKind.None) DrawAttackPreview(attack, attackStart, attackEnd, plannedImpacts, shotIndex);
         if (loitering)
         {
             Vector3 previous = realPos;
@@ -282,7 +365,7 @@ public partial class Aircraft : Building, IAttackTarget, IRenameable
                 activeRunway = z; z.reserved = this; taxi = path; taxiIndex = 0; State = FlightState.TaxiOut; Refuelable.SyncGroundAccess();
                 return true;
             }
-            AV.Say("没有可用的9×44格跑道，或通往跑道的11格宽净空滑行通道被阻挡。"); return false;
+            AV.Say($"没有可用的 {MinRunwayWidth}×{MinRunwayLength} 格跑道，或通往跑道的 {Clearance * 2 + 1} 格宽净空滑行通道被阻挡。"); return false;
         }
         return false;
     }
@@ -379,7 +462,9 @@ public partial class Aircraft : Building, IAttackTarget, IRenameable
                 landingRequested = true; attack = AttackKind.None; SetRoute(path); return;
             }
         }
-        AV.Say("没有空闲停机坪，或跑道/滑行通道不通；飞机继续等待。");
+        AV.Say(Heavy
+            ? $"没有可用的{AV.PadSizeName(RequiredPadSize)}或更大停机坪，或缺少 {MinRunwayWidth}×{MinRunwayLength} 格跑道与 {Clearance * 2 + 1} 格宽滑行通道；飞机继续等待。"
+            : $"没有可用的{AV.PadSizeName(RequiredPadSize)}或更大停机坪；飞机继续等待。");
     }
     protected override void Tick()
     {
@@ -460,13 +545,17 @@ public partial class Aircraft : Building, IAttackTarget, IRenameable
             return;
         }
         if (State != FlightState.Flying) return;
-        if (raid && !raidExiting && (ageTicks >= raidDuration || HitPoints < MaxHitPoints * 0.35f || !mounts.Any(m => m.rounds > 0) && (Heavy || FixedCannon.rounds <= 0))) BeginRaidExit();
+        if (airborneRaid) { TickAirborneRaid(); return; }
+        if (raid && !raidExiting && (ageTicks >= raidDuration || HitPoints < MaxHitPoints * 0.35f || !HasAnyMountedRounds() && (Heavy || FixedCannon.rounds <= 0))) BeginRaidExit();
         if (raid && (raidEntering || raidExiting)) { TickRaidTransit(); return; }
         if (attackPhase != AttackPhase.None) { TickAttack(); SetPositionSafely(); return; }
         if (landingRequested && Heavy)
         {
-            if (activeRunway == null || activeRunway.Map != Map || activeRunway.Error(this) != null || landingPad == null || !landingPad.Spawned || !landingPad.Available(this) || !AV.Clear(landingPad.Position, Map, Clearance, this)) { GoAround(); return; }
-            if (FollowExactPath())
+            bool runFinalCheck = activeRunway == null || activeRunway.Map != Map || landingPad == null || !landingPad.Spawned || !landingPad.Available(this);
+            bool pathDone = !runFinalCheck && FollowExactPath();
+            if (runFinalCheck || ((pathDone || this.IsHashIntervalTick(15)) && (activeRunway.Error(this) != null || !AV.Clear(landingPad.Position, Map, Clearance, this))))
+            { GoAround(); return; }
+            if (pathDone)
             {
                 realPos = AV.Flat(activeRunway.LandingStart); yaw = (AV.Flat(activeRunway.LandingEnd) - realPos).AngleFlat();
                 State = FlightState.Landing; phaseTicks = 0;
@@ -524,22 +613,40 @@ public partial class Aircraft : Building, IAttackTarget, IRenameable
         }
         SetPositionSafely();
     }
+    private bool HasAnyMountedRounds()
+    {
+        for (int i = 0; i < mounts.Count; i++)
+            if (mounts[i].rounds > 0) return true;
+        return false;
+    }
     private void EnforceCrewLimit()
     {
         if (!Spawned || State != FlightState.Parked || Cargo?.innerContainer == null) return;
-        List<Pawn> occupants = Cargo.innerContainer.OfType<Pawn>()
-            .OrderByDescending(p => p.IsFreeColonist && !p.Downed)
-            .ThenBy(p => p.thingIDNumber).ToList();
-        if (occupants.Count <= Seats) { crewLimitWarned = false; return; }
-        foreach (Pawn extra in occupants.Skip(Seats).ToList())
+        ThingOwner container = Cargo.innerContainer;
+        int seats = Seats;
+        int pawnCount = 0;
+        for (int i = 0; i < container.Count; i++)
+            if (container[i] is Pawn) pawnCount++;
+        if (pawnCount <= seats) { crewLimitWarned = false; return; }
+        List<Pawn> occupants = new List<Pawn>(pawnCount);
+        for (int i = 0; i < container.Count; i++)
+            if (container[i] is Pawn pawn) occupants.Add(pawn);
+        occupants.Sort((a, b) =>
+        {
+            bool aPilot = a.IsFreeColonist && !a.Downed;
+            bool bPilot = b.IsFreeColonist && !b.Downed;
+            if (aPilot != bPilot) return bPilot.CompareTo(aPilot);
+            return a.thingIDNumber.CompareTo(b.thingIDNumber);
+        });
+        for (int i = seats; i < occupants.Count; i++)
         {
             // A failed drop must retain ownership; never abandon a passenger.
-            Cargo.innerContainer.TryDrop(extra, Position, Map, ThingPlaceMode.Near, out _);
+            container.TryDrop(occupants[i], Position, Map, ThingPlaceMode.Near, out _);
         }
         if (!crewLimitWarned)
         {
             crewLimitWarned = true;
-            AV.Say($"{LabelCap}的乘员席位已满（{Seats}席），正在将超出的乘员卸载到飞机旁。");
+            AV.Say($"{LabelCap}的乘员席位已满（{seats}席），正在将超出的乘员卸载到飞机旁。");
         }
     }
     private void TickTaxi()
@@ -586,7 +693,19 @@ public partial class Aircraft : Building, IAttackTarget, IRenameable
         realPos = Vector3.MoveTowards(realPos, target, 0.14f); SetPositionSafely();
         if (AV.Distance(realPos, target) < 0.02f) { realPos = target; SetPositionSafely(); taxiIndex++; }
     }
-    private void SetPositionSafely() { IntVec3 c = realPos.ToIntVec3(); if (c.InBounds(Map)) Position = c; }
+    private void SetPositionSafely()
+    {
+        if (Map == null) return;
+        int halfSize = Mathf.Max(def.size.x, def.size.z) / 2 + 1;
+        int maxX = Map.Size.x - 1 - halfSize;
+        int maxZ = Map.Size.z - 1 - halfSize;
+        if (maxX < halfSize || maxZ < halfSize) return;
+        IntVec3 cell = realPos.ToIntVec3();
+        cell.x = Mathf.Clamp(cell.x, halfSize, maxX);
+        cell.z = Mathf.Clamp(cell.z, halfSize, maxZ);
+        CellRect occupiedRect = GenAdj.OccupiedRect(cell, Rot4.North, def.size);
+        if (occupiedRect.InBounds(Map)) Position = cell;
+    }
     private void AbortGround(string reason) { State = FlightState.Parked; worldDeparture = false; ReleaseReservations(); AV.Say(reason); }
     private void GoAround() { State = FlightState.Flying; landingRequested = false; ReleaseReservations(); Loiter(); AV.Say("降落条件变化，飞机复飞。"); }
     private void ReleaseRunway() { if (activeRunway?.reserved == this) activeRunway.reserved = null; activeRunway = null; }
@@ -600,14 +719,37 @@ public partial class Aircraft : Building, IAttackTarget, IRenameable
         int count = Math.Min(Ammo(kind), limit);
         return Enumerable.Range(0, count).Select(i => Vector3.Lerp(a, b, Ordnance.IsBomb(kind) ? (i + 0.5f) / count : count > 1 ? (float)i / (count - 1) : 0f)).ToList();
     }
+    public static void DrawSingleImpactPreview(AttackKind kind, IntVec3 cell)
+    {
+        SingleCellDrawList.Clear();
+        SingleCellDrawList.Add(cell);
+        GenDraw.DrawFieldEdges(SingleCellDrawList, Color.yellow);
+        float radius = Ordnance.PreviewRadius(kind);
+        if (radius > 0) GenDraw.DrawRadiusRing(cell, radius);
+    }
+    public static void DrawAttackPreview(AttackKind kind, Vector3 a, Vector3 b, List<Vector3> impacts, int startIndex)
+    {
+        AV.Line(a, b, SimpleColor.Red);
+        float radius = Ordnance.PreviewRadius(kind);
+        for (int i = startIndex; i < impacts.Count; i++)
+        {
+            IntVec3 cell = impacts[i].ToIntVec3();
+            SingleCellDrawList.Clear();
+            SingleCellDrawList.Add(cell);
+            GenDraw.DrawFieldEdges(SingleCellDrawList, Color.yellow);
+            if (radius > 0) GenDraw.DrawRadiusRing(cell, radius);
+        }
+    }
     public static void DrawAttackPreview(AttackKind kind, Vector3 a, Vector3 b, IEnumerable<Vector3> impacts)
     {
         AV.Line(a, b, SimpleColor.Red);
+        float radius = Ordnance.PreviewRadius(kind);
         foreach (Vector3 p in impacts)
         {
             IntVec3 cell = p.ToIntVec3();
-            GenDraw.DrawFieldEdges(new List<IntVec3> { cell }, Color.yellow);
-            float radius = Ordnance.PreviewRadius(kind);
+            SingleCellDrawList.Clear();
+            SingleCellDrawList.Add(cell);
+            GenDraw.DrawFieldEdges(SingleCellDrawList, Color.yellow);
             if (radius > 0) GenDraw.DrawRadiusRing(cell, radius);
         }
     }
@@ -765,20 +907,55 @@ public partial class Aircraft : Building, IAttackTarget, IRenameable
         if (!absorbed && Airborne && State != FlightState.Crashing && HitPoints - dinfo.Amount < MaxHitPoints * 0.12f)
         {
             HitPoints = Mathf.Max(1, Mathf.RoundToInt(MaxHitPoints * 0.12f)); absorbed = true; State = FlightState.Crashing; phaseTicks = 0;
+            if (airborneRaid) HandleAirborneTransportShotDown();
         }
     }
     public void Crash()
     {
         if (!Spawned) return;
         Map map = Map; IntVec3 pos = Position;
+        if (airborneRaid)
+        {
+            HandleAirborneTransportShotDown();
+            DestroyRemainingAirborneOccupants();
+            ReleaseReservations();
+            Destroy(DestroyMode.KillFinalize);
+            GenExplosion.DoExplosion(pos, map, 5.5f, DamageDefOf.Bomb, null, 75, 0.35f);
+            return;
+        }
+        airborneDrops?.Clear();
         foreach (Pawn p in Cargo.innerContainer.OfType<Pawn>().ToList()) p.TakeDamage(new DamageInfo(DamageDefOf.Blunt, 25));
         Cargo.innerContainer.TryDropAll(pos, map, ThingPlaceMode.Near);
         ReleaseReservations(); Destroy(DestroyMode.KillFinalize);
         GenExplosion.DoExplosion(pos, map, 4.5f, DamageDefOf.Bomb, null, 65, 0.3f);
     }
+    private void DestroyInstanceMaterials()
+    {
+        if (bodyMaterial != null) { UnityEngine.Object.Destroy(bodyMaterial); bodyMaterial = null; }
+        if (shadowMaterial != null) { UnityEngine.Object.Destroy(shadowMaterial); shadowMaterial = null; }
+        if (storeMaterials.Count > 0)
+        {
+            foreach (Material mat in storeMaterials.Values)
+                if (mat != null) UnityEngine.Object.Destroy(mat);
+            storeMaterials.Clear();
+        }
+    }
     public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
     {
-        if (Spawned && !transferInProgress) { ReleaseReservations(); Cargo?.innerContainer.TryDropAll(Position, Map, ThingPlaceMode.Near); }
+        if (Spawned && !transferInProgress)
+        {
+            ReleaseReservations();
+            if (airborneRaid && mode != DestroyMode.Vanish)
+            {
+                HandleAirborneTransportShotDown();
+                DestroyRemainingAirborneOccupants();
+            }
+            else if (!airborneRaid)
+            {
+                Cargo?.innerContainer.TryDropAll(Position, Map, ThingPlaceMode.Near);
+            }
+        }
+        DestroyInstanceMaterials();
         base.Destroy(mode);
     }
     public override string GetInspectString() => AV.Inspect(base.GetInspectString(), $"{StateName(State)}  ·  乘员 {Cargo.innerContainer.OfType<Pawn>().Count()}/{Seats}\n货舱 {Cargo.MassUsage:F0}/{CargoCapacity:F0} kg  ·  挂载 {MountWeight:F0} kg\n飞行速度 {Speed:F1} 格/秒  ·  载荷效率 {FlightPerformance:P0}\n航程 {Range}  ·  备弹 {mounts.Sum(m => m.rounds) + (!Heavy ? FixedCannon.rounds : 0)}\n停机坪：{homePad?.LabelCap ?? "未绑定"}");
@@ -820,7 +997,7 @@ public partial class Aircraft : Building, IAttackTarget, IRenameable
                 }));
             }
             if (HasWeapon(AttackKind.GroundMissile)) yield return WeaponCommand(AttackKind.GroundMissile, "空对地导弹", "指定单位或建筑，发射一枚制导导弹。直击伤害高、穿甲强。", () => TargetWeapon(AttackKind.GroundMissile));
-            if (Heavy && HasWeapon(AttackKind.ActiveMatterMissile)) yield return WeaponCommand(AttackKind.ActiveMatterMissile, "活性物质导弹打击", "指定地面点，发射一枚大范围毁伤导弹。", () => TargetWeapon(AttackKind.ActiveMatterMissile));
+            if (IsInterceptor && HasWeapon(AttackKind.ActiveMatterMissile)) yield return WeaponCommand(AttackKind.ActiveMatterMissile, "活性物质导弹打击", "指定地面点，发射一枚大范围毁伤导弹。", () => TargetWeapon(AttackKind.ActiveMatterMissile));
             if (!Heavy)
             {
                 if (HasWeapon(AttackKind.Rocket)) yield return WeaponCommand(AttackKind.Rocket, "悬停火箭", "指定单位或建筑。按齐射数量发射，目标失效后停火。", () => TargetHover(AttackKind.Rocket));
@@ -834,7 +1011,7 @@ public partial class Aircraft : Building, IAttackTarget, IRenameable
     private void TargetHover(AttackKind kind) => TargetWeapon(kind, true);
     public override void ExposeData()
     {
-        base.ExposeData(); ExposeOperations(); Scribe_Values.Look(ref runwayTakeoff, "ravRunwayTakeoff"); Scribe_Deep.Look(ref fixedCannon, "ravFixedCannon"); Scribe_Values.Look(ref State, "state"); Scribe_Values.Look(ref realPos, "realPos"); Scribe_Values.Look(ref yaw, "yaw");
+        base.ExposeData(); ExposeOperations(); ExposeAirborneRaid(); Scribe_Values.Look(ref runwayTakeoff, "ravRunwayTakeoff"); Scribe_Deep.Look(ref fixedCannon, "ravFixedCannon"); Scribe_Values.Look(ref State, "state"); Scribe_Values.Look(ref realPos, "realPos"); Scribe_Values.Look(ref yaw, "yaw");
         Scribe_Values.Look(ref airPressure, "ravAirPressure"); Scribe_Values.Look(ref lastPressureTick, "ravLastPressureTick");
         Scribe_Collections.Look(ref mounts, "mounts", LookMode.Deep);
         Scribe_Values.Look(ref hardpointLayoutVersion, "ravHardpointLayoutVersion");

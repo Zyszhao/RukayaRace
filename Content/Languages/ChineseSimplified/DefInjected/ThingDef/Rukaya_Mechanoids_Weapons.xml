@@ -8,7 +8,7 @@
   <Rukaya_MechWeapon_Rocket.description>一组安装在动力炮塔环上的多管火箭发射巢。它会快速打出一轮六发直射高爆火箭，随后需要很长时间重新装填并给发射管上药。</Rukaya_MechWeapon_Rocket.description>
 
   <Rukaya_MechWeapon_Laser.label>卢卡娅激光炮塔</Rukaya_MechWeapon_Laser.label>
-  <Rukaya_MechWeapon_Laser.description>一座聚焦发射炮塔，向目标区域倾泻持续的充能光束。它的脉冲当场命中，且每一发的光束会残留到下一发打出来， 因此一轮连发看上去就是一道不断的光矛。可切换至对空模式，用于拦截飞行目标。 对地与对空火力共用散热系统：持续射击导致过热后，两套发射器均须冷却后才能恢复开火。</Rukaya_MechWeapon_Laser.description>
+  <Rukaya_MechWeapon_Laser.description>一座向目标倾泻持续高能激光脉冲的聚焦炮塔。对地与对空模式共用散热系统，过热后须冷却才能恢复射击。</Rukaya_MechWeapon_Laser.description>
 
   <Rukaya_MechWeapon_MachineCannon.label>卢卡娅机炮炮塔</Rukaya_MechWeapon_MachineCannon.label>
   <Rukaya_MechWeapon_MachineCannon.description>一座高射速自动机炮炮塔，用于对集结的步兵提供近距支援。炮座会把一轮长点射横扫整个目标区域，任何暴露在火线中的目标都来不及脱离就会被撕碎。可切换至对空模式，用于拦截飞行目标。</Rukaya_MechWeapon_MachineCannon.description>
@@ -28,10 +28,11 @@
   <!-- 地面炮塔专用弹体（2026-10-10 七型差异化适配） -->
 
   <Bullet_Rukaya_MechLaser.label>卢卡娅机械激光脉冲束</Bullet_Rukaya_MechLaser.label>
-  <Bullet_Rukaya_MechLaser.description>卢卡娅激光炮塔发射的瞬时光束脉冲。它没有飞行时间：开火当场命中，并在空中留下一道足够撑到下一发脉冲的光束。</Bullet_Rukaya_MechLaser.description>
+  <Bullet_Rukaya_MechLaser.description>卢卡娅激光炮塔发射的高能激光脉冲，几乎在开火瞬间烧灼目标。</Bullet_Rukaya_MechLaser.description>
 
   <Bullet_Rukaya_MechAutocannon.label>卢卡娅机械机炮弹</Bullet_Rukaya_MechAutocannon.label>
   <Bullet_Rukaya_MechAutocannon.description>卢卡娅机炮炮塔以长点射打出的高速机炮弹。</Bullet_Rukaya_MechAutocannon.description>
+  <Rukaya_MechAutocannonFragment.label>卢卡娅机械机炮破片</Rukaya_MechAutocannonFragment.label>
 
   <Rukaya_MechSAMLauncher_Projectile.label>卢卡娅机械SAM导弹</Rukaya_MechSAMLauncher_Projectile.label>
   <Rukaya_MechSAMLauncher_Projectile.description>卢卡娅导弹炮塔发射的线导导弹。它先爬升翻越挡在路上的掩体，再一路修正压向目标；由于越顶飞行的导弹不会直接撞到目标，战斗部全部是爆炸伤害。</Rukaya_MechSAMLauncher_Projectile.description>
@@ -43,7 +44,7 @@
   <Bullet_Rukaya_MechMortarShell.description>卢卡娅迫击炮炮塔抛过墙体与单位的高爆迫击炮弹。</Bullet_Rukaya_MechMortarShell.description>
 
   <Bullet_Rukaya_MechPlasma.label>卢卡娅机械等离子弹丸</Bullet_Rukaya_MechPlasma.label>
-  <Bullet_Rukaya_MechPlasma.description>卢卡娅等离子炮塔发射的聚焦等离子脉冲。它在命中点瞬时结算，并沿向前的射击路径留下一道短暂的明亮光束。</Bullet_Rukaya_MechPlasma.description>
+  <Bullet_Rukaya_MechPlasma.description>卢卡娅等离子炮塔发射的聚焦活性物质等离子束，沿灼热的蓝白轨迹贯通重甲。</Bullet_Rukaya_MechPlasma.description>
 
   <Bullet_Rukaya_MICLIC_Rocket.label>卢卡娅扫雷索主火箭</Bullet_Rukaya_MICLIC_Rocket.label>
   <Bullet_Rukaya_MICLIC_Rocket.description>扫雷索的主弹头。它越顶飞过掩体落向目标点，一路上把爆破装药一段段拖放出去。</Bullet_Rukaya_MICLIC_Rocket.description>
@@ -56,21 +57,21 @@
        激光型 = 空投仓 + 越顶炮击弹（迫击炮弹）；机炮型 = 越顶炮击弹；导弹型 = 空投仓 + 陨石/落石。 -->
 
   <Rukaya_MechWeapon_LaserAA.label>卢卡娅激光对空炮座</Rukaya_MechWeapon_LaserAA.label>
-  <Rukaya_MechWeapon_LaserAA.description>一套从属于卢卡娅激光炮塔环的对空发射器。它对着来袭的越顶炮击弹打出一轮聚焦脉冲连发，且完全不影响炮座的对地射击。 真正烧穿目标的是第一发脉冲，其余几发继续把光倾泻在同一个点上，因此看上去是一道不断的光束。发射器还会追踪来袭的敌方空投仓。 发射器与地面激光共用散热系统。敌方空投仓可在全图范围内追踪；越顶炮弹的拦截范围为35格。</Rukaya_MechWeapon_LaserAA.description>
+  <Rukaya_MechWeapon_LaserAA.description>从属于卢卡娅激光炮塔环的对空发射器，与主炮共用散热系统。可拦截35格内来袭的越顶炮弹，并在全图范围内追踪敌方空投仓。</Rukaya_MechWeapon_LaserAA.description>
 
   <Rukaya_MechWeapon_MachineCannonAA.label>卢卡娅机炮对空炮座</Rukaya_MechWeapon_MachineCannonAA.label>
-  <Rukaya_MechWeapon_MachineCannonAA.description>一门从属于卢卡娅机炮炮塔环的对空机炮。它向来袭的越顶炮击弹打出可见曳光弹连发，且完全不影响炮座的对地射击。 真正把炮弹打下来的是连发里的第一发，其余几发继续把曳光弹倾泻到同一个点上。 它也会在全图范围内直接击毁敌方空投仓；越顶炮弹的拦截范围限于35格。</Rukaya_MechWeapon_MachineCannonAA.description>
+  <Rukaya_MechWeapon_MachineCannonAA.description>从属于卢卡娅机炮炮塔环的对空机炮。以高初速曳光弹拦截35格内来袭的越顶炮弹，并在全图范围内击毁敌方空投仓。</Rukaya_MechWeapon_MachineCannonAA.description>
 
   <Rukaya_MechWeapon_SAMLauncherAA.label>卢卡娅导弹对空炮座</Rukaya_MechWeapon_SAMLauncherAA.label>
-  <Rukaya_MechWeapon_SAMLauncherAA.description>一座从属于卢卡娅导弹炮塔环的对空发射巢。它发射可见拦截弹，并沿指令线把这些拦截弹引向来袭的空投仓与陨石， 且完全不影响炮座的对地射击。 防空弹仓备有四枚导弹，每轮最多发射四枚，逐发间隔0.3秒；每枚导弹拦截一个目标。弹仓打空后装填六秒，未发射的备弹留在仓内。空投仓与陨石均可在全图范围内拦截。</Rukaya_MechWeapon_SAMLauncherAA.description>
+  <Rukaya_MechWeapon_SAMLauncherAA.description>从属于卢卡娅导弹炮塔环的四联装对空发射巢。每枚制导拦截弹可在全图范围内独立拦截一个来袭空投仓或陨石，打空后重新装填。</Rukaya_MechWeapon_SAMLauncherAA.description>
 
   <Bullet_Rukaya_MechAA_Laser.label>卢卡娅激光对空脉冲</Bullet_Rukaya_MechAA_Laser.label>
-  <Bullet_Rukaya_MechAA_Laser.description>卢卡娅激光防空用的聚焦脉冲模板。它只承载光束外观，射击当场结算、不会生成任何弹体。</Bullet_Rukaya_MechAA_Laser.description>
+  <Bullet_Rukaya_MechAA_Laser.description>卢卡娅激光对空炮座发射的聚焦高能脉冲，用于烧毁来袭炮弹与空投仓。</Bullet_Rukaya_MechAA_Laser.description>
 
   <Bullet_Rukaya_MechAA_Gun.label>卢卡娅对空曳光弹</Bullet_Rukaya_MechAA_Gun.label>
-  <Bullet_Rukaya_MechAA_Gun.description>卢卡娅机炮对空炮座用的曳光弹模板。它只承载拦截弹的飞行外观与速度，命中由防空系统结算，而非弹丸碰撞伤害。</Bullet_Rukaya_MechAA_Gun.description>
+  <Bullet_Rukaya_MechAA_Gun.description>卢卡娅机炮对空炮座发射的高初速曳光弹，用于击毁来袭空中目标。</Bullet_Rukaya_MechAA_Gun.description>
 
   <Bullet_Rukaya_MechAA_SAMLauncher.label>卢卡娅对空拦截导弹</Bullet_Rukaya_MechAA_SAMLauncher.label>
-  <Bullet_Rukaya_MechAA_SAMLauncher.description>卢卡娅导弹对空炮座用的拦截弹模板。它承载拦截弹的飞行外观与速度，并挂上本模组已有的导引律，因此拦截弹会一路修正到目标上；命中本身由防空系统结算，而非弹丸碰撞伤害。</Bullet_Rukaya_MechAA_SAMLauncher.description>
+  <Bullet_Rukaya_MechAA_SAMLauncher.description>卢卡娅导弹对空炮座发射的制导防空拦截导弹，用于追踪并击毁来袭空投仓与陨石。</Bullet_Rukaya_MechAA_SAMLauncher.description>
 
 </LanguageData>

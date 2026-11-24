@@ -22,6 +22,158 @@
     </RulePackDef>
 
     <RulePackDef>
+        <defName>NamerFaction_RukayaBrokenStar</defName>
+        <rulePack>
+            <rulesStrings>
+                <li>r_name-&gt;Broken-Star Corps</li>
+                <!-- 中文翻译：r_name-&gt;残星兵团 -->
+                <li>r_name-&gt;Rustline Command</li>
+                <!-- 中文翻译：r_name-&gt;锈线指挥部 -->
+                <li>r_name-&gt;Red Ledger Combine</li>
+                <!-- 中文翻译：r_name-&gt;赤账联合体 -->
+                <li>r_name-&gt;Iron Toll Company</li>
+                <!-- 中文翻译：r_name-&gt;铁税兵团 -->
+                <li>r_name-&gt;Ashen Banner Column</li>
+                <!-- 中文翻译：r_name-&gt;灰烬旗纵队 -->
+            </rulesStrings>
+        </rulePack>
+    </RulePackDef>
+
+    <RulePackDef>
+        <defName>NamerSettlement_RukayaBrokenStar</defName>
+        <rulePack>
+            <rulesStrings>
+                <li>r_name(p=6)-&gt;[brokenstar_prefix] [brokenstar_site]</li>
+                <!-- 中文翻译：r_name(p=6)-&gt;[brokenstar_prefix] [brokenstar_site] -->
+                <li>r_name(p=3)-&gt;[brokenstar_codename]-[rukaya_index]</li>
+                <!-- 中文翻译：r_name(p=3)-&gt;[brokenstar_codename]-[rukaya_index] -->
+                <li>r_name(p=1)-&gt;[brokenstar_index] [brokenstar_site]</li>
+                <!-- 中文翻译：r_name(p=1)-&gt;[brokenstar_index] [brokenstar_site] -->
+                <li>brokenstar_prefix-&gt;Rustline</li>
+                <!-- 中文翻译：brokenstar_prefix-&gt;锈线 -->
+                <li>brokenstar_prefix-&gt;Red Ledger</li>
+                <!-- 中文翻译：brokenstar_prefix-&gt;赤账 -->
+                <li>brokenstar_prefix-&gt;Iron Toll</li>
+                <!-- 中文翻译：brokenstar_prefix-&gt;铁税 -->
+                <li>brokenstar_prefix-&gt;Broken-Star</li>
+                <!-- 中文翻译：brokenstar_prefix-&gt;残星 -->
+                <li>brokenstar_prefix-&gt;Ash Banner</li>
+                <!-- 中文翻译：brokenstar_prefix-&gt;灰旗 -->
+                <li>brokenstar_prefix-&gt;Black Market</li>
+                <!-- 中文翻译：brokenstar_prefix-&gt;黑市 -->
+                <li>brokenstar_prefix-&gt;Old Number</li>
+                <!-- 中文翻译：brokenstar_prefix-&gt;旧番号 -->
+                <li>brokenstar_prefix-&gt;Scarlet Company</li>
+                <!-- 中文翻译：brokenstar_prefix-&gt;猩红兵团 -->
+                <li>brokenstar_prefix-&gt;Dust Road</li>
+                <!-- 中文翻译：brokenstar_prefix-&gt;尘路 -->
+                <li>brokenstar_prefix-&gt;Redoubt</li>
+                <!-- 中文翻译：brokenstar_prefix-&gt;堡垒 -->
+                <li>brokenstar_site-&gt;Checkpoint</li>
+                <!-- 中文翻译：brokenstar_site-&gt;卡口 -->
+                <li>brokenstar_site-&gt;Tollgate</li>
+                <!-- 中文翻译：brokenstar_site-&gt;收费站 -->
+                <li>brokenstar_site-&gt;Depot</li>
+                <!-- 中文翻译：brokenstar_site-&gt;仓库 -->
+                <li>brokenstar_site-&gt;Black Market</li>
+                <!-- 中文翻译：brokenstar_site-&gt;黑市 -->
+                <li>brokenstar_site-&gt;Redoubt</li>
+                <!-- 中文翻译：brokenstar_site-&gt;据点 -->
+                <li>brokenstar_site-&gt;Roadhouse</li>
+                <!-- 中文翻译：brokenstar_site-&gt;路边站 -->
+                <li>brokenstar_site-&gt;Supply Yard</li>
+                <!-- 中文翻译：brokenstar_site-&gt;补给场 -->
+                <li>brokenstar_site-&gt;Fort</li>
+                <!-- 中文翻译：brokenstar_site-&gt;要塞 -->
+                <li>brokenstar_site-&gt;Crossing</li>
+                <!-- 中文翻译：brokenstar_site-&gt;路口 -->
+                <li>brokenstar_site-&gt;Scrapyard</li>
+                <!-- 中文翻译：brokenstar_site-&gt;废料场 -->
+                <li>brokenstar_site-&gt;Storehouse</li>
+                <!-- 中文翻译：brokenstar_site-&gt;储藏仓 -->
+                <li>brokenstar_site-&gt;Camp</li>
+                <!-- 中文翻译：brokenstar_site-&gt;营地 -->
+                <li>brokenstar_codename-&gt;Zarya</li>
+                <!-- 中文翻译：brokenstar_codename-&gt;曙光 -->
+                <li>brokenstar_codename-&gt;Buran</li>
+                <!-- 中文翻译：brokenstar_codename-&gt;暴风雪 -->
+                <li>brokenstar_codename-&gt;Vostok</li>
+                <!-- 中文翻译：brokenstar_codename-&gt;东方 -->
+                <li>brokenstar_codename-&gt;Molniya</li>
+                <!-- 中文翻译：brokenstar_codename-&gt;闪电 -->
+                <li>brokenstar_codename-&gt;Vikhr</li>
+                <!-- 中文翻译：brokenstar_codename-&gt;旋风 -->
+                <li>brokenstar_codename-&gt;Shtorm</li>
+                <!-- 中文翻译：brokenstar_codename-&gt;风暴 -->
+                <li>brokenstar_codename-&gt;Smerch</li>
+                <!-- 中文翻译：brokenstar_codename-&gt;龙卷风 -->
+                <li>brokenstar_codename-&gt;Shkval</li>
+                <!-- 中文翻译：brokenstar_codename-&gt;狂风 -->
+                <li>brokenstar_codename-&gt;Spektr</li>
+                <!-- 中文翻译：brokenstar_codename-&gt;光谱 -->
+                <li>brokenstar_codename-&gt;Energia</li>
+                <!-- 中文翻译：brokenstar_codename-&gt;能源 -->
+                <li>rukaya_index-&gt;03</li>
+                <!-- 中文翻译：rukaya_index-&gt;03 -->
+                <li>rukaya_index-&gt;07</li>
+                <!-- 中文翻译：rukaya_index-&gt;07 -->
+                <li>rukaya_index-&gt;08</li>
+                <!-- 中文翻译：rukaya_index-&gt;08 -->
+                <li>rukaya_index-&gt;11</li>
+                <!-- 中文翻译：rukaya_index-&gt;11 -->
+                <li>rukaya_index-&gt;14</li>
+                <!-- 中文翻译：rukaya_index-&gt;14 -->
+                <li>rukaya_index-&gt;17</li>
+                <!-- 中文翻译：rukaya_index-&gt;17 -->
+                <li>rukaya_index-&gt;21</li>
+                <!-- 中文翻译：rukaya_index-&gt;21 -->
+                <li>rukaya_index-&gt;24</li>
+                <!-- 中文翻译：rukaya_index-&gt;24 -->
+                <li>rukaya_index-&gt;29</li>
+                <!-- 中文翻译：rukaya_index-&gt;29 -->
+                <li>rukaya_index-&gt;31</li>
+                <!-- 中文翻译：rukaya_index-&gt;31 -->
+                <li>rukaya_index-&gt;42</li>
+                <!-- 中文翻译：rukaya_index-&gt;42 -->
+                <li>rukaya_index-&gt;47</li>
+                <!-- 中文翻译：rukaya_index-&gt;47 -->
+                <li>rukaya_index-&gt;56</li>
+                <!-- 中文翻译：rukaya_index-&gt;56 -->
+                <li>rukaya_index-&gt;63</li>
+                <!-- 中文翻译：rukaya_index-&gt;63 -->
+                <li>rukaya_index-&gt;71</li>
+                <!-- 中文翻译：rukaya_index-&gt;71 -->
+                <li>rukaya_index-&gt;78</li>
+                <!-- 中文翻译：rukaya_index-&gt;78 -->
+                <li>rukaya_index-&gt;84</li>
+                <!-- 中文翻译：rukaya_index-&gt;84 -->
+                <li>rukaya_index-&gt;96</li>
+                <!-- 中文翻译：rukaya_index-&gt;96 -->
+                <li>brokenstar_index-&gt;03</li>
+                <!-- 中文翻译：brokenstar_index-&gt;03 -->
+                <li>brokenstar_index-&gt;07</li>
+                <!-- 中文翻译：brokenstar_index-&gt;07 -->
+                <li>brokenstar_index-&gt;11</li>
+                <!-- 中文翻译：brokenstar_index-&gt;11 -->
+                <li>brokenstar_index-&gt;14</li>
+                <!-- 中文翻译：brokenstar_index-&gt;14 -->
+                <li>brokenstar_index-&gt;21</li>
+                <!-- 中文翻译：brokenstar_index-&gt;21 -->
+                <li>brokenstar_index-&gt;29</li>
+                <!-- 中文翻译：brokenstar_index-&gt;29 -->
+                <li>brokenstar_index-&gt;42</li>
+                <!-- 中文翻译：brokenstar_index-&gt;42 -->
+                <li>brokenstar_index-&gt;56</li>
+                <!-- 中文翻译：brokenstar_index-&gt;56 -->
+                <li>brokenstar_index-&gt;71</li>
+                <!-- 中文翻译：brokenstar_index-&gt;71 -->
+                <li>brokenstar_index-&gt;84</li>
+                <!-- 中文翻译：brokenstar_index-&gt;84 -->
+            </rulesStrings>
+        </rulePack>
+    </RulePackDef>
+
+    <RulePackDef>
         <defName>NamerSettlement_Rukaya</defName>
         <rulePack>
             <rulesStrings>

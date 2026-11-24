@@ -51,11 +51,14 @@ namespace RukayaRace.Projectiles
             base.DrawAt(RopePosition, flip);
         }
 
+        private static Material cachedRopeMat;
+
         internal static void DrawRope(Vector3 a, Vector3 b)
         {
             // Keep the cord below both standing and downed pawns.
             a.y = b.y = AltitudeLayer.FloorEmplacement.AltitudeFor();
-            GenDraw.DrawLineBetween(a, b, SolidColorMaterials.SimpleSolidColorMaterial(Color.black), 0.04f);
+            cachedRopeMat ??= SolidColorMaterials.SimpleSolidColorMaterial(Color.black);
+            GenDraw.DrawLineBetween(a, b, cachedRopeMat, 0.04f);
         }
 
         public override void ExposeData()

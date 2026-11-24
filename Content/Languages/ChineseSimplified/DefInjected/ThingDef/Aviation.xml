@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
   <RAV_Yak141Aircraft.label>卢卡娅轻型战斗机</RAV_Yak141Aircraft.label>
-  <RAV_Yak141Aircraft.description>单座战斗机，配有五个挂点和固定机炮。可垂直或沿跑道起飞；垂直起飞耗油更多、载荷更低。中央挂点限装副油箱或运输吊舱。需在停机坪建造。</RAV_Yak141Aircraft.description>
+  <RAV_Yak141Aircraft.description>停机坪尺寸：小；跑道尺寸：34x7（可选）。单座轻型战斗机，配有五个挂点和固定机炮。支持垂直起飞，但耗油更高、载荷更低；中央挂点仅限副油箱或吊舱。</RAV_Yak141Aircraft.description>
   <RAV_Mig31Aircraft.label>卢卡娅截击机</RAV_Mig31Aircraft.label>
-  <RAV_Mig31Aircraft.description>双座截击机，配有七个挂点。需在停机坪建造，并使用至少9×44格的净空跑道起降。</RAV_Mig31Aircraft.description>
-  <RAV_Pad.label>飞机停机坪</RAV_Pad.label>
-  <RAV_Pad.description>11×11格的停机框，可指定机头朝向。选中后可绑定飞机并查看滑行路线。</RAV_Pad.description>
+  <RAV_Mig31Aircraft.description>停机坪尺寸：中；跑道尺寸：46x9。双座高速截击机，配有七个挂点，适合长航程截击与重型对地打击。</RAV_Mig31Aircraft.description>
+  <RAV_An72Aircraft.label>卢卡娅运输机</RAV_An72Aircraft.label>
+  <RAV_An72Aircraft.description>停机坪尺寸：大；跑道尺寸：54x13。双座运输机，载重与载员能力出色，两侧发动机外侧各有一个挂点。</RAV_An72Aircraft.description>
+  <RAV_PadSmall.label>小型飞机停机坪</RAV_PadSmall.label>
+  <RAV_PadSmall.description>9×9格停机坪，可停放轻型战斗机，支持设定朝向与查看滑行路线。</RAV_PadSmall.description>
+  <RAV_Pad.label>中型飞机停机坪</RAV_Pad.label>
+  <RAV_Pad.description>11×11格停机坪，可停放截击机及更小型飞机，支持设定朝向与查看滑行路线。</RAV_Pad.description>
+  <RAV_PadLarge.label>大型飞机停机坪</RAV_PadLarge.label>
+  <RAV_PadLarge.description>15×15格停机坪，可停放运输机及所有更小型飞机，支持设定朝向与查看滑行路线。</RAV_PadLarge.description>
   <RAV_Desk.label>航空调度台</RAV_Desk.label>
   <RAV_Desk.description>安排机场演习与飞机空袭。</RAV_Desk.description>
   <RAV_Defense.label>演习防空炮</RAV_Defense.label>
@@ -18,4 +24,5 @@
   <RAV_ClusterFragmentProjectile.label>集束子炸弹</RAV_ClusterFragmentProjectile.label>
   <RAV_GroundMissileProjectile.label>空对地导弹</RAV_GroundMissileProjectile.label>
   <RAV_ActiveMatterMissileProjectile.label>活性物质导弹</RAV_ActiveMatterMissileProjectile.label>
+  <Rukaya_AirborneRaidFlyer.label>空降卢卡娅</Rukaya_AirborneRaidFlyer.label>
 </LanguageData>

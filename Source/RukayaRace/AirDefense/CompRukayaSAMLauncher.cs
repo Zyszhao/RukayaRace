@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -7,7 +8,16 @@ namespace RukayaRace.AirDefense
 {
     public class CompRukayaSAMLauncher : ThingComp
     {
+        private CompRefuelable cachedRefuelable;
+        private CompRefuelable Refuelable => cachedRefuelable ??= parent.GetComp<CompRefuelable>();
+
         public CompProperties_RukayaSAMLauncher Props => (CompProperties_RukayaSAMLauncher)props;
+
+        public override void PostSpawnSetup(bool respawningAfterLoad)
+        {
+            base.PostSpawnSetup(respawningAfterLoad);
+            cachedRefuelable = parent.GetComp<CompRefuelable>();
+        }
 
         public bool Ready
         {
@@ -16,20 +26,27 @@ namespace RukayaRace.AirDefense
                 if (!parent.Spawned || parent.Faction != Faction.OfPlayer || parent.Position.Roofed(parent.Map)
                     || Props.missileDef?.thingClass != typeof(Thing_RukayaSAMMissile))
                     return false;
-                CompRefuelable fuel = parent.GetComp<CompRefuelable>();
+                CompRefuelable fuel = Refuelable;
                 return fuel != null && fuel.Fuel >= Props.fuelPerMissile;
             }
         }
 
         public static CompRukayaSAMLauncher FindReady(Map map)
         {
-            foreach (Thing thing in map.listerThings.AllThings)
+            if (map == null)
+                return null;
+            List<ThingDef> defs = RukayaAirDefenseDefCache.SAMLauncherDefs;
+            for (int d = 0; d < defs.Count; d++)
             {
-                if (thing is ThingWithComps building)
+                List<Thing> things = map.listerThings.ThingsOfDef(defs[d]);
+                for (int i = 0; i < things.Count; i++)
                 {
-                    CompRukayaSAMLauncher launcher = building.GetComp<CompRukayaSAMLauncher>();
-                    if (launcher?.Ready == true)
-                        return launcher;
+                    if (things[i] is ThingWithComps building)
+                    {
+                        CompRukayaSAMLauncher launcher = building.GetComp<CompRukayaSAMLauncher>();
+                        if (launcher?.Ready == true)
+                            return launcher;
+                    }
                 }
             }
             return null;
@@ -54,7 +71,7 @@ namespace RukayaRace.AirDefense
             }
             missile.Initialize(MissileOrigin(), LaunchDirection(), FlightAngle());
             launchedMissile = missile;
-            CompRefuelable fuel = parent.GetComp<CompRefuelable>();
+            CompRefuelable fuel = Refuelable;
             fuel.ConsumeFuel(Props.fuelPerMissile);
             Props.launchSound?.PlayOneShot(new TargetInfo(parent.Position, parent.Map));
             FleckMaker.ThrowLightningGlow(parent.DrawPos, parent.Map, 2f);
@@ -63,7 +80,7 @@ namespace RukayaRace.AirDefense
 
         public override void PostDraw()
         {
-            CompRefuelable fuel = parent.GetComp<CompRefuelable>();
+            CompRefuelable fuel = Refuelable;
             if (fuel == null || fuel.Fuel < Props.fuelPerMissile)
                 return;
             Props.missileDef.graphicData.Graphic.DrawWorker(MissileOrigin(), Rot4.North,

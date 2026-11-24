@@ -1,4 +1,4 @@
-using System.Reflection;
+using HarmonyLib;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -16,8 +16,8 @@ namespace RukayaRace.AirDefense
                 Log.ErrorOnce("[Rukaya] Projectile flight state fields were not found; projectile interception is disabled.", 173652142);
                 return false;
             }
-            return projectile != null && !(bool)landedField.GetValue(projectile)
-                && (int)ticksToImpactField.GetValue(projectile) > 0;
+            return projectile != null && !landedField(projectile)
+                && ticksToImpactField(projectile) > 0;
         }
 
         /// <summary>
@@ -28,13 +28,13 @@ namespace RukayaRace.AirDefense
         {
             if (ticksToImpactField == null || projectile == null)
                 return -1;
-            return (int)ticksToImpactField.GetValue(projectile);
+            return ticksToImpactField(projectile);
         }
 
         public static bool TryIntercept(Projectile source, Vector3 shotPosition)
         {
             Map map = source.Map;
-            ThingDef debrisDef = DefDatabase<ThingDef>.GetNamed("Rukaya_InterceptedAirborneDebris");
+            ThingDef debrisDef = cachedDebrisDef ??= DefDatabase<ThingDef>.GetNamed("Rukaya_InterceptedAirborneDebris");
             Thing_RukayaAirborneDebris debris = (Thing_RukayaAirborneDebris)ThingMaker.MakeThing(debrisDef);
             debris.Initialize(source, shotPosition);
             GenSpawn.Spawn(debris, source.Position, map);
@@ -78,7 +78,7 @@ namespace RukayaRace.AirDefense
             if (projectileDef.graphicData == null)
                 Log.Error($"[Rukaya] Intercepted projectile {projectileDef.defName} has no graphicData; airborne debris will be invisible.");
             explode = source is Projectile_Explosive && projectileDef.projectile.explosionRadius > 0f && damageDef != null;
-            totalTicks = Mathf.Clamp((int)ticksToImpactField.GetValue(source) - 1, 1, 12);
+            totalTicks = Mathf.Clamp(ticksToImpactField(source) - 1, 1, 12);
             remainingTicks = totalTicks;
         }
 
@@ -162,7 +162,12 @@ namespace RukayaRace.AirDefense
         private int totalTicks;
         private int remainingTicks;
         private bool explode;
-        private static readonly FieldInfo ticksToImpactField = typeof(Projectile).GetField("ticksToImpact", BindingFlags.Instance | BindingFlags.NonPublic);
-        private static readonly FieldInfo landedField = typeof(Projectile).GetField("landed", BindingFlags.Instance | BindingFlags.NonPublic);
+        private static ThingDef cachedDebrisDef;
+        private static readonly AccessTools.FieldRef<Projectile, int> ticksToImpactField =
+            AccessTools.Field(typeof(Projectile), "ticksToImpact") != null
+                ? AccessTools.FieldRefAccess<Projectile, int>("ticksToImpact") : null;
+        private static readonly AccessTools.FieldRef<Projectile, bool> landedField =
+            AccessTools.Field(typeof(Projectile), "landed") != null
+                ? AccessTools.FieldRefAccess<Projectile, bool>("landed") : null;
     }
 }

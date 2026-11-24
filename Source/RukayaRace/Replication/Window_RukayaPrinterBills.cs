@@ -33,6 +33,11 @@ namespace RukayaRace.Replication
         private int draggingBillIndex = -1;
         private string templateSearch = string.Empty;
         private RukayaTemplateCategory templateCategory = RukayaTemplateCategory.Weapons;
+        private List<RukayaModGroup<ThingDef>> cachedTemplateGroups;
+        private int cachedTemplateGroupsTick = -9999;
+        private string cachedTemplateSearch;
+        private RukayaTemplateCategory cachedTemplateCategory;
+        private string currentStatusCache;
 
         public override Vector2 InitialSize => RukayaReplicationUI.WindowSize;
 
@@ -52,10 +57,11 @@ namespace RukayaRace.Replication
                 return;
             }
 
+            currentStatusCache = printer.CurrentStatus();
             float top = RukayaReplicationUI.DrawWindowHeader(
                 inRect,
                 "Rukaya_PrinterWindowTitle".Translate(),
-                "Rukaya_PrinterSummary".Translate(printer.Reservoir.StoredContainers, printer.Reservoir.Capacity, printer.CurrentStatus()));
+                "Rukaya_PrinterSummary".Translate(printer.Reservoir.StoredContainers, printer.Reservoir.Capacity, currentStatusCache));
 
             RukayaReplicationUI.SplitColumns(inRect, top, out Rect leftRect, out Rect middleRect, out Rect rightRect);
             RukayaReplicationUI.DrawColumn(leftRect);
@@ -306,7 +312,7 @@ namespace RukayaRace.Replication
                 "Rukaya_PrinterStatusHeader".Translate());
 
             float y = rect.y + RukayaReplicationUI.PanelHeaderHeight + 6f;
-            Widgets.Label(new Rect(rect.x, y, rect.width, StatusLineHeight), "Rukaya_PrinterStatusLine".Translate(printer.CurrentStatus()));
+            Widgets.Label(new Rect(rect.x, y, rect.width, StatusLineHeight), "Rukaya_PrinterStatusLine".Translate(currentStatusCache ?? printer.CurrentStatus()));
             y += StatusLineHeight;
             Widgets.Label(new Rect(rect.x, y, rect.width, StatusLineHeight), "Rukaya_PrinterOutputState".Translate(
                 (printer.OutputBlocked ? "Rukaya_PrinterOutputBlockedShort" : "Rukaya_PrinterOutputReady").Translate()));
@@ -349,7 +355,18 @@ namespace RukayaRace.Replication
                 RukayaReplicationUI.PanelSearchHeight);
             templateSearch = Widgets.TextField(searchRect, templateSearch ?? string.Empty);
 
-            List<RukayaModGroup<ThingDef>> groups = RukayaReplicationUI.GroupedUnlockedTemplates(templateSearch, templateCategory);
+            int tick = Find.TickManager.TicksGame;
+            string currentSearch = templateSearch ?? string.Empty;
+            if (cachedTemplateGroups == null || cachedTemplateSearch != currentSearch || cachedTemplateCategory != templateCategory
+                || tick - cachedTemplateGroupsTick >= 30 || tick < cachedTemplateGroupsTick)
+            {
+                cachedTemplateGroups = RukayaReplicationUI.GroupedUnlockedTemplates(currentSearch, templateCategory);
+                cachedTemplateGroupsTick = tick;
+                cachedTemplateSearch = currentSearch;
+                cachedTemplateCategory = templateCategory;
+            }
+
+            List<RukayaModGroup<ThingDef>> groups = cachedTemplateGroups;
 
             Rect listRect = new Rect(rect.x, searchRect.yMax + 6f, rect.width, Mathf.Max(0f, rect.yMax - searchRect.yMax - 6f));
             RukayaReplicationUI.DrawGroupedList(

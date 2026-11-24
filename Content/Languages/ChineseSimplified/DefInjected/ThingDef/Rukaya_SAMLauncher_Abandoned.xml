@@ -2,4 +2,8 @@
 <LanguageData>
   <Rukaya_SAMLauncher_Abandoned.label>废弃导弹发射架</Rukaya_SAMLauncher_Abandoned.label>
   <Rukaya_SAMLauncher_Abandoned.description>一座失效的导弹发射架。调查可获得一份保存防空导弹资料的磁芯存储器。</Rukaya_SAMLauncher_Abandoned.description>
+  <Rukaya_AncientDecor_SAMLauncherA.label>损毁导弹发射架</Rukaya_AncientDecor_SAMLauncherA.label>
+  <Rukaya_AncientDecor_SAMLauncherA.description>遗留在阵地中的锈蚀防空导弹发射架残骸，其制导电子设备与发射机构早已锈蚀殆尽，无法再使用。</Rukaya_AncientDecor_SAMLauncherA.description>
+  <Rukaya_AncientDecor_SAMLauncherB.label>废弃导弹挂架</Rukaya_AncientDecor_SAMLauncherB.label>
+  <Rukaya_AncientDecor_SAMLauncherB.description>一座废弃的防空导弹发射架，导轨上仍滞留着一枚风化严重的拦截弹，战斗部与推进剂早已失效。</Rukaya_AncientDecor_SAMLauncherB.description>
 </LanguageData>

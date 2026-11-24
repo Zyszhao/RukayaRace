@@ -226,6 +226,12 @@ namespace RukayaRace.Projectiles
                 return false;
             }
 
+            // Throttle expensive LOS/smoke raycasts to every 5 ticks (always check on launch tick 0).
+            if (this.flightTicks > 1 && this.flightTicks % 5 != 0)
+            {
+                return true;
+            }
+
             RukayaGuidedATGMProjectileExtension extension = this.Extension;
             if (extension.requireLineOfSight && !this.HasGuidanceLineOfSight(targetCell))
             {
@@ -253,21 +259,21 @@ namespace RukayaRace.Projectiles
 
         private bool HasGasInterference(IntVec3 start, IntVec3 end)
         {
-            if (this.Map == null)
+            Map map = this.Map;
+            if (map == null)
             {
                 return false;
             }
 
-            bool foundGas = false;
-            GenSight.PointsOnLineOfSight(start, end, cell =>
+            foreach (IntVec3 cell in GenSight.PointsOnLineOfSight(start, end))
             {
-                if (cell.InBounds(this.Map) && GasUtility.AnyGas(cell, this.Map, GasType.BlindSmoke))
+                if (cell.InBounds(map) && GasUtility.AnyGas(cell, map, GasType.BlindSmoke))
                 {
-                    foundGas = true;
+                    return true;
                 }
-            });
+            }
 
-            return foundGas;
+            return false;
         }
 
         private Vector3 GetCurrentTargetPosition()
@@ -311,18 +317,20 @@ namespace RukayaRace.Projectiles
                 return this.DestinationCell;
             }
 
-            for (int i = 0; i < 24; i++)
+            int maxIndex = GenRadial.NumCellsInRadius(extension.missDeviationRadius);
+            int minIndex = extension.missedImpactRadius > 0f
+                ? GenRadial.NumCellsInRadius(extension.missedImpactRadius)
+                : 0;
+            if (maxIndex > minIndex)
             {
-                IntVec3 cell = targetCell + GenRadial.RadialPattern.RandomElementByWeight(c => Mathf.Max(0.001f, c.LengthHorizontal));
-                float distance = cell.DistanceTo(targetCell);
-                if (distance < extension.missedImpactRadius || distance > extension.missDeviationRadius)
+                for (int i = 0; i < 24; i++)
                 {
-                    continue;
-                }
-
-                if (cell.InBounds(map) && cell.Standable(map))
-                {
-                    return cell;
+                    IntVec3 offset = GenRadial.RadialPattern[Rand.Range(minIndex, maxIndex)];
+                    IntVec3 cell = targetCell + offset;
+                    if (cell.InBounds(map) && cell.Standable(map))
+                    {
+                        return cell;
+                    }
                 }
             }
 
@@ -425,7 +433,7 @@ namespace RukayaRace.Projectiles
         private void ThrowGuidanceGlow(RukayaGuidedATGMProjectileExtension extension)
         {
             Vector3 drawPosition = this.DrawPosition;
-            FleckDef glowDef = DefDatabase<FleckDef>.GetNamedSilentFail("LightningGlow");
+            FleckDef glowDef = cachedLightningGlowDef ?? (cachedLightningGlowDef = DefDatabase<FleckDef>.GetNamedSilentFail("LightningGlow"));
             if (glowDef == null)
             {
                 FleckMaker.ThrowLightningGlow(drawPosition, this.Map, extension.guidanceGlowSize);
@@ -437,7 +445,11 @@ namespace RukayaRace.Projectiles
             this.Map.flecks.CreateFleck(data);
         }
 
+        private static readonly RukayaGuidedATGMProjectileExtension DefaultExtension = new RukayaGuidedATGMProjectileExtension();
+        private static FleckDef cachedLightningGlowDef;
+        private RukayaGuidedATGMProjectileExtension cachedExtension;
+
         private RukayaGuidedATGMProjectileExtension Extension =>
-            this.def.GetModExtension<RukayaGuidedATGMProjectileExtension>() ?? new RukayaGuidedATGMProjectileExtension();
+            cachedExtension ?? (cachedExtension = this.def.GetModExtension<RukayaGuidedATGMProjectileExtension>() ?? DefaultExtension);
     }
 }

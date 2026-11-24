@@ -66,12 +66,24 @@ namespace RukayaRace.Replication
 
         public static bool CanLoad(Pawn pawn, Thing building, bool forced = false)
         {
+            return TryPrepareLoad(pawn, building, forced, out _, out _);
+        }
+
+        private static bool TryPrepareLoad(
+            Pawn pawn,
+            Thing building,
+            bool forced,
+            out CompRukayaActiveMatterReservoir reservoir,
+            out Thing source)
+        {
+            reservoir = null;
+            source = null;
             if (pawn == null || building == null || building.Destroyed || !building.Spawned)
             {
                 return false;
             }
 
-            CompRukayaActiveMatterReservoir reservoir = building.TryGetComp<CompRukayaActiveMatterReservoir>();
+            reservoir = building.TryGetComp<CompRukayaActiveMatterReservoir>();
             if (reservoir == null || reservoir.IsFull)
             {
                 return false;
@@ -92,7 +104,7 @@ namespace RukayaRace.Replication
 
             // Danger.Some was hard coded here before, which permanently blocked the job whenever a
             // fire or a hostile sat anywhere on the route; vanilla building givers use the most
-            // permissive value they can. 
+            // permissive value they can.
             if (!pawn.CanReserveAndReach(building, PathEndMode.Touch, Danger.Deadly, 1, -1, null, forced))
             {
                 return false;
@@ -104,10 +116,17 @@ namespace RukayaRace.Replication
             Thing hands = pawn.carryTracker?.CarriedThing;
             if (hands != null)
             {
-                return hands.def == ContainerDef && !hands.Destroyed && hands.stackCount > 0;
+                if (hands.def == ContainerDef && !hands.Destroyed && hands.stackCount > 0)
+                {
+                    source = hands;
+                    return true;
+                }
+
+                return false;
             }
 
-            if (FindSource(pawn, reservoir) != null)
+            source = FindSource(pawn, reservoir);
+            if (source != null)
             {
                 return true;
             }
@@ -122,14 +141,7 @@ namespace RukayaRace.Replication
 
         public static Job MakeLoadJob(Pawn pawn, Thing building, bool forced = false)
         {
-            if (!CanLoad(pawn, building, forced))
-            {
-                return null;
-            }
-
-            CompRukayaActiveMatterReservoir reservoir = building.TryGetComp<CompRukayaActiveMatterReservoir>();
-            Thing source = CarriedContainer(pawn) ?? FindSource(pawn, reservoir);
-            if (source == null)
+            if (!TryPrepareLoad(pawn, building, forced, out CompRukayaActiveMatterReservoir reservoir, out Thing source))
             {
                 return null;
             }
@@ -201,8 +213,85 @@ namespace RukayaRace.Replication
 
     public class WorkGiver_RukayaLoadReservoir : WorkGiver_Scanner
     {
-        public override ThingRequest PotentialWorkThingRequest => ThingRequest.ForGroup(ThingRequestGroup.BuildingArtificial);
+        private static List<ThingDef> cachedReservoirBuildingDefs;
+
+        private static List<ThingDef> ReservoirBuildingDefs
+        {
+            get
+            {
+                if (cachedReservoirBuildingDefs != null)
+                {
+                    return cachedReservoirBuildingDefs;
+                }
+
+                List<ThingDef> list = new List<ThingDef>();
+                List<ThingDef> allDefs = DefDatabase<ThingDef>.AllDefsListForReading;
+                for (int i = 0; i < allDefs.Count; i++)
+                {
+                    ThingDef def = allDefs[i];
+                    if (def.HasComp(typeof(CompRukayaActiveMatterReservoir)))
+                    {
+                        list.Add(def);
+                    }
+                }
+
+                cachedReservoirBuildingDefs = list;
+                return list;
+            }
+        }
+
+        public override ThingRequest PotentialWorkThingRequest => ThingRequest.ForGroup(ThingRequestGroup.Undefined);
         public override PathEndMode PathEndMode => PathEndMode.Touch;
+
+        public override bool ShouldSkip(Pawn pawn, bool forced = false)
+        {
+            if (pawn?.Map == null)
+            {
+                return true;
+            }
+
+            List<ThingDef> defs = ReservoirBuildingDefs;
+            bool anyBuilding = false;
+            for (int i = 0; i < defs.Count; i++)
+            {
+                if (pawn.Map.listerThings.ThingsOfDef(defs[i]).Count > 0)
+                {
+                    anyBuilding = true;
+                    break;
+                }
+            }
+
+            if (!anyBuilding)
+            {
+                return true;
+            }
+
+            if (RukayaReservoirLoadingUtility.CarriedContainer(pawn) != null)
+            {
+                return false;
+            }
+
+            ThingDef containerDef = RukayaReservoirLoadingUtility.ContainerDef;
+            return containerDef == null || pawn.Map.listerThings.ThingsOfDef(containerDef).Count == 0;
+        }
+
+        public override IEnumerable<Thing> PotentialWorkThingsGlobal(Pawn pawn)
+        {
+            if (pawn?.Map == null)
+            {
+                yield break;
+            }
+
+            List<ThingDef> defs = ReservoirBuildingDefs;
+            for (int i = 0; i < defs.Count; i++)
+            {
+                List<Thing> buildings = pawn.Map.listerThings.ThingsOfDef(defs[i]);
+                for (int j = 0; j < buildings.Count; j++)
+                {
+                    yield return buildings[j];
+                }
+            }
+        }
 
         public override bool HasJobOnThing(Pawn pawn, Thing thing, bool forced = false)
         {

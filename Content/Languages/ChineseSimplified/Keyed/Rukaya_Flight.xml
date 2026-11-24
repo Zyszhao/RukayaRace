@@ -2,7 +2,7 @@
 <LanguageData>
 
   <Rukaya_FlightModeCommandOn>飞行：开</Rukaya_FlightModeCommandOn>
-  <Rukaya_FlightModeCommandOnDesc>征召后自动升空并保持在空中，直到关闭本开关或取消征召。\n\n接敌（存在敌人目标）时无视本开关，一律升空。\n\n需要至少一侧翅膀完好，且饱食不低于 10%。</Rukaya_FlightModeCommandOnDesc>
+  <Rukaya_FlightModeCommandOnDesc>征召后自动升空并保持在空中，直到关闭本开关或取消征召。\n\n接敌（存在敌人目标）时无视本开关，一律升空。\n\n需要两侧自然翼或仿生翼均完好且功能不低于 50%，饱食度不低于 10%。</Rukaya_FlightModeCommandOnDesc>
 
   <Rukaya_FlightModeCommandOff>飞行：关</Rukaya_FlightModeCommandOff>
   <Rukaya_FlightModeCommandOffDesc>征召后保持地面行动。\n\n接敌（存在敌人目标）时仍会升空，脱战后自动落地并回到本开关的状态。\n\n取消征召会自动关闭飞行。</Rukaya_FlightModeCommandOffDesc>
