@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <RecipeDef>
+    <defName>Rukaya_Make_ChemfuelFromActiveMatter</defName>
+    <label>make chemfuel from active matter</label>
+    <!-- 中文：用活性物质制作化合燃料 -->
+    <description>Make a batch of chemfuel from active matter containers.</description>
+    <!-- 中文翻译：用活性物质容器提炼一批化合燃料。 -->
+    <jobString>Refining chemfuel from active matter.</jobString>
+    <!-- 中文翻译：正在用活性物质提炼化合燃料。 -->
+    <workAmount>600</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <soundWorking>Recipe_Cremate</soundWorking>
+    <effectWorking>Cremate</effectWorking>
+    <ingredients><li><filter><thingDefs><li>Rukaya_ActiveMatterContainer</li></thingDefs></filter><count>30</count></li></ingredients>
+    <products><Chemfuel>5</Chemfuel></products>
+    <recipeUsers><li>BiofuelRefinery</li></recipeUsers>
+    <fixedIngredientFilter><thingDefs><li>Rukaya_ActiveMatterContainer</li></thingDefs></fixedIngredientFilter>
+    <researchPrerequisites><li>BiofuelRefining</li><li>Rukaya_ActiveMatterRefining</li></researchPrerequisites>
+  </RecipeDef>
+  <RecipeDef>
+    <defName>Rukaya_Make_ChemfuelFromActiveMatterBulk</defName>
+    <label>make chemfuel from active matter x2</label>
+    <!-- 中文：用活性物质制作化合燃料 x2 -->
+    <description>Make a larger batch of chemfuel from active matter containers.</description>
+    <!-- 中文翻译：用活性物质容器提炼更多化合燃料。 -->
+    <jobString>Refining chemfuel from active matter.</jobString>
+    <!-- 中文翻译：正在用活性物质提炼化合燃料。 -->
+    <workAmount>1000</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <soundWorking>Recipe_Cremate</soundWorking>
+    <effectWorking>Cremate</effectWorking>
+    <ingredients><li><filter><thingDefs><li>Rukaya_ActiveMatterContainer</li></thingDefs></filter><count>60</count></li></ingredients>
+    <products><Chemfuel>10</Chemfuel></products>
+    <recipeUsers><li>BiofuelRefinery</li></recipeUsers>
+    <fixedIngredientFilter><thingDefs><li>Rukaya_ActiveMatterContainer</li></thingDefs></fixedIngredientFilter>
+    <researchPrerequisites><li>BiofuelRefining</li><li>Rukaya_ActiveMatterRefining</li></researchPrerequisites>
+  </RecipeDef>
+</Defs>

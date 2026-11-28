@@ -96,6 +96,7 @@
     <!-- 中文翻译：通过恢复武器设计原理并简化制造流程，可以生产基础的卢卡娅武器。 -->
     <baseCost>500</baseCost>
     <techLevel>Industrial</techLevel>
+    <prerequisites><li>Machining</li></prerequisites>
     <tab>Rukaya_ResearchTab</tab>
     <researchViewX>0</researchViewX>
     <researchViewY>2.4</researchViewY>
@@ -130,6 +131,7 @@
     <techLevel>Industrial</techLevel>
     <prerequisites>
       <li>Rukaya_Weapon_II</li>
+      <li>MicroelectronicsBasics</li>
     </prerequisites>
     <tab>Rukaya_ResearchTab</tab>
     <researchViewX>2</researchViewX>

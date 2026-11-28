@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Rukaya_AirStation.label>卢卡娅航空站</Rukaya_AirStation.label>
+  <Rukaya_AirStation.description>同盟新建了一座前哨航空站，把你们四人连同一架轻型战斗机派驻过来值守。营房、工坊和跑道都已修好，但后方补给不会常来。</Rukaya_AirStation.description>
+  <Rukaya_AirStation.scenario.name>卢卡娅航空站</Rukaya_AirStation.scenario.name>
+  <Rukaya_AirStation.scenario.description>同盟新建了一座前哨航空站，把你们四人连同一架轻型战斗机派驻过来值守。营房、工坊和跑道都已修好，但后方补给不会常来。</Rukaya_AirStation.scenario.description>
+  <Rukaya_AirStation.scenario.summary>分配到新建航空站的四名卢卡娅和飞机。</Rukaya_AirStation.scenario.summary>
+  <Rukaya_AirStation.scenario.parts.GameStartDialog.text>航空站已经通电，战机停在机坪上。清点一下物资，开始驻守吧。</Rukaya_AirStation.scenario.parts.GameStartDialog.text>
+</LanguageData>

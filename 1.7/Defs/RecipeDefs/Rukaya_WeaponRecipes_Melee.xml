@@ -108,8 +108,10 @@
 
   <RecipeDef ParentName="Rukaya_MakeMeleeWeaponBase">
     <defName>Make_Rukaya_DuelSword</defName>
-    <label>forge dueling sword</label>
-    <!-- 中文翻译：锻造决斗剑 -->
+    <label>forge ceremonial sword</label>
+    <!-- 中文：锻造仪仗剑 -->
+    <jobString>forging ceremonial sword.</jobString>
+    <!-- 中文翻译：正在锻造仪仗剑。 -->
     <workAmount>16000</workAmount>
     <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
     <ingredients>

@@ -46,6 +46,7 @@
          并让炮管在开火时沿炮管轴线做直线后坐（见来源文件 Buildings/Building_RukayaNavalArtillery.cs）。
          它是 Building_TurretGun 的子类，炮塔自己的索敌 / verb / burst / 存档逻辑一行都没改。 -->
     <uiIconPath>Rukaya/Building/Rukaya_NavalArtillery/Rukaya_NavalArtillery_icon</uiIconPath>
+    <uiIconScale>1.25</uiIconScale>
     <!-- 建造菜单 / 物品筛选器 / 选中信息卡上的图标（128x128 PNG）。
          建筑在地图上的外观仍由下面的 graphicData（底座）+ 炮塔顶 + 炮管三层绘制，与图标无关。 -->
     <category>Building</category>

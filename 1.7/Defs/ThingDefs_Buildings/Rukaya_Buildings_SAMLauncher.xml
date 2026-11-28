@@ -90,6 +90,7 @@
     <!-- 中文翻译：一座固定式卢卡娅地对空导弹发射架。其密封发射导轨内始终备有可立即起竖的活性物质拦截弹；整套架体可用驻锄找平，并向任意方向回转以指向各条接近路线。 -->
     <thingClass>Building</thingClass>
     <uiIconPath>Rukaya/Building/Rukaya_SAMLauncher/Rukaya_SAMLauncher_icon</uiIconPath>
+    <uiIconScale>0.954</uiIconScale>
     <!-- 建造菜单 / 物品筛选器 / 选中信息卡上的图标（128x128 PNG，需求方 2026-10-09 新增的美术资产）。
          发射架在地图上的外观仍由下面的 graphicData（Graphic_Multi 四朝向）绘制，与图标无关。 -->
     <category>Building</category>

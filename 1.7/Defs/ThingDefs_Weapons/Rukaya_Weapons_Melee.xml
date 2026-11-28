@@ -195,10 +195,10 @@
 
   <ThingDef ParentName="Rukaya_BaseT1MeleeWeapon">
     <defName>Rukaya_DuelSword</defName>
-    <label>Rukaya dueling sword</label>
-    <!-- 中文翻译：卢卡娅决斗剑 -->
-    <description>A disciplined sidearm blade made for measured thrusts rather than wild cuts. It is heavier and less murderous than a dedicated war sword, but its balance favors precise strikes through gaps in armor.</description>
-    <!-- 中文翻译：一把为克制刺击而非狂猛劈砍设计的佩用决斗剑。它比专职战剑更重、杀伤也更保守，但配重更利于把攻击准确送进护甲缝隙。 -->
+    <label>Rukaya ceremonial sword</label>
+    <!-- 中文：卢卡娅仪仗剑 -->
+    <description>A ceremonial sword carried by officers. Heavier and less lethal than a dedicated battle blade, its balance still favors precise thrusts into armor gaps.</description>
+    <!-- 中文翻译：军官佩带的仪仗剑。比专职战剑更重、杀伤也更保守，但配重仍便于将刺击送进护甲缝隙。 -->
     <graphicData>
       <texPath>Rukaya/Weapon/Rukaya_DuelSword</texPath>
       <graphicClass>Graphic_Single</graphicClass>

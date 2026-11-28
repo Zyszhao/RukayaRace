@@ -3,5 +3,7 @@
 
   <RukayaKinRelations.label>卢卡娅同族关系</RukayaKinRelations.label>
   <RukayaKinRelations.description>你的卢卡娅与「漂泊者同盟」同族相亲：好感度 100，自然好感度 75。</RukayaKinRelations.description>
+  <RukayaAirStationBase.label>卢卡娅航空站</RukayaAirStationBase.label>
+  <RukayaAirStationBase.description>在开局地图上部署一座已投入使用的卢卡娅航空站。</RukayaAirStationBase.description>
 
 </LanguageData>

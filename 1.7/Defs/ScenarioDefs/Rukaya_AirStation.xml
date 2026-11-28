@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ScenarioDef ParentName="ScenarioBase">
+    <defName>Rukaya_AirStation</defName>
+    <label>Rukaya Air Station</label>
+    <!-- 中文：卢卡娅航空站 -->
+    <description>The Alliance has built a new forward air station and assigned the four of you—along with a light fighter—to staff it. The beds, workbenches, and runway are ready, but supply runs from home won't come often.</description>
+    <!-- 中文翻译：同盟新建了一座前哨航空站，把你们四人连同一架轻型战斗机派驻过来值守。营房、工坊和跑道都已修好，但后方补给不会常来。 -->
+    <scenario>
+      <summary>Four Rukaya and an aircraft assigned to a newly built air station.</summary>
+      <!-- 中文：分配到新建航空站的四名卢卡娅和飞机。 -->
+      <playerFaction><factionDef>Rukaya_PlayerFaction</factionDef></playerFaction>
+      <parts>
+        <li Class="ScenPart_ConfigPage_ConfigureStartingPawns"><def>ConfigPage_ConfigureStartingPawns</def><pawnCount>4</pawnCount><pawnChoiceCount>8</pawnChoiceCount></li>
+        <li Class="RukayaRace.Scenario.ScenPart_RukayaAirStation"><def>RukayaAirStationBase</def></li>
+        <li Class="ScenPart_PlayerPawnsArriveMethod"><def>PlayerPawnsArriveMethod</def><visible>false</visible><method>Standing</method></li>
+        <li Class="RukayaRace.Scenario.ScenPart_RukayaKinRelations"><def>RukayaKinRelations</def></li>
+        <li Class="ScenPart_StartingResearch"><def>StartingResearch</def><project>SolarPanels</project></li>
+        <li Class="ScenPart_StartingResearch"><def>StartingResearch</def><project>Batteries</project></li>
+        <li Class="ScenPart_StartingResearch"><def>StartingResearch</def><project>BiofuelRefining</project></li>
+        <li Class="ScenPart_StartingResearch"><def>StartingResearch</def><project>Rukaya_ActiveMatterRefining</project></li>
+        <li Class="ScenPart_StartingResearch"><def>StartingResearch</def><project>Smithing</project></li>
+        <li Class="ScenPart_StartingResearch"><def>StartingResearch</def><project>Machining</project></li>
+        <li Class="ScenPart_StartingResearch"><def>StartingResearch</def><project>Rukaya_Weapon_I</project></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>Rukaya_Pickaxe</thingDef><count>1</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>Rukaya_DuelSword</thingDef><count>1</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>Rukaya_AssaultRifle</thingDef><count>1</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>Rukaya_Rifle</thingDef><count>1</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>Silver</thingDef><count>600</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>MealSurvivalPack</thingDef><count>50</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>MedicineIndustrial</thingDef><count>24</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>Chemfuel</thingDef><count>150</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>Rukaya_ActiveMatterContainer</thingDef><count>25</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>ComponentIndustrial</thingDef><count>25</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>Steel</thingDef><count>300</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>WoodLog</thingDef><count>200</count></li>
+        <li Class="ScenPart_GameStartDialog"><def>GameStartDialog</def><text>The air station is powered up and the fighter is waiting on the pad. Check your supplies and settle in.</text>
+          <!-- 中文翻译：航空站已经通电，战机停在机坪上。清点一下物资，开始驻守吧。 -->
+          <closeSound>GameStartSting</closeSound></li>
+      </parts>
+    </scenario>
+  </ScenarioDef>
+</Defs>

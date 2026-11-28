@@ -11,7 +11,7 @@
          特战队    Rukaya_T3_*              Rukaya_PowerArmor（动力装甲）
          军官/领袖 Rukaya_Officer / Rukaya_Commissar
                    → 军官礼服套装（Rukaya_Dress_Officer：礼服 + 宽檐帽），
-                     配决斗剑或制式手枪
+                     配仪仗剑或制式手枪
        词条语义：weaponTags / apparelTags 是白名单并集，
                  因此每个 kind 只挂「职能词条」，不与「档位词条」混写
                  （否则并集会退化回整档武器）。
@@ -179,7 +179,7 @@
     </skills>
   </PawnKindDef>
 
-  <!-- 民兵近战：决斗剑 / 工兵铲 / 战地十字镐 -->
+  <!-- 民兵近战：仪仗剑 / 工兵铲 / 战地十字镐 -->
   <PawnKindDef ParentName="Rukaya_MilitaryPawnBase">
     <defName>Rukaya_MilitiaMelee</defName>
     <label>Rukaya militia melee</label>
@@ -755,7 +755,7 @@
        领袖身份由 <factionLeader>true</factionLeader> 声明；
        Faction.TryGenerateNewLeader 只在 kindDef = Combat 的生成组里扫 factionLeader=true 的 kind，
        所以 Rukaya_Commissar 必须留在至少一个 Combat 生成组中（见 Faction_Rukaya.xml 的正规军组）。
-       装备完全走 Rukaya_OfficerPawnBase：必定礼服 + 宽檐帽，武器为决斗剑或制式手枪。 -->
+       装备完全走 Rukaya_OfficerPawnBase：必定礼服 + 宽檐帽，武器为仪仗剑或制式手枪。 -->
   <PawnKindDef ParentName="Rukaya_OfficerPawnBase">
     <defName>Rukaya_Commissar</defName>
     <label>Rukaya commissar</label>
@@ -805,7 +805,7 @@
   </PawnKindDef>
 
   <!-- 军官：日常刷出来的指挥岗位。装备偏好与领袖**完全一致**
-       （军官礼服套装 + 决斗剑或制式手枪），但不承担 factionLeader 身份。
+       （军官礼服套装 + 仪仗剑或制式手枪），但不承担 factionLeader 身份。
        出现位置见 Faction_Rukaya.xml：Combat / Settlement 的
        「正规军，带军官」「正规军与民兵混合」「民兵为主」三组，
        以及 Peaceful / Trader 的少量配属（军官带领民兵与平民）。 -->

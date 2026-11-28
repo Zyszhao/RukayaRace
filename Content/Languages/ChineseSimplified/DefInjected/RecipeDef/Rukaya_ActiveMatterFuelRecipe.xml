@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Rukaya_Make_ChemfuelFromActiveMatter.label>用活性物质制作化合燃料</Rukaya_Make_ChemfuelFromActiveMatter.label>
+  <Rukaya_Make_ChemfuelFromActiveMatter.description>用活性物质容器提炼一批化合燃料。</Rukaya_Make_ChemfuelFromActiveMatter.description>
+  <Rukaya_Make_ChemfuelFromActiveMatter.jobString>正在用活性物质提炼化合燃料。</Rukaya_Make_ChemfuelFromActiveMatter.jobString>
+  <Rukaya_Make_ChemfuelFromActiveMatterBulk.label>用活性物质制作化合燃料 x2</Rukaya_Make_ChemfuelFromActiveMatterBulk.label>
+  <Rukaya_Make_ChemfuelFromActiveMatterBulk.description>用活性物质容器提炼更多化合燃料。</Rukaya_Make_ChemfuelFromActiveMatterBulk.description>
+  <Rukaya_Make_ChemfuelFromActiveMatterBulk.jobString>正在用活性物质提炼化合燃料。</Rukaya_Make_ChemfuelFromActiveMatterBulk.jobString>
+</LanguageData>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="BuildingBase">
+    <defName>Rukaya_Radiogram</defName>
+    <label>Rukaya radiogram</label>
+    <!-- 中文：卢卡娅电唱收音机 -->
+    <description>A radio that can play records. When powered, it provides recreation and lifts the mood of nearby listeners in the same room.</description>
+    <!-- 中文翻译：一台能播放唱片的收音机。通电时可提供娱乐，并提升同房间内附近殖民者的心情。 -->
+    <category>Building</category>
+    <altitudeLayer>Building</altitudeLayer>
+    <graphicData>
+      <texPath>Rukaya/Building/Rukaya_Radiogram/Rukaya_Radiogram</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(1.5,1.5)</drawSize>
+    </graphicData>
+    <size>(1,1)</size>
+    <rotatable>true</rotatable>
+    <designationCategory>Rukaya_Buildings</designationCategory>
+    <researchPrerequisites><li>Electricity</li></researchPrerequisites>
+    <costList><WoodLog>25</WoodLog><Steel>15</Steel><ComponentIndustrial>1</ComponentIndustrial></costList>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories><li>BuildingsJoy</li></thingCategories>
+    <placeWorkers><li>PlaceWorker_WatchArea</li><li>RukayaRace.Buildings.PlaceWorker_RukayaRadiogramRadius</li></placeWorkers>
+    <building>
+      <joyKind>Television</joyKind>
+      <watchBuildingStandDistanceRange>1~4</watchBuildingStandDistanceRange>
+      <watchBuildingStandRectWidth>5</watchBuildingStandRectWidth>
+      <watchBuildingInSameRoom>true</watchBuildingInSameRoom>
+      <effectWatching>WatchingTelevision</effectWatching>
+    </building>
+    <comps>
+      <li Class="CompProperties_Power"><compClass>CompPowerTrader</compClass><basePowerConsumption>80</basePowerConsumption><shortCircuitInRain>true</shortCircuitInRain></li>
+      <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Breakdownable" />
+      <li Class="RukayaRace.Buildings.CompProperties_RukayaRadiogramRadius" />
+    </comps>
+    <statBases><MaxHitPoints>100</MaxHitPoints><WorkToBuild>1200</WorkToBuild><Mass>5</Mass><Flammability>0.5</Flammability><Beauty>2</Beauty><JoyGainFactor>1.25</JoyGainFactor></statBases>
+    <uiIconScale>1.4</uiIconScale>
+    <uiOrder>2530</uiOrder>
+  </ThingDef>
+  <JoyGiverDef>
+    <defName>Rukaya_ListenToRadiogram</defName>
+    <giverClass>JoyGiver_WatchBuilding</giverClass>
+    <jobDef>WatchTelevision</jobDef>
+    <joyKind>Television</joyKind>
+    <baseChance>3.5</baseChance>
+    <canDoWhileInBed>true</canDoWhileInBed>
+    <requiredCapacities><li>Hearing</li></requiredCapacities>
+    <thingDefs><li>Rukaya_Radiogram</li></thingDefs>
+  </JoyGiverDef>
+  <ThoughtDef>
+    <defName>Rukaya_ListeningToRadiogram</defName>
+    <workerClass>RukayaRace.Buildings.ThoughtWorker_RukayaRadiogram</workerClass>
+    <validWhileDespawned>false</validWhileDespawned>
+    <stages>
+      <li>
+        <label>radiogram music</label>
+        <!-- 中文：电唱收音机音乐 -->
+        <description>The music from the radiogram puts me in a better mood.</description>
+        <!-- 中文翻译：电唱收音机放的音乐让我心情变好了。 -->
+        <baseMoodEffect>4</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+</Defs>

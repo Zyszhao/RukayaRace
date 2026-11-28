@@ -14,7 +14,6 @@ namespace RukayaRace.Storytelling
     {
         public const string EventName = "Rukaya_AnnualTrioArrival";
         private const int FirstArrivalWindow = 2 * GenDate.TicksPerQuadrum;
-        // Leave one day for retries if a colony map or landing spot is temporarily unavailable.
         private const int FirstArrivalFallbackDelay = FirstArrivalWindow - GenDate.TicksPerDay;
         private readonly AnnualTrioSchedule schedule = new AnnualTrioSchedule();
         private int firstArrivalStartTick = -1;
@@ -26,9 +25,11 @@ namespace RukayaRace.Storytelling
         internal bool FirstArrivalPending => firstArrivalStartTick >= 0 && !firstArrivalCompleted;
         public AnnualTrioGame(Game game) { }
 
-        public static bool Eligible => Current.Game != null && Find.Scenario != null
-            && !Find.Scenario.AllParts.Any(p => p is ScenPart_RukayaKinRelations
-                || p is ScenPart_IncidentBase incident && incident.Incident?.defName == "Rukaya_TrioArrival");
+        public static bool Eligible => Current.Game != null && Find.Scenario != null;
+        private static bool IsRukayaStartScenario => Find.GameInitData?.playerFaction?.def?.defName == "Rukaya_PlayerFaction"
+            || Find.Scenario?.AllParts.Any(p => p is ScenPart_RukayaKinRelations || p is ScenPart_RukayaAirStation
+                || p is ScenPart_IncidentBase incident && incident.Incident?.defName == "Rukaya_TrioArrival") == true;
+        private static bool FirstYearGuaranteeEligible => Eligible && !IsRukayaStartScenario;
 
         private void UpdateYear()
         {
@@ -39,14 +40,12 @@ namespace RukayaRace.Storytelling
 
         public override void LoadedGame()
         {
-            // A newly installed mod has no component data in the save. Older versions
-            // already wrote this component but cannot tell whether a past year had an arrival.
             if (!loadedFromSave) ScheduleFirstArrival();
         }
 
         private void ScheduleFirstArrival()
         {
-            if (Eligible) firstArrivalStartTick = Find.TickManager.TicksGame;
+            if (FirstYearGuaranteeEligible) firstArrivalStartTick = Find.TickManager.TicksGame;
         }
 
         public override void GameComponentTick()
@@ -55,7 +54,7 @@ namespace RukayaRace.Storytelling
             int now = Find.TickManager.TicksGame;
             if (now - firstArrivalStartTick < FirstArrivalFallbackDelay || now < nextFallbackAttemptTick) return;
             nextFallbackAttemptTick = now + GenDate.TicksPerHour;
-            if (!Eligible) return;
+            if (!FirstYearGuaranteeEligible) return;
             Map map = Find.AnyPlayerHomeMap;
             if (map == null) return;
             UpdateYear();
@@ -65,8 +64,7 @@ namespace RukayaRace.Storytelling
         public void AfterIncident(IncidentDef source, IncidentParms original, string letterTitle)
         {
             if (!Eligible || busy || source.defName == EventName) return;
-            // Mid-save installs can cross a game-year boundary during the first two quadrums.
-            if (firstArrivalCompleted && Find.TickManager.TicksGame - firstArrivalStartTick < FirstArrivalWindow) return;
+            if (FirstYearGuaranteeEligible && firstArrivalCompleted && Find.TickManager.TicksGame - firstArrivalStartTick < FirstArrivalWindow) return;
             UpdateYear();
             if (schedule.Occurred) return;
             Map map = original.target as Map;
@@ -114,6 +112,7 @@ namespace RukayaRace.Storytelling
             Scribe_Values.Look(ref schedule.Occurred, "annualTrioOccurred", false);
             Scribe_Values.Look(ref firstArrivalStartTick, "annualTrioFirstArrivalStartTick", -1);
             Scribe_Values.Look(ref firstArrivalCompleted, "annualTrioFirstArrivalCompleted", false);
+            Scribe_Values.Look(ref nextFallbackAttemptTick, "annualTrioNextFallbackAttemptTick", 0);
         }
 
         [DebugAction("Rukaya", "Annual trio: log status", allowedGameStates = AllowedGameStates.PlayingOnMap)]
@@ -121,7 +120,7 @@ namespace RukayaRace.Storytelling
         {
             var game = Current.Game.GetComponent<AnnualTrioGame>();
             game.UpdateYear();
-            Log.Message($"[Rukaya AnnualTrio] eligible={Eligible} year={game.schedule.Year + 1} attempts={game.schedule.Attempts} occurred={game.schedule.Occurred} firstArrivalPending={game.FirstArrivalPending} firstArrivalStartTick={game.firstArrivalStartTick}");
+            Log.Message($"[Rukaya AnnualTrio] eligible={Eligible} firstYearGuarantee={FirstYearGuaranteeEligible} year={game.schedule.Year + 1} attempts={game.schedule.Attempts} occurred={game.schedule.Occurred} firstArrivalPending={game.FirstArrivalPending}");
         }
     }
 
@@ -192,7 +191,6 @@ namespace RukayaRace.Storytelling
             if (!(parms.target is Map map) || !AnnualTrioGame.Eligible) return false;
             var game = Current.Game.GetComponent<AnnualTrioGame>();
             if (!game.Delivering) return false;
-            bool firstArrival = game.FirstArrivalPending;
             var preset = (IncidentDef_RukayaTrioArrival)DefDatabase<IncidentDef>.GetNamed("Rukaya_TrioArrival");
             var worker = (IncidentWorker_RukayaTrioArrival)preset.Worker;
             IntVec3 spot = DropCellFinder.TradeDropSpot(map);
@@ -204,20 +202,19 @@ namespace RukayaRace.Storytelling
             var contents = new List<Thing>();
             var names = new List<string>();
             float deathChance = RukayaRaceMod.Settings?.trioDeathChance ?? 0.35f;
-            Faction alliance = firstArrival ? null : Find.FactionManager.FirstFactionOfDef(RukayaScenarioDefOf.Rukaya_DrifterAlliance);
+            Faction alliance = Find.FactionManager.FirstFactionOfDef(RukayaScenarioDefOf.Rukaya_DrifterAlliance);
             for (int i = 0; i < count; i++)
             {
                 int index = indices[i];
                 // Decide faction before generation and death, independently for each passenger.
                 Pawn pawn = PawnGenerator.GeneratePawn(new PawnGenerationRequest(preset.pawnKind,
-                    faction: firstArrival ? null : ChooseArrivalFaction(alliance),
+                    faction: ChooseArrivalFaction(alliance),
                     context: PawnGenerationContext.NonPlayer, tile: map.Tile,
                     forceGenerateNewPawn: true, allowDead: false, allowDowned: false,
                     fixedGender: Gender.Female, allowPregnant: false));
                 worker.ConfigureCompanion(pawn, index);
-                if (firstArrival && pawn.Dead) continue;
                 Thing cargo = pawn;
-                if (!firstArrival && Rand.Chance(deathChance))
+                if (Rand.Chance(deathChance))
                 {
                     pawn.Kill(null);
                     cargo = pawn.Corpse;

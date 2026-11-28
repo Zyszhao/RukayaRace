@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="BuildingBase">
+    <defName>Rukaya_ActiveMatterGenerator</defName>
+    <label>active matter generator</label>
+    <!-- 中文：活性物质发电机 -->
+    <description>Produces power by consuming active matter containers. Must be periodically refueled by hand.</description>
+    <!-- 中文翻译：通过消耗活性物质容器来发电。需要定期手动补充燃料。 -->
+    <category>Building</category>
+    <tickerType>Normal</tickerType>
+    <altitudeLayer>Building</altitudeLayer>
+    <graphicData>
+      <texPath>Rukaya/Building/Rukaya_ActiveMatterGenerator/Rukaya_ActiveMatterGenerator</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(2.3,2.3)</drawSize>
+    </graphicData>
+    <size>(2,2)</size>
+    <rotatable>false</rotatable>
+    <designationCategory>Rukaya_Buildings</designationCategory>
+    <researchPrerequisites><li>Rukaya_ActiveMatterRefining</li></researchPrerequisites>
+    <costList><Steel>120</Steel><ComponentIndustrial>4</ComponentIndustrial></costList>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories><li>BuildingsPower</li></thingCategories>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerPlant</compClass>
+        <basePowerConsumption>-1000</basePowerConsumption>
+        <transmitsPower>true</transmitsPower>
+        <soundAmbientProducingPower>ChemfuelFiredGenerator_Ambience</soundAmbientProducingPower>
+      </li>
+      <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Breakdownable" />
+      <li Class="CompProperties_Refuelable">
+        <fuelConsumptionRate>24.0</fuelConsumptionRate>
+        <fuelCapacity>72.0</fuelCapacity>
+        <fuelFilter><thingDefs><li>Rukaya_ActiveMatterContainer</li></thingDefs></fuelFilter>
+        <showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
+        <canEjectFuel>true</canEjectFuel>
+        <initialFuelPercent>0</initialFuelPercent>
+      </li>
+      <li Class="CompProperties_HeatPusher">
+        <compClass>CompHeatPusherPowered</compClass>
+        <heatPerSecond>4</heatPerSecond>
+      </li>
+      <li Class="CompProperties_Glower"><glowRadius>4</glowRadius><glowColor>(96,175,220,0)</glowColor></li>
+      <li Class="CompProperties_Explosive">
+        <explosiveRadius>3.2</explosiveRadius>
+        <explosiveDamageType>Flame</explosiveDamageType>
+        <startWickHitPointsPercent>0.25</startWickHitPointsPercent>
+        <wickTicks>70~150</wickTicks>
+      </li>
+    </comps>
+    <statBases><MaxHitPoints>180</MaxHitPoints><WorkToBuild>2400</WorkToBuild><Mass>12</Mass><Flammability>1</Flammability><Beauty>-2</Beauty></statBases>
+    <uiIconScale>0.759</uiIconScale>
+    <uiOrder>2529</uiOrder>
+  </ThingDef>
+</Defs>

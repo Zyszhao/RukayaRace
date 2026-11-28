@@ -46,6 +46,7 @@
       <texPath>Rukaya/Building/Rukaya_FacilityWall/Rukaya_WallGreen_Atlas</texPath>
     </graphicData>
     <uiIconPath>Rukaya/Building/Rukaya_FacilityWall/Rukaya_WallGreen_Icon</uiIconPath>
+    <uiIconScale>0.863</uiIconScale>
   </ThingDef>
 
   <ThingDef ParentName="Rukaya_FacilityWallBase">
@@ -58,5 +59,6 @@
       <texPath>Rukaya/Building/Rukaya_FacilityWall/Rukaya_WallBlue_Atlas</texPath>
     </graphicData>
     <uiIconPath>Rukaya/Building/Rukaya_FacilityWall/Rukaya_WallBlue_Icon</uiIconPath>
+    <uiIconScale>0.877</uiIconScale>
   </ThingDef>
 </Defs>

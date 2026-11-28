@@ -22,6 +22,8 @@
       </shadowData>
     </graphicData>
     <size>(3,3)</size>
+    <rotatable>false</rotatable>
+    <uiIconScale>0.85</uiIconScale>
     <drawerType>MapMeshOnly</drawerType>
     <fillPercent>1</fillPercent>
     <canOverlapZones>false</canOverlapZones>
@@ -119,6 +121,7 @@
       </damageData>
     </graphicData>
     <size>(6,6)</size>
+    <uiIconScale>0.85</uiIconScale>
     <drawerType>MapMeshAndRealTime</drawerType>
     <fillPercent>1</fillPercent>
     <canOverlapZones>false</canOverlapZones>

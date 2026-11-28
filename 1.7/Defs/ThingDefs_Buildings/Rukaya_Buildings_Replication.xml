@@ -19,6 +19,7 @@
       <drawOffset>(0,0,0.3)</drawOffset>
     </graphicData>
     <size>(3,3)</size>
+    <uiIconScale>0.593</uiIconScale>
     <rotatable>false</rotatable>
     <drawerType>MapMeshOnly</drawerType>
     <fillPercent>1</fillPercent>
@@ -93,6 +94,7 @@
       <drawOffset>(0,0,0.3)</drawOffset>
     </graphicData>
     <size>(4,4)</size>
+    <uiIconScale>0.609</uiIconScale>
     <rotatable>false</rotatable>
     <drawerType>MapMeshOnly</drawerType>
     <fillPercent>1</fillPercent>

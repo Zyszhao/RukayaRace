@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Rukaya_ActiveMatterGenerator.label>活性物质发电机</Rukaya_ActiveMatterGenerator.label>
+  <Rukaya_ActiveMatterGenerator.description>通过消耗活性物质容器来发电。需要定期手动补充燃料。</Rukaya_ActiveMatterGenerator.description>
+</LanguageData>

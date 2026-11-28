@@ -292,7 +292,8 @@ public partial class Aircraft : Building, IAttackTarget, IRenameable
             float size = Mathf.Lerp(0.7f, 1, lift);
             Graphics.DrawMesh(MeshPool.plane10, Matrix4x4.TRS(shadow, Quaternion.AngleAxis(yaw, Vector3.up), new Vector3(def.graphicData.drawSize.x * size, 1, def.graphicData.drawSize.y * size)), shadowMaterial, 0);
         }
-        Color tint = Map?.skyManager.CurSky.colors.sky ?? Color.white; tint.a = 1;
+        Color tint = DebugViewSettings.drawLightingOverlay ? (Map?.skyManager.CurSky.colors.sky ?? Color.white) : Color.white;
+        tint.a = 1;
         // Draw pylons below the aircraft, and use exactly the same positions for weapon origins.
         for (int i = 0; i < mounts.Count; i++)
         {

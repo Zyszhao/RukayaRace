@@ -12,6 +12,7 @@
     <seeThroughFog>true</seeThroughFog>
     <rotatable>false</rotatable>
     <size>(5,7)</size>
+    <uiIconScale>0.741</uiIconScale>
     <designationCategory>Rukaya_Buildings</designationCategory>
     <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
     <researchPrerequisites><li>Rukaya_Weapon_III</li></researchPrerequisites>
@@ -47,6 +48,7 @@
     <description>Pad size: Medium; Runway size: 46x9. A two-seat high-speed interceptor with seven hardpoints, built for long-range interception and heavy ordnance strikes.</description>
     <!-- 中文：停机坪尺寸：中；跑道尺寸：46x9。双座高速截击机，配有七个挂点，适合长航程截击与重型对地打击。 -->
     <size>(7,9)</size>
+    <uiIconScale>0.758</uiIconScale>
     <graphicData><texPath>Rukaya/Aviation/Mig31</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>(10.5,10.5)</drawSize><shaderType>CutoutComplex</shaderType></graphicData>
     <statBases><MaxHitPoints>2400</MaxHitPoints><Mass>1800</Mass></statBases>
     <costList><Steel>400</Steel><ComponentIndustrial>10</ComponentIndustrial></costList>
@@ -67,6 +69,7 @@
     <description>Pad size: Large; Runway size: 54x13. A two-pilot transport aircraft with large cargo and passenger capacity, plus two wing hardpoints outboard of the engines.</description>
     <!-- 中文：停机坪尺寸：大；跑道尺寸：54x13。双座运输机，载重与载员能力出色，两侧发动机外侧各有一个挂点。 -->
     <size>(11,11)</size>
+    <uiIconScale>0.638</uiIconScale>
     <graphicData><texPath>Rukaya/Aviation/An72</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>(15,15)</drawSize><shaderType>CutoutComplex</shaderType></graphicData>
     <statBases><MaxHitPoints>3200</MaxHitPoints><WorkToBuild>7500</WorkToBuild><Mass>2400</Mass></statBases>
     <costList><Steel>700</Steel><ComponentIndustrial>24</ComponentIndustrial></costList>
@@ -89,6 +92,7 @@
   <ThingDef Name="RAV_PadBase" ParentName="BuildingBase" Abstract="True">
     <thingClass>RukayaAviation.ParkingPad</thingClass>
     <uiIconPath>Rukaya/UI/Aviation/Rukaya_ApronIcon</uiIconPath>
+    <uiIconScale>0.989</uiIconScale>
     <graphicData><texPath>Rukaya/Nothing</texPath><graphicClass>Graphic_Single</graphicClass><drawSize>(1,1)</drawSize></graphicData>
     <altitudeLayer>FloorEmplacement</altitudeLayer><drawerType>RealtimeOnly</drawerType><rotatable>true</rotatable><fillPercent>0</fillPercent><passability>Standable</passability><canOverlapZones>true</canOverlapZones>
     <placeWorkers><li>RukayaAviation.PlaceWorker_ParkingPad</li></placeWorkers>

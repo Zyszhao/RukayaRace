@@ -17,6 +17,19 @@
     <summaryPriority>500</summaryPriority>
   </ScenPartDef>
 
+  <ScenPartDef>
+    <defName>RukayaAirStationBase</defName>
+    <label>Rukaya air station</label>
+    <!-- 中文：卢卡娅航空站 -->
+    <description>Builds a commissioned Rukaya air station on the starting map.</description>
+    <!-- 中文翻译：在开局地图上部署一座已投入使用的卢卡娅航空站。 -->
+    <scenPartClass>RukayaRace.Scenario.ScenPart_RukayaAirStation</scenPartClass>
+    <category>Fixed</category>
+    <canBeRandomlyAdded>false</canBeRandomlyAdded>
+    <canBePlayerAddedRemoved>false</canBePlayerAddedRemoved>
+    <summaryPriority>490</summaryPriority>
+  </ScenPartDef>
+
   <!-- 自然好感度局势：把 NPC 卢卡娅阵营对玩家的自然好感度偏移设为 75。
        原版自然好感度是 GoodwillSituationManager 累加各 GoodwillSituationDef 的
        Worker.GetNaturalGoodwillOffset 得到的（每 1000 tick 重算），没有存档字段，

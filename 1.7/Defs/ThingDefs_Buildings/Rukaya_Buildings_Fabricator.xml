@@ -30,6 +30,7 @@
       </damageData>
     </graphicData>
     <size>(5,2)</size>
+    <uiIconScale>0.95</uiIconScale>
     <rotatable>true</rotatable>
     <drawerType>MapMeshOnly</drawerType>
     <fillPercent>0.5</fillPercent>
